@@ -1,0 +1,481 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.3.0"
+    },
+    "card_id": {
+      "type": "string"
+    },
+    "design_fingerprint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "image_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reviewed_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reviewed_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "checks": {
+      "type": "object",
+      "properties": {
+        "canon": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "six_dimensions": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "readability": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "art_direction": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "composition": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "sequence_distinction": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "image_integrity": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "color": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "rights": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "note"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "canon",
+        "six_dimensions",
+        "readability",
+        "art_direction",
+        "composition",
+        "sequence_distinction",
+        "text",
+        "image_integrity",
+        "color",
+        "rights"
+      ],
+      "additionalProperties": false
+    },
+    "semantic_readback": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "observed_cue_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "observation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "observed_cue_ids",
+            "observation"
+          ],
+          "additionalProperties": false
+        },
+        "acting": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "observed_cue_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "observation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "observed_cue_ids",
+            "observation"
+          ],
+          "additionalProperties": false
+        },
+        "abilities": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "observed_cue_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "observation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "observed_cue_ids",
+            "observation"
+          ],
+          "additionalProperties": false
+        },
+        "potion": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "observed_cue_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "observation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "observed_cue_ids",
+            "observation"
+          ],
+          "additionalProperties": false
+        },
+        "ascension": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "observed_cue_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "observation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "observed_cue_ids",
+            "observation"
+          ],
+          "additionalProperties": false
+        },
+        "limitations": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "pass",
+                "fail"
+              ]
+            },
+            "observed_cue_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "observation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "observed_cue_ids",
+            "observation"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "identity",
+        "acting",
+        "abilities",
+        "potion",
+        "ascension",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "approval": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "approved",
+            "rejected"
+          ]
+        },
+        "by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "by",
+        "at",
+        "reference"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "card_id",
+    "design_fingerprint",
+    "image_sha256",
+    "reviewed_by",
+    "reviewed_at",
+    "checks",
+    "semantic_readback",
+    "approval"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lotm:review:0.3.0",
+  "title": "当前图片的真实审核记录"
+}

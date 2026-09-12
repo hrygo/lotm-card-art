@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.3.0",
+  "project_id": "lotm-card-art",
+  "language": "zh-CN",
+  "work_scope": "lotm-volume-1-zh",
+  "pathway_count": 22,
+  "sequence_order": [
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    0
+  ],
+  "expected_cards": 220,
+  "dimensions": [
+    "identity",
+    "acting",
+    "abilities",
+    "potion",
+    "ascension",
+    "limitations"
+  ],
+  "delivery_profiles": {
+    "standard": {
+      "width": 2048,
+      "height": 3072
+    },
+    "collector": {
+      "width": 4096,
+      "height": 6144
+    }
+  },
+  "default_delivery_profile": "standard",
+  "format": "PNG",
+  "color_space": "sRGB",
+  "aspect": [
+    2,
+    3
+  ],
+  "baseline_status": "proposed",
+  "auto_generate": false,
+  "stages": [
+    "scaffold",
+    "research",
+    "directed",
+    "rendered",
+    "reviewed",
+    "approved"
+  ],
+  "allowed_channels": [
+    "text",
+    "emblem",
+    "object",
+    "action",
+    "composition",
+    "material",
+    "lighting",
+    "border",
+    "negative_space",
+    "state_change"
+  ],
+  "design_document_paths": [
+    "design/semantic-contract.md",
+    "design/art-bible.md",
+    "design/layout-system.md",
+    "design/rank-grammar.md",
+    "design/typography.md",
+    "design/qa-rubric.md",
+    "design/symbol-policy.md",
+    "docs/source-policy.md"
+  ],
+  "agent_chain_limit_bytes": 32768,
+  "note": "标记proposed的是项目设计提案，非用户批准记录；不自动承诺图像工具的原生输出能力。",
+  "art_baseline_version": "proposal-001"
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": "0.3.0",
+  "pathway_id": "red-priest",
+  "status": "proposed",
+  "content_kind": "art_proposal",
+  "one_sentence": "动员、冲突与可视化的战略方向",
+  "palette_names": [
+    "铁锈红",
+    "焦黑",
+    "战旗赭"
+  ],
+  "palette_hex": null,
+  "shape_language": "集群对角线、阵列与方向标记",
+  "material_language": "焦化铁、粗织布、尘土",
+  "lighting_language": "火与烟后的方向性亮区",
+  "event_language": "关注主体如何调动环境、对象与群体",
+  "spatial_signature": "有组织的冲突场景",
+  "motif_candidates": "地图式折线、战旗、火痕仅作候选，不提前赋予战争级权能",
+  "must_differ_from": [
+    "tyrant",
+    "twilight-giant"
+  ],
+  "anti_cliche": "不要把全套做成同一个火焰战士；群体不是背景贴图，须与机制相关。",
+  "progression_question": "从具体策略与行为到更复杂的组织关系，保留各序列差异",
+  "preferred_channels": {
+    "identity": [
+      "text",
+      "emblem"
+    ],
+    "acting": [
+      "action",
+      "text"
+    ],
+    "abilities": [
+      "state_change",
+      "composition"
+    ],
+    "potion": [
+      "object",
+      "border"
+    ],
+    "ascension": [
+      "composition",
+      "border"
+    ],
+    "limitations": [
+      "state_change",
+      "negative_space"
+    ]
+  },
+  "emblem": {
+    "status": "unmade",
+    "origin": "original_design_proposed",
+    "asset_id": null,
+    "brief": "以“集群对角线、阵列与方向标记”提炼单色可辨识的主形；先做小尺寸辨识，不冒称官方圣徽。"
+  },
+  "sequence_planning": [
+    {
+      "sequence": 9,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 8,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 7,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 6,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 5,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 4,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 3,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 2,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 1,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 0,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    }
+  ],
+  "notes": [
+    "全部意象均为候选美术语言；具体序列可用性必须由canon证据决定。",
+    "色彩不是唯一辨识方式；同一途径十张不能复制一个站姿或同一种能力效果。",
+    "拟采用的扮演、魔药、晋升和限制需要可见线索，不强迫全部文字化。"
+  ]
+}

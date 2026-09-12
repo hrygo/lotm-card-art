@@ -1,0 +1,124 @@
+{
+  "schema_version": "0.3.0",
+  "pathway_id": "wheel-of-fortune",
+  "status": "proposed",
+  "content_kind": "art_proposal",
+  "one_sentence": "分支、回返与偶然之间的联系",
+  "palette_names": [
+    "旧金",
+    "灰绿",
+    "乳白"
+  ],
+  "palette_hex": null,
+  "shape_language": "环形回路、偏移分支与节奏重复",
+  "material_language": "磨旧金属、透明石、纸质签片",
+  "lighting_language": "同一场景里微妙不同的亮点",
+  "event_language": "通过事件分支与状态差异呈现主题",
+  "spatial_signature": "回环而非直线的叙事",
+  "motif_candidates": "环、路径分支、签片只是候选；不默认所有序列都能改写命运",
+  "must_differ_from": [
+    "error",
+    "fool"
+  ],
+  "anti_cliche": "不要靠大轮盘/骰子替代具体能力；避免将好运当无条件万能。",
+  "progression_question": "变化的是事件关系和尺度，不是每级多一个轮子",
+  "preferred_channels": {
+    "identity": [
+      "text",
+      "emblem"
+    ],
+    "acting": [
+      "action",
+      "text"
+    ],
+    "abilities": [
+      "state_change",
+      "composition"
+    ],
+    "potion": [
+      "object",
+      "border"
+    ],
+    "ascension": [
+      "composition",
+      "border"
+    ],
+    "limitations": [
+      "state_change",
+      "negative_space"
+    ]
+  },
+  "emblem": {
+    "status": "unmade",
+    "origin": "original_design_proposed",
+    "asset_id": null,
+    "brief": "以“环形回路、偏移分支与节奏重复”提炼单色可辨识的主形；先做小尺寸辨识，不冒称官方圣徽。"
+  },
+  "sequence_planning": [
+    {
+      "sequence": 9,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 8,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 7,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 6,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 5,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 4,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 3,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 2,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 1,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 0,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    }
+  ],
+  "notes": [
+    "全部意象均为候选美术语言；具体序列可用性必须由canon证据决定。",
+    "色彩不是唯一辨识方式；同一途径十张不能复制一个站姿或同一种能力效果。",
+    "拟采用的扮演、魔药、晋升和限制需要可见线索，不强迫全部文字化。"
+  ]
+}

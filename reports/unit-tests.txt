@@ -1,0 +1,53 @@
+test_22_original_shape_proposals_are_distinct (test_cardctl.CardWorkflowTests.test_22_original_shape_proposals_are_distinct) ... ok
+test_all_six_are_present_but_no_fake_art (test_cardctl.CardWorkflowTests.test_all_six_are_present_but_no_fake_art) ... ok
+test_boolean_is_not_a_sequence_integer (test_cardctl.CardWorkflowTests.test_boolean_is_not_a_sequence_integer) ... ok
+test_card_identity_mismatch_fails (test_cardctl.CardWorkflowTests.test_card_identity_mismatch_fails) ... ok
+test_documented_absence_is_not_unknown (test_cardctl.CardWorkflowTests.test_documented_absence_is_not_unknown) ... ok
+test_draft_brief_outputs_five_files_with_warning (test_cardctl.CardWorkflowTests.test_draft_brief_outputs_five_files_with_warning) ... ok
+test_duplicate_json_keys_are_rejected (test_cardctl.CardWorkflowTests.test_duplicate_json_keys_are_rejected) ... ok
+test_duplicate_pathway_fails (test_cardctl.CardWorkflowTests.test_duplicate_pathway_fails) ... ok
+test_english_source_cannot_verify_chinese_name (test_cardctl.CardWorkflowTests.test_english_source_cannot_verify_chinese_name) ... ok
+test_fake_approved_stage_cannot_bypass_checks (test_cardctl.CardWorkflowTests.test_fake_approved_stage_cannot_bypass_checks) ... ok
+test_fake_png_header_without_image_is_rejected (test_cardctl.CardWorkflowTests.test_fake_png_header_without_image_is_rejected) ... ok
+test_false_native_upscale_fails (test_cardctl.CardWorkflowTests.test_false_native_upscale_fails) ... ok
+test_file_hash_mismatch_fails (test_cardctl.CardWorkflowTests.test_file_hash_mismatch_fails) ... ok
+test_fingerprint_ignores_only_production_bookkeeping (test_cardctl.CardWorkflowTests.test_fingerprint_ignores_only_production_bookkeeping) ... ok
+test_generated_symlink_cannot_escape (test_cardctl.CardWorkflowTests.test_generated_symlink_cannot_escape) ... ok
+test_inaccessible_source_cannot_be_claimed_read (test_cardctl.CardWorkflowTests.test_inaccessible_source_cannot_be_claimed_read) ... ok
+test_interpretation_cannot_masquerade_as_exact_name (test_cardctl.CardWorkflowTests.test_interpretation_cannot_masquerade_as_exact_name) ... ok
+test_manifest_detects_modified_file (test_cardctl.CardWorkflowTests.test_manifest_detects_modified_file) ... ok
+test_missing_actual_review_does_not_pass (test_cardctl.CardWorkflowTests.test_missing_actual_review_does_not_pass) ... ok
+test_missing_approval_evidence_fails (test_cardctl.CardWorkflowTests.test_missing_approval_evidence_fails) ... ok
+test_missing_card_slot_fails (test_cardctl.CardWorkflowTests.test_missing_card_slot_fails) ... ok
+test_missing_carrier_reference_fails (test_cardctl.CardWorkflowTests.test_missing_carrier_reference_fails) ... ok
+test_missing_semantic_dimension_fails (test_cardctl.CardWorkflowTests.test_missing_semantic_dimension_fails) ... ok
+test_nan_is_not_valid_json (test_cardctl.CardWorkflowTests.test_nan_is_not_valid_json) ... ok
+test_normal_brief_blocked_on_scaffold (test_cardctl.CardWorkflowTests.test_normal_brief_blocked_on_scaffold) ... ok
+test_partial_requires_explicit_gap_scope (test_cardctl.CardWorkflowTests.test_partial_requires_explicit_gap_scope) ... ok
+test_paths_cannot_escape_repository (test_cardctl.CardWorkflowTests.test_paths_cannot_escape_repository) ... ok
+test_png_corrupt_crc_is_rejected (test_cardctl.CardWorkflowTests.test_png_corrupt_crc_is_rejected) ... ok
+test_precise_identity_cannot_be_only_lighting (test_cardctl.CardWorkflowTests.test_precise_identity_cannot_be_only_lighting) ... ok
+test_project_legend_must_exist (test_cardctl.CardWorkflowTests.test_project_legend_must_exist) ... ok
+test_record_fields_can_pass_without_certifying_image_meaning (test_cardctl.CardWorkflowTests.test_record_fields_can_pass_without_certifying_image_meaning) ... ok
+test_region_overflow_fails (test_cardctl.CardWorkflowTests.test_region_overflow_fails) ... ok
+test_scaffold_has_exact_22_by_10 (test_cardctl.CardWorkflowTests.test_scaffold_has_exact_22_by_10) ... ok
+test_single_event_can_cover_two_dimensions (test_cardctl.CardWorkflowTests.test_single_event_can_cover_two_dimensions) ... ok
+test_six_dimensions_cannot_share_one_generic_cue (test_cardctl.CardWorkflowTests.test_six_dimensions_cannot_share_one_generic_cue) ... ok
+test_stale_design_review_fails (test_cardctl.CardWorkflowTests.test_stale_design_review_fails) ... ok
+test_summary_can_use_style_without_text_when_plan_is_explicit (test_cardctl.CardWorkflowTests.test_summary_can_use_style_without_text_when_plan_is_explicit) ... ok
+test_synthetic_mixed_media_design_is_structurally_accepted (test_cardctl.CardWorkflowTests.test_synthetic_mixed_media_design_is_structurally_accepted) ... ok
+test_text_requires_exact_copy (test_cardctl.CardWorkflowTests.test_text_requires_exact_copy) ... ok
+test_unknown_card_selector_is_rejected (test_cardctl.CardWorkflowTests.test_unknown_card_selector_is_rejected) ... ok
+test_unknown_profile_fails (test_cardctl.CardWorkflowTests.test_unknown_profile_fails) ... ok
+test_unrecorded_enlargement_fails (test_cardctl.CardWorkflowTests.test_unrecorded_enlargement_fails) ... ok
+test_unresearched_design_is_blocked (test_cardctl.CardWorkflowTests.test_unresearched_design_is_blocked) ... ok
+test_unverified_claim_fails (test_cardctl.CardWorkflowTests.test_unverified_claim_fails) ... ok
+test_valid_design_brief_keeps_single_card_scope (test_cardctl.CardWorkflowTests.test_valid_design_brief_keeps_single_card_scope) ... ok
+test_wrong_pathway_direction_is_rejected (test_cardctl.CardWorkflowTests.test_wrong_pathway_direction_is_rejected) ... ok
+test_wrong_real_dimensions_fails (test_cardctl.CardWorkflowTests.test_wrong_real_dimensions_fails) ... ok
+test_wrong_sequence_claim_fails (test_cardctl.CardWorkflowTests.test_wrong_sequence_claim_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 8.492s
+
+OK

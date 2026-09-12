@@ -1,0 +1,50 @@
+{
+  "checked_at_utc": "2026-09-10T01:44:56.186168+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "command": "python3 tools/cardctl.py verify-manifest",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true
+    },
+    {
+      "command": "python3 tools/cardctl.py check --level scaffold",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -v",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true,
+      "tests": 48
+    },
+    {
+      "command": "python3 tools/cardctl.py brief --card fool:09 --draft",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true
+    },
+    {
+      "command": "python3 tools/cardctl.py brief --card fool:09",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true
+    },
+    {
+      "command": "python3 tools/cardctl.py check --level release --card fool:09",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true
+    },
+    {
+      "command": "python3 tools/cardctl.py verify-manifest",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true
+    }
+  ],
+  "notes": "在真实ZIP解压后的隔离目录执行；draft任务生成不改变交付清单中的事实源。未执行图像生成。"
+}

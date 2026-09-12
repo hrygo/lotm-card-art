@@ -1,0 +1,1457 @@
+{
+  "total_delivered_files": 364,
+  "pathways": 22,
+  "card_slots": 220,
+  "artwork_files": 0,
+  "listed_files": [
+    {
+      "path": ".gitignore",
+      "bytes": 79
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 7576
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 439
+    },
+    {
+      "path": "README.md",
+      "bytes": 4931
+    },
+    {
+      "path": "artifacts/README.md",
+      "bytes": 421
+    },
+    {
+      "path": "catalog/pathways.json",
+      "bytes": 4424
+    },
+    {
+      "path": "config/project.json",
+      "bytes": 1510
+    },
+    {
+      "path": "design/AGENTS.md",
+      "bytes": 659
+    },
+    {
+      "path": "design/art-bible.md",
+      "bytes": 2623
+    },
+    {
+      "path": "design/layout-system.md",
+      "bytes": 2410
+    },
+    {
+      "path": "design/qa-rubric.md",
+      "bytes": 2254
+    },
+    {
+      "path": "design/rank-grammar.md",
+      "bytes": 1185
+    },
+    {
+      "path": "design/semantic-contract.md",
+      "bytes": 5520
+    },
+    {
+      "path": "design/symbol-policy.md",
+      "bytes": 972
+    },
+    {
+      "path": "design/typography.md",
+      "bytes": 1016
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "bytes": 2063
+    },
+    {
+      "path": "docs/LIMITATIONS.md",
+      "bytes": 1366
+    },
+    {
+      "path": "docs/REFERENCES.md",
+      "bytes": 1366
+    },
+    {
+      "path": "docs/START-HERE.md",
+      "bytes": 2436
+    },
+    {
+      "path": "docs/source-policy.md",
+      "bytes": 2447
+    },
+    {
+      "path": "docs/workflow.md",
+      "bytes": 3097
+    },
+    {
+      "path": "examples/AGENTS.md",
+      "bytes": 223
+    },
+    {
+      "path": "examples/fool-09-direction-study.md",
+      "bytes": 2433
+    },
+    {
+      "path": "examples/semantic-translation-patterns.md",
+      "bytes": 1516
+    },
+    {
+      "path": "generated/README.md",
+      "bytes": 212
+    },
+    {
+      "path": "pathways/AGENTS.md",
+      "bytes": 1101
+    },
+    {
+      "path": "pathways/abyss/AGENTS.md",
+      "bytes": 999
+    },
+    {
+      "path": "pathways/abyss/README.md",
+      "bytes": 462
+    },
+    {
+      "path": "pathways/abyss/canon.json",
+      "bytes": 168
+    },
+    {
+      "path": "pathways/abyss/direction.json",
+      "bytes": 3248
+    },
+    {
+      "path": "pathways/abyss/sequences/00/card.json",
+      "bytes": 2908
+    },
+    {
+      "path": "pathways/abyss/sequences/01/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/abyss/sequences/02/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/abyss/sequences/03/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/abyss/sequences/04/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/abyss/sequences/05/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/abyss/sequences/06/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/abyss/sequences/07/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/abyss/sequences/08/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/abyss/sequences/09/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/black-emperor/AGENTS.md",
+      "bytes": 1005
+    },
+    {
+      "path": "pathways/black-emperor/README.md",
+      "bytes": 473
+    },
+    {
+      "path": "pathways/black-emperor/canon.json",
+      "bytes": 176
+    },
+    {
+      "path": "pathways/black-emperor/direction.json",
+      "bytes": 3242
+    },
+    {
+      "path": "pathways/black-emperor/sequences/00/card.json",
+      "bytes": 2927
+    },
+    {
+      "path": "pathways/black-emperor/sequences/01/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/black-emperor/sequences/02/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/black-emperor/sequences/03/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/black-emperor/sequences/04/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/black-emperor/sequences/05/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/black-emperor/sequences/06/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/black-emperor/sequences/07/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/black-emperor/sequences/08/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/black-emperor/sequences/09/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/chained/AGENTS.md",
+      "bytes": 1000
+    },
+    {
+      "path": "pathways/chained/README.md",
+      "bytes": 467
+    },
+    {
+      "path": "pathways/chained/canon.json",
+      "bytes": 170
+    },
+    {
+      "path": "pathways/chained/direction.json",
+      "bytes": 3236
+    },
+    {
+      "path": "pathways/chained/sequences/00/card.json",
+      "bytes": 2915
+    },
+    {
+      "path": "pathways/chained/sequences/01/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/chained/sequences/02/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/chained/sequences/03/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/chained/sequences/04/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/chained/sequences/05/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/chained/sequences/06/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/chained/sequences/07/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/chained/sequences/08/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/chained/sequences/09/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/darkness/AGENTS.md",
+      "bytes": 993
+    },
+    {
+      "path": "pathways/darkness/README.md",
+      "bytes": 465
+    },
+    {
+      "path": "pathways/darkness/canon.json",
+      "bytes": 171
+    },
+    {
+      "path": "pathways/darkness/direction.json",
+      "bytes": 3260
+    },
+    {
+      "path": "pathways/darkness/sequences/00/card.json",
+      "bytes": 2908
+    },
+    {
+      "path": "pathways/darkness/sequences/01/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/darkness/sequences/02/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/darkness/sequences/03/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/darkness/sequences/04/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/darkness/sequences/05/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/darkness/sequences/06/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/darkness/sequences/07/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/darkness/sequences/08/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/darkness/sequences/09/card.json",
+      "bytes": 2897
+    },
+    {
+      "path": "pathways/death/AGENTS.md",
+      "bytes": 996
+    },
+    {
+      "path": "pathways/death/README.md",
+      "bytes": 462
+    },
+    {
+      "path": "pathways/death/canon.json",
+      "bytes": 168
+    },
+    {
+      "path": "pathways/death/direction.json",
+      "bytes": 3239
+    },
+    {
+      "path": "pathways/death/sequences/00/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/death/sequences/01/card.json",
+      "bytes": 2894
+    },
+    {
+      "path": "pathways/death/sequences/02/card.json",
+      "bytes": 2894
+    },
+    {
+      "path": "pathways/death/sequences/03/card.json",
+      "bytes": 2894
+    },
+    {
+      "path": "pathways/death/sequences/04/card.json",
+      "bytes": 2894
+    },
+    {
+      "path": "pathways/death/sequences/05/card.json",
+      "bytes": 2894
+    },
+    {
+      "path": "pathways/death/sequences/06/card.json",
+      "bytes": 2894
+    },
+    {
+      "path": "pathways/death/sequences/07/card.json",
+      "bytes": 2894
+    },
+    {
+      "path": "pathways/death/sequences/08/card.json",
+      "bytes": 2894
+    },
+    {
+      "path": "pathways/death/sequences/09/card.json",
+      "bytes": 2894
+    },
+    {
+      "path": "pathways/demoness/AGENTS.md",
+      "bytes": 1010
+    },
+    {
+      "path": "pathways/demoness/README.md",
+      "bytes": 465
+    },
+    {
+      "path": "pathways/demoness/canon.json",
+      "bytes": 171
+    },
+    {
+      "path": "pathways/demoness/direction.json",
+      "bytes": 3271
+    },
+    {
+      "path": "pathways/demoness/sequences/00/card.json",
+      "bytes": 2917
+    },
+    {
+      "path": "pathways/demoness/sequences/01/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/demoness/sequences/02/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/demoness/sequences/03/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/demoness/sequences/04/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/demoness/sequences/05/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/demoness/sequences/06/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/demoness/sequences/07/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/demoness/sequences/08/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/demoness/sequences/09/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/door/AGENTS.md",
+      "bytes": 979
+    },
+    {
+      "path": "pathways/door/README.md",
+      "bytes": 458
+    },
+    {
+      "path": "pathways/door/canon.json",
+      "bytes": 167
+    },
+    {
+      "path": "pathways/door/direction.json",
+      "bytes": 3240
+    },
+    {
+      "path": "pathways/door/sequences/00/card.json",
+      "bytes": 2900
+    },
+    {
+      "path": "pathways/door/sequences/01/card.json",
+      "bytes": 2892
+    },
+    {
+      "path": "pathways/door/sequences/02/card.json",
+      "bytes": 2892
+    },
+    {
+      "path": "pathways/door/sequences/03/card.json",
+      "bytes": 2892
+    },
+    {
+      "path": "pathways/door/sequences/04/card.json",
+      "bytes": 2892
+    },
+    {
+      "path": "pathways/door/sequences/05/card.json",
+      "bytes": 2892
+    },
+    {
+      "path": "pathways/door/sequences/06/card.json",
+      "bytes": 2892
+    },
+    {
+      "path": "pathways/door/sequences/07/card.json",
+      "bytes": 2892
+    },
+    {
+      "path": "pathways/door/sequences/08/card.json",
+      "bytes": 2892
+    },
+    {
+      "path": "pathways/door/sequences/09/card.json",
+      "bytes": 2892
+    },
+    {
+      "path": "pathways/error/AGENTS.md",
+      "bytes": 992
+    },
+    {
+      "path": "pathways/error/README.md",
+      "bytes": 462
+    },
+    {
+      "path": "pathways/error/canon.json",
+      "bytes": 168
+    },
+    {
+      "path": "pathways/error/direction.json",
+      "bytes": 3265
+    },
+    {
+      "path": "pathways/error/sequences/00/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/error/sequences/01/card.json",
+      "bytes": 2885
+    },
+    {
+      "path": "pathways/error/sequences/02/card.json",
+      "bytes": 2885
+    },
+    {
+      "path": "pathways/error/sequences/03/card.json",
+      "bytes": 2885
+    },
+    {
+      "path": "pathways/error/sequences/04/card.json",
+      "bytes": 2885
+    },
+    {
+      "path": "pathways/error/sequences/05/card.json",
+      "bytes": 2885
+    },
+    {
+      "path": "pathways/error/sequences/06/card.json",
+      "bytes": 2885
+    },
+    {
+      "path": "pathways/error/sequences/07/card.json",
+      "bytes": 2885
+    },
+    {
+      "path": "pathways/error/sequences/08/card.json",
+      "bytes": 2885
+    },
+    {
+      "path": "pathways/error/sequences/09/card.json",
+      "bytes": 2885
+    },
+    {
+      "path": "pathways/fool/AGENTS.md",
+      "bytes": 979
+    },
+    {
+      "path": "pathways/fool/README.md",
+      "bytes": 461
+    },
+    {
+      "path": "pathways/fool/canon.json",
+      "bytes": 167
+    },
+    {
+      "path": "pathways/fool/direction.json",
+      "bytes": 3245
+    },
+    {
+      "path": "pathways/fool/sequences/00/card.json",
+      "bytes": 2900
+    },
+    {
+      "path": "pathways/fool/sequences/01/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/fool/sequences/02/card.json",
+      "bytes": 2903
+    },
+    {
+      "path": "pathways/fool/sequences/03/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/fool/sequences/04/card.json",
+      "bytes": 2903
+    },
+    {
+      "path": "pathways/fool/sequences/05/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/fool/sequences/06/card.json",
+      "bytes": 2903
+    },
+    {
+      "path": "pathways/fool/sequences/07/card.json",
+      "bytes": 2903
+    },
+    {
+      "path": "pathways/fool/sequences/08/card.json",
+      "bytes": 2900
+    },
+    {
+      "path": "pathways/fool/sequences/09/card.json",
+      "bytes": 2903
+    },
+    {
+      "path": "pathways/hanged-man/AGENTS.md",
+      "bytes": 994
+    },
+    {
+      "path": "pathways/hanged-man/README.md",
+      "bytes": 470
+    },
+    {
+      "path": "pathways/hanged-man/canon.json",
+      "bytes": 173
+    },
+    {
+      "path": "pathways/hanged-man/direction.json",
+      "bytes": 3189
+    },
+    {
+      "path": "pathways/hanged-man/sequences/00/card.json",
+      "bytes": 2915
+    },
+    {
+      "path": "pathways/hanged-man/sequences/01/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/hanged-man/sequences/02/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/hanged-man/sequences/03/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/hanged-man/sequences/04/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/hanged-man/sequences/05/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/hanged-man/sequences/06/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/hanged-man/sequences/07/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/hanged-man/sequences/08/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/hanged-man/sequences/09/card.json",
+      "bytes": 2901
+    },
+    {
+      "path": "pathways/hermit/AGENTS.md",
+      "bytes": 986
+    },
+    {
+      "path": "pathways/hermit/README.md",
+      "bytes": 463
+    },
+    {
+      "path": "pathways/hermit/canon.json",
+      "bytes": 169
+    },
+    {
+      "path": "pathways/hermit/direction.json",
+      "bytes": 3244
+    },
+    {
+      "path": "pathways/hermit/sequences/00/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/hermit/sequences/01/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/hermit/sequences/02/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/hermit/sequences/03/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/hermit/sequences/04/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/hermit/sequences/05/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/hermit/sequences/06/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/hermit/sequences/07/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/hermit/sequences/08/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/hermit/sequences/09/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/justiciar/AGENTS.md",
+      "bytes": 1021
+    },
+    {
+      "path": "pathways/justiciar/README.md",
+      "bytes": 469
+    },
+    {
+      "path": "pathways/justiciar/canon.json",
+      "bytes": 172
+    },
+    {
+      "path": "pathways/justiciar/direction.json",
+      "bytes": 3239
+    },
+    {
+      "path": "pathways/justiciar/sequences/00/card.json",
+      "bytes": 2916
+    },
+    {
+      "path": "pathways/justiciar/sequences/01/card.json",
+      "bytes": 2902
+    },
+    {
+      "path": "pathways/justiciar/sequences/02/card.json",
+      "bytes": 2902
+    },
+    {
+      "path": "pathways/justiciar/sequences/03/card.json",
+      "bytes": 2902
+    },
+    {
+      "path": "pathways/justiciar/sequences/04/card.json",
+      "bytes": 2902
+    },
+    {
+      "path": "pathways/justiciar/sequences/05/card.json",
+      "bytes": 2902
+    },
+    {
+      "path": "pathways/justiciar/sequences/06/card.json",
+      "bytes": 2902
+    },
+    {
+      "path": "pathways/justiciar/sequences/07/card.json",
+      "bytes": 2902
+    },
+    {
+      "path": "pathways/justiciar/sequences/08/card.json",
+      "bytes": 2902
+    },
+    {
+      "path": "pathways/justiciar/sequences/09/card.json",
+      "bytes": 2902
+    },
+    {
+      "path": "pathways/moon/AGENTS.md",
+      "bytes": 999
+    },
+    {
+      "path": "pathways/moon/README.md",
+      "bytes": 461
+    },
+    {
+      "path": "pathways/moon/canon.json",
+      "bytes": 167
+    },
+    {
+      "path": "pathways/moon/direction.json",
+      "bytes": 3240
+    },
+    {
+      "path": "pathways/moon/sequences/00/card.json",
+      "bytes": 2915
+    },
+    {
+      "path": "pathways/moon/sequences/01/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/moon/sequences/02/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/moon/sequences/03/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/moon/sequences/04/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/moon/sequences/05/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/moon/sequences/06/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/moon/sequences/07/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/moon/sequences/08/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/moon/sequences/09/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/mother/AGENTS.md",
+      "bytes": 995
+    },
+    {
+      "path": "pathways/mother/README.md",
+      "bytes": 463
+    },
+    {
+      "path": "pathways/mother/canon.json",
+      "bytes": 169
+    },
+    {
+      "path": "pathways/mother/direction.json",
+      "bytes": 3240
+    },
+    {
+      "path": "pathways/mother/sequences/00/card.json",
+      "bytes": 2916
+    },
+    {
+      "path": "pathways/mother/sequences/01/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/mother/sequences/02/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/mother/sequences/03/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/mother/sequences/04/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/mother/sequences/05/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/mother/sequences/06/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/mother/sequences/07/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/mother/sequences/08/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/mother/sequences/09/card.json",
+      "bytes": 2905
+    },
+    {
+      "path": "pathways/paragon/AGENTS.md",
+      "bytes": 995
+    },
+    {
+      "path": "pathways/paragon/README.md",
+      "bytes": 467
+    },
+    {
+      "path": "pathways/paragon/canon.json",
+      "bytes": 170
+    },
+    {
+      "path": "pathways/paragon/direction.json",
+      "bytes": 3231
+    },
+    {
+      "path": "pathways/paragon/sequences/00/card.json",
+      "bytes": 2909
+    },
+    {
+      "path": "pathways/paragon/sequences/01/card.json",
+      "bytes": 2895
+    },
+    {
+      "path": "pathways/paragon/sequences/02/card.json",
+      "bytes": 2895
+    },
+    {
+      "path": "pathways/paragon/sequences/03/card.json",
+      "bytes": 2895
+    },
+    {
+      "path": "pathways/paragon/sequences/04/card.json",
+      "bytes": 2895
+    },
+    {
+      "path": "pathways/paragon/sequences/05/card.json",
+      "bytes": 2895
+    },
+    {
+      "path": "pathways/paragon/sequences/06/card.json",
+      "bytes": 2895
+    },
+    {
+      "path": "pathways/paragon/sequences/07/card.json",
+      "bytes": 2895
+    },
+    {
+      "path": "pathways/paragon/sequences/08/card.json",
+      "bytes": 2895
+    },
+    {
+      "path": "pathways/paragon/sequences/09/card.json",
+      "bytes": 2895
+    },
+    {
+      "path": "pathways/red-priest/AGENTS.md",
+      "bytes": 1026
+    },
+    {
+      "path": "pathways/red-priest/README.md",
+      "bytes": 470
+    },
+    {
+      "path": "pathways/red-priest/canon.json",
+      "bytes": 173
+    },
+    {
+      "path": "pathways/red-priest/direction.json",
+      "bytes": 3263
+    },
+    {
+      "path": "pathways/red-priest/sequences/00/card.json",
+      "bytes": 2927
+    },
+    {
+      "path": "pathways/red-priest/sequences/01/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/red-priest/sequences/02/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/red-priest/sequences/03/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/red-priest/sequences/04/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/red-priest/sequences/05/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/red-priest/sequences/06/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/red-priest/sequences/07/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/red-priest/sequences/08/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/red-priest/sequences/09/card.json",
+      "bytes": 2913
+    },
+    {
+      "path": "pathways/sun/AGENTS.md",
+      "bytes": 1011
+    },
+    {
+      "path": "pathways/sun/README.md",
+      "bytes": 460
+    },
+    {
+      "path": "pathways/sun/canon.json",
+      "bytes": 166
+    },
+    {
+      "path": "pathways/sun/direction.json",
+      "bytes": 3233
+    },
+    {
+      "path": "pathways/sun/sequences/00/card.json",
+      "bytes": 2907
+    },
+    {
+      "path": "pathways/sun/sequences/01/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/sun/sequences/02/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/sun/sequences/03/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/sun/sequences/04/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/sun/sequences/05/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/sun/sequences/06/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/sun/sequences/07/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/sun/sequences/08/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/sun/sequences/09/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/twilight-giant/AGENTS.md",
+      "bytes": 1016
+    },
+    {
+      "path": "pathways/twilight-giant/README.md",
+      "bytes": 477
+    },
+    {
+      "path": "pathways/twilight-giant/canon.json",
+      "bytes": 177
+    },
+    {
+      "path": "pathways/twilight-giant/direction.json",
+      "bytes": 3247
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/00/card.json",
+      "bytes": 2935
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/01/card.json",
+      "bytes": 2918
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/02/card.json",
+      "bytes": 2918
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/03/card.json",
+      "bytes": 2918
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/04/card.json",
+      "bytes": 2918
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/05/card.json",
+      "bytes": 2918
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/06/card.json",
+      "bytes": 2918
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/07/card.json",
+      "bytes": 2918
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/08/card.json",
+      "bytes": 2918
+    },
+    {
+      "path": "pathways/twilight-giant/sequences/09/card.json",
+      "bytes": 2918
+    },
+    {
+      "path": "pathways/tyrant/AGENTS.md",
+      "bytes": 985
+    },
+    {
+      "path": "pathways/tyrant/README.md",
+      "bytes": 463
+    },
+    {
+      "path": "pathways/tyrant/canon.json",
+      "bytes": 169
+    },
+    {
+      "path": "pathways/tyrant/direction.json",
+      "bytes": 3231
+    },
+    {
+      "path": "pathways/tyrant/sequences/00/card.json",
+      "bytes": 2904
+    },
+    {
+      "path": "pathways/tyrant/sequences/01/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/tyrant/sequences/02/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/tyrant/sequences/03/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/tyrant/sequences/04/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/tyrant/sequences/05/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/tyrant/sequences/06/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/tyrant/sequences/07/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/tyrant/sequences/08/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/tyrant/sequences/09/card.json",
+      "bytes": 2893
+    },
+    {
+      "path": "pathways/visionary/AGENTS.md",
+      "bytes": 1001
+    },
+    {
+      "path": "pathways/visionary/README.md",
+      "bytes": 469
+    },
+    {
+      "path": "pathways/visionary/canon.json",
+      "bytes": 172
+    },
+    {
+      "path": "pathways/visionary/direction.json",
+      "bytes": 3220
+    },
+    {
+      "path": "pathways/visionary/sequences/00/card.json",
+      "bytes": 2910
+    },
+    {
+      "path": "pathways/visionary/sequences/01/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/visionary/sequences/02/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/visionary/sequences/03/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/visionary/sequences/04/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/visionary/sequences/05/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/visionary/sequences/06/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/visionary/sequences/07/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/visionary/sequences/08/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/visionary/sequences/09/card.json",
+      "bytes": 2896
+    },
+    {
+      "path": "pathways/wheel-of-fortune/AGENTS.md",
+      "bytes": 1010
+    },
+    {
+      "path": "pathways/wheel-of-fortune/README.md",
+      "bytes": 479
+    },
+    {
+      "path": "pathways/wheel-of-fortune/canon.json",
+      "bytes": 179
+    },
+    {
+      "path": "pathways/wheel-of-fortune/direction.json",
+      "bytes": 3250
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/00/card.json",
+      "bytes": 2939
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/01/card.json",
+      "bytes": 2922
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/02/card.json",
+      "bytes": 2922
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/03/card.json",
+      "bytes": 2922
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/04/card.json",
+      "bytes": 2922
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/05/card.json",
+      "bytes": 2922
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/06/card.json",
+      "bytes": 2922
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/07/card.json",
+      "bytes": 2922
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/08/card.json",
+      "bytes": 2922
+    },
+    {
+      "path": "pathways/wheel-of-fortune/sequences/09/card.json",
+      "bytes": 2922
+    },
+    {
+      "path": "pathways/white-tower/AGENTS.md",
+      "bytes": 984
+    },
+    {
+      "path": "pathways/white-tower/README.md",
+      "bytes": 468
+    },
+    {
+      "path": "pathways/white-tower/canon.json",
+      "bytes": 174
+    },
+    {
+      "path": "pathways/white-tower/direction.json",
+      "bytes": 3218
+    },
+    {
+      "path": "pathways/white-tower/sequences/00/card.json",
+      "bytes": 2917
+    },
+    {
+      "path": "pathways/white-tower/sequences/01/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/white-tower/sequences/02/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/white-tower/sequences/03/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/white-tower/sequences/04/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/white-tower/sequences/05/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/white-tower/sequences/06/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/white-tower/sequences/07/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/white-tower/sequences/08/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "pathways/white-tower/sequences/09/card.json",
+      "bytes": 2906
+    },
+    {
+      "path": "prompts/AGENTS.md",
+      "bytes": 305
+    },
+    {
+      "path": "prompts/ART-DIRECTION.md",
+      "bytes": 410
+    },
+    {
+      "path": "prompts/RESEARCH.md",
+      "bytes": 429
+    },
+    {
+      "path": "prompts/REVIEW.md",
+      "bytes": 424
+    },
+    {
+      "path": "references/README.md",
+      "bytes": 466
+    },
+    {
+      "path": "references/manifest.json",
+      "bytes": 160
+    },
+    {
+      "path": "reports/QA_REPORT.md",
+      "bytes": 3489
+    },
+    {
+      "path": "reports/audit-summary.json",
+      "bytes": 916
+    },
+    {
+      "path": "reports/clean-extraction-check.json",
+      "bytes": 1385
+    },
+    {
+      "path": "reports/cli-smoke-tests.json",
+      "bytes": 1142
+    },
+    {
+      "path": "reports/expected-blocks.json",
+      "bytes": 4724
+    },
+    {
+      "path": "reports/scaffold-check.json",
+      "bytes": 309
+    },
+    {
+      "path": "reports/unit-tests.txt",
+      "bytes": 5799
+    },
+    {
+      "path": "schemas/README.md",
+      "bytes": 1045
+    },
+    {
+      "path": "schemas/canon.schema.json",
+      "bytes": 3647
+    },
+    {
+      "path": "schemas/card.schema.json",
+      "bytes": 17581
+    },
+    {
+      "path": "schemas/review.schema.json",
+      "bytes": 10387
+    },
+    {
+      "path": "sources/registry.json",
+      "bytes": 1599
+    },
+    {
+      "path": "templates/README.md",
+      "bytes": 907
+    },
+    {
+      "path": "templates/card.json",
+      "bytes": 2859
+    },
+    {
+      "path": "templates/claim.json",
+      "bytes": 432
+    },
+    {
+      "path": "templates/cue.json",
+      "bytes": 248
+    },
+    {
+      "path": "templates/generation.json",
+      "bytes": 142
+    },
+    {
+      "path": "templates/reference-asset.json",
+      "bytes": 204
+    },
+    {
+      "path": "templates/review.json",
+      "bytes": 1667
+    },
+    {
+      "path": "tests/test_cardctl.py",
+      "bytes": 18478
+    },
+    {
+      "path": "tools/AGENTS.md",
+      "bytes": 663
+    },
+    {
+      "path": "tools/cardctl.py",
+      "bytes": 45294
+    }
+  ],
+  "note": "总数包含本清单与SHA256SUMS；详细列表不列这两个自描述文件。"
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": "0.3.0",
+  "pathway_id": "darkness",
+  "status": "proposed",
+  "content_kind": "art_proposal",
+  "one_sentence": "隐匿边界与安静的失衡",
+  "palette_names": [
+    "深群青",
+    "冷银",
+    "灰紫"
+  ],
+  "palette_hex": null,
+  "shape_language": "低对比遮罩、弯曲边界与大块留白",
+  "material_language": "哑光绒布、夜色漆、银粉",
+  "lighting_language": "克制边缘光，黑暗里仍有层次",
+  "event_language": "让可见与不可见之间的边界成为事件",
+  "spatial_signature": "被轻纱分隔的夜域",
+  "motif_candidates": "帷幕、羽状纹、星点仅是候选，不把教会圣徽当途径通用标识",
+  "must_differ_from": [
+    "death",
+    "moon"
+  ],
+  "anti_cliche": "不要把黑到看不清称为神秘；梦境/隐秘等效果必须核对所在序列。",
+  "progression_question": "从人的感知与夜色关系到更抽象的边界，不套用统一睡眠图",
+  "preferred_channels": {
+    "identity": [
+      "text",
+      "emblem"
+    ],
+    "acting": [
+      "action",
+      "text"
+    ],
+    "abilities": [
+      "state_change",
+      "composition"
+    ],
+    "potion": [
+      "object",
+      "border"
+    ],
+    "ascension": [
+      "composition",
+      "border"
+    ],
+    "limitations": [
+      "state_change",
+      "negative_space"
+    ]
+  },
+  "emblem": {
+    "status": "unmade",
+    "origin": "original_design_proposed",
+    "asset_id": null,
+    "brief": "以“低对比遮罩、弯曲边界与大块留白”提炼单色可辨识的主形；先做小尺寸辨识，不冒称官方圣徽。"
+  },
+  "sequence_planning": [
+    {
+      "sequence": 9,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 8,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 7,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 6,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 5,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 4,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 3,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 2,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 1,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 0,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    }
+  ],
+  "notes": [
+    "全部意象均为候选美术语言；具体序列可用性必须由canon证据决定。",
+    "色彩不是唯一辨识方式；同一途径十张不能复制一个站姿或同一种能力效果。",
+    "拟采用的扮演、魔药、晋升和限制需要可见线索，不强迫全部文字化。"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": "0.3.0",
+  "pathway_id": "mother",
+  "status": "proposed",
+  "content_kind": "art_proposal",
+  "one_sentence": "生长结构、承载与生命的复杂性",
+  "palette_names": [
+    "深绿",
+    "泥黑",
+    "象牙白"
+  ],
+  "palette_hex": null,
+  "shape_language": "根系分叉、种子剖面与有机网",
+  "material_language": "土壤、纤维、植物蜡面",
+  "lighting_language": "穿过组织层的温和光",
+  "event_language": "把生命结构的变化与其代价同时呈现",
+  "spatial_signature": "有机剖面与生长关系",
+  "motif_candidates": "根/种/器皿是设计候选，不能把未知魔药材料画成任意常见植物",
+  "must_differ_from": [
+    "moon",
+    "paragon"
+  ],
+  "anti_cliche": "不要将十张都做成花园女神；未知材料必须保留精度边界。",
+  "progression_question": "从具体作用对象到复杂生命关系，不能用植物越密替代层次",
+  "preferred_channels": {
+    "identity": [
+      "text",
+      "emblem"
+    ],
+    "acting": [
+      "action",
+      "text"
+    ],
+    "abilities": [
+      "state_change",
+      "composition"
+    ],
+    "potion": [
+      "object",
+      "border"
+    ],
+    "ascension": [
+      "composition",
+      "border"
+    ],
+    "limitations": [
+      "state_change",
+      "negative_space"
+    ]
+  },
+  "emblem": {
+    "status": "unmade",
+    "origin": "original_design_proposed",
+    "asset_id": null,
+    "brief": "以“根系分叉、种子剖面与有机网”提炼单色可辨识的主形；先做小尺寸辨识，不冒称官方圣徽。"
+  },
+  "sequence_planning": [
+    {
+      "sequence": 9,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 8,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 7,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 6,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 5,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 4,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 3,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 2,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 1,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 0,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    }
+  ],
+  "notes": [
+    "全部意象均为候选美术语言；具体序列可用性必须由canon证据决定。",
+    "色彩不是唯一辨识方式；同一途径十张不能复制一个站姿或同一种能力效果。",
+    "拟采用的扮演、魔药、晋升和限制需要可见线索，不强迫全部文字化。"
+  ]
+}

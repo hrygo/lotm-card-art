@@ -1,0 +1,95 @@
+{
+  "schema_version": "0.3.0",
+  "card_id": "lotm.black-emperor.s08",
+  "pathway_id": "black-emperor",
+  "sequence": 8,
+  "name_zh": null,
+  "name_status": "unfilled",
+  "work_scope": "lotm-volume-1-zh",
+  "revision": 1,
+  "delivery_profile": "standard",
+  "semantics": {
+    "identity": {
+      "knowledge_state": "unresearched",
+      "intent": "",
+      "claim_refs": [],
+      "fidelity": "exact",
+      "carrier_ids": [],
+      "readback": "",
+      "misreading_guard": "",
+      "gap_note": null,
+      "research_question": "核对本途径名称、本序列准确中文名与数字归属；确定本系列途径标识。"
+    },
+    "acting": {
+      "knowledge_state": "unresearched",
+      "intent": "",
+      "claim_refs": [],
+      "fidelity": "summary",
+      "carrier_ids": [],
+      "readback": "",
+      "misreading_guard": "",
+      "gap_note": null,
+      "research_question": "核对当前序列的核心扮演原则，区分原著明示、角色理解与编辑概括。"
+    },
+    "abilities": {
+      "knowledge_state": "unresearched",
+      "intent": "",
+      "claim_refs": [],
+      "fidelity": "summary",
+      "carrier_ids": [],
+      "readback": "",
+      "misreading_guard": "",
+      "gap_note": null,
+      "research_question": "选出最能区别相邻序列的一项代表能力；核对作用对象、条件与新增/强化性质。"
+    },
+    "potion": {
+      "knowledge_state": "unresearched",
+      "intent": "",
+      "claim_refs": [],
+      "fidelity": "summary",
+      "carrier_ids": [],
+      "readback": "",
+      "misreading_guard": "",
+      "gap_note": null,
+      "research_question": "核对进入当前序列的关键魔药要素；明确是否仅展示材料摘要。"
+    },
+    "ascension": {
+      "knowledge_state": "unresearched",
+      "intent": "",
+      "claim_refs": [],
+      "fidelity": "summary",
+      "carrier_ids": [],
+      "readback": "",
+      "misreading_guard": "",
+      "gap_note": null,
+      "research_question": "核对进入当前序列的条件/仪式；未知时不自创，也不误用下一序列要求。"
+    },
+    "limitations": {
+      "knowledge_state": "unresearched",
+      "intent": "",
+      "claim_refs": [],
+      "fidelity": "summary",
+      "carrier_ids": [],
+      "readback": "",
+      "misreading_guard": "",
+      "gap_note": null,
+      "research_question": "核对能力边界、代价、使用条件或相关风险，避免泛泛而谈失控。"
+    }
+  },
+  "cues": [],
+  "composition": {
+    "layout": "scene",
+    "hero_event": "",
+    "why_this_sequence": "",
+    "focal_hierarchy": [],
+    "art_direction_note": "制度的重量与被改变的秩序",
+    "reference_ids": [],
+    "exactness_note": "六维全覆盖，但不等于六个文字框；无证据时保持研究状态。"
+  },
+  "production": {
+    "stage": "scaffold",
+    "artifact": null,
+    "generation": null,
+    "review_file": null
+  }
+}

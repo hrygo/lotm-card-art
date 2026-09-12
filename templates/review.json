@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.3.0",
+  "card_id": "REPLACE_WITH_CARD_ID",
+  "design_fingerprint": null,
+  "image_sha256": null,
+  "reviewed_by": null,
+  "reviewed_at": null,
+  "checks": {
+    "canon": {
+      "status": "not_run",
+      "note": ""
+    },
+    "six_dimensions": {
+      "status": "not_run",
+      "note": ""
+    },
+    "readability": {
+      "status": "not_run",
+      "note": ""
+    },
+    "art_direction": {
+      "status": "not_run",
+      "note": ""
+    },
+    "composition": {
+      "status": "not_run",
+      "note": ""
+    },
+    "sequence_distinction": {
+      "status": "not_run",
+      "note": ""
+    },
+    "text": {
+      "status": "not_run",
+      "note": ""
+    },
+    "image_integrity": {
+      "status": "not_run",
+      "note": ""
+    },
+    "color": {
+      "status": "not_run",
+      "note": ""
+    },
+    "rights": {
+      "status": "not_run",
+      "note": ""
+    }
+  },
+  "semantic_readback": {
+    "identity": {
+      "status": "not_run",
+      "observed_cue_ids": [],
+      "observation": ""
+    },
+    "acting": {
+      "status": "not_run",
+      "observed_cue_ids": [],
+      "observation": ""
+    },
+    "abilities": {
+      "status": "not_run",
+      "observed_cue_ids": [],
+      "observation": ""
+    },
+    "potion": {
+      "status": "not_run",
+      "observed_cue_ids": [],
+      "observation": ""
+    },
+    "ascension": {
+      "status": "not_run",
+      "observed_cue_ids": [],
+      "observation": ""
+    },
+    "limitations": {
+      "status": "not_run",
+      "observed_cue_ids": [],
+      "observation": ""
+    }
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "at": null,
+    "reference": null
+  }
+}

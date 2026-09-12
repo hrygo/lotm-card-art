@@ -1,0 +1,11 @@
+{
+  "check_level": "scaffold",
+  "scope": "all",
+  "passed": true,
+  "pathway_count": 22,
+  "card_slots_present": 220,
+  "cards_checked": 220,
+  "max_agent_chain_bytes": 9703,
+  "errors": [],
+  "limitation": "检查数据和记录，不证明小说设定正确、图像语义可读或实际人工批准。"
+}

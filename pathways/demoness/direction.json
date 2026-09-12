@@ -1,0 +1,124 @@
+{
+  "schema_version": "0.3.0",
+  "pathway_id": "demoness",
+  "status": "proposed",
+  "content_kind": "art_proposal",
+  "one_sentence": "镜面、危险的美与不可控扩散",
+  "palette_names": [
+    "黑曜石",
+    "玫瑰灰",
+    "冷紫"
+  ],
+  "palette_hex": null,
+  "shape_language": "镜裂、流线与极薄的锋利边缘",
+  "material_language": "黑玻璃、暗缎、细金属网",
+  "lighting_language": "美丽高光与不祥暗部并存",
+  "event_language": "让吸引与危险的具体联系可被读出",
+  "spatial_signature": "镜像结构里的隐蔽事件",
+  "motif_candidates": "镜、细线、冰裂候选，需要核验相应序列；不以性化造型替代机制",
+  "must_differ_from": [
+    "moon",
+    "abyss"
+  ],
+  "anti_cliche": "避免把全部牌做成性感人物写真；不把某个角色的外貌当序列通用条件。",
+  "progression_question": "以关系与变化的具体机制递进，不单纯增加暴露或灾难规模",
+  "preferred_channels": {
+    "identity": [
+      "text",
+      "emblem"
+    ],
+    "acting": [
+      "action",
+      "text"
+    ],
+    "abilities": [
+      "state_change",
+      "composition"
+    ],
+    "potion": [
+      "object",
+      "border"
+    ],
+    "ascension": [
+      "composition",
+      "border"
+    ],
+    "limitations": [
+      "state_change",
+      "negative_space"
+    ]
+  },
+  "emblem": {
+    "status": "unmade",
+    "origin": "original_design_proposed",
+    "asset_id": null,
+    "brief": "以“镜裂、流线与极薄的锋利边缘”提炼单色可辨识的主形；先做小尺寸辨识，不冒称官方圣徽。"
+  },
+  "sequence_planning": [
+    {
+      "sequence": 9,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 8,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 7,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 6,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 5,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 4,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 3,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 2,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 1,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    },
+    {
+      "sequence": 0,
+      "unique_event": null,
+      "difference_from_previous": null,
+      "status": "needs_canon"
+    }
+  ],
+  "notes": [
+    "全部意象均为候选美术语言；具体序列可用性必须由canon证据决定。",
+    "色彩不是唯一辨识方式；同一途径十张不能复制一个站姿或同一种能力效果。",
+    "拟采用的扮演、魔药、晋升和限制需要可见线索，不强迫全部文字化。"
+  ]
+}

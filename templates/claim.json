@@ -1,0 +1,20 @@
+{
+  "id": "replace-with-unique-claim-id",
+  "predicate": "ability",
+  "value": "",
+  "dimensions": [
+    "abilities"
+  ],
+  "sequences": [
+    9
+  ],
+  "work_scope": "lotm-volume-1-zh",
+  "source_refs": [],
+  "verification": {
+    "status": "unverified",
+    "reviewed_by": null,
+    "reviewed_at": null
+  },
+  "notes": "模板；不表示存在这项能力。填入实际单一断言后再核验。",
+  "assertion_kind": "canon"
+}

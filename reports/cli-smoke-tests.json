@@ -1,0 +1,50 @@
+[
+  {
+    "command": "python3 tools/cardctl.py check --level scaffold",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "command": "python3 tools/cardctl.py check --level design --card fool:09",
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "passed": true
+  },
+  {
+    "command": "python3 tools/cardctl.py check --level release --card fool:09",
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "passed": true
+  },
+  {
+    "command": "python3 tools/cardctl.py status",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "command": "python3 tools/cardctl.py next",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "command": "python3 tools/cardctl.py brief --card fool:09",
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "passed": true
+  },
+  {
+    "command": "python3 tools/cardctl.py fingerprint --card fool:09",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "command": "check --json-out AGENTS.md (intentional misuse)",
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "passed": true
+  }
+]

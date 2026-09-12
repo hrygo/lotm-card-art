@@ -1,0 +1,208 @@
+{
+  "schema_version": "0.3.0",
+  "label_status": "seed_unverified",
+  "note_deprecated": "以每行label_status为准，顶层仅兼容保留",
+  "note": "制作顺序不是原著相邻途径分组；工作标签需在正式设计时核对，不是已审核的完整设定表。",
+  "pathways": [
+    {
+      "id": "fool",
+      "working_name_zh": "愚者",
+      "aliases": [
+        "占卜家"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 1
+    },
+    {
+      "id": "error",
+      "working_name_zh": "错误",
+      "aliases": [
+        "偷盗者"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 2
+    },
+    {
+      "id": "door",
+      "working_name_zh": "门",
+      "aliases": [
+        "学徒"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 3
+    },
+    {
+      "id": "visionary",
+      "working_name_zh": "空想家",
+      "aliases": [
+        "观众"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 4
+    },
+    {
+      "id": "sun",
+      "working_name_zh": "太阳",
+      "aliases": [
+        "歌颂者"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 5
+    },
+    {
+      "id": "tyrant",
+      "working_name_zh": "暴君",
+      "aliases": [
+        "水手"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 6
+    },
+    {
+      "id": "white-tower",
+      "working_name_zh": "白塔",
+      "aliases": [
+        "阅读者"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 7
+    },
+    {
+      "id": "hanged-man",
+      "working_name_zh": "倒吊人",
+      "aliases": [
+        "秘祈人"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 8
+    },
+    {
+      "id": "darkness",
+      "working_name_zh": "黑暗",
+      "aliases": [
+        "不眠者",
+        "黑夜"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 9
+    },
+    {
+      "id": "death",
+      "working_name_zh": "死神",
+      "aliases": [
+        "收尸人"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 10
+    },
+    {
+      "id": "twilight-giant",
+      "working_name_zh": "黄昏巨人",
+      "aliases": [
+        "战士"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 11
+    },
+    {
+      "id": "demoness",
+      "working_name_zh": "魔女",
+      "aliases": [
+        "刺客"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 12
+    },
+    {
+      "id": "red-priest",
+      "working_name_zh": "红祭司",
+      "aliases": [
+        "猎人"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 13
+    },
+    {
+      "id": "hermit",
+      "working_name_zh": "隐者",
+      "aliases": [
+        "窥秘人"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 14
+    },
+    {
+      "id": "paragon",
+      "working_name_zh": "完美者",
+      "aliases": [
+        "通识者"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 15
+    },
+    {
+      "id": "wheel-of-fortune",
+      "working_name_zh": "命运之轮",
+      "aliases": [
+        "怪物"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 16
+    },
+    {
+      "id": "mother",
+      "working_name_zh": "母亲",
+      "aliases": [
+        "耕种者"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 17
+    },
+    {
+      "id": "moon",
+      "working_name_zh": "月亮",
+      "aliases": [
+        "药师"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 18
+    },
+    {
+      "id": "black-emperor",
+      "working_name_zh": "黑皇帝",
+      "aliases": [
+        "律师"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 19
+    },
+    {
+      "id": "justiciar",
+      "working_name_zh": "审判者",
+      "aliases": [
+        "仲裁人"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 20
+    },
+    {
+      "id": "chained",
+      "working_name_zh": "被缚者",
+      "aliases": [
+        "囚犯",
+        "异种"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 21
+    },
+    {
+      "id": "abyss",
+      "working_name_zh": "深渊",
+      "aliases": [
+        "罪犯"
+      ],
+      "label_status": "seed_unverified",
+      "production_order": 22
+    }
+  ]
+}

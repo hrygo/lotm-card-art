@@ -1,0 +1,30 @@
+# macOS metadata
+.DS_Store
+
+# Local agent/runtime state
+.omo/
+
+# Derived task snapshots (keep the directory guide)
+generated/*
+!generated/README.md
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Common editor and build output
+.vscode/
+.idea/
+node_modules/
+dist/
+build/

@@ -1,0 +1,30 @@
+{
+  "audit_scope": "scaffold only; no artwork approval",
+  "executed_at_utc": "2026-09-10T01:43:23.590794+00:00",
+  "python": "3.13.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "python_310_syntax_check": true,
+  "unit_tests": 48,
+  "unit_test_passed": true,
+  "pathways": 22,
+  "card_slots": 220,
+  "semantic_slots": 1320,
+  "json_files_parsed_before_reports": 277,
+  "schema_instances_validated": 245,
+  "json_schema_standard": "2020-12",
+  "schema_checker": "jsonschema (delivery-time audit only; runtime stdlib)",
+  "source_claims_verified": 0,
+  "name_states": {
+    "unfilled": 189,
+    "seed_unverified": 31
+  },
+  "images_produced": 0,
+  "approved_reference_images": 0,
+  "pathway_art_proposals": 22,
+  "proposals_user_approved": 0,
+  "max_agent_chain_bytes": 9703,
+  "cli_tests": 8,
+  "forbidden_font_files": 0,
+  "design_expected_blocked_cards": 220,
+  "release_expected_blocked_cards": 220
+}

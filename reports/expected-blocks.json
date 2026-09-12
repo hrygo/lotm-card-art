@@ -1,0 +1,142 @@
+{
+  "design": {
+    "passed": false,
+    "expected_failure": true,
+    "cards_checked": 220,
+    "blocked_cards": 220,
+    "error_counts": {
+      "design.name_unverified": 220,
+      "design.hero_event": 220,
+      "design.hierarchy": 220,
+      "design.unresearched": 1320,
+      "design.evidence_missing": 1320,
+      "design.translation_incomplete": 1320,
+      "design.exact_carrier": 220,
+      "design.name_claim": 220,
+      "design.pathway_claim": 220,
+      "design.pathway_label": 220
+    },
+    "sample_errors": [
+      {
+        "code": "design.name_unverified",
+        "where": "pathways/abyss/sequences/00/card.json",
+        "message": "中文序列名尚未核验"
+      },
+      {
+        "code": "design.hero_event",
+        "where": "pathways/abyss/sequences/00/card.json",
+        "message": "主事件与本序列不可替代性尚未设计"
+      },
+      {
+        "code": "design.hierarchy",
+        "where": "pathways/abyss/sequences/00/card.json",
+        "message": "缺少视觉层级"
+      },
+      {
+        "code": "design.unresearched",
+        "where": "pathways/abyss/sequences/00/card.json:identity",
+        "message": "该维度尚未研究"
+      },
+      {
+        "code": "design.evidence_missing",
+        "where": "pathways/abyss/sequences/00/card.json:identity",
+        "message": "事实或经确认缺口必须有断言引用"
+      },
+      {
+        "code": "design.translation_incomplete",
+        "where": "pathways/abyss/sequences/00/card.json:identity",
+        "message": "缺少语义、载体、回读或误读边界"
+      },
+      {
+        "code": "design.exact_carrier",
+        "where": "pathways/abyss/sequences/00/card.json:identity",
+        "message": "精确信息需要无歧义文字/编码载体，不能只用氛围"
+      },
+      {
+        "code": "design.unresearched",
+        "where": "pathways/abyss/sequences/00/card.json:acting",
+        "message": "该维度尚未研究"
+      },
+      {
+        "code": "design.evidence_missing",
+        "where": "pathways/abyss/sequences/00/card.json:acting",
+        "message": "事实或经确认缺口必须有断言引用"
+      },
+      {
+        "code": "design.translation_incomplete",
+        "where": "pathways/abyss/sequences/00/card.json:acting",
+        "message": "缺少语义、载体、回读或误读边界"
+      }
+    ]
+  },
+  "release": {
+    "passed": false,
+    "expected_failure": true,
+    "cards_checked": 220,
+    "blocked_cards": 220,
+    "error_counts": {
+      "design.name_unverified": 220,
+      "design.hero_event": 220,
+      "design.hierarchy": 220,
+      "design.unresearched": 1320,
+      "design.evidence_missing": 1320,
+      "design.translation_incomplete": 1320,
+      "design.exact_carrier": 220,
+      "design.name_claim": 220,
+      "design.pathway_claim": 220,
+      "design.pathway_label": 220
+    },
+    "sample_errors": [
+      {
+        "code": "design.name_unverified",
+        "where": "pathways/abyss/sequences/00/card.json",
+        "message": "中文序列名尚未核验"
+      },
+      {
+        "code": "design.hero_event",
+        "where": "pathways/abyss/sequences/00/card.json",
+        "message": "主事件与本序列不可替代性尚未设计"
+      },
+      {
+        "code": "design.hierarchy",
+        "where": "pathways/abyss/sequences/00/card.json",
+        "message": "缺少视觉层级"
+      },
+      {
+        "code": "design.unresearched",
+        "where": "pathways/abyss/sequences/00/card.json:identity",
+        "message": "该维度尚未研究"
+      },
+      {
+        "code": "design.evidence_missing",
+        "where": "pathways/abyss/sequences/00/card.json:identity",
+        "message": "事实或经确认缺口必须有断言引用"
+      },
+      {
+        "code": "design.translation_incomplete",
+        "where": "pathways/abyss/sequences/00/card.json:identity",
+        "message": "缺少语义、载体、回读或误读边界"
+      },
+      {
+        "code": "design.exact_carrier",
+        "where": "pathways/abyss/sequences/00/card.json:identity",
+        "message": "精确信息需要无歧义文字/编码载体，不能只用氛围"
+      },
+      {
+        "code": "design.unresearched",
+        "where": "pathways/abyss/sequences/00/card.json:acting",
+        "message": "该维度尚未研究"
+      },
+      {
+        "code": "design.evidence_missing",
+        "where": "pathways/abyss/sequences/00/card.json:acting",
+        "message": "事实或经确认缺口必须有断言引用"
+      },
+      {
+        "code": "design.translation_incomplete",
+        "where": "pathways/abyss/sequences/00/card.json:acting",
+        "message": "缺少语义、载体、回读或误读边界"
+      }
+    ]
+  }
+}

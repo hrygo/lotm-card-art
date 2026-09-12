@@ -1,0 +1,15 @@
+{
+  "id": "replace-with-cue-id",
+  "channel": "action",
+  "meaning": "",
+  "implementation": "",
+  "region": {
+    "x": 0.1,
+    "y": 0.15,
+    "w": 0.8,
+    "h": 0.6
+  },
+  "decode_mode": "metaphoric",
+  "exact_text": null,
+  "legend_ref": null
+}

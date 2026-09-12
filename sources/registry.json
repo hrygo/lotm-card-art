@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.3.0",
+  "sources": [
+    {
+      "id": "qidian.lotm.zh",
+      "kind": "primary_chinese",
+      "work_scope": "lotm-volume-1-zh",
+      "language": "zh-CN",
+      "version": "在线底本版本待确认",
+      "url": "https://www.qidian.com/book/1010868264/",
+      "retrieval_status": "inaccessible",
+      "accessed_at": "2026-09-10",
+      "available_scope": "仅登记作品入口；未取得正文",
+      "notes": "不能凭此登记给断言verified。"
+    },
+    {
+      "id": "webnovel.lotm.en.c31",
+      "kind": "primary_translation",
+      "work_scope": "lotm-volume-1-en",
+      "language": "en",
+      "version": "在线页面，2026-09-10访问",
+      "url": "https://www.webnovel.com/book/lord-of-mysteries_11022733006234505/potion_31326301566593179",
+      "retrieval_status": "accessible",
+      "accessed_at": "2026-09-10",
+      "available_scope": "Chapter 31: Potion，当前网页正文",
+      "notes": "用于研究定位；未转换为中文底本核验。"
+    },
+    {
+      "id": "webnovel.lotm.en.c57",
+      "kind": "primary_translation",
+      "work_scope": "lotm-volume-1-en",
+      "language": "en",
+      "version": "在线页面，2026-09-10访问",
+      "url": "https://www.webnovel.com/book/lord-of-mysteries_11022733006234505/organization-and-summary_31623483792353138",
+      "retrieval_status": "partial",
+      "accessed_at": "2026-09-10",
+      "available_scope": "Chapter 57仅开头预览，到提出两项假设之前；非全章",
+      "notes": "不得为网页不可见的后续内容引用此访问记录。"
+    }
+  ]
+}

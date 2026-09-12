@@ -1,0 +1,93 @@
+name: 工具或数据问题
+description: 报告可复现的检查器、任务编译器或数据结构问题。
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢报告问题。请先删除 token、密码、私人路径和未授权的原著/素材内容。
+        安全漏洞或凭据泄露请使用私密报告入口，不要填写在此表单中。
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题摘要
+      description: 简要说明发生了什么，以及它影响了什么。
+      placeholder: 例如：cardctl 在某类合法路径上错误地报告路径越界。
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤
+      description: 按顺序列出从干净工作树开始的最小复现步骤。
+      placeholder: |
+        1. 执行……
+        2. 修改……
+        3. 运行……
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+      description: 说明你认为工具应该如何响应。
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 说明工具实际返回的错误、输出或文件变化。
+    validations:
+      required: true
+
+  - type: textarea
+    id: command_output
+    attributes:
+      label: 命令与完整输出
+      description: 粘贴相关命令和完整输出；请先删除凭据、个人路径和其他敏感信息。
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: python_version
+    attributes:
+      label: Python 版本
+      description: 填写 python3 --version 的结果。
+      placeholder: Python 3.12.x
+    validations:
+      required: true
+
+  - type: dropdown
+    id: operating_system
+    attributes:
+      label: 操作系统
+      options:
+        - macOS
+        - Ubuntu 或其他 Linux
+        - Windows
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: minimal_repro
+    attributes:
+      label: 最小复现材料
+      description: 如有必要，提供最小 JSON 片段或文件结构；不要上传秘密、原著长摘录或未授权素材。
+      placeholder: 请尽量缩减到能稳定复现问题的最小内容。
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: privacy_confirmation
+    attributes:
+      label: 隐私与凭据确认
+      options:
+        - label: 我确认没有在此表单中提交 token、密码、私钥、私人信息、原著长摘录或未授权素材。
+          required: true

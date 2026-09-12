@@ -1,0 +1,97 @@
+name: 设定与证据
+description: 报告设定名称、来源范围、六维语义或视觉提案问题。
+title: "[Evidence]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        本项目区分作品断言、解释性概括、资料缺口和原创艺术提案。
+        请提供可复核的来源范围；不要粘贴原著长摘录或提交私人材料。
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: 问题类型
+      options:
+        - 设定事实
+        - 来源范围
+        - 六维语义
+        - 视觉提案
+        - 其他
+    validations:
+      required: true
+
+  - type: input
+    id: card_scope
+    attributes:
+      label: pathway 或 card ID
+      description: 填写涉及的 pathway、sequence 或 card ID，例如 fool:09。
+      placeholder: fool:09
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_record
+    attributes:
+      label: 当前断言或字段
+      description: 指出当前文件、字段、断言或视觉载体；可以填写“未核验”。
+      placeholder: |
+        文件：pathways/…
+        字段：…
+        当前状态：…
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source_status
+    attributes:
+      label: 来源状态
+      options:
+        - 已核验
+        - 部分核验
+        - 未核验或资料缺口
+        - 仅为设计提案
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence_scope
+    attributes:
+      label: 来源与可访问范围
+      description: 写明来源语言、版本、访问状态、定位方式和支持范围；不要粘贴长摘录。
+      placeholder: |
+        来源：
+        语言/版本：
+        可访问范围：
+        支持的具体判断：
+    validations:
+      required: true
+
+  - type: textarea
+    id: fact_interpretation
+    attributes:
+      label: 事实与解释区分
+      description: 分别说明哪些内容是来源直接支持的事实，哪些内容是解释或美术建议。
+      placeholder: |
+        作品断言：
+        解释性概括：
+        仍需核验的缺口：
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested_change
+    attributes:
+      label: 建议修改
+      description: 描述建议如何修正字段、证据状态或视觉回读，不要直接填入未经支持的结论。
+      placeholder: 请描述具体文件、字段或回读线索。
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: rights_confirmation
+    attributes:
+      label: 内容与权利确认
+      options:
+        - label: 我确认没有粘贴原著长摘录、上传未授权素材、提交私人信息或把推测写成已核验事实。
+          required: true

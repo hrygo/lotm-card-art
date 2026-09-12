@@ -1,5 +1,7 @@
 # 诡秘之主 · 220 张成神途径卡牌制作脚手架
 
+[![CI](https://github.com/hrygo/lotm-card-art/actions/workflows/ci.yml/badge.svg)](https://github.com/hrygo/lotm-card-art/actions/workflows/ci.yml)
+
 **版本 0.3.0｜六维语义、混合媒介、单卡精制。**
 
 交付目标：22 条途径 × 序列 9–0，每张一幅独立高清卡面。
@@ -68,6 +70,13 @@ reports/                          本次实际测试与目标核对记录
 采用小规模样板校准后再扩张，详见 `docs/workflow.md`。没有样张批准时可以探索，不假装已经批准，也不反复阻塞在索要确认。
 所有输出保留版本，修改依赖后重新审核。不得用 `generated/` 中的任务单反向覆盖事实源。
 
+## 参与项目
+
+- [贡献指南](CONTRIBUTING.md)：单卡工作流、证据要求和 Pull Request 约定。
+- [支持与问题分流](SUPPORT.md)：判断应提交哪类公开问题。
+- [安全政策](SECURITY.md)：私密报告漏洞或凭据泄露。
+- [社区行为准则](CODE_OF_CONDUCT.md)：参与公开协作时的行为标准。
+
 ## 文件完整性
 ```bash
 python3 tools/cardctl.py verify-manifest
@@ -77,3 +86,4 @@ python3 tools/cardctl.py verify-manifest
 ## 权利边界
 本包没有原著全文、第三方卡牌原图或字体文件，也不代表官方授权。公开发行前独立核查素材及授权，数字高清不等于印刷就绪。
 详细限制与设计决策见 `docs/LIMITATIONS.md` 和 `docs/DECISIONS.md`。
+代码许可证范围见 [LICENSE-CODE.md](LICENSE-CODE.md)，主题内容和第三方权利边界见 [NOTICE.md](NOTICE.md)。MIT 不代表对全仓库内容或《诡秘之主》相关权利的授权。

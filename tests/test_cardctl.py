@@ -30,7 +30,11 @@ class CardWorkflowTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory()
         self.root=(Path(self.tmp.name)/'repo').resolve()
-        shutil.copytree(REPO,self.root,ignore=shutil.ignore_patterns('__pycache__','reports','SHA256SUMS','.DS_Store'))
+        # Generated task fixtures and native build products are not inputs to
+        # cardctl validation. Excluding them keeps the temporary repository
+        # isolated and avoids copying a local SwiftPM build into every case.
+        shutil.copytree(REPO,self.root,ignore=shutil.ignore_patterns(
+            '__pycache__','reports','SHA256SUMS','.DS_Store','generated','.build'))
         self.path=ct.resolve_card(self.root,'fool:09')
 
     def tearDown(self):
@@ -317,7 +321,8 @@ class CardWorkflowTests(unittest.TestCase):
 
     def test_generated_symlink_cannot_escape(self):
         target=Path(self.tmp.name)/'outside';target.mkdir()
-        gen=self.root/'generated/lotm.fool.s09';gen.symlink_to(target,target_is_directory=True)
+        gen=self.root/'generated/lotm.fool.s09';gen.parent.mkdir(parents=True,exist_ok=True)
+        gen.symlink_to(target,target_is_directory=True)
         with self.assertRaises(ct.DataError):ct.build_brief(self.root,'fool:09',draft=True)
         self.assertEqual(list(target.iterdir()),[])
 

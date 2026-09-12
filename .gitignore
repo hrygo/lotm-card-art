@@ -1,5 +1,6 @@
 # macOS metadata
 .DS_Store
+.superpowers/
 
 # Local agent/runtime state
 .omo/

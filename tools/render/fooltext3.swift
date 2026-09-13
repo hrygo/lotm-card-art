@@ -551,9 +551,9 @@ func inscriptionBandPath(_ rect: CGRect) -> CGPath {
     // curtain relief at both ends. It deliberately has no flat plaque edge.
     let r = rect.insetBy(dx: 7, dy: 6)
     let center = r.midX
-    let bodyHalf = min(r.width * 0.36, r.width * 0.5 - 8)
-    let tipHalf = r.width * 0.18
-    let terminal = min(38, r.height * 0.14)
+    let bodyHalf = min(r.width * 0.33, r.width * 0.5 - 8)
+    let tipHalf = r.width * 0.09
+    let terminal = min(52, r.height * 0.18)
     let path = CGMutablePath()
     path.move(to: CGPoint(x: center - tipHalf, y: r.minY))
     path.addCurve(
@@ -721,20 +721,20 @@ func panelBase(_ zone: Zone, _ palette: Palette, _ width: Int, _ height: Int) ->
             context.setLineWidth(12)
             context.strokePath()
             context.restoreGState()
-            fillPathGradient(context, outerPath, outer, [cgColor(metalLight, 0.74), cgColor(metal, 0.92), cgColor(metalLight, 0.70)], CGPoint(x: outer.minX, y: outer.minY), CGPoint(x: outer.maxX, y: outer.maxY))
-            fillPathGradient(context, innerPath, inner, [cgColor(blend(recess, [0.18, 0.11, 0.24], 0.30), 0.94), cgColor(blend(recess, palette.primary, 0.24), 0.94), cgColor(blend(recess, [0.05, 0.025, 0.09], 0.34), 0.96)], CGPoint(x: inner.minX, y: inner.minY), CGPoint(x: inner.maxX, y: inner.maxY))
+            fillPathGradient(context, outerPath, outer, [cgColor(metalLight, 0.34), cgColor(metal, 0.56), cgColor(metalLight, 0.30)], CGPoint(x: outer.minX, y: outer.minY), CGPoint(x: outer.maxX, y: outer.maxY))
+            fillPathGradient(context, innerPath, inner, [cgColor(blend(recess, [0.18, 0.11, 0.24], 0.30), 0.78), cgColor(blend(recess, palette.primary, 0.24), 0.80), cgColor(blend(recess, [0.05, 0.025, 0.09], 0.34), 0.84)], CGPoint(x: inner.minX, y: inner.minY), CGPoint(x: inner.maxX, y: inner.maxY))
             fillPathGradient(context, cavityPath, cavity, [cgColor(blend(recess, palette.primary, 0.32), 0.98), cgColor(blend(recess, palette.primary, 0.18), 0.96), cgColor(recess, 0.99)], CGPoint(x: cavity.minX, y: cavity.minY), CGPoint(x: cavity.maxX, y: cavity.maxY))
             context.addPath(outerPath)
-            context.setStrokeColor(cgColor(metal, 0.90))
-            context.setLineWidth(3.4)
+            context.setStrokeColor(cgColor(metal, 0.72))
+            context.setLineWidth(2.8)
             context.strokePath()
             context.addPath(innerPath)
-            context.setStrokeColor(cgColor(metalLight, 0.74))
-            context.setLineWidth(1.8)
+            context.setStrokeColor(cgColor(metalLight, 0.58))
+            context.setLineWidth(1.5)
             context.strokePath()
             context.addPath(cavityPath)
-            context.setStrokeColor(cgColor(blend(metalLight, palette.primary, 0.28), 0.62))
-            context.setLineWidth(1.4)
+            context.setStrokeColor(cgColor(blend(metalLight, palette.primary, 0.28), 0.46))
+            context.setLineWidth(1.2)
             context.strokePath()
             drawInscriptionOrnament(
                 context,

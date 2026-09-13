@@ -32,7 +32,7 @@ class FoolFiveTierContractTests(unittest.TestCase):
                 "true-god": [0],
             },
         )
-        self.assertEqual(catalog["active_output"], "artifacts/production/fool-five-tier-kit-v4")
+        self.assertEqual(catalog["active_output"], "artifacts/production/fool-five-tier-kit-v5")
         self.assertFalse(catalog["legacy_four_tier_status"]["active"])
 
     def test_old_four_tier_catalog_is_retired_and_not_the_active_successor(self):
@@ -68,7 +68,7 @@ class FoolFiveTierContractTests(unittest.TestCase):
     def test_catalog_dependencies_and_emblem_hashes_are_current(self):
         catalog = self.load_json("production/symbols/fool-five-tier-kit.json")
 
-        for record_name in ("direction", "geometry_lock", "color_tokens", "sequence_hierarchy", "matte", "recipe", "inscription_contract", "diamond_study"):
+        for record_name in ("direction", "geometry_lock", "color_tokens", "sequence_hierarchy", "matte", "recipe", "inscription_contract", "diamond_study", "diamond_integration_study"):
             record = catalog[record_name]
             self.assertEqual(
                 production_contracts.sha(ROOT / record["path"]),
@@ -215,7 +215,7 @@ class FoolFiveTierContractTests(unittest.TestCase):
                 expected.update({f"emblem-{digit}.png" for digit in range(10)})
                 expected.update({f"fool-{digit}-frame.png" for digit in range(10)})
                 expected.update({f"diamond-{tier}.png" for tier in ("low", "mid", "saint", "angel", "true-god")})
-                expected.update({"diamonds-five-tier.png", "structure-4-study-v3.png"})
+                expected.update({"diamonds-five-tier.png", "structure-4-study-v4.png"})
                 self.assertTrue(expected.issubset({path.name for path in output.iterdir()}))
                 self.assertFalse((output / "four-frames.png").exists())
 

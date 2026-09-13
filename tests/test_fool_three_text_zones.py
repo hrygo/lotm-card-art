@@ -1,4 +1,4 @@
-"""Contract tests for the Fool v3 inscription-band frame template."""
+"""Contract tests for the active Fool v4 inscription-band frame template."""
 
 import json
 from pathlib import Path
@@ -39,7 +39,7 @@ class FoolThreeTextZoneContractTests(unittest.TestCase):
         )
 
     def test_template_has_local_side_inlays_and_one_full_width_nameplate(self):
-        template = self.load_json("production/templates/card-text-panels-v3.json")
+        template = self.load_json("production/templates/card-text-panels-v4.json")
         zones = template["zones"]
         self.assertEqual(
             [zone["id"] for zone in zones],
@@ -79,9 +79,9 @@ class FoolThreeTextZoneContractTests(unittest.TestCase):
 
     def test_catalog_has_exactly_ten_single_tier_emblems(self):
         catalog = self.load_json("production/symbols/fool-five-tier-kit.json")
-        self.assertEqual(catalog["version"], "4.0.0")
+        self.assertEqual(catalog["version"], "5.0.0")
         self.assertEqual(
-            catalog["active_output"], "artifacts/production/fool-five-tier-kit-v4"
+            catalog["active_output"], "artifacts/production/fool-five-tier-kit-v5"
         )
         self.assertEqual(len(catalog["emblem_inputs"]), 10)
         self.assertEqual(
@@ -113,7 +113,7 @@ class FoolThreeTextZoneContractTests(unittest.TestCase):
 
     def test_inscription_contract_is_study_informed_but_exact_and_six_character_safe(self):
         contract = self.load_json(
-            "production/symbols/inscriptions/fool-side-inscription-v1.json"
+            "production/symbols/inscriptions/fool-side-inscription-v2.json"
         )
         self.assertEqual(contract["render_policy"]["mode"], "exact-glyph-relief")
         self.assertTrue(contract["render_policy"]["flat_coretext_final_layer_forbidden"])

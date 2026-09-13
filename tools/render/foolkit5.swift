@@ -1290,7 +1290,7 @@ func gate(_ root: URL, _ output: URL) throws {
         frames[id] = actual
     }
     let expectedGem = try studyGemstone(kit.diamondStudy, kit.geometry, kit.styles["low"]!)
-    let actualGem = try Raster(output.appendingPathComponent("structure-4-study-v3.png"))
+    let actualGem = try Raster(output.appendingPathComponent("structure-4-study-v4.png"))
     try require(try geometryDifference(actualGem, expectedGem) == 0, "Bottom gemstone geometry drift")
     for tier in tierOrder {
         let actualDiamond = try Raster(output.appendingPathComponent("diamond-\(tier).png"))

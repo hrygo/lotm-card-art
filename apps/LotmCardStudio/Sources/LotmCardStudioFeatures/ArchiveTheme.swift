@@ -127,6 +127,28 @@ enum ArchiveTheme {
         /// 灵性幽碧流光边框
         static let aetherGlow = Aether.light.opacity(0.45)
     }
+
+    // MARK: - 5. Dynamic Tokens (动态交互与微动效)
+
+    enum Tokens {
+        enum Motion {
+            /// 触觉回弹微动效（按键、卡槽下压）
+            static let tactilePress = Animation.spring(response: 0.22, dampingFraction: 0.68)
+            /// 悬浮过渡动效
+            static let hoverSpring = Animation.spring(response: 0.32, dampingFraction: 0.78)
+            /// 灵流呼吸循环
+            static let aetherBreathe = Animation.easeInOut(duration: 2.8).repeatForever(autoreverses: true)
+        }
+
+        enum Shadows {
+            /// 黄铜圣光点燃光晕
+            static let brassGlow = Color(red: 0.910, green: 0.824, blue: 0.631).opacity(0.38)
+            /// 灵界以太幽碧光晕
+            static let aetherPulse = Color(red: 0.635, green: 0.843, blue: 0.808).opacity(0.45)
+            /// 古籍真皮深渊暗影
+            static let leatherPlinth = Color(red: 0.016, green: 0.031, blue: 0.051).opacity(0.85)
+        }
+    }
 }
 
 // MARK: - ContentStatus 语义与色彩映射

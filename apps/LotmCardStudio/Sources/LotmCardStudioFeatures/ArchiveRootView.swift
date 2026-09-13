@@ -26,7 +26,7 @@ public struct ArchiveRootView: View {
             }
             .id(model.selectedCardID ?? "archive-home")
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .navigationTitle(model.selectedCard?.identity.displayName ?? model.activeSection.title)
+            .navigationTitle(model.selectedCard?.identity.displayName ?? "")
             .toolbar {
                 ToolbarItemGroup(placement: .primaryAction) {
                     if model.selectedCard != nil {
@@ -193,48 +193,88 @@ private struct ArchiveSidebar: View {
     }
 }
 
+private struct SidebarTactileButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+            .brightness(configuration.isPressed ? 0.08 : 0.0)
+            .animation(ArchiveTheme.Tokens.Motion.tactilePress, value: configuration.isPressed)
+    }
+}
+
 private struct SidebarButton: View {
     let title: String
     let symbol: String
     let isSelected: Bool
     let action: () -> Void
 
+    private var titleFont: Font {
+        isSelected ? .system(size: 13, weight: .bold, design: .serif) : .system(size: 13, weight: .medium)
+    }
+
+    private var titleColor: Color {
+        isSelected ? ArchiveTheme.Parchment.primary : ArchiveTheme.Parchment.secondary
+    }
+
+    private var iconColor: Color {
+        isSelected ? ArchiveTheme.Brass.luster : ArchiveTheme.Parchment.secondary
+    }
+
     var body: some View {
         Button(action: action) {
             HStack(spacing: 14) {
                 Image(systemName: symbol)
-                    .font(.system(size: 14, weight: .medium))
+                    .font(.system(size: 14, weight: isSelected ? .bold : .medium))
+                    .foregroundStyle(iconColor)
                     .frame(width: 18)
                 Text(title)
-                    .font(.system(size: 13, weight: isSelected ? .semibold : .medium))
+                    .font(titleFont)
+                    .foregroundStyle(titleColor)
                 Spacer()
+                if isSelected {
+                    Text("✦")
+                        .font(.system(size: 10))
+                        .foregroundStyle(ArchiveTheme.Brass.luster.opacity(0.85))
+                }
             }
-            .foregroundStyle(isSelected ? ArchiveTheme.primary : ArchiveTheme.secondary)
             .padding(.horizontal, 14)
             .frame(height: 44)
-            .background(
-                isSelected ? ArchiveTheme.raised.opacity(0.38) : .clear,
-                in: RoundedRectangle(cornerRadius: 12, style: .continuous)
-            )
+            .background {
+                if isSelected {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(ArchiveTheme.Gradients.leatherSurface)
+                }
+            }
             .glassEffect(
                 isSelected
-                    ? .regular.tint(ArchiveTheme.amber.opacity(0.16)).interactive()
+                    ? .regular.tint(ArchiveTheme.Brass.luster.opacity(0.18)).interactive()
                     : .identity,
                 in: RoundedRectangle(cornerRadius: 12, style: .continuous)
             )
-            .overlay(alignment: .leading) {
+            .overlay {
                 if isSelected {
-                    Capsule()
-                        .fill(ArchiveTheme.amber)
-                        .frame(width: 3, height: 28)
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
+                        Capsule()
+                            .fill(
+                                LinearGradient(
+                                    colors: [ArchiveTheme.Brass.luster, ArchiveTheme.Brass.core],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                            .frame(width: 3.5, height: 28)
+                            .shadow(color: ArchiveTheme.Brass.luster.opacity(0.8), radius: 4)
+                    }
                 }
             }
             .archiveInteractiveSurface(
-                accent: ArchiveTheme.amber,
+                accent: ArchiveTheme.Brass.luster,
                 cornerRadius: 12
             )
         }
-        .buttonStyle(.plain)
+        .buttonStyle(SidebarTactileButtonStyle())
         .accessibilityLabel(title)
         .accessibilityValue(isSelected ? "已选中" : "未选中")
         .accessibilityHint("切换到\(title)")
@@ -296,7 +336,7 @@ private struct PathwayButton: View {
                 isInteractive: isEnabled
             )
         }
-        .buttonStyle(.plain)
+        .buttonStyle(SidebarTactileButtonStyle())
         .disabled(!isEnabled)
         .opacity(isEnabled ? 1 : 0.48)
         .accessibilityLabel(title)
@@ -314,14 +354,21 @@ private struct AlbumHomeView: View {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text(ArchiveCopy.sectionEyebrow(for: model.activeSection))
-                            .font(.system(size: 10, weight: .semibold, design: .rounded))
-                            .foregroundStyle(ArchiveTheme.teal)
+                            .font(.system(size: 11, weight: .bold, design: .serif))
+                            .foregroundStyle(ArchiveTheme.Aether.light)
                         Text(model.activeSection.title)
-                            .font(.system(size: 32, weight: .bold))
-                            .foregroundStyle(ArchiveTheme.primary)
+                            .font(.system(size: 34, weight: .bold, design: .serif))
+                            .foregroundStyle(
+                                LinearGradient(
+                                    colors: [ArchiveTheme.Parchment.primary, ArchiveTheme.Brass.gleam],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .shadow(color: ArchiveTheme.Brass.luster.opacity(0.20), radius: 8, x: 0, y: 2)
                         Text(model.activeSection.subtitle)
-                            .font(.system(size: 13))
-                            .foregroundStyle(ArchiveTheme.secondary)
+                            .font(.system(size: 13, design: .serif))
+                            .foregroundStyle(ArchiveTheme.Parchment.secondary)
                     }
                     Spacer(minLength: 24)
                     Label("保存在本机", systemImage: "internaldrive")
@@ -335,7 +382,7 @@ private struct AlbumHomeView: View {
                     MetricTile(title: "候选收藏", value: "\(model.candidateCount)", color: ArchiveTheme.Mystic.violet)
                     MetricTile(title: "愿望目标", value: "01", color: ArchiveTheme.Parchment.secondary)
                 }
-                .padding(22)
+                .padding(24)
                 .background {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -347,15 +394,21 @@ private struct AlbumHomeView: View {
                 }
                 .glassEffect(.regular.tint(ArchiveTheme.Aether.light.opacity(0.06)), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
                 .overlay {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
+                        BrassCornerFiligree(corner: .topLeft, size: 36)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                        BrassCornerFiligree(corner: .topRight, size: 36)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    }
                 }
 
                 HStack(spacing: 16) {
                     Circle()
                         .fill(ArchiveTheme.Aether.light)
                         .frame(width: 11, height: 11)
-                        .shadow(color: ArchiveTheme.Aether.light.opacity(0.8), radius: 4)
+                        .shadow(color: ArchiveTheme.Aether.light.opacity(0.8), radius: 6)
                     VStack(alignment: .leading, spacing: 4) {
                         Text("最近唤醒")
                             .font(.system(size: 10, weight: .bold, design: .serif))
@@ -364,7 +417,7 @@ private struct AlbumHomeView: View {
                             .font(.system(size: 16, weight: .bold, design: .serif))
                             .foregroundStyle(ArchiveTheme.Parchment.primary)
                         Text("继续探索同一角色的另一张身份卡")
-                            .font(.system(size: 11))
+                            .font(.system(size: 11, design: .serif))
                             .foregroundStyle(ArchiveTheme.Parchment.secondary)
                     }
                     Spacer()
@@ -376,19 +429,19 @@ private struct AlbumHomeView: View {
                 .glassEffect(.regular.tint(ArchiveTheme.Brass.luster.opacity(0.06)), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
                 .overlay {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
+                        .stroke(ArchiveTheme.Borders.brassMuted.opacity(0.70), lineWidth: 1)
                 }
 
                 VStack(alignment: .leading, spacing: 6) {
-                        Text(ArchiveCopy.recentDiscoveries)
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
-                        .foregroundStyle(ArchiveTheme.amber)
+                    Text(ArchiveCopy.localLibrary)
+                        .font(.system(size: 10, weight: .bold, design: .serif))
+                        .foregroundStyle(ArchiveTheme.Brass.luster)
                     Text(ArchiveCopy.recentDiscoveries)
-                        .font(.system(size: 22, weight: .bold))
-                        .foregroundStyle(ArchiveTheme.primary)
+                        .font(.system(size: 22, weight: .bold, design: .serif))
+                        .foregroundStyle(ArchiveTheme.Parchment.primary)
                     Text("\(model.visibleCards.count) 张卡牌")
                         .font(.system(size: 11, design: .rounded))
-                        .foregroundStyle(ArchiveTheme.secondary)
+                        .foregroundStyle(ArchiveTheme.Parchment.secondary)
                 }
 
                 LazyVGrid(
@@ -416,8 +469,13 @@ private struct AlbumHomeView: View {
                     }
                 }
             }
-            .padding(32)
+            .padding(.horizontal, 36)
+            .padding(.bottom, 40)
+            .padding(.top, 48)
             .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .safeAreaInset(edge: .top) {
+            Color.clear.frame(height: 24)
         }
         .scrollIndicators(.hidden)
         .background(ArchiveTheme.ink)
@@ -490,6 +548,23 @@ private struct PulseLine: View {
     }
 }
 
+private struct TactileCardButtonStyle: ButtonStyle {
+    let accentColor: Color
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.975 : 1.0)
+            .shadow(
+                color: configuration.isPressed
+                    ? accentColor.opacity(0.55)
+                    : .clear,
+                radius: configuration.isPressed ? 12 : 0,
+                y: configuration.isPressed ? 2 : 0
+            )
+            .animation(ArchiveTheme.Tokens.Motion.tactilePress, value: configuration.isPressed)
+    }
+}
+
 private struct CardTileView: View {
     let card: AlbumCard
     let action: () -> Void
@@ -540,7 +615,7 @@ private struct CardTileView: View {
                 hoverScale: 1.01
             )
         }
-        .buttonStyle(.plain)
+        .buttonStyle(TactileCardButtonStyle(accentColor: card.identity.contentStatus.accentColor))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(card.identity.displayName)，\(card.identity.sequenceName)")
         .accessibilityValue("状态：\(card.identity.contentStatus.displayTitle)；\(card.subtitle)")
@@ -1466,24 +1541,55 @@ private struct PrimaryButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 12, weight: .semibold))
+            .font(.system(size: 12, weight: .bold, design: .serif))
             .foregroundStyle(ArchiveTheme.Leather.void)
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 18)
             .frame(height: 40)
+            .background {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(
+                            configuration.isPressed
+                                ? LinearGradient(
+                                    colors: [ArchiveTheme.Brass.gleam, ArchiveTheme.Brass.luster, ArchiveTheme.Aether.light],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                                : LinearGradient(
+                                    colors: [ArchiveTheme.Brass.luster, ArchiveTheme.Brass.core],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                        )
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .stroke(
+                            configuration.isPressed
+                                ? ArchiveTheme.Aether.light
+                                : ArchiveTheme.Brass.gleam.opacity(0.65),
+                            lineWidth: configuration.isPressed ? 1.5 : 1
+                        )
+                }
+            }
             .glassEffect(
-                .regular.tint(ArchiveTheme.Brass.luster).interactive(),
+                configuration.isPressed
+                    ? .regular.tint(ArchiveTheme.Brass.luster.opacity(0.35)).interactive()
+                    : .regular.tint(ArchiveTheme.Brass.luster.opacity(0.18)).interactive(),
                 in: RoundedRectangle(cornerRadius: 12, style: .continuous)
             )
-            .overlay {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(ArchiveTheme.Brass.gleam.opacity(0.50), lineWidth: 1)
-            }
+            .shadow(
+                color: configuration.isPressed
+                    ? ArchiveTheme.Aether.light.opacity(0.70)
+                    : ArchiveTheme.Brass.luster.opacity(0.30),
+                radius: configuration.isPressed ? 10 : 4,
+                y: configuration.isPressed ? 1 : 2
+            )
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .animation(ArchiveTheme.Tokens.Motion.tactilePress, value: configuration.isPressed)
             .archiveInteractiveSurface(
                 accent: ArchiveTheme.Brass.luster,
                 cornerRadius: 12,
                 isInteractive: isEnabled
             )
-            .opacity(configuration.isPressed ? 0.82 : 1)
     }
 }
 
@@ -1492,24 +1598,51 @@ private struct SecondaryButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 12, weight: .semibold))
-            .foregroundStyle(ArchiveTheme.Parchment.primary)
+            .font(.system(size: 12, weight: .semibold, design: .serif))
+            .foregroundStyle(
+                configuration.isPressed
+                    ? ArchiveTheme.Brass.luster
+                    : ArchiveTheme.Parchment.primary
+            )
             .padding(.horizontal, 16)
             .frame(height: 40)
+            .background {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(
+                            configuration.isPressed
+                                ? ArchiveTheme.Leather.void
+                                : ArchiveTheme.Leather.deep.opacity(0.85)
+                        )
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .stroke(
+                            configuration.isPressed
+                                ? ArchiveTheme.Brass.luster
+                                : ArchiveTheme.Borders.subtle,
+                            lineWidth: configuration.isPressed ? 1.5 : 1
+                        )
+                }
+            }
             .glassEffect(
-                .regular.tint(ArchiveTheme.Aether.light.opacity(0.12)).interactive(),
+                configuration.isPressed
+                    ? .regular.tint(ArchiveTheme.Brass.luster.opacity(0.24)).interactive()
+                    : .regular.tint(ArchiveTheme.Aether.light.opacity(0.10)).interactive(),
                 in: RoundedRectangle(cornerRadius: 12, style: .continuous)
             )
-            .overlay {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
-            }
+            .shadow(
+                color: configuration.isPressed
+                    ? ArchiveTheme.Brass.luster.opacity(0.40)
+                    : .clear,
+                radius: 6,
+                y: 1
+            )
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .animation(ArchiveTheme.Tokens.Motion.tactilePress, value: configuration.isPressed)
             .archiveInteractiveSurface(
                 accent: ArchiveTheme.Aether.light,
                 cornerRadius: 12,
                 isInteractive: isEnabled
             )
-            .opacity(configuration.isPressed ? 0.82 : 1)
     }
 }
 
@@ -1518,22 +1651,49 @@ private struct IconButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 14, weight: .medium))
-            .foregroundStyle(ArchiveTheme.Parchment.primary)
+            .font(.system(size: 14, weight: .semibold))
+            .foregroundStyle(
+                configuration.isPressed
+                    ? ArchiveTheme.Brass.luster
+                    : ArchiveTheme.Parchment.primary
+            )
             .frame(width: 36, height: 36)
+            .background {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(
+                            configuration.isPressed
+                                ? ArchiveTheme.Leather.void
+                                : ArchiveTheme.Leather.deep.opacity(0.75)
+                        )
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .stroke(
+                            configuration.isPressed
+                                ? ArchiveTheme.Brass.luster
+                                : ArchiveTheme.Borders.subtle,
+                            lineWidth: configuration.isPressed ? 1.5 : 1
+                        )
+                }
+            }
             .glassEffect(
-                .regular.tint(ArchiveTheme.Leather.elevated.opacity(0.36)).interactive(),
+                configuration.isPressed
+                    ? .regular.tint(ArchiveTheme.Brass.luster.opacity(0.28)).interactive()
+                    : .regular.tint(ArchiveTheme.Leather.elevated.opacity(0.36)).interactive(),
                 in: RoundedRectangle(cornerRadius: 10, style: .continuous)
             )
-            .overlay {
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
-            }
+            .shadow(
+                color: configuration.isPressed
+                    ? ArchiveTheme.Brass.luster.opacity(0.50)
+                    : .clear,
+                radius: 5,
+                y: 1
+            )
+            .scaleEffect(configuration.isPressed ? 0.90 : 1.0)
+            .animation(ArchiveTheme.Tokens.Motion.tactilePress, value: configuration.isPressed)
             .archiveInteractiveSurface(
                 accent: ArchiveTheme.Brass.core,
                 cornerRadius: 10,
                 isInteractive: isEnabled
             )
-            .opacity(configuration.isPressed ? 0.78 : 1)
     }
 }

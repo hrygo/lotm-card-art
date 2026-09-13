@@ -1,0 +1,16 @@
+{
+  "prompt": "Use case: precise-object-edit. Input image 1 is the edit target: a silver texture sheet. Change ONLY the large-scale illumination: remove the dark oval vignette entirely and make the silver texture evenly illuminated edge-to-edge, including all four corners. Preserve the fine metallic grain, cool neutral gray color and full-bleed flat sheet. No central glow, no gradient, no spotlight, no vignette, no new object, no border, no text. The entire canvas must look like the same uniformly lit flat silver material. Portrait 2:3.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [
+    {
+      "path": "artifacts/production/material-silver/v001/raw.png",
+      "sha256": "565ed206089feb28ca196604b3c8571b6fccf0b358a7777298a448be532c3358",
+      "role": "edit_target"
+    }
+  ],
+  "observation": "实际传入首稿为edit_target。修复后四角暗晕消失，冷银表面较均匀；保留细划痕，无新增文字或物件。待用户视觉批准，不声明可平铺。"
+}

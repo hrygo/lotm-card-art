@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "material-silver-flat",
+  "revision": 1,
+  "kind": "foundation",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "opaque"
+  },
+  "prompt": "Use case: precise-object-edit. Input image 1 is the edit target: a silver texture sheet. Change ONLY the large-scale illumination: remove the dark oval vignette entirely and make the silver texture evenly illuminated edge-to-edge, including all four corners. Preserve the fine metallic grain, cool neutral gray color and full-bleed flat sheet. No central glow, no gradient, no spotlight, no vignette, no new object, no border, no text. The entire canvas must look like the same uniformly lit flat silver material. Portrait 2:3.",
+  "references": [
+    {
+      "path": "artifacts/production/material-silver/v001/raw.png",
+      "sha256": "565ed206089feb28ca196604b3c8571b6fccf0b358a7777298a448be532c3358",
+      "role": "edit_target"
+    }
+  ],
+  "limits": {
+    "max_attempts": 1
+  },
+  "spec": {
+    "material": "冷银细锻面，去除首稿渐晕",
+    "lighting": "均匀漫射",
+    "tiling": false,
+    "use_scope": [
+      "global",
+      "masked-material"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "mother",
+  "working_name_zh": "母亲",
+  "origin": "original-art-proposal",
+  "source": "pathways/mother/direction.json",
+  "source_excerpt": {
+    "pathway_id": "mother",
+    "one_sentence": "生长结构、承载与生命的复杂性",
+    "palette_names": [
+      "深绿",
+      "泥黑",
+      "象牙白"
+    ],
+    "shape_language": "根系分叉、种子剖面与有机网",
+    "material_language": "土壤、纤维、植物蜡面",
+    "motif_candidates": "根/种/器皿是设计候选，不能把未知魔药材料画成任意常见植物",
+    "anti_cliche": "不要将十张都做成花园女神；未知材料必须保留精度边界。",
+    "must_differ_from": [
+      "moon",
+      "paragon"
+    ]
+  },
+  "silhouette": "rooted-seed-vessel",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-mother.json",
+  "approval": "pending"
+}

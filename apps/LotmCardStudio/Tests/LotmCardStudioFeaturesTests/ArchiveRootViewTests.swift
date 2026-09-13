@@ -23,6 +23,14 @@ final class ArchiveRootViewTests: XCTestCase {
         XCTAssertFalse(CardDetailLayout.usesTwoColumns(for: 911))
     }
 
+    func testStoryModeUsesCardAreaAsDefaultMinimumHeight() {
+        XCTAssertEqual(
+            CardDetailLayout.minimumRailHeight(for: .story),
+            CardDetailLayout.motionViewportSize.height
+        )
+        XCTAssertEqual(CardDetailLayout.minimumRailHeight(for: .identity), 0)
+    }
+
     func testVoiceAvailabilitySeparatesLocalRemoteAndPendingGreetings() {
         let local = NarrativePack(
             cardID: "local",

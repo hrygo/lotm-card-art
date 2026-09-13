@@ -130,3 +130,11 @@ OK
 - 当前 Swift 全套测试：54/54 通过；仓库级 `python3 -m unittest discover -s tests -v`：55/55 通过。
 - 当前 Debug/Release 构建均退出码 0；Release 已覆盖安装至 `/Applications/LotmCardStudio.app`，签名校验通过，主程序为 arm64，`LSMinimumSystemVersion=26.0`。
 - CUA 已验收画册首页、愚者详情、愚者故事页和奥黛丽详情；可见文本均为自然中文，未发现脚本语言泄露或原始内部标识。
+
+## 故事面板默认高度对齐验收
+
+- 2026-09-13：故事模式的 `DetailRail` 使用 `CardDetailLayout.storyMinimumHeight`，与固定卡牌围台 `motionViewportSize.height` 共享 `630pt` 几何契约；身份模式不增加该最小高度。
+- 新增回归测试 `testStoryModeUsesCardAreaAsDefaultMinimumHeight`，验证故事模式最小高度等于卡牌围台高度，身份模式保持 `0` 的自然布局约束。
+- TDD 聚焦测试先以缺少 `minimumRailHeight` 失败，补充布局规则后通过；当前 `swift test` 为 `55/55`，仓库级 `python3 -m unittest discover -s tests -v` 为 `107/107`。
+- 本轮 `./scripts/build-app.sh debug` 与 `./scripts/build-app.sh release` 均退出码 0；release `.app` 的 `LSMinimumSystemVersion=26.0`，主程序为 Mach-O `arm64`，`codesign --verify --deep --strict` 通过。
+- CUA 重启本次 release 构建后打开小丑详情并切换到故事模式；截图确认右侧故事面板上下边界与左侧卡牌围台对齐，章节正文和播放控件未发生重叠。

@@ -1,0 +1,18 @@
+{
+  "id": "header-bed",
+  "version": "1.0.0",
+  "status": "proposed",
+  "scope": "global",
+  "shapes": [
+    {
+      "kind": "ellipse",
+      "rect": [
+        340,
+        86,
+        320,
+        166
+      ],
+      "fill": "#ffffff"
+    }
+  ]
+}

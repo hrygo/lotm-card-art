@@ -21,6 +21,7 @@ enum CardDetailMode: String, CaseIterable, Identifiable, Sendable {
 enum CardDetailLayout {
     static let contentMaximumWidth: CGFloat = 1240
     static let motionViewportSize = CGSize(width: 420, height: 630)
+    static let storyMinimumHeight = motionViewportSize.height
     static let cardSize = CGSize(width: 320, height: 480)
     static let horizontalSafeArea: CGFloat = 50
     static let verticalSafeArea: CGFloat = 75
@@ -35,5 +36,14 @@ enum CardDetailLayout {
 
     static func usesTwoColumns(for contentWidth: CGFloat) -> Bool {
         contentWidth >= twoColumnMinimumContentWidth
+    }
+
+    static func minimumRailHeight(for mode: CardDetailMode) -> CGFloat {
+        switch mode {
+        case .identity:
+            return 0
+        case .story:
+            return storyMinimumHeight
+        }
     }
 }

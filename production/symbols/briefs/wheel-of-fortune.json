@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "wheel-of-fortune",
+  "working_name_zh": "命运之轮",
+  "origin": "original-art-proposal",
+  "source": "pathways/wheel-of-fortune/direction.json",
+  "source_excerpt": {
+    "pathway_id": "wheel-of-fortune",
+    "one_sentence": "分支、回返与偶然之间的联系",
+    "palette_names": [
+      "旧金",
+      "灰绿",
+      "乳白"
+    ],
+    "shape_language": "环形回路、偏移分支与节奏重复",
+    "material_language": "磨旧金属、透明石、纸质签片",
+    "motif_candidates": "环、路径分支、签片只是候选；不默认所有序列都能改写命运",
+    "anti_cliche": "不要靠大轮盘/骰子替代具体能力；避免将好运当无条件万能。",
+    "must_differ_from": [
+      "error",
+      "fool"
+    ]
+  },
+  "silhouette": "branching-fate-wheel",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-wheel-of-fortune.json",
+  "approval": "pending"
+}

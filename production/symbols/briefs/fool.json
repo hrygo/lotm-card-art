@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "fool",
+  "working_name_zh": "愚者",
+  "origin": "original-art-proposal",
+  "source": "pathways/fool/direction.json",
+  "source_excerpt": {
+    "pathway_id": "fool",
+    "one_sentence": "折叠的剧场与真假关系",
+    "palette_names": [
+      "烟紫",
+      "旧金",
+      "雾银"
+    ],
+    "shape_language": "帷幕弧线与不完全对称",
+    "material_language": "旧金箔、哑光织物、烟镜",
+    "motif_candidates": "面具/帷幕/层叠画框：仅作候选，不能提前表现高序列效果",
+    "anti_cliche": "不要把所有卡都画成秘偶控制；不能用灰雾替代具体能力。",
+    "must_differ_from": [
+      "error",
+      "door"
+    ]
+  },
+  "silhouette": "mask-and-curtain",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-fool.json",
+  "approval": "pending"
+}

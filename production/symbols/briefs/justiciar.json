@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "justiciar",
+  "working_name_zh": "审判者",
+  "origin": "original-art-proposal",
+  "source": "pathways/justiciar/direction.json",
+  "source_excerpt": {
+    "pathway_id": "justiciar",
+    "one_sentence": "边界、宣告与一致的规则",
+    "palette_names": [
+      "淡金",
+      "深海军蓝",
+      "石白"
+    ],
+    "shape_language": "清晰直线、相等间距与严格边界",
+    "material_language": "白石、蓝釉、平整金属",
+    "motif_candidates": "界线/秤/文书是候选，不以一把秤代替所有机制",
+    "anti_cliche": "与黑皇帝区分规则的关系方式，不仅反转配色；禁止提前授予绝对规则权能。",
+    "must_differ_from": [
+      "black-emperor",
+      "sun"
+    ]
+  },
+  "silhouette": "balanced-law-gate",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-justiciar.json",
+  "approval": "pending"
+}

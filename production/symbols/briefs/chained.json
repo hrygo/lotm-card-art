@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "chained",
+  "working_name_zh": "被缚者",
+  "origin": "original-art-proposal",
+  "source": "pathways/chained/direction.json",
+  "source_excerpt": {
+    "pathway_id": "chained",
+    "one_sentence": "内外束缚与自我控制的张力",
+    "palette_names": [
+      "旧铁",
+      "灰白",
+      "暗石榴红"
+    ],
+    "shape_language": "向内牵引、闭合回路与反向力",
+    "material_language": "旧铁、龟裂釉面、粗布",
+    "motif_candidates": "链/壳/封闭边界是候选，不默认每个序列都有同一诅咒机制",
+    "anti_cliche": "不要把所有序列都画成囚犯绑铁链；束缚必须连接真实语义。",
+    "must_differ_from": [
+      "hanged-man",
+      "abyss"
+    ]
+  },
+  "silhouette": "bound-porcelain-shell",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-chained.json",
+  "approval": "pending"
+}

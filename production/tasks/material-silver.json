@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "material-silver",
+  "revision": 1,
+  "kind": "foundation",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "opaque"
+  },
+  "prompt": "Use case: stylized-concept. Asset type: reusable full-bleed material texture, not a finished card. Primary request: a flat orthographic sheet of aged cool silver, delicately hammered and brushed, fine hairline scratches and tiny irregular tarnish at microscopic scale. Neutral diffuse frontal lighting, restrained cool gray tones, uniform brightness across the image, low contrast. No bevel, no frame, no symbol, no text, no object, no cast shadow, no vignette, no perspective. Portrait 2:3. Fill every pixel with metal; intended to be clipped into thin vector frame bands by a compositor.",
+  "references": [],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "material": "冷银细锻面",
+    "lighting": "中性漫射，低对比，无内置投影",
+    "tiling": false,
+    "use_scope": [
+      "global",
+      "masked-material"
+    ]
+  }
+}

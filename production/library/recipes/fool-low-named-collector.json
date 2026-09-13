@@ -1,0 +1,202 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "fool-low-named-collector",
+  "profile": "collector",
+  "background": "#0e1623",
+  "anchors": {
+    "art": [
+      72,
+      290,
+      856,
+      1035
+    ],
+    "name": [
+      180,
+      1347,
+      640,
+      64
+    ]
+  },
+  "nodes": [
+    {
+      "id": "base",
+      "receipt": "artifacts/production/foundation-paper/v004/receipt.json",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ]
+    },
+    {
+      "id": "veil",
+      "receipt": "artifacts/production/material-fool-veil/v001/receipt.json",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "opacity": 0.48,
+      "blend": "soft-light"
+    },
+    {
+      "id": "scene",
+      "receipt": "artifacts/production/subject-fool-09/v004/receipt.json",
+      "rect": "art",
+      "mask": {
+        "path": "production/library/components/window-low.json",
+        "sha256": "47efe00f218e19f6bdf463826d2e6d5dc40f8b2ac9da3d53892b275a0cd8f35a"
+      },
+      "feather": 3,
+      "saturation": 0.78,
+      "brightness": -0.02,
+      "shadow": {
+        "x": 0,
+        "y": 3,
+        "blur": 6,
+        "opacity": 0.55
+      }
+    },
+    {
+      "id": "edge-metal",
+      "receipt": "artifacts/production/material-silver-flat/v001/receipt.json",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "mask": {
+        "path": "production/library/components/outer-band.json",
+        "sha256": "1539010a017db14bc2feb0ea95240a1735000c4c8e8e9fcf1294dc3aa47d3d2a"
+      },
+      "saturation": 0.25,
+      "brightness": -0.08,
+      "opacity": 0.75
+    },
+    {
+      "id": "name-bed",
+      "shapes": [
+        {
+          "kind": "rect",
+          "rect": [
+            0,
+            0,
+            1000,
+            1500
+          ],
+          "fill": "#101827"
+        }
+      ],
+      "mask": {
+        "path": "production/library/components/name-bed.json",
+        "sha256": "eb801b70808b27349230efb622fe0582832d1f69ee0e47a17c3f3fb5e5bf3334"
+      },
+      "feather": 7,
+      "opacity": 0.93
+    },
+    {
+      "id": "name-grain",
+      "receipt": "artifacts/production/material-silver-flat/v001/receipt.json",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "mask": {
+        "path": "production/library/components/name-bed.json",
+        "sha256": "eb801b70808b27349230efb622fe0582832d1f69ee0e47a17c3f3fb5e5bf3334"
+      },
+      "feather": 7,
+      "blend": "soft-light",
+      "opacity": 0.18
+    },
+    {
+      "id": "structure",
+      "vector": {
+        "path": "production/library/components/fool-low.json",
+        "sha256": "9924e7671ec87457879e506833c1ffb5c6a40507ac452b0e9f53298a5cbdcfb2"
+      },
+      "shadow": {
+        "x": 0,
+        "y": 1,
+        "blur": 2,
+        "opacity": 0.5
+      }
+    },
+    {
+      "id": "mark-bed",
+      "shapes": [
+        {
+          "kind": "rect",
+          "rect": [
+            0,
+            0,
+            1000,
+            1500
+          ],
+          "fill": "#111b2b"
+        }
+      ],
+      "mask": {
+        "path": "production/library/components/header-bed.json",
+        "sha256": "1996c51a1c6e42cc2ef35f04961af673c915e04ae3e210c6e25b6c250eac1a40"
+      },
+      "feather": 20,
+      "opacity": 0.6
+    },
+    {
+      "id": "mark",
+      "vector": {
+        "path": "production/assets/fool/rank-9.json",
+        "sha256": "7733b554fd1dcdf599a96e37fcedfe1bc2c78812842ec5c09ebeda163ebe3013"
+      }
+    },
+    {
+      "id": "labels",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            280,
+            58,
+            440,
+            32
+          ],
+          "text": "愚 者 途 径",
+          "font": "Songti SC",
+          "size": 22,
+          "fill": "#ccc7c1",
+          "align": "center"
+        },
+        {
+          "kind": "text",
+          "rect": [
+            200,
+            232,
+            600,
+            70
+          ],
+          "text": "占 卜 家",
+          "font": "Songti SC",
+          "size": 42,
+          "fill": "#ccc7c1",
+          "align": "center"
+        }
+      ]
+    }
+  ],
+  "identity": {
+    "subject_receipt": "artifacts/production/subject-fool-09/v004/receipt.json",
+    "layout": {
+      "rect": "name",
+      "font": "Songti SC",
+      "size": 44,
+      "fill": "#e7dfd0",
+      "align": "center"
+    }
+  }
+}

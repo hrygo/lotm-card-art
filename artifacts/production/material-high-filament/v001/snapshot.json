@@ -1,0 +1,27 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/material-high-filament.json",
+      "sha256": "1ad15ebd0b40d7fa5e382b54c0bd4ac554a9007bdbc13f7a832991f86a7dc663"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-hierarchy/SKILL.md",
+      "sha256": "63bddb6147e54958083728e02a1743dc419aa087a6ad3d4a1681db5ca1b49d4f"
+    }
+  ],
+  "design_fingerprint": null,
+  "task_sha256": "1ad15ebd0b40d7fa5e382b54c0bd4ac554a9007bdbc13f7a832991f86a7dc663",
+  "prompt_sha256": "ec2eadacd67f0575912d6a845dd0b16df334669dde434be529dc20bc78e96559"
+}

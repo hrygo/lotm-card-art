@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "foundation",
+  "mode": "concept",
+  "task_id": "material-fool-veil",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "task_id": "material-fool-veil",
+    "revision": 1,
+    "kind": "foundation",
+    "mode": "concept",
+    "output": {
+      "aspect": [
+        2,
+        3
+      ],
+      "background": "opaque"
+    },
+    "prompt": "Use case: stylized-concept. Asset type: reusable pathway background material, not a card or illustration. Primary request: midnight blue-black silk-like archive paper with ghostly vertical curtain-fold fibers and extraordinarily subtle silver-gray thread, mysterious but quiet. Flat orthographic full-bleed texture, neutral diffuse light, even exposure, low contrast, no central spotlight. No character, no face, no eyeball, no tentacle, no symbol, no digit, no text, no frame. Portrait 2:3. Reusable veil material, original artistic proposal, not an official emblem.",
+    "references": [],
+    "limits": {
+      "max_attempts": 2
+    },
+    "spec": {
+      "material": "愚者帷幕暗纹",
+      "lighting": "中性漫射，低对比，无内置投影",
+      "tiling": false,
+      "use_scope": [
+        "pathway:fool",
+        "masked-material"
+      ]
+    }
+  },
+  "compiled": "artifacts/production/material-fool-veil/v001",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/material-fool-veil.json",
+        "sha256": "24f16b730777528a8bbc067e736801135cc0ba5a9009a80903c69ae3ea9e3105"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-foundation/SKILL.md",
+        "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+      }
+    ],
+    "design_fingerprint": null,
+    "task_sha256": "24f16b730777528a8bbc067e736801135cc0ba5a9009a80903c69ae3ea9e3105",
+    "prompt_sha256": "fd385f124adb432442762c1169761d9087d309799a8f81afc72b8e936b570fc9"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/material-fool-veil/v001/raw.png",
+    "sha256": "560ee22c7ae9f02735d52c3fc182e89b198fd44bb1c4922cddb883fda0d00e0d"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1024,
+    "height": 1536,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      2,
+      3
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: stylized-concept. Asset type: reusable pathway background material, not a card or illustration. Primary request: midnight blue-black silk-like archive paper with ghostly vertical curtain-fold fibers and extraordinarily subtle silver-gray thread, mysterious but quiet. Flat orthographic full-bleed texture, neutral diffuse light, even exposure, low contrast, no central spotlight. No character, no face, no eyeball, no tentacle, no symbol, no digit, no text, no frame. Portrait 2:3. Reusable veil material, original artistic proposal, not an official emblem.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13",
+    "attempt": 1,
+    "attachments": [],
+    "observation": "真实暗蓝帷幕纤维纹理，无字无标；纵向结构清楚，适合作途径底材，尚未验证平铺，不声明平铺。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T08:18:15.203844+00:00"
+}

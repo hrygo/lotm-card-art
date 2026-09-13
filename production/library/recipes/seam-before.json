@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "seam-before",
+  "profile": "standard",
+  "background": "#101827",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "paper",
+      "receipt": "artifacts/production/foundation-paper/v004/receipt.json",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ]
+    },
+    {
+      "id": "strip",
+      "receipt": "artifacts/production/hierarchy-low/v004/receipt.json",
+      "rect": [
+        100,
+        80,
+        800,
+        175
+      ]
+    },
+    {
+      "id": "caption",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            180,
+            320,
+            640,
+            80
+          ],
+          "text": "原始矩形叠加",
+          "font": "Songti SC",
+          "size": 32,
+          "fill": "#ccc7c1",
+          "align": "center"
+        }
+      ]
+    }
+  ]
+}

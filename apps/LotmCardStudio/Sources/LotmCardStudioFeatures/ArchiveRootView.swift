@@ -89,7 +89,8 @@ private struct ArchiveSidebar: View {
                             .foregroundStyle(ArchiveTheme.amber)
                     }
             }
-            .padding(.bottom, 42)
+            .padding(.top, 36)
+            .padding(.bottom, 36)
 
             Text("收藏导航")
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
@@ -383,25 +384,11 @@ private struct AlbumHomeView: View {
                     MetricTile(title: "愿望目标", value: "01", color: ArchiveTheme.Parchment.secondary)
                 }
                 .padding(24)
-                .background {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .fill(ArchiveTheme.Gradients.leatherSurface)
-                        HermeticSigilView(size: 260, showDualGlow: false)
-                            .opacity(0.16)
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                }
+                .background(ArchiveTheme.Gradients.leatherSurface, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
                 .glassEffect(.regular.tint(ArchiveTheme.Aether.light.opacity(0.06)), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
                 .overlay {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
-                        BrassCornerFiligree(corner: .topLeft, size: 36)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                        BrassCornerFiligree(corner: .topRight, size: 36)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                    }
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
                 }
 
                 HStack(spacing: 16) {
@@ -463,19 +450,13 @@ private struct AlbumHomeView: View {
                                 model.select(card)
                             }
                         }
-                        if model.activeSection == .gallery {
-                            ArchiveRuleCard()
-                        }
                     }
                 }
             }
             .padding(.horizontal, 36)
             .padding(.bottom, 40)
-            .padding(.top, 48)
+            .padding(.top, 68)
             .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .safeAreaInset(edge: .top) {
-            Color.clear.frame(height: 24)
         }
         .scrollIndicators(.hidden)
         .background(ArchiveTheme.ink)
@@ -623,35 +604,6 @@ private struct CardTileView: View {
     }
 }
 
-private struct ArchiveRuleCard: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("途径与身份")
-                .font(.system(size: 10, weight: .semibold, design: .rounded))
-                .foregroundStyle(ArchiveTheme.teal)
-            Text("同一途径可以有多张身份卡。")
-                .font(.system(size: 19, weight: .bold))
-                .foregroundStyle(ArchiveTheme.primary)
-            Text("同一角色的不同身份会分别收藏，也会分别讲述。")
-                .font(.system(size: 13))
-                .foregroundStyle(ArchiveTheme.secondary)
-            Rectangle()
-                .fill(ArchiveTheme.elevated)
-                .frame(height: 1)
-            Text("每张身份卡都独立保存")
-                .font(.system(size: 10, weight: .semibold, design: .rounded))
-                .foregroundStyle(ArchiveTheme.amber)
-            Text("同一角色的不同身份也会分别讲述")
-                .font(.system(size: 10, weight: .semibold, design: .rounded))
-                .foregroundStyle(ArchiveTheme.amber)
-        }
-        .padding(22)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(ArchiveTheme.coal.opacity(0.56), in: RoundedRectangle(cornerRadius: 17, style: .continuous))
-        .glassEffect(.regular.tint(ArchiveTheme.amber.opacity(0.07)), in: RoundedRectangle(cornerRadius: 17, style: .continuous))
-    }
-}
-
 private struct CardDetailView: View {
     let card: AlbumCard
     @ObservedObject var model: AlbumViewModel
@@ -680,7 +632,8 @@ private struct CardDetailView: View {
                     .frame(maxWidth: CardDetailLayout.contentMaximumWidth)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.horizontal, CardDetailLayout.horizontalPadding)
-                    .padding(.vertical, CardDetailLayout.verticalPadding)
+                    .padding(.top, 110)
+                    .padding(.bottom, CardDetailLayout.verticalPadding)
             }
             .scrollIndicators(.hidden)
             .background(ArchiveTheme.ink)
@@ -867,7 +820,11 @@ private struct DetailRail: View {
             )
         }
         .padding(24)
-        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .frame(
+            maxWidth: .infinity,
+            minHeight: CardDetailLayout.minimumRailHeight(for: mode),
+            alignment: .topLeading
+        )
         .background {
             ZStack {
                 RoundedRectangle(cornerRadius: 22, style: .continuous)

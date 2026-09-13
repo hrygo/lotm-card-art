@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "sun",
+  "working_name_zh": "太阳",
+  "origin": "original-art-proposal",
+  "source": "pathways/sun/direction.json",
+  "source_excerpt": {
+    "pathway_id": "sun",
+    "one_sentence": "清晰、见证与不可回避的照明",
+    "palette_names": [
+      "象牙白",
+      "太阳金",
+      "朱红"
+    ],
+    "shape_language": "放射与严格分区的明亮平面",
+    "material_language": "彩色玻璃、金箔、白石",
+    "motif_candidates": "日轮、玻璃窗、火色铭牌：并非所有光都有同一种原著效果",
+    "anti_cliche": "不能用一团金色光效解决全部语义；避免泛化为所有序列都无条件净化。",
+    "must_differ_from": [
+      "tyrant",
+      "justiciar"
+    ]
+  },
+  "silhouette": "radiant-sun",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-sun.json",
+  "approval": "pending"
+}

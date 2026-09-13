@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "twilight-giant",
+  "working_name_zh": "黄昏巨人",
+  "origin": "original-art-proposal",
+  "source": "pathways/twilight-giant/direction.json",
+  "source_excerpt": {
+    "pathway_id": "twilight-giant",
+    "one_sentence": "坚固形体与趋于终结的地平线",
+    "palette_names": [
+      "暮金",
+      "铁灰",
+      "赭石"
+    ],
+    "shape_language": "宽阔水平线与承重般的垂直体",
+    "material_language": "蚀刻青铜、磨损钢、粗石",
+    "motif_candidates": "盔甲、长影、石构候选；不是所有低序列都有巨人身体",
+    "anti_cliche": "不要让战士序列自动长成巨人；避免以大剑尺寸替代能力进阶。",
+    "must_differ_from": [
+      "red-priest",
+      "death"
+    ]
+  },
+  "silhouette": "twilight-bastion",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-twilight-giant.json",
+  "approval": "pending"
+}

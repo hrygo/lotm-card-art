@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "demoness",
+  "working_name_zh": "魔女",
+  "origin": "original-art-proposal",
+  "source": "pathways/demoness/direction.json",
+  "source_excerpt": {
+    "pathway_id": "demoness",
+    "one_sentence": "镜面、危险的美与不可控扩散",
+    "palette_names": [
+      "黑曜石",
+      "玫瑰灰",
+      "冷紫"
+    ],
+    "shape_language": "镜裂、流线与极薄的锋利边缘",
+    "material_language": "黑玻璃、暗缎、细金属网",
+    "motif_candidates": "镜、细线、冰裂候选，需要核验相应序列；不以性化造型替代机制",
+    "anti_cliche": "避免把全部牌做成性感人物写真；不把某个角色的外貌当序列通用条件。",
+    "must_differ_from": [
+      "moon",
+      "abyss"
+    ]
+  },
+  "silhouette": "fractured-mirror-ribbons",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-demoness.json",
+  "approval": "pending"
+}

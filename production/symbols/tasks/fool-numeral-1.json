@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-numeral-1",
+  "revision": 1,
+  "kind": "foundation",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      1,
+      1
+    ],
+    "background": "transparent"
+  },
+  "prompt": "Use case: stylized-concept. Asset type: ONE exquisite standalone artistic Arabic numeral \"1\", for the Fool pathway's collectible card rank asset. The ONLY readable character must be 1. A bold elegant custom numeral sculpture built from antique pale-gold metal and mist-silver bevels, with smoky-violet enamel inset and extremely fine engraved curtain-fold channels within its broad stroke. Unbroken unmistakable 1 silhouette, generous open counters where the numeral has them. Thick enough to remain readable small, lavish jewelry-grade chasing and openwork along the edges, NOT ordinary printed type, not a plain thin line. No surrounding crest, no mask, no additional numeral, no label, no words. Straight-on flat frontal presentation, centered on SQUARE canvas, occupies 75%, full object visible with margin. Soft upper-left light, real relief and dark satin recesses. GENUINELY TRANSPARENT background including holes. No ground plane, no painted shadow rectangle, no checkerboard pixels.",
+  "references": [],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "material": "单一阿拉伯数字1；旧金/雾银/烟紫珐琅；帷幕折纹精雕",
+    "lighting": "左上柔光与浮雕自阴影",
+    "tiling": false,
+    "use_scope": [
+      "rank:fool",
+      "digit:1"
+    ]
+  }
+}

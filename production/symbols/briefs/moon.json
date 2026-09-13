@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "moon",
+  "working_name_zh": "月亮",
+  "origin": "original-art-proposal",
+  "source": "pathways/moon/direction.json",
+  "source_excerpt": {
+    "pathway_id": "moon",
+    "one_sentence": "周期、体液质感与生命的幽微变化",
+    "palette_names": [
+      "银白",
+      "暗绯红",
+      "月灰"
+    ],
+    "shape_language": "弧相、流体边界与互为映照的曲线",
+    "material_language": "银、玻璃、深色绸缎",
+    "motif_candidates": "弧相、玻璃容器、血色仅作候选，不把整途径压成吸血鬼肖像",
+    "anti_cliche": "不能用红月代替每个序列能力；不把所有药师材料都涂红。",
+    "must_differ_from": [
+      "mother",
+      "demoness"
+    ]
+  },
+  "silhouette": "crescent-droplet",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-moon.json",
+  "approval": "pending"
+}

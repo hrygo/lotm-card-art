@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "material-high-filament",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "transparent"
+  },
+  "prompt": "Use case: stylized-concept. Asset type: one reusable isolated edge ornament on genuine transparent background. Primary request: an elegant slender vertical cascade of pale silver filaments bending into discontinuous impossible curtain folds, with sparse translucent gray wisps. Entire ornament stays narrow and central, with ample transparent margin on every side; top and bottom taper naturally. Flat frontal 2D ornamental asset, not a complete frame. Fine engraved silver detail, subtle upper-left illumination, no hard rectangular background, no checkerboard pixels, no lettering, no numbers, no face, no crown, no wings. Portrait 2:3. Used as high-tier side ornament for an original mysterious card design.",
+  "references": [],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "tier": "high",
+    "geometry": "窄幅断续帷幕银丝，边缘自然收尖；核心结构另由矢量提供",
+    "clear_regions": [
+      [
+        0,
+        0,
+        250,
+        1500
+      ],
+      [
+        750,
+        0,
+        250,
+        1500
+      ]
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "door",
+  "working_name_zh": "门",
+  "origin": "original-art-proposal",
+  "source": "pathways/door/direction.json",
+  "source_excerpt": {
+    "pathway_id": "door",
+    "one_sentence": "边界与不可能的空间接续",
+    "palette_names": [
+      "孔雀蓝",
+      "星银",
+      "深靛"
+    ],
+    "shape_language": "层叠门框、嵌套平面与透视折转",
+    "material_language": "银质嵌条、蓝釉、透明矿物",
+    "motif_candidates": "门楣、折页、透镜：不是所有序列都可传送或漫游星空",
+    "anti_cliche": "不要将每张都变成宇宙传送门；空间强度与序列必须对应。",
+    "must_differ_from": [
+      "fool",
+      "error"
+    ]
+  },
+  "silhouette": "nested-portal",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-door.json",
+  "approval": "pending"
+}

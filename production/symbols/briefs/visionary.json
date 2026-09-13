@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "visionary",
+  "working_name_zh": "空想家",
+  "origin": "original-art-proposal",
+  "source": "pathways/visionary/direction.json",
+  "source_excerpt": {
+    "pathway_id": "visionary",
+    "one_sentence": "观看关系与内外叙事",
+    "palette_names": [
+      "珍珠灰",
+      "冰蓝",
+      "淡金"
+    ],
+    "shape_language": "相互嵌套的视线与图底转换",
+    "material_language": "蜡、磨砂玻璃、柔光织物",
+    "motif_candidates": "倒影、留白、观看框：不等于所有序列都能改写现实",
+    "anti_cliche": "不要把每个序列都画成现实创造者；避免以表情代替扮演与能力。",
+    "must_differ_from": [
+      "hermit",
+      "white-tower"
+    ]
+  },
+  "silhouette": "observing-lens",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-visionary.json",
+  "approval": "pending"
+}

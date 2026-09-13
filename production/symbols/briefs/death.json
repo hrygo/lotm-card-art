@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "death",
+  "working_name_zh": "死神",
+  "origin": "original-art-proposal",
+  "source": "pathways/death/direction.json",
+  "source_excerpt": {
+    "pathway_id": "death",
+    "one_sentence": "终止、过渡与停滞的秩序",
+    "palette_names": [
+      "骨白",
+      "深青",
+      "陈旧金"
+    ],
+    "shape_language": "缓慢水平线、通道与仪仗式重复",
+    "material_language": "旧石、氧化铜、干燥薄纱",
+    "motif_candidates": "墓石、门槛、仪仗仅为候选，不能靠骷髅自动表达所有能力",
+    "anti_cliche": "不要把每个序列都做成骷髅持镰刀；死者形象不替代机制。",
+    "must_differ_from": [
+      "darkness",
+      "twilight-giant"
+    ]
+  },
+  "silhouette": "funerary-threshold",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-death.json",
+  "approval": "pending"
+}

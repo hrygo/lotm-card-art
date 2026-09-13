@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "error",
+  "working_name_zh": "错误",
+  "origin": "original-art-proposal",
+  "source": "pathways/error/direction.json",
+  "source_excerpt": {
+    "pathway_id": "error",
+    "one_sentence": "精密系统中的错位",
+    "palette_names": [
+      "黄铜",
+      "炭黑",
+      "琥珀"
+    ],
+    "shape_language": "错位重影、偏心圆与轻微套印偏差",
+    "material_language": "蚀刻黄铜、旧钟表珐琅、暗玻璃",
+    "motif_candidates": "表盘、指针、空槽：是设计候选，不代表每个序列都有时间能力",
+    "anti_cliche": "不可把错误做成数字故障风；不要提前借用高序列时间/寄生意象。",
+    "must_differ_from": [
+      "fool",
+      "black-emperor"
+    ]
+  },
+  "silhouette": "eccentric-broken-ring",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-error.json",
+  "approval": "pending"
+}

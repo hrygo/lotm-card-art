@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "foundation",
+  "mode": "concept",
+  "task_id": "material-gold",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "task_id": "material-gold",
+    "revision": 1,
+    "kind": "foundation",
+    "mode": "concept",
+    "output": {
+      "aspect": [
+        2,
+        3
+      ],
+      "background": "opaque"
+    },
+    "prompt": "Use case: stylized-concept. Asset type: reusable full-bleed material texture, not a finished card. Primary request: a flat orthographic sheet of muted antique champagne gold, fine hammered grain and subtle aged patina. Neutral diffuse frontal lighting and uniform brightness; restrained desaturated gold, low contrast. No jewels, no bevel, no frame, no symbol, no text, no object, no cast shadow, no vignette, no perspective. Portrait 2:3. Fill every pixel with metal; intended to be clipped into thin vector frame bands by a compositor.",
+    "references": [],
+    "limits": {
+      "max_attempts": 2
+    },
+    "spec": {
+      "material": "暗金细锻面",
+      "lighting": "中性漫射，低对比，无内置投影",
+      "tiling": false,
+      "use_scope": [
+        "global",
+        "masked-material"
+      ]
+    }
+  },
+  "compiled": "artifacts/production/material-gold/v001",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/material-gold.json",
+        "sha256": "c9286283a34b225d4268b8a7e7ddd9657b2c48a828f4a24b1b984e6c45ea0a7e"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-foundation/SKILL.md",
+        "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+      }
+    ],
+    "design_fingerprint": null,
+    "task_sha256": "c9286283a34b225d4268b8a7e7ddd9657b2c48a828f4a24b1b984e6c45ea0a7e",
+    "prompt_sha256": "bd2f78f0c448a17a6a5f6ede9daad5d3516d45635488b848eb73afa76dd77cec"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/material-gold/v001/raw.png",
+    "sha256": "b59fa8871c1962d023f24116f389d99da0b113fe91ec2f715ea4f6c6dc37da1f"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1024,
+    "height": 1536,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      2,
+      3
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: stylized-concept. Asset type: reusable full-bleed material texture, not a finished card. Primary request: a flat orthographic sheet of muted antique champagne gold, fine hammered grain and subtle aged patina. Neutral diffuse frontal lighting and uniform brightness; restrained desaturated gold, low contrast. No jewels, no bevel, no frame, no symbol, no text, no object, no cast shadow, no vignette, no perspective. Portrait 2:3. Fill every pixel with metal; intended to be clipped into thin vector frame bands by a compositor.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13",
+    "attempt": 1,
+    "attachments": [],
+    "observation": "可见暖金细锤纹，整体较均匀，无字无框；颗粒偏粗、颜色偏亮，配方需低饱和及薄带裁切，待用户验收。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T08:18:15.088575+00:00"
+}

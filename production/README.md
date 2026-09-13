@@ -1,5 +1,7 @@
 # 分层资产与运行合同
 
+公共物料库与精细合成的最新入口： [library/README.md](library/README.md)，实物与缺口清单为 `library/catalog.json`。v2当前仅作物料试装，不替代v1正式单卡门禁。
+
 从 [SOP](../docs/production-sop.md) 开始。任务类型 foundation / hierarchy / subject 分别由仓库 .agents/skills 中三个 Skill 执行。
 schemas 是编辑器契约，tools/production.py 执行同一契约所用的 JSON Schema 子集和跨文件业务门禁。
 

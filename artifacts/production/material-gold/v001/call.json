@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: reusable full-bleed material texture, not a finished card. Primary request: a flat orthographic sheet of muted antique champagne gold, fine hammered grain and subtle aged patina. Neutral diffuse frontal lighting and uniform brightness; restrained desaturated gold, low contrast. No jewels, no bevel, no frame, no symbol, no text, no object, no cast shadow, no vignette, no perspective. Portrait 2:3. Fill every pixel with metal; intended to be clipped into thin vector frame bands by a compositor.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [],
+  "observation": "可见暖金细锤纹，整体较均匀，无字无框；颗粒偏粗、颜色偏亮，配方需低饱和及薄带裁切，待用户验收。"
+}

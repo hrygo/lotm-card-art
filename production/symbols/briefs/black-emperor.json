@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "black-emperor",
+  "working_name_zh": "黑皇帝",
+  "origin": "original-art-proposal",
+  "source": "pathways/black-emperor/direction.json",
+  "source_excerpt": {
+    "pathway_id": "black-emperor",
+    "one_sentence": "制度的重量与被改变的秩序",
+    "palette_names": [
+      "玄黑",
+      "帝紫",
+      "暗金"
+    ],
+    "shape_language": "偏斜却可测量的柱列与文书边界",
+    "material_language": "玄武岩、黑漆、金箔",
+    "motif_candidates": "柱列、印章、契约图形候选，不等同于原著所有序列权能",
+    "anti_cliche": "不要仅以王冠区别路径；法律文字不得编造为原著能力条件。",
+    "must_differ_from": [
+      "justiciar",
+      "error"
+    ]
+  },
+  "silhouette": "distorted-imperial-seal",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-black-emperor.json",
+  "approval": "pending"
+}

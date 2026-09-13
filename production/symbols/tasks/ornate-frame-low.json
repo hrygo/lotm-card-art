@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "ornate-frame-low",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "transparent"
+  },
+  "prompt": "Use case: stylized-concept. Asset type: ONE reusable empty ornamental card frame for the Fool pathway, portrait 2:3, NOT a finished character card. LOW tier — a restrained but beautifully crafted human-scale antique instrument frame. Slender chased silver rails, small pale-gold corner clasps, smoky violet enamel hairline inlays and a modest engraved lintel. Real metal relief and precise microengraving. Few ornaments, crisp closed architecture. Elegant professional craftsmanship, not cheap or plain lines. Shared family: theatrical curtain-fold geometry and mysterious antique craft. FRONT ORTHOGRAPHIC VIEW, complete rectangular outside edge with a small transparent margin, no tilt. Outer frame fills roughly 94% of the canvas. Reserve the central opening from about x18% to82%, y24% to82% as fully TRANSPARENT for a separately composited illustration. Reserve an empty open socket at top center for a separate emblem and a broad unlettered nameplate at bottom. ALL areas outside the frame and inside the central opening must be GENUINELY TRANSPARENT; all piercings transparent. Frame only; NO character, NO scene, NO sky or fog painted inside the hole, NO letters, NO numbers, NO readable or fake writing, NO watermark, no checkerboard pixels. Surface lighting from upper left, exquisitely rendered relief.",
+  "references": [],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "tier": "low",
+    "geometry": "LOW tier — a restrained but beautifully crafted human-scale antique instrument frame. Slender chased silver rails, small pale-gold corner clasps, smoky violet enamel hairline inlays and a modest engraved lintel. Real metal relief and precise microengraving. Few ornaments, crisp closed architecture. Elegant professional craftsmanship, not cheap or plain lines.",
+    "clear_regions": [
+      [
+        180,
+        360,
+        640,
+        870
+      ]
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "white-tower",
+  "working_name_zh": "白塔",
+  "origin": "original-art-proposal",
+  "source": "pathways/white-tower/direction.json",
+  "source_excerpt": {
+    "pathway_id": "white-tower",
+    "one_sentence": "可分析的秩序与知识结构",
+    "palette_names": [
+      "瓷白",
+      "钴蓝",
+      "银灰"
+    ],
+    "shape_language": "直线网格、分解视图与分层透视",
+    "material_language": "白石、蓝墨、磨砂玻璃",
+    "motif_candidates": "书页、结构图、阶梯切面均为设计语言，非魔法能力事实",
+    "anti_cliche": "不要与隐者只差颜色；不要用齿轮替代理解和分析。",
+    "must_differ_from": [
+      "hermit",
+      "paragon"
+    ]
+  },
+  "silhouette": "stepped-knowledge-tower",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-white-tower.json",
+  "approval": "pending"
+}

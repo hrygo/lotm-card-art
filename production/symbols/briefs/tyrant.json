@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "tyrant",
+  "working_name_zh": "暴君",
+  "origin": "original-art-proposal",
+  "source": "pathways/tyrant/direction.json",
+  "source_excerpt": {
+    "pathway_id": "tyrant",
+    "one_sentence": "压力、垂直冲击与统摄",
+    "palette_names": [
+      "海蓝",
+      "风暴灰",
+      "电白"
+    ],
+    "shape_language": "斜切浪面、垂直裂线与强对角",
+    "material_language": "盐蚀钢、湿石、冷色玻璃",
+    "motif_candidates": "浪、风压、雷光是分层候选，不得默认低序列全部拥有",
+    "anti_cliche": "不要把十张都做成举雷锤的人；力量应有实际对象与限制。",
+    "must_differ_from": [
+      "sun",
+      "red-priest"
+    ]
+  },
+  "silhouette": "storm-wave-blades",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-tyrant.json",
+  "approval": "pending"
+}

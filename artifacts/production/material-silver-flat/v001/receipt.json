@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "foundation",
+  "mode": "concept",
+  "task_id": "material-silver-flat",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "task_id": "material-silver-flat",
+    "revision": 1,
+    "kind": "foundation",
+    "mode": "concept",
+    "output": {
+      "aspect": [
+        2,
+        3
+      ],
+      "background": "opaque"
+    },
+    "prompt": "Use case: precise-object-edit. Input image 1 is the edit target: a silver texture sheet. Change ONLY the large-scale illumination: remove the dark oval vignette entirely and make the silver texture evenly illuminated edge-to-edge, including all four corners. Preserve the fine metallic grain, cool neutral gray color and full-bleed flat sheet. No central glow, no gradient, no spotlight, no vignette, no new object, no border, no text. The entire canvas must look like the same uniformly lit flat silver material. Portrait 2:3.",
+    "references": [
+      {
+        "path": "artifacts/production/material-silver/v001/raw.png",
+        "sha256": "565ed206089feb28ca196604b3c8571b6fccf0b358a7777298a448be532c3358",
+        "role": "edit_target"
+      }
+    ],
+    "limits": {
+      "max_attempts": 1
+    },
+    "spec": {
+      "material": "冷银细锻面，去除首稿渐晕",
+      "lighting": "均匀漫射",
+      "tiling": false,
+      "use_scope": [
+        "global",
+        "masked-material"
+      ]
+    }
+  },
+  "compiled": "artifacts/production/material-silver-flat/v001",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/material-silver-flat.json",
+        "sha256": "3517d209ed943e81a483c34f7eb74329f94dc499eb55e373045ec4543e459b4a"
+      },
+      {
+        "path": "artifacts/production/material-silver/v001/raw.png",
+        "sha256": "565ed206089feb28ca196604b3c8571b6fccf0b358a7777298a448be532c3358",
+        "role": "edit_target"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-foundation/SKILL.md",
+        "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+      }
+    ],
+    "design_fingerprint": null,
+    "task_sha256": "3517d209ed943e81a483c34f7eb74329f94dc499eb55e373045ec4543e459b4a",
+    "prompt_sha256": "6773111c6567985fc9dc17500b22d5cc8da3268692d171f93930742261796208"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/material-silver-flat/v001/raw.png",
+    "sha256": "7ee116beee2c1afaa5add5aed8bcd485c3f42638e3762073d1dfd95df7719aaf"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1024,
+    "height": 1536,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      2,
+      3
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: precise-object-edit. Input image 1 is the edit target: a silver texture sheet. Change ONLY the large-scale illumination: remove the dark oval vignette entirely and make the silver texture evenly illuminated edge-to-edge, including all four corners. Preserve the fine metallic grain, cool neutral gray color and full-bleed flat sheet. No central glow, no gradient, no spotlight, no vignette, no new object, no border, no text. The entire canvas must look like the same uniformly lit flat silver material. Portrait 2:3.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13",
+    "attempt": 1,
+    "attachments": [
+      {
+        "path": "artifacts/production/material-silver/v001/raw.png",
+        "sha256": "565ed206089feb28ca196604b3c8571b6fccf0b358a7777298a448be532c3358",
+        "role": "edit_target"
+      }
+    ],
+    "observation": "实际传入首稿为edit_target。修复后四角暗晕消失，冷银表面较均匀；保留细划痕，无新增文字或物件。待用户视觉批准，不声明可平铺。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T08:20:46.719502+00:00"
+}

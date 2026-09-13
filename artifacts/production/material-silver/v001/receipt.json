@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "foundation",
+  "mode": "concept",
+  "task_id": "material-silver",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "task_id": "material-silver",
+    "revision": 1,
+    "kind": "foundation",
+    "mode": "concept",
+    "output": {
+      "aspect": [
+        2,
+        3
+      ],
+      "background": "opaque"
+    },
+    "prompt": "Use case: stylized-concept. Asset type: reusable full-bleed material texture, not a finished card. Primary request: a flat orthographic sheet of aged cool silver, delicately hammered and brushed, fine hairline scratches and tiny irregular tarnish at microscopic scale. Neutral diffuse frontal lighting, restrained cool gray tones, uniform brightness across the image, low contrast. No bevel, no frame, no symbol, no text, no object, no cast shadow, no vignette, no perspective. Portrait 2:3. Fill every pixel with metal; intended to be clipped into thin vector frame bands by a compositor.",
+    "references": [],
+    "limits": {
+      "max_attempts": 2
+    },
+    "spec": {
+      "material": "冷银细锻面",
+      "lighting": "中性漫射，低对比，无内置投影",
+      "tiling": false,
+      "use_scope": [
+        "global",
+        "masked-material"
+      ]
+    }
+  },
+  "compiled": "artifacts/production/material-silver/v001",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/material-silver.json",
+        "sha256": "f8b366f1756ab923280b44f27a07fadba6393935175368b02e500ad7a3ad79e4"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-foundation/SKILL.md",
+        "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+      }
+    ],
+    "design_fingerprint": null,
+    "task_sha256": "f8b366f1756ab923280b44f27a07fadba6393935175368b02e500ad7a3ad79e4",
+    "prompt_sha256": "11c8c1f6eab73473ed09248827b3d4eabdb67f270e567a32aac7af53d126173a"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/material-silver/v001/raw.png",
+    "sha256": "565ed206089feb28ca196604b3c8571b6fccf0b358a7777298a448be532c3358"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1024,
+    "height": 1536,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      2,
+      3
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: stylized-concept. Asset type: reusable full-bleed material texture, not a finished card. Primary request: a flat orthographic sheet of aged cool silver, delicately hammered and brushed, fine hairline scratches and tiny irregular tarnish at microscopic scale. Neutral diffuse frontal lighting, restrained cool gray tones, uniform brightness across the image, low contrast. No bevel, no frame, no symbol, no text, no object, no cast shadow, no vignette, no perspective. Portrait 2:3. Fill every pixel with metal; intended to be clipped into thin vector frame bands by a compositor.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13",
+    "attempt": 1,
+    "attachments": [],
+    "observation": "真实图像有明显中心亮、四角暗的椭圆渐晕，违反均匀照明要求；仅登记原始试稿，不能作为合格全幅材质。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T08:18:14.966630+00:00"
+}

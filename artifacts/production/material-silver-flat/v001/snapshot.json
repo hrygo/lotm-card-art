@@ -1,0 +1,32 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/material-silver-flat.json",
+      "sha256": "3517d209ed943e81a483c34f7eb74329f94dc499eb55e373045ec4543e459b4a"
+    },
+    {
+      "path": "artifacts/production/material-silver/v001/raw.png",
+      "sha256": "565ed206089feb28ca196604b3c8571b6fccf0b358a7777298a448be532c3358",
+      "role": "edit_target"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-foundation/SKILL.md",
+      "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+    }
+  ],
+  "design_fingerprint": null,
+  "task_sha256": "3517d209ed943e81a483c34f7eb74329f94dc499eb55e373045ec4543e459b4a",
+  "prompt_sha256": "6773111c6567985fc9dc17500b22d5cc8da3268692d171f93930742261796208"
+}

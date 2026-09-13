@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "hierarchy",
+  "mode": "concept",
+  "task_id": "material-high-filament",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "task_id": "material-high-filament",
+    "revision": 1,
+    "kind": "hierarchy",
+    "mode": "concept",
+    "output": {
+      "aspect": [
+        2,
+        3
+      ],
+      "background": "transparent"
+    },
+    "prompt": "Use case: stylized-concept. Asset type: one reusable isolated edge ornament on genuine transparent background. Primary request: an elegant slender vertical cascade of pale silver filaments bending into discontinuous impossible curtain folds, with sparse translucent gray wisps. Entire ornament stays narrow and central, with ample transparent margin on every side; top and bottom taper naturally. Flat frontal 2D ornamental asset, not a complete frame. Fine engraved silver detail, subtle upper-left illumination, no hard rectangular background, no checkerboard pixels, no lettering, no numbers, no face, no crown, no wings. Portrait 2:3. Used as high-tier side ornament for an original mysterious card design.",
+    "references": [],
+    "limits": {
+      "max_attempts": 2
+    },
+    "spec": {
+      "tier": "high",
+      "geometry": "窄幅断续帷幕银丝，边缘自然收尖；核心结构另由矢量提供",
+      "clear_regions": [
+        [
+          0,
+          0,
+          250,
+          1500
+        ],
+        [
+          750,
+          0,
+          250,
+          1500
+        ]
+      ]
+    }
+  },
+  "compiled": "artifacts/production/material-high-filament/v001",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/material-high-filament.json",
+        "sha256": "1ad15ebd0b40d7fa5e382b54c0bd4ac554a9007bdbc13f7a832991f86a7dc663"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-hierarchy/SKILL.md",
+        "sha256": "63bddb6147e54958083728e02a1743dc419aa087a6ad3d4a1681db5ca1b49d4f"
+      }
+    ],
+    "design_fingerprint": null,
+    "task_sha256": "1ad15ebd0b40d7fa5e382b54c0bd4ac554a9007bdbc13f7a832991f86a7dc663",
+    "prompt_sha256": "ec2eadacd67f0575912d6a845dd0b16df334669dde434be529dc20bc78e96559"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/material-high-filament/v001/raw.png",
+    "sha256": "7403b8f8fbc6a37a3736c967ac8fe241e627855b25ecbda1eeeb75552947d388"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1024,
+    "height": 1536,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      2,
+      3
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: stylized-concept. Asset type: one reusable isolated edge ornament on genuine transparent background. Primary request: an elegant slender vertical cascade of pale silver filaments bending into discontinuous impossible curtain folds, with sparse translucent gray wisps. Entire ornament stays narrow and central, with ample transparent margin on every side; top and bottom taper naturally. Flat frontal 2D ornamental asset, not a complete frame. Fine engraved silver detail, subtle upper-left illumination, no hard rectangular background, no checkerboard pixels, no lettering, no numbers, no face, no crown, no wings. Portrait 2:3. Used as high-tier side ornament for an original mysterious card design.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13",
+    "attempt": 1,
+    "attachments": [],
+    "observation": "可见窄幅银丝与半透明纱状装饰；背景呈黑灰渐变，尚需实际alpha统计，不能以提示词声称透明；仅作为候选登记。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T08:18:15.319512+00:00"
+}

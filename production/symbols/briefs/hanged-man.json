@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "hanged-man",
+  "working_name_zh": "倒吊人",
+  "origin": "original-art-proposal",
+  "source": "pathways/hanged-man/direction.json",
+  "source_excerpt": {
+    "pathway_id": "hanged-man",
+    "one_sentence": "倒置、交换与内部张力",
+    "palette_names": [
+      "暗酒红",
+      "铅灰",
+      "骨白"
+    ],
+    "shape_language": "倒置轴、内收构图与相互牵制",
+    "material_language": "暗釉、旧银、粗粝织物",
+    "motif_candidates": "悬挂、阴影、容纳结构需按序列核验；不预设通用献祭仪式",
+    "anti_cliche": "不要每张都重复倒吊人体；避免把所有力量泛化为任意吞噬。",
+    "must_differ_from": [
+      "abyss",
+      "chained"
+    ]
+  },
+  "silhouette": "inverted-reliquary",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-hanged-man.json",
+  "approval": "pending"
+}

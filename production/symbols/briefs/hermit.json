@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "hermit",
+  "working_name_zh": "隐者",
+  "origin": "original-art-proposal",
+  "source": "pathways/hermit/direction.json",
+  "source_excerpt": {
+    "pathway_id": "hermit",
+    "one_sentence": "深层知识与层叠的隐义",
+    "palette_names": [
+      "墨紫",
+      "旧金",
+      "青金石"
+    ],
+    "shape_language": "边注套层、密疏对照与递进框",
+    "material_language": "羊皮纸质感、版刻金属、暗色矿物",
+    "motif_candidates": "边注、遮挡文字、符号图版是美术语言，不凭它们编造真实咒文",
+    "anti_cliche": "不使用伪中文当秘文；不能仅靠多画书本与白塔区别。",
+    "must_differ_from": [
+      "white-tower",
+      "visionary"
+    ]
+  },
+  "silhouette": "veiled-folio-prism",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-hermit.json",
+  "approval": "pending"
+}

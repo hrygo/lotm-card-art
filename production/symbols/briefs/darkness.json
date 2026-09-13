@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "darkness",
+  "working_name_zh": "黑暗",
+  "origin": "original-art-proposal",
+  "source": "pathways/darkness/direction.json",
+  "source_excerpt": {
+    "pathway_id": "darkness",
+    "one_sentence": "隐匿边界与安静的失衡",
+    "palette_names": [
+      "深群青",
+      "冷银",
+      "灰紫"
+    ],
+    "shape_language": "低对比遮罩、弯曲边界与大块留白",
+    "material_language": "哑光绒布、夜色漆、银粉",
+    "motif_candidates": "帷幕、羽状纹、星点仅是候选，不把教会圣徽当途径通用标识",
+    "anti_cliche": "不要把黑到看不清称为神秘；梦境/隐秘等效果必须核对所在序列。",
+    "must_differ_from": [
+      "death",
+      "moon"
+    ]
+  },
+  "silhouette": "veiled-night-fan",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-darkness.json",
+  "approval": "pending"
+}

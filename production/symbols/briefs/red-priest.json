@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "red-priest",
+  "working_name_zh": "红祭司",
+  "origin": "original-art-proposal",
+  "source": "pathways/red-priest/direction.json",
+  "source_excerpt": {
+    "pathway_id": "red-priest",
+    "one_sentence": "动员、冲突与可视化的战略方向",
+    "palette_names": [
+      "铁锈红",
+      "焦黑",
+      "战旗赭"
+    ],
+    "shape_language": "集群对角线、阵列与方向标记",
+    "material_language": "焦化铁、粗织布、尘土",
+    "motif_candidates": "地图式折线、战旗、火痕仅作候选，不提前赋予战争级权能",
+    "anti_cliche": "不要把全套做成同一个火焰战士；群体不是背景贴图，须与机制相关。",
+    "must_differ_from": [
+      "tyrant",
+      "twilight-giant"
+    ]
+  },
+  "silhouette": "converging-war-standards",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-red-priest.json",
+  "approval": "pending"
+}

@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "alpha-black",
+  "profile": "standard",
+  "background": "#080a0e",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "filament",
+      "receipt": "artifacts/production/material-high-filament/v001/receipt.json",
+      "rect": [
+        150,
+        100,
+        700,
+        1250
+      ],
+      "fit": "contain"
+    }
+  ]
+}

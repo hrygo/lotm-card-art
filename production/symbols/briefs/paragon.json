@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "paragon",
+  "working_name_zh": "完美者",
+  "origin": "original-art-proposal",
+  "source": "pathways/paragon/direction.json",
+  "source_excerpt": {
+    "pathway_id": "paragon",
+    "one_sentence": "制作、推演与精确结构",
+    "palette_names": [
+      "黄铜",
+      "陶瓷白",
+      "冷青"
+    ],
+    "shape_language": "剖面、装配轴与功能连接",
+    "material_language": "黄铜、陶瓷、磨砂钢",
+    "motif_candidates": "齿轮/测具/装配视图是候选，不默认存在现代电子科幻技术",
+    "anti_cliche": "拒绝无功能的齿轮堆砌；不要将知识路径混成通用赛博朋克。",
+    "must_differ_from": [
+      "white-tower",
+      "error"
+    ]
+  },
+  "silhouette": "precision-assembly",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-paragon.json",
+  "approval": "pending"
+}

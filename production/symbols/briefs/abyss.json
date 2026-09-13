@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "abyss",
+  "working_name_zh": "深渊",
+  "origin": "original-art-proposal",
+  "source": "pathways/abyss/direction.json",
+  "source_excerpt": {
+    "pathway_id": "abyss",
+    "one_sentence": "下沉、诱因与捕食性的选择",
+    "palette_names": [
+      "焦黑",
+      "暗红",
+      "污金"
+    ],
+    "shape_language": "向下收束、尖锐负空间与不对称",
+    "material_language": "焦化表面、黑漆、油性反光",
+    "motif_candidates": "裂隙、诱饵、焦痕为候选，不自动给低序列所有恶魔能力",
+    "anti_cliche": "不要用通用恶魔角/血池解决十张；具体恶意/危险机制须核验。",
+    "must_differ_from": [
+      "chained",
+      "hanged-man"
+    ]
+  },
+  "silhouette": "descending-predatory-fissure",
+  "craft": "精雕/镂空/浮雕/珐琅；不以简单矢量替代",
+  "task": "production/symbols/tasks/sigil-abyss.json",
+  "approval": "pending"
+}

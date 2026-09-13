@@ -1,3 +1,4 @@
+import Foundation
 import XCTest
 import LotmCardStudioCore
 @testable import LotmCardStudioFeatures
@@ -42,6 +43,42 @@ final class SpeechPlaybackCoordinatorTests: XCTestCase {
         XCTAssertNil(coordinator.currentCaption)
         XCTAssertNil(coordinator.currentText)
         XCTAssertEqual(coordinator.state, .idle)
+    }
+
+    func testReplayReusesGeneratedAudioForSameApprovedLine() async throws {
+        let probe = SpeechPlaybackProbe()
+        let client = try SpeechRailHTTPClient(
+            baseURL: URL(string: "http://127.0.0.1:8201")!,
+            apiKeyProvider: { await probe.resolve() },
+            session: makePlaybackSession()
+        )
+        let coordinator = SpeechPlaybackCoordinator(client: client)
+        let line = NarrativeLine(
+            id: "remote-story-line",
+            kind: .story,
+            text: "这段完整章节只应当合成一次。",
+            sourceKind: .original,
+            review: .approved(contentDigest: "remote-story-line-v1"),
+            contentDigest: "remote-story-line-v1"
+        )
+
+        coordinator.speak(line, voiceProfileID: "serena")
+        try await waitForSynthesis(coordinator, probe: probe)
+        var requestCount = await probe.callCount()
+        XCTAssertEqual(requestCount, 1)
+
+        coordinator.replay()
+        try await Task.sleep(nanoseconds: 50_000_000)
+
+        XCTAssertNotEqual(coordinator.state, .loading)
+        requestCount = await probe.callCount()
+        XCTAssertEqual(requestCount, 1)
+
+        coordinator.stop()
+        coordinator.speak(line, voiceProfileID: "serena")
+        XCTAssertNotEqual(coordinator.state, .loading)
+        requestCount = await probe.callCount()
+        XCTAssertEqual(requestCount, 1)
     }
 
     func testSpeakRejectsUnapprovedLineBeforeTouchingSpeechRail() {
@@ -102,4 +139,99 @@ final class SpeechPlaybackCoordinatorTests: XCTestCase {
             "声音服务设置无效，请在“语音设置”中重新保存"
         )
     }
+
+    private func waitForSynthesis(
+        _ coordinator: SpeechPlaybackCoordinator,
+        probe: SpeechPlaybackProbe
+    ) async throws {
+        for _ in 0..<100 {
+            if await probe.callCount() == 1, coordinator.state != .loading {
+                return
+            }
+            try await Task.sleep(nanoseconds: 10_000_000)
+        }
+        XCTFail("SpeechRail 合成没有在测试窗口内完成")
+    }
+
+    private func makePlaybackSession() -> URLSession {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [PlaybackURLProtocol.self]
+        return URLSession(configuration: configuration)
+    }
+}
+
+private actor SpeechPlaybackProbe {
+    private var requests = 0
+
+    func resolve() -> String? {
+        requests += 1
+        return "test-key"
+    }
+
+    func callCount() -> Int {
+        requests
+    }
+}
+
+private final class PlaybackURLProtocol: URLProtocol {
+    override class func canInit(with request: URLRequest) -> Bool {
+        request.url?.path == "/v1/audio/speech"
+    }
+
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+        request
+    }
+
+    override func startLoading() {
+        guard let url = request.url,
+              let response = HTTPURLResponse(
+                  url: url,
+                  statusCode: 200,
+                  httpVersion: nil,
+                  headerFields: ["Content-Type": "audio/wav"]
+              )
+        else {
+            client?.urlProtocol(self, didFailWithError: URLError(.badURL))
+            return
+        }
+
+        client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+        client?.urlProtocol(self, didLoad: makeSilentWAV())
+        client?.urlProtocolDidFinishLoading(self)
+    }
+
+    override func stopLoading() {}
+}
+
+private func makeSilentWAV() -> Data {
+    let sampleCount = 400
+    let dataSize = UInt32(sampleCount * 2)
+    var data = Data()
+    data.append(contentsOf: Array("RIFF".utf8))
+    appendLittleEndian(UInt32(36) + dataSize, to: &data)
+    data.append(contentsOf: Array("WAVE".utf8))
+    data.append(contentsOf: Array("fmt ".utf8))
+    appendLittleEndian(UInt32(16), to: &data)
+    appendLittleEndian(UInt16(1), to: &data)
+    appendLittleEndian(UInt16(1), to: &data)
+    appendLittleEndian(UInt32(8_000), to: &data)
+    appendLittleEndian(UInt32(16_000), to: &data)
+    appendLittleEndian(UInt16(2), to: &data)
+    appendLittleEndian(UInt16(16), to: &data)
+    data.append(contentsOf: Array("data".utf8))
+    appendLittleEndian(dataSize, to: &data)
+    data.append(contentsOf: repeatElement(UInt8(0), count: Int(dataSize)))
+    return data
+}
+
+private func appendLittleEndian(_ value: UInt16, to data: inout Data) {
+    data.append(UInt8(truncatingIfNeeded: value))
+    data.append(UInt8(truncatingIfNeeded: value >> 8))
+}
+
+private func appendLittleEndian(_ value: UInt32, to data: inout Data) {
+    data.append(UInt8(truncatingIfNeeded: value))
+    data.append(UInt8(truncatingIfNeeded: value >> 8))
+    data.append(UInt8(truncatingIfNeeded: value >> 16))
+    data.append(UInt8(truncatingIfNeeded: value >> 24))
 }

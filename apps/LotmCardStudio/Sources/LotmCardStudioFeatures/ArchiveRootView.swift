@@ -1311,11 +1311,15 @@ private struct StoryDrawer: View {
         card.narrative?.readableChapters ?? []
     }
 
+    private var chapterNavigator: StoryChapterNavigator {
+        StoryChapterNavigator(
+            chapters: chapters,
+            selectedChapterID: selectedChapterID
+        )
+    }
+
     private var selectedChapter: StoryChapter? {
-        guard let selectedChapterID else {
-            return chapters.first
-        }
-        return chapters.first { $0.id == selectedChapterID } ?? chapters.first
+        chapterNavigator.selectedChapter
     }
 
     private var selectedChapterIsPlayable: Bool {
@@ -1324,6 +1328,21 @@ private struct StoryDrawer: View {
 
     private var hasPlayableChapter: Bool {
         chapters.contains { $0.line.isPlayable }
+    }
+
+    private var previousPlayableChapter: StoryChapter? {
+        chapterNavigator.previousPlayableChapter
+    }
+
+    private var nextPlayableChapter: StoryChapter? {
+        chapterNavigator.nextPlayableChapter
+    }
+
+    private var canReplaySelectedChapter: Bool {
+        guard selectedChapterIsPlayable else {
+            return false
+        }
+        return !selectedChapterIsCurrent || playback.state != .loading
     }
 
     private var selectedChapterIsCurrent: Bool {
@@ -1342,23 +1361,64 @@ private struct StoryDrawer: View {
         return playback.state.captionStatusLabel
     }
 
+    private var playButtonSystemImage: String {
+        guard selectedChapterIsPlayable else {
+            return "lock.fill"
+        }
+        if selectedChapterIsCurrent, playback.state == .loading {
+            return "waveform"
+        }
+        return selectedChapterIsCurrent && playback.state == .playing ? "pause.fill" : "play.fill"
+    }
+
+    private var playButtonAccessibilityLabel: String {
+        guard selectedChapterIsPlayable else {
+            return "故事还在确认中"
+        }
+        if selectedChapterIsCurrent, playback.state == .loading {
+            return "正在生成故事声音"
+        }
+        if selectedChapterIsCurrent, playback.state == .playing {
+            return "暂停故事"
+        }
+        if selectedChapterIsCurrent, playback.state == .paused {
+            return "继续故事"
+        }
+        return "开始播放故事"
+    }
+
+    private func play(_ chapter: StoryChapter) {
+        guard chapter.line.isPlayable else {
+            return
+        }
+        if playback.state == .loading,
+           playback.currentCaption?.lineID == chapter.line.id {
+            return
+        }
+        selectedChapterID = chapter.id
+        playback.playStory(
+            chapter,
+            voiceProfileID: card.narrative?.voiceProfileID ?? ""
+        )
+    }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: ArchiveTheme.Story.Metrics.sectionSpacing) {
             HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: ArchiveTheme.Story.Metrics.headerSpacing) {
                     Text(ArchiveCopy.story)
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
+                        .font(ArchiveTheme.Story.Typography.eyebrow)
                         .foregroundStyle(ArchiveTheme.teal)
                     Text("\(card.identity.displayName)的故事")
-                        .font(.system(size: 20, weight: .bold))
+                        .font(ArchiveTheme.Story.Typography.title)
                         .foregroundStyle(ArchiveTheme.primary)
                     Text(hasPlayableChapter ? "第三人称故事 · 可以朗读" : "第三人称故事 · 等待确认")
-                        .font(.system(size: 11))
+                        .font(ArchiveTheme.Story.Typography.note)
                         .foregroundStyle(ArchiveTheme.secondary)
                 }
                 Spacer()
                 Text(drawerPlaybackLabel)
-                    .font(.system(size: 10, weight: .semibold, design: .rounded))
+                    .font(ArchiveTheme.Story.Typography.status)
                     .foregroundStyle(selectedChapterIsCurrent ? ArchiveTheme.teal : ArchiveTheme.secondary)
             }
 
@@ -1366,103 +1426,167 @@ private struct StoryDrawer: View {
                 .fill(ArchiveTheme.elevated)
                 .frame(height: 1)
 
-            HStack(alignment: .top, spacing: 22) {
-                VStack(alignment: .leading, spacing: 9) {
+            HStack(alignment: .top, spacing: ArchiveTheme.Story.Metrics.contentSpacing) {
+                VStack(alignment: .leading, spacing: ArchiveTheme.Story.Metrics.bodySpacing) {
+                    HStack(spacing: ArchiveTheme.Story.Metrics.headerSpacing) {
+                        Image(systemName: "scroll.fill")
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundStyle(ArchiveTheme.Brass.core)
+                        Text(selectedChapter?.title ?? "故事正文")
+                            .font(ArchiveTheme.Story.Typography.chapterTitle)
+                            .foregroundStyle(ArchiveTheme.Story.ink)
+                    }
+
                     if selectedChapterIsCurrent {
-                        HStack(spacing: 7) {
+                        HStack(spacing: ArchiveTheme.Story.Metrics.headerSpacing) {
                             Image(systemName: playback.state.captionSystemImage)
                                 .font(.system(size: 10, weight: .semibold))
                             Text(playback.state.captionStatusLabel)
                         }
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
+                        .font(ArchiveTheme.Story.Typography.status)
                         .foregroundStyle(ArchiveTheme.teal)
                     }
                     Text(selectedChapter?.line.text ?? "暂时没有故事")
-                        .font(.system(size: 17))
-                        .foregroundStyle(ArchiveTheme.primary)
+                        .font(ArchiveTheme.Story.Typography.body)
+                        .foregroundStyle(ArchiveTheme.Story.ink)
                         .fixedSize(horizontal: false, vertical: true)
                     Text(selectedChapterIsPlayable ? "声音暂时不可用时，仍可阅读故事。" : "这段故事还在确认中，目前只能阅读。")
-                        .font(.system(size: 11))
-                        .foregroundStyle(selectedChapterIsPlayable ? ArchiveTheme.secondary : ArchiveTheme.amber)
+                        .font(ArchiveTheme.Story.Typography.note)
+                        .foregroundStyle(selectedChapterIsPlayable ? ArchiveTheme.Story.inkMuted : ArchiveTheme.amber)
                 }
+                .padding(ArchiveTheme.Story.Metrics.sheetPadding)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .background {
+                    RoundedRectangle(
+                        cornerRadius: ArchiveTheme.Story.Metrics.sheetRadius,
+                        style: .continuous
+                    )
+                    .fill(ArchiveTheme.Story.sheetSurface)
+                }
+                .overlay {
+                    RoundedRectangle(
+                        cornerRadius: ArchiveTheme.Story.Metrics.sheetRadius,
+                        style: .continuous
+                    )
+                    .stroke(ArchiveTheme.Story.edge, lineWidth: 1)
+                }
+                .shadow(
+                    color: ArchiveTheme.Story.shadow,
+                    radius: ArchiveTheme.Story.Metrics.sheetShadowRadius,
+                    y: ArchiveTheme.Story.Metrics.sheetShadowYOffset
+                )
 
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack(spacing: 10) {
+                VStack(alignment: .leading, spacing: ArchiveTheme.Story.Metrics.controlSpacing) {
+                    HStack(spacing: ArchiveTheme.Story.Metrics.transportSpacing) {
+                        Button {
+                            if let chapter = previousPlayableChapter {
+                                play(chapter)
+                            }
+                        } label: {
+                            Image(systemName: "chevron.left")
+                        }
+                        .buttonStyle(IconButtonStyle())
+                        .disabled(previousPlayableChapter == nil)
+                        .accessibilityLabel("上一个故事章节")
+                        .accessibilityHint("选择并播放上一个已确认章节")
+
+                        Button {
+                            if selectedChapterIsCurrent {
+                                playback.replay()
+                            } else if let chapter = selectedChapter {
+                                play(chapter)
+                            }
+                        } label: {
+                            Image(systemName: "arrow.counterclockwise")
+                        }
+                        .buttonStyle(IconButtonStyle())
+                        .disabled(!canReplaySelectedChapter)
+                        .accessibilityLabel("重播当前章节")
+                        .accessibilityHint("从头朗读当前章节")
+
                         Button {
                             if selectedChapterIsCurrent, playback.state == .playing {
                                 playback.pause()
                             } else if selectedChapterIsCurrent, playback.state == .paused {
                                 playback.resume()
                             } else if let chapter = selectedChapter {
-                                selectedChapterID = chapter.id
-                                playback.playStory(chapter, voiceProfileID: card.narrative?.voiceProfileID ?? "")
+                                play(chapter)
                             }
                         } label: {
-                            Image(systemName: selectedChapterIsPlayable
-                                ? (selectedChapterIsCurrent && playback.state == .playing ? "pause.fill" : "play.fill")
-                                : "lock.fill")
+                            Image(systemName: playButtonSystemImage)
                         }
                         .buttonStyle(IconButtonStyle())
-                        .disabled(!selectedChapterIsPlayable)
-                        .accessibilityLabel(
-                            selectedChapterIsPlayable
-                                ? (selectedChapterIsCurrent && playback.state == .playing
-                                    ? "暂停故事"
-                                    : selectedChapterIsCurrent && playback.state == .paused
-                                        ? "继续故事"
-                                        : "播放故事")
-                                : "故事还在确认中"
-                        )
+                        .disabled(!selectedChapterIsPlayable || (selectedChapterIsCurrent && playback.state == .loading))
+                        .accessibilityLabel(playButtonAccessibilityLabel)
                         .accessibilityValue(selectedChapterIsCurrent ? playback.state.captionStatusLabel : "未播放当前章节")
                         .accessibilityHint(
                             selectedChapterIsPlayable
-                                ? "播放当前章节"
+                                ? "开始、暂停或继续当前章节"
                                 : "当前章节只能阅读文字，确认后才可朗读"
                         )
+
                         Button {
-                            playback.replay()
+                            if let chapter = nextPlayableChapter {
+                                play(chapter)
+                            }
                         } label: {
-                            Image(systemName: "arrow.counterclockwise")
+                            Image(systemName: "chevron.right")
                         }
                         .buttonStyle(IconButtonStyle())
-                        .disabled(!selectedChapterIsPlayable || !selectedChapterIsCurrent)
-                        .accessibilityLabel("重播当前章节")
-                        .accessibilityHint("从头朗读当前章节")
+                        .disabled(nextPlayableChapter == nil)
+                        .accessibilityLabel("下一个故事章节")
+                        .accessibilityHint("选择并播放下一个已确认章节")
+
                         Button {
                             playback.stop()
                         } label: {
                             Image(systemName: "stop.fill")
                         }
                         .buttonStyle(IconButtonStyle())
+                        .disabled(playback.currentCaption == nil)
                         .accessibilityLabel("停止播放")
                         .accessibilityHint("停止当前故事音频")
                     }
                     Text(ArchiveCopy.chapters)
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
+                        .font(ArchiveTheme.Story.Typography.status)
                         .foregroundStyle(ArchiveTheme.secondary)
                     ForEach(chapters) { chapter in
+                        let isSelected = chapter.id == selectedChapter?.id
                         Button {
                             selectedChapterID = chapter.id
                             if chapter.line.isPlayable {
-                                playback.playStory(chapter, voiceProfileID: card.narrative?.voiceProfileID ?? "")
+                                play(chapter)
+                            } else {
+                                playback.stop()
                             }
                         } label: {
-                            HStack(spacing: 8) {
+                            HStack(spacing: ArchiveTheme.Story.Metrics.headerSpacing) {
                                 Text(chapter.title)
-                                Spacer(minLength: 8)
+                                Spacer(minLength: ArchiveTheme.Story.Metrics.chapterRowSpacer)
                                 Text(chapter.line.isPlayable ? "可朗读" : "待确认")
-                                    .font(.system(size: 9, weight: .semibold, design: .rounded))
+                                    .font(ArchiveTheme.Story.Typography.status)
                                     .foregroundStyle(chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.amber)
                             }
                         }
-                        .font(.system(size: 11, weight: .medium))
-                        .foregroundStyle(chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.secondary)
+                        .font(ArchiveTheme.Story.Typography.chapterMeta)
+                        .foregroundStyle(
+                            isSelected
+                                ? ArchiveTheme.Story.ink
+                                : chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.secondary
+                        )
                         .archiveInteractiveSurface(
                             accent: chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.amber,
-                            cornerRadius: 8,
+                            cornerRadius: ArchiveTheme.Story.Metrics.chapterRadius,
                             isInteractive: chapter.line.isPlayable
                         )
+                        .overlay(alignment: .leading) {
+                            if isSelected {
+                                Capsule()
+                                    .fill(chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.amber)
+                                    .frame(width: 2, height: ArchiveTheme.Story.Metrics.chapterRowMarkerHeight)
+                                    .padding(.leading, ArchiveTheme.Story.Metrics.chapterRowMarkerInset)
+                            }
+                        }
                         .buttonStyle(.plain)
                         .accessibilityElement(children: .ignore)
                         .accessibilityLabel(chapter.title)
@@ -1475,19 +1599,31 @@ private struct StoryDrawer: View {
                     }
                     if chapters.isEmpty {
                         Text("暂无故事内容")
-                            .font(.system(size: 10))
+                            .font(ArchiveTheme.Story.Typography.status)
                             .foregroundStyle(ArchiveTheme.amber)
                     } else if !hasPlayableChapter {
                         Text("故事仍在整理，确认后可以朗读")
-                            .font(.system(size: 10))
+                            .font(ArchiveTheme.Story.Typography.status)
                             .foregroundStyle(ArchiveTheme.amber)
                     }
                 }
-                .frame(width: 250, alignment: .leading)
-                .padding(16)
-                .background(ArchiveTheme.raised, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-        }
-
+                .frame(width: ArchiveTheme.Story.Metrics.chapterRailWidth, alignment: .leading)
+                .padding(ArchiveTheme.Story.Metrics.railPadding)
+                .background {
+                    RoundedRectangle(
+                        cornerRadius: ArchiveTheme.Story.Metrics.railRadius,
+                        style: .continuous
+                    )
+                    .fill(ArchiveTheme.Story.railSurface)
+                }
+                .overlay {
+                    RoundedRectangle(
+                        cornerRadius: ArchiveTheme.Story.Metrics.railRadius,
+                        style: .continuous
+                    )
+                    .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
+                }
+            }
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)
     }

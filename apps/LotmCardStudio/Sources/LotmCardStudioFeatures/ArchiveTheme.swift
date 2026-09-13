@@ -58,6 +58,65 @@ enum ArchiveTheme {
         static let muted = Color(red: 0.431, green: 0.392, blue: 0.345)
     }
 
+    /// 故事页羊皮纸卷宗系列（Aged Story Folio）
+    ///
+    /// 故事正文使用温暖的旧纸中间调，保留暗色档案馆的沉浸感，
+    /// 只让正文成为一页被翻开的卷宗，而不是突兀的浅色卡片。
+    enum Story {
+        static let paper = Color(red: 0.300, green: 0.260, blue: 0.205)
+        static let paperHighlight = Color(red: 0.870, green: 0.790, blue: 0.610)
+        static let ink = Parchment.primary
+        static let inkMuted = Parchment.secondary
+        static let edge = Brass.gleam.opacity(0.58)
+        static let shadow = Leather.void.opacity(0.72)
+
+        static let sheetSurface = LinearGradient(
+            colors: [
+                paperHighlight.opacity(0.13),
+                paper,
+                paper.opacity(0.86)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+
+        static let railSurface = LinearGradient(
+            colors: [Leather.raised.opacity(0.72), Leather.deep.opacity(0.92)],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+
+        enum Metrics {
+            static let sectionSpacing: CGFloat = 16
+            static let headerSpacing: CGFloat = 7
+            static let contentSpacing: CGFloat = 16
+            static let bodySpacing: CGFloat = 12
+            static let controlSpacing: CGFloat = 10
+            static let transportSpacing: CGFloat = 8
+            static let sheetPadding: CGFloat = 18
+            static let railPadding: CGFloat = 14
+            static let sheetRadius: CGFloat = 14
+            static let railRadius: CGFloat = 14
+            static let chapterRadius: CGFloat = 8
+            static let chapterRailWidth: CGFloat = 232
+            static let sheetShadowRadius: CGFloat = 10
+            static let sheetShadowYOffset: CGFloat = 5
+            static let chapterRowMarkerHeight: CGFloat = 20
+            static let chapterRowMarkerInset: CGFloat = 6
+            static let chapterRowSpacer: CGFloat = 8
+        }
+
+        enum Typography {
+            static let eyebrow = Font.system(size: 10, weight: .semibold, design: .rounded)
+            static let title = Font.system(size: 20, weight: .bold, design: .serif)
+            static let chapterTitle = Font.system(size: 12, weight: .bold, design: .serif)
+            static let body = Font.system(size: 17, weight: .medium, design: .serif)
+            static let note = Font.system(size: 11, weight: .regular, design: .rounded)
+            static let chapterMeta = Font.system(size: 11, weight: .medium, design: .rounded)
+            static let status = Font.system(size: 10, weight: .semibold, design: .rounded)
+        }
+    }
+
     /// 神秘学状态与仪式系列 (Mystic States)
     enum Mystic {
         /// 占卜秘祈紫 (#8570C2) - 候选状态与神秘学事件

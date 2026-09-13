@@ -11,11 +11,13 @@
 - 书架画廊与动态身份卡集合；一条序列允许 0…N 张卡，同一角色可有多张独立身份卡；
 - 正式收藏、候选收藏、愿望清单三个独立入口；
 - 大卡面、身份面板、六维语义回读和底部故事抽屉；
+- 故事页提供开始/暂停/继续、停止、重播、上一个和下一个章节的完整播放闭环；
 - 故事抽屉采用正常垂直布局流，主卡面、身份面板和故事内容不会互相覆盖；
 - `card_id` / `slot_id` / `character_id` / `identity_slice_id` 的分离模型；
 - 台词和章节的 `source_kind`、人工审核状态及内容摘要门槛；未批准内容不会进入播放列表；
 - 本机 `http://127.0.0.1:8201` SpeechRail loopback 客户端；超时、输入边界、snake_case 健康响应和重定向防护；
 - SpeechRail 不可用时保留文字稿，不伪造播放成功；
+- 每个已批准章节的完整正文只发起一次 TTS 请求，并按内容摘要与音色复用合成音频，不按句拼接或重复生成结果；
 - 原生 `Settings` 场景提供 SpeechRail 配置文件状态和 API key 录入；API key 保存到仓库外的本机 JSON 文件，不再访问旧钥匙串；
 - S00「愚者」已接入用户批准的 6 条克莱恩叙事文案、`uncle_fu` 系统音色和 6 个本地 WAV；奥黛丽「正义」S07「心理医生」身份卡已接入用户批准的 6 条文案、`serena` 系统音色和 6 个本地 WAV；批准文本优先播放本地资源，缺失时才回退到 SpeechRail 合成；
 - macOS 26-only 界面基线：`NavigationSplitView`、系统 toolbar/search，以及卡片、面板和操作控件的 Liquid Glass 交互材质；
@@ -53,6 +55,7 @@ open .build/LotmCardStudio.app
 - 客户端默认只访问本机 loopback `127.0.0.0/8` 或 `::1`，不调用云端，也不自动启动、停止或下载 SpeechRail。
 - 访问 `/v1/audio/speech` 前只发送通过人工批准摘要校验的文本。
 - 已打包的批准 WAV 优先本地播放；没有本地资源时才请求 `/v1/audio/speech`。
+- 远程故事按章节作为单段音频生成；当前 SpeechRail 音频响应不携带章节时间轴，因此不把整篇音频伪装成可精确跳章的单轨。
 - 本地服务失败时界面显示失败状态并继续展示文字稿；失败不计为完整播放。
 - API key 由仓库外的 `~/Library/Application Support/LotmCardStudio/SpeechRail.json` 提供；启动和本地 WAV 播放不读取配置文件，只有远程合成前才懒加载。
 - 当前运行路径不读取旧 Keychain 条目，因此不会再弹出“登录”钥匙串密码框；旧条目保持不变。

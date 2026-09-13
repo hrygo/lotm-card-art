@@ -37,6 +37,18 @@ public struct PlaybackCaption: Equatable, Sendable {
     }
 }
 
+private struct SpeechCacheKey: Hashable, Sendable {
+    let lineID: String
+    let contentDigest: String
+    let voiceProfileID: String
+
+    init(line: NarrativeLine, voiceProfileID: String) {
+        lineID = line.id
+        contentDigest = line.contentDigest
+        self.voiceProfileID = voiceProfileID
+    }
+}
+
 @MainActor
 public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
     @Published public private(set) var state: PlaybackState = .idle
@@ -49,6 +61,7 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
     private var generation = 0
     private var currentLine: NarrativeLine?
     private var currentVoiceProfileID: String?
+    private var synthesizedAudioCache: [SpeechCacheKey: Data] = [:]
 
     public init(client: SpeechRailHTTPClient?) {
         self.client = client
@@ -64,6 +77,10 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
         speak(greeting, voiceProfileID: pack.voiceProfileID)
     }
 
+    /// 播放一个故事章节；已批准章节的完整正文只对应一次 TTS 请求。
+    ///
+    /// 章节是当前 SpeechRail 单段音频合约下的最小可定位单位，
+    /// 不在客户端按句拆分，避免把多个合成结果拼接成不连贯的音色。
     public func playStory(_ chapter: StoryChapter, voiceProfileID: String) {
         guard chapter.line.isPlayable else {
             state = .failed("这段故事还在确认中")
@@ -92,28 +109,27 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
             return
         }
 
+        let cacheKey = SpeechCacheKey(line: line, voiceProfileID: voiceProfileID)
+        if let cachedAudio = synthesizedAudioCache[cacheKey] {
+            requestTask = nil
+            playSynthesizedAudio(cachedAudio, token: token)
+            return
+        }
+
         guard let client else {
             state = .failed("声音服务未连接")
             return
         }
 
+        let speechRequest = SpeechRequest(input: line.text, voice: voiceProfileID)
         requestTask = Task { [weak self] in
             do {
-                let data = try await client.synthesize(
-                    SpeechRequest(input: line.text, voice: voiceProfileID)
-                )
+                let data = try await client.synthesize(speechRequest)
                 try Task.checkCancellation()
-                guard let self, self.generation == token else {
+                guard let self else {
                     return
                 }
-                let audioPlayer = try AVAudioPlayer(data: data)
-                audioPlayer.delegate = self
-                self.player = audioPlayer
-                guard audioPlayer.play() else {
-                    self.state = .failed("声音无法播放")
-                    return
-                }
-                self.state = .playing
+                self.playSynthesizedAudio(data, token: token, cacheKey: cacheKey)
             } catch is CancellationError {
                 return
             } catch {
@@ -122,6 +138,31 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
                 }
                 self.state = .failed(Self.message(for: error))
             }
+        }
+    }
+
+    private func playSynthesizedAudio(
+        _ data: Data,
+        token: Int,
+        cacheKey: SpeechCacheKey? = nil
+    ) {
+        guard generation == token else {
+            return
+        }
+        do {
+            let audioPlayer = try AVAudioPlayer(data: data)
+            audioPlayer.delegate = self
+            player = audioPlayer
+            if let cacheKey {
+                synthesizedAudioCache[cacheKey] = data
+            }
+            guard audioPlayer.play() else {
+                state = .failed("声音无法播放")
+                return
+            }
+            state = .playing
+        } catch {
+            state = .failed(Self.message(for: error))
         }
     }
 
@@ -176,6 +217,7 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
         requestTask = nil
         player?.stop()
         player = nil
+        // 停止只清理当前播放状态，保留已合成音频供再次开始时复用。
         currentLine = nil
         currentVoiceProfileID = nil
         currentCaption = nil

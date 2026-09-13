@@ -138,3 +138,12 @@ OK
 - TDD 聚焦测试先以缺少 `minimumRailHeight` 失败，补充布局规则后通过；当前 `swift test` 为 `55/55`，仓库级 `python3 -m unittest discover -s tests -v` 为 `107/107`。
 - 本轮 `./scripts/build-app.sh debug` 与 `./scripts/build-app.sh release` 均退出码 0；release `.app` 的 `LSMinimumSystemVersion=26.0`，主程序为 Mach-O `arm64`，`codesign --verify --deep --strict` 通过。
 - CUA 重启本次 release 构建后打开小丑详情并切换到故事模式；截图确认右侧故事面板上下边界与左侧卡牌围台对齐，章节正文和播放控件未发生重叠。
+
+## 故事播放器与羊皮纸卷宗更新
+
+- 2026-09-13：故事页新增已确认章节队列导航；上一个/下一个会跳过待确认章节，边界状态自动禁用，不会触发未批准内容。
+- 播放控件形成完整闭环：开始（播放中变为暂停、暂停后变为继续）、重播当前章节、停止、上一个和下一个；停止只清理播放状态，保留当前章节文字稿，并复用已经生成的远程音频。
+- 故事正文改为与档案馆皮革、黄铜体系相容的旧纸中间调 folio；新增 `ArchiveTheme.Story` 的色彩、排版、间距、圆角和表面 token，控制区仍保持深色信息轨层级。
+- 当前 SpeechRail 合约下，每个已批准章节的完整正文对应一次 `/v1/audio/speech` 请求，重播和停止后再次开始复用内存音频缓存，不按句拆分；服务只返回单段音频、没有章节时间轴，因此本轮不宣称整篇单请求可精确跳章。
+- 自动化：`swift test` 执行 59 tests，0 failures；新增 `StoryChapterNavigatorTests` 覆盖跳过待确认章节和上下边界，`SpeechPlaybackCoordinatorTests` 覆盖重播/停止后的单次合成复用。
+- CUA 最新 release `.app` 实测：故事页可见 folio、章节标题和五个 transport 控件；开始、暂停、重播、下一章、上一章、停止状态，以及停止后正文保留并可再次重播均已确认。

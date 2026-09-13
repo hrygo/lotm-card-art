@@ -8,44 +8,44 @@ enum VoiceAvailability: Equatable, Sendable {
     var statusLabel: String {
         switch self {
         case .pending:
-            return "待审批"
+            return "等待确认"
         case .localAudio:
-            return "本地音频优先"
+            return "可以播放"
         case .speechRail:
-            return "需要 SpeechRail"
+            return "可生成声音"
         }
     }
 
     var buttonHelp: String {
         switch self {
         case .pending:
-            return "文案尚未批准，暂不可播放"
+            return "这张卡的台词还在确认中"
         case .localAudio:
-            return "优先播放已批准的本地问候音频"
+            return "播放已经准备好的声音"
         case .speechRail:
-            return "通过 SpeechRail 合成并播放已批准问候"
+            return "准备声音后播放已确认的台词"
         }
     }
 
     var accessibilityValue: String {
         switch self {
         case .pending:
-            return "等待人工批准"
+            return "台词等待确认"
         case .localAudio:
-            return "本地音频优先，缺失时需要 SpeechRail"
+            return "声音已准备好"
         case .speechRail:
-            return "需要 SpeechRail 合成"
+            return "播放时准备声音"
         }
     }
 
     var prompt: String {
         switch self {
         case .pending:
-            return "文案待批准，批准后生成声音"
+            return "台词确认后可以唤醒"
         case .localAudio:
-            return "点击唤醒，优先播放本地音频；字幕会在这里出现"
+            return "点击唤醒，播放已准备好的声音；字幕会在这里出现"
         case .speechRail:
-            return "点击唤醒，将通过 SpeechRail 合成；字幕会在这里出现"
+            return "点击唤醒，准备声音；字幕会在这里出现"
         }
     }
 }

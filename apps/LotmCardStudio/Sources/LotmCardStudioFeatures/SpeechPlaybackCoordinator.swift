@@ -58,7 +58,7 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
         guard let pack = card.narrative,
               let greeting = pack.playableLines.first(where: { $0.kind == .greeting })
         else {
-            state = .failed("暂无已批准台词")
+            state = .failed("暂时没有可播放的台词")
             return
         }
         speak(greeting, voiceProfileID: pack.voiceProfileID)
@@ -66,7 +66,7 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
 
     public func playStory(_ chapter: StoryChapter, voiceProfileID: String) {
         guard chapter.line.isPlayable else {
-            state = .failed("此章节尚未批准")
+            state = .failed("这段故事还在确认中")
             return
         }
         speak(chapter.line, voiceProfileID: voiceProfileID)
@@ -74,7 +74,7 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
 
     public func speak(_ line: NarrativeLine, voiceProfileID: String) {
         guard line.isPlayable else {
-            state = .failed("此内容尚未批准")
+            state = .failed("这段文字还在确认中")
             return
         }
 
@@ -93,7 +93,7 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
         }
 
         guard let client else {
-            state = .failed("SpeechRail 未连接")
+            state = .failed("声音服务未连接")
             return
         }
 
@@ -110,7 +110,7 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
                 audioPlayer.delegate = self
                 self.player = audioPlayer
                 guard audioPlayer.play() else {
-                    self.state = .failed("音频无法播放")
+                    self.state = .failed("声音无法播放")
                     return
                 }
                 self.state = .playing
@@ -141,7 +141,7 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
         audioPlayer.delegate = self
         player = audioPlayer
         guard audioPlayer.play() else {
-            state = .failed("音频无法播放")
+            state = .failed("声音无法播放")
             return true
         }
         state = .playing
@@ -187,42 +187,42 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
         switch error {
         case SpeechRailCredentialError.missing, SpeechRailCredentialError.unavailable,
              SpeechRailCredentialError.invalidData:
-            return "SpeechRail API key 缺失，请在设置中配置"
+            return "声音服务密钥缺失，请在“语音设置”中配置"
         case SpeechRailCredentialError.authenticationCancelled:
-            return "未完成钥匙串认证，文字稿仍可阅读"
+            return "未完成安全验证，仍可阅读文字"
         case SpeechRailCredentialError.authenticationFailed:
-            return "钥匙串认证失败，文字稿仍可阅读"
+            return "安全验证失败，仍可阅读文字"
         case SpeechRailCredentialError.writeFailed, SpeechRailCredentialError.verificationFailed:
-            return "Touch ID 凭据设置失败，请重试"
+            return "安全凭据设置失败，请重试"
         case SpeechRailConfigurationFileError.missing:
-            return "SpeechRail API key 缺失，请在设置中配置文件"
+            return "声音服务密钥缺失，请在“语音设置”中配置"
         case SpeechRailConfigurationFileError.invalidData:
-            return "SpeechRail 配置文件无效，请在设置中重新保存"
+            return "声音服务设置无效，请在“语音设置”中重新保存"
         case SpeechRailConfigurationFileError.readFailed, SpeechRailConfigurationFileError.writeFailed:
-            return "SpeechRail 配置文件不可用，请检查文件权限"
+            return "声音服务设置不可用，请检查文件权限"
         case SpeechRailError.inputTooLong:
-            return "文本超过 SpeechRail 限制"
+            return "这段文字太长，暂时无法生成声音"
         case let SpeechRailError.httpStatus(status):
             switch status {
             case 401:
-                return "SpeechRail API key 缺失或无效，请在设置中配置"
+                return "声音服务密钥缺失或无效，请在“语音设置”中配置"
             case 403:
-                return "SpeechRail API key 无权访问"
+                return "声音服务拒绝了当前密钥"
             case 408:
-                return "SpeechRail 请求超时，文字稿仍可阅读"
+                return "声音服务响应超时，仍可阅读文字"
             case 422:
-                return "SpeechRail 拒绝了当前语音请求，请检查 voice 或文本"
+                return "声音服务暂时无法处理这段文字，请稍后重试"
             case 500...599:
-                return "SpeechRail 服务暂时不可用，请稍后重试"
+                return "声音服务暂时不可用，请稍后重试"
             default:
-                return "SpeechRail 请求失败（HTTP \(status)）"
+                return "声音服务请求失败，请稍后重试"
             }
         case SpeechRailError.transport:
-            return "SpeechRail 不可用"
+            return "声音服务不可用"
         case SpeechRailError.invalidResponse, SpeechRailError.decoding:
-            return "SpeechRail 返回无效音频"
+            return "声音服务返回的声音无法使用"
         case SpeechRailError.nonLoopbackAddress:
-            return "SpeechRail 地址不在本机"
+            return "声音服务只能连接本机"
         default:
             return "语音生成失败"
         }
@@ -238,7 +238,7 @@ extension SpeechPlaybackCoordinator: AVAudioPlayerDelegate {
             guard let self, self.state == .playing || self.state == .paused else {
                 return
             }
-            self.state = flag ? .idle : .failed("音频播放失败")
+            self.state = flag ? .idle : .failed("声音播放失败")
         }
     }
 }

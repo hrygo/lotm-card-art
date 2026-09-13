@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "composition_id": "fool-09-pilot",
+  "mode": "concept",
+  "card_id": "lotm.fool.s09.prototype.pilot",
+  "slot_id": "lotm.fool.s09",
+  "profile": "standard",
+  "background": "#141c2a",
+  "layers": [
+    {
+      "receipt": "artifacts/production/foundation-paper/v001/receipt.json",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "fit": "cover",
+      "opacity": 1
+    },
+    {
+      "receipt": "artifacts/production/subject-fool-09/v001/receipt.json",
+      "rect": [
+        74,
+        292,
+        852,
+        1006
+      ],
+      "fit": "cover",
+      "opacity": 1
+    },
+    {
+      "receipt": "artifacts/production/hierarchy-low/v001/receipt.json",
+      "rect": [
+        100,
+        80,
+        800,
+        175
+      ],
+      "fit": "cover",
+      "opacity": 1
+    }
+  ],
+  "vector_assets": [
+    {
+      "path": "production/assets/tiers/low.json",
+      "sha256": "a8c76db52a9ad87ceb10b4eac19e7641f883f619cdbc6ec921445edcc5a5bc1a"
+    },
+    {
+      "path": "production/assets/fool/rank-9.json",
+      "sha256": "7733b554fd1dcdf599a96e37fcedfe1bc2c78812842ec5c09ebeda163ebe3013"
+    }
+  ],
+  "shapes": [
+    {
+      "kind": "text",
+      "rect": [
+        320,
+        51,
+        360,
+        30
+      ],
+      "text": "愚 者 途 径",
+      "font": "Songti SC",
+      "size": 20,
+      "fill": "#d8d2cb",
+      "align": "center"
+    },
+    {
+      "kind": "text",
+      "rect": [
+        200,
+        232,
+        600,
+        65
+      ],
+      "text": "占 卜 家",
+      "font": "Songti SC",
+      "size": 42,
+      "fill": "#f0e8db",
+      "align": "center"
+    },
+    {
+      "kind": "path",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "commands": [
+        [
+          "M",
+          220,
+          1340
+        ],
+        [
+          "L",
+          420,
+          1340
+        ],
+        [
+          "M",
+          580,
+          1340
+        ],
+        [
+          "L",
+          780,
+          1340
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#898696",
+      "line_width": 1
+    },
+    {
+      "kind": "ellipse",
+      "rect": [
+        477,
+        1317,
+        46,
+        46
+      ],
+      "fill": "none",
+      "stroke": "#b3afc4",
+      "line_width": 1.5
+    },
+    {
+      "kind": "rect",
+      "rect": [
+        489,
+        1329,
+        22,
+        22
+      ],
+      "fill": "none",
+      "stroke": "#dfd5c3",
+      "line_width": 1.5
+    },
+    {
+      "kind": "text",
+      "rect": [
+        180,
+        1375,
+        640,
+        38
+      ],
+      "text": "静观微光，辨认未知。",
+      "font": "Songti SC",
+      "size": 23,
+      "fill": "#c8c2bc",
+      "align": "center"
+    }
+  ],
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null,
+    "image_sha256": null
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "mode": "concept",
+  "references": [],
+  "limits": {
+    "max_attempts": 2
+  },
+  "task_id": "subject-fool-09",
+  "kind": "subject",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "opaque"
+  },
+  "spec": {
+    "slot_id": "lotm.fool.s09",
+    "card_id": "lotm.fool.s09.prototype.pilot",
+    "character_id": null,
+    "event": "An anonymous Victorian diviner quietly studies a suspended pendulum over a blank piece of paper; a small pool of cool reflected light follows its motion.",
+    "semantic_source": "pathways/fool/sequences/09/card.json"
+  },
+  "prompt": "Use case: illustration-story. Asset type: central artwork only for a portrait 2:3 occult collector card, concept study of an anonymous low-level diviner, not an official canon depiction. An intimate Victorian study: an anonymous young adult male diviner in dark waistcoat and white high-collar shirt sits at an old desk, leaning forward with focused restrained expression, holding one delicate silver pendulum above blank cream paper. Main event is a precise small suspended pendulum and its cool reflected light; hands anatomically natural and visible, no extra fingers. Three-quarter medium framing, quiet human-scale mystery, desaturated storm-blue shadows and muted warm candle highlights, luminous face and hands, beautiful traditional oil-painting depth combined with fine engraved details, luxurious and legible, extremely restrained supernatural effect. Background a dim window with diffuse dawn grey. Subject fills middle 70 percent; extra breathing room above head and below desk, all focal features safely inside central 80 percent width. No card frame, no text, no symbols, no letters or numbers, no watermark, no potion recipe, no invented initiation ritual, no cosmic throne, no tentacles."
+}

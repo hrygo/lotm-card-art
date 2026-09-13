@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]+$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kind": {
+      "enum": [
+        "foundation",
+        "hierarchy",
+        "subject"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "concept",
+        "production"
+      ]
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "aspect": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "background": {
+          "enum": [
+            "opaque",
+            "transparent"
+          ]
+        }
+      },
+      "required": [
+        "aspect",
+        "background"
+      ],
+      "additionalProperties": false
+    },
+    "prompt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "role": {
+            "enum": [
+              "style",
+              "identity",
+              "geometry",
+              "edit_target"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "max_attempts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        }
+      },
+      "required": [
+        "max_attempts"
+      ],
+      "additionalProperties": false
+    },
+    "spec": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "material": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lighting": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tiling": {
+              "type": "boolean"
+            },
+            "use_scope": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "material",
+            "lighting",
+            "tiling",
+            "use_scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "tier": {
+              "enum": [
+                "low",
+                "mid",
+                "high",
+                "true-god"
+              ]
+            },
+            "geometry": {
+              "type": "string",
+              "minLength": 1
+            },
+            "clear_regions": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "minItems": 4,
+                "maxItems": 4
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "tier",
+            "geometry",
+            "clear_regions"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "slot_id": {
+              "type": "string",
+              "pattern": "^lotm\\.[a-z-]+\\.s0[0-9]$"
+            },
+            "card_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "character_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "event": {
+              "type": "string",
+              "minLength": 1
+            },
+            "semantic_source": {
+              "type": "string",
+              "minLength": 1
+            },
+            "protagonist": {
+              "type": "object",
+              "properties": {
+                "kind": {"enum": ["character", "archetype"]},
+                "name_zh": {"type": "string", "minLength": 1},
+                "name_status": {"enum": ["proposed", "verified"]},
+                "evidence_refs": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": {"type": "string", "minLength": 1},
+                      "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+                    },
+                    "required": ["path", "sha256"],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": ["kind", "name_zh", "name_status", "evidence_refs"],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "slot_id",
+            "card_id",
+            "character_id",
+            "event",
+            "semantic_source",
+            "protagonist"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "revision",
+    "kind",
+    "mode",
+    "output",
+    "prompt",
+    "references",
+    "limits",
+    "spec"
+  ],
+  "additionalProperties": false
+}

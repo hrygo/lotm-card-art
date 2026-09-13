@@ -1,0 +1,83 @@
+{
+  "asset_id": "tier-true-god-v1",
+  "origin": "original_design",
+  "status": "proposed",
+  "tier": "true-god",
+  "canvas": [
+    1000,
+    1500
+  ],
+  "shapes": [
+    {
+      "kind": "path",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "commands": [
+        [
+          "M",
+          500,
+          24
+        ],
+        [
+          "L",
+          950,
+          270
+        ],
+        [
+          "M",
+          976,
+          600
+        ],
+        [
+          "L",
+          976,
+          1350
+        ],
+        [
+          "L",
+          500,
+          1476
+        ],
+        [
+          "L",
+          24,
+          1350
+        ],
+        [
+          "L",
+          24,
+          600
+        ],
+        [
+          "M",
+          50,
+          270
+        ],
+        [
+          "L",
+          500,
+          24
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#e0dce9",
+      "line_width": 2
+    },
+    {
+      "kind": "ellipse",
+      "rect": [
+        115,
+        360,
+        770,
+        770
+      ],
+      "fill": "none",
+      "stroke": "#6d697d",
+      "line_width": 1
+    }
+  ]
+}

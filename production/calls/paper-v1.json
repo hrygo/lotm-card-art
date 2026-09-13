@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: reusable full-bleed card substrate texture, portrait 2:3. Create a flat orthographic scan of luxurious deep charcoal blue cotton rag paper with subtle silver fibres and extremely faint irregular smoky marbling. Uniform quiet surface, restrained low contrast, tactile microscopic grain, cool graphite grey; suitable beneath silver card borders. No objects, no frame, no typography, no letters, no numbers, no symbols, no watermark. Edge to edge material only; no vignette, no central feature. Opaque image.",
+  "tool": "image_gen.imagegen (built-in)",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [],
+  "observation": "已观察真实图片：均匀深蓝灰纸纹，细银纤维，无字无物件；不承诺无缝平铺。此张在编译器搭建期间先生成，后以相同 prompt 登记，未伪称由编译器调用。工具未暴露精确生成时间，created_at 记录实际日期。"
+}

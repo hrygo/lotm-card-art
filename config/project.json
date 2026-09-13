@@ -80,5 +80,5 @@
   ],
   "agent_chain_limit_bytes": 32768,
   "note": "标记proposed的是项目设计提案，非用户批准记录；不自动承诺图像工具的原生输出能力。",
-  "art_baseline_version": "proposal-002"
+  "art_baseline_version": "proposal-003"
 }

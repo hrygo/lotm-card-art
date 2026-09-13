@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "mode": "concept",
+  "references": [],
+  "limits": {
+    "max_attempts": 2
+  },
+  "task_id": "hierarchy-low",
+  "kind": "hierarchy",
+  "output": {
+    "aspect": [
+      3,
+      1
+    ],
+    "background": "opaque"
+  },
+  "spec": {
+    "tier": "low",
+    "geometry": "shallow symmetric engraved silver ornamental lintel; closed horizontal structure",
+    "clear_regions": [
+      [
+        100,
+        250,
+        800,
+        1000
+      ]
+    ]
+  },
+  "prompt": "Use case: stylized-concept. Asset type: reusable LOW TIER decorative horizontal header lintel for an occult collectible card. Landscape 3:1 composition. A narrow elegantly engraved antique silver architrave, shallow relief, closed symmetrical Art Nouveau geometry with restrained tiny circular joints and tapered silver filigree at the two ends. Center quiet with a small empty oval recess; no glyph in the recess. Cool gunmetal engraving on uniform deep charcoal blue paper. Low-tier intimate handcrafted instrument feeling, no crowns or wings, no people. One isolated horizontal decoration occupying the middle half of the height, edges intact. No text, no letters, no numbers, no insignia, no entire card. Opaque charcoal background."
+}

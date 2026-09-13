@@ -28,19 +28,19 @@ public final class SpeechRailSettingsViewModel: ObservableObject {
         apiKeyInput = ""
         let normalized = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !normalized.isEmpty else {
-            message = "请输入 API key"
+            message = "请输入服务密钥"
             return
         }
         guard !isWorking else { return }
 
         isWorking = true
-        message = "正在保存本机配置文件"
+        message = "正在保存本机设置"
         Task { [weak self] in
             guard let self else { return }
             do {
                 try store.saveAPIKey(value)
                 state = store.state()
-                message = "已保存到本机配置文件"
+                message = "已保存到本机"
             } catch {
                 state = store.state()
                 message = Self.message(for: error)
@@ -52,15 +52,15 @@ public final class SpeechRailSettingsViewModel: ObservableObject {
     private static func message(for error: Error) -> String {
         switch error {
         case SpeechRailConfigurationFileError.invalidData:
-            return "API key 不能为空，请重新输入"
+            return "服务密钥不能为空，请重新输入"
         case SpeechRailConfigurationFileError.readFailed:
-            return "配置文件无法读取，请检查文件权限"
+            return "本机设置无法读取，请检查文件权限"
         case SpeechRailConfigurationFileError.writeFailed:
-            return "配置文件保存失败，请检查目录权限"
+            return "本机设置保存失败，请检查目录权限"
         case SpeechRailConfigurationFileError.missing:
-            return "配置文件尚未创建，请输入 API key"
+            return "还没有保存设置，请输入服务密钥"
         default:
-            return "配置文件保存失败，请重试"
+            return "本机设置保存失败，请重试"
         }
     }
 }
@@ -74,17 +74,19 @@ public struct SpeechRailSettingsView: View {
 
     public var body: some View {
         Form {
-            Section("本机配置文件") {
-                LabeledContent("SpeechRail") {
+            Section("声音连接") {
+                LabeledContent("语音服务") {
                     Label(viewModel.state.displayName, systemImage: viewModel.state.systemImage)
                         .foregroundStyle(viewModel.state.tint)
                 }
-                Text(viewModel.fileURL.path)
-                    .font(.caption.monospaced())
-                    .foregroundStyle(.secondary)
-                    .textSelection(.enabled)
-                    .accessibilityLabel("SpeechRail 配置文件路径")
-                    .accessibilityValue(viewModel.fileURL.path)
+                DisclosureGroup("高级信息") {
+                    Text(viewModel.fileURL.path)
+                        .font(.caption.monospaced())
+                        .foregroundStyle(.secondary)
+                        .textSelection(.enabled)
+                        .accessibilityLabel("设置保存位置")
+                        .accessibilityValue(viewModel.fileURL.path)
+                }
                 Button {
                     viewModel.refresh()
                 } label: {
@@ -93,17 +95,17 @@ public struct SpeechRailSettingsView: View {
                 .disabled(viewModel.isWorking)
             }
 
-            Section("API key") {
-                SecureField("输入或粘贴 API key", text: $viewModel.apiKeyInput)
+            Section("声音服务密钥") {
+                SecureField("输入或粘贴服务密钥", text: $viewModel.apiKeyInput)
                     .textContentType(.password)
-                Button("保存到配置文件") {
+                Button("保存到本机") {
                     viewModel.saveInput()
                 }
                 .disabled(viewModel.isWorking || viewModel.apiKeyInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
 
             Section {
-                Text("此版本不读取旧钥匙串条目，也不需要输入登录钥匙串密码。API key 只保存到上面的本机文件，文件权限为 0600；远程合成前按需读取。正常启动、本地 WAV 播放和查看文字稿都不会读取 API key。")
+                Text("服务密钥只保存在本机，并在需要生成声音时使用。浏览画册、播放已准备好的声音和阅读故事都不需要它。")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                 if let message = viewModel.message {
@@ -118,7 +120,7 @@ public struct SpeechRailSettingsView: View {
         .formStyle(.grouped)
         .padding(20)
         .frame(minWidth: 560, minHeight: 380)
-        .navigationTitle("SpeechRail")
+        .navigationTitle("语音设置")
         .task {
             viewModel.refresh()
         }
@@ -129,11 +131,11 @@ private extension SpeechRailConfigurationFileState {
     var displayName: String {
         switch self {
         case .configured:
-            return "配置文件已就绪"
+            return "已配置"
         case .missing:
             return "尚未配置"
         case .unavailable:
-            return "配置文件不可用"
+            return "暂不可用"
         }
     }
 

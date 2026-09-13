@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "mode": "concept",
+  "references": [],
+  "limits": {
+    "max_attempts": 2
+  },
+  "task_id": "foundation-paper",
+  "kind": "foundation",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "opaque"
+  },
+  "spec": {
+    "material": "charcoal cotton paper with faint silver fibres",
+    "lighting": "even diffuse overhead illumination, flat scan",
+    "tiling": false,
+    "use_scope": [
+      "fool-low",
+      "fool-mid"
+    ]
+  },
+  "prompt": "Use case: stylized-concept. Asset type: reusable full-bleed card substrate texture, portrait 2:3. Create a flat orthographic scan of luxurious deep charcoal blue cotton rag paper with subtle silver fibres and extremely faint irregular smoky marbling. Uniform quiet surface, restrained low contrast, tactile microscopic grain, cool graphite grey; suitable beneath silver card borders. No objects, no frame, no typography, no letters, no numbers, no symbols, no watermark. Edge to edge material only; no vignette, no central feature. Opaque image."
+}

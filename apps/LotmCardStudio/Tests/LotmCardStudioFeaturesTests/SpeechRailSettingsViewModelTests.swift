@@ -28,7 +28,7 @@ final class SpeechRailSettingsViewModelTests: XCTestCase {
 
         XCTAssertEqual(viewModel.state, .configured)
         XCTAssertEqual(try store.readAPIKey(), "configured-test-key")
-        XCTAssertEqual(viewModel.message, "已保存到本机配置文件")
+        XCTAssertEqual(viewModel.message, "已保存到本机")
     }
 
     func testEmptyInputKeepsMissingStateAndDoesNotWrite() async {
@@ -39,7 +39,7 @@ final class SpeechRailSettingsViewModelTests: XCTestCase {
         await waitForCompletion(of: viewModel)
 
         XCTAssertEqual(viewModel.state, .missing)
-        XCTAssertEqual(viewModel.message, "请输入 API key")
+        XCTAssertEqual(viewModel.message, "请输入服务密钥")
         XCTAssertFalse(FileManager.default.fileExists(atPath: store.fileURL.path))
     }
 

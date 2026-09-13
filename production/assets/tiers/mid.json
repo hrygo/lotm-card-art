@@ -1,0 +1,100 @@
+{
+  "asset_id": "tier-mid-v1",
+  "origin": "original_design",
+  "status": "proposed",
+  "tier": "mid",
+  "canvas": [
+    1000,
+    1500
+  ],
+  "shapes": [
+    {
+      "kind": "rect",
+      "rect": [
+        34,
+        34,
+        932,
+        1432
+      ],
+      "stroke": "#b4b0c9",
+      "line_width": 2,
+      "fill": "none"
+    },
+    {
+      "kind": "rect",
+      "rect": [
+        47,
+        47,
+        906,
+        1406
+      ],
+      "stroke": "#666378",
+      "line_width": 1,
+      "fill": "none"
+    },
+    {
+      "kind": "path",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "commands": [
+        [
+          "M",
+          72,
+          310
+        ],
+        [
+          "L",
+          72,
+          260
+        ],
+        [
+          "L",
+          310,
+          260
+        ],
+        [
+          "M",
+          690,
+          260
+        ],
+        [
+          "L",
+          928,
+          260
+        ],
+        [
+          "L",
+          928,
+          1240
+        ],
+        [
+          "L",
+          890,
+          1280
+        ],
+        [
+          "L",
+          110,
+          1280
+        ],
+        [
+          "L",
+          72,
+          1240
+        ],
+        [
+          "L",
+          72,
+          350
+        ]
+      ],
+      "fill": "none",
+      "stroke": "#c7c8d4",
+      "line_width": 3
+    }
+  ]
+}

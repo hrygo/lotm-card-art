@@ -120,7 +120,7 @@ public enum DemoLibrary {
                 ]
             ),
             visualTheme: .amber,
-            subtitle: "synthetic fixture · confirmed state"
+            subtitle: "小丑的笑容下，藏着冷静的判断"
         ),
         AlbumCard(
             identity: CardIdentity(
@@ -149,7 +149,7 @@ public enum DemoLibrary {
                 chapters: []
             ),
             visualTheme: .violet,
-            subtitle: "candidate · awaiting review"
+            subtitle: "从占卜开始，走近灰雾"
         ),
         AlbumCard(
             identity: CardIdentity(
@@ -264,7 +264,7 @@ public enum DemoLibrary {
                 ]
             ),
             visualTheme: .divineFool,
-            subtitle: "研究草稿 · 真神层级 · 文案已批准 · 本地音频已生成"
+            subtitle: "愚者途径的真神"
         ),
         AlbumCard(
             identity: CardIdentity(
@@ -379,7 +379,7 @@ public enum DemoLibrary {
                 ]
             ),
             visualTheme: .visionary,
-            subtitle: "character fixture · approved copy · local audio"
+            subtitle: "正义的温柔与坚定"
         )
     ]
 }

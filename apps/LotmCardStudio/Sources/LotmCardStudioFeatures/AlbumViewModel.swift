@@ -23,7 +23,7 @@ public enum LibrarySection: String, Hashable, Sendable {
     public var subtitle: String {
         switch self {
         case .gallery:
-            return "你的内容库正在呼吸。选择一张卡牌，唤醒它的声音。"
+            return "卡牌已经准备好。选择一张，唤醒它的声音。"
         case .formal:
             return "只显示当前内容已确认、并由你正式收藏的身份卡。"
         case .candidate:

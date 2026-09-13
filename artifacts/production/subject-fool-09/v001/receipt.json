@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "subject",
+  "mode": "concept",
+  "task_id": "subject-fool-09",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "mode": "concept",
+    "references": [],
+    "limits": {
+      "max_attempts": 2
+    },
+    "task_id": "subject-fool-09",
+    "kind": "subject",
+    "output": {
+      "aspect": [
+        2,
+        3
+      ],
+      "background": "opaque"
+    },
+    "spec": {
+      "slot_id": "lotm.fool.s09",
+      "card_id": "lotm.fool.s09.prototype.pilot",
+      "character_id": null,
+      "event": "An anonymous Victorian diviner quietly studies a suspended pendulum over a blank piece of paper; a small pool of cool reflected light follows its motion.",
+      "semantic_source": "pathways/fool/sequences/09/card.json"
+    },
+    "prompt": "Use case: illustration-story. Asset type: central artwork only for a portrait 2:3 occult collector card, concept study of an anonymous low-level diviner, not an official canon depiction. An intimate Victorian study: an anonymous young adult male diviner in dark waistcoat and white high-collar shirt sits at an old desk, leaning forward with focused restrained expression, holding one delicate silver pendulum above blank cream paper. Main event is a precise small suspended pendulum and its cool reflected light; hands anatomically natural and visible, no extra fingers. Three-quarter medium framing, quiet human-scale mystery, desaturated storm-blue shadows and muted warm candle highlights, luminous face and hands, beautiful traditional oil-painting depth combined with fine engraved details, luxurious and legible, extremely restrained supernatural effect. Background a dim window with diffuse dawn grey. Subject fills middle 70 percent; extra breathing room above head and below desk, all focal features safely inside central 80 percent width. No card frame, no text, no symbols, no letters or numbers, no watermark, no potion recipe, no invented initiation ritual, no cosmic throne, no tentacles."
+  },
+  "compiled": "generated/production/subject-v2",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/subject-fool-09.json",
+        "sha256": "22744e4f3c0d0982905eb1e5fb1729cbdef3ab15d9f8f3c3afc5603b22f936ae"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "0e224385e4a0d12ff62f200d23bce054fada7157e490b170c45404dafff15819"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "f0acc2c3f181364ae87b600562cfc6aafa39ea29c498622ee167cbbaafd950b0"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "618a5918f338777db426255d217959d2390b91e734558fb5219a1bee39640bd9"
+      },
+      {
+        "path": ".agents/skills/lotm-subject/SKILL.md",
+        "sha256": "dc83df5799d24cea389755cb978f997610a595a90c150d6fe346742295d5f38a"
+      },
+      {
+        "path": "pathways/fool/sequences/09/card.json",
+        "sha256": "3825369acc775d68857b95cac3911a862cdef42a5edb97b8e73fa155dd1bdba8"
+      }
+    ],
+    "design_fingerprint": "a96a443c73cdafa6b669c46a501af2da552371f36f1255b51871004c08716786",
+    "task_sha256": "22744e4f3c0d0982905eb1e5fb1729cbdef3ab15d9f8f3c3afc5603b22f936ae",
+    "prompt_sha256": "64dbed19678ec98979cffea958994ac129d0247012f3961e91edfce450274bea"
+  },
+  "raw": {
+    "path": "artifacts/production/subject-fool-09/v001/raw.png",
+    "sha256": "8ee0c3cceaba881866083137efb3b8e19ce9f37669b72b9e9027375c0d626853"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1024,
+    "height": 1536,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      2,
+      3
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: illustration-story. Asset type: central artwork only for a portrait 2:3 occult collector card, concept study of an anonymous low-level diviner, not an official canon depiction. An intimate Victorian study: an anonymous young adult male diviner in dark waistcoat and white high-collar shirt sits at an old desk, leaning forward with focused restrained expression, holding one delicate silver pendulum above blank cream paper. Main event is a precise small suspended pendulum and its cool reflected light; hands anatomically natural and visible, no extra fingers. Three-quarter medium framing, quiet human-scale mystery, desaturated storm-blue shadows and muted warm candle highlights, luminous face and hands, beautiful traditional oil-painting depth combined with fine engraved details, luxurious and legible, extremely restrained supernatural effect. Background a dim window with diffuse dawn grey. Subject fills middle 70 percent; extra breathing room above head and below desk, all focal features safely inside central 80 percent width. No card frame, no text, no symbols, no letters or numbers, no watermark, no potion recipe, no invented initiation ritual, no cosmic throne, no tentacles.",
+    "tool": "image_gen.imagegen (built-in)",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13",
+    "attempt": 1,
+    "attachments": [],
+    "observation": "已观察真实图片：匿名维多利亚人物低头观察悬垂摆锤，面部、双手、纸面清楚，局部动作与光线集中；无文字无边框。当前未研究的六维不能从此图冒充覆盖，人物不是已批准的克莱恩肖像。工具未暴露精确生成时间，created_at 记录实际日期。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T07:41:44.113038+00:00"
+}

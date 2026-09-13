@@ -1,0 +1,31 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/subject-fool-09.json",
+      "sha256": "3200c84a8f3f8690d7c5599bd4f3f66966b54beda4ab8948ac78a1d310a585cd"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-subject/SKILL.md",
+      "sha256": "ea3f7ae75a689d7b8ddc98676e385ee5de70f03ca49491721a8e228dc307a0ec"
+    },
+    {
+      "path": "pathways/fool/sequences/09/card.json",
+      "sha256": "3825369acc775d68857b95cac3911a862cdef42a5edb97b8e73fa155dd1bdba8"
+    }
+  ],
+  "design_fingerprint": "a96a443c73cdafa6b669c46a501af2da552371f36f1255b51871004c08716786",
+  "task_sha256": "3200c84a8f3f8690d7c5599bd4f3f66966b54beda4ab8948ac78a1d310a585cd",
+  "prompt_sha256": "64dbed19678ec98979cffea958994ac129d0247012f3961e91edfce450274bea"
+}

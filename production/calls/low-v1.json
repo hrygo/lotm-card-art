@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: reusable LOW TIER decorative horizontal header lintel for an occult collectible card. Landscape 3:1 composition. A narrow elegantly engraved antique silver architrave, shallow relief, closed symmetrical Art Nouveau geometry with restrained tiny circular joints and tapered silver filigree at the two ends. Center quiet with a small empty oval recess; no glyph in the recess. Cool gunmetal engraving on uniform deep charcoal blue paper. Low-tier intimate handcrafted instrument feeling, no crowns or wings, no people. One isolated horizontal decoration occupying the middle half of the height, edges intact. No text, no letters, no numbers, no insignia, no entire card. Opaque charcoal background.",
+  "tool": "image_gen.imagegen (built-in)",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [],
+  "observation": "已观察真实图片：横向银色闭合雕刻饰条，中央空椭圆，深色不透明背景；没有数字或文字。适合低序列局部头饰，不是透明 PNG。工具未暴露精确生成时间，created_at 记录实际日期。"
+}

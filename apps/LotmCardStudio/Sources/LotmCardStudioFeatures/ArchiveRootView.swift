@@ -46,7 +46,7 @@ public struct ArchiveRootView: View {
                                 systemImage: model.isStoryDrawerPresented ? "book.closed.fill" : "book.closed"
                             )
                         }
-                        .help(model.isStoryDrawerPresented ? "隐藏故事抽屉" : "查看故事抽屉")
+                        .help(model.isStoryDrawerPresented ? "收起故事" : "打开故事")
                     }
                 }
             }
@@ -91,7 +91,7 @@ private struct ArchiveSidebar: View {
             }
             .padding(.bottom, 42)
 
-            Text("ARCHIVE")
+            Text("收藏导航")
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.secondary)
                 .padding(.bottom, 12)
@@ -113,7 +113,7 @@ private struct ArchiveSidebar: View {
                 model.show(.wishlist)
             }
 
-            Text("PATHWAYS")
+            Text(ArchiveCopy.pathways)
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.secondary)
                 .padding(.top, 38)
@@ -121,20 +121,20 @@ private struct ArchiveSidebar: View {
 
             PathwayButton(
                 title: "愚者",
-                detail: "1 confirmed · 1 candidate",
+                detail: ArchiveCopy.pathwaySummary(confirmed: 1, candidate: 1),
                 color: ArchiveTheme.teal,
                 action: { model.clearSelection() }
             )
             PathwayButton(
                 title: "错误",
-                detail: "0 confirmed · 1 draft",
+                detail: "暂未收录",
                 color: ArchiveTheme.violet,
                 isEnabled: false,
                 action: {}
             )
             PathwayButton(
                 title: "门",
-                detail: "coming later",
+                detail: "即将收录",
                 color: ArchiveTheme.amber,
                 isEnabled: false,
                 action: {}
@@ -145,14 +145,14 @@ private struct ArchiveSidebar: View {
                 .frame(height: 1)
                 .padding(.vertical, 30)
 
-            Text("LOCAL LIBRARY")
+            Text(ArchiveCopy.localLibrary)
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.teal)
-            Text("\(model.confirmedCount) confirmed identities")
+            Text("\(model.confirmedCount) 张已确认卡牌")
                 .font(.system(size: 12, weight: .medium, design: .rounded))
                 .foregroundStyle(ArchiveTheme.primary)
                 .padding(.top, 12)
-            Text("snapshot · local only")
+            Text("内容保存在本机")
                 .font(.system(size: 10, weight: .regular, design: .rounded))
                 .foregroundStyle(ArchiveTheme.secondary)
                 .padding(.top, 5)
@@ -162,26 +162,30 @@ private struct ArchiveSidebar: View {
             VStack(alignment: .leading, spacing: 10) {
                 HStack(spacing: 8) {
                     Circle()
-                        .fill(ArchiveTheme.teal)
+                        .fill(ArchiveTheme.Aether.light)
                         .frame(width: 7, height: 7)
-                    Text("内容库已就绪")
+                    Text("画册已准备好")
                         .font(.system(size: 12, weight: .semibold))
-                        .foregroundStyle(ArchiveTheme.primary)
+                        .foregroundStyle(ArchiveTheme.Parchment.primary)
                 }
-                Text("SpeechRail 按需连接")
+                Text("声音会在需要时准备")
                     .font(.system(size: 10, design: .rounded))
-                    .foregroundStyle(ArchiveTheme.secondary)
-                Text("重新导入  ›")
+                    .foregroundStyle(ArchiveTheme.Parchment.secondary)
+                Text("选择一张卡牌开始")
                     .font(.system(size: 11, weight: .semibold))
-                    .foregroundStyle(ArchiveTheme.amber)
+                    .foregroundStyle(ArchiveTheme.Brass.luster)
             }
             .padding(16)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(ArchiveTheme.raised, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .background(ArchiveTheme.Leather.raised, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
+            }
         }
         .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(ArchiveTheme.coal.opacity(0.74))
+        .background(ArchiveTheme.Leather.base.opacity(0.85))
     }
 }
 
@@ -305,7 +309,7 @@ private struct AlbumHomeView: View {
             VStack(alignment: .leading, spacing: 26) {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("ARCHIVE / FOOL PATHWAY")
+                        Text(ArchiveCopy.sectionEyebrow(for: model.activeSection))
                             .font(.system(size: 10, weight: .semibold, design: .rounded))
                             .foregroundStyle(ArchiveTheme.teal)
                         Text(model.activeSection.title)
@@ -316,7 +320,7 @@ private struct AlbumHomeView: View {
                             .foregroundStyle(ArchiveTheme.secondary)
                     }
                     Spacer(minLength: 24)
-                    Label("本机快照", systemImage: "internaldrive")
+                    Label("保存在本机", systemImage: "internaldrive")
                         .font(.system(size: 11, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.teal)
                 }
@@ -336,7 +340,7 @@ private struct AlbumHomeView: View {
                         .fill(ArchiveTheme.teal)
                         .frame(width: 11, height: 11)
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("TODAY'S PULSE")
+                        Text("最近唤醒")
                             .font(.system(size: 10, weight: .semibold, design: .rounded))
                             .foregroundStyle(ArchiveTheme.teal)
                         Text("你上次唤醒了「小丑」")
@@ -355,13 +359,13 @@ private struct AlbumHomeView: View {
                 .glassEffect(.regular.tint(ArchiveTheme.teal.opacity(0.08)), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("RECENTLY DISCOVERED")
+                        Text(ArchiveCopy.recentDiscoveries)
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.amber)
-                    Text("最近发现")
+                    Text(ArchiveCopy.recentDiscoveries)
                         .font(.system(size: 22, weight: .bold))
                         .foregroundStyle(ArchiveTheme.primary)
-                    Text("\(model.visibleCards.count) identities")
+                    Text("\(model.visibleCards.count) 张卡牌")
                         .font(.system(size: 11, design: .rounded))
                         .foregroundStyle(ArchiveTheme.secondary)
                 }
@@ -479,7 +483,7 @@ private struct CardTileView: View {
                 )
                 .padding(12)
                 VStack(alignment: .leading, spacing: 7) {
-                    Text(card.identity.sequenceName.uppercased())
+                    Text(card.identity.sequenceName)
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
                         .foregroundStyle(card.identity.contentStatus.accentColor)
                     Text(card.identity.displayName)
@@ -496,14 +500,18 @@ private struct CardTileView: View {
                 .padding(.bottom, 14)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(ArchiveTheme.raised.opacity(0.48), in: RoundedRectangle(cornerRadius: 17, style: .continuous))
+            .background(ArchiveTheme.Gradients.leatherSurface, in: RoundedRectangle(cornerRadius: 17, style: .continuous))
             .glassEffect(
                 .regular.tint(card.identity.contentStatus.accentColor.opacity(0.10)).interactive(),
                 in: RoundedRectangle(cornerRadius: 17, style: .continuous)
             )
             .overlay {
-                RoundedRectangle(cornerRadius: 17, style: .continuous)
-                    .stroke(card.identity.contentStatus.accentColor.opacity(0.28), lineWidth: 1)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 17, style: .continuous)
+                        .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 17, style: .continuous)
+                        .stroke(card.identity.contentStatus.accentColor.opacity(0.32), lineWidth: 1)
+                }
             }
             .archiveInteractiveSurface(
                 accent: card.identity.contentStatus.accentColor,
@@ -522,22 +530,22 @@ private struct CardTileView: View {
 private struct ArchiveRuleCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("ONE PATHWAY / MANY IDENTITIES")
+            Text("途径与身份")
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.teal)
-            Text("序列是容器，身份才是卡牌。")
+            Text("同一途径可以有多张身份卡。")
                 .font(.system(size: 19, weight: .bold))
                 .foregroundStyle(ArchiveTheme.primary)
-            Text("同一个序列可以有零张、一张或多张身份卡。相同角色的不同身份会在角色族谱中聚合，但仍然各自收藏、各自发声。")
+            Text("同一角色的不同身份会分别收藏，也会分别讲述。")
                 .font(.system(size: 13))
                 .foregroundStyle(ArchiveTheme.secondary)
             Rectangle()
                 .fill(ArchiveTheme.elevated)
                 .frame(height: 1)
-            Text("CARD ID  ·  stable · unique · independent")
+            Text("每张身份卡都独立保存")
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.amber)
-            Text("VOICE  ·  inherited, unless explicitly overridden")
+            Text("同一角色的不同身份也会分别讲述")
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.amber)
         }
@@ -629,22 +637,13 @@ private struct CardMotionViewport: View {
         VStack(spacing: 14) {
             ZStack {
                 RoundedRectangle(cornerRadius: 28, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                ArchiveTheme.coal.opacity(0.92),
-                                ArchiveTheme.ink.opacity(0.96)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(ArchiveTheme.Gradients.grimoireCover)
                 Circle()
-                    .fill(ArchiveTheme.amber.opacity(0.18))
+                    .fill(ArchiveTheme.Brass.luster.opacity(0.22))
                     .frame(width: 260, height: 260)
                     .blur(radius: 48)
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .stroke(ArchiveTheme.amber.opacity(0.22), lineWidth: 1)
+                    .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
                     .padding(24)
                 ArchiveArtworkView(
                     theme: card.visualTheme,
@@ -656,7 +655,7 @@ private struct CardMotionViewport: View {
                     height: CardDetailLayout.cardSize.height
                 )
                 .shadow(
-                    color: ArchiveTheme.ink.opacity(0.48),
+                    color: ArchiveTheme.Leather.void.opacity(0.55),
                     radius: 18,
                     y: 10
                 )
@@ -668,12 +667,12 @@ private struct CardMotionViewport: View {
             .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 28, style: .continuous)
-                    .stroke(ArchiveTheme.elevated.opacity(0.72), lineWidth: 1)
+                    .stroke(ArchiveTheme.Borders.brassAccent, lineWidth: 1)
             }
             .archiveCursor(.arrow)
 
             HStack {
-                Text(card.identity.sequenceName.uppercased())
+                Text(card.identity.sequenceName)
                     .foregroundStyle(ArchiveTheme.amber)
                 Spacer()
                 Text(card.identity.displayName)
@@ -683,7 +682,7 @@ private struct CardMotionViewport: View {
             .frame(width: CardDetailLayout.motionViewportSize.width)
             .archiveCursor(.arrow)
 
-            Text("\(card.subtitle)  ·  2:3  ·  local snapshot")
+            Text(card.subtitle)
                 .font(.system(size: 10, design: .rounded))
                 .foregroundStyle(ArchiveTheme.secondary)
                 .frame(width: CardDetailLayout.motionViewportSize.width, alignment: .leading)
@@ -741,11 +740,11 @@ private struct DetailRail: View {
         }
         .padding(24)
         .frame(maxWidth: .infinity, alignment: .topLeading)
-        .background(ArchiveTheme.raised.opacity(0.46), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-        .glassEffect(.regular.tint(ArchiveTheme.teal.opacity(0.08)), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .background(ArchiveTheme.Leather.raised.opacity(0.48), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .glassEffect(.regular.tint(ArchiveTheme.Aether.light.opacity(0.08)), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .stroke(ArchiveTheme.teal.opacity(0.18), lineWidth: 1)
+                .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
         }
         .frame(
             minWidth: isStacked ? 0 : CardDetailLayout.railMinimumWidth,
@@ -770,18 +769,14 @@ private struct IdentityPanel: View {
     }
 
     private var voiceStatusLabel: String {
-        if card.identity.slotID == "lotm.fool.s00" && hasPlayableGreeting {
-            return "已批准文案 · 本地 WAV 已生成 · uncle_fu"
+        switch voiceAvailability {
+        case .localAudio:
+            return "声音已经准备好"
+        case .speechRail:
+            return "播放时准备声音"
+        case .pending:
+            return "台词确认后可以播放"
         }
-        if card.identity.slotID == "lotm.fool.s00" {
-            return "新音色草稿 · 文案待审批 · 音频未生成"
-        }
-        if card.identity.cardID == "lotm.visionary.s07.audrey-01" && hasPlayableGreeting {
-            return "已批准文案 · 本地 WAV 已生成 · serena"
-        }
-        return card.identity.contentStatus == .confirmed
-            ? "base profile inherited · continuity review pending"
-            : "voice recipe draft · approval pending"
     }
 
     private var voiceStatusColor: Color {
@@ -803,22 +798,22 @@ private struct IdentityPanel: View {
         if card.identity.slotID == "lotm.fool.s00" {
             return [
                 SemanticReadback(index: "01", title: "身份", value: "序列 00 · 愚者 · 真神", color: ArchiveTheme.teal),
-                SemanticReadback(index: "02", title: "扮演", value: "身份错位中保持自我 · 候选", color: ArchiveTheme.amber),
-                SemanticReadback(index: "03", title: "能力", value: "愚弄 / 历史投影 · 片段", color: ArchiveTheme.teal),
-                SemanticReadback(index: "04", title: "魔药", value: "唯一性 + 诡秘侍者特性 · 待核验", color: ArchiveTheme.violet),
-                SemanticReadback(index: "05", title: "晋升", value: "愚弄时间、历史或命运 · 候选", color: ArchiveTheme.amber),
-                SemanticReadback(index: "06", title: "限制", value: "完整限制清单待中文核验", color: ArchiveTheme.danger)
+                SemanticReadback(index: "02", title: "扮演", value: "在不同身份中保持自我", color: ArchiveTheme.amber),
+                SemanticReadback(index: "03", title: "能力", value: "愚弄与历史投影（节选）", color: ArchiveTheme.teal),
+                SemanticReadback(index: "04", title: "魔药", value: "唯一性与诡秘侍者特性（待核对）", color: ArchiveTheme.violet),
+                SemanticReadback(index: "05", title: "晋升", value: "愚弄时间、历史或命运（部分资料）", color: ArchiveTheme.amber),
+                SemanticReadback(index: "06", title: "限制", value: "相关资料仍在整理", color: ArchiveTheme.danger)
             ]
         }
 
         if card.identity.cardID == "lotm.visionary.s07.audrey-01" {
             return [
                 SemanticReadback(index: "01", title: "身份", value: "正义 · 奥黛丽 · 序列 07", color: ArchiveTheme.teal),
-                SemanticReadback(index: "02", title: "扮演", value: "主动应用 · 帮助他人", color: ArchiveTheme.amber),
-                SemanticReadback(index: "03", title: "能力", value: "安抚 / 读心 · 状态转变", color: ArchiveTheme.teal),
+                SemanticReadback(index: "02", title: "扮演", value: "主动观察并帮助他人", color: ArchiveTheme.amber),
+                SemanticReadback(index: "03", title: "能力", value: "安抚心灵、读取情绪", color: ArchiveTheme.teal),
                 SemanticReadback(index: "04", title: "魔药", value: "镜龙材料 · 长者之树果实", color: ArchiveTheme.violet),
-                SemanticReadback(index: "05", title: "晋升", value: "序列7独立仪式 · 本来源未列", color: ArchiveTheme.amber),
-                SemanticReadback(index: "06", title: "限制", value: "失败概率 · 媒介 / 半催眠", color: ArchiveTheme.danger)
+                SemanticReadback(index: "05", title: "晋升", value: "独立仪式（资料待补）", color: ArchiveTheme.amber),
+                SemanticReadback(index: "06", title: "限制", value: "受媒介与半催眠条件影响", color: ArchiveTheme.danger)
             ]
         }
 
@@ -826,9 +821,9 @@ private struct IdentityPanel: View {
             SemanticReadback(index: "01", title: "身份", value: "\(card.identity.sequenceName) · \(card.identity.displayName)", color: ArchiveTheme.teal),
             SemanticReadback(index: "02", title: "扮演", value: "以荒诞掩护真实", color: ArchiveTheme.amber),
             SemanticReadback(index: "03", title: "能力", value: "操纵表情与注意力", color: ArchiveTheme.teal),
-            SemanticReadback(index: "04", title: "魔药", value: "需绑定已核验来源", color: ArchiveTheme.violet),
-            SemanticReadback(index: "05", title: "晋升", value: "批准依赖待复核", color: ArchiveTheme.amber),
-            SemanticReadback(index: "06", title: "限制", value: "语音仅在本机可用时生成", color: ArchiveTheme.danger)
+            SemanticReadback(index: "04", title: "魔药", value: "相关材料待确认", color: ArchiveTheme.violet),
+            SemanticReadback(index: "05", title: "晋升", value: "晋升条件待复核", color: ArchiveTheme.amber),
+            SemanticReadback(index: "06", title: "限制", value: "声音需要在本机准备", color: ArchiveTheme.danger)
         ]
     }
 
@@ -836,7 +831,7 @@ private struct IdentityPanel: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 7) {
-                    Text("IDENTITY PANEL")
+                    Text(ArchiveCopy.identityInfo)
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.teal)
                     Text(card.identity.displayName)
@@ -852,20 +847,22 @@ private struct IdentityPanel: View {
 
             PanelDivider()
 
-            Text("CHARACTER FAMILY")
+            Text(ArchiveCopy.characterRelation)
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.secondary)
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(card.identity.characterID.map { $0.uppercased() } ?? "ARCHETYPE")
+                    Text(ArchiveCopy.characterName(for: card.identity.characterID))
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.primary)
-                    Text("角色族谱只用于聚合浏览，身份卡仍独立收藏。")
+                    Text("同一角色的不同身份会分别保存。")
                         .font(.system(size: 11))
                         .foregroundStyle(ArchiveTheme.secondary)
                 }
                 Spacer()
-                Text(card.identity.characterID == nil ? "—" : "\(model.characterCardCount(for: card.identity.characterID)) CARDS")
+                Text(card.identity.characterID == nil
+                    ? "途径原型"
+                    : "\(model.characterCardCount(for: card.identity.characterID)) 张身份卡")
                     .font(.system(size: 10, weight: .semibold, design: .rounded))
                     .foregroundStyle(ArchiveTheme.teal)
             }
@@ -875,10 +872,10 @@ private struct IdentityPanel: View {
 
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("VOICE / SPEECHRAIL")
+                    Text(ArchiveCopy.voice)
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.secondary)
-                    Text(card.narrative?.voiceProfileID ?? "暂无音色绑定")
+                    Text(ArchiveCopy.voiceTitle(for: card.identity))
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.primary)
                     Text(voiceStatusLabel)
@@ -904,7 +901,7 @@ private struct IdentityPanel: View {
                     Button {
                         playback.awaken(card: card)
                     } label: {
-                        Label("唤醒卡牌", systemImage: "waveform")
+                        Label("播放声音", systemImage: "waveform")
                     }
                     .buttonStyle(PrimaryButtonStyle())
                     .disabled(!hasPlayableGreeting)
@@ -941,7 +938,7 @@ private struct IdentityPanel: View {
 
             PanelDivider()
 
-            Text("SEMANTIC READBACK")
+                Text(ArchiveCopy.semanticReadback)
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.secondary)
                 .padding(.bottom, 14)
@@ -1138,7 +1135,7 @@ private struct LiveCaptionRail: View {
         default:
             prefix = "正在讲述"
         }
-        return "\(prefix) · \(caption.kind.captionDisplayName)"
+        return "\(prefix)：\(caption.kind.captionDisplayName)"
     }
 
     private var statusLabel: String {
@@ -1186,7 +1183,7 @@ private struct LiveCaptionRail: View {
                         if storyDrawerPresented {
                             Text("故事全文已展开")
                         } else {
-                            Text("故事全文在故事抽屉中")
+                            Text("打开故事查看全文")
                             Button("打开") {
                                 onOpenStory()
                             }
@@ -1267,18 +1264,18 @@ private struct StoryDrawer: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("STORY DRAWER  /  CHAPTER 01")
+                    Text(ArchiveCopy.story)
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.teal)
-                    Text("\(card.identity.displayName)的序列")
+                    Text("\(card.identity.displayName)的故事")
                         .font(.system(size: 20, weight: .bold))
                         .foregroundStyle(ArchiveTheme.primary)
-                    Text(hasPlayableChapter ? "第三人称档案叙述  ·  人工确认  ·  interpretation" : "第三人称档案叙述  ·  候选稿  ·  interpretation")
+                    Text(hasPlayableChapter ? "第三人称故事 · 可以朗读" : "第三人称故事 · 等待确认")
                         .font(.system(size: 11))
                         .foregroundStyle(ArchiveTheme.secondary)
                 }
                 Spacer()
-                Text(drawerPlaybackLabel.uppercased())
+                Text(drawerPlaybackLabel)
                     .font(.system(size: 10, weight: .semibold, design: .rounded))
                     .foregroundStyle(selectedChapterIsCurrent ? ArchiveTheme.teal : ArchiveTheme.secondary)
             }
@@ -1298,11 +1295,11 @@ private struct StoryDrawer: View {
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.teal)
                     }
-                    Text(selectedChapter?.line.text ?? "暂无故事草稿")
+                    Text(selectedChapter?.line.text ?? "暂时没有故事")
                         .font(.system(size: 17))
                         .foregroundStyle(ArchiveTheme.primary)
                         .fixedSize(horizontal: false, vertical: true)
-                    Text(selectedChapterIsPlayable ? "文字稿已确认；音频失败不会阻塞故事阅读。" : "候选文字稿可阅读；人工批准后才会进入声音播放。")
+                    Text(selectedChapterIsPlayable ? "声音暂时不可用时，仍可阅读故事。" : "这段故事还在确认中，目前只能阅读。")
                         .font(.system(size: 11))
                         .foregroundStyle(selectedChapterIsPlayable ? ArchiveTheme.secondary : ArchiveTheme.amber)
                 }
@@ -1333,13 +1330,13 @@ private struct StoryDrawer: View {
                                     : selectedChapterIsCurrent && playback.state == .paused
                                         ? "继续故事"
                                         : "播放故事")
-                                : "故事未获批准"
+                                : "故事还在确认中"
                         )
                         .accessibilityValue(selectedChapterIsCurrent ? playback.state.captionStatusLabel : "未播放当前章节")
                         .accessibilityHint(
                             selectedChapterIsPlayable
                                 ? "播放当前章节"
-                                : "当前章节只能阅读文字稿，人工批准后才可播放"
+                                : "当前章节只能阅读文字，确认后才可朗读"
                         )
                         Button {
                             playback.replay()
@@ -1349,7 +1346,7 @@ private struct StoryDrawer: View {
                         .buttonStyle(IconButtonStyle())
                         .disabled(!selectedChapterIsPlayable || !selectedChapterIsCurrent)
                         .accessibilityLabel("重播当前章节")
-                        .accessibilityHint("从头播放当前已批准章节")
+                        .accessibilityHint("从头朗读当前章节")
                         Button {
                             playback.stop()
                         } label: {
@@ -1359,7 +1356,7 @@ private struct StoryDrawer: View {
                         .accessibilityLabel("停止播放")
                         .accessibilityHint("停止当前故事音频")
                     }
-                    Text("CHAPTERS")
+                    Text(ArchiveCopy.chapters)
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.secondary)
                     ForEach(chapters) { chapter in
@@ -1372,7 +1369,7 @@ private struct StoryDrawer: View {
                             HStack(spacing: 8) {
                                 Text(chapter.title)
                                 Spacer(minLength: 8)
-                                Text(chapter.line.isPlayable ? "可播放" : "草稿")
+                                Text(chapter.line.isPlayable ? "可朗读" : "待确认")
                                     .font(.system(size: 9, weight: .semibold, design: .rounded))
                                     .foregroundStyle(chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.amber)
                             }
@@ -1387,11 +1384,11 @@ private struct StoryDrawer: View {
                         .buttonStyle(.plain)
                         .accessibilityElement(children: .ignore)
                         .accessibilityLabel(chapter.title)
-                        .accessibilityValue(chapter.line.isPlayable ? "可播放" : "草稿")
+                        .accessibilityValue(chapter.line.isPlayable ? "可朗读" : "待确认")
                         .accessibilityHint(
                             chapter.line.isPlayable
                                 ? "选择并播放该章节"
-                                : "可阅读文字稿，但尚未批准播放"
+                                : "可阅读文字，但还未确认朗读"
                         )
                     }
                     if chapters.isEmpty {
@@ -1399,7 +1396,7 @@ private struct StoryDrawer: View {
                             .font(.system(size: 10))
                             .foregroundStyle(ArchiveTheme.amber)
                     } else if !hasPlayableChapter {
-                        Text("候选稿可阅读；人工批准后进入播放列表")
+                        Text("故事仍在整理，确认后可以朗读")
                             .font(.system(size: 10))
                             .foregroundStyle(ArchiveTheme.amber)
                     }
@@ -1409,9 +1406,6 @@ private struct StoryDrawer: View {
                 .background(ArchiveTheme.raised, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
 
-        Text("SOURCE SNAPSHOT  ·  content hash matched  ·  voice recipe v0.2")
-            .font(.system(size: 10, weight: .medium, design: .rounded))
-            .foregroundStyle(ArchiveTheme.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)
     }
@@ -1423,15 +1417,19 @@ private struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.system(size: 12, weight: .semibold))
-            .foregroundStyle(ArchiveTheme.ink)
+            .foregroundStyle(ArchiveTheme.Leather.void)
             .padding(.horizontal, 16)
             .frame(height: 40)
             .glassEffect(
-                .regular.tint(ArchiveTheme.amber).interactive(),
+                .regular.tint(ArchiveTheme.Brass.luster).interactive(),
                 in: RoundedRectangle(cornerRadius: 12, style: .continuous)
             )
+            .overlay {
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(ArchiveTheme.Brass.gleam.opacity(0.50), lineWidth: 1)
+            }
             .archiveInteractiveSurface(
-                accent: ArchiveTheme.amber,
+                accent: ArchiveTheme.Brass.luster,
                 cornerRadius: 12,
                 isInteractive: isEnabled
             )
@@ -1445,15 +1443,19 @@ private struct SecondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.system(size: 12, weight: .semibold))
-            .foregroundStyle(ArchiveTheme.primary)
+            .foregroundStyle(ArchiveTheme.Parchment.primary)
             .padding(.horizontal, 16)
             .frame(height: 40)
             .glassEffect(
-                .regular.tint(ArchiveTheme.teal.opacity(0.12)).interactive(),
+                .regular.tint(ArchiveTheme.Aether.light.opacity(0.12)).interactive(),
                 in: RoundedRectangle(cornerRadius: 12, style: .continuous)
             )
+            .overlay {
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
+            }
             .archiveInteractiveSurface(
-                accent: ArchiveTheme.teal,
+                accent: ArchiveTheme.Aether.light,
                 cornerRadius: 12,
                 isInteractive: isEnabled
             )
@@ -1467,14 +1469,18 @@ private struct IconButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.system(size: 14, weight: .medium))
-            .foregroundStyle(ArchiveTheme.primary)
+            .foregroundStyle(ArchiveTheme.Parchment.primary)
             .frame(width: 36, height: 36)
             .glassEffect(
-                .regular.tint(ArchiveTheme.elevated.opacity(0.32)).interactive(),
+                .regular.tint(ArchiveTheme.Leather.elevated.opacity(0.36)).interactive(),
                 in: RoundedRectangle(cornerRadius: 10, style: .continuous)
             )
+            .overlay {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
+            }
             .archiveInteractiveSurface(
-                accent: ArchiveTheme.teal,
+                accent: ArchiveTheme.Brass.core,
                 cornerRadius: 10,
                 isInteractive: isEnabled
             )

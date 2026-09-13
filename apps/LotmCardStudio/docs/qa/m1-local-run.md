@@ -118,3 +118,15 @@ OK
 - 自动化：swift test 48/48 通过；仓库级 python3 -m unittest discover -s tests -v 55/55 通过；debug/release 构建退出码均为 0。
 - 安装验证：release 已覆盖安装至 /Applications/LotmCardStudio.app；codesign --verify --deep --strict 通过，主程序为 arm64，LSMinimumSystemVersion=26.0。
 - 为解除当前工作区的 Swift 6 构建阻断，SpeechRailConfigurationFile 的默认参数从 Self.defaultFileURL 改为明确类型名；相关文件测试已纳入本轮 48 项 Swift 回归。
+
+## 用户文案展示层清理验收
+
+- 2026-09-13：完成主画册、侧栏、卡牌列表、详情页、故事页、播放状态、错误提示和设置页的用户文案审查。
+- 移除用户界面的流水线标签、原始 voice ID、`fixture`、`snapshot`、`recipe`、`hash`、`interpretation`、`2:3` 等内部表达；底层 card ID、审批状态、音频资源名仍保留在模型层供程序使用，不再直接渲染。
+- 卡牌副标题改为角色与故事导向的自然中文；声音状态改为“可以播放 / 可生成声音 / 等待确认”；故事章节改为“可朗读 / 待确认”。
+- 详情页将 `IDENTITY PANEL`、`CHARACTER FAMILY`、`VOICE / SPEECHRAIL`、`SEMANTIC READBACK` 等实现或流程标签替换为“身份信息 / 角色关联 / 声音 / 六维信息”，不显示 `uncle_fu`、`serena` 等原始音色 ID。
+- 语音设置保留必要的服务密钥和高级保存位置，但主画册不再暴露服务名称、文件路径或配置实现细节。
+- 新增回归测试：Demo 卡牌副标题不得包含流水线术语；内部角色和音色 ID必须映射为用户可读名称；播放和设置错误提示不显示 API key、HTTP、认证实现等内部表达。
+- 当前 Swift 全套测试：54/54 通过；仓库级 `python3 -m unittest discover -s tests -v`：55/55 通过。
+- 当前 Debug/Release 构建均退出码 0；Release 已覆盖安装至 `/Applications/LotmCardStudio.app`，签名校验通过，主程序为 arm64，`LSMinimumSystemVersion=26.0`。
+- CUA 已验收画册首页、愚者详情、愚者故事页和奥黛丽详情；可见文本均为自然中文，未发现脚本语言泄露或原始内部标识。

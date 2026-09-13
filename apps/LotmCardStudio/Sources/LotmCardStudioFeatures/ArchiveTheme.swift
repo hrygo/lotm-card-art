@@ -2,19 +2,134 @@ import AppKit
 import SwiftUI
 import LotmCardStudioCore
 
+/// 《诡秘之主》秘史档案馆设计 Token 系统
+///
+/// 基于 App Logo（典藏原版 · 方案 B-1 复古牛皮与温润黄铜）提取的高精度色谱与质感构建。
+/// 架构包含：Primitives（原始色谱）、Semantic Roles（语义角色）、Materials & Gradients（材质光影）。
 enum ArchiveTheme {
-    static let ink = Color(red: 0.035, green: 0.047, blue: 0.075)
-    static let coal = Color(red: 0.055, green: 0.071, blue: 0.11)
-    static let raised = Color(red: 0.09, green: 0.11, blue: 0.16)
-    static let elevated = Color(red: 0.13, green: 0.15, blue: 0.21)
-    static let primary = Color(red: 0.93, green: 0.92, blue: 0.88)
-    static let secondary = Color(red: 0.60, green: 0.63, blue: 0.69)
-    static let amber = Color(red: 0.89, green: 0.69, blue: 0.39)
-    static let teal = Color(red: 0.39, green: 0.85, blue: 0.77)
-    static let violet = Color(red: 0.56, green: 0.47, blue: 0.84)
-    static let ice = Color(red: 0.56, green: 0.73, blue: 0.86)
-    static let danger = Color(red: 0.88, green: 0.42, blue: 0.41)
+
+    // MARK: - 1. Primitives (Logo 实测聚类原始色谱)
+
+    /// 复古牛皮系列（Vintage Leather）
+    enum Leather {
+        /// 深邃星界虚空底盘 (#04080D) - 极暗沉浸
+        static let void = Color(red: 0.016, green: 0.031, blue: 0.051)
+        /// 鞣制古籍牛皮原色 (#1A181A) - 典籍封面基底
+        static let deep = Color(red: 0.102, green: 0.094, blue: 0.102)
+        /// 古籍封面本体牛皮 (#1F1D1E) - 侧栏与基底表面
+        static let base = Color(red: 0.122, green: 0.114, blue: 0.118)
+        /// 皮革凸棱骨架 (#2E2C2D) - 结构抬升与卡片底板
+        static let raised = Color(red: 0.180, green: 0.173, blue: 0.176)
+        /// 卡槽下沉与压印阴影 (#474441) - 分割线与浮雕深色
+        static let elevated = Color(red: 0.278, green: 0.267, blue: 0.255)
+        /// 皮革磨损泛光边 (#615C57) - 微弱暖灰高光
+        static let highlight = Color(red: 0.380, green: 0.360, blue: 0.340)
+    }
+
+    /// 古典洛可可温润黄铜系列 (Antique Brass & Gold)
+    enum Brass {
+        /// 氧化暗铜包浆 (#6E6458) - 辅助弱化金属边
+        static let patina = Color(red: 0.431, green: 0.392, blue: 0.345)
+        /// 温润黄铜五金本体 (#A49274) - 锁扣与包角主体
+        static let core = Color(red: 0.643, green: 0.573, blue: 0.455)
+        /// 金属浮雕中调光 (#D1BF99) - 纹饰高光过渡
+        static let gleam = Color(red: 0.820, green: 0.749, blue: 0.600)
+        /// 洛可可黄铜高光与琥珀神辉 (#E8D2A1) - 核心金属反光与圣杯金
+        static let luster = Color(red: 0.910, green: 0.824, blue: 0.631)
+    }
+
+    /// 序列灵界以太系列 (Ethereal Aether & Teal)
+    enum Aether {
+        /// 深层以太暗流
+        static let deep = Color(red: 0.12, green: 0.25, blue: 0.24)
+        /// 灵流主色
+        static let core = Color(red: 0.30, green: 0.68, blue: 0.63)
+        /// Logo 中央卡牌灵性幽碧流光 (#A2D7CE)
+        static let light = Color(red: 0.635, green: 0.843, blue: 0.808)
+    }
+
+    /// 古典羊皮纸文字系列 (Parchment Typography)
+    enum Parchment {
+        /// 暖色羊皮纸高亮正文 (#F2EFE9) - 具备羊皮纸温润感，替代冷白
+        static let primary = Color(red: 0.949, green: 0.937, blue: 0.914)
+        /// 典籍墨水中调说明字 (#A39E93) - 次级信息
+        static let secondary = Color(red: 0.639, green: 0.620, blue: 0.576)
+        /// 暗金沉淀辅助弱化字 (#6E6458) - 脚注与元信息
+        static let muted = Color(red: 0.431, green: 0.392, blue: 0.345)
+    }
+
+    /// 神秘学状态与仪式系列 (Mystic States)
+    enum Mystic {
+        /// 占卜秘祈紫 (#8570C2) - 候选状态与神秘学事件
+        static let violet = Color(red: 0.52, green: 0.44, blue: 0.76)
+        /// 窥秘冰蓝 (#85AED1) - 聚焦高亮与空想家冷理智
+        static let ice = Color(red: 0.52, green: 0.68, blue: 0.82)
+        /// 血月警戒红 (#D95454) - 失控、危险与限制条件
+        static let crimson = Color(red: 0.85, green: 0.33, blue: 0.33)
+    }
+
+    // MARK: - 2. Semantic Aliases (完全向下兼容既有调用)
+
+    static let ink = Leather.void
+    static let coal = Leather.deep
+    static let raised = Leather.raised
+    static let elevated = Leather.elevated
+    static let primary = Parchment.primary
+    static let secondary = Parchment.secondary
+    static let amber = Brass.luster
+    static let teal = Aether.light
+    static let violet = Mystic.violet
+    static let ice = Mystic.ice
+    static let danger = Mystic.crimson
+
+    // MARK: - 3. Gradients (古典魔典与黄铜光泽材质)
+
+    enum Gradients {
+        /// 古籍封皮深色渐变（从深皮过渡至暗渊星底）
+        static let grimoireCover = LinearGradient(
+            colors: [Leather.deep, Leather.void],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+
+        /// 卡片与面板真皮微光渐变
+        static let leatherSurface = LinearGradient(
+            colors: [Leather.raised.opacity(0.85), Leather.deep.opacity(0.95)],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+
+        /// 洛可可黄铜拉丝反光渐变
+        static let brassGleam = LinearGradient(
+            colors: [Brass.patina, Brass.luster, Brass.core],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+
+        /// 双色神圣灵界光流（金光与青碧交织，对应 Logo 卡牌）
+        static let divineGaze = RadialGradient(
+            colors: [Brass.luster.opacity(0.38), Aether.light.opacity(0.16), .clear],
+            center: .center,
+            startRadius: 4,
+            endRadius: 280
+        )
+    }
+
+    // MARK: - 4. Borders & Lines (边框与分割线)
+
+    enum Borders {
+        /// 皮革与金属交界微弱边框
+        static let subtle = Leather.elevated.opacity(0.65)
+        /// 暗铜包浆线框
+        static let brassMuted = Brass.patina.opacity(0.50)
+        /// 洛可可黄铜高光金边
+        static let brassAccent = Brass.luster.opacity(0.40)
+        /// 灵性幽碧流光边框
+        static let aetherGlow = Aether.light.opacity(0.45)
+    }
 }
+
+// MARK: - ContentStatus 语义与色彩映射
 
 extension ContentStatus {
     var displayTitle: String {
@@ -33,16 +148,18 @@ extension ContentStatus {
     var accentColor: Color {
         switch self {
         case .unfilled:
-            return ArchiveTheme.amber
+            return ArchiveTheme.Brass.core
         case .proposed:
-            return ArchiveTheme.violet
+            return ArchiveTheme.Mystic.violet
         case .unresearched:
-            return ArchiveTheme.amber
+            return ArchiveTheme.Brass.luster
         case .confirmed:
-            return ArchiveTheme.teal
+            return ArchiveTheme.Aether.light
         }
     }
 }
+
+// MARK: - StatusChip (状态胶囊标签)
 
 struct StatusChip: View {
     let status: ContentStatus
@@ -59,13 +176,19 @@ struct StatusChip: View {
         .padding(.horizontal, 10)
         .padding(.vertical, 6)
         .glassEffect(
-            .regular.tint(status.accentColor.opacity(0.13)),
+            .regular.tint(status.accentColor.opacity(0.14)),
             in: Capsule()
         )
+        .overlay {
+            Capsule()
+                .stroke(status.accentColor.opacity(0.28), lineWidth: 1)
+        }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("内容状态：\(status.displayTitle)")
     }
 }
+
+// MARK: - ArchiveArtworkView (卡面与视觉展示)
 
 struct ArchiveArtworkView: View {
     let theme: VisualTheme
@@ -76,20 +199,14 @@ struct ArchiveArtworkView: View {
         GeometryReader { proxy in
             let size = min(proxy.size.width, proxy.size.height)
             let glowColor = theme == .violet
-                ? ArchiveTheme.violet
-                : (theme == .visionary ? ArchiveTheme.ice : ArchiveTheme.teal)
+                ? ArchiveTheme.Mystic.violet
+                : (theme == .visionary ? ArchiveTheme.Mystic.ice : ArchiveTheme.Aether.light)
             ZStack {
                 RoundedRectangle(cornerRadius: compact ? 16 : 24, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [ArchiveTheme.coal, ArchiveTheme.ink],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(ArchiveTheme.Gradients.grimoireCover)
 
                 Circle()
-                    .fill(glowColor.opacity(0.48))
+                    .fill(glowColor.opacity(0.42))
                     .frame(width: size * 0.62, height: size * 0.62)
                     .blur(radius: compact ? 24 : 44)
 
@@ -99,28 +216,28 @@ struct ArchiveArtworkView: View {
                     DivineFoolArtworkView(compact: compact)
                 } else if theme == .empty {
                     Circle()
-                        .stroke(ArchiveTheme.amber.opacity(0.65), lineWidth: 1)
+                        .stroke(ArchiveTheme.Brass.core.opacity(0.65), lineWidth: 1)
                         .frame(width: size * 0.52, height: size * 0.52)
                     Text("+")
                         .font(.system(size: compact ? 28 : 46, weight: .light, design: .rounded))
-                        .foregroundStyle(ArchiveTheme.amber)
+                        .foregroundStyle(ArchiveTheme.Brass.luster)
                 } else {
                     Circle()
-                        .stroke(ArchiveTheme.amber.opacity(0.62), lineWidth: 1)
+                        .stroke(ArchiveTheme.Brass.core.opacity(0.62), lineWidth: 1)
                         .frame(width: size * 0.60, height: size * 0.48)
 
                     Circle()
-                        .fill(ArchiveTheme.amber.opacity(0.88))
+                        .fill(ArchiveTheme.Brass.luster.opacity(0.88))
                         .frame(width: size * (compact ? 0.16 : 0.24))
                         .blur(radius: compact ? 8 : 14)
 
                     Text(theme == .violet ? "◌" : "✦")
                         .font(.system(size: compact ? 25 : 42, weight: .regular, design: .serif))
-                        .foregroundStyle(ArchiveTheme.primary)
+                        .foregroundStyle(ArchiveTheme.Parchment.primary)
 
                     ForEach(0..<8, id: \.self) { index in
                         Rectangle()
-                            .fill(index.isMultiple(of: 2) ? ArchiveTheme.amber : ArchiveTheme.teal)
+                            .fill(index.isMultiple(of: 2) ? ArchiveTheme.Brass.luster : ArchiveTheme.Aether.light)
                             .frame(width: 2, height: compact ? 16 : 30)
                             .offset(y: -(size * 0.34))
                             .rotationEffect(.degrees(Double(index) * 45))
@@ -175,36 +292,37 @@ private struct DivineFoolArtworkView: View {
             ZStack {
                 LinearGradient(
                     colors: [
-                        Color(red: 0.08, green: 0.05, blue: 0.12),
-                        ArchiveTheme.ink,
-                        Color(red: 0.05, green: 0.09, blue: 0.15)
+                        Color(red: 0.08, green: 0.06, blue: 0.11),
+                        ArchiveTheme.Leather.void,
+                        Color(red: 0.04, green: 0.08, blue: 0.13)
                     ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
 
+                // 琥珀神辉光晕 (对应 Logo 左侧金色灵流)
                 RadialGradient(
-                    colors: [ArchiveTheme.amber.opacity(0.34), .clear],
+                    colors: [ArchiveTheme.Brass.luster.opacity(0.36), .clear],
                     center: .init(x: 0.24, y: 0.39),
                     startRadius: 2,
                     endRadius: width * 0.52
                 )
 
+                // 灵界幽碧微光 (对应 Logo 右侧青碧灵流)
                 RadialGradient(
-                    colors: [Color.white.opacity(0.22), .clear],
+                    colors: [ArchiveTheme.Aether.light.opacity(0.24), .clear],
                     center: .init(x: 0.82, y: 0.62),
                     startRadius: 2,
                     endRadius: width * 0.62
                 )
 
-                // The divine realm is represented as a self-completing field of
-                // recursive corridors rather than a humanoid subject.
+                // 神秘学递归法阵回廊
                 ForEach(0..<6, id: \.self) { index in
                     RoundedRectangle(cornerRadius: width * 0.025, style: .continuous)
                         .stroke(
                             index.isMultiple(of: 2)
-                                ? ArchiveTheme.amber.opacity(0.32)
-                                : Color.white.opacity(0.16),
+                                ? ArchiveTheme.Brass.luster.opacity(0.34)
+                                : Color.white.opacity(0.18),
                             lineWidth: lineWidth
                         )
                         .frame(
@@ -216,9 +334,9 @@ private struct DivineFoolArtworkView: View {
                         .blur(radius: index > 3 ? 0.4 : 0)
                 }
 
-                // A star and its orbit are grafted into the history seam.
+                // 历史缝隙中的星辰轨迹
                 Circle()
-                    .stroke(ArchiveTheme.amber.opacity(0.58), lineWidth: lineWidth)
+                    .stroke(ArchiveTheme.Brass.luster.opacity(0.58), lineWidth: lineWidth)
                     .frame(width: width * 0.24, height: width * 0.24)
                     .overlay {
                         Circle()
@@ -228,7 +346,7 @@ private struct DivineFoolArtworkView: View {
                     .overlay {
                         Image(systemName: "sparkle")
                             .font(.system(size: compact ? 14 : 23, weight: .light))
-                            .foregroundStyle(ArchiveTheme.amber)
+                            .foregroundStyle(ArchiveTheme.Brass.luster)
                     }
                     .rotationEffect(.degrees(-18))
                     .offset(x: -width * 0.21, y: -height * 0.18)
@@ -237,7 +355,7 @@ private struct DivineFoolArtworkView: View {
                     Ellipse()
                         .stroke(
                             index == 1
-                                ? ArchiveTheme.amber.opacity(0.68)
+                                ? ArchiveTheme.Brass.luster.opacity(0.68)
                                 : Color.white.opacity(0.18),
                             lineWidth: lineWidth
                         )
@@ -246,20 +364,19 @@ private struct DivineFoolArtworkView: View {
                         .offset(x: -width * 0.12, y: -height * 0.17)
                 }
 
-                // One small, faceless identity residue establishes scale without
-                // turning the True God into a character portrait.
+                // 比例尺度锚点
                 VStack(spacing: -1) {
                     Circle()
-                        .fill(Color.black.opacity(0.82))
+                        .fill(Color.black.opacity(0.85))
                         .frame(width: width * 0.026, height: width * 0.026)
                     Capsule()
-                        .fill(Color.black.opacity(0.76))
+                        .fill(Color.black.opacity(0.80))
                         .frame(width: width * 0.032, height: height * 0.080)
                 }
-                .shadow(color: ArchiveTheme.amber.opacity(0.40), radius: compact ? 4 : 8)
+                .shadow(color: ArchiveTheme.Brass.luster.opacity(0.42), radius: compact ? 4 : 8)
                 .offset(x: width * 0.11, y: height * 0.13)
 
-                // History folds into one seam, then stops at a dark discontinuity.
+                // 命运波折线
                 Path { path in
                     path.move(to: CGPoint(x: width * 0.61, y: -height * 0.04))
                     path.addCurve(
@@ -273,24 +390,26 @@ private struct DivineFoolArtworkView: View {
                         control2: CGPoint(x: width * 0.72, y: height * 0.75)
                     )
                 }
-                .stroke(ArchiveTheme.amber, style: StrokeStyle(lineWidth: compact ? 2 : 3, lineCap: .round))
-                .shadow(color: ArchiveTheme.amber.opacity(0.72), radius: compact ? 4 : 10)
+                .stroke(ArchiveTheme.Brass.luster, style: StrokeStyle(lineWidth: compact ? 2 : 3, lineCap: .round))
+                .shadow(color: ArchiveTheme.Brass.luster.opacity(0.72), radius: compact ? 4 : 10)
 
                 Capsule()
-                    .fill(ArchiveTheme.ink)
+                    .fill(ArchiveTheme.Leather.void)
                     .frame(width: width * 0.12, height: height * 0.055)
                     .overlay {
                         Capsule()
-                            .stroke(ArchiveTheme.amber.opacity(0.50), style: StrokeStyle(lineWidth: lineWidth, dash: [3, 4]))
+                            .stroke(ArchiveTheme.Brass.luster.opacity(0.50), style: StrokeStyle(lineWidth: lineWidth, dash: [3, 4]))
                     }
                     .offset(x: width * 0.02, y: height * 0.81)
 
                 RoundedRectangle(cornerRadius: compact ? 16 : 24, style: .continuous)
-                    .stroke(ArchiveTheme.amber.opacity(0.58), lineWidth: lineWidth)
+                    .stroke(ArchiveTheme.Brass.luster.opacity(0.58), lineWidth: lineWidth)
             }
         }
     }
 }
+
+// MARK: - MetricTile (度量指标磁贴)
 
 struct MetricTile: View {
     let title: String
@@ -301,7 +420,7 @@ struct MetricTile: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
                 .font(.system(size: 11, weight: .semibold, design: .rounded))
-                .foregroundStyle(ArchiveTheme.secondary)
+                .foregroundStyle(ArchiveTheme.Parchment.secondary)
             Text(value)
                 .font(.system(size: 27, weight: .bold, design: .rounded))
                 .foregroundStyle(color)

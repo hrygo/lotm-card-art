@@ -23,6 +23,10 @@
     "path": "production/symbols/fool-kit-matte.json",
     "sha256": "b3d0519d04ca2fed036a2e7d2b39c1b9a2ae4c62752cdfc5bd1b8a0ee9bb0daa"
   },
+  "recipe": {
+    "path": "production/symbols/recipes/fool-five-tier-materials.json",
+    "sha256": "6fd1905b8d5541044f5bdab8be883d1821d2c837223f27981707b8b649a5c8c7"
+  },
   "sequence_mapping": {
     "low": [9, 8],
     "mid": [7, 6, 5],

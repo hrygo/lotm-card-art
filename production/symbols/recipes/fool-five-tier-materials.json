@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "id": "fool-five-tier-materials",
+  "pathway_id": "fool",
+  "status": "active-deterministic-material-recipe",
+  "source_direction": "production/symbols/quality-frame-five-tier-direction.json",
+  "geometry_id": "fool-quality-frame-locked-master-v1",
+  "material_model": {
+    "primary_source": "config/quality-color-tokens.json",
+    "primary_targets": ["frame_texture", "existing_pathway_recess", "quality_marker_diamond"],
+    "hue_drift_source": "config/quality-color-tokens.json#/application/hue_drift",
+    "gem_luminance_source": "config/quality-color-tokens.json#/application/gem_luminance",
+    "rule": "锚色负责层级识别；明暗、冷暖、凹凸反射与内部折射形成层次；不得全图平涂、彩虹噪声或用光晕遮蔽结构。"
+  },
+  "geometry": {
+    "master_source": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+    "native_size": [1024, 1536],
+    "final_size": [2048, 3072],
+    "design_rect": [0, 0, 1000, 1500],
+    "emblem_center_design": [500, 230],
+    "emblem_visible_height_ratio": 0.15,
+    "placement": "uniform-scale-visible-ink-per-emblem-bbox",
+    "max_anchor_drift_px": 0,
+    "max_geometry_drift_px": 0,
+    "allow_per_tier_anchor_offsets": false,
+    "nameplate_and_top_opening": "frozen-from-master"
+  },
+  "tier_sequence_mapping": {
+    "low": [9, 8],
+    "mid": [7, 6, 5],
+    "saint": [4, 3],
+    "angel": [2, 1],
+    "true-god": [0]
+  },
+  "output_contract": {
+    "frame_names": ["frame-low.png", "frame-mid.png", "frame-saint.png", "frame-angel.png", "frame-true-god.png"],
+    "emblem_name_pattern": "emblem-{digit}.png",
+    "sequence_name_pattern": "fool-{digit}-frame.png",
+    "required_diagnostics": ["contact-sheet.png", "five-tiers.png", "emblems-white.png", "emblems-dark.png", "manifest.json"],
+    "no_legacy_four_frame_atlas": true
+  },
+  "release_approved": false
+}

@@ -29,4 +29,4 @@ compile→读prompt→真实附件→内置image_gen→看图→call→ingest；
 
 旧foolkit是四档硬编码，仅作历史审计；新活动资产必须使用独立的五档版本化套件，不能将旧all输出改名视作五档完成。本轮愚者任务固定验证低/神跨度、圣者/天使区分、十枚已批准融合圣徽和零漂移，再进入可视材料研究与合成；不以旧四档结果回填任何五档交付。
 
-当前任务 schema 接受 saint/angel，并强制它们携带匹配的 quality 输入；新五档任务不得用 high 代替。旧 high 只用于历史四档任务兼容。编译/登记支持不等于 compose/foolkit 渲染支持；五档装配在渲染接入前保持未完成，不静默合并交付。
+当前任务 schema 接受 saint/angel，并强制它们携带匹配的 quality 输入；新五档任务不得用 high 代替。旧 high 只用于历史四档任务兼容。活动五档装配统一走版本化 `tools/render/foolkit5.swift`，其 manifest/gate 负责摘要、alpha、几何和逐枚定位；旧 `compose/foolkit` 不得作为新五档入口。

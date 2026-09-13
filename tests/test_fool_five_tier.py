@@ -2,7 +2,10 @@
 
 import json
 from pathlib import Path
+import shutil
+import subprocess
 import sys
+import tempfile
 import unittest
 
 
@@ -86,6 +89,101 @@ class FoolFiveTierContractTests(unittest.TestCase):
             self.assertEqual(task["quality"], {"sequence": sequence, "visual_tier": tier})
             self.assertEqual(task["spec"]["tier"], tier)
             production_contracts.validate_task(ROOT, task)
+
+    @unittest.skipUnless(
+        sys.platform == "darwin" and shutil.which("swiftc"),
+        "five-tier native renderer requires macOS/Swift",
+    )
+    def test_native_renderer_selftest_reports_five_tier_safety_markers(self):
+        with tempfile.TemporaryDirectory(prefix="fool-five-tier-bin-") as directory:
+            binary = Path(directory) / "foolkit5"
+            subprocess.run(
+                ["swiftc", "-O", str(ROOT / "tools/render/foolkit5.swift"), "-o", str(binary)],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            result = subprocess.run(
+                [str(binary), "selftest"],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+        for marker in (
+            "five-tier-mapping",
+            "geometry-zero",
+            "alpha-real",
+            "gem-highlight-preserved",
+            "legacy-four-tier-rejected",
+        ):
+            self.assertIn(marker, result.stdout)
+
+    @unittest.skipUnless(
+        sys.platform == "darwin" and shutil.which("swiftc"),
+        "five-tier native renderer requires macOS/Swift",
+    )
+    def test_native_renderer_prepare_and_gate_produce_active_five_tier_kit(self):
+        with tempfile.TemporaryDirectory(prefix="fool-five-tier-run-") as directory:
+            binary = Path(directory) / "foolkit5"
+            subprocess.run(
+                ["swiftc", "-O", str(ROOT / "tools/render/foolkit5.swift"), "-o", str(binary)],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            output_parent = tempfile.TemporaryDirectory(
+                prefix=".fool-five-tier-test-",
+                dir=ROOT / "artifacts/production",
+            )
+            output = Path(output_parent.name) / "kit"
+            try:
+                subprocess.run(
+                    [str(binary), "prepare", str(ROOT), str(output), "all"],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
+                gated = subprocess.run(
+                    [str(binary), "gate", str(ROOT), str(output)],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
+
+                expected = {
+                    "frame-low.png",
+                    "frame-mid.png",
+                    "frame-saint.png",
+                    "frame-angel.png",
+                    "frame-true-god.png",
+                    "contact-sheet.png",
+                    "five-tiers.png",
+                    "emblems-white.png",
+                    "emblems-dark.png",
+                    "manifest.json",
+                }
+                expected.update({f"emblem-{digit}.png" for digit in range(10)})
+                expected.update({f"fool-{digit}-frame.png" for digit in range(10)})
+                self.assertTrue(expected.issubset({path.name for path in output.iterdir()}))
+                self.assertFalse((output / "four-frames.png").exists())
+
+                manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+                self.assertEqual(
+                    manifest["sequence_mapping"],
+                    {
+                        "low": [9, 8],
+                        "mid": [7, 6, 5],
+                        "saint": [4, 3],
+                        "angel": [2, 1],
+                        "true-god": [0],
+                    },
+                )
+                self.assertEqual(sorted(item["digit"] for item in manifest["entries"]), list(range(10)))
+                self.assertEqual(manifest["geometry_difference_pixels"], 0)
+                self.assertFalse(manifest["formal_release_approved"])
+                self.assertIn("PASS: five-tier", gated.stdout)
+            finally:
+                output_parent.cleanup()
 
 
 if __name__ == "__main__":

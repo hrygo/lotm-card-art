@@ -5,7 +5,15 @@ description: 为诡秘之主制作精雕途径圣徽、艺术序列数字及一�
 
 # 精雕符号基础物料
 
-读取 production/symbols/art-direction.md、当前符号brief与其task，以及docs/production-sop.md。注册合同继续使用现有kind=foundation：这里material是实际精雕金属/珐琅物料，use_scope明确emblem/rank/fusion，不改旧schema或历史快照。
+## 已确认的创作方法
+
+采用“途径母标识 → 同Token的0–9艺术数字族 → Agentic一体融合再创作 → 工程交付”四段法。当前会话已明确批准愚者0–9融合造型作为视觉基线；这项认可不等于净底或正式发布通过。历史0/4/7/9记录保留为 provenance，不再代表不完整的活动批准集。
+制作融合或续补数字时，先读 [references/agentic-fusion.md](references/agentic-fusion.md)。Agent负责艺术融合，程序负责精确装配与检验，不能用普通字体叠徽章或机械拼贴替代再创作。
+保留已认可原稿与所有被要求保留的版本；净底失败只标记技术状态，不删除、覆盖或把艺术成果一概判为无价值。艺术认可、可用透明层、正式发布三种状态分别记录。新生成的延续稿仍待用户确认，不自动继承旧稿认可。
+
+读取 production/symbols/art-direction.md、当前符号brief与其task，以及docs/production-sop-v2.md；旧接口见docs/production-sop.md。注册合同继续使用现有kind=foundation：这里material是实际精雕金属/珐琅物料，use_scope明确emblem/rank/fusion，不改旧schema或历史快照。
+五档品质读取config/quality-color-tokens.json，不复制色值表。其主作用域是边框纹理与宝石，不自动把整枚圣徽染成层级色。获准调整圣徽宝石时限定到独立区域：体色保持档位识别，明亮切面、内部折射及局部火彩形成层次；色相流动不改变面具、数字、镂空或连接点。原认可原稿保留，新配色版本另审。
+圣徽按可见字形边界等比定位，禁止为了躲开场景随意移动；连接件只接实心外缘，不横穿眼孔或数字闭环。愚者单卡11.5%占高是已接受案例，不是全途径恒定比例。
 使用imagegen Skill内置工具，每个独立途径标识单独调用；不能用一张22图拼版冒充22个独立原图。正式工具调用前compile任务、读prompt；有参考图时实际附件传递。
 根圣徽强调途径独特轮廓、主意象与工艺层次；不复制官方圣徽，不把途径整体意象解释为每个低序列已具备该能力。局部根意象来自仓库美术提案，不冒充原著断言。
 艺术数字须准确可读、一次只要求一个数字。融合任务参考根圣徽与数字原图，共享笔画/镂空/材质，而不是贴字。失真、额外数字或缺笔不得默认为艺术化。

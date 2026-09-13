@@ -1,0 +1,203 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "fool",
+  "method": "pathway-emblem -> pathway-token numeral -> agentic structural fusion -> engineering",
+  "skill": ".agents/skills/lotm-symbols/SKILL.md",
+  "preservation": "production/symbols/fool-fusion-preservation.json",
+  "scope": "Complete Fool 0-9 fusion artwork family; not a transparent-ready family or a 22-pathway batch",
+  "current_user_approval": {
+    "status": "user-approved-visual-baseline",
+    "digits": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "basis": "用户在当前会话明确确认：9-0 圣徽全面都认可",
+    "formal_release_approved": false
+  },
+  "entries": [
+    {
+      "digit": 0,
+      "id": "fool-fusion-0",
+      "receipt": "artifacts/production/fool-fusion-0/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-0/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-0.json",
+      "call": "production/symbols/calls/fool-fusion-0-v1.json",
+      "art_review": {
+        "status": "user-endorsed-design-direction",
+        "evidence": "production/symbols/fool-fusion-preservation.json"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    },
+    {
+      "digit": 1,
+      "id": "fool-fusion-1",
+      "receipt": "artifacts/production/fool-fusion-1/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-1/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-1.json",
+      "call": "production/symbols/calls/fool-fusion-1-v1.json",
+      "art_review": {
+        "status": "pending-user-review",
+        "agent_observation": "面具沿直立竖笔延伸，帷幕上挑旗笔和宽底足构成可读1。"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    },
+    {
+      "digit": 2,
+      "id": "fool-fusion-2",
+      "receipt": "artifacts/production/fool-fusion-2/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-2/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-2.json",
+      "call": "production/symbols/calls/fool-fusion-2-v1.json",
+      "art_review": {
+        "status": "pending-user-review",
+        "agent_observation": "紫帷幕弧头连接斜笔，面具融入转折处，下方宽底笔构成可读2。"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    },
+    {
+      "digit": 3,
+      "id": "fool-fusion-3",
+      "receipt": "artifacts/production/fool-fusion-3/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-3/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-3.json",
+      "call": "production/symbols/calls/fool-fusion-3-v1.json",
+      "art_review": {
+        "status": "pending-user-review",
+        "agent_observation": "上下两弧向左开放，面具融入右侧连接脊，3轮廓明确。"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    },
+    {
+      "digit": 4,
+      "id": "fool-fusion-4",
+      "receipt": "artifacts/production/fool-fusion-4/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-4/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-4.json",
+      "call": "production/symbols/calls/fool-fusion-4-v1.json",
+      "art_review": {
+        "status": "user-endorsed-design-direction",
+        "evidence": "production/symbols/fool-fusion-preservation.json"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    },
+    {
+      "digit": 5,
+      "id": "fool-fusion-5",
+      "receipt": "artifacts/production/fool-fusion-5/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-5/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-5.json",
+      "call": "production/symbols/calls/fool-fusion-5-v1.json",
+      "art_review": {
+        "status": "pending-user-review",
+        "agent_observation": "平顶帷幕、左短竖与下弧完整，面具嵌入下部弧笔；小尺寸需关注下弧与面具内部负空间区分。"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    },
+    {
+      "digit": 6,
+      "id": "fool-fusion-6",
+      "receipt": "artifacts/production/fool-fusion-6/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-6/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-6.json",
+      "call": "production/symbols/calls/fool-fusion-6-v1.json",
+      "art_review": {
+        "status": "pending-user-review",
+        "agent_observation": "长上钩与下闭环明确，面具成为右下环笔，不是旋转9。"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    },
+    {
+      "digit": 7,
+      "id": "fool-fusion-7",
+      "receipt": "artifacts/production/fool-fusion-7/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-7/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-7.json",
+      "call": "production/symbols/calls/fool-fusion-7-v1.json",
+      "art_review": {
+        "status": "user-endorsed-design-direction",
+        "evidence": "production/symbols/fool-fusion-preservation.json"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    },
+    {
+      "digit": 8,
+      "id": "fool-fusion-8",
+      "receipt": "artifacts/production/fool-fusion-8/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-8/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-8.json",
+      "call": "production/symbols/calls/fool-fusion-8-v1.json",
+      "art_review": {
+        "status": "pending-user-review",
+        "agent_observation": "两个闭环和收腰明确，两张面具分别成为右上/右下弧笔；比单面具数字更密集。"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    },
+    {
+      "digit": 9,
+      "id": "fool-fusion-9",
+      "receipt": "artifacts/production/fool-fusion-9/v001/receipt.json",
+      "raw": "artifacts/production/fool-fusion-9/v001/raw.png",
+      "task": "production/symbols/tasks/fool-fusion-9.json",
+      "call": "production/symbols/calls/fool-fusion-9-v1.json",
+      "art_review": {
+        "status": "user-endorsed-design-direction",
+        "evidence": "production/symbols/fool-fusion-preservation.json"
+      },
+      "engineering": {
+        "status": "needs-background-extraction",
+        "has_real_transparency": false,
+        "usable_as_transparent_layer": false
+      },
+      "retention": "keep"
+    }
+  ],
+  "gallery": {
+    "recipe": "production/symbols/recipes/fool-fusion-family.json",
+    "output": "artifacts/production/symbol-art-v2/fool-fusion-family",
+    "review": "Agent observed full gallery: all ten numeral silhouettes readable; not human blind testing",
+    "alpha_evidence": "artifacts/production/symbol-art-v2/fool-fusion-family/renderer.json"
+  },
+  "release_approved": false
+}

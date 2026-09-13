@@ -1,0 +1,109 @@
+{
+  "version": "1.0.0",
+  "date": "2026-09-13",
+  "pathway_id": "fool",
+  "user_decision": {
+    "scope": "认可融合创作方法及现有0/4/7/9的造型，明确要求保留并补齐其余6个数字；不是正式发布批准。",
+    "evidence_quotes": [
+      "然后 你（agentic）又 融合了途径标识和序列数字，而不是机械的程序融合。",
+      "固化这一成果到 skill ，目前已融合好的 标识+数字 徽章（0-4-7-9） 不要丢弃，保留，且继续不全其他 6 个数字。"
+    ],
+    "formal_release_approved": false
+  },
+  "current_user_approval": {
+    "status": "user-approved-visual-baseline",
+    "digits": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "basis": "用户在当前会话明确确认：9-0 圣徽全面都认可",
+    "formal_release_approved": false
+  },
+  "preserved": [
+    {
+      "digit": 0,
+      "run": "v001",
+      "path": "artifacts/production/fool-fusion-0/v001/raw.png",
+      "sha256": "9dc7aa0462ee877586e41be6d3f874a5731170e7c3226bfb5794c876cc96ba67",
+      "receipt": "artifacts/production/fool-fusion-0/v001/receipt.json",
+      "retention": "keep",
+      "role": "original-artwork",
+      "engineering_status": "opaque-background",
+      "art_review": "user-endorsed-design-direction"
+    },
+    {
+      "digit": 0,
+      "run": "v002",
+      "path": "artifacts/production/fool-fusion-0/v002/raw.png",
+      "sha256": "2a8d70b9bd7d5b7abfb2040a6c2c5fc12a27b36df6912ae256315c1b542d1245",
+      "receipt": "artifacts/production/fool-fusion-0/v002/receipt.json",
+      "retention": "keep",
+      "role": "historical-background-repair",
+      "engineering_status": "opaque-background",
+      "art_review": "retained-not-individually-approved"
+    },
+    {
+      "digit": 4,
+      "run": "v001",
+      "path": "artifacts/production/fool-fusion-4/v001/raw.png",
+      "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c",
+      "receipt": "artifacts/production/fool-fusion-4/v001/receipt.json",
+      "retention": "keep",
+      "role": "original-artwork",
+      "engineering_status": "opaque-background",
+      "art_review": "user-endorsed-design-direction"
+    },
+    {
+      "digit": 4,
+      "run": "v002",
+      "path": "artifacts/production/fool-fusion-4/v002/raw.png",
+      "sha256": "c31c5ab6dffebf47d70b3e5322b0534b49ad9ab73471164cc57145b3b63c8d26",
+      "receipt": "artifacts/production/fool-fusion-4/v002/receipt.json",
+      "retention": "keep",
+      "role": "historical-background-repair",
+      "engineering_status": "opaque-background",
+      "art_review": "retained-not-individually-approved"
+    },
+    {
+      "digit": 7,
+      "run": "v001",
+      "path": "artifacts/production/fool-fusion-7/v001/raw.png",
+      "sha256": "66a1c337ea7464a606951d3e79b449d8d011671e5dbe2a76ee4aaf86fafc2468",
+      "receipt": "artifacts/production/fool-fusion-7/v001/receipt.json",
+      "retention": "keep",
+      "role": "original-artwork",
+      "engineering_status": "opaque-background",
+      "art_review": "user-endorsed-design-direction"
+    },
+    {
+      "digit": 7,
+      "run": "v002",
+      "path": "artifacts/production/fool-fusion-7/v002/raw.png",
+      "sha256": "668c58b1fad00c8e1bf541ed138b5b9df05dc9c80216c5b3424c7956b0472ad1",
+      "receipt": "artifacts/production/fool-fusion-7/v002/receipt.json",
+      "retention": "keep",
+      "role": "historical-background-repair",
+      "engineering_status": "opaque-background",
+      "art_review": "retained-not-individually-approved"
+    },
+    {
+      "digit": 9,
+      "run": "v001",
+      "path": "artifacts/production/fool-fusion-9/v001/raw.png",
+      "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9",
+      "receipt": "artifacts/production/fool-fusion-9/v001/receipt.json",
+      "retention": "keep",
+      "role": "original-artwork",
+      "engineering_status": "opaque-background",
+      "art_review": "user-endorsed-design-direction"
+    },
+    {
+      "digit": 9,
+      "run": "v002",
+      "path": "artifacts/production/fool-fusion-9/v002/raw.png",
+      "sha256": "ff797f0b7dfea42067fd07ab564835c484fa66cd7b470d41cac25a512fab0144",
+      "receipt": "artifacts/production/fool-fusion-9/v002/receipt.json",
+      "retention": "keep",
+      "role": "historical-background-repair",
+      "engineering_status": "opaque-background",
+      "art_review": "retained-not-individually-approved"
+    }
+  ]
+}

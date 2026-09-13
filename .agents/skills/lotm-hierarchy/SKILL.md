@@ -1,15 +1,32 @@
 ---
 name: lotm-hierarchy
-description: 为诡秘之主卡牌生产低/中/高/真神层级装饰、边框材质及留白，读取 kind=hierarchy 的结构化任务，经实际生图、观察、登记交给合成器。
+description: 为诡秘之主卡牌生产低序列、中序列、圣者、天使、真神五档边框材质、层级物料及框徽承接件，读取结构化任务，经实际生图、观察和登记交付。
 ---
 
-# 低/中/高/真神层级装饰、边框材质及留白
-以当前仓库为根。先读取 docs/production-sop.md、production/schemas/task.schema.json 和当前任务；仅处理 kind=hierarchy。
-任务身份、revision、mode、output、references、limits 以及 spec 必须齐全；先运行 tools/production.py compile。
-用 tier、geometry、clear_regions 控制层级。图像只提供材质/装饰，核心边界和复合标记保留为矢量。留白、alpha 和背景必须实测；生成棋盘格不算透明。
-执行者是当前 Agent；使用已安装 imagegen Skill 的内置图像工具。读取编译 prompt.txt，将每张 reference 作为真实附件传递并注明角色。模型不暴露 seed/model 时记录 null。
-观察实际产物，记录观察而非自动评分。需要修复时指出单个缺陷，保持其他不变量；attempt 不超过 limits.max_attempts。编译器不联网、不代替工具执行。
-将真实调用参数保存到版本目录；按 production/schemas/call.schema.json 记录 tool/model/seed/created_at/attempt/attachments/observation。
-运行 ingest，把真实 PNG 和调用记录保存为不可覆盖的新 run。素材保持 pending，最终批准由用户提供。
-最后用 compose 合成并 gate；输出实际路径、原始/最终像素、变换记录、观察结果和剩余门禁。不要把编译成功当作生图成功。
+# 五档品质与层级物料
 
+读取 `docs/production-sop-v2.md`、`config/quality-color-tokens.json`、`config/sequence-hierarchy.json`、现有task schema与当前kind=hierarchy任务。旧CLI合同见 `docs/production-sop.md`。
+
+## 色彩与结构分工
+
+视觉品质为低序列、中序列、圣者、天使、真神；序列映射和HEX仅从配色配置解析，不复制手写色表。圣者/天使在事实分类中仍属高序列；不改正典分类来迁就视觉分档。
+
+层级主色重点作用于边框纹理、珐琅嵌饰和宝石设计。遵循配置中的受控色相流动：凹槽、起伏、反射与体色有层次，允许局部偏色但保持档位识别。宝石有明亮切面、近白亮点、内部折射和小范围火彩，不变成泛白光团。人物背景、姓名、整枚徽章不自动染色。
+
+五档共用母框轮廓、内部折槽、框肩、姓名牌、宝石槽与锚点。品质不靠加构件、加宝石、扩大徽章或堆辉光。材质可在已定区域变化，结构正本可为精美栅格，不要求用简陋矢量替代。整框重生成只提供候选，不能靠外轮廓裁切认证内部零漂移。
+
+## 输入与执行
+
+按 `docs/production-preflight.md` 先检查当前工具是否支持目标品质与区域处理，将该文件作为 contracts 依赖。未接入五档的工具不承担五档交付；可以准备候选与输入，不反复调用旧 all 验证一个已知不支持的目标。
+
+输入包含 quality.sequence/visual_tier、相同的 spec.tier、母框及摘要、geometry_id、纹理/宝石区域、身份保护域、光向、clear_regions、真实参考用途和预算。primary 从色表解析，不另存可漂移的手写色值。几何/材质扩展写侧车 brief，经 contracts 路径/摘要绑定；实际图像附件仍放 references。编译器自动追踪当前 SOP/色表和声明的侧车，不自动转译 prompt 或递归收集任意 JSON 路径。
+
+框纹理、连接帷幕与相应宝石归同一 material_group，共用锚色、光向和反射环境，但不同材质保留自己的明暗深度。纹理、宝石、保护区分别设 mask；不出现框已换档而连接件仍旧紫的断裂。框徽接口模板见 production/templates/frame-emblem-interface.json，逐枚数字实测实心接点和孔洞保护；模板不是现成渲染配方。
+
+母框或框徽连接先由Agentic创作与样件审定，再冻结结构、派生品质。愚者双侧帷幕是已接受实例，不是所有途径模板。需要结构/净底/装配时使用lotm-quality-frames。
+
+compile→读prompt→真实附件→内置image_gen→看图→call→ingest；检查alpha实际像素，不以棋盘格替代透明。输出保持候选，批准绑定具体版本。
+
+旧foolkit是四档硬编码，仅作历史审计；新活动资产必须使用独立的五档版本化套件，不能将旧all输出改名视作五档完成。本轮愚者任务固定验证低/神跨度、圣者/天使区分、十枚已批准融合圣徽和零漂移，再进入可视材料研究与合成；不以旧四档结果回填任何五档交付。
+
+当前任务 schema 接受 saint/angel，并强制它们携带匹配的 quality 输入；新五档任务不得用 high 代替。旧 high 只用于历史四档任务兼容。编译/登记支持不等于 compose/foolkit 渲染支持；五档装配在渲染接入前保持未完成，不静默合并交付。

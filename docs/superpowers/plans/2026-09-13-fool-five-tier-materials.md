@@ -34,6 +34,8 @@
 - Create: `production/symbols/tasks/fool-quality-frame-saint-v2.json`
 - Create: `production/symbols/tasks/fool-quality-frame-angel-v2.json`
 - Create: `production/symbols/tasks/fool-quality-frame-true-god-v2.json`
+- Modify: `production/symbols/fool-fusion-family.json`
+- Modify: `production/symbols/fool-fusion-preservation.json`
 - Modify: `.agents/skills/lotm-hierarchy/SKILL.md`
 - Modify: `.agents/skills/lotm-quality-frames/SKILL.md`
 - Modify: `.agents/skills/lotm-symbols/SKILL.md`
@@ -41,7 +43,7 @@
 
 **Interfaces:**
 - Consumes: `config/quality-color-tokens.json`, `config/sequence-hierarchy.json`, `production/symbols/quality-geometry-lock.json`, `production/symbols/fool-frame-kit.json`, and the ten existing `production/symbols` fusion records.
-- Produces: a five-tier catalog with exact `tier_id`, sequence mapping, master geometry, five task paths, ten emblem input bindings, active output path, and an explicit `legacy_four_tier_status` that excludes the old kit from active assets.
+- Produces: a five-tier catalog with exact `tier_id`, sequence mapping, master geometry, five task paths, ten emblem input bindings, active output path, and an explicit `legacy_four_tier_status` that excludes the old kit from active assets; the existing Fool fusion family records a top-level current approval for all ten 0–9 emblems as `user-approved-visual-baseline` while keeping historical per-entry observations, engineering transparency and formal release separate.
 
 - [ ] **Step 1: Write the failing contract tests.**
 
@@ -75,7 +77,7 @@
 
   Each task must use the existing schema shape, use one representative `quality.sequence` accepted by the current compiler (9 for low, 7 for mid, 4 for saint, 2 for angel, and 0 for true-god), set the matching `hierarchy.spec.tier`, bind `production-preflight.md`, the quality direction, geometry lock, color config, and the appropriate material/geometry references, and use `saint`/`angel` explicitly rather than `high`. The catalog carries the complete sequence lists and must identify the approved emblem records for digits 0 through 9 and set the new output root to `artifacts/production/fool-five-tier-kit-v1`.
 
-  Update the three skills so their active Fool rule says that all 0–9 emblems are user-approved visual baselines, while engineering transparency and placement remain separate gates; the old four-tier kit is historical and inactive, not a fallback.
+  Update the three skills and both existing Fool fusion records so their active Fool rule declares all 0–9 emblems in a top-level current approval as user-approved visual baselines, while historical observations, engineering transparency and placement remain separate gates; the old four-tier kit is historical and inactive, not a fallback.
 
 - [ ] **Step 4: Run the focused tests and structural checks.**
 

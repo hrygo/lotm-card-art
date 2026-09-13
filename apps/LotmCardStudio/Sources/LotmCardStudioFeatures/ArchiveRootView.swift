@@ -184,8 +184,12 @@ private struct ArchiveSidebar: View {
             }
         }
         .padding(24)
+        .padding(.leading, 8)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(ArchiveTheme.Leather.base.opacity(0.85))
+        .background(ArchiveTheme.Leather.base.opacity(0.88))
+        .overlay(alignment: .leading) {
+            GrimoireSpineBands()
+        }
     }
 }
 
@@ -326,37 +330,54 @@ private struct AlbumHomeView: View {
                 }
 
                 HStack(spacing: 0) {
-                    MetricTile(title: "已确认", value: "\(model.confirmedCount)", color: ArchiveTheme.teal)
-                    MetricTile(title: "正式收藏", value: "\(model.formalCount)", color: ArchiveTheme.amber)
-                    MetricTile(title: "候选收藏", value: "\(model.candidateCount)", color: ArchiveTheme.violet)
-                    MetricTile(title: "愿望目标", value: "01", color: ArchiveTheme.secondary)
+                    MetricTile(title: "已确认", value: "\(model.confirmedCount)", color: ArchiveTheme.Aether.light)
+                    MetricTile(title: "正式收藏", value: "\(model.formalCount)", color: ArchiveTheme.Brass.luster)
+                    MetricTile(title: "候选收藏", value: "\(model.candidateCount)", color: ArchiveTheme.Mystic.violet)
+                    MetricTile(title: "愿望目标", value: "01", color: ArchiveTheme.Parchment.secondary)
                 }
                 .padding(22)
-                .background(ArchiveTheme.raised.opacity(0.45), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
-                .glassEffect(.regular.tint(ArchiveTheme.teal.opacity(0.08)), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .background {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .fill(ArchiveTheme.Gradients.leatherSurface)
+                        HermeticSigilView(size: 260, showDualGlow: false)
+                            .opacity(0.16)
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                }
+                .glassEffect(.regular.tint(ArchiveTheme.Aether.light.opacity(0.06)), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
+                }
 
                 HStack(spacing: 16) {
                     Circle()
-                        .fill(ArchiveTheme.teal)
+                        .fill(ArchiveTheme.Aether.light)
                         .frame(width: 11, height: 11)
+                        .shadow(color: ArchiveTheme.Aether.light.opacity(0.8), radius: 4)
                     VStack(alignment: .leading, spacing: 4) {
                         Text("最近唤醒")
-                            .font(.system(size: 10, weight: .semibold, design: .rounded))
-                            .foregroundStyle(ArchiveTheme.teal)
+                            .font(.system(size: 10, weight: .bold, design: .serif))
+                            .foregroundStyle(ArchiveTheme.Aether.light)
                         Text("你上次唤醒了「小丑」")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(ArchiveTheme.primary)
+                            .font(.system(size: 16, weight: .bold, design: .serif))
+                            .foregroundStyle(ArchiveTheme.Parchment.primary)
                         Text("继续探索同一角色的另一张身份卡")
                             .font(.system(size: 11))
-                            .foregroundStyle(ArchiveTheme.secondary)
+                            .foregroundStyle(ArchiveTheme.Parchment.secondary)
                     }
                     Spacer()
                     PulseLine()
                         .frame(width: 270, height: 28)
                 }
                 .padding(22)
-                .background(ArchiveTheme.coal.opacity(0.58), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
-                .glassEffect(.regular.tint(ArchiveTheme.teal.opacity(0.08)), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .background(ArchiveTheme.Leather.deep.opacity(0.85), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .glassEffect(.regular.tint(ArchiveTheme.Brass.luster.opacity(0.06)), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
+                }
 
                 VStack(alignment: .leading, spacing: 6) {
                         Text(ArchiveCopy.recentDiscoveries)
@@ -636,15 +657,19 @@ private struct CardMotionViewport: View {
     var body: some View {
         VStack(spacing: 14) {
             ZStack {
+                // 底层：做旧古籍真皮封皮深色渐变
                 RoundedRectangle(cornerRadius: 28, style: .continuous)
                     .fill(ArchiveTheme.Gradients.grimoireCover)
-                Circle()
-                    .fill(ArchiveTheme.Brass.luster.opacity(0.22))
-                    .frame(width: 260, height: 260)
-                    .blur(radius: 48)
+
+                // 核心法阵：Logo 封皮同款赫密斯同心圆占星法阵与暖金+青碧双色灵流
+                HermeticSigilView(size: 380, showDualGlow: true)
+
+                // 典籍内嵌卡槽边框（黄铜暗金压条与内凹阴影）
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
-                    .padding(24)
+                    .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1.5)
+                    .padding(20)
+
+                // 卡牌实体（带深邃的典籍卡槽立体投影）
                 ArchiveArtworkView(
                     theme: card.visualTheme,
                     compact: false,
@@ -655,10 +680,25 @@ private struct CardMotionViewport: View {
                     height: CardDetailLayout.cardSize.height
                 )
                 .shadow(
-                    color: ArchiveTheme.Leather.void.opacity(0.55),
-                    radius: 18,
-                    y: 10
+                    color: ArchiveTheme.Leather.void.opacity(0.85),
+                    radius: 22,
+                    y: 12
                 )
+
+                // 四角固定：维多利亚洛可可黄铜雕花包角（Logo 标志性物理构件）
+                VStack {
+                    HStack {
+                        BrassCornerFiligree(corner: .topLeft, size: 56)
+                        Spacer()
+                        BrassCornerFiligree(corner: .topRight, size: 56)
+                    }
+                    Spacer()
+                    HStack {
+                        BrassCornerFiligree(corner: .bottomLeft, size: 56)
+                        Spacer()
+                        BrassCornerFiligree(corner: .bottomRight, size: 56)
+                    }
+                }
             }
             .frame(
                 width: CardDetailLayout.motionViewportSize.width,
@@ -667,24 +707,37 @@ private struct CardMotionViewport: View {
             .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
             .overlay {
                 RoundedRectangle(cornerRadius: 28, style: .continuous)
-                    .stroke(ArchiveTheme.Borders.brassAccent, lineWidth: 1)
+                    .stroke(
+                        LinearGradient(
+                            colors: [
+                                ArchiveTheme.Brass.luster.opacity(0.70),
+                                ArchiveTheme.Brass.core.opacity(0.40),
+                                ArchiveTheme.Brass.patina.opacity(0.60)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1.5
+                    )
             }
+            .shadow(color: ArchiveTheme.Leather.void.opacity(0.60), radius: 18, y: 10)
             .archiveCursor(.arrow)
 
             HStack {
                 Text(card.identity.sequenceName)
-                    .foregroundStyle(ArchiveTheme.amber)
+                    .font(.system(size: 11, weight: .bold, design: .serif))
+                    .foregroundStyle(ArchiveTheme.Brass.luster)
                 Spacer()
                 Text(card.identity.displayName)
-                    .foregroundStyle(ArchiveTheme.primary)
+                    .font(.system(size: 13, weight: .bold, design: .serif))
+                    .foregroundStyle(ArchiveTheme.Parchment.primary)
             }
-            .font(.system(size: 11, weight: .semibold, design: .rounded))
             .frame(width: CardDetailLayout.motionViewportSize.width)
             .archiveCursor(.arrow)
 
             Text(card.subtitle)
                 .font(.system(size: 10, design: .rounded))
-                .foregroundStyle(ArchiveTheme.secondary)
+                .foregroundStyle(ArchiveTheme.Parchment.secondary)
                 .frame(width: CardDetailLayout.motionViewportSize.width, alignment: .leading)
                 .archiveCursor(.arrow)
         }
@@ -740,11 +793,30 @@ private struct DetailRail: View {
         }
         .padding(24)
         .frame(maxWidth: .infinity, alignment: .topLeading)
-        .background(ArchiveTheme.Leather.raised.opacity(0.48), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-        .glassEffect(.regular.tint(ArchiveTheme.Aether.light.opacity(0.08)), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .background {
+            ZStack {
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .fill(ArchiveTheme.Gradients.leatherSurface)
+                VStack {
+                    HStack {
+                        BrassCornerFiligree(corner: .topLeft, size: 36)
+                        Spacer()
+                        BrassCornerFiligree(corner: .topRight, size: 36)
+                    }
+                    Spacer()
+                    HStack {
+                        BrassCornerFiligree(corner: .bottomLeft, size: 36)
+                        Spacer()
+                        BrassCornerFiligree(corner: .bottomRight, size: 36)
+                    }
+                }
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        }
+        .glassEffect(.regular.tint(ArchiveTheme.Brass.luster.opacity(0.04)), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
+                .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
         }
         .frame(
             minWidth: isStacked ? 0 : CardDetailLayout.railMinimumWidth,
@@ -1024,34 +1096,12 @@ private struct SemanticRow: View {
     let color: Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 7) {
-            HStack(spacing: 8) {
-                Circle()
-                    .fill(color)
-                    .frame(width: 8, height: 8)
-                Text(index)
-                    .font(.system(size: 10, weight: .semibold, design: .rounded))
-                    .foregroundStyle(color)
-                Text(title)
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundStyle(ArchiveTheme.primary)
-            }
-            Text(value)
-                .font(.system(size: 11))
-                .foregroundStyle(ArchiveTheme.secondary)
-                .lineLimit(2)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-        .padding(11)
-        .frame(maxWidth: .infinity, minHeight: 58, alignment: .topLeading)
-        .background(
-            ArchiveTheme.coal.opacity(0.46),
-            in: RoundedRectangle(cornerRadius: 10, style: .continuous)
+        ParchmentSemanticTile(
+            index: index,
+            title: title,
+            value: value,
+            accentColor: color
         )
-        .overlay {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .stroke(ArchiveTheme.elevated.opacity(0.62), lineWidth: 1)
-        }
         .archiveCursor(.arrow)
     }
 }

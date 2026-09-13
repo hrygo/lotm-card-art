@@ -69,9 +69,9 @@
     },
     {
       "sequence": 7,
-      "unique_event": null,
-      "difference_from_previous": null,
-      "status": "needs_canon"
+      "unique_event": "会客室中，心理医生通过烛火与纯露让濒临失控者的情绪沿边界逐渐平复，但仍留下一条未收束的残线",
+      "difference_from_previous": "从序列8以观察关系为主的即时心理读取，转为人物主动介入并改变他者心理状态；仍以具体人物和空间为中心，不提前进入高序列概念空间",
+      "status": "directed"
     },
     {
       "sequence": 6,

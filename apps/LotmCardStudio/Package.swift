@@ -1,11 +1,11 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2
 
 import PackageDescription
 
 let package = Package(
     name: "LotmCardStudio",
     platforms: [
-        .macOS(.v14)
+        .macOS(.v26)
     ],
     products: [
         .executable(name: "LotmCardStudio", targets: ["LotmCardStudio"])
@@ -35,5 +35,6 @@ let package = Package(
             dependencies: ["LotmCardStudioFeatures"],
             path: "Tests/LotmCardStudioFeaturesTests"
         )
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )

@@ -25,9 +25,22 @@ public enum PlaybackState: Equatable, Sendable {
     }
 }
 
+public struct PlaybackCaption: Equatable, Sendable {
+    public let lineID: String
+    public let kind: NarrativeKind
+    public let text: String
+
+    public init(lineID: String, kind: NarrativeKind, text: String) {
+        self.lineID = lineID
+        self.kind = kind
+        self.text = text
+    }
+}
+
 @MainActor
 public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
     @Published public private(set) var state: PlaybackState = .idle
+    @Published public private(set) var currentCaption: PlaybackCaption?
     @Published public private(set) var currentText: String?
 
     private let client: SpeechRailHTTPClient?
@@ -60,14 +73,24 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
     }
 
     public func speak(_ line: NarrativeLine, voiceProfileID: String) {
+        guard line.isPlayable else {
+            state = .failed("此内容尚未批准")
+            return
+        }
+
         requestTask?.cancel()
         player?.stop()
         generation += 1
         let token = generation
         currentLine = line
         currentVoiceProfileID = voiceProfileID
+        currentCaption = PlaybackCaption(lineID: line.id, kind: line.kind, text: line.text)
         currentText = line.text
         state = .loading
+
+        if playBundledAudio(for: line) {
+            return
+        }
 
         guard let client else {
             state = .failed("SpeechRail 未连接")
@@ -102,6 +125,29 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
         }
     }
 
+    private func playBundledAudio(for line: NarrativeLine) -> Bool {
+        guard let resourceName = line.audioResourceName,
+              let url = Bundle.main.url(
+                  forResource: resourceName,
+                  withExtension: "wav",
+                  subdirectory: "Audio"
+              ),
+              let data = try? Data(contentsOf: url),
+              let audioPlayer = try? AVAudioPlayer(data: data)
+        else {
+            return false
+        }
+
+        audioPlayer.delegate = self
+        player = audioPlayer
+        guard audioPlayer.play() else {
+            state = .failed("音频无法播放")
+            return true
+        }
+        state = .playing
+        return true
+    }
+
     public func pause() {
         guard player?.isPlaying == true else {
             return
@@ -132,16 +178,45 @@ public final class SpeechPlaybackCoordinator: NSObject, ObservableObject {
         player = nil
         currentLine = nil
         currentVoiceProfileID = nil
+        currentCaption = nil
         currentText = nil
         state = .idle
     }
 
-    private static func message(for error: Error) -> String {
+    static func message(for error: Error) -> String {
         switch error {
+        case SpeechRailCredentialError.missing, SpeechRailCredentialError.unavailable,
+             SpeechRailCredentialError.invalidData:
+            return "SpeechRail API key 缺失，请在设置中配置"
+        case SpeechRailCredentialError.authenticationCancelled:
+            return "未完成钥匙串认证，文字稿仍可阅读"
+        case SpeechRailCredentialError.authenticationFailed:
+            return "钥匙串认证失败，文字稿仍可阅读"
+        case SpeechRailCredentialError.writeFailed, SpeechRailCredentialError.verificationFailed:
+            return "Touch ID 凭据设置失败，请重试"
+        case SpeechRailConfigurationFileError.missing:
+            return "SpeechRail API key 缺失，请在设置中配置文件"
+        case SpeechRailConfigurationFileError.invalidData:
+            return "SpeechRail 配置文件无效，请在设置中重新保存"
+        case SpeechRailConfigurationFileError.readFailed, SpeechRailConfigurationFileError.writeFailed:
+            return "SpeechRail 配置文件不可用，请检查文件权限"
         case SpeechRailError.inputTooLong:
             return "文本超过 SpeechRail 限制"
-        case SpeechRailError.httpStatus:
-            return "SpeechRail 合成失败"
+        case let SpeechRailError.httpStatus(status):
+            switch status {
+            case 401:
+                return "SpeechRail API key 缺失或无效，请在设置中配置"
+            case 403:
+                return "SpeechRail API key 无权访问"
+            case 408:
+                return "SpeechRail 请求超时，文字稿仍可阅读"
+            case 422:
+                return "SpeechRail 拒绝了当前语音请求，请检查 voice 或文本"
+            case 500...599:
+                return "SpeechRail 服务暂时不可用，请稍后重试"
+            default:
+                return "SpeechRail 请求失败（HTTP \(status)）"
+            }
         case SpeechRailError.transport:
             return "SpeechRail 不可用"
         case SpeechRailError.invalidResponse, SpeechRailError.decoding:

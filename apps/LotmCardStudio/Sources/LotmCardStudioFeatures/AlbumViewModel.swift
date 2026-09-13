@@ -54,6 +54,14 @@ public final class AlbumViewModel: ObservableObject {
         self.wishlistCardIDs = ["lotm.fool.s00.prototype"]
     }
 
+    private var normalizedSearchText: String {
+        searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    public var hasSearchQuery: Bool {
+        !normalizedSearchText.isEmpty
+    }
+
     public var selectedCard: AlbumCard? {
         guard let selectedCardID else {
             return nil
@@ -62,7 +70,7 @@ public final class AlbumViewModel: ObservableObject {
     }
 
     public var filteredCards: [AlbumCard] {
-        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let query = normalizedSearchText
         guard !query.isEmpty else {
             return cards
         }
@@ -128,6 +136,10 @@ public final class AlbumViewModel: ObservableObject {
     public func clearSelection() {
         selectedCardID = nil
         isStoryDrawerPresented = false
+    }
+
+    public func clearSearch() {
+        searchText = ""
     }
 
     public func toggleStoryDrawer() {

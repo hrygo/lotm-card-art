@@ -32,6 +32,7 @@ public struct NarrativeLine: Codable, Hashable, Sendable {
     public let sourceKind: NarrativeSourceKind
     public let review: NarrativeReview
     public let contentDigest: String
+    public let audioResourceName: String?
 
     public init(
         id: String,
@@ -39,7 +40,8 @@ public struct NarrativeLine: Codable, Hashable, Sendable {
         text: String,
         sourceKind: NarrativeSourceKind,
         review: NarrativeReview,
-        contentDigest: String
+        contentDigest: String,
+        audioResourceName: String? = nil
     ) {
         self.id = id
         self.kind = kind
@@ -47,6 +49,7 @@ public struct NarrativeLine: Codable, Hashable, Sendable {
         self.sourceKind = sourceKind
         self.review = review
         self.contentDigest = contentDigest
+        self.audioResourceName = audioResourceName
     }
 
     public var isPlayable: Bool {
@@ -86,6 +89,10 @@ public struct NarrativePack: Codable, Hashable, Sendable {
 
     public var playableLines: [NarrativeLine] {
         lines.filter(\.isPlayable)
+    }
+
+    public var readableChapters: [StoryChapter] {
+        chapters
     }
 
     public var playableChapters: [StoryChapter] {

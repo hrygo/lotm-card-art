@@ -1,0 +1,226 @@
+{
+  "schema_version": "0.3.0",
+  "setting_id": "sequence-hierarchy",
+  "status": "adopted_project_setting",
+  "work_scope": "lotm-volume-1-zh",
+  "default_era": "fifth_epoch_contemporary",
+  "sequence_zero_card_policy": {
+    "card_kind": "sequence_card",
+    "is_special_event": false,
+    "rank_label_zh": "真神",
+    "title_source": "pathway_sequence_name",
+    "note": "序列0卡属于每条途径的正式序列卡位；真神是层级称谓，不把卡牌改列为特殊事件。"
+  },
+  "sequence_levels": [
+    {
+      "sequence": 9,
+      "tier_id": "low_sequence",
+      "tier_label_zh": "低序列",
+      "tier_label_en": "Low-Sequence",
+      "specific_label_zh": "低序列非凡者",
+      "specific_label_en": "Low-Sequence Beyonder"
+    },
+    {
+      "sequence": 8,
+      "tier_id": "low_sequence",
+      "tier_label_zh": "低序列",
+      "tier_label_en": "Low-Sequence",
+      "specific_label_zh": "低序列非凡者",
+      "specific_label_en": "Low-Sequence Beyonder"
+    },
+    {
+      "sequence": 7,
+      "tier_id": "mid_sequence",
+      "tier_label_zh": "中序列",
+      "tier_label_en": "Mid-Sequence",
+      "specific_label_zh": "中序列非凡者",
+      "specific_label_en": "Mid-Sequence Beyonder"
+    },
+    {
+      "sequence": 6,
+      "tier_id": "mid_sequence",
+      "tier_label_zh": "中序列",
+      "tier_label_en": "Mid-Sequence",
+      "specific_label_zh": "中序列非凡者",
+      "specific_label_en": "Mid-Sequence Beyonder"
+    },
+    {
+      "sequence": 5,
+      "tier_id": "mid_sequence",
+      "tier_label_zh": "中序列",
+      "tier_label_en": "Mid-Sequence",
+      "specific_label_zh": "中序列非凡者",
+      "specific_label_en": "Mid-Sequence Beyonder"
+    },
+    {
+      "sequence": 4,
+      "tier_id": "high_sequence",
+      "tier_label_zh": "高序列",
+      "tier_label_en": "High-Sequence",
+      "specific_label_zh": "圣者",
+      "specific_label_en": "Saint",
+      "umbrella_labels_zh": [
+        "高序列",
+        "半神"
+      ]
+    },
+    {
+      "sequence": 3,
+      "tier_id": "high_sequence",
+      "tier_label_zh": "高序列",
+      "tier_label_en": "High-Sequence",
+      "specific_label_zh": "圣者",
+      "specific_label_en": "Saint",
+      "umbrella_labels_zh": [
+        "高序列",
+        "半神"
+      ]
+    },
+    {
+      "sequence": 2,
+      "tier_id": "high_sequence",
+      "tier_label_zh": "高序列",
+      "tier_label_en": "High-Sequence",
+      "specific_label_zh": "天使",
+      "specific_label_en": "Angel",
+      "umbrella_labels_zh": [
+        "高序列",
+        "半神"
+      ]
+    },
+    {
+      "sequence": 1,
+      "tier_id": "high_sequence",
+      "tier_label_zh": "高序列",
+      "tier_label_en": "High-Sequence",
+      "specific_label_zh": "天使",
+      "specific_label_en": "Angel",
+      "alternate_labels_zh": [
+        "大天使"
+      ],
+      "umbrella_labels_zh": [
+        "高序列",
+        "半神"
+      ]
+    },
+    {
+      "sequence": 0,
+      "tier_id": "true_god",
+      "tier_label_zh": "真神",
+      "tier_label_en": "True God",
+      "specific_label_zh": "真神",
+      "specific_label_en": "True God"
+    }
+  ],
+  "era_variants": [
+    {
+      "id": "earlier_low_sequence_boundary",
+      "label_zh": "早期分类",
+      "applies_to_sequences": [
+        9,
+        8,
+        7
+      ],
+      "tier_id": "low_sequence",
+      "note": "第一部相关文本说明，较早时期曾将序列7归入低序列；当前第五纪教会分类将序列7列入中序列。"
+    }
+  ],
+  "state_labels": [
+    {
+      "id": "demigod",
+      "label_zh": "半神",
+      "label_en": "Demigod",
+      "label_kind": "umbrella_rank",
+      "applies_to_sequences": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "not_a_sequence": true,
+      "definition_zh": "高序列4至1的统称，表示已具有神性但尚未成为序列0真神；不是单独的序列名。"
+    },
+    {
+      "id": "saint",
+      "label_zh": "圣者",
+      "label_en": "Saint",
+      "label_kind": "specific_rank",
+      "applies_to_sequences": [
+        4,
+        3
+      ],
+      "not_a_sequence": true,
+      "definition_zh": "高序列中的序列4与序列3称谓。"
+    },
+    {
+      "id": "angel",
+      "label_zh": "天使",
+      "label_en": "Angel",
+      "label_kind": "specific_rank",
+      "applies_to_sequences": [
+        2,
+        1
+      ],
+      "not_a_sequence": true,
+      "definition_zh": "高序列中的序列2与序列1称谓；序列1有时另称大天使。"
+    },
+    {
+      "id": "archangel",
+      "label_zh": "大天使",
+      "label_en": "Archangel",
+      "label_kind": "alternate_rank",
+      "applies_to_sequences": [
+        1
+      ],
+      "not_a_sequence": true,
+      "definition_zh": "序列1的别称之一，不等于天使之王。"
+    },
+    {
+      "id": "king_of_angels",
+      "label_zh": "天使之王",
+      "label_en": "King of Angels",
+      "label_kind": "state",
+      "applies_to_sequences": [
+        1
+      ],
+      "not_a_sequence": true,
+      "definition_zh": "广义指超越普通序列1、尚未成为真神的天使状态；可由额外序列1非凡特性、容纳唯一性、唯一性活化或相应源质权柄等方式形成，具体条件须按人物和作品范围核验。狭义则指第三纪侍奉远古太阳神的八位天使之王。"
+    },
+    {
+      "id": "true_god",
+      "label_zh": "真神",
+      "label_en": "True God",
+      "label_kind": "specific_rank",
+      "applies_to_sequences": [
+        0
+      ],
+      "not_a_sequence": false,
+      "definition_zh": "序列0的位阶；每条途径的序列0对应该途径的真神。"
+    }
+  ],
+  "display_rules": [
+    "卡牌主标题使用当前途径的序列名；层级称谓作为可选的二级元数据，不替换序列名。",
+    "序列1默认显示天使或大天使；只有事实记录明确支持时，才显示天使之王。",
+    "序列0默认显示真神；序列0不再显示天使或天使之王。",
+    "本文件是跨途径层级标签的单一项目配置；具体序列名称仍由各途径的card.json与canon.json负责。"
+  ],
+  "evidence": [
+    {
+      "source_ids": [
+        "webnovel.lotm.en.c96",
+        "webnovel.lotm.en.c237",
+        "lomworld.handbook.en",
+        "qidian.lotm.zh.c101",
+        "qidian.lotm.zh.setting"
+      ],
+      "supports": "第五纪低/中/高序列边界、Sequence 4至1的半神范围、Sequence 4/3的圣者、Sequence 2/1的天使、Sequence 0的真神以及天使之王的广义/狭义区分；起点中文官方片段直接支持序列0等于真神。",
+      "evidence_status": "partial_primary_chinese_translation_and_official_handbook",
+      "scope_note": "中文底本的完整原文尚未取得；本项目正式采用的是透明标注证据状态的跨途径项目分类。起点中文官方片段仅支持序列0与真神的关系，不把它外推成愚者名称、配方、仪式或完整能力。"
+    }
+  ],
+  "notes": [
+    "Sequence 9至0是数字阶位；序列名称由具体途径决定。",
+    "半神、圣者、天使、大天使和天使之王是层级或状态标签，不能当作愚者途径的能力描述。",
+    "序列0卡牌的六维设计仍需按具体途径事实核验，不能因为层级已确定而补造魔药、晋升仪式或能力。"
+  ]
+}

@@ -64,6 +64,76 @@ final class SpeechRailClientTests: XCTestCase {
         XCTAssertTrue(health.ttsReady)
         XCTAssertEqual(health.ttsWarm, false)
     }
+
+    func testMakeSpeechRequestDoesNotResolveAsyncProvider() async throws {
+        let probe = ProviderProbe()
+        let client = try SpeechRailHTTPClient(
+            baseURL: URL(string: "http://127.0.0.1:8201")!,
+            apiKeyProvider: { await probe.resolve() },
+            session: makeSpeechRailSession()
+        )
+
+        let request = try client.makeSpeechRequest(
+            SpeechRequest(input: "只构造请求，不访问凭据。", voice: "low-lantern")
+        )
+
+        XCTAssertNil(request.value(forHTTPHeaderField: "Authorization"))
+        let callCount = await probe.callCount()
+        XCTAssertEqual(callCount, 0)
+    }
+
+    func testSynthesizeResolvesAsyncProviderAtRequestTime() async throws {
+        let probe = ProviderProbe()
+        let client = try SpeechRailHTTPClient(
+            baseURL: URL(string: "http://127.0.0.1:8201")!,
+            apiKeyProvider: { await probe.resolve() },
+            session: makeSpeechRailSession()
+        )
+
+        let data = try await client.synthesize(
+            SpeechRequest(input: "在发起合成时读取凭据。", voice: "low-lantern")
+        )
+
+        XCTAssertFalse(data.isEmpty)
+        let callCount = await probe.callCount()
+        XCTAssertEqual(callCount, 1)
+    }
+
+    func testFixedAPIKeyTakesPrecedenceOverAsyncProvider() async throws {
+        let probe = ProviderProbe()
+        let client = try SpeechRailHTTPClient(
+            baseURL: URL(string: "http://127.0.0.1:8201")!,
+            apiKey: "fixed-key",
+            apiKeyProvider: { await probe.resolve() },
+            session: makeSpeechRailSession()
+        )
+
+        _ = try await client.synthesize(
+            SpeechRequest(input: "固定凭据优先。", voice: "low-lantern")
+        )
+
+        let callCount = await probe.callCount()
+        XCTAssertEqual(callCount, 0)
+    }
+
+    private func makeSpeechRailSession() -> URLSession {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [SpeechRailURLProtocol.self]
+        return URLSession(configuration: configuration)
+    }
+}
+
+private actor ProviderProbe {
+    private var calls = 0
+
+    func resolve() -> String? {
+        calls += 1
+        return "test-key"
+    }
+
+    func callCount() -> Int {
+        calls
+    }
 }
 
 private final class SpeechRailURLProtocol: URLProtocol {
@@ -88,7 +158,13 @@ private final class SpeechRailURLProtocol: URLProtocol {
             return
         }
         client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-        client?.urlProtocol(self, didLoad: Data(#"{"tts_ready":true,"tts_warm":false}"#.utf8))
+        let responseData: Data
+        if url.path == "/health" {
+            responseData = Data(#"{"tts_ready":true,"tts_warm":false}"#.utf8)
+        } else {
+            responseData = Data([0x52, 0x49, 0x46, 0x46])
+        }
+        client?.urlProtocol(self, didLoad: responseData)
         client?.urlProtocolDidFinishLoading(self)
     }
 

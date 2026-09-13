@@ -1,18 +1,18 @@
 {
   "schema_version": "0.3.0",
-  "label_status": "seed_unverified",
+"label_status": "seed_unverified",
   "note_deprecated": "以每行label_status为准，顶层仅兼容保留",
   "note": "制作顺序不是原著相邻途径分组；工作标签需在正式设计时核对，不是已审核的完整设定表。",
   "pathways": [
-    {
-      "id": "fool",
-      "working_name_zh": "愚者",
-      "aliases": [
-        "占卜家"
-      ],
-      "label_status": "seed_unverified",
-      "production_order": 1
-    },
+{
+"id": "fool",
+"working_name_zh": "愚者",
+"aliases": [
+"占卜家"
+],
+"label_status": "verified",
+"production_order": 1
+},
     {
       "id": "error",
       "working_name_zh": "错误",
@@ -37,7 +37,7 @@
       "aliases": [
         "观众"
       ],
-      "label_status": "seed_unverified",
+      "label_status": "verified",
       "production_order": 4
     },
     {

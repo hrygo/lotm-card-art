@@ -4,92 +4,240 @@
   "pathway_id": "fool",
   "sequence": 0,
   "name_zh": "愚者",
-  "name_status": "seed_unverified",
+  "name_status": "verified",
   "work_scope": "lotm-volume-1-zh",
-  "revision": 1,
+  "revision": 5,
   "delivery_profile": "standard",
   "semantics": {
     "identity": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "固定为愚者途径序列0；卡面主标题使用序列名“愚者”，跨途径层级元数据使用“真神”。正式排版采用受控文字，不把真神写成特殊事件。",
+      "claim_refs": [
+        "fool.pathway_name",
+        "fool.sequence_name.s00",
+        "fool.sequence0.true_god_rank"
+      ],
       "fidelity": "exact",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": [
+        "identity-title"
+      ],
+      "readback": "缩略图和正式卡面都能直接读出“序列0·愚者·真神”；真神是位阶标签，卡位仍是正式序列卡。",
+      "misreading_guard": "不得把“真神”做成特殊事件徽记、卡背类型或天使之王的替代称谓；卡面标题与二级位阶标签必须分开。",
       "gap_note": null,
-      "research_question": "核对本途径名称、本序列准确中文名与数字归属；确定本系列途径标识。"
+      "research_question": "保持名称、序列数字与真神二级标签的受控排版，后续只在作品范围或版本变化时重新核对。"
     },
     "acting": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
-      "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
-      "gap_note": null,
-      "research_question": "核对当前序列的核心扮演原则，区分原著明示、角色理解与编辑概括。"
+      "knowledge_state": "partial",
+      "intent": "仅采用明确标为原创解释的行为候选：在身份、关系与历史表面不断错位时保持对自身的辨认；视觉不以人物姿态承载，而以被权柄场吞没又未完全消失的身份残影提示这一行为。",
+      "claim_refs": [
+        "fool.sequence0.acting_candidate"
+      ],
+      "fidelity": "evocation",
+      "carrier_ids": [
+        "acting-identity-residue"
+      ],
+      "readback": "从巨大非人权柄场中的微小无面身份残影，以及同一金线下互相折叠的角色位置，读出“身份错位中的自我保持”这一行为候选。",
+      "misreading_guard": "不把人形残影、帽子、笑容、站姿或“神秘感”当作原著固定扮演口诀；中文一手扮演条目出现后应替换或撤回该提案。",
+      "gap_note": "当前没有可直接核验的第一部中文一手序列0扮演条目；本维度由剧情主题触发的原创转译承担。",
+      "research_question": "取得中文底本后，核对是否存在序列0明确扮演原则，并区分原著明示、角色理解与编辑概括。"
     },
     "abilities": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "摘要表达中文官方设定集列出的三项序列0能力：愚弄、重组、诡秘之境；主视觉只选择愚弄历史造成的状态折叠，不声称能力穷尽。",
+      "claim_refs": [
+        "fool.sequence0.fooling_authority",
+        "fool.sequence0.recomposition_ability",
+        "fool.sequence0.mystical_realm"
+      ],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": [
+        "ability-folded-state"
+      ],
+      "readback": "非人权柄场以金线把前后矛盾状态折叠到同一画面，并把星体概念接入接缝；能读出具体的状态事件，而非泛化的烟雾魔法。",
+      "misreading_guard": "不把历史投影、愚弄、重组或神国视觉扩写为未列出的全能权柄；三项能力摘要不等于全部作用条件。",
       "gap_note": null,
-      "research_question": "选出最能区别相邻序列的一项代表能力；核对作用对象、条件与新增/强化性质。"
+      "research_question": "在正式排版前保持三项能力的短摘要与主事件分离，若作品版本变更则重新核对精确术语。"
     },
     "potion": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "摘要展示中文官方设定集列出的配方要素：愚者唯一性、两份自身之外的诡秘侍者非凡特性，以及掌控至少四分之一历史迷雾的辅助条件；不画泛用药瓶。",
+      "claim_refs": [
+        "fool.sequence0.potion_formula"
+      ],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": [
+        "potion-void-reserve"
+      ],
+      "readback": "下部档案区能读出这是候选配方摘要与证据缺口；主视觉不放拟人化药瓶，也不会把任意黑色药瓶误当成序列0材料。",
+      "misreading_guard": "卡面只做低文字密度摘要，不补造材料外观、颜色、服用动作或容器，也不复制原著段落。",
       "gap_note": null,
-      "research_question": "核对进入当前序列的关键魔药要素；明确是否仅展示材料摘要。"
+      "research_question": "保持配方主材料与辅助条件的层次分明；若正式卡需要更高精度文字，先复核当前版本来源。"
     },
     "ascension": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "摘要展示中文官方设定集列出的晋升仪式：愚弄一次时间、历史或者命运；将其与序列0的一般真神层级条件分开，不画固定祭坛或祷词。",
+      "claim_refs": [
+        "fool.sequence0.ascension_ritual",
+        "fool.sequence0.true_god_rank"
+      ],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": [
+        "ascension-threshold"
+      ],
+      "readback": "边框像一道被跨越又被收束的门槛，提示进入序列0的候选条件，而不是特殊事件发生。",
+      "misreading_guard": "不把通用真神条件替代愚者专属仪式；不把仪式文字画成固定祭坛、祭品、祷词或完整步骤。",
       "gap_note": null,
-      "research_question": "核对进入当前序列的条件/仪式；未知时不自创，也不误用下一序列要求。"
+      "research_question": "保持愚者专属仪式与通用真神层级条件分层；若正式卡需要完整步骤，先复核当前版本来源。"
     },
     "limitations": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
-      "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
-      "gap_note": null,
-      "research_question": "核对能力边界、代价、使用条件或相关风险，避免泛泛而谈失控。"
+      "knowledge_state": "partial",
+      "intent": "当前只登记有范围的限制证据缺口；视觉以金线在帷幕处停止表达边界候选，不冒称原著完整副作用。",
+      "claim_refs": [
+        "fool.sequence0.limitations_gap"
+      ],
+      "fidelity": "evocation",
+      "carrier_ids": [
+        "limitation-return"
+      ],
+      "readback": "金线没有无限延伸，而是在帷幕处回收，读出能力关系仍有边界与未决项。",
+      "misreading_guard": "裂纹、暗色、沉睡或序列1失控风险都不自动等于序列0固定限制；正式限制必须补上中文证据。",
+      "gap_note": "截至研究日期，已访问的官方英文片段、官方手册索引与二手线索未形成序列0完整限制清单；这不等于原著不存在限制。",
+      "research_question": "在中文底本与完整剧情证据可用后，确认能力边界、代价、使用条件和风险，撤回无依据的视觉限制占位。"
     }
   },
-  "cues": [],
+  "cues": [
+    {
+      "id": "identity-title",
+      "channel": "text",
+      "meaning": "精确标示正式序列卡的身份与真神层级",
+      "implementation": "正式排版时置于顶部安全区，使用受控文案；当前概念图尚未合成文字。",
+      "region": {
+        "x": 0.12,
+        "y": 0.04,
+        "w": 0.76,
+        "h": 0.06
+      },
+      "decode_mode": "literal",
+      "exact_text": "序列 0 · 愚者 · 真神",
+      "legend_ref": null
+    },
+    {
+      "id": "acting-identity-residue",
+      "channel": "action",
+      "meaning": "在身份错位中保持自我的行为候选，以非人化残影表达",
+      "implementation": "主画面不安排角色站姿；仅在接缝附近保留一个微小、无面、近乎被擦除的身份残影，作为权柄场中的尺度参照，不承担神格肖像。",
+      "region": {
+        "x": 0.42,
+        "y": 0.44,
+        "w": 0.18,
+        "h": 0.18
+      },
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "ability-folded-state",
+      "channel": "state_change",
+      "meaning": "可回读的愚弄、重组与历史投影场景级状态转换",
+      "implementation": "让非人金色权柄线穿过帷幕接缝，把互相矛盾的历史回廊、星体轨道和完整神国连接并重组；保留前后状态差异，不以人物作为主视觉。",
+      "region": {
+        "x": 0.10,
+        "y": 0.18,
+        "w": 0.80,
+        "h": 0.64
+      },
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "potion-void-reserve",
+      "channel": "negative_space",
+      "meaning": "为候选配方摘要保留诚实的档案区，不用未证物件冒充材料",
+      "implementation": "下部安全区保留一块安静负空间；正式排版可放短摘要与lead状态，未核验前不绘制药瓶、材料或颜色暗示。",
+      "region": {
+        "x": 0.13,
+        "y": 0.84,
+        "w": 0.74,
+        "h": 0.08
+      },
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "ascension-threshold",
+      "channel": "border",
+      "meaning": "把晋升候选条件与通用真神层级分层表达",
+      "implementation": "边框成为一道被跨越后又收束的门槛；顶部身份文字与底部研究摘要各自留出独立安全区，不画固定祭坛或步骤图。",
+      "region": {
+        "x": 0.03,
+        "y": 0.02,
+        "w": 0.94,
+        "h": 0.96
+      },
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "limitation-return",
+      "channel": "negative_space",
+      "meaning": "表达能力关系在帷幕处收束的边界候选与当前证据缺口",
+      "implementation": "让中央金线在接缝内停止并保留一段深色间隔；不使用裂纹、沉睡或暗色本身宣称固定限制。",
+      "region": {
+        "x": 0.42,
+        "y": 0.22,
+        "w": 0.16,
+        "h": 0.60
+      },
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    }
+  ],
   "composition": {
     "layout": "scene",
-    "hero_event": "",
-    "why_this_sequence": "",
-    "focal_hierarchy": [],
-    "art_direction_note": "折叠的剧场与真假关系",
+    "hero_event": "非人的旧金权柄线把彼此矛盾的历史回廊、星体概念与完整神国折叠到同一条“现在”：帷幕接缝不再是人物的背景，而是愚弄与重组发生的法则边界；金线在深色断续处收束而不无限延伸。",
+    "why_this_sequence": "官方中文设定集列出序列0愚者的愚弄、重组与诡秘之境；本卡选择“愚弄历史造成相邻状态折叠”作为可回读主事件，再以星体概念嫁接、完整神国和边界收束承载其余语义。序列0的神性不可用普通人物肖像表达，因此人形只作为尺度残影。",
+    "focal_hierarchy": [
+      "折叠历史与重组概念的巨大金色权柄线/接缝",
+      "由星体、环轨、无尽回廊组成的完整神国",
+      "金线在深色断续处停止并回收的边界",
+      "不超过20%视觉重量的无面身份残影",
+      "为后续受控标题保留的上下负空间"
+    ],
+    "art_direction_note": "权柄优先：约80%的主视觉由非人象征与真神权柄构成，人形残影不超过20%；烟紫、旧金、雾银；古典暗场与维多利亚版刻精度；正视2:3；上下保留安全文字区；不生成文字；禁止王座、神像、普通脸孔和人物肖像。",
     "reference_ids": [],
-    "exactness_note": "六维全覆盖，但不等于六个文字框；无证据时保持研究状态。"
+    "exactness_note": "当前已通过design门槛并完成一张 authority-first 的 rendered 候选；身份文字与六维摘要仍需独立排版。扮演是明确标注的interpretation，限制是有范围的knowledge_gap，正式发布前必须完成当前实图回读、标准像素处理与人工批准。"
   },
   "production": {
-    "stage": "scaffold",
+    "stage": "rendered",
     "artifact": null,
-    "generation": null,
+    "generation": {
+      "tool": {
+        "name": "image_gen",
+        "model": null
+      },
+      "created_at": "2026-09-13T09:09:38+08:00",
+      "raw_assets": [
+        {
+          "path": "artifacts/lotm.fool.s00/draft-v001/fool-s00-concept.png",
+          "sha256": "5a81f66b69d7ed9d4c299cbf4871fa6b9cf334fdbf10ebcd69f3ce9e85f6c0bf"
+        },
+        {
+          "path": "artifacts/lotm.fool.s00/directed-v002/fool-s00-render-v002.png",
+          "sha256": "44437c016d5fbef629a644de85c6b733f37a147889f701c7744db0459020205c"
+        },
+        {
+          "path": "artifacts/lotm.fool.s00/directed-v003/fool-s00-render-v003.png",
+          "sha256": "972865f92a8763891a16bacd118a0ff12caadbe156000a8f8b2b8af1ab73fd36"
+        }
+      ],
+      "processing": [],
+      "declared_native": false
+    },
     "review_file": null
   }
 }

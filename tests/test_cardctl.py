@@ -121,11 +121,12 @@ class CardWorkflowTests(unittest.TestCase):
         self.assertTrue(r['passed'],r['errors']);self.assertEqual(r['cards_checked'],220)
         self.assertLess(r['max_agent_chain_bytes'],32768)
 
-    def test_all_six_are_present_but_no_fake_art(self):
+    def test_scaffold_cards_have_all_six_dimensions_but_no_fake_art(self):
         for p in (self.root/'pathways').glob('*/sequences/*/card.json'):
             c=ct.load_json(p);self.assertEqual(set(c['semantics']),set(ct.DIMS))
-            self.assertIsNone(c['production']['artifact'])
-        self.assertEqual(ct.status(self.root)['artifact_files_present'],0)
+            if c['production']['stage'] == 'scaffold':
+                self.assertIsNone(c['production']['artifact'])
+        self.assertEqual(ct.status(self.root)['artifact_files_present'],1)
 
     def test_22_original_shape_proposals_are_distinct(self):
         shapes=[ct.load_json(self.root/f'pathways/{s}/direction.json')['shape_language'] for s in ct.PATH_IDS]
@@ -231,6 +232,11 @@ class CardWorkflowTests(unittest.TestCase):
                          {'task.md','art-brief.md','overlay-copy.json','semantic-checklist.md','dependencies.json'})
         self.assertIn('DRAFT / RESEARCH',(out/'task.md').read_text())
         self.assertEqual(source_hash,ct.digest_file(self.path))
+
+    def test_brief_includes_sequence_hierarchy_label(self):
+        out=ct.build_brief(self.root,'fool:00',draft=True,slim=True)
+        text=(out/'task.md').read_text()
+        self.assertIn('序列0 · 愚者 · 真神',text)
 
     def test_valid_design_brief_keeps_single_card_scope(self):
         self.make_design();out=ct.build_brief(self.root,'fool:09')

@@ -3,93 +3,266 @@
   "card_id": "lotm.visionary.s07",
   "pathway_id": "visionary",
   "sequence": 7,
-  "name_zh": null,
-  "name_status": "unfilled",
+  "name_zh": "心理医生",
+  "name_status": "verified",
   "work_scope": "lotm-volume-1-zh",
-  "revision": 1,
+  "revision": 2,
   "delivery_profile": "standard",
   "semantics": {
     "identity": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "固定为观众/空想家途径序列7心理医生；App运行时将本卡绑定为奥黛丽的“正义”身份切片，但不把塔罗代号冒充序列名。",
+      "claim_refs": [
+        "visionary.pathway_name",
+        "visionary.pathway_alias.audience",
+        "visionary.sequence_name.s07"
+      ],
       "fidelity": "exact",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": ["identity-title", "identity-path"],
+      "readback": "缩略图和详情页都能直接读出“序列07·心理医生”，并以“观众途径·空想家”校验所属途径；人物代号由独立身份元数据显示。",
+      "misreading_guard": "不把“正义”当成审判者途径、序列名称或官方圣徽；不以人物姓名替代序列数字和准确序列名。",
       "gap_note": null,
-      "research_question": "核对本途径名称、本序列准确中文名与数字归属；确定本系列途径标识。"
+      "research_question": "保持中文序列名、途径工作ID和人物身份元数据分层；若作品范围或中文版本变化，再重新核对名称。"
     },
     "acting": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "以主动使用心理能力帮助他人的行为作为扮演核心；奥黛丽的温和、礼貌和尊重边界是人物化表达，不替代原著扮演原则。",
+      "claim_refs": ["visionary.s07.acting_principle"],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": ["acting-listening", "acting-boundary"],
+      "readback": "从奥黛丽面向求助者、保持倾听距离并让对方保留选择的动作关系，读出“应用能力来帮助人”，而不是静态贵族肖像。",
+      "misreading_guard": "不把微笑、礼服或心理暗示画面单独当成扮演法；不把帮助行为表现为强制控制或审判。",
       "gap_note": null,
-      "research_question": "核对当前序列的核心扮演原则，区分原著明示、角色理解与编辑概括。"
+      "research_question": "继续区分官方扮演提示与奥黛丽人物化解释，避免将角色性格概括扩写为通用仪式。"
     },
     "abilities": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "以安抚与读心作为主视觉代表能力：让紊乱情绪沿边界平复，并通过蜡烛/纯露媒介进入半催眠沟通；其余能力保留在来源断言中，不强行塞入主事件。",
+      "claim_refs": [
+        "visionary.s07.ability.reassurance",
+        "visionary.s07.ability.mind_reading"
+      ],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": ["ability-calming", "ability-medium", "ability-caption"],
+      "readback": "中景能看见情绪由尖锐紊乱波纹转为同心平静波纹，并能定位到烛火/纯露是读心机制媒介；不是泛化发光魔法。",
+      "misreading_guard": "不把本卡主事件误读为震慑、狂乱或高序列操纵现实；不声称两项能力穷尽序列7全部能力。",
       "gap_note": null,
-      "research_question": "选出最能区别相邻序列的一项代表能力；核对作用对象、条件与新增/强化性质。"
+      "research_question": "保持代表能力与能力全集分开；如后续加入心理暗示、震慑或狂乱文字，需重新安排画面与回读。"
     },
     "potion": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "用精确短注展示心理医生魔药的主要材料和已知数量；画面中的纯露瓶只承担读心媒介线索，不冒充完整配方容器。",
+      "claim_refs": ["visionary.s07.potion.main_ingredients"],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": ["potion-materials", "potion-vial"],
+      "readback": "近看能从材料短注读出镜龙眼睛、镜龙血液和长者之树果实；画面不暗示未经核验的颜色、形态或完整比例。",
+      "misreading_guard": "不把单个透明瓶认作全部魔药配方；不把纯露媒介误读为镜龙材料或新增能力。",
       "gap_note": null,
-      "research_question": "核对进入当前序列的关键魔药要素；明确是否仅展示材料摘要。"
+      "research_question": "当前只承诺官方设定集列出的主要材料；完整配方若需上卡，必须另行复核作品范围。"
     },
     "ascension": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "partial",
+      "intent": "表达进入序列7的证据边界：本卡确认心理医生的序列身份与魔药材料，但不虚构奥黛丽个人晋升场景；官方通则显示序列5及以上才进入仪式要求。",
+      "claim_refs": ["visionary.s07.ascension.ritual_scope"],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
-      "gap_note": null,
-      "research_question": "核对进入当前序列的条件/仪式；未知时不自创，也不误用下一序列要求。"
+      "carrier_ids": ["ascension-threshold", "ascension-note"],
+      "readback": "边框像一条被尊重的门槛，文字提示本来源未列序列7独立晋升仪式；观众不会把画面中的会客室误认成原著仪式。",
+      "misreading_guard": "不把烛火、谈话桌或卡框画成官方晋升祭坛；不以序列5及以上的仪式要求替代本序列事实。",
+      "gap_note": "本来源支持序列5及以上的通用仪式范围，但没有展开奥黛丽从序列8到7的完整个人晋升经过；本卡不补造该剧情。",
+      "research_question": "若后续取得中文底本中的角色晋升段落，再单独补证，不回填为当前卡的原创仪式。"
     },
     "limitations": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "把安抚的失败概率和读心的媒介/半催眠前提变成可见的未完全平复波纹与条件短注，使善意帮助保留现实边界。",
+      "claim_refs": [
+        "visionary.s07.limitation.reassurance_failure",
+        "visionary.s07.limitation.mind_reading_condition"
+      ],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": ["limitation-state", "limitation-caption"],
+      "readback": "一小段情绪波纹仍未完全归于平静，近看能读出“安抚有失败概率”和“读心需媒介与半催眠”；限制来自能力条件而非暗色气氛。",
+      "misreading_guard": "不把局部残波解释成奥黛丽必然失控，也不把心理医生描绘成能够无条件读取或修复所有心灵。",
       "gap_note": null,
-      "research_question": "核对能力边界、代价、使用条件或相关风险，避免泛泛而谈失控。"
+      "research_question": "保留官方明确的失败概率和使用前提；未有证据的代价、距离、目标抗性不写入本卡。"
     }
   },
-  "cues": [],
+  "cues": [
+    {
+      "id": "identity-title",
+      "channel": "text",
+      "meaning": "精确标示正式序列名称和数字",
+      "implementation": "置于顶部安全区，后期排版为系列一级标题；图像底图不生成文字。",
+      "region": {"x": 0.13, "y": 0.045, "w": 0.74, "h": 0.055},
+      "decode_mode": "literal",
+      "exact_text": "序列 07 · 心理医生",
+      "legend_ref": null
+    },
+    {
+      "id": "identity-path",
+      "channel": "text",
+      "meaning": "用途径名称与别名校验身份",
+      "implementation": "紧随一级标题的副标题区；与人物代号在App身份面板中分开显示。",
+      "region": {"x": 0.16, "y": 0.112, "w": 0.68, "h": 0.035},
+      "decode_mode": "literal",
+      "exact_text": "观众途径 · 空想家",
+      "legend_ref": null
+    },
+    {
+      "id": "acting-listening",
+      "channel": "action",
+      "meaning": "主动应用心理能力帮助他人的扮演行为",
+      "implementation": "奥黛丽身体前倾倾听，手部靠近桌面而不触碰对方；求助者处于画面前景但不抢主体焦点。",
+      "region": {"x": 0.28, "y": 0.23, "w": 0.48, "h": 0.42},
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "acting-boundary",
+      "channel": "negative_space",
+      "meaning": "帮助与控制之间保留尊重边界",
+      "implementation": "在奥黛丽与求助者之间保留一条柔和的淡金边界；边界不封死交流，也不允许人物越过对方意志。",
+      "region": {"x": 0.18, "y": 0.48, "w": 0.64, "h": 0.18},
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "ability-calming",
+      "channel": "state_change",
+      "meaning": "安抚使紊乱情绪向可沟通状态平复",
+      "implementation": "左侧尖锐的冰蓝心理波纹沿淡金线向右过渡为低幅同心波纹；前后状态必须同时可见。",
+      "region": {"x": 0.10, "y": 0.34, "w": 0.76, "h": 0.38},
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "ability-medium",
+      "channel": "object",
+      "meaning": "读心使用蜡烛/纯露媒介并形成半催眠沟通",
+      "implementation": "桌面右下保留一支点燃的蜡烛与一小瓶透明纯露；两者与心理波纹通过同一光线因果连接。",
+      "region": {"x": 0.69, "y": 0.57, "w": 0.20, "h": 0.25},
+      "decode_mode": "conventional",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "ability-caption",
+      "channel": "text",
+      "meaning": "给主视觉代表能力提供短文字校准",
+      "implementation": "放在中下部的短语层，不排成六格面板。",
+      "region": {"x": 0.17, "y": 0.775, "w": 0.66, "h": 0.035},
+      "decode_mode": "literal",
+      "exact_text": "能力 · 安抚 / 读心",
+      "legend_ref": null
+    },
+    {
+      "id": "potion-materials",
+      "channel": "text",
+      "meaning": "精确展示主要魔药材料与数量",
+      "implementation": "底部档案安全区以小但可读的单行摘要排版，明确这是主要材料而非完整配方。",
+      "region": {"x": 0.09, "y": 0.855, "w": 0.82, "h": 0.042},
+      "decode_mode": "literal",
+      "exact_text": "主要材料 · 镜龙的眼睛一对 · 镜龙血液50毫升 · 长者之树的果实",
+      "legend_ref": null
+    },
+    {
+      "id": "potion-vial",
+      "channel": "object",
+      "meaning": "把透明纯露瓶作为读心媒介而非泛用药瓶",
+      "implementation": "瓶身保持无标签、透明和小比例；不绘制未知材料的拟人化外观。",
+      "region": {"x": 0.76, "y": 0.66, "w": 0.10, "h": 0.16},
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "ascension-threshold",
+      "channel": "border",
+      "meaning": "把进入当前序列的证据边界与未虚构仪式分开",
+      "implementation": "金色边框在顶部和底部安全区形成门槛感，但不画祭坛、祭品或固定祷词。",
+      "region": {"x": 0.03, "y": 0.025, "w": 0.94, "h": 0.95},
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "ascension-note",
+      "channel": "text",
+      "meaning": "诚实标注序列7独立仪式的证据范围",
+      "implementation": "与材料摘要并列但不合并；使用克制的档案短注。",
+      "region": {"x": 0.20, "y": 0.915, "w": 0.60, "h": 0.028},
+      "decode_mode": "literal",
+      "exact_text": "晋升记录 · 本来源未列序列7独立仪式",
+      "legend_ref": null
+    },
+    {
+      "id": "limitation-state",
+      "channel": "state_change",
+      "meaning": "安抚并非必然成功，仍有未平复的情绪残波",
+      "implementation": "同心波纹边缘保留一条偏离轨道的细小冰蓝残线，不让全画面完全归于平静。",
+      "region": {"x": 0.48, "y": 0.68, "w": 0.26, "h": 0.12},
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "limitation-caption",
+      "channel": "text",
+      "meaning": "校准能力失败概率与读心前提",
+      "implementation": "在下部辅助文字层显示短限制，不用恐怖装饰代替条件。",
+      "region": {"x": 0.10, "y": 0.945, "w": 0.80, "h": 0.026},
+      "decode_mode": "literal",
+      "exact_text": "限制 · 安抚有失败概率 · 读心需媒介与半催眠",
+      "legend_ref": null
+    }
+  ],
   "composition": {
     "layout": "scene",
-    "hero_event": "",
-    "why_this_sequence": "",
-    "focal_hierarchy": [],
-    "art_direction_note": "观看关系与内外叙事",
+    "hero_event": "贝克兰德会客室中，奥黛丽通过烛火与纯露让一名濒临失控者的心智短暂敞开；尖锐的情绪波纹沿淡金边界逐渐归于平静，但仍留下一条未完全收束的残线。",
+    "why_this_sequence": "序列7属于中序列，画面保留清晰的人物、职业动作和具体会客室，同时让能力开始改变心理关系与现实表面。心理医生比奥黛丽可能达到的更高序列更能集中表现她“正义”身份中的倾听、共情、克制和帮助他人的任务气质；这是一张人物身份切片，不冒充空想家途径的唯一原型。",
+    "focal_hierarchy": [
+      "奥黛丽主动倾听并稳定求助者的动作关系",
+      "由尖锐到平静的冰蓝心理波纹状态变化",
+      "烛火与纯露构成的读心媒介",
+      "淡金边界与未完全收束的残线",
+      "顶部身份和底部主要材料/限制文字安全区"
+    ],
+    "art_direction_note": "序列7采用人类锚点优先：约70%视觉重量来自奥黛丽、求助者与会客室，约30%来自心理波纹和边界异常；珍珠灰、冰蓝、淡金；蜡、磨砂玻璃、柔光织物；相互嵌套的视线与内外相映空间。避免审判者圣像、天使化、王冠、剑、天平和高序列概念空间。",
     "reference_ids": [],
-    "exactness_note": "六维全覆盖，但不等于六个文字框；无证据时保持研究状态。"
+    "exactness_note": "底图与文字分层；材料、限制和证据范围使用后期排版文字校准。奥黛丽/正义/serena属于客户端人物身份与叙事层，不将其写进序列正典断言。"
   },
   "production": {
-    "stage": "scaffold",
-    "artifact": null,
-    "generation": null,
+    "stage": "rendered",
+    "artifact": {
+      "path": "artifacts/lotm.visionary.s07/render-v001/audrey-s07-psychologist-v001.png",
+      "sha256": "5bc65c0da44e805d87c136382e2ba7a2e51c120874ab4661f9af4c0ea8eaa280"
+    },
+    "generation": {
+      "tool": {
+        "name": "image_gen",
+        "model": null
+      },
+      "created_at": "2026-09-13",
+      "raw_assets": [
+        {
+          "path": "artifacts/lotm.visionary.s07/render-v001/audrey-s07-psychologist-raw.png",
+          "sha256": "403846569992a9716f8a29d8133af052b6be91b539ed1d67956089bcbdacc15d"
+        }
+      ],
+      "processing": [
+        {
+          "operation": "upscale",
+          "description": "使用 macOS sips -z 将真实原始输出从1024×1536调整为标准2048×3072；未宣称原生分辨率。"
+        },
+        {
+          "operation": "retain_collector_derivative",
+          "description": "另保留4096×6144收藏母版候选audrey-s07-psychologist-collector-v001.png；App使用标准档。"
+        }
+      ],
+      "declared_native": false
+    },
     "review_file": null
   }
 }

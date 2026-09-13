@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 import LotmCardStudioCore
 
@@ -11,6 +12,7 @@ enum ArchiveTheme {
     static let amber = Color(red: 0.89, green: 0.69, blue: 0.39)
     static let teal = Color(red: 0.39, green: 0.85, blue: 0.77)
     static let violet = Color(red: 0.56, green: 0.47, blue: 0.84)
+    static let ice = Color(red: 0.56, green: 0.73, blue: 0.86)
     static let danger = Color(red: 0.88, green: 0.42, blue: 0.41)
 }
 
@@ -56,21 +58,26 @@ struct StatusChip: View {
         .foregroundStyle(status.accentColor)
         .padding(.horizontal, 10)
         .padding(.vertical, 6)
-        .background(status.accentColor.opacity(0.13), in: Capsule())
-        .overlay {
-            Capsule()
-                .stroke(status.accentColor.opacity(0.30), lineWidth: 1)
-        }
+        .glassEffect(
+            .regular.tint(status.accentColor.opacity(0.13)),
+            in: Capsule()
+        )
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("内容状态：\(status.displayTitle)")
     }
 }
 
 struct ArchiveArtworkView: View {
     let theme: VisualTheme
     let compact: Bool
+    let resourceName: String?
 
     var body: some View {
         GeometryReader { proxy in
             let size = min(proxy.size.width, proxy.size.height)
+            let glowColor = theme == .violet
+                ? ArchiveTheme.violet
+                : (theme == .visionary ? ArchiveTheme.ice : ArchiveTheme.teal)
             ZStack {
                 RoundedRectangle(cornerRadius: compact ? 16 : 24, style: .continuous)
                     .fill(
@@ -82,11 +89,15 @@ struct ArchiveArtworkView: View {
                     )
 
                 Circle()
-                    .fill((theme == .violet ? ArchiveTheme.violet : ArchiveTheme.teal).opacity(0.48))
+                    .fill(glowColor.opacity(0.48))
                     .frame(width: size * 0.62, height: size * 0.62)
                     .blur(radius: compact ? 24 : 44)
 
-                if theme == .empty {
+                if let resourceName {
+                    BundledArtworkView(resourceName: resourceName, compact: compact)
+                } else if theme == .divineFool {
+                    DivineFoolArtworkView(compact: compact)
+                } else if theme == .empty {
                     Circle()
                         .stroke(ArchiveTheme.amber.opacity(0.65), lineWidth: 1)
                         .frame(width: size * 0.52, height: size * 0.52)
@@ -120,6 +131,164 @@ struct ArchiveArtworkView: View {
         }
         .aspectRatio(2 / 3, contentMode: .fit)
         .clipped()
+        .accessibilityHidden(true)
+    }
+}
+
+private struct BundledArtworkView: View {
+    let resourceName: String
+    let compact: Bool
+
+    var body: some View {
+        if let image = Self.loadImage(named: resourceName) {
+            Image(nsImage: image)
+                .resizable()
+                .scaledToFill()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .clipped()
+        } else {
+            DivineFoolArtworkView(compact: compact)
+        }
+    }
+
+    private static func loadImage(named resourceName: String) -> NSImage? {
+        guard let url = Bundle.main.url(
+            forResource: resourceName,
+            withExtension: "png",
+            subdirectory: "CardArt"
+        ) else {
+            return nil
+        }
+        return NSImage(contentsOf: url)
+    }
+}
+
+private struct DivineFoolArtworkView: View {
+    let compact: Bool
+
+    var body: some View {
+        GeometryReader { proxy in
+            let width = proxy.size.width
+            let height = proxy.size.height
+            let lineWidth = compact ? 1.0 : 1.5
+
+            ZStack {
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.08, green: 0.05, blue: 0.12),
+                        ArchiveTheme.ink,
+                        Color(red: 0.05, green: 0.09, blue: 0.15)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+
+                RadialGradient(
+                    colors: [ArchiveTheme.amber.opacity(0.34), .clear],
+                    center: .init(x: 0.24, y: 0.39),
+                    startRadius: 2,
+                    endRadius: width * 0.52
+                )
+
+                RadialGradient(
+                    colors: [Color.white.opacity(0.22), .clear],
+                    center: .init(x: 0.82, y: 0.62),
+                    startRadius: 2,
+                    endRadius: width * 0.62
+                )
+
+                // The divine realm is represented as a self-completing field of
+                // recursive corridors rather than a humanoid subject.
+                ForEach(0..<6, id: \.self) { index in
+                    RoundedRectangle(cornerRadius: width * 0.025, style: .continuous)
+                        .stroke(
+                            index.isMultiple(of: 2)
+                                ? ArchiveTheme.amber.opacity(0.32)
+                                : Color.white.opacity(0.16),
+                            lineWidth: lineWidth
+                        )
+                        .frame(
+                            width: width * (0.30 + Double(index) * 0.10),
+                            height: height * (0.18 + Double(index) * 0.08)
+                        )
+                        .rotationEffect(.degrees(Double(index) * 8 - 20))
+                        .offset(x: width * 0.07, y: height * (Double(index) * 0.045 - 0.04))
+                        .blur(radius: index > 3 ? 0.4 : 0)
+                }
+
+                // A star and its orbit are grafted into the history seam.
+                Circle()
+                    .stroke(ArchiveTheme.amber.opacity(0.58), lineWidth: lineWidth)
+                    .frame(width: width * 0.24, height: width * 0.24)
+                    .overlay {
+                        Circle()
+                            .stroke(Color.white.opacity(0.28), lineWidth: lineWidth)
+                            .frame(width: width * 0.12, height: width * 0.12)
+                    }
+                    .overlay {
+                        Image(systemName: "sparkle")
+                            .font(.system(size: compact ? 14 : 23, weight: .light))
+                            .foregroundStyle(ArchiveTheme.amber)
+                    }
+                    .rotationEffect(.degrees(-18))
+                    .offset(x: -width * 0.21, y: -height * 0.18)
+
+                ForEach(0..<3, id: \.self) { index in
+                    Ellipse()
+                        .stroke(
+                            index == 1
+                                ? ArchiveTheme.amber.opacity(0.68)
+                                : Color.white.opacity(0.18),
+                            lineWidth: lineWidth
+                        )
+                        .frame(width: width * (0.52 + Double(index) * 0.09), height: height * (0.20 + Double(index) * 0.07))
+                        .rotationEffect(.degrees(Double(index) * 21 - 25))
+                        .offset(x: -width * 0.12, y: -height * 0.17)
+                }
+
+                // One small, faceless identity residue establishes scale without
+                // turning the True God into a character portrait.
+                VStack(spacing: -1) {
+                    Circle()
+                        .fill(Color.black.opacity(0.82))
+                        .frame(width: width * 0.026, height: width * 0.026)
+                    Capsule()
+                        .fill(Color.black.opacity(0.76))
+                        .frame(width: width * 0.032, height: height * 0.080)
+                }
+                .shadow(color: ArchiveTheme.amber.opacity(0.40), radius: compact ? 4 : 8)
+                .offset(x: width * 0.11, y: height * 0.13)
+
+                // History folds into one seam, then stops at a dark discontinuity.
+                Path { path in
+                    path.move(to: CGPoint(x: width * 0.61, y: -height * 0.04))
+                    path.addCurve(
+                        to: CGPoint(x: width * 0.48, y: height * 0.66),
+                        control1: CGPoint(x: width * 0.42, y: height * 0.17),
+                        control2: CGPoint(x: width * 0.72, y: height * 0.38)
+                    )
+                    path.addCurve(
+                        to: CGPoint(x: width * 0.54, y: height * 0.84),
+                        control1: CGPoint(x: width * 0.34, y: height * 0.73),
+                        control2: CGPoint(x: width * 0.72, y: height * 0.75)
+                    )
+                }
+                .stroke(ArchiveTheme.amber, style: StrokeStyle(lineWidth: compact ? 2 : 3, lineCap: .round))
+                .shadow(color: ArchiveTheme.amber.opacity(0.72), radius: compact ? 4 : 10)
+
+                Capsule()
+                    .fill(ArchiveTheme.ink)
+                    .frame(width: width * 0.12, height: height * 0.055)
+                    .overlay {
+                        Capsule()
+                            .stroke(ArchiveTheme.amber.opacity(0.50), style: StrokeStyle(lineWidth: lineWidth, dash: [3, 4]))
+                    }
+                    .offset(x: width * 0.02, y: height * 0.81)
+
+                RoundedRectangle(cornerRadius: compact ? 16 : 24, style: .continuous)
+                    .stroke(ArchiveTheme.amber.opacity(0.58), lineWidth: lineWidth)
+            }
+        }
     }
 }
 

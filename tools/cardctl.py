@@ -657,6 +657,11 @@ def build_brief(root: Path, selector: str, draft: bool=False, slim: bool=False) 
     source_subset=[s for s in sources['sources'] if s['id'] in source_ids]
     reference_subset=[a for a in load_json(root/'references/manifest.json')['assets']
                       if a['id'] in c['composition']['reference_ids']]
+    config=load_json(root/'config/project.json')
+    hierarchy=load_json(root/config['sequence_hierarchy_path'])
+    rank=next((row for row in hierarchy['sequence_levels'] if row['sequence']==c['sequence']),None)
+    if rank is None:
+        raise DataError(f'层级配置缺少序列{c["sequence"]}映射')
     pathrow=next(r for r in load_json(root/'catalog/pathways.json')['pathways'] if r['id']==c['pathway_id'])
     out=safe_path(root, f'generated/{c["card_id"]}', must_exist=False)
     out.mkdir(parents=True,exist_ok=True)
@@ -664,7 +669,7 @@ def build_brief(root: Path, selector: str, draft: bool=False, slim: bool=False) 
         safe_path(root, f'generated/{c["card_id"]}/{filename}', must_exist=False)
     mode='DRAFT / RESEARCH — 禁止作为已核验最终出图任务' if draft else 'DESIGN-CHECKED / 尚未出图或批准'
     summary=[f'# {c["card_id"]} · 单卡任务',f'\n状态：**{mode}**',
-             f'工作身份：{pathrow["working_name_zh"]} · 序列{c["sequence"]} · {c["name_zh"] or "名称待核验"}',
+             f'工作身份：{pathrow["working_name_zh"]} · 序列{c["sequence"]} · {c["name_zh"] or "名称待核验"} · {rank["specific_label_zh"]}',
              '\n此任务是执行Agent上下文，不是假定图像工具自动读取的API请求。',
              '\n## 六维表达计划']
     for d in DIMS:
@@ -681,7 +686,6 @@ def build_brief(root: Path, selector: str, draft: bool=False, slim: bool=False) 
                 '\n## 当前参考资产（元数据不是已传递的图像附件）\n```json',
                 json.dumps(reference_subset,ensure_ascii=False,indent=2),'```',
                 '\n## 必须传递的规则与途径方向']
-    config=load_json(root/'config/project.json')
     actualpaths=context_paths(root,card_path,config)
     # Include actual rule text and direction, but not the other 219 cards or full canon.
     for p in actualpaths:

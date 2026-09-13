@@ -1,6 +1,691 @@
 {
   "schema_version": "0.3.0",
   "pathway_id": "fool",
-  "claims": [],
-  "note": "尚未完成本途径原著核验；空列表不表示原著没有相应设定。"
+  "claims": [
+    {
+      "id": "fool.pathway_name",
+      "predicate": "pathway_name",
+      "value": "愚者",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "book synopsis与章节目录；英文材料将Seer与Fool作为同一路径的不同称呼，并将Fool与0关联",
+          "support_note": "官方英文译本用于路径关系与检索定位，不替代中文底本。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的非凡途径/愚者途径中文名称表",
+          "support_note": "中文二手索引只作名称交叉比对，当前正文未完整取得。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径；页面正文标题与途径名称",
+          "support_note": "当前中文官方设定集页面直接显示“愚者途径”；用于名称核验。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面直接给出愚者途径名称；本条不替代其他途径名称或六维事实的独立核验。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s09",
+      "predicate": "sequence_name",
+      "value": "占卜家",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "Volume 1 Chapter 31 Potion；官方英文译本的路径起始段检索定位",
+          "support_note": "只支持英文检索路径，不能单独确认中文显示名。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列9名称：占卜家",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列9：占卜家",
+          "support_note": "当前中文官方设定集页面直接显示序列9名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验该序列名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s08",
+      "predicate": "sequence_name",
+      "value": "小丑",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        8
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "Volume 2 Chapter 168 Clown Potion",
+          "support_note": "官方英文目录确认Clown的序列名称定位，不能单独确认中文显示名。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列8名称：小丑",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列8：小丑",
+          "support_note": "当前中文官方设定集页面直接显示序列8名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验该序列名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s07",
+      "predicate": "sequence_name",
+      "value": "魔术师",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        7
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "Volume 3 Chapter 296 Magician",
+          "support_note": "官方英文目录确认Magician的序列名称定位，不能单独确认中文显示名。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列7名称：魔术师",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列7：魔术师",
+          "support_note": "当前中文官方设定集页面直接显示序列7名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验该序列名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s06",
+      "predicate": "sequence_name",
+      "value": "无面人",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        6
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "Volume 4 Chapter 451 Faceless",
+          "support_note": "官方英文目录确认Faceless的序列名称定位，不能单独确认中文显示名。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列6名称：无面人",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列6：无面人",
+          "support_note": "当前中文官方设定集页面直接显示序列6名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验该序列名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s05",
+      "predicate": "sequence_name",
+      "value": "秘偶大师",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        5
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "Volume 5至Volume 6路径章节目录；官方英文译本将该阶段定位为Marionettist",
+          "support_note": "官方英文目录用于名称定位，不能单独确认中文显示名。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列5名称：秘偶大师",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列5：秘偶大师",
+          "support_note": "当前中文官方设定集页面直接显示序列5名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验该序列名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s04",
+      "predicate": "sequence_name",
+      "value": "诡法师",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        4
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "Volume 6 Chapter 982 Bizarro Sorcerer vs Parasite",
+          "support_note": "官方英文目录确认Bizarro Sorcerer的章节定位，不能单独确认中文显示名。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列4名称：诡法师",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列4：诡法师",
+          "support_note": "当前中文官方设定集页面直接显示序列4名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验该序列名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s03",
+      "predicate": "sequence_name",
+      "value": "古代学者",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        3
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "Volume 6 Chapter 1138 Scholar of Yore",
+          "support_note": "官方英文目录确认Scholar of Yore的章节定位，不能单独确认中文显示名。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列3名称：古代学者",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列3：古代学者",
+          "support_note": "当前中文官方设定集页面直接显示序列3名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验该序列名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s02",
+      "predicate": "sequence_name",
+      "value": "奇迹师",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        2
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "Volume 7 Chapter 1268 Miracle Invoker；Volume 3 Chapter 237 Sequence 2",
+          "support_note": "官方英文目录与章节定位Sequence 2/名称，不能单独确认中文显示名。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列2名称：奇迹师",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列2：奇迹师",
+          "support_note": "当前中文官方设定集页面直接显示序列2名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验该序列名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s01",
+      "predicate": "sequence_name",
+      "value": "诡秘侍者",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        1
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "Volume 8 Chapter 1352 Attendant of Mysteries",
+          "support_note": "官方英文目录与章节标题确认序列1名称定位，不能单独确认中文显示名。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列1名称：诡秘侍者",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列1：诡秘侍者",
+          "support_note": "当前中文官方设定集页面直接显示序列1名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验该序列名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence_name.s00",
+      "predicate": "sequence_name",
+      "value": "愚者",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.catalog",
+          "locator": "book synopsis将The Fool对应编号0；Volume 9 Chapter 1380 A Miracle及相关目录定位The Fool's potion",
+          "support_note": "官方英文材料支持Sequence 0与The Fool的关系定位，但不替代中文底本的正式中文名称核验。"
+        },
+        {
+          "source_id": "lomworld.handbook.en",
+          "locator": "Paths of the Divine：Sequence 0 / True God",
+          "support_note": "官方世界手册用于层级交叉核对，不替代中文原著逐字证据。"
+        },
+        {
+          "source_id": "lom.huiji.zh.fool",
+          "locator": "搜索索引中的序列0名称：愚者",
+          "support_note": "二手中文索引交叉比对，保留lead。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列0：愚者",
+          "support_note": "当前中文官方设定集页面直接显示序列0名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "官方中文设定集页面已核验序列0名称为愚者；其层级为真神，卡位是正式序列卡而不是特殊事件。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence0.true_god_rank",
+      "predicate": "ascension_condition",
+      "value": "序列0对应该途径的真神位阶；“愚者”是本卡的序列名，“真神”是层级元数据，不是特殊事件类型。",
+      "dimensions": [
+        "identity",
+        "ascension"
+      ],
+      "sequences": [
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lomworld.handbook.en",
+          "locator": "Paths of the Divine：Sequence 0 / True God 以及序列层级说明",
+          "support_note": "官方世界手册用于跨途径层级交叉核对；本条的当前中文核验依据是同组的起点官方片段。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.c101",
+          "locator": "第一百零一章“可能”官方页面可见片段：序列0与真神的中文位阶关系",
+          "support_note": "当前中文底本页面直接支持“序列0等于真神”；VIP正文未完整取得，不能外推到其他六维。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "序列0=真神的位阶关系已由当前中文作品范围的官方页面片段支持；愚者中文序列名和其余五维仍需分别核验。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence0.potion_formula",
+      "predicate": "potion_ingredient",
+      "value": "主材料为愚者唯一性与自身之外剩余两份诡秘侍者非凡特性；辅助条件为掌控至少四分之一个历史迷雾。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.c1291",
+          "locator": "Chapter 1291 Two Rituals；官方英文页面可定位愚者卡与相关仪式场景，但配方正文未在当前预览完整返回",
+          "support_note": "官方英文译本只作章节定位，不替代第一部中文底本。"
+        },
+        {
+          "source_id": "lotm.secondary.c1291.mirror",
+          "locator": "第二十五章“两个仪式”的非官方中文镜像索引/摘要",
+          "support_note": "仅保留为历史检索线索；本条verified依据同组官方中文设定集页面。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列0：愚者 > 魔药配方",
+          "support_note": "官方中文设定集页面直接列出序列0主材料与辅助材料。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "中文官方设定集已提供主/辅助条件；卡面仍只使用低文字密度摘要，不复制正文段落或补造材料外观。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence0.ascension_ritual",
+      "predicate": "ascension_condition",
+      "value": "晋升仪式为愚弄一次时间、历史或者命运。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.c1291",
+          "locator": "Chapter 1291 Two Rituals；官方英文章节定位",
+          "support_note": "页面预览未返回完整中文可核验文本，不能单独支撑verified。"
+        },
+        {
+          "source_id": "lotm.secondary.c1291.mirror",
+          "locator": "第二十五章“两个仪式”的非官方中文镜像索引/摘要",
+          "support_note": "仅保留为历史检索线索；本条verified依据同组官方中文设定集页面。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列0：愚者 > 仪式",
+          "support_note": "官方中文设定集页面直接列出序列0晋升仪式。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "中文官方设定集已提供专属仪式；与序列0的一般真神层级条件分开记录，卡面不画固定祭坛、祷词或完整步骤。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence0.fooling_authority",
+      "predicate": "ability",
+      "value": "愚者序列0的“愚弄”可影响认知与环境，也可愚弄时间使非凡能力效果延迟，并愚弄历史分割前后相邻时刻的自身；这是古代学者相关能力的深化。",
+      "dimensions": [
+        "abilities"
+      ],
+      "sequences": [
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.c1289",
+          "locator": "Chapter 1289 Fooling；可见段落出现历史投影幕场景",
+          "support_note": "官方英文页面正文未完整返回，只支持场景级定位。"
+        },
+        {
+          "source_id": "webnovel.lotm.en.c1383",
+          "locator": "Chapter 1383 Stipulated Rules；可见段落出现愚者卡与场景状态变化",
+          "support_note": "不从剧情片段扩写为完整机制。"
+        },
+        {
+          "source_id": "webnovel.lotm.en.c1385",
+          "locator": "Chapter 1385 Madness；可见段落直接出现Fooling命名权柄",
+          "support_note": "只支持命名权柄与冲突场景定位，不自动提供中文术语核验。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列0：愚者 > 能力1：愚弄",
+          "support_note": "官方中文设定集页面直接列出愚弄的认知、环境、时间与历史应用。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "中文官方设定集已直接提供能力摘要；卡面仍选取历史状态折叠作为一个主事件，不把单项能力扩写成全能。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence0.recomposition_ability",
+      "predicate": "ability",
+      "value": "愚者序列0具备重组能力，可将自身与星空中的某颗恒星的概念嫁接在一起。",
+      "dimensions": [
+        "abilities"
+      ],
+      "sequences": [
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列0：愚者 > 能力2：重组",
+          "support_note": "当前中文官方设定集页面直接列出该能力描述。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "卡面暂不把恒星概念画成具名天体或具体角色，以免把能力摘要误读为人物设定。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence0.mystical_realm",
+      "predicate": "ability",
+      "value": "愚者序列0的诡秘之境是完整的神国。",
+      "dimensions": [
+        "abilities"
+      ],
+      "sequences": [
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列0：愚者 > 能力3：诡秘之境",
+          "support_note": "当前中文官方设定集页面直接列出完整神国定位。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex research pass (not human approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "神国是能力定位，不等同于固定建筑外观；视觉仍需避免通用王座或场景摆拍。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence0.acting_candidate",
+      "predicate": "acting_principle",
+      "value": "原创转译候选：在身份与关系不断错位时仍保持对自身的辨认，让被看见的角色与真正承担后果的主体同时存在。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.c1385",
+          "locator": "Chapter 1385 Madness；Fooling冲突场景作为主题转译参考",
+          "support_note": "这里只提供创作触发点，不能冒称原著固定扮演原则。"
+        },
+        {
+          "source_id": "webnovel.lotm.en.c1389",
+          "locator": "Chapter 1389 The Fool's Commission；愚者沉睡与承担后果的剧情状态定位",
+          "support_note": "用于原型叙事方向，不绑定特定角色，也不替代中文底本。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 3.1 扮演法及4.1 愚者途径序列0条目",
+          "support_note": "官方页面支持从魔药名称提炼扮演意象的方法，但序列0条目没有独立扮演守则；本条作为解释性转译审查，不冒称正典。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex design review (interpretation, not canon approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "assertion_kind为interpretation；verified表示该原创转译已按官方一般扮演法与序列0能力范围审查，不表示它是原著固定扮演守则。若后续取得明确条目，应以原文复核结果替换或撤回。",
+      "assertion_kind": "interpretation"
+    },
+    {
+      "id": "fool.sequence0.limitations_gap",
+      "predicate": "absence",
+      "value": "截至2026-09-13，在可访问的官方英文页面片段、官方世界手册索引与登记的二手线索范围内，尚未形成可直接核验的序列0愚者完整限制清单；这不宣称原著不存在限制。",
+      "dimensions": [
+        "limitations"
+      ],
+      "sequences": [
+        0
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.c1352",
+          "locator": "Chapter 1352 Attendant of Mysteries；序列1失控风险片段",
+          "support_note": "用于排除误用：序列1风险不能直接冒充序列0固定限制。"
+        },
+        {
+          "source_id": "webnovel.lotm.en.c1389",
+          "locator": "Chapter 1389 The Fool's Commission；特定剧情阶段的沉睡状态",
+          "support_note": "用于排除误用：特定剧情沉睡不能直接冒充通用限制。"
+        },
+        {
+          "source_id": "webnovel.lotm.en.c1289",
+          "locator": "Chapter 1289 Fooling；部分能力场景预览",
+          "support_note": "检索范围说明；页面不完整，不能从未显示内容推出原著没有限制。"
+        },
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列0条目；该条目列出配方、仪式与能力，但没有独立限制小节",
+          "support_note": "仅核验“当前资料范围未形成独立限制清单”的范围，不宣称原著不存在限制。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped-gap review (not canon approval)",
+        "reviewed_at": "2026-09-13T08:55:47+08:00"
+      },
+      "notes": "知识缺口只限制当前检索范围；verified表示检索范围与排除误读已复核，不把缺口升级成“没有限制”的正典结论。卡面继续使用边界候选作为视觉占位。",
+      "assertion_kind": "knowledge_gap"
+    }
+  ],
+  "note": "愚者途径9–0名称、序列0位阶、配方、晋升仪式和三项能力已由当前可访问的官方中文设定集/章节片段记录并标记verified；扮演仍是明确标注的interpretation，限制仍是有范围的knowledge_gap，不表示已完成视觉或人工批准。"
 }

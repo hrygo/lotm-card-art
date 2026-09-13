@@ -49,14 +49,18 @@ public enum SpeechRailError: Error, Equatable, Sendable {
 }
 
 public final class SpeechRailHTTPClient: @unchecked Sendable {
+    public typealias APIKeyProvider = @Sendable () async throws -> String?
+
     public let baseURL: URL
     public let apiKey: String?
+    private let apiKeyProvider: APIKeyProvider?
     private let session: URLSession
     private let sessionDelegate: LoopbackRedirectBlocker?
 
     public init(
         baseURL: URL,
         apiKey: String? = nil,
+        apiKeyProvider: APIKeyProvider? = nil,
         session: URLSession? = nil
     ) throws {
         guard Self.isLoopback(baseURL) else {
@@ -64,6 +68,7 @@ public final class SpeechRailHTTPClient: @unchecked Sendable {
         }
         self.baseURL = baseURL
         self.apiKey = apiKey
+        self.apiKeyProvider = apiKeyProvider
         if let session {
             self.session = session
             self.sessionDelegate = nil
@@ -79,6 +84,13 @@ public final class SpeechRailHTTPClient: @unchecked Sendable {
     }
 
     public func makeSpeechRequest(_ speech: SpeechRequest) throws -> URLRequest {
+        try makeSpeechRequest(speech, apiKey: apiKey)
+    }
+
+    private func makeSpeechRequest(
+        _ speech: SpeechRequest,
+        apiKey: String?
+    ) throws -> URLRequest {
         guard speech.input.count <= 4_096 else {
             throw SpeechRailError.inputTooLong
         }
@@ -120,7 +132,13 @@ public final class SpeechRailHTTPClient: @unchecked Sendable {
     }
 
     public func synthesize(_ speech: SpeechRequest) async throws -> Data {
-        let request = try makeSpeechRequest(speech)
+        let resolvedAPIKey: String?
+        if let apiKey {
+            resolvedAPIKey = apiKey
+        } else {
+            resolvedAPIKey = try await apiKeyProvider?()
+        }
+        let request = try makeSpeechRequest(speech, apiKey: resolvedAPIKey)
         let (data, _) = try await send(request)
         guard !data.isEmpty else {
             throw SpeechRailError.invalidResponse

@@ -66,6 +66,7 @@ final class NarrativeApprovalTests: XCTestCase {
 
         XCTAssertEqual(pack.lines.count, 2)
         XCTAssertEqual(pack.playableLines.map { $0.id }, ["story-01"])
+        XCTAssertEqual(pack.readableChapters.map { $0.id }, ["chapter-01", "chapter-02"])
         XCTAssertEqual(pack.playableChapters.map { $0.id }, ["chapter-01"])
     }
 }

@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lotm:sequence-hierarchy:0.3.0",
+  "title": "跨途径序列层级与状态标签",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "setting_id",
+    "status",
+    "work_scope",
+    "default_era",
+    "sequence_levels",
+    "era_variants",
+    "state_labels",
+    "sequence_zero_card_policy",
+    "display_rules",
+    "evidence",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.3.0"
+    },
+    "setting_id": {
+      "const": "sequence-hierarchy"
+    },
+    "status": {
+      "const": "adopted_project_setting"
+    },
+    "work_scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "default_era": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence_levels": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "$ref": "#/$defs/sequenceLevel"
+      }
+    },
+    "era_variants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/eraVariant"
+      }
+    },
+    "state_labels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/stateLabel"
+      }
+    },
+    "sequence_zero_card_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "card_kind",
+        "is_special_event",
+        "rank_label_zh",
+        "title_source",
+        "note"
+      ],
+      "properties": {
+        "card_kind": {
+          "const": "sequence_card"
+        },
+        "is_special_event": {
+          "const": false
+        },
+        "rank_label_zh": {
+          "const": "真神"
+        },
+        "title_source": {
+          "const": "pathway_sequence_name"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "display_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "labelList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "sequenceLevel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequence",
+        "tier_id",
+        "tier_label_zh",
+        "tier_label_en",
+        "specific_label_zh",
+        "specific_label_en"
+      ],
+      "properties": {
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        },
+        "tier_id": {
+          "enum": [
+            "low_sequence",
+            "mid_sequence",
+            "high_sequence",
+            "true_god"
+          ]
+        },
+        "tier_label_zh": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tier_label_en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "specific_label_zh": {
+          "type": "string",
+          "minLength": 1
+        },
+        "specific_label_en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "alternate_labels_zh": {
+          "$ref": "#/$defs/labelList"
+        },
+        "umbrella_labels_zh": {
+          "$ref": "#/$defs/labelList"
+        }
+      }
+    },
+    "eraVariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label_zh",
+        "applies_to_sequences",
+        "tier_id",
+        "note"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label_zh": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applies_to_sequences": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "tier_id": {
+          "enum": [
+            "low_sequence",
+            "mid_sequence",
+            "high_sequence",
+            "true_god"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "stateLabel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label_zh",
+        "label_en",
+        "label_kind",
+        "applies_to_sequences",
+        "not_a_sequence",
+        "definition_zh"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label_zh": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label_en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label_kind": {
+          "enum": [
+            "umbrella_rank",
+            "specific_rank",
+            "alternate_rank",
+            "state"
+          ]
+        },
+        "applies_to_sequences": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "not_a_sequence": {
+          "type": "boolean"
+        },
+        "definition_zh": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_ids",
+        "supports",
+        "evidence_status",
+        "scope_note"
+      ],
+      "properties": {
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "supports": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

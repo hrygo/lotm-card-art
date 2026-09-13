@@ -36,6 +36,8 @@
     }
   },
   "default_delivery_profile": "standard",
+  "sequence_hierarchy_path": "config/sequence-hierarchy.json",
+  "sequence_hierarchy_schema_path": "schemas/sequence-hierarchy.schema.json",
   "format": "PNG",
   "color_space": "sRGB",
   "aspect": [
@@ -65,6 +67,8 @@
     "state_change"
   ],
   "design_document_paths": [
+    "config/sequence-hierarchy.json",
+    "schemas/sequence-hierarchy.schema.json",
     "design/semantic-contract.md",
     "design/art-bible.md",
     "design/layout-system.md",
@@ -76,5 +80,5 @@
   ],
   "agent_chain_limit_bytes": 32768,
   "note": "标记proposed的是项目设计提案，非用户批准记录；不自动承诺图像工具的原生输出能力。",
-  "art_baseline_version": "proposal-001"
+  "art_baseline_version": "proposal-002"
 }

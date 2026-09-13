@@ -1,6 +1,293 @@
 {
   "schema_version": "0.3.0",
   "pathway_id": "visionary",
-  "claims": [],
-  "note": "尚未完成本途径原著核验；空列表不表示原著没有相应设定。"
+  "claims": [
+    {
+      "id": "visionary.pathway_name",
+      "assertion_kind": "canon",
+      "predicate": "pathway_name",
+      "value": "空想家",
+      "dimensions": ["identity"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径",
+          "support_note": "官方设定集将本途径标题列为“空想家途径”。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "途径工作ID仍为visionary；中文名称与观众为不同层次的检索/展示标签。"
+    },
+    {
+      "id": "visionary.pathway_alias.audience",
+      "assertion_kind": "canon",
+      "predicate": "pathway_name",
+      "value": "观众",
+      "dimensions": ["identity"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 途径标识",
+          "support_note": "官方设定集在空想家途径条目中使用“观众”作为该途径的展示名称。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "本断言只用于身份冗余校验，不将“观众”误作人物称号。"
+    },
+    {
+      "id": "visionary.sequence_name.s07",
+      "assertion_kind": "canon",
+      "predicate": "sequence_name",
+      "value": "心理医生",
+      "dimensions": ["identity"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7",
+          "support_note": "官方设定集将观众途径序列7列为“心理医生”。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "此名称用于序列身份锚点；奥黛丽作为人物身份切片另由App card_id标识。"
+    },
+    {
+      "id": "visionary.s07.acting_principle",
+      "assertion_kind": "canon",
+      "predicate": "acting_principle",
+      "value": "勇于应用，帮助身边的人解决精神或心理方面的问题。",
+      "dimensions": ["acting"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7心理医生 > 扮演",
+          "support_note": "官方设定集给出心理医生的扮演方向，核心是主动应用能力并帮助他人处理精神或心理问题。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "不把奥黛丽的贵族礼仪或塔罗会身份替代本序列扮演原则。"
+    },
+    {
+      "id": "visionary.s07.ability.shock",
+      "assertion_kind": "canon",
+      "predicate": "ability",
+      "value": "震慑：使目标感到仿佛面对巨龙，瞬间陷入恐慌和混乱。",
+      "dimensions": ["abilities"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7心理医生 > 震慑",
+          "support_note": "官方设定集列出震慑对单个目标或范围内目标造成的恐慌与混乱效果。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "本卡不把震慑选为主视觉，避免把奥黛丽的治疗性身份误读为攻击姿态。"
+    },
+    {
+      "id": "visionary.s07.ability.frenzy",
+      "assertion_kind": "canon",
+      "predicate": "ability",
+      "value": "狂乱：引爆目标情绪与心理状态，使其陷入疯狂并承受强烈精神伤害，严重时失去控制。",
+      "dimensions": ["abilities"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7心理医生 > 狂乱",
+          "support_note": "官方设定集列出狂乱对情绪、心理状态和精神控制的影响。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "仅作为本序列能力全集的来源断言，不在主事件中提前扩写攻击场面。"
+    },
+    {
+      "id": "visionary.s07.ability.suggestion",
+      "assertion_kind": "canon",
+      "predicate": "ability",
+      "value": "心理暗示：借助特定动作、语言或媒介影响目标的潜意识，使其按暗示行动。",
+      "dimensions": ["abilities"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7心理医生 > 心理暗示",
+          "support_note": "官方设定集列出心理暗示的动作、语言、媒介和潜意识影响方式。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "不把善意帮助自动等同于强制控制；人物文案明确保留对方选择。"
+    },
+    {
+      "id": "visionary.s07.ability.reassurance",
+      "assertion_kind": "canon",
+      "predicate": "ability",
+      "value": "安抚（精神分析）：帮助濒临失控的非凡者恢复理智，也能安抚心理不稳定者以便沟通。",
+      "dimensions": ["abilities"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7心理医生 > 安抚（精神分析）",
+          "support_note": "官方设定集列出安抚濒临失控者与稳定心理状态的用途。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "本卡以安抚作为主能力，贴合奥黛丽的帮助者身份。"
+    },
+    {
+      "id": "visionary.s07.ability.mind_reading",
+      "assertion_kind": "canon",
+      "predicate": "ability",
+      "value": "读心：通过蜡烛、纯露等媒介使目标进入半催眠状态，与其心灵直接沟通。",
+      "dimensions": ["abilities"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7心理医生 > 读心",
+          "support_note": "官方设定集列出读心所需媒介、半催眠状态和心灵沟通方式。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "本卡以蜡烛与纯露作为可见机制线索，不把泛化的发光效果当作读心。"
+    },
+    {
+      "id": "visionary.s07.potion.main_ingredients",
+      "assertion_kind": "canon",
+      "predicate": "potion_ingredient",
+      "value": "镜龙的眼睛一对、镜龙血液50毫升、长者之树的果实。",
+      "dimensions": ["potion"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7心理医生 > 魔药",
+          "support_note": "官方设定集列出心理医生魔药的三项主要材料及数量。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "卡面只做主要材料摘要，不虚构材料外观或完整配方比例。"
+    },
+    {
+      "id": "visionary.s07.ascension.ritual_scope",
+      "assertion_kind": "interpretation",
+      "predicate": "not_applicable",
+      "value": "在本官方设定集的通则范围内，序列5及以上才进入晋升仪式要求；序列7不另列独立晋升仪式。",
+      "dimensions": ["ascension"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 序列晋升通则；4.4 空想家途径 > 序列7心理医生",
+          "support_note": "官方设定集的通则将需要仪式的范围放在序列5及以上；本卡据此不虚构序列7独立仪式。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "这是对官方通则的范围化转译，不是奥黛丽个人晋升经历的完整叙述。"
+    },
+    {
+      "id": "visionary.s07.limitation.reassurance_failure",
+      "assertion_kind": "canon",
+      "predicate": "limitation",
+      "value": "安抚濒临失控者存在失败概率；序列越高，成功越容易。",
+      "dimensions": ["limitations"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7心理医生 > 安抚（精神分析）",
+          "support_note": "官方设定集在安抚能力说明中明确保留失败概率，并说明高序列更容易成功。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "限制以未完全平复的情绪波纹表达，不用暗色或裂纹代替具体边界。"
+    },
+    {
+      "id": "visionary.s07.limitation.mind_reading_condition",
+      "assertion_kind": "canon",
+      "predicate": "limitation",
+      "value": "读心需要蜡烛或纯露等媒介，并先使目标进入半催眠状态。",
+      "dimensions": ["limitations"],
+      "sequences": [7],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting.visionary",
+          "locator": "力量体系 > 神之途径 > 4.4 空想家途径 > 序列7心理医生 > 读心",
+          "support_note": "官方设定集给出读心的媒介和半催眠前提。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "research-record-2026-09-13",
+        "reviewed_at": "2026-09-13T00:00:00+08:00"
+      },
+      "notes": "条件与能力分开登记，避免把蜡烛和纯露只当作装饰物。"
+    }
+  ],
+  "note": "已核验序列7所需的途径、序列、扮演、代表能力、主要魔药材料与晋升通则；奥黛丽的塔罗代号、经历和人物化故事属于独立身份卡的叙事/解释层，不在本途径正典断言中冒充官方条目。"
 }

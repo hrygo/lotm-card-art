@@ -1,89 +1,227 @@
-# 诡秘之主 · 220 张成神途径卡牌制作脚手架
+<p align="center">
+  <img src="docs/assets/logo_160.png" width="128" height="128" alt="诡秘之主卡牌制作脚手架 Logo" />
+</p>
 
-[![CI](https://github.com/hrygo/lotm-card-art/actions/workflows/ci.yml/badge.svg)](https://github.com/hrygo/lotm-card-art/actions/workflows/ci.yml)
+<h1 align="center">诡秘之主 · 220 张成神途径卡牌制作脚手架</h1>
 
-**版本 0.3.0｜六维语义、混合媒介、单卡精制。**
+<p align="center">
+  <strong>22 条成神途径 × 序列 9–0 · 220 张独立高清序列卡牌正面 · 六维语义严谨契约 · 原生画册客户端</strong>
+</p>
 
-交付目标：22 条途径 × 序列 9–0，每张一幅独立高清卡面。
-六项都要在牌上出现，但不一定以文字出现：**身份—扮演—能力—魔药—晋升—限制**。
-这不是六格说明书模板，也不是只有标题的插画库。
+<p align="center">
+  <a href="https://github.com/hrygo/lotm-card-art/actions/workflows/ci.yml"><img src="https://github.com/hrygo/lotm-card-art/actions/workflows/ci.yml/badge.svg" alt="CI 状态" /></a>
+  <img src="https://img.shields.io/badge/version-0.3.0-blue.svg" alt="版本 0.3.0" />
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB.svg?logo=python&logoColor=white" alt="Python 3.10+" />
+  <img src="https://img.shields.io/badge/macOS-26.0%2B-000000.svg?logo=apple&logoColor=white" alt="macOS 26.0+" />
+  <img src="https://img.shields.io/badge/dependencies-zero-brightgreen.svg" alt="零第三方依赖" />
+  <a href="LICENSE-CODE.md"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License" /></a>
+</p>
 
-## 从这里开始
-1. 阅读根 `AGENTS.md` 与 `docs/START-HERE.md`。
-2. 阅读 `design/semantic-contract.md`；它定义“画面如何算真正包含一项信息”。
-3. 选择当前卡，如 `pathways/fool/sequences/09/card.json`；先补证据，再填写转译方案。
-4. 运行下面的命令生成任务单并检查。所有命令在本目录内执行。
+<p align="center">
+  <a href="#-项目核心目标">核心目标</a> ·
+  <a href="#-核心亮点">核心亮点</a> ·
+  <a href="#-快速开始">快速开始</a> ·
+  <a href="#-六维语义契约">六维契约</a> ·
+  <a href="#-原生画册客户端-lotmcardstudio">画册客户端</a> ·
+  <a href="#-工程目录结构">工程目录</a> ·
+  <a href="#-三级质量保证门槛">质量门槛</a> ·
+  <a href="#-参与贡献">参与贡献</a> ·
+  <a href="#-版权与法律边界">权利边界</a>
+</p>
+
+---
+
+## 📖 项目核心目标
+
+本项目以小说《诡秘之主》（Lord of the Mysteries）全 **22 条成神途径、每条途径序列 9 至 0，共计 220 张独立高清序列卡牌正面** 为内容生产主线，并提供一个隔离的 macOS 原生画册客户端垂直切片。
+
+220 是美术生产脚手架的固定卡位数，不是客户端收藏分母。客户端模型允许一个序列拥有 0…N 张身份卡，
+同一角色也可以拥有多张独立身份卡；当前客户端以隔离 fixture 展示 4 张内容，其中愚者序列0和奥黛丽序列7已接入卡图与本地试听音频，不代表正式卡牌已经完成或获最终视觉批准。
+
+> **核心哲学**：
+> **六维语义完整，载体自由组合；艺术可以抽象，事实不能含混。**
+
+每张牌必须涵盖六大核心维度：**身份 — 扮演 — 能力 — 魔药 — 晋升 — 限制**。
+我们不做刻板生硬的六格卡牌模版，也不做毫无依据的纯空想插画；默认采用序列原型，杜绝将角色偶然外物或高序列力量提前嫁接。
+
+跨途径层级称谓统一从 `config/sequence-hierarchy.json` 读取：当前第五纪序列9–8为低序列、序列7–5为中序列、序列4–1为高序列/半神；序列4–3通常称圣者，序列2–1通常称天使，序列0为真神。天使之王是超越普通序列1但尚未成为真神的状态，不是新的序列；序列0卡也仍是正式序列卡，不是特殊事件。
+
+---
+
+## ✨ 核心亮点
+
+- 🎴 **220 独立卡位与差异化视觉语言**
+  在形状、材质、构图和异常发生方式上严格区分 22 条途径，拒绝千篇一律的站姿与触手堆砌。
+- ⚡ **零依赖工程化工具链 (`tools/cardctl.py`)**
+  仅依赖 Python 3.10+ 标准库，不联网、不请求外部 API、不偷跑收费模型，提供完整的脚手架结构验证、任务编译与状态追踪。
+- 🛡️ **严格的事实与创作分离**
+  正典断言（原著事实）、资料缺口（诚实记录未知）、解释性概括与美术提案严格解耦，拒绝为凑完成率捏造配方与仪式。
+- 🔒 **三级渐进式发布阻断流水线**
+  `scaffold`（结构骨架）➔ `design`（六维转译与证据）➔ `release`（真实高清图档与审核快照），层层设卡杜绝劣质打卡。
+- 🖥️ **原生 macOS 卡牌画册客户端 (`apps/LotmCardStudio`)**
+  基于 SwiftUI 的 macOS 原生 M1 里程碑垂直切片，提供书架画廊、正式/候选/愿望清单、故事抽屉、人工台词审核门槛及本机 SpeechRail 语音接入。
+
+---
+
+## 🚀 快速开始
+
+### 1. 环境准备
+
+- **卡牌制作脚手架**：Python 3.10 或更高版本（纯标准库，无需 `pip install`）。
+- **macOS 画册客户端**（可选）：macOS 26.0+，Swift 6.2+ 工具链；当前在 Apple silicon arm64、Swift 6.3.3 环境验证。
+
+### 2. 基础检查与工作流体验
+
+所有命令均在仓库根目录执行：
 
 ```bash
+# 1. 验证脚手架 220 个卡位与基础结构完整性
 python3 tools/cardctl.py check --level scaffold
+
+# 2. 查看全局 22 途径制作状态总览
 python3 tools/cardctl.py status
+
+# 3. 智能推荐下一张待制作卡牌
 python3 tools/cardctl.py next
+
+# 4. 编译单卡研究草稿任务单（以愚者途径序列 9 占卜家为例）
 python3 tools/cardctl.py brief --card fool:09 --draft
+
+# 5. 执行工程自动化测试套件
 python3 -m unittest discover -s tests -v
 ```
 
-需要 Python 3.10 或更新版本。核心工具仅使用标准库，不需要安装依赖、不联网、不请求 API 密钥、不自动调用图像模型。
-生成任务位于 `generated/lotm.fool.s09/`。`--draft` 允许研究缺口，不能视作最终出图许可。
-证据与单卡方案完成后，运行：
+> [!NOTE]
+> 刚检出的脚手架在执行 `check --level design` 或 `check --level release` 时**应当失败**：当前卡位仍处于研究待填补阶段，这属于发布阻断机制的正常表现，而非代码故障。
 
+---
+
+## 📐 六维语义契约
+
+卡面上的每一个视觉元素都承担着严谨的信息回读职责：
+
+| 维度 | 表达事实或核验边界 | 载体示例（自由组合） | 误读阻断底线 |
+| :--- | :--- | :--- | :--- |
+| **身份** (Identity) | 准确序列名与序列阶数 (9–0) | 符文、数字刻印、途径特异边框 | 禁止与其他途径或邻近序列混淆 |
+| **扮演** (Acting) | 当前序列的行动准则与守则 | 动作、神态、场域交互、仪式姿势 | 必须反映守则内核，不只是静止站姿 |
+| **能力** (Abilities) | 该序列获得的可辨认超凡效果 | 视觉现象、光影异变、物质形变 | 禁止提前表现更高序列的专属神能 |
+| **魔药** (Potion) | 已核验的关键主辅材料要素 | 物件、背景标本、灵界生物投射 | 未知时使用明确缺口标记，不凭空造物 |
+| **晋升** (Advancement) | 进入本序列所需的仪式或环境 | 场景环境、特殊天象、宿命因果关系 | 属于进入当前序列的前提，非下一序列 |
+| **限制** (Limitation) | 失控风险、精神异变或负面代价 | 构图负空间、失衡形变、侵蚀暗影 | 必须具有具体边界，不能用笼统暗色敷衍 |
+
+---
+
+## 🖥️ 原生画册客户端 (LotmCardStudio)
+
+位于 [`apps/LotmCardStudio`](apps/LotmCardStudio/)，是《诡秘之主》卡牌画册的原生桌面客户端：
+
+<p align="center">
+  <img src="apps/LotmCardStudio/Resources/logo.png" width="96" height="96" alt="LotmCardStudio App Icon" />
+</p>
+
+### 当前能力
+- 📚 **书架画廊**：M1 fixture 展示 4 张身份卡（两张 `klein` 独立身份卡、一张愚者序列0候选卡和一张奥黛丽「正义」序列7卡），模型为动态 0…N 预留。
+- 🗂️ **三类清单**：正式收藏、候选收藏和愿望清单分开筛选；候选不会因内容确认自动升级。
+- 🔍 **大卡面与详情抽屉**：展示身份面板、六维语义回读和第三人称故事；故事抽屉按正常布局流展开，不覆盖右侧面板。
+- 🎙️ **SpeechRail 接入**：只连接本机 loopback `http://127.0.0.1:8201`；S00 与奥黛丽 S07 各接入 6 条用户批准文案和对应系统音色本地 WAV，优先本地播放，缺失时才请求语音，服务失败时保留文字稿并显示失败状态。
+- 🛡️ **人工审核门槛**：只有批准摘要仍与文本匹配的台词/章节进入播放列表，示意 fixture 不代表正典批准。
+
+当前未实现：仓库内容导入、SwiftData 用户库、Keychain 设置界面、完整音频缓存、正式卡面资源和卡牌游戏规则。
+
+### 运行与构建
 ```bash
-python3 tools/cardctl.py check --level design --card fool:09
-python3 tools/cardctl.py brief --card fool:09
-# 实际出图、排版并填写 review.json 后，再执行：
-python3 tools/cardctl.py check --level release --card fool:09
+cd apps/LotmCardStudio
+
+# 运行客户端单元测试（当前 22 项）
+swift test
+
+# 运行 SwiftPM executable
+swift run LotmCardStudio
+
+# 构建 macOS 原生应用程序包（参数只能是 debug 或 release）
+./scripts/build-app.sh debug
+./scripts/build-app.sh release
+open .build/LotmCardStudio.app
 ```
 
-脚手架刚解压时 design / release 检查**应当失败**：当前没有完成原著核验和正式图片。这是发布阻断机制，不是安装故障。
+若 `Resources/AppIcon.icns` 存在，打包脚本会将其复制到 `.app`；`Resources/CardArt/` 与 `Resources/Audio/` 也会随应用打包；图标不是测试运行的前置条件。
+真实构建、视觉验收和 SpeechRail 试听状态见 [`apps/LotmCardStudio/docs/qa/m1-local-run.md`](apps/LotmCardStudio/docs/qa/m1-local-run.md)。
 
-## 文件职责
+---
+
+## 📂 工程目录结构
+
 ```text
-AGENTS.md                         全局目标与不可放宽的规则
-config/project.json               单一项目配置与交付规格
-catalog/pathways.json              22 条工作 ID 与待核验中文工作标签
-sources/registry.json              来源登记、访问范围与核验状态
-references/manifest.json           真实可用的参考图登记（初始为空）
-design/                           六维转译、美术总纲、版式、层次与审核标准
-pathways/AGENTS.md                 途径域工作规则
-pathways/<id>/AGENTS.md            特定途径设计防错规则
-pathways/<id>/direction.json       该途径的原创视觉语言提案
-pathways/<id>/canon.json           仅存实际研究过的设定断言（初始为空）
-pathways/<id>/sequences/09/card.json 该张卡的唯一结构化方案
-.../08 … /00/card.json             其余九张卡位
-schemas/                          编辑器可用的 JSON Schema
-templates/                        新断言、单卡审核、制作记录模板
-examples/                         解释表达机制，不伪装成已完成设定研究
-prompts/                          模型无关的人工/Agent任务流程
-artifacts/                        将来存放真实原图和成品，初始无图片
-tools/cardctl.py                   检查、状态、下一卡、任务编译与完整性验证
-tests/                            可重复运行的正常与反例测试
-reports/                          本次实际测试与目标核对记录
+.
+├── AGENTS.md                         # 全局质量契约与底线准则
+├── apps/AGENTS.md                    # 客户端目录增量规则
+├── catalog/pathways.json              # 22 条途径工作 ID 与待核验中文标签
+├── config/project.json               # 交付规格与全局配置入口
+├── config/sequence-hierarchy.json    # 9–0 层级标签单一配置（半神/圣者/天使/天使之王/真神）
+├── design/                           # 六维转译、美术总纲、版式与审核规范
+├── docs/                             # 架构决策、工作流、证据来源策略
+│   ├── START-HERE.md                 # 制作快速上手指南
+│   ├── workflow.md                   # 阶段推进流转说明
+│   └── DECISIONS.md                  # 架构设计决策记录 (ADR)
+├── pathways/                         # 22 途径核心资产
+│   └── <pathway_id>/
+│       ├── direction.json            # 该途径原创视觉提案
+│       ├── canon.json                # 已核验设定断言库
+│       └── sequences/<09..00>/
+│           └── card.json             # 单卡唯一六维结构化设计方案
+├── apps/LotmCardStudio/              # macOS 原生卡牌画册客户端 M1 里程碑垂直切片
+│   ├── Package.swift                  # SwiftPM targets 与 macOS 平台声明
+│   ├── Sources/                       # Core、Features 与 @main 入口
+│   ├── Tests/                         # 客户端领域/交互测试
+│   ├── Resources/Info.plist           # .app 元数据（图标资源可选）
+│   ├── scripts/build-app.sh            # debug/release .app 打包
+│   └── docs/qa/                       # 本机运行与视觉验收记录
+├── tools/cardctl.py                   # 核心命令行工具（检查、状态、编译、校验）
+├── schemas/                          # JSON Schema 结构约束
+├── tests/                            # 自动化回归与反例测试集
+└── reports/                          # 验收报告与覆盖率核对记录
 ```
 
-## 现在已经有什么，尚未有什么
-已经有：22 条差异化途径视觉提案、220 个唯一卡位、六维字段与转译规则、任务编译器、结构/设计/发布三级检查，以及验收报告。
-尚未有：220 张成图、全序列中文名称及完整配方的原著核验、用户批准的美术基线、可复用历史原图。
-22 个中文途径标签与愚者十序列等少量名称只是检索种子，`seed_unverified` 不等于“核验通过”。其余序列名留空，绝不填入臆测名称。
-`direction.json` 内所有视觉设想是 **art_proposal**，不是正典能力清单；某个意象能否用于具体序列须另核验。
+---
 
-## 基线与版本
-默认提案：维多利亚神秘学的精密工艺、塔罗式象征构图、克制的宇宙恐怖；不等于所有牌都深黑或相同边框堆饰。
-采用小规模样板校准后再扩张，详见 `docs/workflow.md`。没有样张批准时可以探索，不假装已经批准，也不反复阻塞在索要确认。
-所有输出保留版本，修改依赖后重新审核。不得用 `generated/` 中的任务单反向覆盖事实源。
+## 🚦 三级质量保证门槛
 
-## 参与项目
+```mermaid
+graph LR
+    A[Scaffold 骨架检查] --> B[Design 设计与证据审核]
+    B --> C[Release 出图与发布验收]
 
-- [贡献指南](CONTRIBUTING.md)：单卡工作流、证据要求和 Pull Request 约定。
-- [支持与问题分流](SUPPORT.md)：判断应提交哪类公开问题。
-- [安全政策](SECURITY.md)：私密报告漏洞或凭据泄露。
-- [社区行为准则](CODE_OF_CONDUCT.md)：参与公开协作时的行为标准。
-
-## 文件完整性
-```bash
-python3 tools/cardctl.py verify-manifest
+    style A fill:#1a2332,stroke:#63d9c4,stroke-width:2px,color:#fff
+    style B fill:#1a2332,stroke:#e3b063,stroke-width:2px,color:#fff
+    style C fill:#1a2332,stroke:#8f78d6,stroke-width:2px,color:#fff
 ```
-`SHA256SUMS` 记录本次交付文件摘要（不包含其自身与运行后新增的生成物/缓存）。修改文件后摘要不匹配是正常提示，不能因此回滚真实修订。
 
-## 权利边界
-本包没有原著全文、第三方卡牌原图或字体文件，也不代表官方授权。公开发行前独立核查素材及授权，数字高清不等于印刷就绪。
-详细限制与设计决策见 `docs/LIMITATIONS.md` 和 `docs/DECISIONS.md`。
-代码许可证范围见 [LICENSE-CODE.md](LICENSE-CODE.md)，主题内容和第三方权利边界见 [NOTICE.md](NOTICE.md)。MIT 不代表对全仓库内容或《诡秘之主》相关权利的授权。
+1. **`check --level scaffold`（结构级）**：
+   核查 22 条途径、220 个序列槽位、Schema 完整性、引用合法性与路径越界防范。
+2. **`check --level design --card <id>`（设计级）**：
+   核验单卡原著证据链、六维载体完整性、误读阻断声明与艺术缺口记录。
+3. **`check --level release --card <id>`（发布级）**：
+   校验成品图像的物理分辨率、真实色彩通道、文件哈希一致性以及人工批准签署。
+
+客户端另有独立门槛：`swift test`、debug/release `.app` 构建，以及一次真实窗口验收。
+客户端验收不等于 220 张卡牌的 design/release 通过；当前 M1 只证明示意 fixture、布局和失败回退可运行。
+
+---
+
+## 🤝 参与贡献
+
+欢迎共同完善《诡秘之主》220 张序列卡牌的结构化工程！在提交 Pull Request 前，请参阅：
+
+- 📘 [贡献指南 (CONTRIBUTING.md)](CONTRIBUTING.md)：完整的单卡研究、证据填写与提交约定。
+- 🛡️ [安全政策 (SECURITY.md)](SECURITY.md)：私密报告漏洞或凭据风险。
+- 📜 [行为准则 (CODE_OF_CONDUCT.md)](CODE_OF_CONDUCT.md)：社区协作与沟通规范。
+- 💬 [支持与问题分流 (SUPPORT.md)](SUPPORT.md)：提交需求、反馈与讨论渠道。
+
+---
+
+## ⚖️ 免责声明与版权边界
+
+- **同人衍生作品**：本项目为《诡秘之主》读者发起的非盈利粉丝同人开源工程，非官方商业授权产品。
+- **知识产权归属**：《诡秘之主》小说世界观、专有名词、设定及相关角色著作权归原著作者 **爱潜水的乌贼** 及 **阅文集团（起点中文网）** 所有。
+- **无原著全文**：本仓库严禁录入小说正文全文，所有引用仅限于设定考据与单句事实考证。
+- **开源许可证**：本项目软件代码、命令行工具与脚本采用 [MIT 许可证](LICENSE-CODE.md) 开源；内容协议与设计版权边界详见 [NOTICE.md](NOTICE.md)。

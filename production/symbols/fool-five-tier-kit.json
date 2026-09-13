@@ -1,11 +1,11 @@
 {
-  "version": "2.0.0",
+  "version": "3.0.0",
   "pathway_id": "fool",
-  "status": "active-five-tier-candidate",
-  "active_output": "artifacts/production/fool-five-tier-kit-v1",
+  "status": "active-five-tier-text-template-candidate",
+  "active_output": "artifacts/production/fool-five-tier-kit-v2",
   "direction": {
-    "path": "production/symbols/quality-frame-five-tier-direction.json",
-    "sha256": "91cbf602d8a18d58e79c5b3e93b122ccc8518e37dcc019bd12a3a032ee95d949"
+    "path": "production/symbols/quality-frame-three-text-direction.json",
+    "sha256": "68497e409a8da7a36cc141718a5fc84af56faf2013de16574531b5a50fd05a2b"
   },
   "geometry_lock": {
     "path": "production/symbols/quality-geometry-lock.json",
@@ -27,6 +27,12 @@
     "path": "production/symbols/recipes/fool-five-tier-materials.json",
     "sha256": "6fd1905b8d5541044f5bdab8be883d1821d2c837223f27981707b8b649a5c8c7"
   },
+  "text_contract": {
+    "schema_path": "production/schemas/card-text-panels.schema.json",
+    "schema_sha256": "efd1b448e1b44b18f330251ff8994e0332ffe252c2c82f275910efa2402b6a06",
+    "template_path": "production/templates/card-text-panels.json",
+    "template_sha256": "ab6fb9f862253626d650a67b22b596b360a8817e44dd4ff16825248d0df0c121"
+  },
   "sequence_mapping": {
     "low": [9, 8],
     "mid": [7, 6, 5],
@@ -43,16 +49,16 @@
   ],
   "approved_emblems": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   "emblem_inputs": [
-    {"digit": 0, "path": "artifacts/production/fool-fusion-0/v001/raw.png", "sha256": "9dc7aa0462ee877586e41be6d3f874a5731170e7c3226bfb5794c876cc96ba67", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 1, "path": "artifacts/production/fool-fusion-1/v001/raw.png", "sha256": "7f0b2037b77850433a5838559f5b483e036bb55105696bf7b7bc42a7e45488d6", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 2, "path": "artifacts/production/fool-fusion-2/v001/raw.png", "sha256": "8956791e875e0f7f143ea9461d1935cdd9533136ea980a46f351f97d713f5ae1", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 3, "path": "artifacts/production/fool-fusion-3/v001/raw.png", "sha256": "81b581f096f052466a9f4df5194838ef826e85cf7eeffd877dd653573e4650f6", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 4, "path": "artifacts/production/fool-fusion-4/v001/raw.png", "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 5, "path": "artifacts/production/fool-fusion-5/v001/raw.png", "sha256": "0e14906c841ad24aede5bfd23976c2be349355c1f525deb5b3d62f58d73ad1a8", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 6, "path": "artifacts/production/fool-fusion-6/v001/raw.png", "sha256": "8684a9470ace1177982c82f6d1362cfe33a1130fe8f3e01dd0bd4cb31a04fdd1", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 7, "path": "artifacts/production/fool-fusion-7/v001/raw.png", "sha256": "66a1c337ea7464a606951d3e79b449d8d011671e5dbe2a76ee4aaf86fafc2468", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 8, "path": "artifacts/production/fool-fusion-8/v001/raw.png", "sha256": "e5efd209834b3dd9be84b5b1c10b70f670805d13503ddbf679d9907a2cd158db", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 9, "path": "artifacts/production/fool-fusion-9/v001/raw.png", "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"}
+    {"digit": 0, "tier": "true-god", "color_binding": "true-god", "path": "artifacts/production/fool-fusion-0/v001/raw.png", "sha256": "9dc7aa0462ee877586e41be6d3f874a5731170e7c3226bfb5794c876cc96ba67", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 1, "tier": "angel", "color_binding": "angel", "path": "artifacts/production/fool-fusion-1/v001/raw.png", "sha256": "7f0b2037b77850433a5838559f5b483e036bb55105696bf7b7bc42a7e45488d6", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 2, "tier": "angel", "color_binding": "angel", "path": "artifacts/production/fool-fusion-2/v001/raw.png", "sha256": "8956791e875e0f7f143ea9461d1935cdd9533136ea980a46f351f97d713f5ae1", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 3, "tier": "saint", "color_binding": "saint", "path": "artifacts/production/fool-fusion-3/v001/raw.png", "sha256": "81b581f096f052466a9f4df5194838ef826e85cf7eeffd877dd653573e4650f6", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 4, "tier": "saint", "color_binding": "saint", "path": "artifacts/production/fool-fusion-4/v001/raw.png", "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 5, "tier": "mid", "color_binding": "mid", "path": "artifacts/production/fool-fusion-5/v001/raw.png", "sha256": "0e14906c841ad24aede5bfd23976c2be349355c1f525deb5b3d62f58d73ad1a8", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 6, "tier": "mid", "color_binding": "mid", "path": "artifacts/production/fool-fusion-6/v001/raw.png", "sha256": "8684a9470ace1177982c82f6d1362cfe33a1130fe8f3e01dd0bd4cb31a04fdd1", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 7, "tier": "mid", "color_binding": "mid", "path": "artifacts/production/fool-fusion-7/v001/raw.png", "sha256": "66a1c337ea7464a606951d3e79b449d8d011671e5dbe2a76ee4aaf86fafc2468", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 8, "tier": "low", "color_binding": "low", "path": "artifacts/production/fool-fusion-8/v001/raw.png", "sha256": "e5efd209834b3dd9be84b5b1c10b70f670805d13503ddbf679d9907a2cd158db", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 9, "tier": "low", "color_binding": "low", "path": "artifacts/production/fool-fusion-9/v001/raw.png", "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"}
   ],
   "material_studies": {
     "status": "generated-pending-visual-material-review",
@@ -113,6 +119,17 @@
     "output": "artifacts/production/fool-frame-kit-v3",
     "renderer": "tools/render/foolkit.swift",
     "reason": "用户已明确不保留原四档作为当前资产、交付基线或回退方案"
+  },
+  "output_contract": {
+    "frame_names": ["frame-low.png", "frame-mid.png", "frame-saint.png", "frame-angel.png", "frame-true-god.png"],
+    "emblem_count": 10,
+    "sequence_composition_count": 10,
+    "emblem_name_pattern": "emblem-{digit}.png",
+    "sequence_name_pattern": "fool-{digit}-frame.png",
+    "text_layer_names": ["text-panel-left.png", "text-panel-center.png", "text-panel-right.png", "text-safe-zones.png"],
+    "required_diagnostics": ["contact-sheet.png", "five-tiers.png", "emblems-white.png", "emblems-dark.png", "manifest.json"],
+    "no_tier_suffix_on_emblem_or_sequence_names": true,
+    "no_cross_product_variants": true
   },
   "visual_approval": "pending-new-material-review",
   "formal_release_approved": false

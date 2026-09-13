@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "status": "active-v2-template",
+  "pathway_id": "fool",
+  "coordinate_system": "design-space-top-left",
+  "canvas": {
+    "design_size": [1024, 1536],
+    "final_size": [2048, 3072],
+    "scale": 2,
+    "color_space": "sRGB",
+    "alpha": "straight"
+  },
+  "zones": [
+    {
+      "id": "pathway_name",
+      "kind": "left-column-inlay",
+      "full_width": false,
+      "local_vertical_span": true,
+      "text_orientation": "vertical-rl",
+      "width_ratio_to_column": 1.15,
+      "adjacent_column_body_width_design": 72,
+      "rect_design": [50, 1128, 82.8, 124],
+      "text_safe_rect_design": [62, 1142, 58.8, 96],
+      "join": "column-relief-and-curtain-recess",
+      "protected": ["top_emblem_safe_region", "central_nameplate"]
+    },
+    {
+      "id": "sequence_name",
+      "kind": "right-column-inlay",
+      "full_width": false,
+      "local_vertical_span": true,
+      "text_orientation": "vertical-rl",
+      "width_ratio_to_column": 1.15,
+      "adjacent_column_body_width_design": 72,
+      "rect_design": [891.2, 1128, 82.8, 124],
+      "text_safe_rect_design": [903.2, 1142, 58.8, 96],
+      "join": "column-relief-and-curtain-recess",
+      "protected": ["top_emblem_safe_region", "central_nameplate"]
+    },
+    {
+      "id": "character_name",
+      "kind": "central-nameplate",
+      "full_width": true,
+      "local_vertical_span": false,
+      "text_orientation": "horizontal",
+      "panel_rect_design": [228, 1278, 568, 114],
+      "text_safe_rect_design": [240, 1290, 544, 90],
+      "target_center_design": [512, 1335],
+      "join": "existing-nameplate-inner-border",
+      "protected": ["bottom_gemstone", "outer_silhouette"]
+    }
+  ],
+  "global_protection": {
+    "top_emblem_safe_region_design": [286.72, 30.72, 450.56, 384],
+    "illustration_window_design": [143.36, 460.8, 737.28, 814.08],
+    "no_generated_text_in_subject": true,
+    "empty_character_name_draws_nothing": true
+  },
+  "rendering": {
+    "text_source": "program-only",
+    "font_source": "recipe",
+    "actual_ink_measurement": true,
+    "max_center_error_final_px": 1,
+    "max_geometry_drift_final_px": 0,
+    "overflow_is_error": true
+  }
+}

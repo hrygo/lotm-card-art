@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lotm-card-art/card-text-panels-1.0.0",
+  "title": "Card text panel input",
+  "description": "Strict sidecar for the three program-typeset card text zones.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "pathway_name", "sequence_name", "character_name"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "pathway_name": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "zone", "visible"],
+      "properties": {
+        "text": {"type": "string", "minLength": 1, "maxLength": 16},
+        "zone": {"enum": ["left-column-inlay"]},
+        "visible": {"const": true}
+      }
+    },
+    "sequence_name": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "zone", "visible"],
+      "properties": {
+        "text": {"type": "string", "minLength": 1, "maxLength": 16},
+        "zone": {"enum": ["right-column-inlay"]},
+        "visible": {"const": true}
+      }
+    },
+    "character_name": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "zone", "visible"],
+      "properties": {
+        "text": {"type": "string", "minLength": 0, "maxLength": 24},
+        "zone": {"enum": ["central-nameplate"]},
+        "visible": {"const": true}
+      }
+    }
+  }
+}

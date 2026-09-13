@@ -1,0 +1,75 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "fool",
+  "status": "user-confirmed-design-direction",
+  "geometry_id": "fool-quality-frame-locked-master-v2",
+  "predecessor_geometry_id": "fool-quality-frame-locked-master-v1",
+  "principle": "左右仍是连续柱状骨架，只有文字处出现略宽的局部铭刻带；中央姓名是唯一全宽文字面板；品质靠材质和宝石区分，不靠增加结构数量。",
+  "master": {
+    "path": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+    "sha256": "4eb5e5d4ce6943140e121b55699cfc3911c8e67450dda898ff77265ce3ed39e1",
+    "size": [1024, 1536],
+    "role": "frozen-geometry-master"
+  },
+  "coordinate_system": {
+    "space": "design-space-top-left",
+    "design_size": [1024, 1536],
+    "final_size": [2048, 3072],
+    "scale": 2
+  },
+  "text_zones": {
+    "template": "production/templates/card-text-panels.json",
+    "side_inlay_width_ratio": 1.15,
+    "side_inlay_width_ratio_tolerance": [1.12, 1.18],
+    "side_inlays_are_full_side_panels": false,
+    "full_width_panel_count": 1,
+    "left": {
+      "zone": "left-column-inlay",
+      "column_body_rect_design": [56, 1128, 72, 124],
+      "inlay_rect_design": [50, 1128, 82.8, 124],
+      "text_safe_rect_design": [62, 1142, 58.8, 96],
+      "orientation": "vertical-rl"
+    },
+    "right": {
+      "zone": "right-column-inlay",
+      "column_body_rect_design": [896, 1128, 72, 124],
+      "inlay_rect_design": [891.2, 1128, 82.8, 124],
+      "text_safe_rect_design": [903.2, 1142, 58.8, 96],
+      "orientation": "vertical-rl"
+    },
+    "central_nameplate": {
+      "role": "character_name",
+      "panel_rect_design": [228, 1278, 568, 114],
+      "inner_rect_design": [240, 1290, 544, 90],
+      "target_center_design": [512, 1335],
+      "orientation": "horizontal"
+    }
+  },
+  "bottom_gemstone": {
+    "region": "quality-marker-diamond-only",
+    "center_design": [512, 1429],
+    "v1_visible_bbox_design": [472.5, 1388.5, 79, 81],
+    "scale_vs_v1": 1.28,
+    "target_visible_bbox_design": [461.44, 1377.16, 101.12, 103.68],
+    "facets": ["body", "dark_base", "internal_refraction", "bright_cut", "local_fire"],
+    "no_extra_gems": true
+  },
+  "protected": [
+    "outer_silhouette",
+    "illustration_window",
+    "top_emblem_safe_region",
+    "emblem_digit_and_holes",
+    "all_anchor_centers"
+  ],
+  "invariants": {
+    "max_anchor_drift_design_px": 0,
+    "max_geometry_drift_design_px": 0,
+    "max_anchor_drift_final_px": 0,
+    "allow_per_tier_offsets": false,
+    "allow_registration_to_hide_drift": false,
+    "generated_text_in_subject": false,
+    "central_panel_only_full_width_text_zone": true
+  },
+  "visual_review": "pending",
+  "formal_release_approved": false
+}

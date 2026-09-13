@@ -21,12 +21,12 @@
 
 ## Task 1: 建立 v2 结构契约与测试基线
 
-- [ ] 新建 production/schemas/card-text-panels.schema.json，限定字段 pathway_name、sequence_name、character_name，限定三种区域类型 left-column-inlay、right-column-inlay、central-nameplate，禁止占位符和未声明字段。
-- [ ] 新建 production/templates/card-text-panels.json，写入中央姓名面板、左右局部铭刻带、留空圣徽安全区、文字安全边距及无文字原型规则。
-- [ ] 新建 production/symbols/quality-frame-three-text-direction.json，锁定 design space 几何：左右柱体连续；左右铭刻带宽度为相邻柱体主体宽度的 1.15 倍，允许验证区间 1.12–1.18；铭刻带仅覆盖文字局部纵向范围；中央姓名面板为唯一全宽文字面板；底部宝石中心沿用 (512,1429)，视觉尺寸为 v1 的 1.28 倍。
-- [ ] 为 production/symbols/fool-five-tier-kit.json 增加 v2 layout/recipe/output 标识、10 枚 emblem 的 tier 绑定和五档颜色引用，保持数字到档位映射为单值映射。
-- [ ] 新建 tests/test_fool_three_text_zones.py，先写失败测试：契约字段、映射唯一性、10 枚总数、左右 1.12–1.18 宽度、中央唯一全宽面板、底部宝石放大、旧四档和 50 枚命名模式拒绝。
-- [ ] 运行 python3 -m unittest tests.test_fool_three_text_zones -v，确认基线测试按预期失败，并记录失败原因，随后只提交契约与测试基线。
+- [x] 新建 production/schemas/card-text-panels.schema.json，限定字段 pathway_name、sequence_name、character_name，限定三种区域类型 left-column-inlay、right-column-inlay、central-nameplate，禁止占位符和未声明字段。
+- [x] 新建 production/templates/card-text-panels.json，写入中央姓名面板、左右局部铭刻带、留空圣徽安全区、文字安全边距及无文字原型规则。
+- [x] 新建 production/symbols/quality-frame-three-text-direction.json，锁定 design space 几何：左右柱体连续；左右铭刻带宽度为相邻柱体主体宽度的 1.15 倍，允许验证区间 1.12–1.18；铭刻带仅覆盖文字局部纵向范围；中央姓名面板为唯一全宽文字面板；底部宝石中心沿用 (512,1429)，视觉尺寸为 v1 的 1.28 倍。
+- [x] 为 production/symbols/fool-five-tier-kit.json 增加 v2 layout/recipe/output 标识、10 枚 emblem 的 tier 绑定和五档颜色引用，保持数字到档位映射为单值映射。
+- [x] 新建 tests/test_fool_three_text_zones.py，先写失败测试：契约字段、映射唯一性、10 枚总数、左右 1.12–1.18 宽度、中央唯一全宽面板、底部宝石放大、旧四档和 50 枚命名模式拒绝。
+- [x] 运行 python3 -m unittest tests.test_fool_three_text_zones -v，确认基线测试按预期失败，并记录失败原因，随后只提交契约与测试基线。
 
 ## Task 2: 生成 v2 视觉研究资产
 

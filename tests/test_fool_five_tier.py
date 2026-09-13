@@ -32,7 +32,7 @@ class FoolFiveTierContractTests(unittest.TestCase):
                 "true-god": [0],
             },
         )
-        self.assertEqual(catalog["active_output"], "artifacts/production/fool-five-tier-kit-v1")
+        self.assertEqual(catalog["active_output"], "artifacts/production/fool-five-tier-kit-v4")
         self.assertFalse(catalog["legacy_four_tier_status"]["active"])
 
     def test_old_four_tier_catalog_is_retired_and_not_the_active_successor(self):
@@ -68,7 +68,7 @@ class FoolFiveTierContractTests(unittest.TestCase):
     def test_catalog_dependencies_and_emblem_hashes_are_current(self):
         catalog = self.load_json("production/symbols/fool-five-tier-kit.json")
 
-        for record_name in ("direction", "geometry_lock", "color_tokens", "sequence_hierarchy", "matte"):
+        for record_name in ("direction", "geometry_lock", "color_tokens", "sequence_hierarchy", "matte", "recipe", "inscription_contract", "diamond_study"):
             record = catalog[record_name]
             self.assertEqual(
                 production_contracts.sha(ROOT / record["path"]),
@@ -211,6 +211,8 @@ class FoolFiveTierContractTests(unittest.TestCase):
                 }
                 expected.update({f"emblem-{digit}.png" for digit in range(10)})
                 expected.update({f"fool-{digit}-frame.png" for digit in range(10)})
+                expected.update({f"diamond-{tier}.png" for tier in ("low", "mid", "saint", "angel", "true-god")})
+                expected.update({"diamonds-five-tier.png", "structure-4-study-v3.png"})
                 self.assertTrue(expected.issubset({path.name for path in output.iterdir()}))
                 self.assertFalse((output / "four-frames.png").exists())
 
@@ -227,6 +229,8 @@ class FoolFiveTierContractTests(unittest.TestCase):
                 )
                 self.assertEqual(sorted(item["digit"] for item in manifest["entries"]), list(range(10)))
                 self.assertEqual(manifest["geometry_difference_pixels"], 0)
+                self.assertTrue(manifest["material_rules"]["diamond_study_embedded"])
+                self.assertFalse(manifest["material_rules"]["diamond_variant_cross_product"])
                 self.assertFalse(manifest["formal_release_approved"])
                 self.assertIn("PASS: five-tier", gated.stdout)
             finally:
@@ -272,6 +276,8 @@ class FoolFiveTierContractTests(unittest.TestCase):
         self.assertTrue(manifest["alpha"]["emblems_have_transparency"])
         self.assertTrue(manifest["alpha"]["frame_has_transparency"])
         self.assertTrue(manifest["legacy_four_tier_rejected"])
+        self.assertTrue(manifest["material_rules"]["diamond_study_embedded"])
+        self.assertEqual(manifest["material_rules"]["diamond_variant_tier_count"], 5)
         self.assertFalse(manifest["formal_release_approved"])
         self.assertEqual(manifest["visual_status"], "pending")
 

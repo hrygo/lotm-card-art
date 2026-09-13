@@ -1,11 +1,11 @@
 {
-  "version": "3.0.0",
+  "version": "4.0.0",
   "pathway_id": "fool",
-  "status": "active-five-tier-text-template-candidate",
-  "active_output": "artifacts/production/fool-five-tier-kit-v2",
+  "status": "active-five-tier-inscription-v3-candidate",
+  "active_output": "artifacts/production/fool-five-tier-kit-v4",
   "direction": {
-    "path": "production/symbols/quality-frame-three-text-direction.json",
-    "sha256": "68497e409a8da7a36cc141718a5fc84af56faf2013de16574531b5a50fd05a2b"
+    "path": "production/symbols/quality-frame-three-text-direction-v3.json",
+    "sha256": "cb6df431ba607c6de4c51594c7d90a31194f1899e264adbe30afc770a7a7beda"
   },
   "geometry_lock": {
     "path": "production/symbols/quality-geometry-lock.json",
@@ -24,14 +24,36 @@
     "sha256": "b3d0519d04ca2fed036a2e7d2b39c1b9a2ae4c62752cdfc5bd1b8a0ee9bb0daa"
   },
   "recipe": {
-    "path": "production/symbols/recipes/fool-five-tier-materials.json",
-    "sha256": "6fd1905b8d5541044f5bdab8be883d1821d2c837223f27981707b8b649a5c8c7"
+    "path": "production/symbols/recipes/fool-three-text-zones-v3.json",
+    "sha256": "5197b105b0a069c20ac62eddb8bc9a065da5fdc1ef3c903f49f5f216120a22fa"
   },
   "text_contract": {
     "schema_path": "production/schemas/card-text-panels.schema.json",
     "schema_sha256": "efd1b448e1b44b18f330251ff8994e0332ffe252c2c82f275910efa2402b6a06",
-    "template_path": "production/templates/card-text-panels.json",
-    "template_sha256": "ab6fb9f862253626d650a67b22b596b360a8817e44dd4ff16825248d0df0c121"
+    "template_path": "production/templates/card-text-panels-v3.json",
+    "template_sha256": "84897c9cfd49575144ed5df5a331569d34af60ac0d2d43b61868adad9c2f268a"
+  },
+  "inscription_contract": {
+    "path": "production/symbols/inscriptions/fool-side-inscription-v1.json",
+    "sha256": "22f5c70e3727a87849f19977f4eab6028c37c60574ed5a48f17f5c295bc04e53",
+    "render_mode": "exact-glyph-relief",
+    "minimum_characters": 6,
+    "width_ratio_to_column": 1.5,
+    "style_reference": "artifacts/production/fool-side-inscription-study-v1/raw.png"
+  },
+  "diamond_study": {
+    "path": "artifacts/production/fool-diamond-v2/raw.png",
+    "sha256": "28191cb798528689890c4adae0b3998a7501dfe71d62e60b9f51abfd08d3e0b8",
+    "role": "five-tier-cut-reference",
+    "pixel_integration": "deterministic-border-cutout-and-fixed-anchor",
+    "tier_order": ["low", "mid", "saint", "angel", "true-god"],
+    "crop_rects_px": {
+      "low": [18, 230, 331, 405],
+      "mid": [370, 230, 330, 405],
+      "saint": [721, 230, 330, 405],
+      "angel": [1072, 229, 330, 406],
+      "true-god": [1422, 229, 330, 405]
+    }
   },
   "sequence_mapping": {
     "low": [9, 8],
@@ -127,7 +149,8 @@
     "emblem_name_pattern": "emblem-{digit}.png",
     "sequence_name_pattern": "fool-{digit}-frame.png",
     "text_layer_names": ["text-panel-left.png", "text-panel-center.png", "text-panel-right.png", "text-safe-zones.png"],
-    "required_diagnostics": ["contact-sheet.png", "five-tiers.png", "emblems-white.png", "emblems-dark.png", "manifest.json"],
+    "diamond_layer_names": ["diamond-low.png", "diamond-mid.png", "diamond-saint.png", "diamond-angel.png", "diamond-true-god.png"],
+    "required_diagnostics": ["contact-sheet.png", "five-tiers.png", "emblems-white.png", "emblems-dark.png", "diamonds-five-tier.png", "manifest.json"],
     "no_tier_suffix_on_emblem_or_sequence_names": true,
     "no_cross_product_variants": true
   },

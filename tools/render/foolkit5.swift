@@ -236,6 +236,73 @@ func cutout(
     return result
 }
 
+// The Agentic diamond sheet is intentionally opaque. Remove only the large
+// connected black presentation matte from each recorded crop; dark internal
+// facets are retained because they are not connected to the crop boundary.
+func removeBlackMatte(_ source: Raster, threshold: Int = 10) -> Raster {
+    var result = source
+    var visited = [Bool](repeating: false, count: source.w * source.h)
+
+    func black(_ index: Int) -> Bool {
+        let i = index * 4
+        return source.p[i + 3] > 0 && max(source.p[i], source.p[i + 1], source.p[i + 2]) <= UInt8(threshold)
+    }
+
+    var seeds = [Int]()
+    for x in 0..<source.w {
+        seeds.append(x)
+        seeds.append((source.h - 1) * source.w + x)
+    }
+    if source.h > 2 {
+        for y in 1..<(source.h - 1) {
+            seeds.append(y * source.w)
+            seeds.append(y * source.w + source.w - 1)
+        }
+    }
+
+    for seed in seeds where seed >= 0 && seed < visited.count && !visited[seed] && black(seed) {
+        var queue = [seed]
+        var cursor = 0
+        visited[seed] = true
+        while cursor < queue.count {
+            let value = queue[cursor]
+            cursor += 1
+            let x = value % source.w
+            let y = value / source.w
+            let neighbors = [
+                x > 0 ? value - 1 : -1,
+                x + 1 < source.w ? value + 1 : -1,
+                y > 0 ? value - source.w : -1,
+                y + 1 < source.h ? value + source.w : -1,
+            ]
+            for neighbor in neighbors where neighbor >= 0 && !visited[neighbor] && black(neighbor) {
+                visited[neighbor] = true
+                queue.append(neighbor)
+            }
+        }
+        for value in queue { result.p[value * 4 + 3] = 0 }
+    }
+    return result
+}
+
+func crop(_ source: Raster, _ values: [Int]) throws -> Raster {
+    try require(values.count == 4, "Diamond crop must have four integers")
+    let x0 = values[0]
+    let y0 = values[1]
+    let width = values[2]
+    let height = values[3]
+    try require(width > 0 && height > 0 && x0 >= 0 && y0 >= 0 && x0 + width <= source.w && y0 + height <= source.h, "Diamond crop escapes source")
+    var result = Raster(width, height)
+    for y in 0..<height {
+        for x in 0..<width {
+            let sourceIndex = ((y0 + y) * source.w + x0 + x) * 4
+            let targetIndex = (y * width + x) * 4
+            for channel in 0..<4 { result.p[targetIndex + channel] = source.p[sourceIndex + channel] }
+        }
+    }
+    return result
+}
+
 // Strip the generated atmosphere from the frozen mother while retaining its
 // exact source coordinates and silhouette alpha relationship.
 func frameBody(_ source: Raster) -> Raster {
@@ -282,6 +349,20 @@ struct TierSpec {
     let hueDriftEnabled: Bool
     let gemLuminanceEnabled: Bool
 }
+
+struct EmblemColorProfile {
+    let enamelShare: Double
+    let metalShare: Double
+    let neutralShare: Double
+    let contrast: Double
+}
+
+let defaultEmblemColorProfile = EmblemColorProfile(
+    enamelShare: 0.58,
+    metalShare: 0.16,
+    neutralShare: 0.24,
+    contrast: 0.08
+)
 
 func tierParameters(_ id: String) throws -> (Double, Double, Double, Double) {
     switch id {
@@ -346,9 +427,77 @@ func fixedMaterial(_ source: Raster, tier: TierSpec, masks: MaterialMasks) -> Ra
     return result
 }
 
+func blendColor(_ lhs: [Double], _ rhs: [Double], _ amount: Double) -> [Double] {
+    zip(lhs, rhs).map { $0 * (1 - amount) + $1 * amount }
+}
+
+func colorizeEmblem(_ source: Raster, tier: TierSpec, profile: EmblemColorProfile = defaultEmblemColorProfile) -> Raster {
+    var result = source
+    let violetIdentity = [0.20, 0.10, 0.29]
+    let warmMetal = [0.78, 0.54, 0.23]
+    for y in 0..<source.h {
+        for x in 0..<source.w {
+            let index = y * source.w + x
+            let i = index * 4
+            let alpha = source.p[i + 3]
+            if alpha == 0 { continue }
+            let base = (0..<3).map { Double(source.p[i + $0]) / 255.0 }
+            let luminance = 0.2126 * base[0] + 0.7152 * base[1] + 0.0722 * base[2]
+            let violet = base[2] > base[1] * 1.04 && base[0] > base[1] * 1.03
+            let gold = base[0] > base[1] * 1.05 && base[1] > base[2] * 1.08
+            let target: [Double]
+            let share: Double
+            if violet {
+                // Keep the Fool's smoky-violet recess while introducing the
+                // emblem's single, catalog-bound tier color as enamel/refraction.
+                target = blendColor(violetIdentity, tier.primary, 0.72)
+                share = profile.enamelShare
+            } else if gold {
+                // Gold metal remains gold; the quality color is a controlled
+                // reflected tint rather than a flat recolor of the rim.
+                target = blendColor(warmMetal, tier.primary, 0.30)
+                share = profile.metalShare
+            } else {
+                target = tier.primary
+                share = profile.neutralShare
+            }
+            let wave = (sin(Double(x) * 0.031 + Double(y) * 0.017) + 1) * 0.5
+            let relief = 0.82 + luminance * 0.30 + (wave - 0.5) * 0.045
+            var values = blendColor(base, target, share).map { ($0 - 0.5) * (1 + profile.contrast) + 0.5 }
+            for c in 0..<3 {
+                values[c] *= relief
+                let specular = max(0, luminance - 0.72) * (0.07 + tier.highlight * 0.32)
+                values[c] += specular * (0.34 + tier.primary[c] * 0.66)
+                result.p[i + c] = UInt8((clamp(values[c]) * 255.0).rounded())
+            }
+            // This function is deliberately forbidden from touching alpha.
+            result.p[i + 3] = alpha
+        }
+    }
+    return result
+}
+
 func geometryDifference(_ lhs: Raster, _ rhs: Raster) throws -> Int {
     try require(lhs.w == rhs.w && lhs.h == rhs.h, "Geometry canvas mismatch")
     return zip(lhs.alpha, rhs.alpha).filter { $0 != $1 }.count
+}
+
+func alphaDifference(_ lhs: Raster, _ rhs: Raster) -> Int {
+    guard lhs.w == rhs.w && lhs.h == rhs.h else { return Int.max }
+    return zip(lhs.alpha, rhs.alpha).filter { $0 != $1 }.count
+}
+
+func maxColorDifference(_ lhs: Raster, _ rhs: Raster) -> Int {
+    guard lhs.w == rhs.w && lhs.h == rhs.h else { return Int.max }
+    var maximum = 0
+    for index in 0..<(lhs.w * lhs.h) {
+        let left = index * 4
+        if lhs.p[left + 3] == 0 && rhs.p[left + 3] == 0 { continue }
+        for channel in 0..<3 {
+            maximum = max(maximum, abs(Int(lhs.p[left + channel]) - Int(rhs.p[left + channel])))
+        }
+    }
+    return maximum
 }
 
 func render(_ layers: [(Raster, CGRect)], width: Int, height: Int, background: Bool = false) -> Raster {
@@ -392,19 +541,19 @@ struct GeometrySpec {
     let finalSize: [Int]
     let designSize: [Double]
     let emblemCenterDesign: [Double]
+    let emblemCenterFinalPx: [Double]
     let emblemVisibleHeightRatio: Double
+    let gemstoneCenterFinalPx: [Double]
+    let gemstoneVisibleSizeFinalPx: [Double]
 }
 
 func placementRect(_ emblem: Raster, _ geometry: GeometrySpec, _ sequence: Int) throws -> CGRect {
     try require((0...9).contains(sequence), "Invalid sequence placement: \(sequence)")
     let bbox = emblem.bbox
     try require(bbox[3] > 0 && emblem.alpha.contains(0), "Emblem has no transparent boundary: \(sequence)")
-    let finalW = Double(geometry.finalSize[0])
     let finalH = Double(geometry.finalSize[1])
-    let designW = geometry.designSize[0]
-    let designH = geometry.designSize[1]
-    let centerX = finalW * geometry.emblemCenterDesign[0] / designW
-    let centerY = finalH * geometry.emblemCenterDesign[1] / designH
+    let centerX = geometry.emblemCenterFinalPx[0]
+    let centerY = geometry.emblemCenterFinalPx[1]
     let visibleHeight = finalH * geometry.emblemVisibleHeightRatio
     let scale = visibleHeight / Double(bbox[3])
     return CGRect(
@@ -431,13 +580,108 @@ func renderSequenceFrame(frame: Raster, emblem: Raster, sequence: Int, geometry:
     )
 }
 
+func facetedGemstone(_ geometry: GeometrySpec, _ tier: TierSpec) -> Raster {
+    let width = geometry.finalSize[0]
+    let height = geometry.finalSize[1]
+    var result = Raster(width, height)
+    let centerX = geometry.gemstoneCenterFinalPx[0]
+    let centerY = geometry.gemstoneCenterFinalPx[1]
+    let halfW = geometry.gemstoneVisibleSizeFinalPx[0] * 0.5
+    let halfH = geometry.gemstoneVisibleSizeFinalPx[1] * 0.5
+    let dark = tier.gem.map { $0 * 0.24 }
+    let deep = tier.gem.map { $0 * 0.46 }
+    let mid = tier.gem.map { $0 * 0.76 + 0.035 }
+    let bright = tier.gem.map { clamp($0 * 0.48 + 0.52) }
+    let refracted = blendColor(tier.gem, [0.35, 0.58, 0.92], tier.id == "low" ? 0.26 : 0.08)
+    let metal = blendColor([0.72, 0.55, 0.32], tier.primary, 0.22)
+    for y in max(0, Int(centerY - halfH - 2))..<min(height, Int(centerY + halfH + 3)) {
+        for x in max(0, Int(centerX - halfW - 2))..<min(width, Int(centerX + halfW + 3)) {
+            let nx = (Double(x) + 0.5 - centerX) / halfW
+            let ny = (Double(y) + 0.5 - centerY) / halfH
+            let distance = abs(nx) + abs(ny)
+            guard distance <= 1 else { continue }
+            let index = (y * width + x) * 4
+            var color: [Double]
+            if distance >= 0.90 {
+                color = metal
+            } else {
+                // Eight angular sectors plus an inner table create a faceted
+                // cut stone from the locked diamond mask, without any ad-hoc
+                // geometry or position changes.
+                let innerDistance = abs(nx) / 0.58 + abs(ny) / 0.58
+                let sector = Int(floor((atan2(ny, nx) + Double.pi) / (Double.pi / 4.0))) % 8
+                if innerDistance <= 1 {
+                    let tableLight = [0.48, 0.86, 0.58, 0.78, 0.36, 0.72, 0.54, 0.92][sector]
+                    color = blendColor(deep, mid, tableLight)
+                    let refraction = max(0, 1 - abs(nx + 0.20) * 2.8 - abs(ny - 0.08) * 2.4)
+                    color = blendColor(color, refracted, refraction * 0.35)
+                    let tableHighlight = max(0, 1 - abs(nx + 0.22) * 5.0 - abs(ny + 0.34) * 4.2)
+                    color = blendColor(color, bright, tableHighlight * 0.42)
+                } else {
+                    let crownLight = [0.42, 0.76, 0.30, 0.88, 0.24, 0.62, 0.38, 0.70][sector]
+                    color = blendColor(deep, mid, crownLight)
+                    if ny < -0.18 { color = blendColor(color, bright, 0.18) }
+                    if nx > 0.22 { color = blendColor(color, dark, 0.18) }
+                    if nx < -0.28 && ny > -0.10 { color = blendColor(color, refracted, 0.24) }
+                }
+                let facetLineA = abs(nx + ny * 0.92)
+                let facetLineB = abs(nx - ny * 0.92)
+                if facetLineA < 0.018 || facetLineB < 0.018 {
+                    color = blendColor(color, bright, 0.24)
+                }
+            }
+            for c in 0..<3 { result.p[index + c] = UInt8((clamp(color[c]) * 255).rounded()) }
+            result.p[index + 3] = UInt8((clamp((1 - distance) * 18.0) * 255).rounded())
+        }
+    }
+    return result
+}
+
+// Embed the previously generated five-variant diamond study as a real
+// transparent layer. Each crop is recorded in the catalog and is rescaled
+// only into the locked visible diamond box; no visual dragging or per-tier
+// placement is allowed. The procedural facetedGemstone remains available for
+// self-tests and fallback research comparison, but is not the active pixel
+// source for the v3 production kit.
+func studyGemstone(_ study: DiamondStudy, _ geometry: GeometrySpec, _ tier: String) throws -> Raster {
+    guard let cropRect = study.cropRects[tier] else {
+        throw Failure.invalid("Missing diamond study crop: \(tier)")
+    }
+    let cropped = try crop(study.raster, cropRect)
+    let transparent = removeBlackMatte(cropped)
+    try require(transparent.bbox[2] > 0 && transparent.bbox[3] > 0, "Diamond study crop is empty: \(tier)")
+    let size = geometry.gemstoneVisibleSizeFinalPx
+    let rect = CGRect(
+        x: geometry.gemstoneCenterFinalPx[0] - size[0] * 0.5,
+        y: geometry.gemstoneCenterFinalPx[1] - size[1] * 0.5,
+        width: size[0],
+        height: size[1]
+    )
+    let embedded = render(
+        [(transparent, rect)],
+        width: geometry.finalSize[0],
+        height: geometry.finalSize[1]
+    )
+    try require(embedded.alpha.contains(0) && embedded.bbox[2] > 0 && embedded.bbox[3] > 0, "Embedded diamond lost transparency: \(tier)")
+    return embedded
+}
+
 struct EmblemInput {
     let digit: Int
+    let tier: String
+    let colorBinding: String
     let url: URL
     let path: String
     let hash: String
     let seeds: [[Int]]
     let minNeutral: Int
+}
+
+struct DiamondStudy {
+    let url: URL
+    let hash: String
+    let raster: Raster
+    let cropRects: [String: [Int]]
 }
 
 struct Kit {
@@ -452,6 +696,7 @@ struct Kit {
     let mapping: [String: [Int]]
     let geometry: GeometrySpec
     let emblems: [EmblemInput]
+    let diamondStudy: DiamondStudy
     let inputHashes: [String: String]
 }
 
@@ -488,10 +733,16 @@ func qualityTier(for sequence: Int, mapping: [String: [Int]]) throws -> String {
     return matches[0]
 }
 
+func emblemTier(for digit: Int, mapping: [String: [Int]]) throws -> String {
+    // A digit has exactly one quality owner. This is intentionally not a
+    // tier×digit product: the ten approved emblems remain ten output assets.
+    return try qualityTier(for: digit, mapping: mapping)
+}
+
 func loadKit(_ root: URL) throws -> Kit {
     let catalogURL = try within(root, "production/symbols/fool-five-tier-kit.json")
     let catalog = try jsonObject(catalogURL)
-    try require(try text(catalog, "version") == "2.0.0", "Unsupported five-tier catalog version")
+    try require(try text(catalog, "version") == "4.0.0", "Unsupported five-tier catalog version")
 
     let direction = try dependency(root, catalog["direction"], "direction")
     let geometry = try dependency(root, catalog["geometry_lock"], "geometry_lock")
@@ -499,9 +750,50 @@ func loadKit(_ root: URL) throws -> Kit {
     let hierarchy = try dependency(root, catalog["sequence_hierarchy"], "sequence_hierarchy")
     let matte = try dependency(root, catalog["matte"], "matte")
     let recipe = try dependency(root, catalog["recipe"], "recipe")
+    let inscriptionContract = try dependency(root, catalog["inscription_contract"], "inscription_contract")
+    let diamondStudyDependency = try dependency(root, catalog["diamond_study"], "diamond_study")
+
+    let textContract = try dictionary(catalog["text_contract"], "text_contract")
+    let textSchemaPath = try text(textContract, "schema_path")
+    let textSchemaHash = try text(textContract, "schema_sha256")
+    let textSchemaURL = try within(root, textSchemaPath)
+    try require(try digest(textSchemaURL) == textSchemaHash, "Stale text schema")
+    let textSchema = try jsonObject(textSchemaURL)
+    try require(try text(textSchema, "$id") == "lotm-card-art/card-text-panels-1.0.0", "Text schema mismatch")
+    let textTemplatePath = try text(textContract, "template_path")
+    let textTemplateHash = try text(textContract, "template_sha256")
+    let textTemplateURL = try within(root, textTemplatePath)
+    try require(try digest(textTemplateURL) == textTemplateHash, "Stale text template")
+    let textTemplate = try jsonObject(textTemplateURL)
+    try require(try text(textTemplate, "status") == "active-v3-template", "Text template is not active")
+
+    let inscriptionObject = try jsonObject(inscriptionContract.0)
+    try require(try text(inscriptionObject, "status") == "active-deterministic-style", "Inscription contract is not active")
+    let inscriptionRender = try dictionary(inscriptionObject["render_policy"], "inscription.render_policy")
+    try require(try text(inscriptionRender, "mode") == "exact-glyph-relief", "Inscription render mode changed")
+    try require(try flag(inscriptionRender["flat_coretext_final_layer_forbidden"], "flat inscription flag"), "Flat inscription text is allowed")
+    let inscriptionCapacity = try dictionary(inscriptionObject["capacity"], "inscription.capacity")
+    try require(try integer(inscriptionCapacity["minimum_characters"], "inscription minimum characters") >= 6, "Inscription capacity is too small")
+
+    let diamondObject = try dictionary(catalog["diamond_study"], "diamond_study")
+    try require(try text(diamondObject, "pixel_integration") == "deterministic-border-cutout-and-fixed-anchor", "Diamond integration mode changed")
+    let diamondStudyRaster = try Raster(diamondStudyDependency.0)
+    try require([diamondStudyRaster.w, diamondStudyRaster.h] == [1774, 887], "Diamond study size changed")
+    let cropRows = try dictionary(diamondObject["crop_rects_px"], "diamond_study.crop_rects_px")
+    let diamondTierOrder = ["low", "mid", "saint", "angel", "true-god"]
+    var diamondCropRects = [String: [Int]]()
+    for tier in diamondTierOrder {
+        let row = try integers(cropRows[tier], "diamond crop \(tier)")
+        try require(row.count == 4 && row[2] > 0 && row[3] > 0, "Invalid diamond crop: \(tier)")
+        diamondCropRects[tier] = row
+    }
 
     let directionObject = try jsonObject(direction.0)
-    try require(try text(directionObject, "geometry_id") == "fool-quality-frame-locked-master-v1", "Direction geometry mismatch")
+    try require(try text(directionObject, "geometry_id") == "fool-quality-frame-locked-master-v3", "Direction geometry mismatch")
+    let directionTextZones = try dictionary(directionObject["text_zones"], "direction.text_zones")
+    try require(abs(try real(directionTextZones["side_inlay_width_ratio"], "side_inlay_width_ratio") - 1.5) < 0.0001, "Side inlay width mismatch")
+    try require(try flag(directionTextZones["side_inlays_are_full_side_panels"], "side panel flag") == false, "Side inlays became full panels")
+    try require(try integer(directionTextZones["full_width_panel_count"], "full width panel count") == 1, "Text panel count mismatch")
     let directionMaster = try dictionary(directionObject["master"], "direction.master")
     let master = try dependency(root, directionMaster, "direction.master")
     let masterRaster = try Raster(master.0)
@@ -548,7 +840,7 @@ func loadKit(_ root: URL) throws -> Kit {
     for id in mapping.keys { try require(styles[id]!.sequences == mapping[id]!, "Color/mapping mismatch: \(id)") }
 
     let recipeObject = try jsonObject(recipe.0)
-    try require(try text(recipeObject, "geometry_id") == "fool-quality-frame-locked-master-v1", "Recipe geometry mismatch")
+    try require(try text(recipeObject, "geometry_id") == "fool-quality-frame-locked-master-v3", "Recipe geometry mismatch")
     let recipeMapping = try parseMapping(recipeObject["tier_sequence_mapping"])
     try require(recipeMapping == mapping, "Recipe/catalog mapping mismatch")
     let recipeGeometry = try dictionary(recipeObject["geometry"], "recipe.geometry")
@@ -557,15 +849,27 @@ func loadKit(_ root: URL) throws -> Kit {
     let fullDesignRect = try reals(recipeGeometry["design_rect"], "recipe.geometry.design_rect")
     let designDimensions = Array(fullDesignRect.dropFirst(2))
     let center = try reals(recipeGeometry["emblem_center_design"], "recipe.geometry.emblem_center_design")
+    let emblemCenterFinalPx = try reals(recipeGeometry["emblem_center_final_px"], "recipe.geometry.emblem_center_final_px")
     let ratio = try real(recipeGeometry["emblem_visible_height_ratio"], "recipe.geometry.emblem_visible_height_ratio")
+    let gemCenterNative = try reals(recipeGeometry["bottom_gem_center_native"], "recipe.geometry.bottom_gem_center_native")
+    let gemSizeNative = try reals(recipeGeometry["bottom_gem_target_visible_size_native"], "recipe.geometry.bottom_gem_target_visible_size_native")
+    let gemScale = try real(recipeGeometry["bottom_gem_scale_vs_v1"], "recipe.geometry.bottom_gem_scale_vs_v1")
+    let sideRatio = try real(recipeGeometry["side_inlay_width_ratio"], "recipe.geometry.side_inlay_width_ratio")
+    let sideMinimum = try integer(recipeGeometry["side_minimum_characters"], "recipe.geometry.side_minimum_characters")
     try require(nativeSize == [1024, 1536] && finalSize == [2048, 3072], "Recipe canvas size mismatch")
     try require(designDimensions == [1000, 1500] && center == [500, 230] && ratio > 0 && ratio < 0.5, "Recipe geometry placement mismatch")
+    try require(emblemCenterFinalPx.count == 2 && abs(emblemCenterFinalPx[0] - 1024) < 0.001 && abs(emblemCenterFinalPx[1] - 471.04) < 0.001, "Inherited emblem anchor changed")
+    try require(gemCenterNative == [512, 1429] && gemSizeNative == [101.12, 103.68] && abs(gemScale - 1.28) < 0.001, "Bottom gemstone geometry mismatch")
+    try require(abs(sideRatio - 1.5) < 0.0001 && sideMinimum >= 6, "Side inscription geometry/capacity mismatch")
     let geometrySpec = GeometrySpec(
         nativeSize: nativeSize,
         finalSize: finalSize,
         designSize: designDimensions,
         emblemCenterDesign: center,
-        emblemVisibleHeightRatio: ratio
+        emblemCenterFinalPx: emblemCenterFinalPx,
+        emblemVisibleHeightRatio: ratio,
+        gemstoneCenterFinalPx: gemCenterNative.map { $0 * 2.0 },
+        gemstoneVisibleSizeFinalPx: gemSizeNative.map { $0 * 2.0 }
     )
 
     let matteObject = try jsonObject(matte.0)
@@ -574,15 +878,23 @@ func loadKit(_ root: URL) throws -> Kit {
     var emblems = [EmblemInput]()
     var inputHashes: [String: String] = [
         "production/symbols/fool-five-tier-kit.json": try digest(catalogURL),
-        "production/symbols/quality-frame-five-tier-direction.json": direction.1,
+        "production/symbols/quality-frame-three-text-direction-v3.json": direction.1,
         "production/symbols/quality-geometry-lock.json": geometry.1,
         "config/quality-color-tokens.json": colors.1,
         "config/sequence-hierarchy.json": hierarchy.1,
         "production/symbols/fool-kit-matte.json": matte.1,
-        "production/symbols/recipes/fool-five-tier-materials.json": recipe.1,
+        "production/symbols/recipes/fool-three-text-zones-v3.json": recipe.1,
+        textSchemaPath: textSchemaHash,
+        textTemplatePath: textTemplateHash,
+        "production/symbols/inscriptions/fool-side-inscription-v1.json": inscriptionContract.1,
+        "artifacts/production/fool-diamond-v2/raw.png": diamondStudyDependency.1,
     ]
     for row in try dictionaries(catalog["emblem_inputs"], "emblem_inputs") {
         let digit = try integer(row["digit"], "emblem digit")
+        let declaredTier = try text(row, "tier")
+        let colorBinding = try text(row, "color_binding")
+        let mappedTier = try qualityTier(for: digit, mapping: mapping)
+        try require(declaredTier == mappedTier && colorBinding == declaredTier, "Emblem tier binding mismatch: (digit)")
         let path = try text(row, "path")
         let expected = try text(row, "sha256")
         let url = try within(root, path)
@@ -601,7 +913,7 @@ func loadKit(_ root: URL) throws -> Kit {
             rawSeeds = []
         }
         let minimum = try settings["min_neutral"].map { try integer($0, "min_neutral") } ?? 55
-        emblems.append(EmblemInput(digit: digit, url: url, path: path, hash: expected, seeds: rawSeeds, minNeutral: minimum))
+        emblems.append(EmblemInput(digit: digit, tier: declaredTier, colorBinding: colorBinding, url: url, path: path, hash: expected, seeds: rawSeeds, minNeutral: minimum))
         inputHashes[path] = expected
     }
     emblems.sort { $0.digit < $1.digit }
@@ -622,6 +934,7 @@ func loadKit(_ root: URL) throws -> Kit {
         mapping: mapping,
         geometry: geometrySpec,
         emblems: emblems,
+        diamondStudy: DiamondStudy(url: diamondStudyDependency.0, hash: diamondStudyDependency.1, raster: diamondStudyRaster, cropRects: diamondCropRects),
         inputHashes: inputHashes
     )
 }
@@ -647,13 +960,20 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
 
     let tierOrder = ["low", "mid", "saint", "angel", "true-god"]
     var frameRasters = [String: Raster]()
+    var diamondRasters = [String: Raster]()
     var frameFiles = [String]()
     for id in tierOrder {
         guard let style = kit.styles[id] else { throw Failure.invalid("Missing style \(id)") }
         let fixed = fixedMaterial(kit.body, tier: style, masks: kit.masks)
         try require(try geometryDifference(kit.body, fixed) == 0, "Native material changed frame geometry")
+        let gem = try studyGemstone(kit.diamondStudy, kit.geometry, id)
+        try gem.save(outputURL(root, resolvedOutput, "diamond-\(id).png"))
+        diamondRasters[id] = gem
         let final = render(
-            [(fixed, CGRect(x: 0, y: 0, width: kit.geometry.finalSize[0], height: kit.geometry.finalSize[1]))],
+            [
+                (fixed, CGRect(x: 0, y: 0, width: kit.geometry.finalSize[0], height: kit.geometry.finalSize[1])),
+                (gem, CGRect(x: 0, y: 0, width: kit.geometry.finalSize[0], height: kit.geometry.finalSize[1])),
+            ],
             width: kit.geometry.finalSize[0],
             height: kit.geometry.finalSize[1]
         )
@@ -663,6 +983,7 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
         frameFiles.append(file)
     }
 
+    let diagnosticGem = diamondRasters["low"]!
     for region in 0...4 {
         var mask = Raster(kit.body.w, kit.body.h)
         for index in 0..<(kit.body.w * kit.body.h) {
@@ -673,6 +994,22 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
         }
         try mask.save(outputURL(root, resolvedOutput, "structure-\(region).png"))
     }
+    // The study-derived diamond is emitted as a final-space diagnostic so its
+    // embedded visible bbox is directly inspectable without resampling.
+    try diagnosticGem.save(outputURL(root, resolvedOutput, "structure-4-study-v3.png"))
+
+    let gemCropX = Int((kit.geometry.gemstoneCenterFinalPx[0] - kit.geometry.gemstoneVisibleSizeFinalPx[0] * 0.5 - 6).rounded())
+    let gemCropY = Int((kit.geometry.gemstoneCenterFinalPx[1] - kit.geometry.gemstoneVisibleSizeFinalPx[1] * 0.5 - 6).rounded())
+    let gemCropW = Int((kit.geometry.gemstoneVisibleSizeFinalPx[0] + 12).rounded())
+    let gemCropH = Int((kit.geometry.gemstoneVisibleSizeFinalPx[1] + 12).rounded())
+    var diamondPreviewLayers = [(Raster, CGRect)]()
+    for (index, id) in tierOrder.enumerated() {
+        guard let diamond = diamondRasters[id] else { continue }
+        let cropRect = try crop(diamond, [gemCropX, gemCropY, gemCropW, gemCropH])
+        diamondPreviewLayers.append((cropRect, CGRect(x: Double(index) * 350 + 20, y: 20, width: 310, height: 310)))
+    }
+    try render(diamondPreviewLayers, width: 1790, height: 350, background: true)
+        .save(outputURL(root, resolvedOutput, "diamonds-five-tier.png"))
 
     let selectedDigits = mode == "sample" ? [9] : Array(0...9)
     var emblemRasters = [Int: Raster]()
@@ -682,11 +1019,13 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
         guard let source = kit.emblems.first(where: { $0.digit == digit }) else {
             throw Failure.invalid("Missing emblem input \(digit)")
         }
-        let clean = cutout(try Raster(source.url), minNeutral: source.minNeutral, seeds: source.seeds)
+        let rawClean = cutout(try Raster(source.url), minNeutral: source.minNeutral, seeds: source.seeds)
+        let tier = try emblemTier(for: digit, mapping: kit.mapping)
+        try require(source.tier == tier && source.colorBinding == tier, "Catalog emblem tier changed: \(digit)")
+        let clean = colorizeEmblem(rawClean, tier: kit.styles[tier]!)
         try require(clean.bbox[3] > 0 && clean.alpha.contains(0), "Empty or opaque emblem \(digit)")
         try clean.save(outputURL(root, resolvedOutput, "emblem-\(digit).png"))
         emblemRasters[digit] = clean
-        let tier = try qualityTier(for: digit, mapping: kit.mapping)
         guard let frame = frameRasters[tier] else { throw Failure.invalid("Missing frame (tier)") }
         let card = try renderSequenceFrame(frame: frame, emblem: clean, sequence: digit, geometry: kit.geometry)
         try card.save(outputURL(root, resolvedOutput, "fool-\(digit)-frame.png"))
@@ -701,6 +1040,7 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
         entries.append([
             "digit": digit,
             "tier": tier,
+            "color_binding": source.colorBinding,
             "source_bbox": clean.bbox,
             "visible_height_ratio": kit.geometry.emblemVisibleHeightRatio,
             "rect_px": [rect.minX, rect.minY, rect.width, rect.height],
@@ -752,8 +1092,9 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
     inputHashes["tools/render/foolkit5.swift"] = try digest(root.appendingPathComponent("tools/render/foolkit5.swift"))
     let alphaCounts = frameRasters.values.map { $0.alpha.filter { $0 == 0 }.count }
     let manifest: [String: Any] = [
-        "version": 1,
-        "mode": "material-study",
+        "version": 3,
+        "mode": "material-study-v3",
+        "generation_mode": mode,
         "created_at": ISO8601DateFormatter().string(from: Date()),
         "renderer": "foolkit5",
         "tool_sha256": inputHashes["tools/render/foolkit5.swift"]!,
@@ -763,6 +1104,13 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
         "outputs": outputs,
         "sequence_mapping": kit.mapping,
         "frame_files": frameFiles,
+        "diamond_files": tierOrder.map { "diamond-\($0).png" },
+        "diamond_study": [
+            "path": "artifacts/production/fool-diamond-v2/raw.png",
+            "sha256": kit.diamondStudy.hash,
+            "integration": "transparent-border-cutout-fixed-anchor",
+            "crop_rects_px": kit.diamondStudy.cropRects,
+        ],
         "entries": entries.sorted { ($0["digit"] as? Int ?? -1) < ($1["digit"] as? Int ?? -1) },
         "native_frame_size": kit.body.w > 0 ? [kit.body.w, kit.body.h] : [0, 0],
         "final_size": kit.geometry.finalSize,
@@ -773,11 +1121,20 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
             "frame_transparent_pixel_counts": alphaCounts,
             "emblems_have_transparency": emblemRasters.values.allSatisfy { $0.alpha.contains(0) },
         ],
-        "material_rules": ["primary_targets": ["frame_texture", "existing_pathway_recess", "quality_marker_diamond"], "hue_drift": true, "gem_luminance": true],
+        "material_rules": [
+            "primary_targets": ["frame_texture", "existing_pathway_recess", "inscription_recess", "quality_marker_diamond", "emblem_enamel"],
+            "hue_drift": true,
+            "gem_luminance": true,
+            "emblem_tier_recolor": true,
+            "bottom_gem_scale_vs_v1": 1.28,
+            "diamond_study_embedded": true,
+            "diamond_variant_tier_count": 5,
+            "diamond_variant_cross_product": false
+        ],
         "visual_status": "pending",
         "formal_release_approved": false,
         "legacy_four_tier_rejected": true,
-        "method": "frozen geometry master; fixed region masks; config-driven primary color; relief-driven hue drift; independent emblem visible-ink placement",
+        "method": "v3 frozen geometry master; widened inscription-zone direction; fixed material regions; five-tier color tokens; study-derived diamond cutout embedded at fixed anchor; relief-driven hue drift; one tier-bound recolor per emblem; independent visible-ink placement",
     ]
     try writeJSON(manifest, outputURL(root, resolvedOutput, "manifest.json"))
     print(resolvedOutput.path)
@@ -787,7 +1144,8 @@ func gate(_ root: URL, _ output: URL) throws {
     let kit = try loadKit(root)
     let manifestURL = output.appendingPathComponent("manifest.json")
     let manifest = try jsonObject(manifestURL)
-    try require(try text(manifest, "mode") == "material-study", "Unsupported manifest mode")
+    try require(try integer(manifest["version"], "manifest version") == 3, "Unsupported v3 manifest")
+    try require(try text(manifest, "mode") == "material-study-v3", "Unsupported manifest mode")
     try require(try flag(manifest["formal_release_approved"], "formal release") == false, "Material study cannot be release approved")
     try require(try flag(manifest["legacy_four_tier_rejected"], "legacy four-tier") == true, "Legacy four-tier was not rejected")
     try require(try text(manifest, "tool_sha256") == digest(root.appendingPathComponent("tools/render/foolkit5.swift")), "Renderer changed")
@@ -811,14 +1169,24 @@ func gate(_ root: URL, _ output: URL) throws {
     let alpha = try dictionary(manifest["alpha"], "manifest.alpha")
     try require(try flag(alpha["frame_has_transparency"], "frame transparency"), "Frame alpha is not real")
     try require(try flag(alpha["emblems_have_transparency"], "emblem transparency"), "Emblem alpha is not real")
+    let materialRules = try dictionary(manifest["material_rules"], "manifest.material_rules")
+    try require(try flag(materialRules["emblem_tier_recolor"], "emblem tier recolor"), "Emblem tier recolor is not recorded")
+    try require(abs(try real(materialRules["bottom_gem_scale_vs_v1"], "bottom gem scale") - 1.28) < 0.001, "Bottom gem scale is not v3")
+    try require(try flag(materialRules["diamond_study_embedded"], "diamond study embedded"), "Diamond study was not embedded")
+    try require(try integer(materialRules["diamond_variant_tier_count"], "diamond tier count") == 5, "Diamond tier count changed")
+    try require(try flag(materialRules["diamond_variant_cross_product"], "diamond cross product") == false, "Diamond cross-product variants detected")
 
     let tierOrder = ["low", "mid", "saint", "angel", "true-god"]
     var frames = [String: Raster]()
     for id in tierOrder {
         guard let style = kit.styles[id] else { throw Failure.invalid("Missing style \(id)") }
         let expectedNative = fixedMaterial(kit.body, tier: style, masks: kit.masks)
+        let expectedGem = try studyGemstone(kit.diamondStudy, kit.geometry, id)
         let expected = render(
-            [(expectedNative, CGRect(x: 0, y: 0, width: kit.geometry.finalSize[0], height: kit.geometry.finalSize[1]))],
+            [
+                (expectedNative, CGRect(x: 0, y: 0, width: kit.geometry.finalSize[0], height: kit.geometry.finalSize[1])),
+                (expectedGem, CGRect(x: 0, y: 0, width: kit.geometry.finalSize[0], height: kit.geometry.finalSize[1])),
+            ],
             width: kit.geometry.finalSize[0],
             height: kit.geometry.finalSize[1]
         )
@@ -826,16 +1194,35 @@ func gate(_ root: URL, _ output: URL) throws {
         try require(try geometryDifference(actual, expected) == 0, "Geometry drift: frame-\(id).png")
         frames[id] = actual
     }
+    let expectedGem = try studyGemstone(kit.diamondStudy, kit.geometry, "low")
+    let actualGem = try Raster(output.appendingPathComponent("structure-4-study-v3.png"))
+    try require(try geometryDifference(actualGem, expectedGem) == 0, "Bottom gemstone geometry drift")
+    for tier in tierOrder {
+        let actualDiamond = try Raster(output.appendingPathComponent("diamond-\(tier).png"))
+        let expectedDiamond = try studyGemstone(kit.diamondStudy, kit.geometry, tier)
+        try require(try geometryDifference(actualDiamond, expectedDiamond) == 0, "Embedded diamond drift: \(tier)")
+    }
 
     let entryRows = try dictionaries(manifest["entries"], "manifest.entries")
     let digits = try entryRows.map { try integer($0["digit"], "entry digit") }.sorted()
     try require(digits == Array(0...9) || digits == [9], "Missing/duplicate emblem entries")
+    let outputFiles = try FileManager.default.contentsOfDirectory(at: output, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]).map { $0.lastPathComponent }
+    try require(!outputFiles.contains(where: { $0.range(of: "^emblem-[0-9]+-(low|mid|saint|angel|true-god)\\.png$", options: .regularExpression) != nil }), "Tier-suffixed emblem variant detected")
+    try require(!outputFiles.contains(where: { $0.range(of: "^fool-[0-9]+-frame-(low|mid|saint|angel|true-god)\\.png$", options: .regularExpression) != nil }), "Tier-suffixed sequence variant detected")
     for row in entryRows {
         let digit = try integer(row["digit"], "entry digit")
         let tier = try text(row, "tier")
-        try require(try qualityTier(for: digit, mapping: kit.mapping) == tier, "Entry tier mismatch: \(digit)")
+        let colorBinding = try text(row, "color_binding")
+        try require(try emblemTier(for: digit, mapping: kit.mapping) == tier && colorBinding == tier, "Entry tier mismatch: \(digit)")
+        guard let source = kit.emblems.first(where: { $0.digit == digit }) else { throw Failure.invalid("Missing source emblem: \(digit)") }
+        let expectedEmblem = colorizeEmblem(
+            cutout(try Raster(source.url), minNeutral: source.minNeutral, seeds: source.seeds),
+            tier: kit.styles[tier]!
+        )
         let emblem = try Raster(output.appendingPathComponent("emblem-\(digit).png"))
         try require(emblem.alpha.contains(0) && emblem.bbox[3] > 0, "Invalid emblem layer: \(digit)")
+        try require(alphaDifference(emblem, expectedEmblem) == 0, "Emblem alpha drift: \(digit)")
+        try require(maxColorDifference(emblem, expectedEmblem) <= 4, "Emblem color/shape drift: \(digit)")
         guard let frame = frames[tier] else { throw Failure.invalid("Missing frame for \(digit)") }
         let rect = try placementRect(emblem, kit.geometry, digit)
         let recorded = try reals(row["rect_px"], "entry.rect_px")
@@ -870,6 +1257,21 @@ func selftest() throws {
     try require(try geometryDifference(fixture, graded) == 0, "selftest geometry changed")
     try require(fixture.alpha.contains(0) && graded.alpha.contains(255), "selftest alpha missing")
     try require(graded.p[gemIndex] > 0 && graded.p[gemIndex + 1] > 0 && graded.p[gemIndex + 2] > 0, "selftest gem highlight lost")
+    let recolored = colorizeEmblem(fixture, tier: style)
+    try require(alphaDifference(fixture, recolored) == 0, "selftest emblem alpha changed")
+    try require(recolored.p != fixture.p, "selftest emblem tier color missing")
+    let gemGeometry = GeometrySpec(
+        nativeSize: [1024, 1536],
+        finalSize: [2048, 3072],
+        designSize: [1000, 1500],
+        emblemCenterDesign: [500, 230],
+        emblemCenterFinalPx: [1024, 471.04],
+        emblemVisibleHeightRatio: 0.15,
+        gemstoneCenterFinalPx: [1024, 2858],
+        gemstoneVisibleSizeFinalPx: [202.24, 207.36]
+    )
+    let gem = facetedGemstone(gemGeometry, style)
+    try require(gem.bbox[2] >= 200 && gem.bbox[3] >= 205, "selftest v3 diamond size missing")
     let mapping: [String: [Int]] = ["low": [9, 8], "mid": [7, 6, 5], "saint": [4, 3], "angel": [2, 1], "true-god": [0]]
     try require(mapping["saint"] == [4, 3] && mapping["angel"] == [2, 1], "selftest saint/angel split missing")
     try require(!mapping.keys.contains("high"), "legacy four-tier key accepted")
@@ -877,6 +1279,11 @@ func selftest() throws {
     print("geometry-zero")
     print("alpha-real")
     print("gem-highlight-preserved")
+    print("v2-three-text-zones")
+    print("emblem-tier-binding")
+    print("emblem-alpha-byte-stable")
+    print("diamond-v2")
+    print("diamond-study-embedded")
     print("legacy-four-tier-rejected")
 }
 

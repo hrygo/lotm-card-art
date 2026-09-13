@@ -1,0 +1,92 @@
+{
+  "version": "2.0.0",
+  "id": "fool-three-text-zones-v3",
+  "pathway_id": "fool",
+  "status": "active-deterministic-v3-recipe",
+  "source_direction": "production/symbols/quality-frame-three-text-direction-v3.json",
+  "geometry_id": "fool-quality-frame-locked-master-v3",
+  "material_model": {
+    "primary_source": "config/quality-color-tokens.json",
+    "primary_targets": ["frame_texture", "pathway_recess", "gemstone_design", "emblem_enamel", "inscription_recess"],
+    "hue_drift_source": "config/quality-color-tokens.json#/application/hue_drift",
+    "gem_luminance_source": "config/quality-color-tokens.json#/application/gem_luminance",
+    "rule": "品质主色进入边框纹理、途径凹槽、侧铭文凹槽、底部钻石及圣徽珐琅/宝石区域；金属保留反射与愚者烟紫身份，色相随材质起伏受控漂移，不改变任何几何。"
+  },
+  "geometry": {
+    "master_source": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+    "native_size": [1024, 1536],
+    "final_size": [2048, 3072],
+    "design_rect": [0, 0, 1000, 1500],
+    "native_pixel_space": [1024, 1536],
+    "emblem_center_design": [500, 230],
+    "emblem_center_final_px": [1024, 471.04],
+    "emblem_visible_height_ratio": 0.15,
+    "placement": "uniform-scale-visible-ink-per-emblem-bbox-inherited-anchor",
+    "max_anchor_drift_px": 0,
+    "max_geometry_drift_px": 0,
+    "allow_per_tier_anchor_offsets": false,
+    "name_template": "production/templates/card-text-panels-v3.json",
+    "text_direction": "production/symbols/quality-frame-three-text-direction-v3.json",
+    "side_inlay_width_ratio": 1.5,
+    "side_inlay_design_rects": {
+      "left": [38, 780, 108, 280],
+      "right": [878, 780, 108, 280]
+    },
+    "side_text_safe_rects": {
+      "left": [50, 796, 84, 248],
+      "right": [890, 796, 84, 248]
+    },
+    "side_minimum_characters": 6,
+    "bottom_gem_center_native": [512, 1429],
+    "bottom_gem_target_visible_size_native": [101.12, 103.68],
+    "bottom_gem_scale_vs_v1": 1.28,
+    "bottom_gem_source_study": "artifacts/production/fool-diamond-v2/raw.png"
+  },
+  "tier_sequence_mapping": {
+    "low": [9, 8],
+    "mid": [7, 6, 5],
+    "saint": [4, 3],
+    "angel": [2, 1],
+    "true-god": [0]
+  },
+  "emblem_color_policy": {
+    "total_emblems": 10,
+    "one_tier_per_digit": true,
+    "preserve_alpha_and_visible_shape": true,
+    "preserve_digit_readability": true,
+    "preserve_fool_identity_recess": true,
+    "no_cross_product_variants": true
+  },
+  "side_inscription_policy": {
+    "asset": "production/symbols/inscriptions/fool-side-inscription-v1.json",
+    "style_reference_is_not_final_text": true,
+    "render_mode": "exact-glyph-relief",
+    "required_passes": ["recess-shadow", "raised-bevel", "engraved-face", "edge-glint"],
+    "flat_coretext_final_layer_forbidden": true,
+    "semantic_text_must_remain_exact": true,
+    "minimum_characters": 6,
+    "target_cap_height_final_px": [64, 68],
+    "target_tracking_final_px": [8, 10]
+  },
+  "text_policy": {
+    "schema": "production/schemas/card-text-panels.schema.json",
+    "fields": ["pathway_name", "sequence_name", "character_name"],
+    "side_source": "program-controlled-exact-glyph-relief",
+    "center_source": "CoreText-program-only",
+    "subject_text": false,
+    "max_center_error_final_px": 1,
+    "overflow_is_error": true
+  },
+  "output_contract": {
+    "frame_names": ["frame-low.png", "frame-mid.png", "frame-saint.png", "frame-angel.png", "frame-true-god.png"],
+    "emblem_name_pattern": "emblem-{digit}.png",
+    "sequence_name_pattern": "fool-{digit}-frame.png",
+    "emblem_count": 10,
+    "sequence_composition_count": 10,
+    "text_layer_names": ["text-panel-left.png", "text-panel-center.png", "text-panel-right.png", "text-safe-zones.png"],
+    "required_diagnostics": ["contact-sheet.png", "five-tiers.png", "emblems-white.png", "emblems-dark.png", "diamonds-five-tier.png", "manifest.json"],
+    "no_tier_suffix_on_names": true,
+    "no_cross_product_variants": true
+  },
+  "release_approved": false
+}

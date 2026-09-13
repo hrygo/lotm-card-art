@@ -35,6 +35,27 @@ class FoolFiveTierContractTests(unittest.TestCase):
         self.assertEqual(catalog["active_output"], "artifacts/production/fool-five-tier-kit-v1")
         self.assertFalse(catalog["legacy_four_tier_status"]["active"])
 
+    def test_old_four_tier_catalog_is_retired_and_not_the_active_successor(self):
+        old_catalog = self.load_json("production/symbols/fool-frame-kit.json")
+        historical_family = self.load_json("production/symbols/quality-frame-family.json")
+        retirement = self.load_json("production/retirements/fool-four-tier-v1.json")
+
+        self.assertEqual(old_catalog["status"], "retired-historical")
+        self.assertFalse(old_catalog["active"])
+        self.assertEqual(
+            old_catalog["successor"],
+            "production/symbols/fool-five-tier-kit.json",
+        )
+        self.assertEqual(historical_family["status"], "historical-inactive")
+        self.assertEqual(
+            historical_family["active_successor"],
+            "production/symbols/fool-five-tier-kit.json",
+        )
+        self.assertTrue(historical_family["historical_samples_only"])
+        self.assertEqual(retirement["status"], "retired-recoverable")
+        for item in retirement["moved_to_trash"]:
+            self.assertFalse((ROOT / item["original"]).exists(), item["original"])
+
     def test_catalog_binds_all_ten_approved_fool_emblems(self):
         catalog = self.load_json("production/symbols/fool-five-tier-kit.json")
 
@@ -60,6 +81,32 @@ class FoolFiveTierContractTests(unittest.TestCase):
                 item["sha256"],
                 f"emblem {item['digit']}",
             )
+
+    def test_catalog_binds_five_agentic_material_studies_without_promoting_them(self):
+        catalog = self.load_json("production/symbols/fool-five-tier-kit.json")
+
+        studies = catalog["material_studies"]
+        self.assertEqual(
+            studies["status"],
+            "generated-pending-visual-material-review",
+        )
+        self.assertEqual(
+            [item["tier"] for item in studies["assets"]],
+            ["low", "mid", "saint", "angel", "true-god"],
+        )
+        for item in studies["assets"]:
+            asset = ROOT / item["path"]
+            call = ROOT / item["call"]
+            self.assertTrue(asset.is_file(), item["path"])
+            self.assertTrue(call.is_file(), item["call"])
+            self.assertEqual(production_contracts.sha(asset), item["sha256"])
+            self.assertEqual(item["role"], "agentic-material-reference")
+            self.assertEqual(item["presentation_background"], "opaque")
+            self.assertEqual(item["visual_status"], "pending")
+        self.assertEqual(
+            studies["engineering_status"],
+            "study-only; deterministic renderer remains the sole active pixel production path",
+        )
 
     def test_existing_fusion_family_records_user_approval_for_every_digit(self):
         family = self.load_json("production/symbols/fool-fusion-family.json")
@@ -185,6 +232,48 @@ class FoolFiveTierContractTests(unittest.TestCase):
             finally:
                 output_parent.cleanup()
 
+    def test_active_output_manifest_has_all_ten_sequences_and_five_tiers(self):
+        catalog = self.load_json("production/symbols/fool-five-tier-kit.json")
+        output = ROOT / catalog["active_output"]
+        manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(
+            manifest["catalog_sha256"],
+            production_contracts.sha(ROOT / "production/symbols/fool-five-tier-kit.json"),
+        )
+        self.assertEqual(
+            manifest["frame_files"],
+            [
+                "frame-low.png",
+                "frame-mid.png",
+                "frame-saint.png",
+                "frame-angel.png",
+                "frame-true-god.png",
+            ],
+        )
+        self.assertEqual(
+            manifest["sequence_mapping"],
+            {
+                "low": [9, 8],
+                "mid": [7, 6, 5],
+                "saint": [4, 3],
+                "angel": [2, 1],
+                "true-god": [0],
+            },
+        )
+        self.assertEqual(
+            sorted(item["digit"] for item in manifest["entries"]),
+            list(range(10)),
+        )
+        self.assertTrue(
+            all(item["geometry_difference_pixels"] == 0 for item in manifest["entries"])
+        )
+        self.assertEqual(manifest["geometry_difference_pixels"], 0)
+        self.assertTrue(manifest["alpha"]["emblems_have_transparency"])
+        self.assertTrue(manifest["alpha"]["frame_has_transparency"])
+        self.assertTrue(manifest["legacy_four_tier_rejected"])
+        self.assertFalse(manifest["formal_release_approved"])
+        self.assertEqual(manifest["visual_status"], "pending")
 
 if __name__ == "__main__":
     unittest.main()

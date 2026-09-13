@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "fool",
+  "status": "retired-recoverable",
+  "reason": "用户明确要求不保留原4档；五档候选物料已通过机器门禁并成为当前入口",
+  "created_at": "2026-09-13T14:14:07Z",
+  "moved_to_trash": [
+    {
+      "original": "artifacts/production/fool-frame-kit-v3",
+      "trash_destination": "/Users/hrygo/.Trash/fool-frame-kit-v3"
+    },
+    {
+      "original": "artifacts/production/fool-quality-frame-mid",
+      "trash_destination": "/Users/hrygo/.Trash/fool-quality-frame-mid"
+    },
+    {
+      "original": "artifacts/production/fool-quality-frame-high",
+      "trash_destination": "/Users/hrygo/.Trash/fool-quality-frame-high"
+    },
+    {
+      "original": "artifacts/production/fool-quality-frame-true-god",
+      "trash_destination": "/Users/hrygo/.Trash/fool-quality-frame-true-god"
+    }
+  ],
+  "retained": [
+    {
+      "path": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+      "reason": "五档冻结几何母框的实际输入，当前 active kit 仍消费"
+    },
+    {
+      "path": "production/symbols/fool-frame-kit.json",
+      "reason": "改为 retired-historical，保留结构化审计信息，不再作为 active asset 或 fallback"
+    },
+    {
+      "path": "tools/render/foolkit.swift",
+      "reason": "仅作旧处理链回归与审计，不是新五档交付入口"
+    },
+    {
+      "path": "production/calls",
+      "reason": "保留历史调用记录，避免把历史事实改写成五档结果"
+    }
+  ],
+  "recovery": "从 macOS 用户废纸篓将对应目录移回原路径即可恢复；恢复后仍应保持 retired-historical，不得重新标记 active",
+  "formal_release_approved": false
+}

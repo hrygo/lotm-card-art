@@ -1,0 +1,29 @@
+{
+  "prompt": "Create one independent high-detail material study for the Fool pathway card frame, LOW quality tier. Use the frozen geometry master as the only silhouette and placement authority; preserve the slender U frame, double folded-curtain rails, open illustration window, empty top emblem-safe opening, fixed nameplate and exactly one bottom diamond. Use the approved Fool fusion emblem only for material language, not as a new frame element. Material only: configured silver-white #E8EDF2 matte mist silver, restrained metal edge reflection, existing smoky-violet recesses and a quiet silver-white diamond with a tiny cold glint. Quality comes from matte optical response and material depth, never added parts. Preserve every contour, fold, anchor, opening and nameplate dimension exactly; zero position drift. No text, number, emblem, mask, character, scene, crossbar, socket, halo, crown, wings, pendants, extra gems or extra parts. Keep the openings empty. This is a material study for a deterministic renderer; do not redesign the frame.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+      "sha256": "4eb5e5d4ce6943140e121b55699cfc3911c8e67450dda898ff77265ce3ed39e1",
+      "role": "edit_target"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-9/v001/raw.png",
+      "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9",
+      "role": "style"
+    }
+  ],
+  "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-097406b3-afa0-41e7-8894-d3d07ac04a2f.png",
+  "output": {
+    "path": "artifacts/production/fool-five-tier-material-low-v1/raw.png",
+    "sha256": "8840e479e704fe7986c85e27c6d838afec2f6b32b7518c75e8687d2d83a774b3",
+    "size_px": [1024, 1536]
+  },
+  "observation": "实际观察：双侧帷幕、顶部留空、固定姓名牌与单颗宝石保持；银白哑光和烟紫途径凹槽清晰。生成图带有不属于透明层的展示背景，工程状态为 study-only/needs-background-extraction；不进入正式release。",
+  "visual_status": "pending",
+  "formal_release_approved": false
+}

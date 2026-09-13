@@ -1,0 +1,29 @@
+{
+  "prompt": "Create one independent high-detail material study for the Fool pathway card frame, SAINT quality tier. Use the frozen geometry master as the only silhouette and placement authority; preserve the slender U frame, double folded-curtain rails, open illustration window, empty top emblem-safe opening, fixed nameplate and exactly one bottom diamond. Use the approved Fool fusion emblem only for material language, not as a new frame element. Material only: configured secret blue #4D97D4 as cool crystalline blue reflections in frame texture, existing recesses and the single gemstone; retain smoky-violet recesses only as a deep Fool undertone. Make it more authoritative than MID through clean edge reflections, blue depth in folds, controlled specular highlights and a blue-white cut-facet glint. Quality comes from material purity and optical depth, never added parts. Preserve every contour, fold, anchor, opening and nameplate dimension exactly; zero position drift. No text, number, emblem, mask, character, scene, crossbar, socket, halo, crown, wings, pendants, extra gems or extra parts. Keep the openings empty. This is a material study for a deterministic renderer; do not redesign the frame.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+      "sha256": "4eb5e5d4ce6943140e121b55699cfc3911c8e67450dda898ff77265ce3ed39e1",
+      "role": "edit_target"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-4/v001/raw.png",
+      "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c",
+      "role": "style"
+    }
+  ],
+  "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-85f403b4-1f18-4f38-98d6-0317ba1d218a.png",
+  "output": {
+    "path": "artifacts/production/fool-five-tier-material-saint-v1/raw.png",
+    "sha256": "0cc0eb7d71257b36b580284553e34566faf4afe4a37f9df15992aa2b02133f7a",
+    "size_px": [1024, 1536]
+  },
+  "observation": "实际观察：秘蓝显著进入帷幕与宝石，银白高光和烟紫暗部形成层次；顶部留空、姓名牌和单颗宝石保留，未见额外装饰。生成图带有展示背景，不能直接作为透明层；不进入正式release。",
+  "visual_status": "pending",
+  "formal_release_approved": false
+}

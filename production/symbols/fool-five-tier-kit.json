@@ -55,8 +55,57 @@
     {"digit": 9, "path": "artifacts/production/fool-fusion-9/v001/raw.png", "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"}
   ],
   "material_studies": {
-    "status": "planned",
-    "tiers": ["low", "mid", "saint", "angel", "true-god"]
+    "status": "generated-pending-visual-material-review",
+    "tiers": ["low", "mid", "saint", "angel", "true-god"],
+    "purpose": "Agentic studies inform the deterministic material recipe only; they do not authorize geometry replacement, emblem redesign, or formal release.",
+    "assets": [
+      {
+        "tier": "low",
+        "path": "artifacts/production/fool-five-tier-material-low-v1/raw.png",
+        "sha256": "8840e479e704fe7986c85e27c6d838afec2f6b32b7518c75e8687d2d83a774b3",
+        "call": "production/calls/fool-five-tier-material-low-v1.json",
+        "role": "agentic-material-reference",
+        "presentation_background": "opaque",
+        "visual_status": "pending"
+      },
+      {
+        "tier": "mid",
+        "path": "artifacts/production/fool-five-tier-material-mid-v1/raw.png",
+        "sha256": "a15f06033d808dfd863de58180542bd617126f02f59f1fb5b4605c3bba175982",
+        "call": "production/calls/fool-five-tier-material-mid-v1.json",
+        "role": "agentic-material-reference",
+        "presentation_background": "opaque",
+        "visual_status": "pending"
+      },
+      {
+        "tier": "saint",
+        "path": "artifacts/production/fool-five-tier-material-saint-v1/raw.png",
+        "sha256": "0cc0eb7d71257b36b580284553e34566faf4afe4a37f9df15992aa2b02133f7a",
+        "call": "production/calls/fool-five-tier-material-saint-v1.json",
+        "role": "agentic-material-reference",
+        "presentation_background": "opaque",
+        "visual_status": "pending"
+      },
+      {
+        "tier": "angel",
+        "path": "artifacts/production/fool-five-tier-material-angel-v1/raw.png",
+        "sha256": "e39c71d24043234a85d5ee7a6e4faaa9ae7a5d474626234ce384b6bb785dfa8a",
+        "call": "production/calls/fool-five-tier-material-angel-v1.json",
+        "role": "agentic-material-reference",
+        "presentation_background": "opaque",
+        "visual_status": "pending"
+      },
+      {
+        "tier": "true-god",
+        "path": "artifacts/production/fool-five-tier-material-true-god-v1/raw.png",
+        "sha256": "d01a4ade113515d92d6b676106e3ca6307436980d229afc62a73ff0879b18e64",
+        "call": "production/calls/fool-five-tier-material-true-god-v1.json",
+        "role": "agentic-material-reference",
+        "presentation_background": "opaque",
+        "visual_status": "pending"
+      }
+    ],
+    "engineering_status": "study-only; deterministic renderer remains the sole active pixel production path"
   },
   "legacy_four_tier_status": {
     "active": false,

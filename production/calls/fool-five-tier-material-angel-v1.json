@@ -1,0 +1,29 @@
+{
+  "prompt": "Create one independent high-detail material study for the Fool pathway card frame, ANGEL quality tier. Use the frozen geometry master as the only silhouette and placement authority; preserve the slender U frame, double folded-curtain rails, open illustration window, empty top emblem-safe opening, fixed nameplate and exactly one bottom diamond. Use the approved Fool fusion emblem only for material language, not as a new frame element. Material only: configured archival purple #A66BD6 as deep controlled purple enamel and violet reflections in frame texture, existing recesses and the single gemstone; retain smoky-violet Fool identity as the darker structural undertone. Make it more luxurious than SAINT through layered depth, richer enamel, slow highlights and purple-blue internal refraction in the diamond, while staying sparse. Quality comes from purity, depth and visual gravity, never added parts. Preserve every contour, fold, anchor, opening and nameplate dimension exactly; zero position drift. No text, number, emblem, mask, character, scene, crossbar, socket, halo, crown, wings, pendants, extra gems or extra parts. Keep the openings empty. This is a material study for a deterministic renderer; do not redesign the frame.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+      "sha256": "4eb5e5d4ce6943140e121b55699cfc3911c8e67450dda898ff77265ce3ed39e1",
+      "role": "edit_target"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-2/v001/raw.png",
+      "sha256": "8956791e875e0f7f143ea9461d1935cdd9533136ea980a46f351f97d713f5ae1",
+      "role": "style"
+    }
+  ],
+  "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-81033a3d-3423-4e01-8af6-8a34112a3d96.png",
+  "output": {
+    "path": "artifacts/production/fool-five-tier-material-angel-v1/raw.png",
+    "sha256": "e39c71d24043234a85d5ee7a6e4faaa9ae7a5d474626234ce384b6bb785dfa8a",
+    "size_px": [1024, 1536]
+  },
+  "observation": "实际观察：典藏紫形成深层珐琅和宝石内部折射，银白边缘保持克制；整体仍是同一双帷幕骨架，顶部安全区完整。生成图带有展示背景，不能直接作为透明层；不进入正式release。",
+  "visual_status": "pending",
+  "formal_release_approved": false
+}

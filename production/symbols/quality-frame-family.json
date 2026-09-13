@@ -1,0 +1,109 @@
+{
+  "version": "1.0.0",
+  "active_successor": "production/symbols/fool-five-tier-kit.json",
+  "latest_geometry_policy": "production/symbols/quality-geometry-lock.json",
+  "historical_samples_only": true,
+  "pathway_id": "fool",
+  "direction": "production/symbols/quality-frame-direction.json",
+  "status": "historical-inactive",
+  "entries": [
+    {
+      "tier": "low",
+      "task": "production/symbols/tasks/fool-quality-frame-low.json",
+      "receipt": "artifacts/production/fool-quality-frame-low/v001/receipt.json",
+      "art_review": "pending",
+      "engineering": {
+        "has_real_transparency": true,
+        "status": "transparent-candidate",
+        "pixel_identical_geometry_to_master": true
+      },
+      "notes": "保持母框构件数量与途径语法；尚未做像素级轮廓一致性认证。"
+    },
+    {
+      "tier": "mid",
+      "task": "production/symbols/tasks/fool-quality-frame-mid.json",
+      "receipt": "artifacts/production/fool-quality-frame-mid/v001/receipt.json",
+      "art_review": "pending",
+      "engineering": {
+        "has_real_transparency": false,
+        "status": "needs-background-extraction",
+        "pixel_identical_geometry_to_master": null
+      },
+      "notes": "保持母框构件数量与途径语法；尚未做像素级轮廓一致性认证。"
+    },
+    {
+      "tier": "high",
+      "task": "production/symbols/tasks/fool-quality-frame-high.json",
+      "receipt": "artifacts/production/fool-quality-frame-high/v001/receipt.json",
+      "art_review": "pending",
+      "engineering": {
+        "has_real_transparency": false,
+        "status": "needs-background-extraction",
+        "pixel_identical_geometry_to_master": null
+      },
+      "notes": "姓名牌和底轨略上移；样板排字已调整，不等于几何问题已修复。"
+    },
+    {
+      "tier": "true-god",
+      "task": "production/symbols/tasks/fool-quality-frame-true-god.json",
+      "receipt": "artifacts/production/fool-quality-frame-true-god/v001/receipt.json",
+      "art_review": "pending",
+      "engineering": {
+        "has_real_transparency": false,
+        "status": "needs-background-extraction",
+        "pixel_identical_geometry_to_master": null
+      },
+      "notes": "保持母框构件数量与途径语法；尚未做像素级轮廓一致性认证。"
+    }
+  ],
+  "renders": [
+    {
+      "recipe": "production/symbols/recipes/quality-frames.json",
+      "output": "artifacts/production/quality-frames-v1/frames"
+    },
+    {
+      "recipe": "production/symbols/recipes/quality-emblem-fit.json",
+      "output": "artifacts/production/quality-frames-v1/emblem-fit-r2"
+    }
+  ],
+  "alpha_evidence": "artifacts/production/quality-frames-v1/frames/renderer.json",
+  "mother_clear_area_check": {
+    "threshold_alpha": 0.01,
+    "regions": [
+      {
+        "rect_normalized": [
+          0.22,
+          0.02,
+          0.56,
+          0.25
+        ],
+        "clear_pixels": 209570,
+        "total_pixels": 220032,
+        "clear_fraction": 0.9524523705642816
+      },
+      {
+        "rect_normalized": [
+          0.14,
+          0.3,
+          0.72,
+          0.53
+        ],
+        "clear_pixels": 594488,
+        "total_pixels": 599918,
+        "clear_fraction": 0.9909487629976097
+      },
+      {
+        "rect_normalized": [
+          0.28,
+          0.02,
+          0.44,
+          0.25
+        ],
+        "clear_pixels": 173184,
+        "total_pixels": 173184,
+        "clear_fraction": 1
+      }
+    ]
+  },
+  "formal_release_approved": false
+}

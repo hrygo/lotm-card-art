@@ -1,0 +1,29 @@
+{
+  "prompt": "Create one independent high-detail material study for the Fool pathway card frame, TRUE-GOD quality tier. Use the frozen geometry master as the only silhouette and placement authority; preserve the slender U frame, double folded-curtain rails, open illustration window, empty top emblem-safe opening, fixed nameplate and exactly one bottom diamond. Use the approved Fool fusion emblem only for material language, not as a new frame element. Material only: configured orange-gold #F0B23F as clean sovereign gold reflections in frame texture and existing relief, restrained warm gold in existing recesses, and one luminous amber-orange gemstone with dark tea-gold facets, internal light and local gold-white highlights; retain deep smoky-violet as a quiet Fool undertone. Highest quality comes from purity, layered metal response and gemstone depth, not a larger halo, crown or ornament stack. Preserve every contour, fold, anchor, opening and nameplate dimension exactly; zero position drift. No text, number, emblem, mask, character, scene, crossbar, socket, halo, crown, wings, pendants, extra gems or extra parts. Keep the openings empty. This is a material study for a deterministic renderer; do not redesign the frame.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+      "sha256": "4eb5e5d4ce6943140e121b55699cfc3911c8e67450dda898ff77265ce3ed39e1",
+      "role": "edit_target"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-0/v001/raw.png",
+      "sha256": "9dc7aa0462ee877586e41be6d3f874a5731170e7c3226bfb5794c876cc96ba67",
+      "role": "style"
+    }
+  ],
+  "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-a181b4a2-7e3b-4313-a2aa-ecb3a104713e.png",
+  "output": {
+    "path": "artifacts/production/fool-five-tier-material-true-god-v1/raw.png",
+    "sha256": "d01a4ade113515d92d6b676106e3ca6307436980d229afc62a73ff0879b18e64",
+    "size_px": [1024, 1536]
+  },
+  "observation": "实际观察：橙金进入边框主体与底部宝石，烟紫作为深部对比，材质的权威感来自纯度和光泽而非增加部件；零文字、顶部留空保持。生成图带有展示背景，不能直接作为透明层；不进入正式release。",
+  "visual_status": "pending",
+  "formal_release_approved": false
+}

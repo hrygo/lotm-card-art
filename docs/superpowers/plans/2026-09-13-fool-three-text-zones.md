@@ -30,10 +30,10 @@
 
 ## Task 2: 生成 v2 视觉研究资产
 
-- [ ] 建立 production/calls/fool-three-text-template-v1.json，记录实际模型、时间、参考输入、无文字约束和几何意图；调用 imagegen 生成中央姓名面板与左右局部铭刻带的材质研究图。
-- [ ] 建立 production/calls/fool-diamond-v2.json；以 v1 底部宝石和五档 token 为参考，调用 imagegen 生成更高精度、多切面、可控高光和五档材质变化的研究图。
-- [ ] 将研究结果登记到 artifacts/production/fool-three-text-template-v1/raw.png 与 artifacts/production/fool-diamond-v2/raw.png，记录尺寸、哈希、工具、参考资产和视觉审核状态。
-- [ ] 使用 view_image 检查研究图：确认没有可读文字、没有整体侧面板、没有扩大圣徽、没有改变卡框外轮廓；不通过的研究结果保留为 rejected 记录，不进入正式输出。
+- [x] 建立 production/calls/fool-three-text-template-v1.json，记录实际模型、时间、参考输入、无文字约束和几何意图；调用 imagegen 生成中央姓名面板与左右局部铭刻带的材质研究图。
+- [x] 建立 production/calls/fool-diamond-v2.json；以 v1 底部宝石和五档 token 为参考，调用 imagegen 生成更高精度、多切面、可控高光和五档材质变化的研究图。
+- [x] 将研究结果登记到 artifacts/production/fool-three-text-template-v1/raw.png 与 artifacts/production/fool-diamond-v2/raw.png，记录尺寸、哈希、工具、参考资产和视觉审核状态。
+- [x] 使用 view_image 检查研究图：确认没有可读文字、没有整体侧面板、没有扩大圣徽、没有改变卡框外轮廓；不通过的研究结果保留为 rejected 记录，不进入正式输出。
 
 ## Task 3: 先完成核心渲染器的 TDD 接口
 

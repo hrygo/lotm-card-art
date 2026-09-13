@@ -1,0 +1,29 @@
+{
+  "prompt": "Generate a clean front-facing research board for the bottom quality gemstone of a Chinese occult trading-card frame. Show five independent compact diamond-shaped faceted gemstones with the same restrained silhouette and orthographic angle, as material variants for low, mid, saint, angel, and true-god quality: silver-white, emerald green, secret blue, archival purple, and orange-gold. Use crisp hand-cut facets, dark bases, internal refraction, small near-white facet highlights, and restrained local fire. No labels, letters, numerals, symbols, watermark, card frame, extra ornaments, oversized halo, white clipping, flat luminous blobs, or rainbow noise. Research-only material study.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-five-tier-kit-v1/frame-low.png",
+      "sha256": "2d359cc75f76b01d50fb0ca91de259640265856c818b595407f4a340a6246d1e",
+      "role": "reference_image"
+    },
+    {
+      "path": "artifacts/production/fool-five-tier-kit-v1/structure-4.png",
+      "sha256": "f544ee8671efd772d268f1932ae208611df197fa0d00e4cfd67d35ba653ad374",
+      "role": "reference_mask"
+    }
+  ],
+  "output": {
+    "path": "artifacts/production/fool-diamond-v2/raw.png",
+    "sha256": "28191cb798528689890c4adae0b3998a7501dfe71d62e60b9f51abfd08d3e0b8",
+    "size": [1774, 887],
+    "color_space": "sRGB",
+    "alpha": "opaque-study-background"
+  },
+  "observation": "实际观察：五种材质均呈现清晰切面、暗部和局部高光，颜色可区分且没有文字；研究稿是五 variant 参考板，不直接作为卡面五颗宝石，也不改变单一底部宝石的固定几何。",
+  "visual_status": "pending",
+  "engineering_status": "study-only"
+}

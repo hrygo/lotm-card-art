@@ -1,0 +1,29 @@
+{
+  "prompt": "Generate a front-facing portrait 2:3 research plate for the Fool pathway card frame. Use the existing Fool frame only for silver-gold, smoky-violet material language and use the existing fused emblem only for identity clearance. Show one continuous left column and one continuous right column with a small local engraved ribbon at the lower text area; each ribbon is about 1.15 times the adjacent column width and grows out of the column relief and curtain recess. The center-bottom nameplate is the only broad full-width text panel. Preserve generous empty top-center space. No readable text, letters, numerals, placeholder glyphs, extra gems, full-height side panels, central pedestal, perspective, hand-held card, tabletop, watermark, or outer-silhouette redesign. Research-only material and junction study.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-five-tier-kit-v1/frame-low.png",
+      "sha256": "2d359cc75f76b01d50fb0ca91de259640265856c818b595407f4a340a6246d1e",
+      "role": "reference_image"
+    },
+    {
+      "path": "artifacts/production/fool-five-tier-kit-v1/emblem-9.png",
+      "sha256": "99b231a1fadacf6d9cda6d348f754c54edc4207290638f698fd07ea8fa86288c",
+      "role": "reference_image"
+    }
+  ],
+  "output": {
+    "path": "artifacts/production/fool-three-text-template-v1/raw.png",
+    "sha256": "d706bd02345bd67ebe681355fc92aeda6463338002e0a924ff0a6c37ba937c98",
+    "size": [1024, 1536],
+    "color_space": "sRGB",
+    "alpha": "opaque-study-background"
+  },
+  "observation": "实际观察：保留连续柱状骨架、顶部留空和底部中央宽面板；研究稿在下部展示了与柱体自然相接的局部装饰带，没有可读文字。由于是研究稿且为不透明展示背景，不作为正式像素或几何正本。",
+  "visual_status": "pending",
+  "engineering_status": "study-only"
+}

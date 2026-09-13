@@ -1,0 +1,16 @@
+{
+  "prompt": "Use case: logo-brand. Asset type: independent Chinese name lettering for a collectible occult card. Draw ONLY the exact name “克莱恩·莫雷蒂” in ONE horizontal left-to-right line on a perfectly plain WHITE background. Character order: 克 / 莱 / 恩 / · / 莫 / 雷 / 蒂. No other text. Seven units including the middle dot. Elegant custom Chinese Song-style engraved calligraphic lettering with subtle fine flared serifs, precise complete strokes and very restrained curved terminals echoing the supplied Fool frame. ALL characters clearly separated and immediately readable, equal coherent visual height, central dot at typographic midline. Dark near-black plum ink, clean silhouette suitable for extraction, no shadows, no metallic gradients, no border, no underline, no ornaments between characters, no extra emblem, no English, no numerals. Wide composition roughly 3:1, centered with ample pure-white margins, sophisticated understated literary character rather than generic printed text. Treat the reference solely as a stylistic cue; output only the independent name, not the card.",
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13T11:38:56.000Z",
+  "attempt": 1,
+  "attachments": [
+    {
+      "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
+      "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+      "role": "style"
+    }
+  ],
+  "observation": "已逐字观察：克、莱、恩、·、莫、雷、蒂准确可读，单行深紫字、白底，无额外文案；待程序净底与本体定位。"
+}

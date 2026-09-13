@@ -1,0 +1,32 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/klein-carrier-base.json",
+      "sha256": "7654b9eb933fe8650b7ebcea7a020e1a9fedf780e0639934c083ba7c38c668e1"
+    },
+    {
+      "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
+      "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+      "role": "style"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-foundation/SKILL.md",
+      "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+    }
+  ],
+  "design_fingerprint": null,
+  "task_sha256": "7654b9eb933fe8650b7ebcea7a020e1a9fedf780e0639934c083ba7c38c668e1",
+  "prompt_sha256": "2a5e1ca3bfcc8296432c1a2a57791c8f3b21d8382b73411207ff3c8c2e48819c"
+}

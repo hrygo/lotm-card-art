@@ -1,0 +1,31 @@
+{
+  "task_id": "fool-frame-refinement-v1-nameplate",
+  "kind": "foundation",
+  "mode": "concept",
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "attempt": 1,
+  "created_at": null,
+  "prompt": "Use case: stylized-concept. Refine only the Fool pathway central nameplate material so an exact program-rendered Chinese name can read as a premium engraved identity inscription rather than small flat text. Preserve the existing nameplate outer geometry, fixed center, bottom gemstone, surrounding frame, and proportions. Add a deeper inner field, restrained inset bevel, subtle plum-metal engraving bed, and clear high-contrast letter-relief treatment with generous visual weight. Front-on orthographic, consistent upper-left light. Study only: no readable text, letters, numerals, pseudo-writing, logos, watermark, new gemstones, perspective, crop, rotation, or geometry changes.",
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-five-tier-kit-v4/frame-low.png",
+      "sha256": "a4a092f601c5f773cf79f5c2002fec6fc188046d8d40c2e10e9323aed5e53a29",
+      "role": "locked-frame-reference"
+    },
+    {
+      "path": "artifacts/production/klein-name-art/v002/raw.png",
+      "sha256": "cd1891dd7ff32081d6e00ce11b04f33bb365df6a713213729fe6268a0c67baf8",
+      "role": "lettering-style-reference"
+    }
+  ],
+  "output": {
+    "path": "artifacts/production/fool-frame-refinement-v1/nameplate/raw.png",
+    "sha256": "ec17429cec15ab9a3d1dc859f2c9c0c9235281221844b81d27a35698d83512e8",
+    "visual_status": "pending",
+    "pixel_role": "reference-only"
+  },
+  "observation": "Study suggests a deeper inner lip and textured plum-metal field; semantic name remains program-controlled and exact.",
+  "approval": {"status": "pending", "by": null, "reference": null}
+}

@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "master-name-ink-r2",
+  "profile": "standard",
+  "background": "none",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            241.708984375,
+            1271.26953125,
+            520,
+            120
+          ],
+          "font": "Songti SC",
+          "size": 42,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,348 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "fool-fusion-family",
+  "profile": "standard",
+  "background": "#eee9e2",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "title",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "愚者 · 融合徽章 0—9",
+          "rect": [
+            40,
+            10,
+            920,
+            52
+          ],
+          "font": "Songti SC",
+          "size": 30,
+          "align": "center",
+          "fill": "#332737"
+        }
+      ]
+    },
+    {
+      "id": "subtitle",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "母标识 × 专属数字 · Agentic 一体再创作",
+          "rect": [
+            40,
+            64,
+            920,
+            38
+          ],
+          "font": "Songti SC",
+          "size": 18,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-0",
+      "receipt": "artifacts/production/fool-fusion-0/v001/receipt.json",
+      "rect": [
+        115,
+        110,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-0",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "保留原稿",
+          "rect": [
+            50,
+            341,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-1",
+      "receipt": "artifacts/production/fool-fusion-1/v001/receipt.json",
+      "rect": [
+        615,
+        110,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-1",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            550,
+            341,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-2",
+      "receipt": "artifacts/production/fool-fusion-2/v001/receipt.json",
+      "rect": [
+        115,
+        375,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-2",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            50,
+            606,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-3",
+      "receipt": "artifacts/production/fool-fusion-3/v001/receipt.json",
+      "rect": [
+        615,
+        375,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-3",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            550,
+            606,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-4",
+      "receipt": "artifacts/production/fool-fusion-4/v001/receipt.json",
+      "rect": [
+        115,
+        640,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-4",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "保留原稿",
+          "rect": [
+            50,
+            871,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-5",
+      "receipt": "artifacts/production/fool-fusion-5/v001/receipt.json",
+      "rect": [
+        615,
+        640,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-5",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            550,
+            871,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-6",
+      "receipt": "artifacts/production/fool-fusion-6/v001/receipt.json",
+      "rect": [
+        115,
+        905,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-6",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            50,
+            1136,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-7",
+      "receipt": "artifacts/production/fool-fusion-7/v001/receipt.json",
+      "rect": [
+        615,
+        905,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-7",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "保留原稿",
+          "rect": [
+            550,
+            1136,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-8",
+      "receipt": "artifacts/production/fool-fusion-8/v001/receipt.json",
+      "rect": [
+        115,
+        1170,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-8",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            50,
+            1401,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    },
+    {
+      "id": "fusion-9",
+      "receipt": "artifacts/production/fool-fusion-9/v001/receipt.json",
+      "rect": [
+        615,
+        1170,
+        270,
+        230
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "label-9",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "保留原稿",
+          "rect": [
+            550,
+            1401,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ]
+    }
+  ]
+}

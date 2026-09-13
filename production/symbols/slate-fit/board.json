@@ -1,0 +1,127 @@
+{
+  "width": 2048,
+  "height": 3072,
+  "background": "#13141b",
+  "nodes": [
+    {
+      "id": "low",
+      "path": "artifacts/production/sacred-slate-fit-v1/low/final.png",
+      "rect": [
+        20,
+        45,
+        460,
+        690
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "low-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "低序列 · 9",
+          "rect": [
+            20,
+            8,
+            460,
+            32
+          ],
+          "size": 22,
+          "font": "Songti SC",
+          "fill": "#eee8dc",
+          "align": "center"
+        }
+      ]
+    },
+    {
+      "id": "mid",
+      "path": "artifacts/production/sacred-slate-fit-v1/mid/final.png",
+      "rect": [
+        520,
+        45,
+        460,
+        690
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "mid-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "中序列 · 7",
+          "rect": [
+            520,
+            8,
+            460,
+            32
+          ],
+          "size": 22,
+          "font": "Songti SC",
+          "fill": "#eee8dc",
+          "align": "center"
+        }
+      ]
+    },
+    {
+      "id": "high",
+      "path": "artifacts/production/sacred-slate-fit-v1/high/final.png",
+      "rect": [
+        20,
+        795,
+        460,
+        690
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "high-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "高序列 · 4",
+          "rect": [
+            20,
+            758,
+            460,
+            32
+          ],
+          "size": 22,
+          "font": "Songti SC",
+          "fill": "#eee8dc",
+          "align": "center"
+        }
+      ]
+    },
+    {
+      "id": "true-god",
+      "path": "artifacts/production/sacred-slate-fit-v1/true-god/final.png",
+      "rect": [
+        520,
+        795,
+        460,
+        690
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "true-god-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "真神 · 0",
+          "rect": [
+            520,
+            758,
+            460,
+            32
+          ],
+          "size": 22,
+          "font": "Songti SC",
+          "fill": "#eee8dc",
+          "align": "center"
+        }
+      ]
+    }
+  ]
+}

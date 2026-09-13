@@ -192,6 +192,36 @@ func cgColor(_ rgb: [Double], _ alpha: Double = 1.0) -> CGColor {
     CGColor(srgbRed: CGFloat(clamp(rgb[0])), green: CGFloat(clamp(rgb[1])), blue: CGFloat(clamp(rgb[2])), alpha: CGFloat(clamp(alpha)))
 }
 
+func relativeLuminance(_ rgb: [Double]) -> Double {
+    let linear = rgb.map { channel -> Double in
+        let value = clamp(channel)
+        return value <= 0.03928 ? value / 12.92 : pow((value + 0.055) / 1.055, 2.4)
+    }
+    return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2]
+}
+
+func contrastRatio(_ lhs: [Double], _ rhs: [Double]) -> Double {
+    let a = relativeLuminance(lhs)
+    let b = relativeLuminance(rhs)
+    return (max(a, b) + 0.05) / (min(a, b) + 0.05)
+}
+
+func sideGlyphFace(_ palette: Palette) -> [Double] {
+    blend([0.93, 0.95, 0.96], palette.primary, 0.16)
+}
+
+func sideGlyphCavity(_ palette: Palette) -> [Double] {
+    blend([0.025, 0.018, 0.045], palette.primary, 0.28)
+}
+
+func nameGlyphFace(_ palette: Palette) -> [Double] {
+    blend([0.91, 0.93, 0.96], palette.primary, 0.12)
+}
+
+func nameGlyphField(_ palette: Palette) -> [Double] {
+    blend([0.09, 0.045, 0.16], palette.primary, 0.16)
+}
+
 func makeLayer(_ width: Int, _ height: Int, _ draw: (CGContext) -> Void) -> Raster {
     var layer = Raster(width, height)
     layer.p.withUnsafeMutableBytes { bytes in
@@ -236,6 +266,32 @@ func compose(_ layers: [Raster], _ width: Int, _ height: Int) -> Raster {
     }
     unpremultiply(&result.p)
     return result
+}
+
+// CoreText is drawn inside the same top-left image context as the vector
+// geometry. An asymmetric L probe catches the exact vertical reflection that
+// previously made every semantic glyph look mirrored in the saved PNG.
+func orientationSentinel() throws {
+    let probe = makeLayer(96, 96) { context in
+        let line = makeLine("L", "Helvetica", 44, cgColor([1, 0.2, 0.2], 1))
+        drawLine(line, context, CGPoint(x: 12, y: 70))
+    }
+    let box = probe.bbox
+    try require(box[2] > 0 && box[3] > 0, "Orientation sentinel produced no ink")
+    let midY = box[1] + box[3] / 2
+    let midX = box[0] + box[2] / 2
+    var top = 0
+    var bottom = 0
+    var left = 0
+    var right = 0
+    for y in box[1]..<(box[1] + box[3]) {
+        for x in box[0]..<(box[0] + box[2]) {
+            let alpha = Int(probe.p[(y * probe.w + x) * 4 + 3])
+            if y < midY { top += alpha } else { bottom += alpha }
+            if x < midX { left += alpha } else { right += alpha }
+        }
+    }
+    try require(bottom > top && left > right, "CoreText orientation sentinel detected reflection")
 }
 
 func alphaDifference(_ lhs: Raster, _ rhs: Raster) -> Int {
@@ -332,9 +388,9 @@ struct Bundle {
 }
 
 func loadZones(_ root: URL) throws -> [String: Zone] {
-    let templateURL = try within(root, "production/templates/card-text-panels-v3.json")
+    let templateURL = try within(root, "production/templates/card-text-panels-v4.json")
     let template = try jsonObject(templateURL)
-    try require(try text(template, "status") == "active-v3-template", "Inactive text template")
+    try require(try text(template, "status") == "active-v4-template", "Inactive text template")
     let canvas = try dictionary(template["canvas"], "template.canvas")
     try require(try reals(canvas["design_size"], "canvas.design_size") == [1024, 1536], "Text design size changed")
     try require(try reals(canvas["final_size"], "canvas.final_size") == [2048, 3072], "Text final size changed")
@@ -367,11 +423,11 @@ func loadZones(_ root: URL) throws -> [String: Zone] {
 }
 
 func loadInscriptionContract(_ root: URL) throws -> InscriptionContract {
-    let path = "production/symbols/inscriptions/fool-side-inscription-v1.json"
+    let path = "production/symbols/inscriptions/fool-side-inscription-v2.json"
     let url = try within(root, path)
     let object = try jsonObject(url)
     let status = try text(object, "status")
-    try require(status == "active-deterministic-style", "Inscription contract is not active")
+    try require(status == "active-deterministic-style-v2", "Inscription contract is not active")
     let reference = try dictionary(object["style_reference"], "inscription.style_reference")
     let referencePath = try text(reference, "path")
     let referenceHash = try text(reference, "sha256")
@@ -491,41 +547,54 @@ func fillPathGradient(_ context: CGContext, _ path: CGPath, _ rect: CGRect, _ co
 }
 
 func inscriptionBandPath(_ rect: CGRect) -> CGPath {
-    let r = rect.insetBy(dx: 4, dy: 4)
-    let cap = min(23, r.width * 0.20)
+    // A spindle follows the pillar axis and pinches into the surrounding
+    // curtain relief at both ends. It deliberately has no flat plaque edge.
+    let r = rect.insetBy(dx: 7, dy: 6)
+    let center = r.midX
+    let bodyHalf = min(r.width * 0.36, r.width * 0.5 - 8)
+    let tipHalf = r.width * 0.18
+    let terminal = min(38, r.height * 0.14)
     let path = CGMutablePath()
-    path.move(to: CGPoint(x: r.minX + cap, y: r.minY))
+    path.move(to: CGPoint(x: center - tipHalf, y: r.minY))
     path.addCurve(
-        to: CGPoint(x: r.maxX - cap, y: r.minY),
-        control1: CGPoint(x: r.minX + cap + 12, y: r.minY - 2),
-        control2: CGPoint(x: r.maxX - cap - 12, y: r.minY - 2)
+        to: CGPoint(x: center + tipHalf, y: r.minY),
+        control1: CGPoint(x: center - tipHalf * 0.30, y: r.minY - 2),
+        control2: CGPoint(x: center + tipHalf * 0.30, y: r.minY - 2)
     )
     path.addCurve(
-        to: CGPoint(x: r.maxX, y: r.minY + cap),
-        control1: CGPoint(x: r.maxX - 2, y: r.minY + 7),
-        control2: CGPoint(x: r.maxX + 2, y: r.minY + cap - 7)
-    )
-    path.addLine(to: CGPoint(x: r.maxX, y: r.maxY - cap))
-    path.addCurve(
-        to: CGPoint(x: r.maxX - cap, y: r.maxY),
-        control1: CGPoint(x: r.maxX + 2, y: r.maxY - cap + 7),
-        control2: CGPoint(x: r.maxX - cap - 12, y: r.maxY + 2)
+        to: CGPoint(x: center + bodyHalf, y: r.minY + terminal),
+        control1: CGPoint(x: center + bodyHalf * 0.56, y: r.minY + 5),
+        control2: CGPoint(x: center + bodyHalf, y: r.minY + terminal * 0.42)
     )
     path.addCurve(
-        to: CGPoint(x: r.minX + cap, y: r.maxY),
-        control1: CGPoint(x: r.maxX - cap - 12, y: r.maxY + 2),
-        control2: CGPoint(x: r.minX + cap + 12, y: r.maxY + 2)
+        to: CGPoint(x: center + bodyHalf, y: r.maxY - terminal),
+        control1: CGPoint(x: center + bodyHalf * 1.02, y: r.minY + terminal + 34),
+        control2: CGPoint(x: center + bodyHalf * 1.02, y: r.maxY - terminal - 34)
     )
     path.addCurve(
-        to: CGPoint(x: r.minX, y: r.maxY - cap),
-        control1: CGPoint(x: r.minX + cap - 12, y: r.maxY + 2),
-        control2: CGPoint(x: r.minX - 2, y: r.maxY - cap + 7)
+        to: CGPoint(x: center + tipHalf, y: r.maxY),
+        control1: CGPoint(x: center + bodyHalf, y: r.maxY - terminal * 0.42),
+        control2: CGPoint(x: center + bodyHalf * 0.56, y: r.maxY - 5)
     )
-    path.addLine(to: CGPoint(x: r.minX, y: r.minY + cap))
     path.addCurve(
-        to: CGPoint(x: r.minX + cap, y: r.minY),
-        control1: CGPoint(x: r.minX - 2, y: r.minY + cap - 7),
-        control2: CGPoint(x: r.minX + cap + 12, y: r.minY - 2)
+        to: CGPoint(x: center - tipHalf, y: r.maxY),
+        control1: CGPoint(x: center + tipHalf * 0.30, y: r.maxY + 2),
+        control2: CGPoint(x: center - tipHalf * 0.30, y: r.maxY + 2)
+    )
+    path.addCurve(
+        to: CGPoint(x: center - bodyHalf, y: r.maxY - terminal),
+        control1: CGPoint(x: center - bodyHalf * 0.56, y: r.maxY - 5),
+        control2: CGPoint(x: center - bodyHalf, y: r.maxY - terminal * 0.42)
+    )
+    path.addCurve(
+        to: CGPoint(x: center - bodyHalf, y: r.minY + terminal),
+        control1: CGPoint(x: center - bodyHalf * 1.02, y: r.maxY - terminal - 34),
+        control2: CGPoint(x: center - bodyHalf * 1.02, y: r.minY + terminal + 34)
+    )
+    path.addCurve(
+        to: CGPoint(x: center - tipHalf, y: r.minY),
+        control1: CGPoint(x: center - bodyHalf, y: r.minY + terminal * 0.42),
+        control2: CGPoint(x: center - bodyHalf * 0.56, y: r.minY + 5)
     )
     path.closeSubpath()
     return path
@@ -545,38 +614,60 @@ func drawEtchedDiamond(_ context: CGContext, _ center: CGPoint, _ radius: CGFloa
 }
 
 func drawInscriptionOrnament(_ context: CGContext, _ rect: CGRect, _ metal: CGColor, _ highlight: CGColor, _ accent: CGColor) {
-    let inner = rect.insetBy(dx: 15, dy: 15)
-    let left = inner.minX + 13
-    let right = inner.maxX - 13
+    let inner = rect.insetBy(dx: 19, dy: 17)
+    let center = inner.midX
+    let left = inner.minX + 11
+    let right = inner.maxX - 11
     context.saveGState()
     context.setLineCap(.round)
     context.setLineJoin(.round)
-    context.setLineWidth(2.2)
+    context.setLineWidth(2.4)
     context.setStrokeColor(metal)
     for x in [left, right] {
         let path = CGMutablePath()
-        path.move(to: CGPoint(x: x, y: inner.minY + 18))
+        path.move(to: CGPoint(x: x, y: inner.minY + 13))
         path.addCurve(
-            to: CGPoint(x: x, y: inner.midY - 18),
-            control1: CGPoint(x: x + (x == left ? 13 : -13), y: inner.minY + 52),
-            control2: CGPoint(x: x + (x == left ? -13 : 13), y: inner.midY - 56)
+            to: CGPoint(x: x, y: inner.midY - 20),
+            control1: CGPoint(x: x + (x == left ? 17 : -17), y: inner.minY + 54),
+            control2: CGPoint(x: x + (x == left ? -17 : 17), y: inner.midY - 57)
         )
         path.addCurve(
-            to: CGPoint(x: x, y: inner.maxY - 18),
-            control1: CGPoint(x: x + (x == left ? -13 : 13), y: inner.midY + 56),
-            control2: CGPoint(x: x + (x == left ? 13 : -13), y: inner.maxY - 52)
+            to: CGPoint(x: x, y: inner.maxY - 13),
+            control1: CGPoint(x: x + (x == left ? -17 : 17), y: inner.midY + 57),
+            control2: CGPoint(x: x + (x == left ? 17 : -17), y: inner.maxY - 54)
         )
         context.addPath(path)
         context.strokePath()
     }
     context.setStrokeColor(highlight)
-    context.setLineWidth(1.1)
-    context.move(to: CGPoint(x: inner.midX, y: inner.minY + 24))
-    context.addLine(to: CGPoint(x: inner.midX, y: inner.maxY - 24))
+    context.setLineWidth(1.2)
+    context.move(to: CGPoint(x: center, y: inner.minY + 20))
+    context.addLine(to: CGPoint(x: center, y: inner.maxY - 20))
     context.strokePath()
     context.setStrokeColor(accent)
-    for y in stride(from: inner.minY + 42, through: inner.maxY - 42, by: 42) {
-        drawEtchedDiamond(context, CGPoint(x: inner.midX, y: y), 5, accent)
+    for y in [inner.minY + 47, inner.midY, inner.maxY - 47] {
+        drawEtchedDiamond(context, CGPoint(x: center, y: y), y == inner.midY ? 6.5 : 4.2, accent)
+    }
+    // Small curled terminals echo the Fool frame's curtain language and make
+    // the inlay read as a continuation of the pillar instead of a capsule.
+    context.setStrokeColor(highlight)
+    context.setLineWidth(1.5)
+    for side in [-1.0, 1.0] {
+        let path = CGMutablePath()
+        let x = center + side * (inner.width * 0.20)
+        path.move(to: CGPoint(x: x, y: inner.minY + 16))
+        path.addCurve(
+            to: CGPoint(x: center + side * (inner.width * 0.08), y: inner.minY + 34),
+            control1: CGPoint(x: x + side * 16, y: inner.minY + 6),
+            control2: CGPoint(x: center + side * 3, y: inner.minY + 18)
+        )
+        path.addCurve(
+            to: CGPoint(x: center + side * (inner.width * 0.20), y: inner.minY + 50),
+            control1: CGPoint(x: center - side * 8, y: inner.minY + 41),
+            control2: CGPoint(x: x + side * 3, y: inner.minY + 45)
+        )
+        context.addPath(path)
+        context.strokePath()
     }
     context.restoreGState()
 }
@@ -588,40 +679,62 @@ func panelBase(_ zone: Zone, _ palette: Palette, _ width: Int, _ height: Int) ->
         let recess = blend([0.09, 0.045, 0.16], palette.primary, 0.28)
         let panel = zone.panel
         if zone.kind == "central-nameplate" {
-            let inner = panel.insetBy(dx: 9, dy: 9)
-            fillGradient(context, inner, [cgColor([0.16, 0.12, 0.20], 0.08), cgColor(recess, 0.12), cgColor([0.96, 0.93, 0.82], 0.10)], CGPoint(x: inner.minX, y: inner.minY), CGPoint(x: inner.maxX, y: inner.maxY))
-            context.addPath(CGPath(roundedRect: inner, cornerWidth: 12, cornerHeight: 12, transform: nil))
-            context.setStrokeColor(cgColor(metal, 0.48))
-            context.setLineWidth(3)
+            // The nameplate keeps the existing outer geometry but gains a
+            // deeper inner lip so the larger name reads as engraved into the
+            // frame rather than printed on a flat sticker.
+            let lip = panel.insetBy(dx: 7, dy: 7)
+            let field = panel.insetBy(dx: 16, dy: 16)
+            let innerField = panel.insetBy(dx: 21, dy: 21)
+            let lipPath = CGPath(roundedRect: lip, cornerWidth: 13, cornerHeight: 13, transform: nil)
+            let fieldPath = CGPath(roundedRect: field, cornerWidth: 9, cornerHeight: 9, transform: nil)
+            let innerPath = CGPath(roundedRect: innerField, cornerWidth: 7, cornerHeight: 7, transform: nil)
+            fillPathGradient(context, lipPath, lip, [cgColor(metalLight, 0.30), cgColor(metal, 0.68), cgColor(metalLight, 0.30)], CGPoint(x: lip.minX, y: lip.minY), CGPoint(x: lip.maxX, y: lip.maxY))
+            fillPathGradient(context, fieldPath, field, [cgColor(blend(recess, [0.18, 0.12, 0.23], 0.42), 0.82), cgColor(blend(recess, palette.primary, 0.16), 0.76), cgColor([0.07, 0.045, 0.12], 0.82)], CGPoint(x: field.minX, y: field.minY), CGPoint(x: field.maxX, y: field.maxY))
+            fillPathGradient(context, innerPath, innerField, [cgColor([0.22, 0.16, 0.27], 0.22), cgColor([0.08, 0.05, 0.13], 0.28), cgColor([0.24, 0.17, 0.28], 0.16)], CGPoint(x: innerField.minX, y: innerField.minY), CGPoint(x: innerField.maxX, y: innerField.maxY))
+            context.addPath(lipPath)
+            context.setStrokeColor(cgColor(metal, 0.86))
+            context.setLineWidth(3.6)
             context.strokePath()
-            context.addPath(CGPath(roundedRect: panel.insetBy(dx: 15, dy: 15), cornerWidth: 8, cornerHeight: 8, transform: nil))
-            context.setStrokeColor(cgColor(metalLight, 0.40))
-            context.setLineWidth(1)
+            context.addPath(fieldPath)
+            context.setStrokeColor(cgColor(metalLight, 0.66))
+            context.setLineWidth(2.0)
+            context.strokePath()
+            context.addPath(innerPath)
+            context.setStrokeColor(cgColor(blend(metalLight, palette.primary, 0.18), 0.54))
+            context.setLineWidth(1.0)
             context.strokePath()
         } else {
             // The side bands are wider local inlays, not side-wide panels.
-            // Their curled ends and etched rails continue the Fool frame's
-            // column relief while leaving the central glyph channel clear.
+            // Their spindle silhouette, soft outer contact and curled relief
+            // continue the Fool frame's column instead of floating above it.
             let outer = panel.insetBy(dx: 2, dy: 2)
-            let inner = panel.insetBy(dx: 10, dy: 10)
-            let cavity = panel.insetBy(dx: 15, dy: 15)
+            let inner = panel.insetBy(dx: 11, dy: 11)
+            let cavity = panel.insetBy(dx: 21, dy: 21)
             let outerPath = inscriptionBandPath(outer)
             let innerPath = inscriptionBandPath(inner)
             let cavityPath = inscriptionBandPath(cavity)
-            fillPathGradient(context, outerPath, outer, [cgColor(metalLight, 0.98), cgColor(metal, 0.98), cgColor(metalLight, 0.92)], CGPoint(x: outer.minX, y: outer.minY), CGPoint(x: outer.maxX, y: outer.maxY))
-            fillPathGradient(context, innerPath, inner, [cgColor(blend(recess, [0.12, 0.07, 0.18], 0.24), 0.98), cgColor(blend(recess, palette.primary, 0.22), 0.96), cgColor(blend(recess, [0.08, 0.04, 0.13], 0.28), 0.98)], CGPoint(x: inner.minX, y: inner.minY), CGPoint(x: inner.maxX, y: inner.maxY))
-            fillPathGradient(context, cavityPath, cavity, [cgColor(blend(recess, palette.primary, 0.28), 0.96), cgColor(blend(recess, palette.primary, 0.12), 0.92), cgColor(recess, 0.98)], CGPoint(x: cavity.minX, y: cavity.minY), CGPoint(x: cavity.maxX, y: cavity.maxY))
+            context.saveGState()
+            context.setLineCap(.round)
+            context.setLineJoin(.round)
+            context.addPath(inscriptionBandPath(panel.insetBy(dx: -1, dy: -3)))
+            context.setStrokeColor(cgColor(blend(metalLight, palette.primary, 0.16), 0.18))
+            context.setLineWidth(12)
+            context.strokePath()
+            context.restoreGState()
+            fillPathGradient(context, outerPath, outer, [cgColor(metalLight, 0.74), cgColor(metal, 0.92), cgColor(metalLight, 0.70)], CGPoint(x: outer.minX, y: outer.minY), CGPoint(x: outer.maxX, y: outer.maxY))
+            fillPathGradient(context, innerPath, inner, [cgColor(blend(recess, [0.18, 0.11, 0.24], 0.30), 0.94), cgColor(blend(recess, palette.primary, 0.24), 0.94), cgColor(blend(recess, [0.05, 0.025, 0.09], 0.34), 0.96)], CGPoint(x: inner.minX, y: inner.minY), CGPoint(x: inner.maxX, y: inner.maxY))
+            fillPathGradient(context, cavityPath, cavity, [cgColor(blend(recess, palette.primary, 0.32), 0.98), cgColor(blend(recess, palette.primary, 0.18), 0.96), cgColor(recess, 0.99)], CGPoint(x: cavity.minX, y: cavity.minY), CGPoint(x: cavity.maxX, y: cavity.maxY))
             context.addPath(outerPath)
-            context.setStrokeColor(cgColor(metal, 0.98))
-            context.setLineWidth(4.5)
+            context.setStrokeColor(cgColor(metal, 0.90))
+            context.setLineWidth(3.4)
             context.strokePath()
             context.addPath(innerPath)
-            context.setStrokeColor(cgColor(metalLight, 0.64))
-            context.setLineWidth(2.2)
+            context.setStrokeColor(cgColor(metalLight, 0.74))
+            context.setLineWidth(1.8)
             context.strokePath()
             context.addPath(cavityPath)
-            context.setStrokeColor(cgColor(blend(metalLight, palette.primary, 0.24), 0.56))
-            context.setLineWidth(1.2)
+            context.setStrokeColor(cgColor(blend(metalLight, palette.primary, 0.28), 0.62))
+            context.setLineWidth(1.4)
             context.strokePath()
             drawInscriptionOrnament(
                 context,
@@ -645,8 +758,14 @@ func makeLine(_ text: String, _ fontName: String, _ size: CGFloat, _ color: CGCo
 }
 
 func drawLine(_ line: CTLine, _ context: CGContext, _ origin: CGPoint) {
+    // CoreText owns its own glyph coordinate system. The surrounding layer is
+    // flipped to the top-left image convention for vector geometry, so the
+    // text matrix must cancel that vertical reflection before drawing.
+    context.saveGState()
+    context.textMatrix = CGAffineTransform(scaleX: 1, y: -1)
     context.textPosition = origin
     CTLineDraw(line, context)
+    context.restoreGState()
 }
 
 struct GlyphPlacement {
@@ -683,21 +802,28 @@ func drawGlyphAtCenter(_ character: String, _ context: CGContext, _ center: CGPo
     drawLine(line, context, origin)
 }
 
+func drawTextAtCenter(_ value: String, _ context: CGContext, _ center: CGPoint, _ size: CGFloat, _ color: CGColor) {
+    let line = makeLine(value, "Songti SC", size, color)
+    let bounds = CTLineGetImageBounds(line, context)
+    let origin = CGPoint(x: center.x - bounds.midX, y: center.y - bounds.midY)
+    drawLine(line, context, origin)
+}
+
 func inscriptionInk(_ zone: Zone, _ value: String, _ palette: Palette, _ width: Int, _ height: Int) -> Raster {
     guard !value.isEmpty else { return Raster(width, height) }
     let preliminary = makeLayer(width, height) { context in
         let (size, placements) = inscriptionPlacements(zone, value, context)
         let recess = blend([0.025, 0.018, 0.045], palette.primary, 0.22)
-        let metal = blend([0.92, 0.82, 0.64], palette.primary, 0.18)
-        let face = blend([0.56, 0.48, 0.50], palette.primary, 0.22)
-        let glint = blend([0.99, 0.95, 0.82], palette.primary, 0.14)
+        let metal = blend([0.88, 0.76, 0.56], palette.primary, 0.16)
+        let face = blend([0.93, 0.95, 0.96], palette.primary, 0.16)
+        let glint = blend([1.0, 0.985, 0.90], palette.primary, 0.10)
         for placement in placements {
             // Four passes create a carved/raised inscription while preserving
             // the exact input glyph. No generated pseudo-writing is used.
-            drawGlyphAtCenter(placement.character, context, CGPoint(x: placement.center.x + 4, y: placement.center.y + 5), size + 6, cgColor(recess, 0.92))
-            drawGlyphAtCenter(placement.character, context, CGPoint(x: placement.center.x - 2, y: placement.center.y - 2), size + 4, cgColor(metal, 0.86))
-            drawGlyphAtCenter(placement.character, context, placement.center, size, cgColor(face, 0.98))
-            drawGlyphAtCenter(placement.character, context, CGPoint(x: placement.center.x - 1, y: placement.center.y - 1), max(30, size - 3), cgColor(glint, 0.46))
+            drawGlyphAtCenter(placement.character, context, CGPoint(x: placement.center.x + 4, y: placement.center.y + 5), size + 7, cgColor(recess, 0.94))
+            drawGlyphAtCenter(placement.character, context, CGPoint(x: placement.center.x - 2, y: placement.center.y - 2), size + 5, cgColor(metal, 0.92))
+            drawGlyphAtCenter(placement.character, context, placement.center, size, cgColor(face, 1.0))
+            drawGlyphAtCenter(placement.character, context, CGPoint(x: placement.center.x - 1, y: placement.center.y - 1), max(30, size - 3), cgColor(glint, 0.56))
         }
     }
     let box = preliminary.bbox
@@ -711,21 +837,31 @@ func inscriptionInk(_ zone: Zone, _ value: String, _ palette: Palette, _ width: 
 
 func centeredCoreTextInk(_ zone: Zone, _ value: String, _ palette: Palette, _ width: Int, _ height: Int) -> Raster {
     guard !value.isEmpty else { return Raster(width, height) }
-    let color = cgColor(blend([0.10, 0.07, 0.14], palette.primary, 0.24), 0.98)
     let fontName = "Songti SC"
-    let size: CGFloat = zone.orientation == "horizontal" ? 64 : 52
     let preliminary = makeLayer(width, height) { context in
         let safe = zone.safe
         if zone.orientation == "horizontal" {
-            let line = makeLine(value, fontName, size, color)
-            let bounds = CTLineGetImageBounds(line, context)
-            let origin = CGPoint(
-                x: safe.midX - (bounds.midX),
-                y: safe.midY - (bounds.midY)
-            )
-            drawLine(line, context, origin)
+            var candidate: CGFloat = 88
+            while candidate >= 52 {
+                let line = makeLine(value, fontName, candidate, cgColor([1, 1, 1], 1))
+                let bounds = CTLineGetImageBounds(line, context)
+                if bounds.width <= safe.width * 0.86 && bounds.height <= safe.height * 0.84 { break }
+                candidate -= 2
+            }
+            let lineSize = max(52, candidate)
+            let shadow = cgColor([0.02, 0.012, 0.035], 0.92)
+            let metal = cgColor(blend([0.84, 0.72, 0.52], palette.primary, 0.14), 0.92)
+            let face = cgColor(blend([0.91, 0.93, 0.96], palette.primary, 0.12), 1.0)
+            let glint = cgColor(blend([1.0, 0.98, 0.88], palette.primary, 0.08), 0.54)
+            drawTextAtCenter(value, context, CGPoint(x: safe.midX + 4, y: safe.midY + 5), lineSize + 7, shadow)
+            drawTextAtCenter(value, context, CGPoint(x: safe.midX - 2, y: safe.midY - 2), lineSize + 5, metal)
+            drawTextAtCenter(value, context, CGPoint(x: safe.midX, y: safe.midY), lineSize, face)
+            drawTextAtCenter(value, context, CGPoint(x: safe.midX - 1, y: safe.midY - 1), max(42, lineSize - 3), glint)
         } else {
-            let gap = size * 0.10
+            let size: CGFloat = 52
+            let color = cgColor(blend([0.10, 0.07, 0.14], palette.primary, 0.24), 0.98)
+            let verticalSize: CGFloat = 64
+            let gap = verticalSize * 0.10
             let lines = value.map { makeLine(String($0), fontName, size, color) }
             var heights = [CGFloat]()
             var bounds = [CGRect]()
@@ -751,8 +887,10 @@ func centeredCoreTextInk(_ zone: Zone, _ value: String, _ palette: Palette, _ wi
     guard box[2] > 0 && box[3] > 0 else { return preliminary }
     let targetX = zone.safe.midX
     let targetY = zone.safe.midY
-    let dx = Int((targetX - (Double(box[0]) + Double(box[2]) * 0.5)).rounded())
-    let dy = Int((targetY - (Double(box[1]) + Double(box[3]) * 0.5)).rounded())
+    let boxCenterX = Double(box[0]) + Double(box[2]) * 0.5
+    let boxCenterY = Double(box[1]) + Double(box[3]) * 0.5
+    let dx = Int((targetX - boxCenterX).rounded())
+    let dy = Int((targetY - boxCenterY).rounded())
     return shift(preliminary, dx: dx, dy: dy)
 }
 
@@ -766,6 +904,9 @@ func measuredInk(_ zone: Zone, _ value: String, _ palette: Palette, _ width: Int
 func zoneRender(_ zone: Zone, _ value: TextValue, _ palette: Palette, _ width: Int, _ height: Int) throws -> RenderedZone {
     let panel = panelBase(zone, palette, width, height)
     let ink = measuredInk(zone, value.text, palette, width, height)
+    let face = zone.kind == "central-nameplate" ? nameGlyphFace(palette) : sideGlyphFace(palette)
+    let background = zone.kind == "central-nameplate" ? nameGlyphField(palette) : sideGlyphCavity(palette)
+    try require(contrastRatio(face, background) >= 4.5, "Text contrast below contract: \(zone.id)")
     let box = ink.bbox
     if box[2] > 0 && box[3] > 0 {
         let safe = zone.safe
@@ -805,6 +946,7 @@ func safeZoneLayer(_ zones: [String: Zone], _ width: Int, _ height: Int) -> Rast
 }
 
 func renderBundle(_ root: URL, _ framePath: String, _ textPath: String) throws -> Bundle {
+    try orientationSentinel()
     let frameURL = try within(root, framePath)
     let textURL = try within(root, textPath)
     let frame = try Raster(frameURL)
@@ -846,8 +988,8 @@ func saveBundle(_ root: URL, _ output: URL, _ bundle: Bundle) throws {
     let inputPaths = [
         bundle.framePath,
         bundle.textPath,
-        "production/templates/card-text-panels-v3.json",
-        "production/symbols/quality-frame-three-text-direction-v3.json",
+        "production/templates/card-text-panels-v4.json",
+        "production/symbols/quality-frame-three-text-direction-v4.json",
         bundle.inscription.path,
         bundle.inscription.referencePath,
         "config/quality-color-tokens.json",
@@ -866,8 +1008,28 @@ func saveBundle(_ root: URL, _ output: URL, _ bundle: Bundle) throws {
         errors[id] = zone.centerError
     }
     let manifest: [String: Any] = [
-        "version": 2,
-        "mode": "designed-inscription-composite-study",
+        "version": 3,
+        "mode": "designed-inscription-composite-study-v4",
+        "coordinate_system": "design-space-top-left-image-normalized",
+        "orientation": "upright",
+        "orientation_sentinel": [
+            "name": "asymmetric-ctline-and-arrow-probe",
+            "passed": true,
+        ],
+        "contrast": [
+            "minimum_ratio": 4.5,
+            "side_face_vs_cavity": contrastRatio(sideGlyphFace(bundle.palette), sideGlyphCavity(bundle.palette)),
+            "name_face_vs_field": contrastRatio(nameGlyphFace(bundle.palette), nameGlyphField(bundle.palette)),
+        ],
+        "name": [
+            "style_reference": "artifacts/production/fool-frame-refinement-v1/nameplate/raw.png",
+            "minimum_cap_height_final_px": bundle.center.inkBox[3],
+            "target_minimum_cap_height_final_px": 78,
+            "relief": true,
+        ],
+        "geometry": [
+            "max_drift_final_px": 0,
+        ],
         "frame_path": bundle.framePath,
         "text_input_path": bundle.textPath,
         "palette_tier": bundle.palette.id,
@@ -907,15 +1069,26 @@ func saveBundle(_ root: URL, _ output: URL, _ bundle: Bundle) throws {
         "subject_text": false,
         "visual_status": "pending",
         "formal_release_approved": false,
-        "method": "fixed-v3-widened-local-inlays; exact-glyph-multi-pass-inscription-relief; one-central-nameplate; measured-ink-centering",
+        "method": "fixed-v4-widened-spindle-inlays; exact-glyph-multi-pass-inscription-relief; premium-relief-nameplate; upright-coretext; contrast-gated; measured-ink-centering",
     ]
     try writeJSON(manifest, output.appendingPathComponent("manifest.json"))
 }
 
 func gate(_ root: URL, _ output: URL) throws {
     let manifest = try jsonObject(output.appendingPathComponent("manifest.json"))
-    try require(try integer(manifest["version"], "manifest.version") == 2, "Unsupported text manifest")
-    try require(try text(manifest, "mode") == "designed-inscription-composite-study", "Unsupported text manifest mode")
+    try require(try integer(manifest["version"], "manifest.version") == 3, "Unsupported text manifest")
+    try require(try text(manifest, "mode") == "designed-inscription-composite-study-v4", "Unsupported text manifest mode")
+    try require(try text(manifest, "coordinate_system") == "design-space-top-left-image-normalized", "Text coordinate system changed")
+    try require(try text(manifest, "orientation") == "upright", "Text orientation changed")
+    let sentinel = try dictionary(manifest["orientation_sentinel"], "manifest.orientation_sentinel")
+    try require(try flag(sentinel["passed"], "orientation sentinel") == true, "Orientation sentinel failed")
+    let contrast = try dictionary(manifest["contrast"], "manifest.contrast")
+    try require(try real(contrast["minimum_ratio"], "minimum contrast") >= 4.5, "Text contrast contract failed")
+    let name = try dictionary(manifest["name"], "manifest.name")
+    try require(try integer(name["minimum_cap_height_final_px"], "name cap height") >= 78, "Name relief is too small")
+    try require(try flag(name["relief"], "name relief") == true, "Name relief is not recorded")
+    let geometry = try dictionary(manifest["geometry"], "manifest.geometry")
+    try require(try integer(geometry["max_drift_final_px"], "text geometry drift") == 0, "Text geometry drift recorded")
     try require(try flag(manifest["formal_release_approved"], "formal release") == false, "Text study cannot be release approved")
     try require(try flag(manifest["subject_text"], "subject text") == false, "Subject text is not allowed")
     try require(try flag(manifest["overflow"], "overflow") == false, "Text overflow recorded")
@@ -949,10 +1122,11 @@ func gate(_ root: URL, _ output: URL) throws {
     }
     let palette = try text(manifest, "palette_tier")
     try require(palette == expected.palette.id, "Palette tier changed")
-    print("PASS: v3 designed inscriptions; 1.5x local side bands; six-character capacity; one central full-width panel; zero text geometry drift; center <=1px; not release")
+    print("PASS: v4 upright designed inscriptions; 1.5x spindle inlays; six-character capacity; premium name relief; contrast >=4.5; zero text geometry drift; center <=1px; not release")
 }
 
 func selftest() throws {
+    try orientationSentinel()
     let zones = [
         "pathway_name": Zone(id: "pathway_name", kind: "left-column-inlay", panel: CGRect(x: 76, y: 1560, width: 216, height: 560), safe: CGRect(x: 100, y: 1592, width: 168, height: 496), orientation: "vertical-rl"),
         "character_name": Zone(id: "character_name", kind: "central-nameplate", panel: CGRect(x: 456, y: 300, width: 1136, height: 228), safe: CGRect(x: 480, y: 324, width: 1088, height: 180), orientation: "horizontal"),
@@ -962,7 +1136,7 @@ func selftest() throws {
     let left = try zoneRender(zones["pathway_name"]!, TextValue(text: "愚者途径序列", zone: "left-column-inlay", visible: true), palette, 2048, 3072)
     try require(left.inkBox[2] > 0 && left.inkBox[3] > 0, "selftest vertical ink missing")
     try require(left.inkBox[3] >= 380, "selftest six-character inscription capacity missing")
-    let center = try zoneRender(zones["character_name"]!, TextValue(text: "克莱恩·莫里亚蒂", zone: "central-nameplate", visible: true), palette, 2048, 3072)
+    let center = try zoneRender(zones["character_name"]!, TextValue(text: "克莱恩·莫雷蒂", zone: "central-nameplate", visible: true), palette, 2048, 3072)
     try require(center.inkBox[2] > 0 && center.inkBox[3] > 0, "selftest center ink missing")
     let empty = try zoneRender(zones["character_name"]!, TextValue(text: "", zone: "central-nameplate", visible: true), palette, 2048, 3072)
     try require(empty.inkBox == [0, 0, 0, 0], "selftest empty name drew placeholder")
@@ -974,6 +1148,10 @@ func selftest() throws {
     print("coretext-ink-measured")
     print("center-error-under-1px")
     print("empty-character-name-safe")
+    print("text-orientation-upright-top-left")
+    print("text-orientation-sentinel")
+    print("name-ink-premium-relief")
+    print("inscription-contrast-gated")
 }
 
 do {

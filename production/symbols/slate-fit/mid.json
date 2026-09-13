@@ -1,0 +1,45 @@
+{
+  "width": 2048,
+  "height": 3072,
+  "background": "none",
+  "nodes": [
+    {
+      "id": "slate",
+      "path": "artifacts/production/material-sacred-slate/v001/raw.png",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "feather": 0
+    },
+    {
+      "id": "locked-frame-and-emblem",
+      "path": "artifacts/production/fool-frame-kit-v3/fool-7-frame.png",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "feather": 0,
+      "shadow": {
+        "x": 1,
+        "y": 2,
+        "blur": 3,
+        "opacity": 0.28
+      }
+    }
+  ]
+}

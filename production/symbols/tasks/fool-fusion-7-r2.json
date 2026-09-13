@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-fusion-7",
+  "revision": 2,
+  "kind": "foundation",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      1,
+      1
+    ],
+    "background": "transparent"
+  },
+  "prompt": "Edit the attached artwork: perform a precise background removal only. Preserve the entire ornate Fool numeral 7 sculpture exactly: mask, purple drapery, gold, white enamel, all edges and gemstones. REMOVE EVERY white or gray checkerboard background pixel outside the object AND inside holes including eye openings. The result must be a true transparent RGBA PNG with alpha=0 in the background, not a picture of transparency. Do not draw a new checkerboard, white backdrop, shadow backdrop, or scene. No stylistic change, no added ornament, no cropped tips. This is an isolated reusable cutout asset.",
+  "references": [
+    {
+      "path": "artifacts/production/fool-fusion-7/v001/raw.png",
+      "sha256": "66a1c337ea7464a606951d3e79b449d8d011671e5dbe2a76ee4aaf86fafc2468",
+      "role": "edit_target"
+    }
+  ],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "material": "愚者面具帷幕与数字7共用笔画的金银珐琅精雕",
+    "lighting": "左上柔光",
+    "tiling": false,
+    "use_scope": [
+      "fusion:fool",
+      "digit:7"
+    ]
+  }
+}

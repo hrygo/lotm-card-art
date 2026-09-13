@@ -38,14 +38,14 @@ enum VoiceAvailability: Equatable, Sendable {
         }
     }
 
-    var prompt: String {
+    var captionPrompt: String {
         switch self {
         case .pending:
-            return "台词确认后可以唤醒"
+            return "台词确认后，声音和字幕会显示在这里。"
         case .localAudio:
-            return "点击唤醒，播放已准备好的声音；字幕会在这里出现"
+            return "点击“播放声音”，当前台词会显示在这里。"
         case .speechRail:
-            return "点击唤醒，准备声音；字幕会在这里出现"
+            return "点击“播放声音”，会先准备声音，再显示台词。"
         }
     }
 }

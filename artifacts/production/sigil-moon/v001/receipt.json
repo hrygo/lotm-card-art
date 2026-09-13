@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "foundation",
+  "mode": "concept",
+  "task_id": "sigil-moon",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "task_id": "sigil-moon",
+    "revision": 1,
+    "kind": "foundation",
+    "mode": "concept",
+    "output": {
+      "aspect": [
+        1,
+        1
+      ],
+      "background": "transparent"
+    },
+    "prompt": "Use case: stylized-concept. Asset type: ONE standalone collectible occult pathway emblem, precision jewelry-grade relief artwork for a card asset library. Original artistic interpretation for the 月亮 / moon pathway, NOT a copied official religious emblem. Primary design: A fluid silver crescent cradling a single deep crimson translucent droplet, mirrored by a thinner opposing lunar arc and fine glasslike ripples. Silver-white and blood-red garnet, restrained polished highlights. Distinct double-crescent silhouette; no stars or night feathers, no vampire face. Craftsmanship: museum-quality micro-chased metal, layered pierced openwork, satin recesses contrasting polished bevels, restrained precious inlays; rich sculptural depth and genuinely exquisite detail, NOT a flat vector outline or generic app icon. One coherent primary symbol with a bold readable silhouette, not a pile of objects. Straight-on orthographic view, whole emblem centered occupying about 78% of a SQUARE canvas, generous clean margin. Soft upper-left studio illumination; no ground plane or cast shadow outside the object. GENUINELY TRANSPARENT background, including all internal openwork holes; no black rectangle, no white rectangle, no checkerboard pixels. No text, letters, digits, watermark, card border, human portrait or surrounding scene.",
+    "references": [],
+    "limits": {
+      "max_attempts": 2
+    },
+    "spec": {
+      "material": "A fluid silver crescent cradling a single deep crimson translucent droplet, mirrored by a thinner opposing lunar arc and fine glasslike ripples. Silver-white and blood-red garnet, restrained polished highlights. Distinct double-crescent silhouette; no stars or night feathers, no vampire face.",
+      "lighting": "柔和左上光，精雕浮雕自阴影，无背景投影",
+      "tiling": false,
+      "use_scope": [
+        "emblem:moon",
+        "reusable-pathway-identity"
+      ]
+    }
+  },
+  "compiled": "artifacts/production/sigil-moon/v001",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/symbols/tasks/sigil-moon.json",
+        "sha256": "c60ad23d465577707602e67e6cddd4d008ebfe66c823eb785b01cdfda621d427"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-foundation/SKILL.md",
+        "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+      }
+    ],
+    "design_fingerprint": null,
+    "task_sha256": "c60ad23d465577707602e67e6cddd4d008ebfe66c823eb785b01cdfda621d427",
+    "prompt_sha256": "e15a1e80faf574e2c93ef7591e8af3dfcdf8894765134cf3bd242bdd929b65d6"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/sigil-moon/v001/raw.png",
+    "sha256": "0fb7bd12d95e429474f46d72d16dc90bd3f0a4a7cdadd261e5da34bd85207202"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      1,
+      1
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: stylized-concept. Asset type: ONE standalone collectible occult pathway emblem, precision jewelry-grade relief artwork for a card asset library. Original artistic interpretation for the 月亮 / moon pathway, NOT a copied official religious emblem. Primary design: A fluid silver crescent cradling a single deep crimson translucent droplet, mirrored by a thinner opposing lunar arc and fine glasslike ripples. Silver-white and blood-red garnet, restrained polished highlights. Distinct double-crescent silhouette; no stars or night feathers, no vampire face. Craftsmanship: museum-quality micro-chased metal, layered pierced openwork, satin recesses contrasting polished bevels, restrained precious inlays; rich sculptural depth and genuinely exquisite detail, NOT a flat vector outline or generic app icon. One coherent primary symbol with a bold readable silhouette, not a pile of objects. Straight-on orthographic view, whole emblem centered occupying about 78% of a SQUARE canvas, generous clean margin. Soft upper-left studio illumination; no ground plane or cast shadow outside the object. GENUINELY TRANSPARENT background, including all internal openwork holes; no black rectangle, no white rectangle, no checkerboard pixels. No text, letters, digits, watermark, card border, human portrait or surrounding scene.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13",
+    "attempt": 1,
+    "attachments": [],
+    "observation": "已实际观察：双月弧环抱红色液滴，银红配色和新月轮廓清楚。 原图占幅偏满，透明边缘需合成检验；当前为原创美术候选，非官方圣徽。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T08:58:50.837988+00:00"
+}

@@ -1,0 +1,474 @@
+{
+  "width": 2048,
+  "height": 3072,
+  "background": "#eee9e2",
+  "nodes": [
+    {
+      "id": "title",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "愚者 · 融合徽章 0—9",
+          "rect": [
+            40,
+            10,
+            920,
+            52
+          ],
+          "font": "Songti SC",
+          "size": 30,
+          "align": "center",
+          "fill": "#332737"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "subtitle",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "母标识 × 专属数字 · Agentic 一体再创作",
+          "rect": [
+            40,
+            64,
+            920,
+            38
+          ],
+          "font": "Songti SC",
+          "size": 18,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-0",
+      "rect": [
+        115,
+        110,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-0/v001/raw.png"
+    },
+    {
+      "id": "label-0",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "保留原稿",
+          "rect": [
+            50,
+            341,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-1",
+      "rect": [
+        615,
+        110,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-1/v001/raw.png"
+    },
+    {
+      "id": "label-1",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            550,
+            341,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-2",
+      "rect": [
+        115,
+        375,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-2/v001/raw.png"
+    },
+    {
+      "id": "label-2",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            50,
+            606,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-3",
+      "rect": [
+        615,
+        375,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-3/v001/raw.png"
+    },
+    {
+      "id": "label-3",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            550,
+            606,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-4",
+      "rect": [
+        115,
+        640,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-4/v001/raw.png"
+    },
+    {
+      "id": "label-4",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "保留原稿",
+          "rect": [
+            50,
+            871,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-5",
+      "rect": [
+        615,
+        640,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-5/v001/raw.png"
+    },
+    {
+      "id": "label-5",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            550,
+            871,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-6",
+      "rect": [
+        115,
+        905,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-6/v001/raw.png"
+    },
+    {
+      "id": "label-6",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            50,
+            1136,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-7",
+      "rect": [
+        615,
+        905,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-7/v001/raw.png"
+    },
+    {
+      "id": "label-7",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "保留原稿",
+          "rect": [
+            550,
+            1136,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-8",
+      "rect": [
+        115,
+        1170,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-8/v001/raw.png"
+    },
+    {
+      "id": "label-8",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "新增造型",
+          "rect": [
+            50,
+            1401,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "fusion-9",
+      "rect": [
+        615,
+        1170,
+        270,
+        230
+      ],
+      "fit": "contain",
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal",
+      "path": "artifacts/production/fool-fusion-9/v001/raw.png"
+    },
+    {
+      "id": "label-9",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "保留原稿",
+          "rect": [
+            550,
+            1401,
+            400,
+            32
+          ],
+          "font": "Songti SC",
+          "size": 16,
+          "align": "center",
+          "fill": "#6b596b"
+        }
+      ],
+      "opacity": 1,
+      "feather": 0,
+      "brightness": 0,
+      "saturation": 1,
+      "blend": "normal"
+    },
+    {
+      "id": "__study",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            100,
+            1460,
+            800,
+            28
+          ],
+          "text": "物料试装 · 非正式卡牌",
+          "font": "Songti SC",
+          "size": 16,
+          "fill": "#909ba8",
+          "align": "center"
+        }
+      ]
+    }
+  ]
+}

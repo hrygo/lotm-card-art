@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-crest-bridge-study",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      3,
+      1
+    ],
+    "background": "transparent"
+  },
+  "prompt": "Use case: stylized-concept. Create ONLY an isolated slender upper-frame CONNECTOR component for the existing card frame in reference image. Reference is material/style, DO NOT reproduce the whole frame. One horizontal, gently arched, bilateral symmetric low-profile jewelry bridge, width roughly five times its structural height, isolated centered with generous transparent margin in a 3:1 canvas. This bridge connects the inward tips of two existing frame shoulders and supports a separately overlaid small central sacred emblem. Shape: two elegant sweeping thin wings merge seamlessly into a small central smooth dark-plum oval saddle; central saddle is barely larger than the wing thickness, no circular hole, no gem. Ends taper down and outward in a subtle fold, attaching to frame shoulders. The crest of the upper arch is at center; ends are gently lower, a broad shallow inverted-U arch. Three broad softly folded smoky-violet enamel ribbons bounded by hairline antique gold bevels and slim matte mist-silver faces, EXACT material family and understated craftsmanship of reference. Restrained low-tier collector quality, NO extra ornament complexity, NO filigree scrolls, no jewels, no pendant, no crown spikes, no mask, no digit, no text, no scene, no border elsewhere. This is NOT an entire top header panel: predominantly negative space above/below the very thin arch. Front orthographic flat view, upper-left soft illumination, no perspective, no external shadow or aura. True transparent PNG including outside contours; no white/black field and no checkerboard pixels.",
+  "references": [
+    {
+      "path": "artifacts/production/fool-frame-kit-v3/frame-low.png",
+      "sha256": "b029e388e28d55f2ed1fd55e6ed4b953f0921b21dcf4a1e616a131cdce293e3f",
+      "role": "style"
+    }
+  ],
+  "limits": {
+    "max_attempts": 1
+  },
+  "spec": {
+    "tier": "low",
+    "geometry": "独立顶部浅拱承托件；原框肩、侧轨、姓名牌不移动；试装新结构不覆盖基线。",
+    "clear_regions": [
+      [
+        0,
+        400,
+        1000,
+        1100
+      ]
+    ]
+  }
+}

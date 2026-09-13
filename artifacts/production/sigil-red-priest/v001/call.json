@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: ONE standalone collectible occult pathway emblem, precision jewelry-grade relief artwork for a card asset library. Original artistic interpretation for the 红祭司 / red-priest pathway, NOT a copied official religious emblem. Primary design: A martial crest of three converging spear standards and a single angular burning banner, their shafts arranging like a strategic formation. Rust-red enamel, blackened iron, dull ember-gold chased detail. Aggressive upward triangular silhouette; organized conflict not a lone flaming warrior. Craftsmanship: museum-quality micro-chased metal, layered pierced openwork, satin recesses contrasting polished bevels, restrained precious inlays; rich sculptural depth and genuinely exquisite detail, NOT a flat vector outline or generic app icon. One coherent primary symbol with a bold readable silhouette, not a pile of objects. Straight-on orthographic view, whole emblem centered occupying about 78% of a SQUARE canvas, generous clean margin. Soft upper-left studio illumination; no ground plane or cast shadow outside the object. GENUINELY TRANSPARENT background, including all internal openwork holes; no black rectangle, no white rectangle, no checkerboard pixels. No text, letters, digits, watermark, card border, human portrait or surrounding scene.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [],
+  "observation": "已实际观察：三矛阵列与红色战旗，向上三角轮廓清楚；旗面出现小日纹，美术装饰不作原著断言。 原图占幅偏满，透明边缘需合成检验；当前为原创美术候选，非官方圣徽。"
+}

@@ -685,6 +685,162 @@
       },
       "notes": "知识缺口只限制当前检索范围；verified表示检索范围与排除误读已复核，不把缺口升级成“没有限制”的正典结论。卡面继续使用边界候选作为视觉占位。",
       "assertion_kind": "knowledge_gap"
+    },
+    {
+      "id": "fool.s09.klein_identity",
+      "predicate": "character_identity",
+      "value": "克莱恩·莫雷蒂黑发褐瞳，具有书卷气质；本卡采用其廷根序列9时期身份。",
+      "dimensions": [
+        "identity"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "xxsy.lotm.zh.c100",
+          "locator": "第一百章 解读象征，2026-09-13搜索返回的对应可见段落",
+          "support_note": "仅核对当前拟表达的摘要；具体场景布置属于原创美术。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped research (not user approval)",
+        "reviewed_at": "2026-09-13T11:32:44.000Z"
+      },
+      "notes": "部分章节依据，不等于全章核验。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.s09.acting_practice",
+      "predicate": "acting_principle",
+      "value": "本卡采用克莱恩主动投入占卜家身份、实际进行占卜的行为表达，不把服饰当作扮演原则或冒称完整守则。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "xxsy.lotm.zh.c54",
+          "locator": "第五十四章 第一位求卜者，2026-09-13搜索返回的对应可见段落",
+          "support_note": "仅核对当前拟表达的摘要；具体场景布置属于原创美术。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped research (not user approval)",
+        "reviewed_at": "2026-09-13T11:32:44.000Z"
+      },
+      "notes": "编辑行为转译，不冒称原著完整守则。",
+      "assertion_kind": "interpretation"
+    },
+    {
+      "id": "fool.s09.pendulum",
+      "predicate": "ability",
+      "value": "克莱恩左手持银链黄水晶，在茶杯上方使用灵摆占卜。",
+      "dimensions": [
+        "abilities"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "xxsy.lotm.zh.c54",
+          "locator": "第五十四章 第一位求卜者，2026-09-13搜索返回的对应可见段落",
+          "support_note": "仅核对当前拟表达的摘要；具体场景布置属于原创美术。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped research (not user approval)",
+        "reviewed_at": "2026-09-13T11:32:44.000Z"
+      },
+      "notes": "部分章节依据，不等于全章核验。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.s09.potion_main",
+      "predicate": "potion_ingredient",
+      "value": "占卜家魔药两项主材料为拉瓦章鱼血液10毫升、星水晶50克；这是主材摘要，不是完整配方。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "xxsy.lotm.zh.c31",
+          "locator": "第三十一章 魔药，2026-09-13搜索返回的对应可见段落",
+          "support_note": "仅核对当前拟表达的摘要；具体场景布置属于原创美术。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped research (not user approval)",
+        "reviewed_at": "2026-09-13T11:32:44.000Z"
+      },
+      "notes": "部分章节依据，不等于全章核验。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.s09.entry_drink",
+      "predicate": "ascension_condition",
+      "value": "克莱恩在老尼尔指导下服下占卜家魔药进入非凡；本卡只表达服药这一已见步骤，不给出原创仪式或完整入序教程。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "xxsy.lotm.zh.c32",
+          "locator": "第三十二章 灵视，2026-09-13搜索返回的对应可见段落",
+          "support_note": "仅核对当前拟表达的摘要；具体场景布置属于原创美术。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped research (not user approval)",
+        "reviewed_at": "2026-09-13T11:32:44.000Z"
+      },
+      "notes": "部分章节依据，不等于全章核验。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.s09.pendulum_scope",
+      "predicate": "limitation",
+      "value": "通常灵摆法只适合与自身相关的事情以及小范围内的客观情况；该限制不外推为所有占卜方法的完整边界。",
+      "dimensions": [
+        "limitations"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "xxsy.lotm.zh.c85",
+          "locator": "第八十五章 紧迫，2026-09-13搜索返回的对应可见段落",
+          "support_note": "仅核对当前拟表达的摘要；具体场景布置属于原创美术。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped research (not user approval)",
+        "reviewed_at": "2026-09-13T11:32:44.000Z"
+      },
+      "notes": "部分章节依据，不等于全章核验。",
+      "assertion_kind": "canon"
     }
   ],
   "note": "愚者途径9–0名称、序列0位阶、配方、晋升仪式和三项能力已由当前可访问的官方中文设定集/章节片段记录并标记verified；扮演仍是明确标注的interpretation，限制仍是有范围的knowledge_gap，不表示已完成视觉或人工批准。"

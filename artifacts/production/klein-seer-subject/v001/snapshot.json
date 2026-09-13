@@ -1,0 +1,40 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/klein-seer-subject.json",
+      "sha256": "6a74cd6be342328c526bcbcabf4cb65818b00dfe22d1833415405210df3f996a"
+    },
+    {
+      "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
+      "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+      "role": "style"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "41ea0780e4afb8077c8b0f1d87d7c710cb3e29f6c8930cf2872a0822920732ac"
+    },
+    {
+      "path": ".agents/skills/lotm-subject/SKILL.md",
+      "sha256": "ea3f7ae75a689d7b8ddc98676e385ee5de70f03ca49491721a8e228dc307a0ec"
+    },
+    {
+      "path": "pathways/fool/sequences/09/card.json",
+      "sha256": "e1114bced3b85216f7023a7e43febfb065687856858e807253739e34d11ac049"
+    },
+    {
+      "path": "pathways/fool/canon.json",
+      "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+    }
+  ],
+  "design_fingerprint": "1adab69437826fa716070c90bbf43e57189cf0dec7c5ddd39c9c5cbd96bfcc5e",
+  "task_sha256": "6a74cd6be342328c526bcbcabf4cb65818b00dfe22d1833415405210df3f996a",
+  "prompt_sha256": "e80b0aef3188d769dc69e19a5a06ac54ff8e8c4315ec5c9d9d8ce4be6e189988"
+}

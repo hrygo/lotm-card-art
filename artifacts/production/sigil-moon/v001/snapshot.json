@@ -1,0 +1,27 @@
+{
+  "dependencies": [
+    {
+      "path": "production/symbols/tasks/sigil-moon.json",
+      "sha256": "c60ad23d465577707602e67e6cddd4d008ebfe66c823eb785b01cdfda621d427"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-foundation/SKILL.md",
+      "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+    }
+  ],
+  "design_fingerprint": null,
+  "task_sha256": "c60ad23d465577707602e67e6cddd4d008ebfe66c823eb785b01cdfda621d427",
+  "prompt_sha256": "e15a1e80faf574e2c93ef7591e8af3dfcdf8894765134cf3bd242bdd929b65d6"
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-fusion-5",
+  "revision": 1,
+  "kind": "foundation",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      1,
+      1
+    ],
+    "background": "transparent"
+  },
+  "prompt": "Use case: stylized-concept. Make ONE exquisite integrated Fool pathway + rank 5 insignia, continuing a coherent family of ornate mask-and-curtain numerals. Reference 1 supplies the Fool theatrical half-mask and smoky-purple curtain identity; reference 2 supplies the exact readable Arabic numeral 5. Agentic sculptural redesign: fuse their structure and negative spaces into ONE complete object, never a numeral pasted over a separate crest. A folded curtain lintel forms the flat top of 5, a short left stem joins the middle shoulder, and the mask profile grows into the curved lower bowl. The open upper-right notch and lower-left opening must stay clear. The ONLY readable digit is 5, unmistakable small. Antique pale gold, mist silver, ivory carved mask, smoky violet enamel drapery; museum jewelry-level microchasing, sculptural relief, satin recesses and polished bevels. Rich but coherent detail, no surrounding badge, no words, no other digit. FRONT ORTHOGRAPHIC square image; full object centered with generous 8% clear margins, no cropped tips. Genuinely transparent background including internal openings; no white backdrop or checkerboard pixels, no external cast shadow. Preserve the mask's identity and the numeral's readability together.",
+  "references": [
+    {
+      "path": "artifacts/production/sigil-fool/v001/raw.png",
+      "sha256": "8bed2bf6163130e465f09b8896f2e709bc50e6c3436712de358ed4c68a8a3b1d",
+      "role": "style"
+    },
+    {
+      "path": "artifacts/production/fool-numeral-5/v001/raw.png",
+      "sha256": "c936854d83589c06266bce358a12e3226caab4961da00b2518c25a681b13ed37",
+      "role": "geometry"
+    }
+  ],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "material": "愚者面具帷幕与数字5共用笔画的金银珐琅精雕",
+    "lighting": "左上柔光",
+    "tiling": false,
+    "use_scope": [
+      "fusion:fool",
+      "digit:5"
+    ]
+  }
+}

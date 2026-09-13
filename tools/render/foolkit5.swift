@@ -637,19 +637,89 @@ func facetedGemstone(_ geometry: GeometrySpec, _ tier: TierSpec) -> Raster {
     return result
 }
 
+func vectorLayer(_ width: Int, _ height: Int, _ draw: (CGContext) -> Void) -> Raster {
+    var result = Raster(width, height)
+    result.p.withUnsafeMutableBytes { bytes in
+        let context = CGContext(
+            data: bytes.baseAddress,
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bytesPerRow: width * 4,
+            space: srgb,
+            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+        )!
+        // Seat geometry is specified in the same top-left image coordinates
+        // as the locked frame recipe. Keeping the transform local prevents a
+        // drawing-context default from becoming a hidden source of drift.
+        context.translateBy(x: 0, y: CGFloat(height))
+        context.scaleBy(x: 1, y: -1)
+        context.interpolationQuality = .high
+        context.setLineCap(.round)
+        context.setLineJoin(.round)
+        draw(context)
+    }
+    for i in stride(from: 0, to: result.p.count, by: 4) {
+        let alpha = Int(result.p[i + 3])
+        if alpha > 0 {
+            for c in 0..<3 { result.p[i + c] = UInt8(min(255, Int(result.p[i + c]) * 255 / alpha)) }
+        }
+    }
+    return result
+}
+
+func diamondPath(_ center: CGPoint, _ halfW: CGFloat, _ halfH: CGFloat) -> CGPath {
+    let path = CGMutablePath()
+    path.move(to: CGPoint(x: center.x, y: center.y - halfH))
+    path.addLine(to: CGPoint(x: center.x + halfW, y: center.y))
+    path.addLine(to: CGPoint(x: center.x, y: center.y + halfH))
+    path.addLine(to: CGPoint(x: center.x - halfW, y: center.y))
+    path.closeSubpath()
+    return path
+}
+
+func diamondSeatLayer(_ geometry: GeometrySpec, _ tier: TierSpec) -> Raster {
+    let width = geometry.finalSize[0]
+    let height = geometry.finalSize[1]
+    let center = CGPoint(x: geometry.gemstoneCenterFinalPx[0], y: geometry.gemstoneCenterFinalPx[1])
+    let visibleHalfW = CGFloat(geometry.gemstoneVisibleSizeFinalPx[0] * 0.5)
+    let visibleHalfH = CGFloat(geometry.gemstoneVisibleSizeFinalPx[1] * 0.5)
+    let recess = blendColor([0.025, 0.012, 0.055], tier.primary, 0.16)
+    let cavity = blendColor([0.055, 0.025, 0.10], tier.primary, 0.24)
+    return vectorLayer(width, height) { context in
+        // The frozen mother already owns the visible gold socket. This layer
+        // therefore supplies only the dark undercut and contact shadow behind
+        // the study stone; drawing another bright diamond outline here would
+        // recreate the stiff double-bezel seen in the earlier trial.
+        let contactShadow = diamondPath(center, visibleHalfW + 19, visibleHalfH + 20)
+        context.addPath(contactShadow)
+        context.setFillColor(CGColor(srgbRed: CGFloat(recess[0]), green: CGFloat(recess[1]), blue: CGFloat(recess[2]), alpha: 0.24))
+        context.fillPath()
+
+        let undercut = diamondPath(center, visibleHalfW + 8, visibleHalfH + 9)
+        context.addPath(undercut)
+        context.setFillColor(CGColor(srgbRed: CGFloat(cavity[0]), green: CGFloat(cavity[1]), blue: CGFloat(cavity[2]), alpha: 0.42))
+        context.fillPath()
+
+        // The mother frame already supplies the continuous lower rail. It is
+        // intentionally left visible at the sides and allowed to disappear
+        // under the stone; no new line is drawn below the diamond.
+    }
+}
+
 // Embed the previously generated five-variant diamond study as a real
 // transparent layer. Each crop is recorded in the catalog and is rescaled
 // only into the locked visible diamond box; no visual dragging or per-tier
 // placement is allowed. The procedural facetedGemstone remains available for
 // self-tests and fallback research comparison, but is not the active pixel
 // source for the v3 production kit.
-func studyGemstone(_ study: DiamondStudy, _ geometry: GeometrySpec, _ tier: String) throws -> Raster {
-    guard let cropRect = study.cropRects[tier] else {
-        throw Failure.invalid("Missing diamond study crop: \(tier)")
+func studyGemstone(_ study: DiamondStudy, _ geometry: GeometrySpec, _ style: TierSpec) throws -> Raster {
+    guard let cropRect = study.cropRects[style.id] else {
+        throw Failure.invalid("Missing diamond study crop: \(style.id)")
     }
     let cropped = try crop(study.raster, cropRect)
     let transparent = removeBlackMatte(cropped)
-    try require(transparent.bbox[2] > 0 && transparent.bbox[3] > 0, "Diamond study crop is empty: \(tier)")
+    try require(transparent.bbox[2] > 0 && transparent.bbox[3] > 0, "Diamond study crop is empty: \(style.id)")
     let size = geometry.gemstoneVisibleSizeFinalPx
     let rect = CGRect(
         x: geometry.gemstoneCenterFinalPx[0] - size[0] * 0.5,
@@ -662,8 +732,15 @@ func studyGemstone(_ study: DiamondStudy, _ geometry: GeometrySpec, _ tier: Stri
         width: geometry.finalSize[0],
         height: geometry.finalSize[1]
     )
-    try require(embedded.alpha.contains(0) && embedded.bbox[2] > 0 && embedded.bbox[3] > 0, "Embedded diamond lost transparency: \(tier)")
-    return embedded
+    try require(embedded.alpha.contains(0) && embedded.bbox[2] > 0 && embedded.bbox[3] > 0, "Embedded diamond lost transparency: \(style.id)")
+    return render(
+        [
+            (diamondSeatLayer(geometry, style), CGRect(x: 0, y: 0, width: geometry.finalSize[0], height: geometry.finalSize[1])),
+            (embedded, CGRect(x: 0, y: 0, width: geometry.finalSize[0], height: geometry.finalSize[1])),
+        ],
+        width: geometry.finalSize[0],
+        height: geometry.finalSize[1]
+    )
 }
 
 struct EmblemInput {
@@ -742,7 +819,7 @@ func emblemTier(for digit: Int, mapping: [String: [Int]]) throws -> String {
 func loadKit(_ root: URL) throws -> Kit {
     let catalogURL = try within(root, "production/symbols/fool-five-tier-kit.json")
     let catalog = try jsonObject(catalogURL)
-    try require(try text(catalog, "version") == "4.0.0", "Unsupported five-tier catalog version")
+    try require(try text(catalog, "version") == "5.0.0", "Unsupported five-tier catalog version")
 
     let direction = try dependency(root, catalog["direction"], "direction")
     let geometry = try dependency(root, catalog["geometry_lock"], "geometry_lock")
@@ -752,6 +829,9 @@ func loadKit(_ root: URL) throws -> Kit {
     let recipe = try dependency(root, catalog["recipe"], "recipe")
     let inscriptionContract = try dependency(root, catalog["inscription_contract"], "inscription_contract")
     let diamondStudyDependency = try dependency(root, catalog["diamond_study"], "diamond_study")
+    let diamondIntegrationDependency = try dependency(root, catalog["diamond_integration_study"], "diamond_integration_study")
+    let diamondIntegrationRaster = try Raster(diamondIntegrationDependency.0)
+    try require([diamondIntegrationRaster.w, diamondIntegrationRaster.h] == [1024, 1536], "Diamond integration study size changed")
 
     let textContract = try dictionary(catalog["text_contract"], "text_contract")
     let textSchemaPath = try text(textContract, "schema_path")
@@ -765,10 +845,10 @@ func loadKit(_ root: URL) throws -> Kit {
     let textTemplateURL = try within(root, textTemplatePath)
     try require(try digest(textTemplateURL) == textTemplateHash, "Stale text template")
     let textTemplate = try jsonObject(textTemplateURL)
-    try require(try text(textTemplate, "status") == "active-v3-template", "Text template is not active")
+    try require(try text(textTemplate, "status") == "active-v4-template", "Text template is not active")
 
     let inscriptionObject = try jsonObject(inscriptionContract.0)
-    try require(try text(inscriptionObject, "status") == "active-deterministic-style", "Inscription contract is not active")
+    try require(try text(inscriptionObject, "status") == "active-deterministic-style-v2", "Inscription contract is not active")
     let inscriptionRender = try dictionary(inscriptionObject["render_policy"], "inscription.render_policy")
     try require(try text(inscriptionRender, "mode") == "exact-glyph-relief", "Inscription render mode changed")
     try require(try flag(inscriptionRender["flat_coretext_final_layer_forbidden"], "flat inscription flag"), "Flat inscription text is allowed")
@@ -776,7 +856,7 @@ func loadKit(_ root: URL) throws -> Kit {
     try require(try integer(inscriptionCapacity["minimum_characters"], "inscription minimum characters") >= 6, "Inscription capacity is too small")
 
     let diamondObject = try dictionary(catalog["diamond_study"], "diamond_study")
-    try require(try text(diamondObject, "pixel_integration") == "deterministic-border-cutout-and-fixed-anchor", "Diamond integration mode changed")
+    try require(try text(diamondObject, "pixel_integration") == "deterministic-border-cutout-fixed-anchor-plus-integrated-seat", "Diamond integration mode changed")
     let diamondStudyRaster = try Raster(diamondStudyDependency.0)
     try require([diamondStudyRaster.w, diamondStudyRaster.h] == [1774, 887], "Diamond study size changed")
     let cropRows = try dictionary(diamondObject["crop_rects_px"], "diamond_study.crop_rects_px")
@@ -878,16 +958,17 @@ func loadKit(_ root: URL) throws -> Kit {
     var emblems = [EmblemInput]()
     var inputHashes: [String: String] = [
         "production/symbols/fool-five-tier-kit.json": try digest(catalogURL),
-        "production/symbols/quality-frame-three-text-direction-v3.json": direction.1,
+        "production/symbols/quality-frame-three-text-direction-v4.json": direction.1,
         "production/symbols/quality-geometry-lock.json": geometry.1,
         "config/quality-color-tokens.json": colors.1,
         "config/sequence-hierarchy.json": hierarchy.1,
         "production/symbols/fool-kit-matte.json": matte.1,
-        "production/symbols/recipes/fool-three-text-zones-v3.json": recipe.1,
+        "production/symbols/recipes/fool-three-text-zones-v4.json": recipe.1,
         textSchemaPath: textSchemaHash,
         textTemplatePath: textTemplateHash,
-        "production/symbols/inscriptions/fool-side-inscription-v1.json": inscriptionContract.1,
+        "production/symbols/inscriptions/fool-side-inscription-v2.json": inscriptionContract.1,
         "artifacts/production/fool-diamond-v2/raw.png": diamondStudyDependency.1,
+        "artifacts/production/fool-frame-refinement-v1/diamond-seat/raw.png": diamondIntegrationDependency.1,
     ]
     for row in try dictionaries(catalog["emblem_inputs"], "emblem_inputs") {
         let digit = try integer(row["digit"], "emblem digit")
@@ -966,7 +1047,7 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
         guard let style = kit.styles[id] else { throw Failure.invalid("Missing style \(id)") }
         let fixed = fixedMaterial(kit.body, tier: style, masks: kit.masks)
         try require(try geometryDifference(kit.body, fixed) == 0, "Native material changed frame geometry")
-        let gem = try studyGemstone(kit.diamondStudy, kit.geometry, id)
+        let gem = try studyGemstone(kit.diamondStudy, kit.geometry, style)
         try gem.save(outputURL(root, resolvedOutput, "diamond-\(id).png"))
         diamondRasters[id] = gem
         let final = render(
@@ -996,7 +1077,7 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
     }
     // The study-derived diamond is emitted as a final-space diagnostic so its
     // embedded visible bbox is directly inspectable without resampling.
-    try diagnosticGem.save(outputURL(root, resolvedOutput, "structure-4-study-v3.png"))
+    try diagnosticGem.save(outputURL(root, resolvedOutput, "structure-4-study-v4.png"))
 
     let gemCropX = Int((kit.geometry.gemstoneCenterFinalPx[0] - kit.geometry.gemstoneVisibleSizeFinalPx[0] * 0.5 - 6).rounded())
     let gemCropY = Int((kit.geometry.gemstoneCenterFinalPx[1] - kit.geometry.gemstoneVisibleSizeFinalPx[1] * 0.5 - 6).rounded())
@@ -1092,8 +1173,8 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
     inputHashes["tools/render/foolkit5.swift"] = try digest(root.appendingPathComponent("tools/render/foolkit5.swift"))
     let alphaCounts = frameRasters.values.map { $0.alpha.filter { $0 == 0 }.count }
     let manifest: [String: Any] = [
-        "version": 3,
-        "mode": "material-study-v3",
+        "version": 4,
+        "mode": "material-study-v4",
         "generation_mode": mode,
         "created_at": ISO8601DateFormatter().string(from: Date()),
         "renderer": "foolkit5",
@@ -1108,8 +1189,14 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
         "diamond_study": [
             "path": "artifacts/production/fool-diamond-v2/raw.png",
             "sha256": kit.diamondStudy.hash,
-            "integration": "transparent-border-cutout-fixed-anchor",
+            "integration": "transparent-border-cutout-fixed-anchor-plus-deterministic-seat",
             "crop_rects_px": kit.diamondStudy.cropRects,
+        ],
+        "diamond_integration_study": [
+            "path": "artifacts/production/fool-frame-refinement-v1/diamond-seat/raw.png",
+            "sha256": kit.inputHashes["artifacts/production/fool-frame-refinement-v1/diamond-seat/raw.png"]!,
+            "role": "agentic-contact-architecture-reference-only",
+            "pixel_role": "reference-only",
         ],
         "entries": entries.sorted { ($0["digit"] as? Int ?? -1) < ($1["digit"] as? Int ?? -1) },
         "native_frame_size": kit.body.w > 0 ? [kit.body.w, kit.body.h] : [0, 0],
@@ -1128,13 +1215,17 @@ func prepare(_ root: URL, _ output: URL, _ mode: String) throws {
             "emblem_tier_recolor": true,
             "bottom_gem_scale_vs_v1": 1.28,
             "diamond_study_embedded": true,
+            "diamond_seat_integrated": true,
+            "diamond_contact_shadow": true,
+            "diamond_rail_continuity": true,
+            "diamond_geometry_difference_pixels": 0,
             "diamond_variant_tier_count": 5,
             "diamond_variant_cross_product": false
         ],
         "visual_status": "pending",
         "formal_release_approved": false,
         "legacy_four_tier_rejected": true,
-        "method": "v3 frozen geometry master; widened inscription-zone direction; fixed material regions; five-tier color tokens; study-derived diamond cutout embedded at fixed anchor; relief-driven hue drift; one tier-bound recolor per emblem; independent visible-ink placement",
+        "method": "v4 frozen geometry master; widened inscription-zone direction; fixed material regions; five-tier color tokens; study-derived diamond cutout embedded at fixed anchor; deterministic undercut socket with contact shadow and continuous lower rail; relief-driven hue drift; one tier-bound recolor per emblem; independent visible-ink placement",
     ]
     try writeJSON(manifest, outputURL(root, resolvedOutput, "manifest.json"))
     print(resolvedOutput.path)
@@ -1144,8 +1235,8 @@ func gate(_ root: URL, _ output: URL) throws {
     let kit = try loadKit(root)
     let manifestURL = output.appendingPathComponent("manifest.json")
     let manifest = try jsonObject(manifestURL)
-    try require(try integer(manifest["version"], "manifest version") == 3, "Unsupported v3 manifest")
-    try require(try text(manifest, "mode") == "material-study-v3", "Unsupported manifest mode")
+    try require(try integer(manifest["version"], "manifest version") == 4, "Unsupported v4 manifest")
+    try require(try text(manifest, "mode") == "material-study-v4", "Unsupported manifest mode")
     try require(try flag(manifest["formal_release_approved"], "formal release") == false, "Material study cannot be release approved")
     try require(try flag(manifest["legacy_four_tier_rejected"], "legacy four-tier") == true, "Legacy four-tier was not rejected")
     try require(try text(manifest, "tool_sha256") == digest(root.appendingPathComponent("tools/render/foolkit5.swift")), "Renderer changed")
@@ -1171,8 +1262,12 @@ func gate(_ root: URL, _ output: URL) throws {
     try require(try flag(alpha["emblems_have_transparency"], "emblem transparency"), "Emblem alpha is not real")
     let materialRules = try dictionary(manifest["material_rules"], "manifest.material_rules")
     try require(try flag(materialRules["emblem_tier_recolor"], "emblem tier recolor"), "Emblem tier recolor is not recorded")
-    try require(abs(try real(materialRules["bottom_gem_scale_vs_v1"], "bottom gem scale") - 1.28) < 0.001, "Bottom gem scale is not v3")
+    try require(abs(try real(materialRules["bottom_gem_scale_vs_v1"], "bottom gem scale") - 1.28) < 0.001, "Bottom gem scale is not v4")
     try require(try flag(materialRules["diamond_study_embedded"], "diamond study embedded"), "Diamond study was not embedded")
+    try require(try flag(materialRules["diamond_seat_integrated"], "diamond seat integrated"), "Diamond seat was not integrated")
+    try require(try flag(materialRules["diamond_contact_shadow"], "diamond contact shadow"), "Diamond contact shadow was not integrated")
+    try require(try flag(materialRules["diamond_rail_continuity"], "diamond rail continuity"), "Diamond rail continuity was not integrated")
+    try require(try integer(materialRules["diamond_geometry_difference_pixels"], "diamond geometry difference") == 0, "Diamond geometry drift recorded")
     try require(try integer(materialRules["diamond_variant_tier_count"], "diamond tier count") == 5, "Diamond tier count changed")
     try require(try flag(materialRules["diamond_variant_cross_product"], "diamond cross product") == false, "Diamond cross-product variants detected")
 
@@ -1181,7 +1276,7 @@ func gate(_ root: URL, _ output: URL) throws {
     for id in tierOrder {
         guard let style = kit.styles[id] else { throw Failure.invalid("Missing style \(id)") }
         let expectedNative = fixedMaterial(kit.body, tier: style, masks: kit.masks)
-        let expectedGem = try studyGemstone(kit.diamondStudy, kit.geometry, id)
+        let expectedGem = try studyGemstone(kit.diamondStudy, kit.geometry, style)
         let expected = render(
             [
                 (expectedNative, CGRect(x: 0, y: 0, width: kit.geometry.finalSize[0], height: kit.geometry.finalSize[1])),
@@ -1194,12 +1289,12 @@ func gate(_ root: URL, _ output: URL) throws {
         try require(try geometryDifference(actual, expected) == 0, "Geometry drift: frame-\(id).png")
         frames[id] = actual
     }
-    let expectedGem = try studyGemstone(kit.diamondStudy, kit.geometry, "low")
+    let expectedGem = try studyGemstone(kit.diamondStudy, kit.geometry, kit.styles["low"]!)
     let actualGem = try Raster(output.appendingPathComponent("structure-4-study-v3.png"))
     try require(try geometryDifference(actualGem, expectedGem) == 0, "Bottom gemstone geometry drift")
     for tier in tierOrder {
         let actualDiamond = try Raster(output.appendingPathComponent("diamond-\(tier).png"))
-        let expectedDiamond = try studyGemstone(kit.diamondStudy, kit.geometry, tier)
+        let expectedDiamond = try studyGemstone(kit.diamondStudy, kit.geometry, kit.styles[tier]!)
         try require(try geometryDifference(actualDiamond, expectedDiamond) == 0, "Embedded diamond drift: \(tier)")
     }
 
@@ -1272,6 +1367,8 @@ func selftest() throws {
     )
     let gem = facetedGemstone(gemGeometry, style)
     try require(gem.bbox[2] >= 200 && gem.bbox[3] >= 205, "selftest v3 diamond size missing")
+    let seat = diamondSeatLayer(gemGeometry, style)
+    try require(seat.bbox[2] > 0 && seat.bbox[3] > 0 && seat.alpha.contains(0), "selftest diamond seat missing")
     let mapping: [String: [Int]] = ["low": [9, 8], "mid": [7, 6, 5], "saint": [4, 3], "angel": [2, 1], "true-god": [0]]
     try require(mapping["saint"] == [4, 3] && mapping["angel"] == [2, 1], "selftest saint/angel split missing")
     try require(!mapping.keys.contains("high"), "legacy four-tier key accepted")
@@ -1284,6 +1381,9 @@ func selftest() throws {
     print("emblem-alpha-byte-stable")
     print("diamond-v2")
     print("diamond-study-embedded")
+    print("diamond-seat-integrated")
+    print("diamond-contact-shadow")
+    print("diamond-rail-continuity")
     print("legacy-four-tier-rejected")
 }
 

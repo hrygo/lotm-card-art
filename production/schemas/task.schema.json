@@ -2,6 +2,36 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
+    "quality": {
+      "type": "object",
+      "properties": {
+        "sequence": {"type": "integer", "minimum": 0, "maximum": 9},
+        "visual_tier": {"enum": ["low", "mid", "saint", "angel", "true-god"]}
+      },
+      "required": ["sequence", "visual_tier"],
+      "additionalProperties": false
+    },
+    "contracts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        },
+        "required": ["path", "sha256"],
+        "additionalProperties": false
+      }
+    },
+    "narrative": {
+      "type": "object",
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "required": ["path", "sha256"],
+      "additionalProperties": false
+    },
     "schema_version": {
       "const": "1.0.0"
     },
@@ -140,6 +170,8 @@
                 "low",
                 "mid",
                 "high",
+                "saint",
+                "angel",
                 "true-god"
               ]
             },

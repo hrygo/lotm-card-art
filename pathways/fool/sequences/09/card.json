@@ -4,90 +4,212 @@
   "pathway_id": "fool",
   "sequence": 9,
   "name_zh": "占卜家",
-  "name_status": "seed_unverified",
+  "name_status": "verified",
   "work_scope": "lotm-volume-1-zh",
-  "revision": 1,
+  "revision": 3,
   "delivery_profile": "standard",
   "semantics": {
     "identity": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "精确呈现愚者序列9占卜家与本卡角色。",
+      "claim_refs": [
+        "fool.pathway_name",
+        "fool.sequence_name.s09",
+        "fool.s09.klein_identity"
+      ],
       "fidelity": "exact",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": [
+        "identity"
+      ],
+      "readback": "精确呈现愚者序列9占卜家与本卡角色。",
+      "misreading_guard": "融合9徽、占卜家序列名和姓名相互核对，不出现序列09导轨。",
       "gap_note": null,
       "research_question": "核对本途径名称、本序列准确中文名与数字归属；确定本系列途径标识。"
     },
     "acting": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "专注而克制地实践占卜身份；不以职业服装或自信姿态代替行为。",
+      "claim_refs": [
+        "fool.s09.acting_practice"
+      ],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": [
+        "acting"
+      ],
+      "readback": "专注而克制地实践占卜身份；不以职业服装或自信姿态代替行为。",
+      "misreading_guard": "专注的视线、自然的执链动作与另一手停在查阅中的书旁，表现认真实践而非炫耀。",
       "gap_note": null,
       "research_question": "核对当前序列的核心扮演原则，区分原著明示、角色理解与编辑概括。"
     },
     "abilities": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
+      "knowledge_state": "supported",
+      "intent": "灵摆针对近处茶杯执行占卜。",
+      "claim_refs": [
+        "fool.s09.pendulum"
+      ],
       "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "carrier_ids": [
+        "pendulum"
+      ],
+      "readback": "灵摆针对近处茶杯执行占卜。",
+      "misreading_guard": "左手银链黄水晶与茶杯，身体与手部有真实支撑，不画能量束。",
       "gap_note": null,
       "research_question": "选出最能区别相邻序列的一项代表能力；核对作用对象、条件与新增/强化性质。"
     },
     "potion": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
-      "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "knowledge_state": "supported",
+      "intent": "用暗色容器与柔软星点晶体唤起两项主材意象，不承诺精确名称、用量或完整配方可从画面回读。",
+      "claim_refs": [
+        "fool.s09.potion_main"
+      ],
+      "fidelity": "evocation",
+      "carrier_ids": [
+        "potion"
+      ],
+      "readback": "用暗色容器与柔软星点晶体唤起两项主材意象，不承诺精确名称、用量或完整配方可从画面回读。",
+      "misreading_guard": "桌边小型材料盒中一枚不透明深色试剂瓶与胶状星点晶体，作为原创回忆性静物；瓶内颜色仅微量蓝光提示。",
       "gap_note": null,
       "research_question": "核对进入当前序列的关键魔药要素；明确是否仅展示材料摘要。"
     },
     "ascension": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
-      "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "knowledge_state": "supported",
+      "intent": "以已用过的深色空杯及材料盒作为服药入序的回忆性提示，不重演仪式或承诺完整过程。",
+      "claim_refs": [
+        "fool.s09.entry_drink"
+      ],
+      "fidelity": "evocation",
+      "carrier_ids": [
+        "entry"
+      ],
+      "readback": "以已用过的深色空杯及材料盒作为服药入序的回忆性提示，不重演仪式或承诺完整过程。",
+      "misreading_guard": "背景材料盒旁放一只朴素深色空杯，明显区别正在占卜的红茶瓷杯；不让人物此刻喝魔药。",
       "gap_note": null,
       "research_question": "核对进入当前序列的条件/仪式；未知时不自创，也不误用下一序列要求。"
     },
     "limitations": {
-      "knowledge_state": "unresearched",
-      "intent": "",
-      "claim_refs": [],
-      "fidelity": "summary",
-      "carrier_ids": [],
-      "readback": "",
-      "misreading_guard": "",
+      "knowledge_state": "supported",
+      "intent": "聚焦近处具体茶杯，保留未被揭示的空间，表现占卜的有限性；不声称精确范围已由无字画面完整表达。",
+      "claim_refs": [
+        "fool.s09.pendulum_scope"
+      ],
+      "fidelity": "evocation",
+      "carrier_ids": [
+        "scope"
+      ],
+      "readback": "聚焦近处具体茶杯，保留未被揭示的空间，表现占卜的有限性；不声称精确范围已由无字画面完整表达。",
+      "misreading_guard": "黄水晶仅作用于眼前茶杯；远处室内保持不明细节，表情审慎，手边参考书说明需要理解和核对。",
       "gap_note": null,
       "research_question": "核对能力边界、代价、使用条件或相关风险，避免泛泛而谈失控。"
     }
   },
-  "cues": [],
+  "cues": [
+    {
+      "id": "identity",
+      "channel": "text",
+      "meaning": "精确呈现愚者序列9占卜家与本卡角色。",
+      "implementation": "融合9徽、占卜家序列名和姓名相互核对，不出现序列09导轨。",
+      "region": {
+        "x": 0.23,
+        "y": 0.23,
+        "w": 0.54,
+        "h": 0.04
+      },
+      "decode_mode": "literal",
+      "exact_text": "占卜家",
+      "legend_ref": null
+    },
+    {
+      "id": "acting",
+      "channel": "action",
+      "meaning": "专注而克制地实践占卜身份；不以职业服装或自信姿态代替行为。",
+      "implementation": "专注的视线、自然的执链动作与另一手停在查阅中的书旁，表现认真实践而非炫耀。",
+      "region": {
+        "x": 0.14,
+        "y": 0.27,
+        "w": 0.72,
+        "h": 0.55
+      },
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "pendulum",
+      "channel": "action",
+      "meaning": "灵摆针对近处茶杯执行占卜。",
+      "implementation": "左手银链黄水晶与茶杯，身体与手部有真实支撑，不画能量束。",
+      "region": {
+        "x": 0.18,
+        "y": 0.27,
+        "w": 0.64,
+        "h": 0.46
+      },
+      "decode_mode": "conventional",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "potion",
+      "channel": "object",
+      "meaning": "用暗色容器与柔软星点晶体唤起两项主材意象，不承诺精确名称、用量或完整配方可从画面回读。",
+      "implementation": "桌边小型材料盒中一枚不透明深色试剂瓶与胶状星点晶体，作为原创回忆性静物；瓶内颜色仅微量蓝光提示。",
+      "region": {
+        "x": 0.14,
+        "y": 0.27,
+        "w": 0.72,
+        "h": 0.55
+      },
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "entry",
+      "channel": "object",
+      "meaning": "以已用过的深色空杯及材料盒作为服药入序的回忆性提示，不重演仪式或承诺完整过程。",
+      "implementation": "背景材料盒旁放一只朴素深色空杯，明显区别正在占卜的红茶瓷杯；不让人物此刻喝魔药。",
+      "region": {
+        "x": 0.14,
+        "y": 0.27,
+        "w": 0.72,
+        "h": 0.55
+      },
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    },
+    {
+      "id": "scope",
+      "channel": "composition",
+      "meaning": "聚焦近处具体茶杯，保留未被揭示的空间，表现占卜的有限性；不声称精确范围已由无字画面完整表达。",
+      "implementation": "黄水晶仅作用于眼前茶杯；远处室内保持不明细节，表情审慎，手边参考书说明需要理解和核对。",
+      "region": {
+        "x": 0.14,
+        "y": 0.27,
+        "w": 0.72,
+        "h": 0.55
+      },
+      "decode_mode": "metaphoric",
+      "exact_text": null,
+      "legend_ref": null
+    }
+  ],
   "composition": {
     "layout": "scene",
-    "hero_event": "",
-    "why_this_sequence": "",
-    "focal_hierarchy": [],
-    "art_direction_note": "折叠的剧场与真假关系",
+    "hero_event": "廷根时期的克莱恩坐在桌边，左手握银链黄水晶，在近处茶杯上方认真进行灵摆占卜。",
+    "why_this_sequence": "序列9以人的行为与小范围占卜为中心，不预支秘偶、历史投影或神国权柄；六维由主事件、准确身份与四行克制摘要共同承载。",
+    "focal_hierarchy": [
+      "克莱恩的脸与左手执链动作",
+      "黄水晶及红茶杯",
+      "固定融合9圣徽、外部序列名及姓名",
+      "低权重的材料与服药回忆性静物"
+    ],
+    "art_direction_note": "黑发褐瞳、书卷气的青年；古典油画；烟紫雾银实体载体与室内场景分层。人类锚点为脸、手和桌；神秘压力仅是细微占卜；抽象度低，无神座。",
     "reference_ids": [],
-    "exactness_note": "六维全覆盖，但不等于六个文字框；无证据时保持研究状态。"
+    "exactness_note": "用户2026-09-13明确要求主体内无其他文字。已取消四行说明，魔药/入序/限制采用意象精度，不承诺无字画面传达精确配方或数量；事实仍保留在元数据。身份文字仅在主体之外。"
   },
   "production": {
-    "stage": "scaffold",
+    "stage": "research",
     "artifact": null,
     "generation": null,
     "review_file": null

@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "subject",
+  "mode": "production",
+  "task_id": "klein-seer-subject",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "references": [
+      {
+        "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
+        "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+        "role": "style"
+      }
+    ],
+    "limits": {
+      "max_attempts": 2
+    },
+    "task_id": "klein-seer-subject",
+    "kind": "subject",
+    "mode": "production",
+    "output": {
+      "aspect": [
+        1,
+        1
+      ],
+      "background": "opaque"
+    },
+    "prompt": "Use case: illustration-story. Generate a SINGLE exquisite square painterly illustration, NOT a card layout. The attached empty card is ONLY a palette and craft reference; do not draw its frame, emblem, nameplate or any lettering. Subject: Klein Moretti from Lord of Mysteries, during his Tingen Sequence 9 Seer period: young adult man, black hair, deep brown eyes, ordinary believable features with scholarly character and thoughtful restrained warmth, no beard, no monocle. He sits at a small polished wooden table in a quiet Victorian divination club, body in three-quarter view. He uses HIS ANATOMICAL LEFT HAND (on viewer right) to hold a delicate silver chain with one clear honey-yellow citrine pendulum suspended almost touching a cup of dark red tea. Left hand, continuous chain, citrine, tea surface form the one clear main visual event. His other hand rests naturally beside an opened study book with no legible writing. He watches the pendulum attentively, not the viewer. Hands exactly anatomically plausible, one pendant, one cup; the chain is taut and delicately curved only as gravity permits, no magical levitation. The pendulum is subtly angled to imply a small movement, not an energy beam. Elegant near-waist-up portrait, visible entire head and both hands, face in upper-middle, cup and pendulum in lower-middle, keep all these inside central 75 percent with comfortable margins for a rounded square crop. White high collar, charcoal wool waistcoat and dark formal coat, period plausible, no modern jewelry. Soft warm light from upper left models the face and hands; deep smoke-violet and muted brown shadow, faint cool dusk from a distant bay window, background bibliographic shelves softly receding. Intimate human scale, extremely beautiful classical oil-painting craft, realistic character acting, no anime, no plastic CGI. NO throne, tentacles, puppet strings, cosmic fog, magical circles, high-level powers, luminous eyes, extra people, potion bottle, invented ritual, text, letters, numbers, frame or insignia. Paint an integrated interior scene; outer margins quieter and darker, not a cutout portrait.",
+    "spec": {
+      "slot_id": "lotm.fool.s09",
+      "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+      "character_id": "klein-moretti",
+      "event": "克莱恩左手持银链黄水晶，在茶杯上方做灵摆占卜。",
+      "semantic_source": "pathways/fool/sequences/09/card.json",
+      "protagonist": {
+        "kind": "character",
+        "name_zh": "克莱恩·莫雷蒂",
+        "name_status": "verified",
+        "evidence_refs": [
+          {
+            "path": "pathways/fool/canon.json",
+            "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+          }
+        ]
+      }
+    }
+  },
+  "compiled": "artifacts/production/klein-seer-subject/v001",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/klein-seer-subject.json",
+        "sha256": "6a74cd6be342328c526bcbcabf4cb65818b00dfe22d1833415405210df3f996a"
+      },
+      {
+        "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
+        "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+        "role": "style"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "41ea0780e4afb8077c8b0f1d87d7c710cb3e29f6c8930cf2872a0822920732ac"
+      },
+      {
+        "path": ".agents/skills/lotm-subject/SKILL.md",
+        "sha256": "ea3f7ae75a689d7b8ddc98676e385ee5de70f03ca49491721a8e228dc307a0ec"
+      },
+      {
+        "path": "pathways/fool/sequences/09/card.json",
+        "sha256": "e1114bced3b85216f7023a7e43febfb065687856858e807253739e34d11ac049"
+      },
+      {
+        "path": "pathways/fool/canon.json",
+        "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+      }
+    ],
+    "design_fingerprint": "1adab69437826fa716070c90bbf43e57189cf0dec7c5ddd39c9c5cbd96bfcc5e",
+    "task_sha256": "6a74cd6be342328c526bcbcabf4cb65818b00dfe22d1833415405210df3f996a",
+    "prompt_sha256": "e80b0aef3188d769dc69e19a5a06ac54ff8e8c4315ec5c9d9d8ce4be6e189988"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/klein-seer-subject/v001/raw.png",
+    "sha256": "33bab501dcbf307e686cd0dcd5f5eb8bd17c808fc445957a4da3da45ad818f8c"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      1,
+      1
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: illustration-story. Generate a SINGLE exquisite square painterly illustration, NOT a card layout. The attached empty card is ONLY a palette and craft reference; do not draw its frame, emblem, nameplate or any lettering. Subject: Klein Moretti from Lord of Mysteries, during his Tingen Sequence 9 Seer period: young adult man, black hair, deep brown eyes, ordinary believable features with scholarly character and thoughtful restrained warmth, no beard, no monocle. He sits at a small polished wooden table in a quiet Victorian divination club, body in three-quarter view. He uses HIS ANATOMICAL LEFT HAND (on viewer right) to hold a delicate silver chain with one clear honey-yellow citrine pendulum suspended almost touching a cup of dark red tea. Left hand, continuous chain, citrine, tea surface form the one clear main visual event. His other hand rests naturally beside an opened study book with no legible writing. He watches the pendulum attentively, not the viewer. Hands exactly anatomically plausible, one pendant, one cup; the chain is taut and delicately curved only as gravity permits, no magical levitation. The pendulum is subtly angled to imply a small movement, not an energy beam. Elegant near-waist-up portrait, visible entire head and both hands, face in upper-middle, cup and pendulum in lower-middle, keep all these inside central 75 percent with comfortable margins for a rounded square crop. White high collar, charcoal wool waistcoat and dark formal coat, period plausible, no modern jewelry. Soft warm light from upper left models the face and hands; deep smoke-violet and muted brown shadow, faint cool dusk from a distant bay window, background bibliographic shelves softly receding. Intimate human scale, extremely beautiful classical oil-painting craft, realistic character acting, no anime, no plastic CGI. NO throne, tentacles, puppet strings, cosmic fog, magical circles, high-level powers, luminous eyes, extra people, potion bottle, invented ritual, text, letters, numbers, frame or insignia. Paint an integrated interior scene; outer margins quieter and darker, not a cutout portrait.",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13T11:38:56.000Z",
+    "attempt": 1,
+    "attachments": [
+      {
+        "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
+        "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+        "role": "style"
+      }
+    ],
+    "observation": "已观察：黑发青年、褐色眼眸，人物左手在画面右侧执银链与黄水晶，茶杯在其下，另一手置于书旁。未见重复框徽或神级效果。面容较理想化；室内陈设属于原创，不冒称官方角色立绘。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T11:41:05.861817+00:00"
+}

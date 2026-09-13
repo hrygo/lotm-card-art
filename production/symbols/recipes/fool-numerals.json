@@ -1,0 +1,139 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "fool-numerals",
+  "profile": "standard",
+  "background": "#f2f0e9",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "title",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "愚者 · 艺术数字",
+          "rect": [
+            50,
+            15,
+            900,
+            50
+          ],
+          "font": "Songti SC",
+          "size": 30,
+          "align": "center",
+          "fill": "#222936"
+        }
+      ]
+    },
+    {
+      "id": "digit-0",
+      "receipt": "artifacts/production/fool-numeral-0/v001/receipt.json",
+      "rect": [
+        120,
+        90,
+        260,
+        250
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "digit-1",
+      "receipt": "artifacts/production/fool-numeral-1/v001/receipt.json",
+      "rect": [
+        620,
+        90,
+        260,
+        250
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "digit-2",
+      "receipt": "artifacts/production/fool-numeral-2/v001/receipt.json",
+      "rect": [
+        120,
+        355,
+        260,
+        250
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "digit-3",
+      "receipt": "artifacts/production/fool-numeral-3/v001/receipt.json",
+      "rect": [
+        620,
+        355,
+        260,
+        250
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "digit-4",
+      "receipt": "artifacts/production/fool-numeral-4/v001/receipt.json",
+      "rect": [
+        120,
+        620,
+        260,
+        250
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "digit-5",
+      "receipt": "artifacts/production/fool-numeral-5/v001/receipt.json",
+      "rect": [
+        620,
+        620,
+        260,
+        250
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "digit-6",
+      "receipt": "artifacts/production/fool-numeral-6/v001/receipt.json",
+      "rect": [
+        120,
+        885,
+        260,
+        250
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "digit-7",
+      "receipt": "artifacts/production/fool-numeral-7/v001/receipt.json",
+      "rect": [
+        620,
+        885,
+        260,
+        250
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "digit-8",
+      "receipt": "artifacts/production/fool-numeral-8/v001/receipt.json",
+      "rect": [
+        120,
+        1150,
+        260,
+        250
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "digit-9",
+      "receipt": "artifacts/production/fool-numeral-9/v001/receipt.json",
+      "rect": [
+        620,
+        1150,
+        260,
+        250
+      ],
+      "fit": "contain"
+    }
+  ]
+}

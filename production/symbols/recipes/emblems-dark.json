@@ -1,0 +1,689 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "emblems-dark",
+  "profile": "standard",
+  "background": "#111a29",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "title",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            50,
+            15,
+            900,
+            46
+          ],
+          "text": "二十二途径 · 精雕圣徽",
+          "font": "Songti SC",
+          "size": 30,
+          "align": "center",
+          "fill": "#e8dfcd"
+        }
+      ]
+    },
+    {
+      "id": "sigil-fool",
+      "receipt": "artifacts/production/sigil-fool/v001/receipt.json",
+      "rect": [
+        25,
+        70,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-fool-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            10,
+            261,
+            230,
+            32
+          ],
+          "text": "愚者",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-error",
+      "receipt": "artifacts/production/sigil-error/v001/receipt.json",
+      "rect": [
+        275,
+        70,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-error-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            260,
+            261,
+            230,
+            32
+          ],
+          "text": "错误",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-door",
+      "receipt": "artifacts/production/sigil-door/v001/receipt.json",
+      "rect": [
+        525,
+        70,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-door-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            510,
+            261,
+            230,
+            32
+          ],
+          "text": "门",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-visionary",
+      "receipt": "artifacts/production/sigil-visionary/v001/receipt.json",
+      "rect": [
+        775,
+        70,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-visionary-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            760,
+            261,
+            230,
+            32
+          ],
+          "text": "空想家",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-sun",
+      "receipt": "artifacts/production/sigil-sun/v001/receipt.json",
+      "rect": [
+        25,
+        295,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-sun-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            10,
+            486,
+            230,
+            32
+          ],
+          "text": "太阳",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-tyrant",
+      "receipt": "artifacts/production/sigil-tyrant/v001/receipt.json",
+      "rect": [
+        275,
+        295,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-tyrant-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            260,
+            486,
+            230,
+            32
+          ],
+          "text": "暴君",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-white-tower",
+      "receipt": "artifacts/production/sigil-white-tower/v001/receipt.json",
+      "rect": [
+        525,
+        295,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-white-tower-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            510,
+            486,
+            230,
+            32
+          ],
+          "text": "白塔",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-hanged-man",
+      "receipt": "artifacts/production/sigil-hanged-man/v001/receipt.json",
+      "rect": [
+        775,
+        295,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-hanged-man-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            760,
+            486,
+            230,
+            32
+          ],
+          "text": "倒吊人",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-darkness",
+      "receipt": "artifacts/production/sigil-darkness/v001/receipt.json",
+      "rect": [
+        25,
+        520,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-darkness-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            10,
+            711,
+            230,
+            32
+          ],
+          "text": "黑暗",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-death",
+      "receipt": "artifacts/production/sigil-death/v001/receipt.json",
+      "rect": [
+        275,
+        520,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-death-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            260,
+            711,
+            230,
+            32
+          ],
+          "text": "死神",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-twilight-giant",
+      "receipt": "artifacts/production/sigil-twilight-giant/v001/receipt.json",
+      "rect": [
+        525,
+        520,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-twilight-giant-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            510,
+            711,
+            230,
+            32
+          ],
+          "text": "黄昏巨人",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-demoness",
+      "receipt": "artifacts/production/sigil-demoness/v001/receipt.json",
+      "rect": [
+        775,
+        520,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-demoness-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            760,
+            711,
+            230,
+            32
+          ],
+          "text": "魔女",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-red-priest",
+      "receipt": "artifacts/production/sigil-red-priest/v001/receipt.json",
+      "rect": [
+        25,
+        745,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-red-priest-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            10,
+            936,
+            230,
+            32
+          ],
+          "text": "红祭司",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-hermit",
+      "receipt": "artifacts/production/sigil-hermit/v001/receipt.json",
+      "rect": [
+        275,
+        745,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-hermit-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            260,
+            936,
+            230,
+            32
+          ],
+          "text": "隐者",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-paragon",
+      "receipt": "artifacts/production/sigil-paragon/v001/receipt.json",
+      "rect": [
+        525,
+        745,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-paragon-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            510,
+            936,
+            230,
+            32
+          ],
+          "text": "完美者",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-wheel-of-fortune",
+      "receipt": "artifacts/production/sigil-wheel-of-fortune/v001/receipt.json",
+      "rect": [
+        775,
+        745,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-wheel-of-fortune-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            760,
+            936,
+            230,
+            32
+          ],
+          "text": "命运之轮",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-mother",
+      "receipt": "artifacts/production/sigil-mother/v001/receipt.json",
+      "rect": [
+        25,
+        970,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-mother-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            10,
+            1161,
+            230,
+            32
+          ],
+          "text": "母亲",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-moon",
+      "receipt": "artifacts/production/sigil-moon/v001/receipt.json",
+      "rect": [
+        275,
+        970,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-moon-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            260,
+            1161,
+            230,
+            32
+          ],
+          "text": "月亮",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-black-emperor",
+      "receipt": "artifacts/production/sigil-black-emperor/v001/receipt.json",
+      "rect": [
+        525,
+        970,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-black-emperor-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            510,
+            1161,
+            230,
+            32
+          ],
+          "text": "黑皇帝",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-justiciar",
+      "receipt": "artifacts/production/sigil-justiciar/v001/receipt.json",
+      "rect": [
+        775,
+        970,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-justiciar-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            760,
+            1161,
+            230,
+            32
+          ],
+          "text": "审判者",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-chained",
+      "receipt": "artifacts/production/sigil-chained/v001/receipt.json",
+      "rect": [
+        25,
+        1195,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-chained-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            10,
+            1386,
+            230,
+            32
+          ],
+          "text": "被缚者",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    },
+    {
+      "id": "sigil-abyss",
+      "receipt": "artifacts/production/sigil-abyss/v001/receipt.json",
+      "rect": [
+        275,
+        1195,
+        200,
+        190
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "sigil-abyss-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "rect": [
+            260,
+            1386,
+            230,
+            32
+          ],
+          "text": "深渊",
+          "font": "Songti SC",
+          "size": 22,
+          "align": "center",
+          "fill": "#d4c9ba"
+        }
+      ]
+    }
+  ]
+}

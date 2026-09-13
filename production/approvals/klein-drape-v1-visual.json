@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "kind": "visual_approval_sidecar",
+  "recorded_at": "2026-09-13T12:32:41Z",
+  "scope": "single_card_visual_only",
+  "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+  "artifact": {
+    "path": "artifacts/production/klein-drape-study-v1/final.png",
+    "sha256": "39e40f25d584843bae2b1d164537aae59fb4ed2e5bf3612240320848c0a6c44e"
+  },
+  "manifest": {
+    "path": "artifacts/production/klein-drape-study-v1/manifest.json",
+    "sha256": "d4e7cd3ef8cf4caf4e48a4b798f9a3d0f900cc350c396b71ed266cafd5d7240d"
+  },
+  "visual_approved": true,
+  "basis": {
+    "source": "current_conversation",
+    "thread_id": "01a0995f-8a27-71a0-b097-fd10334cd99a",
+    "user_quote": "通过！回顾整个制作过程精准优化 SOP"
+  },
+  "accepted": [
+    "双侧帷幕收束与圣徽结合",
+    "无占卜家文字",
+    "主体背景一体",
+    "当前姓名与整体视觉"
+  ],
+  "not_approved_by_this_record": [
+    "后续五档新配色成图",
+    "其他序列或途径",
+    "所有独立组件作为通用公共资产",
+    "正典完整性与正式release"
+  ],
+  "release_approved": false,
+  "release_gap": "现有单卡语义cue仍有旧文字；正式语义和通用release未同步。",
+  "historical_manifest_note": "原manifest保留制作时approved=false；此新增侧车记录后续用户视觉认可，不修改历史manifest，不自动作为旧release API的review。"
+}

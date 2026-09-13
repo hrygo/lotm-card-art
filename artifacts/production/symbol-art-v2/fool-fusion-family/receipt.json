@@ -1,0 +1,134 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "dependencies": [
+    {
+      "path": "config/project.json",
+      "sha256": "496d728ae3bd4e8c311261da13bb5b80541027c6fa78e547f2a6c5c7201490be"
+    },
+    {
+      "path": "tools/materialctl.py",
+      "sha256": "e382e988fcd3f75653f3c8a3cd924fa469773a9168f9592e96bbcb246088b847"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "tools/render/materials.swift",
+      "sha256": "6e01f77549f23dad07170d62e7d9907564c545efcf5112aceadf23cbdec53d9e"
+    },
+    {
+      "path": "production/schemas/composition.schema.json",
+      "sha256": "0e899061a32c907646a39b869e2491d64b7496f5e30ca6fdbbba9ff672b07328"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-0/v001/receipt.json",
+      "sha256": "2a65ee9489ccd946465d7219ac2d20d36047550f5e83d6697cbe9d818ef2de7f"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-0/v001/raw.png",
+      "sha256": "9dc7aa0462ee877586e41be6d3f874a5731170e7c3226bfb5794c876cc96ba67"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-1/v001/receipt.json",
+      "sha256": "358547fce1bfd78f023ad38ca46878f1742786f487655b6fb9b848dac33ff52c"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-1/v001/raw.png",
+      "sha256": "7f0b2037b77850433a5838559f5b483e036bb55105696bf7b7bc42a7e45488d6"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-2/v001/receipt.json",
+      "sha256": "583ebec2b69a1a3ccb5d5e34e815dbdbdaeec6daf4d611dc37bc7db6a51e1edc"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-2/v001/raw.png",
+      "sha256": "8956791e875e0f7f143ea9461d1935cdd9533136ea980a46f351f97d713f5ae1"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-3/v001/receipt.json",
+      "sha256": "453d60189cdf631b9046e18ad7e1d8d8d337adf6052f74f3859452ea9ec7382b"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-3/v001/raw.png",
+      "sha256": "81b581f096f052466a9f4df5194838ef826e85cf7eeffd877dd653573e4650f6"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-4/v001/receipt.json",
+      "sha256": "1ab076bf23831be073a62a7c6b3ea782d29f0a4c2d51b4c598382f8a57b2a073"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-4/v001/raw.png",
+      "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-5/v001/receipt.json",
+      "sha256": "227ac4396a637c55db420463cc1d60f9b4d1acc1ce9a876c9446aa11b9eb3d38"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-5/v001/raw.png",
+      "sha256": "0e14906c841ad24aede5bfd23976c2be349355c1f525deb5b3d62f58d73ad1a8"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-6/v001/receipt.json",
+      "sha256": "efa0bc185d73d3fd32313521e23e00e29deac0610083ab22ddc102436684f6a7"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-6/v001/raw.png",
+      "sha256": "8684a9470ace1177982c82f6d1362cfe33a1130fe8f3e01dd0bd4cb31a04fdd1"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-7/v001/receipt.json",
+      "sha256": "8619e099ebea23e68f5acdbac198e392a4d6b03f1d75d6fc390a1b26ffbe1b10"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-7/v001/raw.png",
+      "sha256": "66a1c337ea7464a606951d3e79b449d8d011671e5dbe2a76ee4aaf86fafc2468"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-8/v001/receipt.json",
+      "sha256": "ebdc0297371971981122e6e8760e1559548cfca1b179f74a24443b9f21010b36"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-8/v001/raw.png",
+      "sha256": "e5efd209834b3dd9be84b5b1c10b70f670805d13503ddbf679d9907a2cd158db"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-9/v001/receipt.json",
+      "sha256": "89bdfb443615197ca83b0ee2f67055a974fdc3d3dbc541e0a916cae3df8e723a"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-9/v001/raw.png",
+      "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9"
+    },
+    {
+      "path": "production/symbols/recipes/fool-fusion-family.json",
+      "sha256": "f38a017e6d73491d25a837613a5d2cada195339906ecc3cd062749dde3218689"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "artifacts/production/symbol-art-v2/fool-fusion-family/request.json",
+      "sha256": "a1c8fb3c186011aeb2a4414f91f78dda7769295754a02642bb09510f8c9a94f9"
+    },
+    {
+      "path": "artifacts/production/symbol-art-v2/fool-fusion-family/recipe.json",
+      "sha256": "f38a017e6d73491d25a837613a5d2cada195339906ecc3cd062749dde3218689"
+    },
+    {
+      "path": "artifacts/production/symbol-art-v2/fool-fusion-family/final.png",
+      "sha256": "56230f04ef04434de09acffc4fb75bbc371bb5587949a061f84a4af6c650e879"
+    },
+    {
+      "path": "artifacts/production/symbol-art-v2/fool-fusion-family/preview.png",
+      "sha256": "7dee98f100362eb6301c6125c0dc0479af7dfdfb96f938976cf0db696b4adbd0"
+    },
+    {
+      "path": "artifacts/production/symbol-art-v2/fool-fusion-family/renderer.json",
+      "sha256": "a2378cf1f4ffc5fae07fc755ed3c6395fbd955f3b2ffec734f7a1e6ee459504b"
+    }
+  ],
+  "declared_native": false,
+  "approval": "pending"
+}

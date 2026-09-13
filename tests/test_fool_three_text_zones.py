@@ -187,8 +187,24 @@ class FoolThreeTextZoneContractTests(unittest.TestCase):
             "six-character-inscription-capacity",
             "exact-glyph-relief",
             "empty-character-name-safe",
+            "text-orientation-upright-top-left",
+            "text-orientation-sentinel",
+            "name-ink-premium-relief",
+            "inscription-contrast-gated",
         ):
             self.assertIn(marker, result.stdout)
+
+    def test_active_text_manifest_records_orientation_and_visual_contract(self):
+        manifest = self.load_json(
+            "artifacts/production/fool-three-text-sample-v8/manifest.json"
+        )
+        self.assertEqual(manifest["version"], 3)
+        self.assertEqual(manifest["coordinate_system"], "design-space-top-left-image-normalized")
+        self.assertEqual(manifest["orientation"], "upright")
+        self.assertTrue(manifest["orientation_sentinel"]["passed"])
+        self.assertGreaterEqual(manifest["contrast"]["minimum_ratio"], 4.5)
+        self.assertGreaterEqual(manifest["name"]["minimum_cap_height_final_px"], 78)
+        self.assertEqual(manifest["geometry"]["max_drift_final_px"], 0)
 
 
 if __name__ == "__main__":

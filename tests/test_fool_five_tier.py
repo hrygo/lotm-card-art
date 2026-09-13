@@ -162,6 +162,9 @@ class FoolFiveTierContractTests(unittest.TestCase):
             "alpha-real",
             "gem-highlight-preserved",
             "legacy-four-tier-rejected",
+            "diamond-seat-integrated",
+            "diamond-contact-shadow",
+            "diamond-rail-continuity",
         ):
             self.assertIn(marker, result.stdout)
 
@@ -238,6 +241,8 @@ class FoolFiveTierContractTests(unittest.TestCase):
 
     def test_active_output_manifest_has_all_ten_sequences_and_five_tiers(self):
         catalog = self.load_json("production/symbols/fool-five-tier-kit.json")
+        self.assertEqual(catalog["version"], "5.0.0")
+        self.assertEqual(catalog["active_output"], "artifacts/production/fool-five-tier-kit-v5")
         output = ROOT / catalog["active_output"]
         manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
 
@@ -278,6 +283,10 @@ class FoolFiveTierContractTests(unittest.TestCase):
         self.assertTrue(manifest["legacy_four_tier_rejected"])
         self.assertTrue(manifest["material_rules"]["diamond_study_embedded"])
         self.assertEqual(manifest["material_rules"]["diamond_variant_tier_count"], 5)
+        self.assertTrue(manifest["material_rules"]["diamond_seat_integrated"])
+        self.assertTrue(manifest["material_rules"]["diamond_contact_shadow"])
+        self.assertTrue(manifest["material_rules"]["diamond_rail_continuity"])
+        self.assertEqual(manifest["material_rules"]["diamond_geometry_difference_pixels"], 0)
         self.assertFalse(manifest["formal_release_approved"])
         self.assertEqual(manifest["visual_status"], "pending")
 

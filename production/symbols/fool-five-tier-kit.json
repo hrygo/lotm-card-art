@@ -1,11 +1,11 @@
 {
-  "version": "4.0.0",
+  "version": "5.0.0",
   "pathway_id": "fool",
-  "status": "active-five-tier-inscription-v3-candidate",
-  "active_output": "artifacts/production/fool-five-tier-kit-v4",
+  "status": "active-five-tier-inscription-v4-candidate",
+  "active_output": "artifacts/production/fool-five-tier-kit-v5",
   "direction": {
-    "path": "production/symbols/quality-frame-three-text-direction-v3.json",
-    "sha256": "cb6df431ba607c6de4c51594c7d90a31194f1899e264adbe30afc770a7a7beda"
+    "path": "production/symbols/quality-frame-three-text-direction-v4.json",
+    "sha256": "24fa429e2cf248d5482dc786ba98a5fe2d36c171e29b9b96a375339b4d0b88d1"
   },
   "geometry_lock": {
     "path": "production/symbols/quality-geometry-lock.json",
@@ -24,28 +24,28 @@
     "sha256": "b3d0519d04ca2fed036a2e7d2b39c1b9a2ae4c62752cdfc5bd1b8a0ee9bb0daa"
   },
   "recipe": {
-    "path": "production/symbols/recipes/fool-three-text-zones-v3.json",
-    "sha256": "5197b105b0a069c20ac62eddb8bc9a065da5fdc1ef3c903f49f5f216120a22fa"
+    "path": "production/symbols/recipes/fool-three-text-zones-v4.json",
+    "sha256": "4f8e663ec35f0dd4f760d8f4d0c5e48d2f56c4ca5d8ab37d9f1df16c7e999038"
   },
   "text_contract": {
     "schema_path": "production/schemas/card-text-panels.schema.json",
     "schema_sha256": "efd1b448e1b44b18f330251ff8994e0332ffe252c2c82f275910efa2402b6a06",
-    "template_path": "production/templates/card-text-panels-v3.json",
-    "template_sha256": "84897c9cfd49575144ed5df5a331569d34af60ac0d2d43b61868adad9c2f268a"
+    "template_path": "production/templates/card-text-panels-v4.json",
+    "template_sha256": "ff8cb14a45fdbf6c1966609b79b4486763a271d3e5a01d0d948542f139dd21f9"
   },
   "inscription_contract": {
-    "path": "production/symbols/inscriptions/fool-side-inscription-v1.json",
-    "sha256": "22f5c70e3727a87849f19977f4eab6028c37c60574ed5a48f17f5c295bc04e53",
+    "path": "production/symbols/inscriptions/fool-side-inscription-v2.json",
+    "sha256": "908af1101b97124f887b6b56ff01a746108a94491d0b84447a7e7e82f5387686",
     "render_mode": "exact-glyph-relief",
     "minimum_characters": 6,
     "width_ratio_to_column": 1.5,
-    "style_reference": "artifacts/production/fool-side-inscription-study-v1/raw.png"
+    "style_reference": "artifacts/production/fool-frame-refinement-v1/side-junction/raw.png"
   },
   "diamond_study": {
     "path": "artifacts/production/fool-diamond-v2/raw.png",
     "sha256": "28191cb798528689890c4adae0b3998a7501dfe71d62e60b9f51abfd08d3e0b8",
     "role": "five-tier-cut-reference",
-    "pixel_integration": "deterministic-border-cutout-and-fixed-anchor",
+    "pixel_integration": "deterministic-border-cutout-fixed-anchor-plus-integrated-seat",
     "tier_order": ["low", "mid", "saint", "angel", "true-god"],
     "crop_rects_px": {
       "low": [18, 230, 331, 405],
@@ -54,6 +54,43 @@
       "angel": [1072, 229, 330, 406],
       "true-god": [1422, 229, 330, 405]
     }
+  },
+  "diamond_integration_study": {
+    "path": "artifacts/production/fool-frame-refinement-v1/diamond-seat/raw.png",
+    "sha256": "d4c7b9d27d00a842ef1e826b6477bc574e70737e7ee2e183e4e20baa77d07069",
+    "role": "agentic-contact-architecture-reference-only",
+    "pixel_role": "reference-only"
+  },
+  "refinement_studies": {
+    "status": "generated-pending-visual-material-review",
+    "purpose": "Agentic studies guide material and junction treatment; deterministic renderers own final pixels and fixed geometry.",
+    "assets": [
+      {
+        "id": "side-junction",
+        "path": "artifacts/production/fool-frame-refinement-v1/side-junction/raw.png",
+        "sha256": "a5d9e239b9febda3b8c17e35d560cb220bafb94ad5da1e9f8c58e384dc7bfbdf",
+        "call": "production/calls/fool-frame-refinement-v1-side-junction.json",
+        "role": "agentic-style-reference",
+        "visual_status": "pending"
+      },
+      {
+        "id": "diamond-seat",
+        "path": "artifacts/production/fool-frame-refinement-v1/diamond-seat/raw.png",
+        "sha256": "d4c7b9d27d00a842ef1e826b6477bc574e70737e7ee2e183e4e20baa77d07069",
+        "call": "production/calls/fool-frame-refinement-v1-diamond-seat.json",
+        "role": "agentic-style-reference",
+        "visual_status": "pending"
+      },
+      {
+        "id": "nameplate",
+        "path": "artifacts/production/fool-frame-refinement-v1/nameplate/raw.png",
+        "sha256": "ec17429cec15ab9a3d1dc859f2c9c0c9235281221844b81d27a35698d83512e8",
+        "call": "production/calls/fool-frame-refinement-v1-nameplate.json",
+        "role": "agentic-style-reference",
+        "visual_status": "pending"
+      }
+    ],
+    "engineering_status": "study-informed; deterministic renderers remain the sole active pixel production path"
   },
   "sequence_mapping": {
     "low": [9, 8],

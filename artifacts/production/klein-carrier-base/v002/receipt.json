@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "foundation",
+  "mode": "concept",
+  "task_id": "klein-carrier-base",
+  "run_id": "v002",
+  "task": {
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "references": [
+      {
+        "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
+        "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+        "role": "style"
+      }
+    ],
+    "limits": {
+      "max_attempts": 2
+    },
+    "task_id": "klein-carrier-base",
+    "kind": "foundation",
+    "mode": "concept",
+    "output": {
+      "aspect": [
+        2,
+        3
+      ],
+      "background": "opaque"
+    },
+    "prompt": "Use case: stylized-concept. Create a new exquisite reusable FLAT backing material for the Fool pathway collector card, portrait 2:3. Reference image is ONLY the original silver-and-muted-gold frame with smoke-purple inset material, to match its restrained low-tier craftsmanship. DO NOT reproduce its frame or emblem. Output the underlying surface only, edge-to-edge rectangular texture with no silhouette of its own. A mysterious deep aubergine smoky-purple satin lacquer over fine archival cloth, richly layered but extremely subtle, very fine subdued silver-mauve particulate microtexture and low-relief organic grain, a quiet soft upper-left diffuse sheen that matches the frame, dark enough to receive ivory lettering. Smooth continuous surface, no geometric patterns to align, no folds, no embossed perimeter, no central object, no hotspot. It must feel like the inner lining made for exactly this object, not a separate tablet or stone slab. No lettering, no numerals, no watermark, no sigil, no frame, no gold rails, no rings, no stars, no checkerboard. Luminous nuanced dark material, never pure black. Center quiet. Premium old-world mysticism through material depth, not busy decoration.",
+    "spec": {
+      "material": "烟紫缎光漆质衬底，细密织物微纹；无定位纹样",
+      "lighting": "左上柔光，克制反射",
+      "tiling": false,
+      "use_scope": [
+        "fool-low-carrier",
+        "klein-seer-single-card"
+      ]
+    }
+  },
+  "compiled": "artifacts/production/klein-carrier-base/v002",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/klein-carrier-base.json",
+        "sha256": "7654b9eb933fe8650b7ebcea7a020e1a9fedf780e0639934c083ba7c38c668e1"
+      },
+      {
+        "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
+        "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+        "role": "style"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-foundation/SKILL.md",
+        "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+      }
+    ],
+    "design_fingerprint": null,
+    "task_sha256": "7654b9eb933fe8650b7ebcea7a020e1a9fedf780e0639934c083ba7c38c668e1",
+    "prompt_sha256": "2a5e1ca3bfcc8296432c1a2a57791c8f3b21d8382b73411207ff3c8c2e48819c"
+  },
+  "reused_run": "artifacts/production/klein-carrier-base/v001/receipt.json",
+  "raw": {
+    "path": "artifacts/production/klein-carrier-base/v002/raw.png",
+    "sha256": "c0326e4873b441b383564a6386df4403c5e20c5e21cf45fc10a05f802dba6589"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1024,
+    "height": 1536,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      2,
+      3
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: stylized-concept. Create a new exquisite reusable FLAT backing material for the Fool pathway collector card, portrait 2:3. Reference image is ONLY the original silver-and-muted-gold frame with smoke-purple inset material, to match its restrained low-tier craftsmanship. DO NOT reproduce its frame or emblem. Output the underlying surface only, edge-to-edge rectangular texture with no silhouette of its own. A mysterious deep aubergine smoky-purple satin lacquer over fine archival cloth, richly layered but extremely subtle, very fine subdued silver-mauve particulate microtexture and low-relief organic grain, a quiet soft upper-left diffuse sheen that matches the frame, dark enough to receive ivory lettering. Smooth continuous surface, no geometric patterns to align, no folds, no embossed perimeter, no central object, no hotspot. It must feel like the inner lining made for exactly this object, not a separate tablet or stone slab. No lettering, no numerals, no watermark, no sigil, no frame, no gold rails, no rings, no stars, no checkerboard. Luminous nuanced dark material, never pure black. Center quiet. Premium old-world mysticism through material depth, not busy decoration.",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13T11:38:56.000Z",
+    "attempt": 1,
+    "attachments": [
+      {
+        "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
+        "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+        "role": "style"
+      }
+    ],
+    "observation": "已观察：烟紫低对比微纹，上左有柔光，无边框、数字、人物或定位浮雕；可进入限定轮廓试装，融合需看最终图。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T11:46:18.665116+00:00"
+}

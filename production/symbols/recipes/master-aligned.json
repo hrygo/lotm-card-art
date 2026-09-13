@@ -1,0 +1,51 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "master-aligned",
+  "profile": "standard",
+  "background": "#182031",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "master-frame",
+      "receipt": "artifacts/production/fool-quality-frame-low/v001/receipt.json",
+      "rect": [
+        0,
+        0,
+        1000,
+        1500
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "emblem",
+      "receipt": "artifacts/production/sigil-fool/v001/receipt.json",
+      "rect": [
+        283.0283400809717,
+        16.599190283400816,
+        426.46153846153845,
+        426.46153846153845
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            241.46484375,
+            1272.24609375,
+            520,
+            120
+          ],
+          "font": "Songti SC",
+          "size": 42,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    }
+  ]
+}

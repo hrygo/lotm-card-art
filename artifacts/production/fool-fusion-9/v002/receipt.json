@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "foundation",
+  "mode": "concept",
+  "task_id": "fool-fusion-9",
+  "run_id": "v002",
+  "task": {
+    "schema_version": "1.0.0",
+    "task_id": "fool-fusion-9",
+    "revision": 2,
+    "kind": "foundation",
+    "mode": "concept",
+    "output": {
+      "aspect": [
+        1,
+        1
+      ],
+      "background": "transparent"
+    },
+    "prompt": "Edit the attached artwork: perform a precise background removal only. Preserve the entire ornate Fool numeral 9 sculpture exactly: mask, purple drapery, gold, white enamel, all edges and gemstones. REMOVE EVERY white or gray checkerboard background pixel outside the object AND inside holes including eye openings. The result must be a true transparent RGBA PNG with alpha=0 in the background, not a picture of transparency. Do not draw a new checkerboard, white backdrop, shadow backdrop, or scene. No stylistic change, no added ornament, no cropped tips. This is an isolated reusable cutout asset.",
+    "references": [
+      {
+        "path": "artifacts/production/fool-fusion-9/v001/raw.png",
+        "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9",
+        "role": "edit_target"
+      }
+    ],
+    "limits": {
+      "max_attempts": 2
+    },
+    "spec": {
+      "material": "愚者面具帷幕与数字9共用笔画的金银珐琅精雕",
+      "lighting": "左上柔光",
+      "tiling": false,
+      "use_scope": [
+        "fusion:fool",
+        "digit:9"
+      ]
+    }
+  },
+  "compiled": "artifacts/production/fool-fusion-9/v002",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/symbols/tasks/fool-fusion-9-r2.json",
+        "sha256": "e71dc21c5342e491b3684fe3cb2a1a3215a368779a8846c0f7609dc358df6055"
+      },
+      {
+        "path": "artifacts/production/fool-fusion-9/v001/raw.png",
+        "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9",
+        "role": "edit_target"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-foundation/SKILL.md",
+        "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+      }
+    ],
+    "design_fingerprint": null,
+    "task_sha256": "e71dc21c5342e491b3684fe3cb2a1a3215a368779a8846c0f7609dc358df6055",
+    "prompt_sha256": "028255d6490577a1218858a75bdc0d308c680ae447138af5f5840b63ef0ecf2d"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/fool-fusion-9/v002/raw.png",
+    "sha256": "ff797f0b7dfea42067fd07ab564835c484fa66cd7b470d41cac25a512fab0144"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      1,
+      1
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Edit the attached artwork: perform a precise background removal only. Preserve the entire ornate Fool numeral 9 sculpture exactly: mask, purple drapery, gold, white enamel, all edges and gemstones. REMOVE EVERY white or gray checkerboard background pixel outside the object AND inside holes including eye openings. The result must be a true transparent RGBA PNG with alpha=0 in the background, not a picture of transparency. Do not draw a new checkerboard, white backdrop, shadow backdrop, or scene. No stylistic change, no added ornament, no cropped tips. This is an isolated reusable cutout asset.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13",
+    "attempt": 2,
+    "attachments": [
+      {
+        "path": "artifacts/production/fool-fusion-9/v001/raw.png",
+        "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9",
+        "role": "edit_target"
+      }
+    ],
+    "observation": "已实际观察返修：数字与面具结构仍可辨，但灰白棋盘格仍烘焙进图像。AppKit读取hasAlpha=false，背景像素alpha=1。返修失败，达到本任务2次上限，不作为可合成透明物料；保留记录供审查。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T09:15:19.825225+00:00"
+}

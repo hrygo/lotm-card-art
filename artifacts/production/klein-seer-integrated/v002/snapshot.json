@@ -1,0 +1,50 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/klein-seer-integrated-r2.json",
+      "sha256": "2f822c636fb521a70b558eabfdeed9d5700ab66caabae9f2f4259f10937a98a6"
+    },
+    {
+      "path": "artifacts/production/klein-identity-v3/reference.png",
+      "sha256": "d5179d39b18af70270e2db6fde3d75c40fbb687ba23b0325f7430d8b7e2679dc",
+      "role": "geometry"
+    },
+    {
+      "path": "artifacts/production/klein-seer-card-v3/final.png",
+      "sha256": "97bd976b07604ad46b112f996b89574bb3d4c259724f1078837938dcb14f5204",
+      "role": "geometry"
+    },
+    {
+      "path": "artifacts/production/klein-seer-integrated/v001/raw.png",
+      "sha256": "0435b0f53ada0930b38288c4803b951e7bd5dd673f767b9ea3e079156aaace0b",
+      "role": "edit_target"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-subject/SKILL.md",
+      "sha256": "ea3f7ae75a689d7b8ddc98676e385ee5de70f03ca49491721a8e228dc307a0ec"
+    },
+    {
+      "path": "pathways/fool/sequences/09/card.json",
+      "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e"
+    },
+    {
+      "path": "pathways/fool/canon.json",
+      "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+    }
+  ],
+  "design_fingerprint": "98aebc313499dab55a17bd91dc742b9194272673f3db876dcafc86b39c708870",
+  "task_sha256": "2f822c636fb521a70b558eabfdeed9d5700ab66caabae9f2f4259f10937a98a6",
+  "prompt_sha256": "467f5ec2b2ef92411994492128c53593b08996b1768fe126baa52a209079d246"
+}

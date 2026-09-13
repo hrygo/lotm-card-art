@@ -1,0 +1,27 @@
+{
+  "dependencies": [
+    {
+      "path": "production/symbols/tasks/sigil-darkness.json",
+      "sha256": "dc978f6150a533593ac80132e9de0059c1aed7579364acc678855a728ffc6452"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-foundation/SKILL.md",
+      "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+    }
+  ],
+  "design_fingerprint": null,
+  "task_sha256": "dc978f6150a533593ac80132e9de0059c1aed7579364acc678855a728ffc6452",
+  "prompt_sha256": "966bf2b4b81c6c2f4178b4d9cc79a94fde08609eb06ef1e7f6cc05e0f05e14d8"
+}

@@ -1,0 +1,54 @@
+{
+  "version": "1.1.0",
+  "setting_id": "quality-color-tokens",
+  "status": "user_adopted_design_contract",
+  "source": "current_conversation_user_palette",
+  "rank_basis": "config/sequence-hierarchy.json",
+  "scope": "cross_pathway_visual_quality",
+  "tiers": [
+    {"id": "low", "label_zh": "低序列", "sequences": [9, 8], "color_name_zh": "银白", "primary": "#E8EDF2"},
+    {"id": "mid", "label_zh": "中序列", "sequences": [7, 6, 5], "color_name_zh": "翡翠绿", "primary": "#55B978"},
+    {"id": "saint", "label_zh": "圣者", "sequences": [4, 3], "color_name_zh": "秘蓝", "primary": "#4D97D4"},
+    {"id": "angel", "label_zh": "天使", "sequences": [2, 1], "color_name_zh": "典藏紫", "primary": "#A66BD6"},
+    {"id": "true-god", "label_zh": "真神", "sequences": [0], "color_name_zh": "橙金", "primary": "#F0B23F"}
+  ],
+  "application": {
+    "primary_targets": ["frame_texture", "gemstone_design"],
+    "frame_texture": "主色用于边框纹理、材质纹路与嵌饰的层级识别，不把整框所有材质涂成单色。",
+    "gemstone_design": "主色用于宝石体色、内部色彩与反射设计；明暗和高光可按材质变化，不要求每个像素等于色值。",
+    "preserve": ["pathway_shape_language", "frame_geometry", "emblem_digit_readability", "name_readability"],
+    "not_automatic_targets": ["subject_illustration", "scene_background", "name_art", "entire_emblem"],
+    "no_global_card_tint": true,
+    "color_model": "识别锚色＋有层次的明暗冷暖＋受控色相流动，不是单色覆盖",
+    "hue_drift": {
+      "enabled": true,
+      "meaning": "色相与反射随纹理起伏、材质深度及光照柔和变化，不指几何或定位漂移。",
+      "anchor": "大面积可读的体色仍归属于该档primary；局部偏色不取代层级身份。",
+      "drivers": ["surface_relief", "light_direction", "material_depth", "facet_reflection"],
+      "avoid": ["uniform_flat_fill", "random_rainbow_noise", "neighbor_tier_confusion", "whole_card_color_shift"]
+    },
+    "gem_luminance": {
+      "intent": "宝石光亮、通透、有深度；体色、暗部、折射色和高亮切面同时存在。",
+      "highlights": "清晰但局部的高亮点与切面反射，允许近白高光及局部异色火彩。",
+      "preserve": "晶体轮廓、切面、内部细节与层级主色仍可回读。",
+      "avoid": ["flat_luminous_blob", "clipped_white_gem", "large_bloom_hiding_structure", "extra_gems_for_rank"]
+    },
+    "no_extra_ornament_count_for_rank": true,
+    "emblem_gems": "圣徽宝石如需采用层级色，使用独立授权区域派生，不改数字、面具或途径标识造型；既有批准原稿不覆盖。"
+  },
+  "compatibility": {
+    "replaces_visual_four_tier_mapping": true,
+    "high_sequence_visual_split": {"saint": [4, 3], "angel": [2, 1]},
+    "canon_taxonomy_unchanged": true,
+    "note": "圣者与天使仍属于事实分类中的高序列；本合同只将视觉品质拆成五档。"
+  },
+  "implementation": {
+    "task_compiler_integrated": true,
+    "task_dependency_tracking": true,
+    "renderer_integrated": false,
+    "five_tier_assets_generated": false,
+    "existing_outputs_recolored": false,
+    "legacy_entry": "production/symbols/fool-frame-kit.json",
+    "legacy_note": "原四档素材和硬编码映射保留为历史实现，不是本五档配色的已完成产物。"
+  }
+}

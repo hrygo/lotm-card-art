@@ -1,0 +1,130 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "quality-frames",
+  "profile": "standard",
+  "background": "#182031",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "low",
+      "receipt": "artifacts/production/fool-quality-frame-low/v001/receipt.json",
+      "rect": [
+        15,
+        45,
+        470,
+        660
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "low-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "低序列 · 哑光",
+          "rect": [
+            10,
+            0,
+            480,
+            43
+          ],
+          "font": "Songti SC",
+          "size": 23,
+          "align": "center",
+          "fill": "#f0e9dc"
+        }
+      ]
+    },
+    {
+      "id": "mid",
+      "receipt": "artifacts/production/fool-quality-frame-mid/v001/receipt.json",
+      "rect": [
+        515,
+        45,
+        470,
+        660
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "mid-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "中序列 · 珐琅",
+          "rect": [
+            510,
+            0,
+            480,
+            43
+          ],
+          "font": "Songti SC",
+          "size": 23,
+          "align": "center",
+          "fill": "#f0e9dc"
+        }
+      ]
+    },
+    {
+      "id": "high",
+      "receipt": "artifacts/production/fool-quality-frame-high/v001/receipt.json",
+      "rect": [
+        15,
+        765,
+        470,
+        660
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "high-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "高序列 · 晶质",
+          "rect": [
+            10,
+            720,
+            480,
+            43
+          ],
+          "font": "Songti SC",
+          "size": 23,
+          "align": "center",
+          "fill": "#f0e9dc"
+        }
+      ]
+    },
+    {
+      "id": "true-god",
+      "receipt": "artifacts/production/fool-quality-frame-true-god/v001/receipt.json",
+      "rect": [
+        515,
+        765,
+        470,
+        660
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "true-god-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "真神 · 无瑕",
+          "rect": [
+            510,
+            720,
+            480,
+            43
+          ],
+          "font": "Songti SC",
+          "size": 23,
+          "align": "center",
+          "fill": "#f0e9dc"
+        }
+      ]
+    }
+  ]
+}

@@ -147,3 +147,32 @@ OK
 - 当前 SpeechRail 合约下，每个已批准章节的完整正文对应一次 `/v1/audio/speech` 请求，重播和停止后再次开始复用内存音频缓存，不按句拆分；服务只返回单段音频、没有章节时间轴，因此本轮不宣称整篇单请求可精确跳章。
 - 自动化：`swift test` 执行 59 tests，0 failures；新增 `StoryChapterNavigatorTests` 覆盖跳过待确认章节和上下边界，`SpeechPlaybackCoordinatorTests` 覆盖重播/停止后的单次合成复用。
 - CUA 最新 release `.app` 实测：故事页可见 folio、章节标题和五个 transport 控件；开始、暂停、重播、下一章、上一章、停止状态，以及停止后正文保留并可再次重播均已确认。
+
+## 身份卡信息与序列文案 UI 审查
+
+- 2026-09-13：按当前 release `.build/LotmCardStudio.app` 逐屏复核画册主页、序列 0 原型卡、序列 7 奥黛丽身份卡、故事抽屉和搜索无结果态；截图与 Accessibility 文案均来自本轮重启后的当前构建。
+- 序列展示统一为不补零的用户文案：`序列 0`、`序列 3`、`序列 7`、`序列 9`；`s00` / `s09` 等稳定内部 ID 保持不变。卡牌列表、卡面围台、详情标题、六维身份回读和 VoiceOver 标签均通过同一格式化入口展示。
+- 序列层级文字色统一为五档稀有度 token：`低序列（9–8）= 银白`、`中序列（7–5）= 翡翠绿`、`圣者（4–3）= 秘蓝`、`天使（2–1）= 典藏紫`、`真神（0）= 橙金`；层级色与“已确认/候选”内容状态色分离。
+- 主页愿望指标改为真实的 `wishlistCount`，标题统一为“愿望清单”；移除虚构的最近唤醒入口；画廊导语改为“选择一张身份卡，查看身份、六维信息和故事”。
+- 主页移除无点击行为、且与导语重复的“开始探索”横幅及装饰性进度线；统计栏后直接进入真实的“卡牌列表”。
+- 详情页移除身份面板重复的内容状态徽章；具体人物只显示人物名和身份卡数量，不展示身份存储规则；原型卡改为“身份类型 / 途径原型 / 原型卡”，并明确“不对应具体角色”。
+- 声音提示集中到实时字幕栏，按钮行不再出现易截断的重复说明；空闲状态统一为“未播放”。故事可播放时明确提示“这段故事可以朗读，也可以直接阅读”。
+- 搜索无结果态移出 `LazyVGrid`，以完整内容宽度居中展示“没有找到匹配的身份卡”，并保留“清除搜索”恢复入口；人工截图未观察到卡片覆盖、文字出框或面板重叠。
+- 自动化：`swift test` 执行 71 tests，0 failures；新增五档序列映射、层级文案去重与颜色 token 区分回归，并覆盖旧格式序列输入仍可用新格式搜索；`./scripts/build-app.sh debug` 与 `./scripts/build-app.sh release` 均退出码 0；release `.app` 的 `LSMinimumSystemVersion=26.0`、主程序为 Mach-O `arm64`，`codesign --verify --deep --strict` 通过。
+- CUA 复核当前 release `.app` 的画廊首页：序列 3 显示秘蓝、序列 9 显示银白、序列 0 显示橙金、序列 7 显示翡翠绿；当前合成 fixture 没有序列 2/1 卡牌，天使色通过五档 token 单元测试核验。
+
+## 五档层级 token 与脚本泄露复核
+
+- `SequenceBadge` 统一用于卡牌列表、详情卡面围台和身份信息抬头；详情与 VoiceOver 明确读出“低序列 / 中序列 / 圣者 / 天使 / 真神”，序列数字始终不补零。
+- 序列色只表达力量层级；内容状态、六维信息、声音与故事播放态分别使用 `ArchiveTheme.Status`、`ArchiveTheme.Semantic` 与 `ArchiveTheme.Playback`，候选状态改为烟铜色，魔药维度改为玫瑰色，均不复用天使紫或低序列银白。
+- CUA 复核序列 0、序列 3、序列 7、候选清单和画廊首页：未发现 `fixture`、`snapshot`、`recipe`、原始 voice ID、审批/流水线标签或重复的序列层级文案；序列 0 只显示“序列 0 · 真神”。
+
+## 克莱恩·莫雷蒂序列 9 身份卡内置验收
+
+- 2026-09-13：将已制作的廷根时期克莱恩卡图接入 `lotm.fool.s09.klein-moretti.tingen-01`，App 用户文案显示为“克莱恩·莫雷蒂 / 序列 9 · 占卜家”；卡图资源为 `klein-s09-seer-v001.png`，源文件与 App bundle 内文件 SHA-256 均为 `39e40f25d584843bae2b1d164537aae59fb4ed2e5bf3612240320848c0a6c44e`。
+- 卡图实际规格为 PNG 2048×3072、RGBA、sRGB；CUA 重启当前 `.build/LotmCardStudio.app` 后进入候选清单和克莱恩详情，截图确认完整卡面、人物姓名和银白低序列边框可见，未出现资源缺失或占位图。
+- 新增用户故事包：1 条问候语、2 条口头语、3 个第三人称故事章节；身份页和故事页均可直接阅读，故事页实测显示三章标题、正文与“待确认”状态。
+- 详情页六维回读已按序列 9 专门配置：专注克制的扮演、近处目标灵摆占卜、材料意象、入序提示和近处目标限制；CUA Accessibility 树实测同时显示“愚者途径 · 占卜家 · 克莱恩 · 序列 9”，未再落入序列 3 的通用文案。
+- 该内容均标记为 `draft` / “候选”，播放按钮保持禁用并显示“台词等待确认”或“故事还在确认中”；本轮未生成或伪造音频，也未把原创解释性文案标为原著引文。待用户逐字确认后，才可转为可朗读内容并进入音频制作。
+- 内容源 `production/narratives/klein-s09-tingen.json` 已通过 `python3 tools/production.py check-content`；Swift 回归测试 72/72 通过；Debug/Release 构建均通过；Release `.app` 的 Mach-O 为 `arm64`、最低系统版本为 `26.0`，`codesign --verify --deep --strict` 通过。
+- 仓库级 `python3 -m unittest discover -s tests -v` 实测 124 项：2 failures、61 errors；失败集中在既有物料/符号 receipt 仍引用旧版 `tools/production.py`，并非克莱恩 App fixture 或 Swift 路径，本轮不重编译整套历史 receipt，也不将全库回归标记为通过。

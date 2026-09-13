@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "fool",
+  "digit": 3,
+  "design_tokens": {
+    "palette": [
+      "旧金",
+      "雾银",
+      "烟紫",
+      "象牙白"
+    ],
+    "motifs": [
+      "面具",
+      "帷幕"
+    ],
+    "craft": "金银精雕/紫色珐琅/浮雕/镂空",
+    "lighting": "左上柔光"
+  },
+  "references": [
+    {
+      "path": "artifacts/production/sigil-fool/v001/raw.png",
+      "sha256": "8bed2bf6163130e465f09b8896f2e709bc50e6c3436712de358ed4c68a8a3b1d",
+      "role": "style"
+    },
+    {
+      "path": "artifacts/production/fool-numeral-3/v001/raw.png",
+      "sha256": "e1ea4a20d8480409d7a13e4037b1604c909e700b4d9e613cd0c34af8ee2c6918",
+      "role": "geometry"
+    }
+  ],
+  "fusion_strategy": "Two generous curtain arcs form the upper and lower bowls of 3, BOTH OPEN TO THE LEFT; carve the mask profile along the outer right spine. Preserve the central waist and avoid an 8 silhouette.",
+  "invariants": [
+    "只可读出当前数字",
+    "数字骨架与途径意象共用结构",
+    "独立完整徽章",
+    "不机械叠字"
+  ],
+  "art_reference": "用户已认可愚者0/4/7/9的方法与融合造型；本新稿待确认",
+  "engineering_target": "真实透明PNG；若净底未满足，保留造型并单独登记技术状态",
+  "preserve_records": [
+    "artifacts/production/fool-fusion-0/v001/receipt.json",
+    "artifacts/production/fool-fusion-0/v002/receipt.json",
+    "artifacts/production/fool-fusion-4/v001/receipt.json",
+    "artifacts/production/fool-fusion-4/v002/receipt.json",
+    "artifacts/production/fool-fusion-7/v001/receipt.json",
+    "artifacts/production/fool-fusion-7/v002/receipt.json",
+    "artifacts/production/fool-fusion-9/v001/receipt.json",
+    "artifacts/production/fool-fusion-9/v002/receipt.json"
+  ],
+  "task": "production/symbols/tasks/fool-fusion-3.json"
+}

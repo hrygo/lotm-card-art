@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-quality-frame-mid",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "transparent"
+  },
+  "prompt": "Use case: precise-object-edit. Edit the attached master Fool card frame into another QUALITY FINISH ONLY. MID / RARE-like quality. Replace matte silver finish with finely POLISHED mist-silver showing narrow crisp specular highlights. Existing violet channels become more translucent smoky-violet enamel. The ONE existing bottom diamond becomes SAPPHIRE BLUE with a very small quiet inner glint. No blue elsewhere; keep the Fool purple identity. STRICT INVARIANTS: exactly preserve the master frame silhouette, width, geometry, every fold channel, shoulder shape, empty top opening, illustration window, nameplate dimensions and the single diamond location. DO NOT add, remove, enlarge or multiply ornaments. No top crossbar, no circular socket, no halo structure, no towers, no crown, no wings, no pendants, no extra gems. The central top area stays wide open for a separately placed sacred emblem. Keep the same front orthographic 2:3 composition, exact object position and scale, lighting direction and full outside margins. Change surface optical QUALITY and the existing small quality diamond only. Frame remains equally SIMPLE at all ranks. Genuine transparent PNG for all empty areas and outside edges; no checkerboard, fog, black or white backdrop. No text, digit, mask, emblem or character.",
+  "references": [
+    {
+      "path": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+      "sha256": "4eb5e5d4ce6943140e121b55699cfc3911c8e67450dda898ff77265ce3ed39e1",
+      "role": "edit_target"
+    }
+  ],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "tier": "mid",
+    "geometry": "统一纤细U形骨架；两侧三道帷幕折槽；固定姓名牌与单一底部品质嵌片；顶部无横梁/圆孔/冠饰；品质不靠增加装饰。",
+    "clear_regions": [
+      [
+        220,
+        30,
+        560,
+        375
+      ],
+      [
+        140,
+        450,
+        720,
+        795
+      ]
+    ]
+  }
+}

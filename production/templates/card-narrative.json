@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "cardID": "template.card.replace-before-production",
+    "slotID": "lotm.fool.s09",
+    "characterID": null,
+    "identitySliceID": "template.identity.replace-before-production",
+    "name": "待绑定主角准确姓名",
+    "timeScope": "待填写此身份所在时间段与已获得能力",
+    "spoilerBoundary": "待填写可披露事件与禁止提前透露的信息"
+  },
+  "entries": [
+    {
+      "id": "greeting-01", "kind": "greeting", "title": null,
+      "text": "", "sourceKind": "original", "evidenceRefs": [],
+      "gap": "待创作和逐字审核；空模板不是已完成文案。", "contentDigest": null,
+      "review": {"status": "draft", "approvedDigest": null, "by": null, "reference": null}
+    },
+    {
+      "id": "catchphrase-01", "kind": "catchphrase", "title": null,
+      "text": "", "sourceKind": "original", "evidenceRefs": [],
+      "gap": "待核对角色口头语；未核验的拟写不得标为原著台词。", "contentDigest": null,
+      "review": {"status": "draft", "approvedDigest": null, "by": null, "reference": null}
+    },
+    {
+      "id": "story-01", "kind": "story", "title": "待定章节",
+      "text": "", "sourceKind": "original", "evidenceRefs": [],
+      "gap": "待设计当前身份阶段的故事，不借未来身份或能力补齐。", "contentDigest": null,
+      "review": {"status": "draft", "approvedDigest": null, "by": null, "reference": null}
+    }
+  ]
+}

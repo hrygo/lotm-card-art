@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "material-blasphemy-slate",
+  "revision": 1,
+  "kind": "foundation",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "opaque"
+  },
+  "prompt": "Use case: stylized-concept. Asset type: reusable premium fantasy card FRONT backing stone surface, full-bleed portrait 2:3. Create an exquisite, quiet, ancient gray-white stone material inspired by an archaic knowledge-bearing slate, an ORIGINAL artistic interpretation, not a replica of any official design. The stone surface fills every pixel, orthographic straight-on, flat and continuous; no visible slab perimeter, no surrounding scene, no perspective or object mockup. Warm-neutral mineral gray with pale ash-white fine mineral inclusions, understated weathered patina and delicate shallow erosion. Matte, dense, refined stone, not marble, concrete, paper or metal. Center roughly 70 percent of the surface is calm and low-contrast for later character artwork. Very restrained slightly more weathered texture near the periphery, no dark vignette, no blank white center. Broad near-frontal diffuse illumination with a very gentle upper-left bias, no baked cast shadows, no dramatic hotspot. Fine rich material detail at full size but visually quiet in a card thumbnail. This is an underlying substrate for separate antique gold/silver frames; DO NOT DRAW any frame, edging, gold ornament, emblem, numeral, text, rune, inscription, face, character, jewel, central object, large crack, broken fragment, glow or shadow border. Muted medium-light gray, not pure white, not dark obsidian. All edges continue the same stone surface; seamless tiling is not required.",
+  "references": [],
+  "limits": {
+    "max_attempts": 1
+  },
+  "spec": {
+    "material": "亵渎石板意象提炼的灰白石质母底；原创美术，不标为原著外观复原",
+    "lighting": "近正面漫射，极轻左上倾向；接触阴影由合成层提供",
+    "tiling": false,
+    "use_scope": [
+      "global",
+      "front-backing",
+      "all-22-pathways"
+    ]
+  }
+}

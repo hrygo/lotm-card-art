@@ -153,11 +153,11 @@ private extension SpeechRailConfigurationFileState {
     var tint: Color {
         switch self {
         case .configured:
-            return ArchiveTheme.teal
+            return ArchiveTheme.Playback.ready
         case .missing:
-            return ArchiveTheme.amber
+            return ArchiveTheme.Playback.preparing
         case .unavailable:
-            return ArchiveTheme.danger
+            return ArchiveTheme.Playback.failed
         }
     }
 }

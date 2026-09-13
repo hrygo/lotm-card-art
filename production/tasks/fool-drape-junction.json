@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-drape-junction",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      3,
+      1
+    ],
+    "background": "opaque"
+  },
+  "prompt": "Use case: stylized-concept. Generate an isolated pair of LEFT and RIGHT draped metal frame junctions, together in ONE 3:1 horizontal image, on perfectly plain white background for precision extraction. Reference 1 is the existing full card: its straight arched bridge with oval center is REJECTED, do not copy it. Reference 2 is the original frame whose inward-curving shoulders supply the exact material and three broad fold language. Reference 3 is the sacred numeral 9 whose art must NOT appear in this output; it will be placed in the central empty gap. Design two separate flowing smoke-purple satin-enamel folds with hairline antique gold edges and restrained mist-silver lip, like natural continuation of the folded curtain shoulders into discreet tapered attachment tongues. Outer ends broader, sweep inward with a gentle shallow sag then curl softly upward at the inner ends; not a rigid arch, no straight bar, no oval socket, no center plate, no ornamental medallion. LEFT and RIGHT pieces never touch each other. Leave central 20 percent of width completely empty white from top to bottom. Both inner tapered ends terminate at matching height near the upper-middle, designed to slip behind the solid lateral edges of a small central emblem without crossing behind its hollow center. Continuous flowing folded ribbon sculpting, asymmetrical microfolds but balanced overall, only two or three broad folds, beautiful quiet craftsmanship, low tier not elaborate filigree. Orthographic front view, soft upper-left light, material thickness and tiny self-shadow match reference 2; no external shadow, glow or haze. Total pair visible span x5-95%, y25-75%; central gap x40-60% absolutely blank. NO frame elsewhere, no text, no name, no digit, no mask, no gem, no face, no feathers, no crown, no floral curls, no checkerboard. Output only the two disconnected ribbon junction components on solid white.",
+  "references": [
+    {
+      "path": "artifacts/production/klein-seer-crest-study-v2/final.png",
+      "sha256": "e6d8302b29b486816402603835e423d3863ddd9a0bc6c264f91672d04a4c6e56",
+      "role": "style"
+    },
+    {
+      "path": "artifacts/production/fool-frame-kit-v3/frame-low.png",
+      "sha256": "b029e388e28d55f2ed1fd55e6ed4b953f0921b21dcf4a1e616a131cdce293e3f",
+      "role": "style"
+    },
+    {
+      "path": "artifacts/production/fool-frame-kit-v3/emblem-9.png",
+      "sha256": "99b231a1fadacf6d9cda6d348f754c54edc4207290638f698fd07ea8fa86288c",
+      "role": "style"
+    }
+  ],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "tier": "low",
+    "geometry": "两侧帷幕收束，中央断开；末端隐入圣徽外侧实心轮廓，不贯穿数字镂空；原框和姓名位置保持。",
+    "clear_regions": [
+      [
+        400,
+        0,
+        200,
+        1500
+      ]
+    ]
+  }
+}

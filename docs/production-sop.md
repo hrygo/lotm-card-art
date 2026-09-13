@@ -1,11 +1,15 @@
-# Agentic 卡牌生产 SOP
+# Agentic 卡牌生产 v1 工具合同（历史工艺）
+
+当前流程入口为 [production-sop-v2.md](production-sop-v2.md)，角色内容见 [card-narrative-contract.md](card-narrative-contract.md)。下文四档、矢量识别与自动姓名排版描述旧合成器能力，不约束当前五档 Agentic 融合圣徽/艺术姓名方向；不得据此重新添加已取消的序列名文字。
+
+编译接口现另支持 quality、contracts 与 subject.narrative，详见当前 SOP 和 task schema；旧 compose 仍未接入新五档框徽装配。历史任务及回执保留，不回写其摘要。
 版本：1.0.0。执行者：Codex；授权依据：本会话采用 SOP + 结构化资产 + Agent Skills 生图 + 合成程序 + 门禁。
 
 ## 路由
 | kind | Skill | 输入关注点 |
 | --- | --- | --- |
 | foundation | .agents/skills/lotm-foundation/SKILL.md | 材质、光照、平铺约束、复用范围 |
-| hierarchy | .agents/skills/lotm-hierarchy/SKILL.md | 四档层级、几何边界、透明/留白、路径变体 |
+| hierarchy | .agents/skills/lotm-hierarchy/SKILL.md | 五档任务输入；旧合成器仅四档，另核对能力边界 |
 | subject | .agents/skills/lotm-subject/SKILL.md | slot / card / character、主事件、六维来源、人物参考 |
 
 输入模板和 schema 位于 production/tasks/ 和 production/schemas/。三个示例都是可执行概念任务，不是正式批准资料。
@@ -37,7 +41,7 @@ python3 tools/production.py gate artifacts/production/fool-09-pilot/v001 --relea
 Python 管理路径、哈希、记录和门禁；tools/render/compose.swift 使用 AppKit / CoreText / ImageIO，首次由 swiftc 编译到 generated/production/bin。
 JSON 矢量图元与 SVG 是可编辑正本。v1 图元支持 rect、ellipse、path（M/L/C/Z）和 text，图层支持 PNG cover/contain、opacity 与矩形裁切。坐标统一 1000×1500，y 向下。
 输出尺寸读取 config/project.json 的 profile。艺术层重采样与文字矢量目标尺寸重绘分别记录，declared_native=false。字体实际替代会记入回执。
-透明度只在输入真实含 alpha 时使用；不得把棋盘格当透明。层级栅格可作局部装饰，正式识别仍由矢量结构承载。
+透明度只在输入真实含 alpha 时使用；不得把棋盘格当透明。旧 compose 强制矢量识别；这是旧接口限制，不是要求当前圣徽使用简单矢量代替精美栅格。
 检验核心只依赖 Python 标准库；渲染要求 macOS 26+、Swift 工具链，不增加 pip 依赖。
 
 ## 状态和修订

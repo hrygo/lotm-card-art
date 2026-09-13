@@ -1,0 +1,31 @@
+{
+  "task_id": "fool-frame-refinement-v1-side-junction",
+  "kind": "foundation",
+  "mode": "concept",
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "attempt": 1,
+  "created_at": null,
+  "prompt": "Use case: stylized-concept. Refine the two Fool pathway side inscription regions so they grow from the same architectural column rather than reading as pasted rectangular plaques. Preserve the locked frame silhouette, top opening, bottom nameplate, proportions, and fixed side zone. Design an embedded vertical spindle recess with curled Fool-like terminals flowing into the existing curtain-fold relief, continuous metal thickness, nested bevels, soft contact fade, and a calm central glyph channel. Front-on orthographic full frame, one consistent upper-left key light, neutral silver-gold metal and smoky-violet recess. Study only: no readable text, letters, numerals, pseudo-writing, logos, watermark, new gemstones, perspective, crop, rotation, or geometry changes.",
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-five-tier-kit-v4/frame-low.png",
+      "sha256": "a4a092f601c5f773cf79f5c2002fec6fc188046d8d40c2e10e9323aed5e53a29",
+      "role": "locked-frame-reference"
+    },
+    {
+      "path": "artifacts/production/fool-side-inscription-study-v1/raw.png",
+      "sha256": "e38ab2cf00fc90c8110f138f306f01ba9e7d103860180c21370f24ad3b37f8c4",
+      "role": "prior-style-reference"
+    }
+  ],
+  "output": {
+    "path": "artifacts/production/fool-frame-refinement-v1/side-junction/raw.png",
+    "sha256": "a5d9e239b9febda3b8c17e35d560cb220bafb94ad5da1e9f8c58e384dc7bfbdf",
+    "visual_status": "pending",
+    "pixel_role": "reference-only"
+  },
+  "observation": "Study visibly uses a continuous narrow column inlay, curled terminals, dark recess, and matching metal relief; no readable text is promoted to production.",
+  "approval": {"status": "pending", "by": null, "reference": null}
+}

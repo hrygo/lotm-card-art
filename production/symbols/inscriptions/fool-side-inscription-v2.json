@@ -1,0 +1,74 @@
+{
+  "version": "2.0.0",
+  "id": "fool-side-inscription-relief-v2",
+  "pathway_id": "fool",
+  "status": "active-deterministic-style-v2",
+  "predecessor": "production/symbols/inscriptions/fool-side-inscription-v1.json",
+  "style_reference": {
+    "path": "artifacts/production/fool-frame-refinement-v1/side-junction/raw.png",
+    "sha256": "a5d9e239b9febda3b8c17e35d560cb220bafb94ad5da1e9f8c58e384dc7bfbdf",
+    "role": "agentic-column-junction-study",
+    "visual_status": "pending-user-art-approval",
+    "pixel_role": "reference-only"
+  },
+  "design_intent": {
+    "name": "Fool curled-column inscription spindle",
+    "structure": "local recessed spindle embedded in the plain pillar, with curled terminals that disappear into the existing curtain-fold relief",
+    "relief": "continuous pillar metal, soft contact fade, engraved glyph face, raised bevel, recessed shadow, restrained edge glint",
+    "identity": "retain Fool smoky-violet recess and curtain-fold curl vocabulary while accepting the active five-tier accent token",
+    "negative_rules": [
+      "not a full-height side panel",
+      "not a floating rounded capsule",
+      "not flat pasted text",
+      "not generated pseudo-writing",
+      "not an extra gemstone",
+      "not a hard rectangular seam"
+    ]
+  },
+  "geometry": {
+    "coordinate_system": "design-space-top-left-image-normalized",
+    "design_size": [1024, 1536],
+    "final_size": [2048, 3072],
+    "column_body_width_design": 72,
+    "band_width_design": 108,
+    "width_ratio_to_column": 1.5,
+    "band_rects_design": {
+      "left": [38, 780, 108, 280],
+      "right": [878, 780, 108, 280]
+    },
+    "band_anchor_centers_design": {
+      "left": [92, 910],
+      "right": [932, 910]
+    },
+    "text_safe_rects_design": {
+      "left": [50, 796, 84, 248],
+      "right": [890, 796, 84, 248]
+    },
+    "placement_basis": "fixed upper-mid untextured pillar window; mirrored centers; no per-tier offsets",
+    "max_geometry_drift_design_px": 0,
+    "max_center_error_final_px": 1
+  },
+  "capacity": {
+    "orientation": "vertical-rl",
+    "minimum_characters": 6,
+    "qa_strings": ["愚者途径序列", "序列九占卜家"],
+    "target_cap_height_final_px": [64, 70],
+    "target_tracking_final_px": [8, 10],
+    "overflow_is_error": true
+  },
+  "contrast": {
+    "minimum_ratio": 4.5,
+    "measurement": "visible-glyph-face-versus-local-cavity-relative-luminance",
+    "thumbnail_review": true,
+    "preserve_quality_token": true
+  },
+  "render_policy": {
+    "mode": "exact-glyph-relief",
+    "glyph_source": "program-controlled-exact-character-outline",
+    "style_source": "agentic-study-informed",
+    "flat_coretext_final_layer_forbidden": true,
+    "required_passes": ["recess-shadow", "raised-bevel", "engraved-face", "edge-glint"],
+    "semantic_text_must_remain_exact": true,
+    "text_orientation": "upright"
+  }
+}

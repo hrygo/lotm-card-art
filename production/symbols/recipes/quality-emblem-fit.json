@@ -1,0 +1,250 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "quality-emblem-fit",
+  "profile": "standard",
+  "background": "#182031",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "low",
+      "receipt": "artifacts/production/fool-quality-frame-low/v001/receipt.json",
+      "rect": [
+        15,
+        45,
+        470,
+        660
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "low-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "低序列 · 哑光",
+          "rect": [
+            10,
+            0,
+            480,
+            43
+          ],
+          "font": "Songti SC",
+          "size": 23,
+          "align": "center",
+          "fill": "#f0e9dc"
+        }
+      ]
+    },
+    {
+      "id": "low-emblem",
+      "receipt": "artifacts/production/sigil-fool/v001/receipt.json",
+      "rect": [
+        140,
+        52,
+        220,
+        165
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "low-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            120,
+            610,
+            260,
+            36
+          ],
+          "font": "Songti SC",
+          "size": 19,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    },
+    {
+      "id": "mid",
+      "receipt": "artifacts/production/fool-quality-frame-mid/v001/receipt.json",
+      "rect": [
+        515,
+        45,
+        470,
+        660
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "mid-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "中序列 · 珐琅",
+          "rect": [
+            510,
+            0,
+            480,
+            43
+          ],
+          "font": "Songti SC",
+          "size": 23,
+          "align": "center",
+          "fill": "#f0e9dc"
+        }
+      ]
+    },
+    {
+      "id": "mid-emblem",
+      "receipt": "artifacts/production/sigil-fool/v001/receipt.json",
+      "rect": [
+        640,
+        52,
+        220,
+        165
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "mid-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            620,
+            610,
+            260,
+            36
+          ],
+          "font": "Songti SC",
+          "size": 19,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    },
+    {
+      "id": "high",
+      "receipt": "artifacts/production/fool-quality-frame-high/v001/receipt.json",
+      "rect": [
+        15,
+        765,
+        470,
+        660
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "high-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "高序列 · 晶质",
+          "rect": [
+            10,
+            720,
+            480,
+            43
+          ],
+          "font": "Songti SC",
+          "size": 23,
+          "align": "center",
+          "fill": "#f0e9dc"
+        }
+      ]
+    },
+    {
+      "id": "high-emblem",
+      "receipt": "artifacts/production/sigil-fool/v001/receipt.json",
+      "rect": [
+        140,
+        772,
+        220,
+        165
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "high-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            120,
+            1315,
+            260,
+            36
+          ],
+          "font": "Songti SC",
+          "size": 19,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    },
+    {
+      "id": "true-god",
+      "receipt": "artifacts/production/fool-quality-frame-true-god/v001/receipt.json",
+      "rect": [
+        515,
+        765,
+        470,
+        660
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "true-god-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "真神 · 无瑕",
+          "rect": [
+            510,
+            720,
+            480,
+            43
+          ],
+          "font": "Songti SC",
+          "size": 23,
+          "align": "center",
+          "fill": "#f0e9dc"
+        }
+      ]
+    },
+    {
+      "id": "true-god-emblem",
+      "receipt": "artifacts/production/sigil-fool/v001/receipt.json",
+      "rect": [
+        640,
+        772,
+        220,
+        165
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "true-god-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            620,
+            1330,
+            260,
+            36
+          ],
+          "font": "Songti SC",
+          "size": 19,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    }
+  ]
+}

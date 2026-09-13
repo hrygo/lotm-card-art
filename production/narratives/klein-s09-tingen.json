@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "cardID": "lotm.fool.s09.klein-moretti.tingen-01",
+    "slotID": "lotm.fool.s09",
+    "characterID": "klein-moretti",
+    "identitySliceID": "klein.s09.tingen",
+    "name": "克莱恩·莫雷蒂",
+    "timeScope": "廷根时期；序列9占卜家身份；从异乡醒来至加入值夜者后的早期阶段",
+    "spoilerBoundary": "不提前涉及小丑及更高序列能力、序列0权柄和廷根后身份；只写序列9阶段可理解的选择与处境"
+  },
+  "entries": [
+    {
+      "id": "klein-s09-greeting-01",
+      "kind": "greeting",
+      "title": null,
+      "text": "你好。我是克莱恩·莫雷蒂。若你愿意，我们可以先从一件最容易验证的小事开始。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "e7ba6fc2ced7f7b15256ca6d8930af98351c951af74eb6cb099ede8f226800fd",
+      "review": {"status": "draft", "approvedDigest": null, "by": null, "reference": null}
+    },
+    {
+      "id": "klein-s09-catchphrase-01",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "占卜不是替你做决定；它只提醒你，哪些地方还没有看清。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "11a2a28335f0e4f919bcacae5aca3b1ca24f77828d5ace7b02fb321370e8377b",
+      "review": {"status": "draft", "approvedDigest": null, "by": null, "reference": null}
+    },
+    {
+      "id": "klein-s09-catchphrase-02",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "先观察，再行动；先确认代价，再谈勇气。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "2665f90a3f8cdbb91ed9757d82dd96c9a571a0278636972c324e4edd608ce1f5",
+      "review": {"status": "draft", "approvedDigest": null, "by": null, "reference": null}
+    },
+    {
+      "id": "klein-s09-story-01",
+      "kind": "story",
+      "title": "第一章 · 醒来后的核对",
+      "text": "刚醒来时，他没有急着给这场离奇的人生下结论。陌生的房间、写满预言的笔记、属于另一个人的名字，都需要一件件核对。对廷根的克莱恩来说，活下来不是一句口号，而是从门窗、钱袋和每一个可疑细节开始的秩序。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {"path": "pathways/fool/canon.json", "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d", "locator": "fool.s09.identity 与 fool.s09 相关身份/处境断言"},
+        {"path": "pathways/fool/sequences/09/card.json", "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e", "locator": "composition.hero_event 与 identity claim_refs；当前卡的廷根时期占卜场景"}
+      ],
+      "gap": null,
+      "contentDigest": "4c3928a44bca2fc3fa3a0a75a1163f83d6c78b4f2bfc9dcd653b7b5e1691776a",
+      "review": {"status": "draft", "approvedDigest": null, "by": null, "reference": null}
+    },
+    {
+      "id": "klein-s09-story-02",
+      "kind": "story",
+      "title": "第二章 · 灵摆指向的范围",
+      "text": "他在灰雾之外寻找答案，也在现实里学习怎样成为一个占卜家：让灵摆指向眼前的目标，让书页、茶杯和安静的观察共同构成判断。占卜并没有替他看见全部未来，反而一次次提醒他，未知仍然藏在视线之外。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {"path": "pathways/fool/canon.json", "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d", "locator": "fool.s09 相关能力、扮演原则与限制断言"},
+        {"path": "pathways/fool/sequences/09/card.json", "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e", "locator": "semantics.acting、semantics.abilities、semantics.limitations 与 pendulum/scope cues"}
+      ],
+      "gap": null,
+      "contentDigest": "6fc0b65ad74884bd3ae088782cac9505bf1172b31d163595f3aafc5ecf6c84c4",
+      "review": {"status": "draft", "approvedDigest": null, "by": null, "reference": null}
+    },
+    {
+      "id": "klein-s09-story-03",
+      "kind": "story",
+      "title": "第三章 · 名字背后的人",
+      "text": "当危险逐渐逼近，他发现真正难以处理的并不是一件神秘物品，而是名字背后那些具体的人。妹妹、同事、邻居与刚刚建立的信任，让“寻找回家”不再只是个人愿望。克莱恩开始明白，每一次谨慎的选择，也可能是在替别人保留明天。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {"path": "pathways/fool/canon.json", "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d", "locator": "fool.s09 角色身份与阶段性限制的断言"},
+        {"path": "pathways/fool/sequences/09/card.json", "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e", "locator": "composition.hero_event、why_this_sequence 与六维回读边界"}
+      ],
+      "gap": null,
+      "contentDigest": "6b59f4773a1b0d9dfcf60c00b3310c7667ba0b26b65590c0729fdbe22232e21f",
+      "review": {"status": "draft", "approvedDigest": null, "by": null, "reference": null}
+    }
+  ]
+}

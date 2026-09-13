@@ -23,7 +23,7 @@ public enum LibrarySection: String, Hashable, Sendable {
     public var subtitle: String {
         switch self {
         case .gallery:
-            return "卡牌已经准备好。选择一张，唤醒它的声音。"
+            return "选择一张身份卡，查看身份、六维信息和故事。"
         case .formal:
             return "只显示当前内容已确认、并由你正式收藏的身份卡。"
         case .candidate:
@@ -49,7 +49,7 @@ public final class AlbumViewModel: ObservableObject {
         self.cards = cards
         self.collectionIntents = [
             "lotm.fool.s03.klein-01": .formal,
-            "lotm.fool.s09.klein-02": .candidate
+            "lotm.fool.s09.klein-moretti.tingen-01": .candidate
         ]
         self.wishlistCardIDs = ["lotm.fool.s00.prototype"]
     }
@@ -76,7 +76,8 @@ public final class AlbumViewModel: ObservableObject {
         }
         return cards.filter {
             $0.identity.displayName.localizedCaseInsensitiveContains(query)
-                || $0.identity.sequenceName.localizedCaseInsensitiveContains(query)
+                || ArchiveCopy.sequenceName(for: $0.identity.sequenceName)
+                    .localizedCaseInsensitiveContains(query)
                 || ($0.identity.characterID?.localizedCaseInsensitiveContains(query) ?? false)
         }
     }

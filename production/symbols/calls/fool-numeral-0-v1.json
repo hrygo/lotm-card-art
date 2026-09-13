@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: ONE exquisite standalone artistic Arabic numeral \"0\", for the Fool pathway's collectible card rank asset. The ONLY readable character must be 0. A bold elegant custom numeral sculpture built from antique pale-gold metal and mist-silver bevels, with smoky-violet enamel inset and extremely fine engraved curtain-fold channels within its broad stroke. Unbroken unmistakable 0 silhouette, generous open counters where the numeral has them. Thick enough to remain readable small, lavish jewelry-grade chasing and openwork along the edges, NOT ordinary printed type, not a plain thin line. No surrounding crest, no mask, no additional numeral, no label, no words. Straight-on flat frontal presentation, centered on SQUARE canvas, occupies 75%, full object visible with margin. Soft upper-left light, real relief and dark satin recesses. GENUINELY TRANSPARENT background including holes. No ground plane, no painted shadow rectangle, no checkerboard pixels.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [],
+  "observation": "已实际观察：独立艺术数字 0 可辨，紫色帷幕珐琅与金银细雕形成宽笔画；镂空与边缘待合成检查，未批准。"
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "identity", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "identity": {
+      "type": "object",
+      "required": ["cardID", "slotID", "characterID", "identitySliceID", "name", "timeScope", "spoilerBoundary"],
+      "additionalProperties": false,
+      "properties": {
+        "cardID": {"type": "string", "minLength": 1},
+        "slotID": {"type": "string", "pattern": "^lotm\\.[a-z-]+\\.s0[0-9]$"},
+        "characterID": {"type": ["string", "null"]},
+        "identitySliceID": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "timeScope": {"type": "string", "minLength": 1},
+        "spoilerBoundary": {"type": "string", "minLength": 1}
+      }
+    },
+    "entries": {
+      "type": "array", "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "title", "text", "sourceKind", "evidenceRefs", "gap", "contentDigest", "review"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["greeting", "catchphrase", "story"]},
+          "title": {"type": ["string", "null"]},
+          "text": {"type": "string"},
+          "sourceKind": {"enum": ["canon", "interpretation", "original"]},
+          "evidenceRefs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["path", "sha256", "locator"],
+              "additionalProperties": false,
+              "properties": {
+                "path": {"type": "string", "minLength": 1},
+                "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+                "locator": {"type": "string", "minLength": 1}
+              }
+            }
+          },
+          "gap": {"type": ["string", "null"]},
+          "contentDigest": {"type": ["string", "null"]},
+          "review": {
+            "type": "object",
+            "required": ["status", "approvedDigest", "by", "reference"],
+            "additionalProperties": false,
+            "properties": {
+              "status": {"enum": ["draft", "approved", "rejected"]},
+              "approvedDigest": {"type": ["string", "null"]},
+              "by": {"type": ["string", "null"]},
+              "reference": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    }
+  }
+}

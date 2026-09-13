@@ -120,6 +120,79 @@ def schema(root, name):
     return read(root / f"production/schemas/{name}.schema.json")
 
 
+def visual_quality(root, sequence):
+    """Resolve visual quality without changing the canonical rank taxonomy."""
+    if type(sequence) is not int or not 0 <= sequence <= 9:
+        raise Invalid("quality sequence must be an integer from 0 to 9")
+    tiers = read(root / "config/quality-color-tokens.json")["tiers"]
+    ids = [row["id"] for row in tiers]
+    numbers = [n for row in tiers for n in row["sequences"]]
+    if (len(ids) != 5 or set(ids) != {"low", "mid", "saint", "angel", "true-god"}
+            or any(type(n) is not int for n in numbers) or sorted(numbers) != list(range(10))):
+        raise Invalid("quality configuration must cover all ten sequences exactly once")
+    if any(not re.fullmatch(r"#[0-9a-fA-F]{6}", row["primary"]) for row in tiers):
+        raise Invalid("invalid quality primary color")
+    return next(row for row in tiers if sequence in row["sequences"])
+
+
+def narrative_digest(pack, entry):
+    """Bind exact text AND identity, attribution, evidence and spoiler boundary."""
+    payload = {"identity": pack["identity"], "entry": {
+        k: v for k, v in entry.items() if k not in {"contentDigest", "review"}}}
+    return hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True,
+                                    separators=(",", ":"), allow_nan=False).encode("utf-8")).hexdigest()
+
+
+def validate_narrative(root, pack, ready_for_audio=False):
+    validate_schema(pack, schema(root, "card-narrative"))
+    entries = pack["entries"]
+    if len({e["id"] for e in entries}) != len(entries):
+        raise Invalid("duplicate narrative entry id")
+    if {e["kind"] for e in entries} != {"greeting", "catchphrase", "story"}:
+        raise Invalid("narrative requires greeting, catchphrase and story, or explicit draft gaps")
+    for entry in entries:
+        verify_records(root, entry["evidenceRefs"])
+        if entry["kind"] == "story" and not (entry["title"] or "").strip():
+            raise Invalid("story requires a chapter title")
+        if not entry["text"].strip() and not (entry["gap"] or "").strip():
+            raise Invalid("empty narrative requires an explicit gap")
+        if entry["text"].strip() and entry["sourceKind"] != "original" and not entry["evidenceRefs"]:
+            raise Invalid("canon/interpretation text requires located evidence")
+        digest = narrative_digest(pack, entry)
+        if entry["contentDigest"] is not None and entry["contentDigest"] != digest:
+            raise Invalid("narrative content digest is stale: " + entry["id"])
+        review = entry["review"]
+        if review["status"] == "approved":
+            if (not entry["text"].strip() or entry["gap"] is not None
+                    or entry["contentDigest"] != digest or review["approvedDigest"] != digest
+                    or not (review["by"] or "").strip() or not (review["reference"] or "").strip()):
+                raise Invalid("narrative approval lacks current text/digest/evidence: " + entry["id"])
+        elif ready_for_audio:
+            raise Invalid("unapproved narrative cannot enter audio production: " + entry["id"])
+    return pack
+
+
+def task_dependencies(root, task):
+    """Non-image contracts are tracked separately from actual image attachments."""
+    deps = [record(root, root / rel) for rel in (
+        "tools/production.py", "production/schemas/task.schema.json", "docs/production-sop.md",
+        "docs/production-sop-v2.md", "docs/pathway-carrier-sop.md",
+        "docs/card-narrative-contract.md", "config/quality-color-tokens.json",
+        "config/sequence-hierarchy.json", f".agents/skills/lotm-{task['kind']}/SKILL.md")]
+    deps.extend(task["references"])
+    deps.extend(task.get("contracts", []))
+    if "narrative" in task:
+        deps.append(task["narrative"])
+        deps.append(record(root, root / "production/schemas/card-narrative.schema.json"))
+        pack = read(inside(root, task["narrative"]["path"]))
+        for entry in pack["entries"]:
+            deps.extend(entry["evidenceRefs"])
+    if task["kind"] == "subject":
+        deps.append(record(root, inside(root, task["spec"]["semantic_source"])))
+        deps.extend(task["spec"]["protagonist"]["evidence_refs"])
+    return deps
+
+
 def validate_task(root, task):
     validate_schema(task, schema(root, "task"))
     needed = {"foundation": "material", "hierarchy": "tier", "subject": "slot_id"}
@@ -129,6 +202,24 @@ def validate_task(root, task):
         for region in task["spec"]["clear_regions"]:
             validate_rect(region)
     verify_records(root, task["references"])
+    verify_records(root, task.get("contracts", []))
+    if "quality" in task:
+        quality = task["quality"]
+        if visual_quality(root, quality["sequence"])["id"] != quality["visual_tier"]:
+            raise Invalid("visual quality differs from configured sequence mapping")
+        if task["kind"] == "hierarchy" and task["spec"]["tier"] != quality["visual_tier"]:
+            raise Invalid("hierarchy tier differs from visual quality")
+    elif task["kind"] == "hierarchy" and task["spec"]["tier"] in {"saint", "angel"}:
+        raise Invalid("five-tier hierarchy requires explicit quality input")
+    if "narrative" in task:
+        if task["kind"] != "subject":
+            raise Invalid("narrative belongs to a subject task")
+        verify_records(root, [task["narrative"]])
+        pack = validate_narrative(root, read(inside(root, task["narrative"]["path"])))
+        identity, spec = pack["identity"], task["spec"]
+        if (identity["cardID"], identity["slotID"], identity["characterID"], identity["name"]) != (
+                spec["card_id"], spec["slot_id"], spec["character_id"], spec["protagonist"]["name_zh"]):
+            raise Invalid("narrative and subject identity disagree")
     if task["kind"] == "subject":
         spec = task["spec"]
         protagonist = spec["protagonist"]
@@ -143,6 +234,8 @@ def validate_task(root, task):
         source = read(inside(root, spec["semantic_source"]))
         if source["card_id"] != spec["slot_id"]:
             raise Invalid("slot and semantic source disagree")
+        if "quality" in task and task["quality"]["sequence"] != source["sequence"]:
+            raise Invalid("quality and subject sequence disagree")
         if task["mode"] == "production":
             report = cardctl.check_repository(root, "design", spec["slot_id"])
             if not report["passed"]:
@@ -154,16 +247,10 @@ def compile_task(root, task_rel, out_rel):
     task = read(task_path)
     validate_task(root, task)
     out = new_output(root, out_rel, "generated/production")
-    deps = [record(root, task_path)]
-    deps.extend(task["references"])
-    deps += [record(root, root / rel) for rel in (
-        "tools/production.py", "production/schemas/task.schema.json", "docs/production-sop.md",
-        f".agents/skills/lotm-{task['kind']}/SKILL.md")]
+    deps = [record(root, task_path)] + task_dependencies(root, task)
     fingerprint = None
     if task["kind"] == "subject":
         source = inside(root, task["spec"]["semantic_source"])
-        deps.append(record(root, source))
-        deps.extend(task["spec"]["protagonist"]["evidence_refs"])
         fingerprint = cardctl.design_fingerprint(root, source)
     prompt = task["prompt"]
     out.mkdir(parents=True)
@@ -181,6 +268,10 @@ def check_snapshot(root, directory):
     if sha(directory / "task.json") != snap["task_sha256"] or sha(directory / "prompt.txt") != snap["prompt_sha256"]:
         raise Invalid("compiled task/prompt changed")
     validate_task(root, task)
+    recorded = {(d["path"], d["sha256"]) for d in snap["dependencies"]}
+    required = {(d["path"], d["sha256"]) for d in task_dependencies(root, task)}
+    if not required <= recorded:
+        raise Invalid("compiled snapshot omits required current contract dependencies")
     if task["kind"] == "subject":
         if cardctl.design_fingerprint(root, inside(root, task["spec"]["semantic_source"])) != snap["design_fingerprint"]:
             raise Invalid("semantic design dependencies changed")
@@ -484,11 +575,19 @@ def main():
     c=sub.add_parser("ingest");c.add_argument("compiled");c.add_argument("raw");c.add_argument("call");c.add_argument("--run",required=True)
     c=sub.add_parser("compose");c.add_argument("manifest");c.add_argument("--out",required=True)
     c=sub.add_parser("gate");c.add_argument("directory");c.add_argument("--release",action="store_true")
+    c=sub.add_parser("check-content");c.add_argument("path");c.add_argument("--ready-for-audio",action="store_true")
     args=parser.parse_args()
     try:
         if args.command=="compile": result=compile_task(ROOT,args.task,args.out)
         elif args.command=="ingest": result=ingest(ROOT,args.compiled,args.raw,args.call,args.run)
         elif args.command=="compose": result=compose(ROOT,args.manifest,args.out)
+        elif args.command=="check-content":
+            pack = validate_narrative(ROOT, read(inside(ROOT, args.path)), args.ready_for_audio)
+            result = {"passed": True, "level": "text-approval" if args.ready_for_audio else "content-structure",
+                      "card_id": pack["identity"]["cardID"],
+                      "pending": [e["id"] for e in pack["entries"] if e["review"]["status"] != "approved"],
+                      "digests": {e["id"]: narrative_digest(pack, e) for e in pack["entries"]},
+                      "limitation": "No factual certification, audio generation, voice authorization or App import performed."}
         else: result=gate(ROOT,args.directory,args.release)
         print(json.dumps(result if isinstance(result,dict) else {"output":str(result.relative_to(ROOT))},ensure_ascii=False,indent=2))
         return 0

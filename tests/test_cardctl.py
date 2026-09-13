@@ -36,6 +36,18 @@ class CardWorkflowTests(unittest.TestCase):
         shutil.copytree(REPO,self.root,ignore=shutil.ignore_patterns(
             '__pycache__','reports','SHA256SUMS','.DS_Store','generated','.build'))
         self.path=ct.resolve_card(self.root,'fool:09')
+        # The real card can progress. These cases require a synthetic scaffold,
+        # not whatever research state happens to be checked into the repository.
+        c=self.card()
+        c['name_status']='seed_unverified'
+        c['production']={'stage':'scaffold','artifact':None,'generation':None,'review_file':None}
+        c['cues']=[]
+        c['composition'].update(hero_event='',why_this_sequence='',focal_hierarchy=[])
+        for dimension,semantic in c['semantics'].items():
+            semantic.update(knowledge_state='unresearched',intent='',claim_refs=[],carrier_ids=[],
+                            readback='',misreading_guard='',gap_note=None,
+                            fidelity='exact' if dimension=='identity' else 'summary')
+        self.save(c)
 
     def tearDown(self):
         self.tmp.cleanup()

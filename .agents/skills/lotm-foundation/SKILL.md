@@ -3,13 +3,14 @@ name: lotm-foundation
 description: 为诡秘之主卡牌生产基础材质、纸张、金属表面和可复用纹理，读取 kind=foundation 的结构化任务，经实际生图、观察、登记交给合成器。
 ---
 
-# 基础材质、纸张、金属表面和可复用纹理
-以当前仓库为根。先读取 docs/production-sop.md、production/schemas/task.schema.json 和当前任务；仅处理 kind=foundation。
-任务身份、revision、mode、output、references、limits 以及 spec 必须齐全；先运行 tools/production.py compile。
-用 material、lighting、tiling、use_scope 决定材质尺度与适用范围。无必要中心主物件；声明可平铺不等于接缝已经通过检查，实际检查四边。
-执行者是当前 Agent；使用已安装 imagegen Skill 的内置图像工具。读取编译 prompt.txt，将每张 reference 作为真实附件传递并注明角色。模型不暴露 seed/model 时记录 null。
-观察实际产物，记录观察而非自动评分。需要修复时指出单个缺陷，保持其他不变量；attempt 不超过 limits.max_attempts。编译器不联网、不代替工具执行。
-将真实调用参数保存到版本目录；按 production/schemas/call.schema.json 记录 tool/model/seed/created_at/attempt/attachments/observation。
-运行 ingest，把真实 PNG 和调用记录保存为不可覆盖的新 run。素材保持 pending，最终批准由用户提供。
-最后用 compose 合成并 gate；输出实际路径、原始/最终像素、变换记录、观察结果和剩余门禁。不要把编译成功当作生图成功。
+# 基础材质与复用范围
 
+读取 `docs/production-sop-v2.md`、现有 `production/schemas/task.schema.json` 与当前kind=foundation任务；旧工具字段/CLI以 `docs/production-sop.md` 为准。
+
+material、lighting、tiling、use_scope明确接收面、纹理尺度及复用边界。既有框作真实上下文参考，输出材质不重复框、徽、姓名或主角。人物卡默认主体与背景一体生成，不为凑分层数量额外生成可见背板；统一石板不是22途径的默认基础材质。
+
+涉及品质纹理或宝石时读取 `config/quality-color-tokens.json`；解析五档主色和hue_drift/gem_luminance要求。色值是识别锚点，纹理有深浅冷暖和受控色相流动，不做平涂或整卡滤色。反射随材质与光向变化；无定位功能的纹理可以创作，接框折槽等定位结构归层级/框架任务。
+
+实际执行compile→读prompt→传递真实附件→内置image_gen→观察→call→ingest。未知model/seed为null，尝试预算不借改任务ID重置。素材没有自动批准；背景、可平铺、细节与适用范围经实际观察记录。
+
+姓名艺术字借用kind=foundation登记时，明确name-art专用use_scope，并读取 `../lotm-quality-frames/references/name-art-input.md`；不把文字资产当普通纹理。交付记录实际原生/最终像素、净底与合成状态，不以编译成功冒充生图完成。

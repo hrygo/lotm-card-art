@@ -1,0 +1,405 @@
+{
+  "version": "1.0.0",
+  "supplemental_collections": ["production/symbols/fool-fusion-family.json"],
+  "scope": "22 pathway emblems; Fool digits and tier prototypes only",
+  "emblems": [
+    {
+      "id": "sigil-fool",
+      "pathway_id": "fool",
+      "task": "production/symbols/tasks/sigil-fool.json",
+      "receipt": "artifacts/production/sigil-fool/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-error",
+      "pathway_id": "error",
+      "task": "production/symbols/tasks/sigil-error.json",
+      "receipt": "artifacts/production/sigil-error/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-door",
+      "pathway_id": "door",
+      "task": "production/symbols/tasks/sigil-door.json",
+      "receipt": "artifacts/production/sigil-door/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-visionary",
+      "pathway_id": "visionary",
+      "task": "production/symbols/tasks/sigil-visionary.json",
+      "receipt": "artifacts/production/sigil-visionary/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-sun",
+      "pathway_id": "sun",
+      "task": "production/symbols/tasks/sigil-sun.json",
+      "receipt": "artifacts/production/sigil-sun/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-tyrant",
+      "pathway_id": "tyrant",
+      "task": "production/symbols/tasks/sigil-tyrant.json",
+      "receipt": "artifacts/production/sigil-tyrant/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-white-tower",
+      "pathway_id": "white-tower",
+      "task": "production/symbols/tasks/sigil-white-tower.json",
+      "receipt": "artifacts/production/sigil-white-tower/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-hanged-man",
+      "pathway_id": "hanged-man",
+      "task": "production/symbols/tasks/sigil-hanged-man.json",
+      "receipt": "artifacts/production/sigil-hanged-man/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-darkness",
+      "pathway_id": "darkness",
+      "task": "production/symbols/tasks/sigil-darkness.json",
+      "receipt": "artifacts/production/sigil-darkness/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-death",
+      "pathway_id": "death",
+      "task": "production/symbols/tasks/sigil-death.json",
+      "receipt": "artifacts/production/sigil-death/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-twilight-giant",
+      "pathway_id": "twilight-giant",
+      "task": "production/symbols/tasks/sigil-twilight-giant.json",
+      "receipt": "artifacts/production/sigil-twilight-giant/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-demoness",
+      "pathway_id": "demoness",
+      "task": "production/symbols/tasks/sigil-demoness.json",
+      "receipt": "artifacts/production/sigil-demoness/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-red-priest",
+      "pathway_id": "red-priest",
+      "task": "production/symbols/tasks/sigil-red-priest.json",
+      "receipt": "artifacts/production/sigil-red-priest/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-hermit",
+      "pathway_id": "hermit",
+      "task": "production/symbols/tasks/sigil-hermit.json",
+      "receipt": "artifacts/production/sigil-hermit/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-paragon",
+      "pathway_id": "paragon",
+      "task": "production/symbols/tasks/sigil-paragon.json",
+      "receipt": "artifacts/production/sigil-paragon/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-wheel-of-fortune",
+      "pathway_id": "wheel-of-fortune",
+      "task": "production/symbols/tasks/sigil-wheel-of-fortune.json",
+      "receipt": "artifacts/production/sigil-wheel-of-fortune/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-mother",
+      "pathway_id": "mother",
+      "task": "production/symbols/tasks/sigil-mother.json",
+      "receipt": "artifacts/production/sigil-mother/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-moon",
+      "pathway_id": "moon",
+      "task": "production/symbols/tasks/sigil-moon.json",
+      "receipt": "artifacts/production/sigil-moon/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-black-emperor",
+      "pathway_id": "black-emperor",
+      "task": "production/symbols/tasks/sigil-black-emperor.json",
+      "receipt": "artifacts/production/sigil-black-emperor/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-justiciar",
+      "pathway_id": "justiciar",
+      "task": "production/symbols/tasks/sigil-justiciar.json",
+      "receipt": "artifacts/production/sigil-justiciar/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-chained",
+      "pathway_id": "chained",
+      "task": "production/symbols/tasks/sigil-chained.json",
+      "receipt": "artifacts/production/sigil-chained/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "sigil-abyss",
+      "pathway_id": "abyss",
+      "task": "production/symbols/tasks/sigil-abyss.json",
+      "receipt": "artifacts/production/sigil-abyss/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    }
+  ],
+  "numerals": [
+    {
+      "id": "fool-numeral-0",
+      "pathway_id": "fool",
+      "digit": 0,
+      "task": "production/symbols/tasks/fool-numeral-0.json",
+      "receipt": "artifacts/production/fool-numeral-0/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "fool-numeral-1",
+      "pathway_id": "fool",
+      "digit": 1,
+      "task": "production/symbols/tasks/fool-numeral-1.json",
+      "receipt": "artifacts/production/fool-numeral-1/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "fool-numeral-2",
+      "pathway_id": "fool",
+      "digit": 2,
+      "task": "production/symbols/tasks/fool-numeral-2.json",
+      "receipt": "artifacts/production/fool-numeral-2/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "fool-numeral-3",
+      "pathway_id": "fool",
+      "digit": 3,
+      "task": "production/symbols/tasks/fool-numeral-3.json",
+      "receipt": "artifacts/production/fool-numeral-3/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "fool-numeral-4",
+      "pathway_id": "fool",
+      "digit": 4,
+      "task": "production/symbols/tasks/fool-numeral-4.json",
+      "receipt": "artifacts/production/fool-numeral-4/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "fool-numeral-5",
+      "pathway_id": "fool",
+      "digit": 5,
+      "task": "production/symbols/tasks/fool-numeral-5.json",
+      "receipt": "artifacts/production/fool-numeral-5/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "fool-numeral-6",
+      "pathway_id": "fool",
+      "digit": 6,
+      "task": "production/symbols/tasks/fool-numeral-6.json",
+      "receipt": "artifacts/production/fool-numeral-6/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "fool-numeral-7",
+      "pathway_id": "fool",
+      "digit": 7,
+      "task": "production/symbols/tasks/fool-numeral-7.json",
+      "receipt": "artifacts/production/fool-numeral-7/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "fool-numeral-8",
+      "pathway_id": "fool",
+      "digit": 8,
+      "task": "production/symbols/tasks/fool-numeral-8.json",
+      "receipt": "artifacts/production/fool-numeral-8/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "fool-numeral-9",
+      "pathway_id": "fool",
+      "digit": 9,
+      "task": "production/symbols/tasks/fool-numeral-9.json",
+      "receipt": "artifacts/production/fool-numeral-9/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    }
+  ],
+  "frames": [
+    {
+      "id": "ornate-frame-low",
+      "pathway_id": "fool",
+      "tier": "low",
+      "task": "production/symbols/tasks/ornate-frame-low.json",
+      "receipt": "artifacts/production/ornate-frame-low/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "ornate-frame-mid",
+      "pathway_id": "fool",
+      "tier": "mid",
+      "task": "production/symbols/tasks/ornate-frame-mid.json",
+      "receipt": "artifacts/production/ornate-frame-mid/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "ornate-frame-high",
+      "pathway_id": "fool",
+      "tier": "high",
+      "task": "production/symbols/tasks/ornate-frame-high.json",
+      "receipt": "artifacts/production/ornate-frame-high/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    },
+    {
+      "id": "ornate-frame-true-god",
+      "pathway_id": "fool",
+      "tier": "true-god",
+      "task": "production/symbols/tasks/ornate-frame-true-god.json",
+      "receipt": "artifacts/production/ornate-frame-true-god/v001/receipt.json",
+      "status": "proposed",
+      "visual_approval": "pending"
+    }
+  ],
+  "fusions": [
+    {
+      "id": "fool-fusion-0",
+      "pathway_id": "fool",
+      "digit": 0,
+      "task": "production/symbols/tasks/fool-fusion-0.json",
+      "receipt": "artifacts/production/fool-fusion-0/v001/receipt.json",
+      "status": "blocked-alpha",
+      "visual_approval": "pending",
+      "failed_repair_receipt": "artifacts/production/fool-fusion-0/v002/receipt.json",
+      "usable_as_transparent_layer": false
+    },
+    {
+      "id": "fool-fusion-4",
+      "pathway_id": "fool",
+      "digit": 4,
+      "task": "production/symbols/tasks/fool-fusion-4.json",
+      "receipt": "artifacts/production/fool-fusion-4/v001/receipt.json",
+      "status": "blocked-alpha",
+      "visual_approval": "pending",
+      "failed_repair_receipt": "artifacts/production/fool-fusion-4/v002/receipt.json",
+      "usable_as_transparent_layer": false
+    },
+    {
+      "id": "fool-fusion-7",
+      "pathway_id": "fool",
+      "digit": 7,
+      "task": "production/symbols/tasks/fool-fusion-7.json",
+      "receipt": "artifacts/production/fool-fusion-7/v001/receipt.json",
+      "status": "blocked-alpha",
+      "visual_approval": "pending",
+      "failed_repair_receipt": "artifacts/production/fool-fusion-7/v002/receipt.json",
+      "usable_as_transparent_layer": false
+    },
+    {
+      "id": "fool-fusion-9",
+      "pathway_id": "fool",
+      "digit": 9,
+      "task": "production/symbols/tasks/fool-fusion-9.json",
+      "receipt": "artifacts/production/fool-fusion-9/v001/receipt.json",
+      "status": "blocked-alpha",
+      "visual_approval": "pending",
+      "failed_repair_receipt": "artifacts/production/fool-fusion-9/v002/receipt.json",
+      "usable_as_transparent_layer": false
+    }
+  ],
+  "render_jobs": [
+    {
+      "id": "emblems-light",
+      "recipe": "production/symbols/recipes/emblems-light.json",
+      "output": "artifacts/production/symbol-art-v1/emblems-light"
+    },
+    {
+      "id": "emblems-dark",
+      "recipe": "production/symbols/recipes/emblems-dark.json",
+      "output": "artifacts/production/symbol-art-v1/emblems-dark"
+    },
+    {
+      "id": "fool-numerals",
+      "recipe": "production/symbols/recipes/fool-numerals.json",
+      "output": "artifacts/production/symbol-art-v1/fool-numerals"
+    },
+    {
+      "id": "four-tiers",
+      "recipe": "production/symbols/recipes/four-tiers.json",
+      "output": "artifacts/production/symbol-art-v1/four-tiers-r2"
+    },
+    {
+      "id": "four-tiers-named",
+      "recipe": "production/symbols/recipes/four-tiers-named.json",
+      "output": "artifacts/production/symbol-art-v1/four-tiers-named"
+    }
+  ],
+  "diagnostic_jobs": [
+    {
+      "id": "fusion-concepts",
+      "recipe": "production/symbols/recipes/fusion-concepts.json",
+      "output": "artifacts/production/symbol-art-v1/fusion-concepts",
+      "expected_issue": "opaque baked background; not a reusable layer"
+    }
+  ],
+  "gaps": [
+    "Other 21 pathway-specific numeral alphabets not produced",
+    "Full 220 pathway-rank fused symbols not produced",
+    "Fool fusion 0/4/7/9 transparent cutouts failed twice",
+    "Frame requested large rectangular clear area failed; see frame-window-check.json",
+    "Other 21 pathway-specific four-tier frames not produced",
+    "No user visual approval or official canon certification"
+  ],
+  "failed_attempts": 8,
+  "generated_files": 44,
+  "transparent_candidate_files": 36
+}

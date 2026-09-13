@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-fusion-0",
+  "revision": 1,
+  "kind": "foundation",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      1,
+      1
+    ],
+    "background": "transparent"
+  },
+  "prompt": "Use case: stylized-concept. Make ONE exquisite integrated Fool pathway + rank 0 insignia. Reference 1 supplies the Fool mask and purple curtain identity; reference 2 supplies the exact readable Arabic numeral 0. Redesign them as ONE sculptural object sharing strokes and negative spaces, never a number pasted over a separate crest. Two mask profiles and curtains define the oval outer stroke, with a single generous open inner counter. The exact digit 0 must remain unmistakable at thumbnail size. Antique pale gold, mist silver, smoky violet enamel; museum jewelry-level microchasing, sculptural relief, satin recesses and polished bevels. Bold coherent silhouette, no surrounding badge, no secondary digit, no words. Straight-on SQUARE image, full object centered at 78% width and height with clear margin. GENUINELY TRANSPARENT background and open holes, no checkerboard pixels, no cast shadow outside the object. Preserve pathway character while simplifying details that would obscure the numeral.",
+  "references": [
+    {
+      "path": "artifacts/production/sigil-fool/v001/raw.png",
+      "sha256": "8bed2bf6163130e465f09b8896f2e709bc50e6c3436712de358ed4c68a8a3b1d",
+      "role": "style"
+    },
+    {
+      "path": "artifacts/production/fool-numeral-0/v001/raw.png",
+      "sha256": "8618eda73a4db9823daf1e1da73b20f7dd09a1b984a0377ddc64c28b86f06b9e",
+      "role": "geometry"
+    }
+  ],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "material": "愚者面具帷幕与数字0共用笔画的金银珐琅精雕",
+    "lighting": "左上柔光",
+    "tiling": false,
+    "use_scope": [
+      "fusion:fool",
+      "digit:0"
+    ]
+  }
+}

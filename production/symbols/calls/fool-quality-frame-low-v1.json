@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: stylized-concept. Create ONE master EMPTY card frame for the Fool pathway, LOW-tier quality, portrait 2:3. This is an elegant restrained collectible-card border, NOT an ornate cathedral, NOT a finished card. Exact structural brief: slim parallel side rails at x4-10% and x90-96%; gently rounded lower corners; one broad simple blank nameplate at x23-77%, y87-94%. The upper side rails end in two SMALL outward-curving folded-curtain shoulders. There is NO TOP CENTRAL CROSSBAR, NO CIRCLE SOCKET, NO crown: the entire central top rectangle x22-78%, y2-27% is EMPTY transparent negative space for a large separately inserted sacred emblem. Keep the illustration window x14-86%, y30-83% completely empty and transparent. Three broad shallow drape-fold channels running along each side rail identify the Fool pathway. A SINGLE small diamond-shaped quality inlay sits at bottom center below the nameplate, same one anchor for every tier. Material: beautifully finished MATTE MIST SILVER with subdued antique-gold bevels and narrow SMOKY VIOLET enamel channels, opaque pearl-gray quality inlay; tactile fine engraving but no filigree clutter. Premium restrained low-tier finish, no worn dirt. Overall silhouette remains slender and clear, jewelry precision without hanging ornaments. FRONT ORTHOGRAPHIC VIEW; complete frame centered with 3% outer margin. True transparent PNG background, including top opening, large illustration opening, and outside edges; no checkerboard pixels, no white or black backdrop, no fog. No mask, no emblem, no numbers, no text, no people, no scene, no wings, no tower, no pendants or extra gems. Soft upper-left lighting, no external cast shadow.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [],
+  "observation": "已实际观察：纤细U形框、两肩帷幕弧线、烟紫嵌槽、下方宽姓名牌与单一菱形品质片；顶部大范围开放，无圆孔、宫殿、垂饰。保留作母框参考；真实alpha和留空另测，待用户批准。"
+}

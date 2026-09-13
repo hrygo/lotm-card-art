@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "source_size": [1254, 1254],
+  "basis": "Agent visually located enclosed baked-background holes; seed RGB checked on original pixels. Coordinates are image top-left origin.",
+  "entries": {
+    "0": {"seeds": [[240,790],[1010,790]]},
+    "1": {"seeds": [[680,185],[764,286]]},
+    "2": {"seeds": [[375,230]]},
+    "3": {"seeds": []},
+    "4": {"seeds": [[875,520]], "min_neutral": 235},
+    "5": {"seeds": [[400,832]]},
+    "6": {"seeds": []},
+    "7": {"seeds": []},
+    "8": {"seeds": [[820,355],[900,860]]},
+    "9": {"seeds": []}
+  }
+}

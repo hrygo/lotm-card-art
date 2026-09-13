@@ -1,0 +1,86 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "quality-name-calibration",
+  "profile": "standard",
+  "background": "none",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "low-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            120,
+            610,
+            260,
+            60
+          ],
+          "font": "Songti SC",
+          "size": 21,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    },
+    {
+      "id": "mid-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            620,
+            610,
+            260,
+            60
+          ],
+          "font": "Songti SC",
+          "size": 21,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    },
+    {
+      "id": "high-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            120,
+            1315,
+            260,
+            60
+          ],
+          "font": "Songti SC",
+          "size": 21,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    },
+    {
+      "id": "true-god-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            620,
+            1330,
+            260,
+            60
+          ],
+          "font": "Songti SC",
+          "size": 21,
+          "align": "center",
+          "fill": "#292335"
+        }
+      ]
+    }
+  ]
+}

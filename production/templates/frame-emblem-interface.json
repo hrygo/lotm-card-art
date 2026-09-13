@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "status": "unfilled_template_not_renderer_input",
+  "pathway_id": null,
+  "sequence": null,
+  "geometry_id": null,
+  "canvas": {"width": null, "height": null, "origin": "top-left", "units": "pixels"},
+  "assets": {"frame": null, "emblem": null, "junction": null, "name": null},
+  "material_group": {
+    "id": null,
+    "quality_config": "config/quality-color-tokens.json",
+    "members": ["frame_texture", "junction_texture", "frame_gems", "junction_gems"],
+    "lighting_direction": null,
+    "texture_mask": null,
+    "gem_mask": null,
+    "protected_mask": null,
+    "emblem_gem_recolor_authorized": false
+  },
+  "placement": {
+    "emblem_visible_bbox": null,
+    "emblem_transform": null,
+    "name_ink_target_center": null,
+    "left_shoulder_contact": null,
+    "right_shoulder_contact": null,
+    "left_emblem_solid_contact": null,
+    "right_emblem_solid_contact": null
+  },
+  "masks": {
+    "junction_allowed_domain": null,
+    "receiving_opaque_domain": null,
+    "emblem_holes_protected": null,
+    "name_protected": null
+  },
+  "checks": {
+    "frozen_geometry_displacement_px": 0,
+    "junction_pixels_in_protected_holes": 0,
+    "unapproved_pixels_outside_edit_domain": 0,
+    "name_ink_center_error_px": null,
+    "visual_review": "pending"
+  }
+}

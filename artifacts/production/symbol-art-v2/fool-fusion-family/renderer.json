@@ -1,0 +1,261 @@
+{
+  "color_space" : "sRGB",
+  "decode" : "CGImageSource full raster decode",
+  "engine" : "Swift material compositor v2",
+  "fonts" : [
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "愚者 · 融合徽章 0—9"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "母标识 × 专属数字 · Agentic 一体再创作"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "保留原稿"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "新增造型"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "新增造型"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "新增造型"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "保留原稿"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "新增造型"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "新增造型"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "保留原稿"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "新增造型"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "保留原稿"
+    },
+    {
+      "requested" : "Songti SC",
+      "resolved" : "STSongti-SC-Regular",
+      "runs" : [
+        "STSongti-SC-Regular"
+      ],
+      "text" : "物料试装 · 非正式卡牌"
+    }
+  ],
+  "height" : 3072,
+  "inputs" : [
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-0\/v001\/raw.png"
+    },
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-1\/v001\/raw.png"
+    },
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-2\/v001\/raw.png"
+    },
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-3\/v001\/raw.png"
+    },
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-4\/v001\/raw.png"
+    },
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-5\/v001\/raw.png"
+    },
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-6\/v001\/raw.png"
+    },
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-7\/v001\/raw.png"
+    },
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-8\/v001\/raw.png"
+    },
+    {
+      "alpha" : {
+        "has_real_transparency" : false,
+        "height" : 1254,
+        "opaque" : 1572516,
+        "partial" : 0,
+        "transparent" : 0,
+        "width" : 1254
+      },
+      "path" : "artifacts\/production\/fool-fusion-9\/v001\/raw.png"
+    }
+  ],
+  "node_order" : [
+    "title",
+    "subtitle",
+    "fusion-0",
+    "label-0",
+    "fusion-1",
+    "label-1",
+    "fusion-2",
+    "label-2",
+    "fusion-3",
+    "label-3",
+    "fusion-4",
+    "label-4",
+    "fusion-5",
+    "label-5",
+    "fusion-6",
+    "label-6",
+    "fusion-7",
+    "label-7",
+    "fusion-8",
+    "label-8",
+    "fusion-9",
+    "label-9",
+    "__study"
+  ],
+  "output_alpha" : {
+    "has_real_transparency" : false,
+    "height" : 3072,
+    "opaque" : 6291456,
+    "partial" : 0,
+    "transparent" : 0,
+    "width" : 2048
+  },
+  "probes" : [
+
+  ],
+  "width" : 2048
+}

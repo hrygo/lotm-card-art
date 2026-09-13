@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 2,
+  "references": [
+    {
+      "path": "artifacts/production/klein-identity-v3/reference.png",
+      "sha256": "d5179d39b18af70270e2db6fde3d75c40fbb687ba23b0325f7430d8b7e2679dc",
+      "role": "geometry"
+    },
+    {
+      "path": "artifacts/production/klein-seer-card-v3/final.png",
+      "sha256": "97bd976b07604ad46b112f996b89574bb3d4c259724f1078837938dcb14f5204",
+      "role": "geometry"
+    },
+    {
+      "path": "artifacts/production/klein-seer-integrated/v001/raw.png",
+      "sha256": "0435b0f53ada0930b38288c4803b951e7bd5dd673f767b9ea3e079156aaace0b",
+      "role": "edit_target"
+    }
+  ],
+  "limits": {
+    "max_attempts": 2
+  },
+  "task_id": "klein-seer-integrated",
+  "kind": "subject",
+  "mode": "production",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "opaque"
+  },
+  "prompt": "Use case: precise-object-edit. Correct ONLY composition of the full-scene painting in image 3, preserving its exact face, divination event, room and painterly quality. Image 1 is the fixed identity frame reference. Image 2 is the failed assembled preview showing the two errors to fix: hair touches the title, and the tiny materials are hidden behind the bottom nameplate. Output ONLY corrected full-bleed 2:3 scene painting, WITHOUT any frame, badge, text or nameplate. Zoom OUT the complete seated character plus tabletop group by about 22 percent, with no inset boundary; extend the same room naturally all around. Precise normalized composition target: hair TOP y30% (not22%), face center x46%,y43%; entire LEFT hand (viewer right) at x66%,y57%; chain/citrine y61-67%; tea cup bottom y74%; small material case containing black vial and star-speckled translucent jellylike crystal at x31%,y75%, empty dark medicine cup x44%,y77%; bottom of ALL important tabletop objects ABOVE y80%. Leave top center x38-62%,y7-27% as very dark quiet purple drapery/background for original emblem and title. The full frame in image 1 will overlay x0-14%,x86-100%,y83-100%: no key content there. Keep lower20% as unimportant tabletop front/fabric. This is a wider environmental portrait, not tight bust crop. Preserve scholarly Klein black hair brown eyes, silver chain held anatomically LEFT hand, ONE yellow citrine above red tea, book with blank/pale abstract ink-wash pages, tiny black reagent vial, jellylike star crystal, empty dark cup. Warm antique gold lamp with smoky plum violet room and silvery blue window light, human-scale mystery. ONE seamless continuous environment filling entire 2:3 canvas. No additional text, handwriting, labels, frame, rails, mask, badge, numbers, nameplate, panels, magic beams or extra characters. Do not copy the borders/text from reference images; they are only layout constraints.",
+  "spec": {
+    "slot_id": "lotm.fool.s09",
+    "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+    "character_id": "klein-moretti",
+    "event": "克莱恩左手持银链黄水晶，在茶杯上方做灵摆占卜。",
+    "semantic_source": "pathways/fool/sequences/09/card.json",
+    "protagonist": {
+      "kind": "character",
+      "name_zh": "克莱恩·莫雷蒂",
+      "name_status": "verified",
+      "evidence_refs": [
+        {
+          "path": "pathways/fool/canon.json",
+          "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+        }
+      ]
+    }
+  }
+}

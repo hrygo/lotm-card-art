@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "sigil-hanged-man",
+  "revision": 1,
+  "kind": "foundation",
+  "mode": "concept",
+  "output": {
+    "aspect": [
+      1,
+      1
+    ],
+    "background": "transparent"
+  },
+  "prompt": "Use case: stylized-concept. Asset type: ONE standalone collectible occult pathway emblem, precision jewelry-grade relief artwork for a card asset library. Original artistic interpretation for the 倒吊人 / hanged-man pathway, NOT a copied official religious emblem. Primary design: A solemn inverted reliquary crest: a suspended downward-pointing chalice-like vessel joined to an inverted branching axis, held by inward-pulling dark ribbons. Old silver, deep wine-red enamel, small bone-white inner surface. Clear inverted teardrop silhouette, sacrificial tension without gore or a literal hanging body. Craftsmanship: museum-quality micro-chased metal, layered pierced openwork, satin recesses contrasting polished bevels, restrained precious inlays; rich sculptural depth and genuinely exquisite detail, NOT a flat vector outline or generic app icon. One coherent primary symbol with a bold readable silhouette, not a pile of objects. Straight-on orthographic view, whole emblem centered occupying about 78% of a SQUARE canvas, generous clean margin. Soft upper-left studio illumination; no ground plane or cast shadow outside the object. GENUINELY TRANSPARENT background, including all internal openwork holes; no black rectangle, no white rectangle, no checkerboard pixels. No text, letters, digits, watermark, card border, human portrait or surrounding scene.",
+  "references": [],
+  "limits": {
+    "max_attempts": 2
+  },
+  "spec": {
+    "material": "A solemn inverted reliquary crest: a suspended downward-pointing chalice-like vessel joined to an inverted branching axis, held by inward-pulling dark ribbons. Old silver, deep wine-red enamel, small bone-white inner surface. Clear inverted teardrop silhouette, sacrificial tension without gore or a literal hanging body.",
+    "lighting": "柔和左上光，精雕浮雕自阴影，无背景投影",
+    "tiling": false,
+    "use_scope": [
+      "emblem:hanged-man",
+      "reusable-pathway-identity"
+    ]
+  }
+}

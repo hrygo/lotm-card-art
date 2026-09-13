@@ -1,0 +1,16 @@
+{
+  "prompt": "Edit the attached artwork: perform a precise background removal only. Preserve the entire ornate Fool numeral 4 sculpture exactly: mask, purple drapery, gold, white enamel, all edges and gemstones. REMOVE EVERY white or gray checkerboard background pixel outside the object AND inside holes including eye openings. The result must be a true transparent RGBA PNG with alpha=0 in the background, not a picture of transparency. Do not draw a new checkerboard, white backdrop, shadow backdrop, or scene. No stylistic change, no added ornament, no cropped tips. This is an isolated reusable cutout asset.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 2,
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-fusion-4/v001/raw.png",
+      "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c",
+      "role": "edit_target"
+    }
+  ],
+  "observation": "已实际观察返修：数字与面具结构仍可辨，但灰白棋盘格仍烘焙进图像。AppKit读取hasAlpha=false，背景像素alpha=1。返修失败，达到本任务2次上限，不作为可合成透明物料；保留记录供审查。"
+}

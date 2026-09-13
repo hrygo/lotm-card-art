@@ -264,6 +264,66 @@
       "accessed_at": "2026-09-13",
       "available_scope": "可定位第二十五章“两个仪式”及序列0愚者配方/仪式摘要的二手线索",
       "notes": "仅作研究线索，不能替代中文授权底本；不复制正文，不使断言进入verified。"
+    },
+    {
+      "id": "xxsy.lotm.zh.c31",
+      "kind": "primary_chinese",
+      "work_scope": "lotm-volume-1-zh",
+      "language": "zh-CN",
+      "version": "潇湘书院中文章节页面，2026-09-13搜索可见段落",
+      "url": "https://www.xxsy.net/chapter/9069458404256003/27841458238329534",
+      "retrieval_status": "partial",
+      "accessed_at": "2026-09-13",
+      "available_scope": "第三十一章 魔药：中文章节搜索可见的主材料及用量、占卜家魔药调配段落；未称通读全章",
+      "notes": "仅对实际可见段落作核验，不将同站问答、百科或同人用于原著断言。"
+    },
+    {
+      "id": "xxsy.lotm.zh.c32",
+      "kind": "primary_chinese",
+      "work_scope": "lotm-volume-1-zh",
+      "language": "zh-CN",
+      "version": "潇湘书院中文章节页面，2026-09-13搜索可见段落",
+      "url": "https://www.xxsy.net/chapter/9069458404256003/27847469046785672",
+      "retrieval_status": "partial",
+      "accessed_at": "2026-09-13",
+      "available_scope": "第三十二章 灵视：中文章节搜索可见的克莱恩直接服下魔药段落；不推广为其他序列的无仪式规则",
+      "notes": "仅对实际可见段落作核验，不将同站问答、百科或同人用于原著断言。"
+    },
+    {
+      "id": "xxsy.lotm.zh.c54",
+      "kind": "primary_chinese",
+      "work_scope": "lotm-volume-1-zh",
+      "language": "zh-CN",
+      "version": "潇湘书院中文章节页面，2026-09-13搜索可见段落",
+      "url": "https://www.xxsy.net/chapter/9069458404256003/28063827470395879",
+      "retrieval_status": "partial",
+      "accessed_at": "2026-09-13",
+      "available_scope": "第五十四章 第一位求卜者：左手持银链黄水晶在茶杯上方占卜及主动投入占卜家身份的可见段落",
+      "notes": "仅对实际可见段落作核验，不将同站问答、百科或同人用于原著断言。"
+    },
+    {
+      "id": "xxsy.lotm.zh.c85",
+      "kind": "primary_chinese",
+      "work_scope": "lotm-volume-1-zh",
+      "language": "zh-CN",
+      "version": "潇湘书院中文章节页面，2026-09-13搜索可见段落",
+      "url": "https://www.xxsy.net/chapter/9069458404256003/28420165334306190",
+      "retrieval_status": "partial",
+      "accessed_at": "2026-09-13",
+      "available_scope": "第八十五章 紧迫：灵摆通常适合自身相关及小范围客观情况的可见段落",
+      "notes": "仅对实际可见段落作核验，不将同站问答、百科或同人用于原著断言。"
+    },
+    {
+      "id": "xxsy.lotm.zh.c100",
+      "kind": "primary_chinese",
+      "work_scope": "lotm-volume-1-zh",
+      "language": "zh-CN",
+      "version": "潇湘书院中文章节页面，2026-09-13搜索可见段落",
+      "url": "https://www.xxsy.net/chapter/9069458404256003/28571356502945292",
+      "retrieval_status": "partial",
+      "accessed_at": "2026-09-13",
+      "available_scope": "第一百章 解读象征：克莱恩姓名及黑发褐瞳、书卷气质的可见段落",
+      "notes": "仅对实际可见段落作核验，不将同站问答、百科或同人用于原著断言。"
     }
   ]
 }

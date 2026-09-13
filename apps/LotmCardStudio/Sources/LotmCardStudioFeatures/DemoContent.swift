@@ -22,6 +22,8 @@ public struct AlbumCard: Identifiable, Hashable, Sendable {
         switch identity.cardID {
         case "lotm.fool.s00.prototype":
             return "fool-s00-render-v003"
+        case "lotm.fool.s09.klein-moretti.tingen-01":
+            return "klein-s09-seer-v001"
         case "lotm.visionary.s07.audrey-01":
             return "audrey-s07-psychologist-v001"
         default:
@@ -49,7 +51,7 @@ public enum DemoLibrary {
                 cardID: "lotm.fool.s03.klein-01",
                 slotID: "lotm.fool.s03",
                 displayName: "小丑",
-                sequenceName: "序列 03",
+                sequenceName: "序列 3",
                 contentStatus: .confirmed,
                 identityKind: .character,
                 characterID: "klein",
@@ -124,39 +126,25 @@ public enum DemoLibrary {
         ),
         AlbumCard(
             identity: CardIdentity(
-                cardID: "lotm.fool.s09.klein-02",
+                cardID: "lotm.fool.s09.klein-moretti.tingen-01",
                 slotID: "lotm.fool.s09",
-                displayName: "占卜家",
-                sequenceName: "序列 09",
+                displayName: "克莱恩·莫雷蒂",
+                sequenceName: "序列 9 · 占卜家",
                 contentStatus: .proposed,
                 identityKind: .character,
                 characterID: "klein",
-                identitySliceID: "klein.s09"
+                identitySliceID: "klein.s09.tingen"
             ),
-            narrative: NarrativePack(
-                cardID: "lotm.fool.s09.klein-02",
-                voiceProfileID: "low-lantern",
-                lines: [
-                    NarrativeLine(
-                        id: "greeting-draft",
-                        kind: .greeting,
-                        text: "候选台词仍在审核。",
-                        sourceKind: .original,
-                        review: .draft,
-                        contentDigest: "greeting-draft-v1"
-                    )
-                ],
-                chapters: []
-            ),
+            narrative: KleinTingenNarrative.pack,
             visualTheme: .violet,
-            subtitle: "从占卜开始，走近灰雾"
+            subtitle: "廷根时期的克莱恩，在灵摆与未知之间寻找可验证的方向"
         ),
         AlbumCard(
             identity: CardIdentity(
                 cardID: "lotm.fool.s00.prototype",
                 slotID: "lotm.fool.s00",
                 displayName: "愚者",
-                sequenceName: "序列 00 · 真神",
+                sequenceName: "序列 0 · 真神",
                 contentStatus: .proposed,
                 identityKind: .archetype,
                 characterID: nil,
@@ -214,7 +202,7 @@ public enum DemoLibrary {
                     NarrativeLine(
                         id: "s00-story-03",
                         kind: .story,
-                        text: "走到序列0以后，世界开始不再以人的尺度运转：时间可以被愚弄，历史可以被重新接上，神国像一场完整而无边的梦。但权柄没有替他消除疲惫、恐惧和牵挂。面对必须承担的最后一战，他把清醒留给仍在行走的人，把自己交给漫长沉睡——不是因为他失去了人性，而是因为他仍不愿让别人替他承担代价。",
+                        text: "走到序列 0 以后，世界开始不再以人的尺度运转：时间可以被愚弄，历史可以被重新接上，神国像一场完整而无边的梦。但权柄没有替他消除疲惫、恐惧和牵挂。面对必须承担的最后一战，他把清醒留给仍在行走的人，把自己交给漫长沉睡——不是因为他失去了人性，而是因为他仍不愿让别人替他承担代价。",
                         sourceKind: .interpretation,
                         review: .approved(contentDigest: "s00-story-03-approved-v1"),
                         contentDigest: "s00-story-03-approved-v1",
@@ -254,7 +242,7 @@ public enum DemoLibrary {
                         line: NarrativeLine(
                             id: "s00-story-03",
                             kind: .story,
-                            text: "走到序列0以后，世界开始不再以人的尺度运转：时间可以被愚弄，历史可以被重新接上，神国像一场完整而无边的梦。但权柄没有替他消除疲惫、恐惧和牵挂。面对必须承担的最后一战，他把清醒留给仍在行走的人，把自己交给漫长沉睡——不是因为他失去了人性，而是因为他仍不愿让别人替他承担代价。",
+                            text: "走到序列 0 以后，世界开始不再以人的尺度运转：时间可以被愚弄，历史可以被重新接上，神国像一场完整而无边的梦。但权柄没有替他消除疲惫、恐惧和牵挂。面对必须承担的最后一战，他把清醒留给仍在行走的人，把自己交给漫长沉睡——不是因为他失去了人性，而是因为他仍不愿让别人替他承担代价。",
                             sourceKind: .interpretation,
                             review: .approved(contentDigest: "s00-story-03-approved-v1"),
                             contentDigest: "s00-story-03-approved-v1",
@@ -271,7 +259,7 @@ public enum DemoLibrary {
                 cardID: "lotm.visionary.s07.audrey-01",
                 slotID: "lotm.visionary.s07",
                 displayName: "正义 · 奥黛丽",
-                sequenceName: "序列 07 · 心理医生",
+                sequenceName: "序列 7 · 心理医生",
                 contentStatus: .confirmed,
                 identityKind: .character,
                 characterID: "audrey",

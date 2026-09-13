@@ -1,0 +1,31 @@
+{
+  "task_id": "fool-frame-refinement-v1-diamond-seat",
+  "kind": "foundation",
+  "mode": "concept",
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "attempt": 1,
+  "created_at": null,
+  "prompt": "Use case: stylized-concept. Refine the Fool pathway bottom diamond so it is genuinely seated inside the frame instead of pasted over it. Preserve the locked outer silhouette, nameplate, bottom anchor center, and visible gemstone footprint. Redesign only the contact architecture: continuous recessed socket, matching layered bezel sharing the lower rail, physically plausible overlap, subtle undercut shadow, and tiny local reflected color. Keep the diamond faceted, transparent-looking, bright, and distinct from metal. Front-on orthographic, consistent upper-left light. Study only: no readable text, letters, numerals, pseudo-writing, logos, watermark, extra gemstones, perspective, crop, rotation, enlarged jewel, or global geometry changes.",
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-five-tier-kit-v4/frame-low.png",
+      "sha256": "a4a092f601c5f773cf79f5c2002fec6fc188046d8d40c2e10e9323aed5e53a29",
+      "role": "locked-frame-reference"
+    },
+    {
+      "path": "artifacts/production/fool-diamond-v2/raw.png",
+      "sha256": "28191cb798528689890c4adae0b3998a7501dfe71d62e60b9f51abfd08d3e0b8",
+      "role": "five-tier-gem-reference"
+    }
+  ],
+  "output": {
+    "path": "artifacts/production/fool-frame-refinement-v1/diamond-seat/raw.png",
+    "sha256": "d4c7b9d27d00a842ef1e826b6477bc574e70737e7ee2e183e4e20baa77d07069",
+    "visual_status": "pending",
+    "pixel_role": "reference-only"
+  },
+  "observation": "Study suggests a shared lower rail, chevron-like bezel continuity, and localized contact occlusion; it remains a style reference, not a geometry source.",
+  "approval": {"status": "pending", "by": null, "reference": null}
+}

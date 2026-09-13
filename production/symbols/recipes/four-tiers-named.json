@@ -1,0 +1,206 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "four-tiers-named",
+  "profile": "standard",
+  "background": "#182031",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "ornate-frame-low",
+      "receipt": "artifacts/production/ornate-frame-low/v001/receipt.json",
+      "rect": [
+        15,
+        35,
+        470,
+        665
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "ornate-frame-low-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "低序列 · 精工",
+          "rect": [
+            10,
+            2,
+            480,
+            42
+          ],
+          "font": "Songti SC",
+          "size": 24,
+          "align": "center",
+          "fill": "#efe6d6"
+        }
+      ]
+    },
+    {
+      "id": "ornate-frame-mid",
+      "receipt": "artifacts/production/ornate-frame-mid/v001/receipt.json",
+      "rect": [
+        515,
+        35,
+        470,
+        665
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "ornate-frame-mid-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "中序列 · 仪式",
+          "rect": [
+            510,
+            2,
+            480,
+            42
+          ],
+          "font": "Songti SC",
+          "size": 24,
+          "align": "center",
+          "fill": "#efe6d6"
+        }
+      ]
+    },
+    {
+      "id": "ornate-frame-high",
+      "receipt": "artifacts/production/ornate-frame-high/v001/receipt.json",
+      "rect": [
+        15,
+        755,
+        470,
+        665
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "ornate-frame-high-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "高序列 · 圣物",
+          "rect": [
+            10,
+            722,
+            480,
+            42
+          ],
+          "font": "Songti SC",
+          "size": 24,
+          "align": "center",
+          "fill": "#efe6d6"
+        }
+      ]
+    },
+    {
+      "id": "ornate-frame-true-god",
+      "receipt": "artifacts/production/ornate-frame-true-god/v001/receipt.json",
+      "rect": [
+        515,
+        755,
+        470,
+        665
+      ],
+      "fit": "contain"
+    },
+    {
+      "id": "ornate-frame-true-god-label",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "真神 · 神域",
+          "rect": [
+            510,
+            722,
+            480,
+            42
+          ],
+          "font": "Songti SC",
+          "size": 24,
+          "align": "center",
+          "fill": "#efe6d6"
+        }
+      ]
+    },
+    {
+      "id": "low-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            120,
+            594,
+            260,
+            38
+          ],
+          "font": "Songti SC",
+          "size": 19,
+          "align": "center",
+          "fill": "#292230"
+        }
+      ]
+    },
+    {
+      "id": "mid-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            620,
+            616,
+            260,
+            38
+          ],
+          "font": "Songti SC",
+          "size": 19,
+          "align": "center",
+          "fill": "#292230"
+        }
+      ]
+    },
+    {
+      "id": "high-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            120,
+            1297,
+            260,
+            38
+          ],
+          "font": "Songti SC",
+          "size": 19,
+          "align": "center",
+          "fill": "#292230"
+        }
+      ]
+    },
+    {
+      "id": "true-god-name",
+      "shapes": [
+        {
+          "kind": "text",
+          "text": "主角姓名",
+          "rect": [
+            620,
+            1314,
+            260,
+            38
+          ],
+          "font": "Songti SC",
+          "size": 19,
+          "align": "center",
+          "fill": "#292230"
+        }
+      ]
+    }
+  ]
+}

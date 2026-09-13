@@ -1,0 +1,27 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/material-sacred-slate.json",
+      "sha256": "55ce516d47bef8ac1939f75516a7576092a89ab6b06090f3bc51a9f9d1b41c0a"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-foundation/SKILL.md",
+      "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+    }
+  ],
+  "design_fingerprint": null,
+  "task_sha256": "55ce516d47bef8ac1939f75516a7576092a89ab6b06090f3bc51a9f9d1b41c0a",
+  "prompt_sha256": "c6c547a98bce7f622fd86ae0fd2e687434f242f245a30c3c801b9d67587a4437"
+}

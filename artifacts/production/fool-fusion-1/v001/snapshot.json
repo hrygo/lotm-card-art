@@ -1,0 +1,37 @@
+{
+  "dependencies": [
+    {
+      "path": "production/symbols/tasks/fool-fusion-1.json",
+      "sha256": "747a13feaf310e585bfa29041eb119e4a252fef04825d54dacf6b8727c95e1c6"
+    },
+    {
+      "path": "artifacts/production/sigil-fool/v001/raw.png",
+      "sha256": "8bed2bf6163130e465f09b8896f2e709bc50e6c3436712de358ed4c68a8a3b1d",
+      "role": "style"
+    },
+    {
+      "path": "artifacts/production/fool-numeral-1/v001/raw.png",
+      "sha256": "fdcc9499e4332e07c4f901f12695ec6f5a91597be9816bf062d50190d76a3180",
+      "role": "geometry"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-foundation/SKILL.md",
+      "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+    }
+  ],
+  "design_fingerprint": null,
+  "task_sha256": "747a13feaf310e585bfa29041eb119e4a252fef04825d54dacf6b8727c95e1c6",
+  "prompt_sha256": "831966780adffe719c2f0eb63cbebc6c77b70888da995a1b3feae6617ae3a724"
+}

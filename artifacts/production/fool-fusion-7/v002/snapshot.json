@@ -1,0 +1,32 @@
+{
+  "dependencies": [
+    {
+      "path": "production/symbols/tasks/fool-fusion-7-r2.json",
+      "sha256": "6e115c9ca533c7144b5e3c11a2b9b8554e1a670b1eeb6d1b0fd4712827c170cb"
+    },
+    {
+      "path": "artifacts/production/fool-fusion-7/v001/raw.png",
+      "sha256": "66a1c337ea7464a606951d3e79b449d8d011671e5dbe2a76ee4aaf86fafc2468",
+      "role": "edit_target"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+    },
+    {
+      "path": ".agents/skills/lotm-foundation/SKILL.md",
+      "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+    }
+  ],
+  "design_fingerprint": null,
+  "task_sha256": "6e115c9ca533c7144b5e3c11a2b9b8554e1a670b1eeb6d1b0fd4712827c170cb",
+  "prompt_sha256": "f7e6c6c5f45cbe7b314b9244d45aedd22d1c8eead707c7193c78e6ba3eded022"
+}

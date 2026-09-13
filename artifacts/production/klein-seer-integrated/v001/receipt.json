@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "subject",
+  "mode": "production",
+  "task_id": "klein-seer-integrated",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "revision": 1,
+    "references": [
+      {
+        "path": "artifacts/production/klein-identity-v3/reference.png",
+        "sha256": "d5179d39b18af70270e2db6fde3d75c40fbb687ba23b0325f7430d8b7e2679dc",
+        "role": "geometry"
+      },
+      {
+        "path": "artifacts/production/klein-seer-subject/v002/raw.png",
+        "sha256": "16fa28928a7bbdc93403d53c3d59122973b195e964bc775c1542dbddac2d9f4e",
+        "role": "edit_target"
+      }
+    ],
+    "limits": {
+      "max_attempts": 2
+    },
+    "task_id": "klein-seer-integrated",
+    "kind": "subject",
+    "mode": "production",
+    "output": {
+      "aspect": [
+        2,
+        3
+      ],
+      "background": "opaque"
+    },
+    "prompt": "Use case: compositing. Produce ONE exquisite full-bleed 2:3 portrait oil painting to fit the complete identity card frame in image 1. Image 1 is the actual fixed layout and material reference (frame + mask-shaped numeral 9 + Chinese name + title); image 2 is the exact character/scene identity to preserve and recompose. Output ONLY the integrated character AND full environment painting, NOT the frame or its text/emblem: those exact original pixels will be overlaid afterward. This is not an inset picture: the room and atmosphere continue continuously to every canvas edge, behind the future frame. Match image 1's antique pale silver, restrained gold, smoky plum violet and silk palette with natural room materials and lighting. Plan the FINAL OVERLAY in image 1: top central x38-62%, y8-25% must be quiet very dark smoky-purple room atmosphere without objects or highlights, to keep the emblem/title legible. Character hair top at y29%, face centered around x46%, y42%, hands and pendulum around y60-69%, tea cup around x65%, y73%, tabletop small materials around y79%; all critical narrative objects inside x18-82%, y29-82%. Nameplate overlays y84-92%, so no crucial objects there. Preserve Klein's exact youthful scholarly face from image 2, black hair, brown eyes, Victorian dark coat and white collar, contemplative cautious expression. Anatomical LEFT hand on viewer right holds fine silver chain and ONE yellow citrine suspended over a porcelain red-tea cup. Other hand rests beside an open book of blank pale pages with faint abstract ink-wash only. Keep a small open dark wooden case with an opaque black vial and softly jelly-like star-speckled crystal, and a small empty dark medicine cup separate from the ornate tea cup. Tiny subordinate motifs, not a literal potion ritual or instructional diagram. Background seamlessly integrated: dim Victorian study, understated bookshelves at left, quiet smoky-purple drapery, hazy blue-violet Tingen window at right, low amber lamp; coherent painterly realism and reflected light, mysterious human-scale divination. Darkened upper space is still real room atmosphere not a flat graphic block, with a gentle organic transition into the portrait. Outer edges dark and subtly plum, not blank or blurred bands. One cohesive full environment, no pasted photo rectangle, inset boundary, panel, card border, ornamental rail, badge, mask, numeral, Chinese text, labels, writing, watermarks, magic beams, tentacles, puppetry, throne, extra people. Deliver opaque 2:3 full artwork, original identity frame supplied as reference only.",
+    "spec": {
+      "slot_id": "lotm.fool.s09",
+      "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+      "character_id": "klein-moretti",
+      "event": "克莱恩左手持银链黄水晶，在茶杯上方做灵摆占卜。",
+      "semantic_source": "pathways/fool/sequences/09/card.json",
+      "protagonist": {
+        "kind": "character",
+        "name_zh": "克莱恩·莫雷蒂",
+        "name_status": "verified",
+        "evidence_refs": [
+          {
+            "path": "pathways/fool/canon.json",
+            "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+          }
+        ]
+      }
+    }
+  },
+  "compiled": "artifacts/production/klein-seer-integrated/v001",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/klein-seer-integrated.json",
+        "sha256": "b8daa0c4c46f816e59cc91ade0a53a30e72bef9f594098836d42f95ee32de68f"
+      },
+      {
+        "path": "artifacts/production/klein-identity-v3/reference.png",
+        "sha256": "d5179d39b18af70270e2db6fde3d75c40fbb687ba23b0325f7430d8b7e2679dc",
+        "role": "geometry"
+      },
+      {
+        "path": "artifacts/production/klein-seer-subject/v002/raw.png",
+        "sha256": "16fa28928a7bbdc93403d53c3d59122973b195e964bc775c1542dbddac2d9f4e",
+        "role": "edit_target"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-subject/SKILL.md",
+        "sha256": "ea3f7ae75a689d7b8ddc98676e385ee5de70f03ca49491721a8e228dc307a0ec"
+      },
+      {
+        "path": "pathways/fool/sequences/09/card.json",
+        "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e"
+      },
+      {
+        "path": "pathways/fool/canon.json",
+        "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+      }
+    ],
+    "design_fingerprint": "98aebc313499dab55a17bd91dc742b9194272673f3db876dcafc86b39c708870",
+    "task_sha256": "b8daa0c4c46f816e59cc91ade0a53a30e72bef9f594098836d42f95ee32de68f",
+    "prompt_sha256": "e415d8e0d8004f216961c41d58c5610e204928f3374b6543316426bde9d7258c"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/klein-seer-integrated/v001/raw.png",
+    "sha256": "0435b0f53ada0930b38288c4803b951e7bd5dd673f767b9ea3e079156aaace0b"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1024,
+    "height": 1536,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      2,
+      3
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: compositing. Produce ONE exquisite full-bleed 2:3 portrait oil painting to fit the complete identity card frame in image 1. Image 1 is the actual fixed layout and material reference (frame + mask-shaped numeral 9 + Chinese name + title); image 2 is the exact character/scene identity to preserve and recompose. Output ONLY the integrated character AND full environment painting, NOT the frame or its text/emblem: those exact original pixels will be overlaid afterward. This is not an inset picture: the room and atmosphere continue continuously to every canvas edge, behind the future frame. Match image 1's antique pale silver, restrained gold, smoky plum violet and silk palette with natural room materials and lighting. Plan the FINAL OVERLAY in image 1: top central x38-62%, y8-25% must be quiet very dark smoky-purple room atmosphere without objects or highlights, to keep the emblem/title legible. Character hair top at y29%, face centered around x46%, y42%, hands and pendulum around y60-69%, tea cup around x65%, y73%, tabletop small materials around y79%; all critical narrative objects inside x18-82%, y29-82%. Nameplate overlays y84-92%, so no crucial objects there. Preserve Klein's exact youthful scholarly face from image 2, black hair, brown eyes, Victorian dark coat and white collar, contemplative cautious expression. Anatomical LEFT hand on viewer right holds fine silver chain and ONE yellow citrine suspended over a porcelain red-tea cup. Other hand rests beside an open book of blank pale pages with faint abstract ink-wash only. Keep a small open dark wooden case with an opaque black vial and softly jelly-like star-speckled crystal, and a small empty dark medicine cup separate from the ornate tea cup. Tiny subordinate motifs, not a literal potion ritual or instructional diagram. Background seamlessly integrated: dim Victorian study, understated bookshelves at left, quiet smoky-purple drapery, hazy blue-violet Tingen window at right, low amber lamp; coherent painterly realism and reflected light, mysterious human-scale divination. Darkened upper space is still real room atmosphere not a flat graphic block, with a gentle organic transition into the portrait. Outer edges dark and subtly plum, not blank or blurred bands. One cohesive full environment, no pasted photo rectangle, inset boundary, panel, card border, ornamental rail, badge, mask, numeral, Chinese text, labels, writing, watermarks, magic beams, tentacles, puppetry, throne, extra people. Deliver opaque 2:3 full artwork, original identity frame supplied as reference only.",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13T11:55:09Z",
+    "attempt": 1,
+    "attachments": [
+      {
+        "path": "artifacts/production/klein-identity-v3/reference.png",
+        "sha256": "d5179d39b18af70270e2db6fde3d75c40fbb687ba23b0325f7430d8b7e2679dc",
+        "role": "geometry"
+      },
+      {
+        "path": "artifacts/production/klein-seer-subject/v002/raw.png",
+        "sha256": "16fa28928a7bbdc93403d53c3d59122973b195e964bc775c1542dbddac2d9f4e",
+        "role": "edit_target"
+      }
+    ],
+    "observation": "已观察实际1024×1536原图：人物与室内背景连续一体；银链黄水晶悬在茶杯上方；黑瓶、星点晶体及空杯仍在桌前。未见生成边框、圣徽或正文文字。顶部留白和下部材料可能与身份框重叠，须以实际合成检查；未批准。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T11:57:57.963748+00:00"
+}

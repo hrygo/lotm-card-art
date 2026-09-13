@@ -380,8 +380,12 @@ private struct AlbumHomeView: View {
                 HStack(spacing: 0) {
                     MetricTile(title: "已确认", value: "\(model.confirmedCount)", color: ArchiveTheme.Aether.light)
                     MetricTile(title: "正式收藏", value: "\(model.formalCount)", color: ArchiveTheme.Brass.luster)
-                    MetricTile(title: "候选收藏", value: "\(model.candidateCount)", color: ArchiveTheme.Mystic.violet)
-                    MetricTile(title: "愿望目标", value: "01", color: ArchiveTheme.Parchment.secondary)
+                    MetricTile(title: "候选收藏", value: "\(model.candidateCount)", color: ArchiveTheme.Status.candidate)
+                    MetricTile(
+                        title: ArchiveCopy.wishlistMetricTitle,
+                        value: "\(model.wishlistCount)",
+                        color: ArchiveTheme.Parchment.secondary
+                    )
                 }
                 .padding(24)
                 .background(ArchiveTheme.Gradients.leatherSurface, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
@@ -389,34 +393,6 @@ private struct AlbumHomeView: View {
                 .overlay {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
-                }
-
-                HStack(spacing: 16) {
-                    Circle()
-                        .fill(ArchiveTheme.Aether.light)
-                        .frame(width: 11, height: 11)
-                        .shadow(color: ArchiveTheme.Aether.light.opacity(0.8), radius: 6)
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("最近唤醒")
-                            .font(.system(size: 10, weight: .bold, design: .serif))
-                            .foregroundStyle(ArchiveTheme.Aether.light)
-                        Text("你上次唤醒了「小丑」")
-                            .font(.system(size: 16, weight: .bold, design: .serif))
-                            .foregroundStyle(ArchiveTheme.Parchment.primary)
-                        Text("继续探索同一角色的另一张身份卡")
-                            .font(.system(size: 11, design: .serif))
-                            .foregroundStyle(ArchiveTheme.Parchment.secondary)
-                    }
-                    Spacer()
-                    PulseLine()
-                        .frame(width: 270, height: 28)
-                }
-                .padding(22)
-                .background(ArchiveTheme.Leather.deep.opacity(0.85), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
-                .glassEffect(.regular.tint(ArchiveTheme.Brass.luster.opacity(0.06)), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .stroke(ArchiveTheme.Borders.brassMuted.opacity(0.70), lineWidth: 1)
                 }
 
                 VStack(alignment: .leading, spacing: 6) {
@@ -431,20 +407,19 @@ private struct AlbumHomeView: View {
                         .foregroundStyle(ArchiveTheme.Parchment.secondary)
                 }
 
-                LazyVGrid(
-                    columns: [
-                        GridItem(.flexible(minimum: 165), spacing: 16),
-                        GridItem(.flexible(minimum: 165), spacing: 16),
-                        GridItem(.flexible(minimum: 165), spacing: 16),
-                        GridItem(.flexible(minimum: 220), spacing: 16)
-                    ],
-                    alignment: .leading,
-                    spacing: 16
-                ) {
-                    if model.visibleCards.isEmpty {
-                        EmptyLibraryState(model: model)
-                            .gridCellColumns(4)
-                    } else {
+                if model.visibleCards.isEmpty {
+                    EmptyLibraryState(model: model)
+                } else {
+                    LazyVGrid(
+                        columns: [
+                            GridItem(.flexible(minimum: 165), spacing: 16),
+                            GridItem(.flexible(minimum: 165), spacing: 16),
+                            GridItem(.flexible(minimum: 165), spacing: 16),
+                            GridItem(.flexible(minimum: 220), spacing: 16)
+                        ],
+                        alignment: .leading,
+                        spacing: 16
+                    ) {
                         ForEach(model.visibleCards) { card in
                             CardTileView(card: card) {
                                 model.select(card)
@@ -477,7 +452,7 @@ private struct EmptyLibraryState: View {
                 .font(.system(size: 26, weight: .light))
                 .foregroundStyle(ArchiveTheme.amber)
                 .accessibilityHidden(true)
-            Text(model.hasSearchQuery ? "没有找到匹配身份" : "这个清单还没有身份卡")
+            Text(model.hasSearchQuery ? "没有找到匹配的身份卡" : "这个清单还没有身份卡")
                 .font(.system(size: 19, weight: .bold))
                 .foregroundStyle(ArchiveTheme.primary)
             Text(
@@ -505,27 +480,6 @@ private struct EmptyLibraryState: View {
             in: RoundedRectangle(cornerRadius: 20, style: .continuous)
         )
         .accessibilityElement(children: .contain)
-    }
-}
-
-private struct PulseLine: View {
-    var body: some View {
-        HStack(spacing: 0) {
-            Rectangle()
-                .fill(ArchiveTheme.teal)
-                .frame(height: 2)
-            ForEach(0..<6, id: \.self) { index in
-                Circle()
-                    .fill(ArchiveTheme.teal)
-                    .frame(width: 7, height: 7)
-                    .offset(y: index.isMultiple(of: 2) ? -5 : 0)
-                if index < 5 {
-                    Rectangle()
-                        .fill(ArchiveTheme.teal.opacity(0.70))
-                        .frame(height: 2)
-                }
-            }
-        }
     }
 }
 
@@ -560,9 +514,7 @@ private struct CardTileView: View {
                 )
                 .padding(12)
                 VStack(alignment: .leading, spacing: 7) {
-                    Text(card.identity.sequenceName)
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
-                        .foregroundStyle(card.identity.contentStatus.accentColor)
+                    SequenceBadge(sequenceName: card.identity.sequenceName)
                     Text(card.identity.displayName)
                         .font(.system(size: 17, weight: .bold))
                         .foregroundStyle(ArchiveTheme.primary)
@@ -598,7 +550,9 @@ private struct CardTileView: View {
         }
         .buttonStyle(TactileCardButtonStyle(accentColor: card.identity.contentStatus.accentColor))
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(card.identity.displayName)，\(card.identity.sequenceName)")
+        .accessibilityLabel(
+            "\(card.identity.displayName)，\(ArchiveCopy.sequenceDisplayLabel(for: card.identity.sequenceName, includesRank: true))"
+        )
         .accessibilityValue("状态：\(card.identity.contentStatus.displayTitle)；\(card.subtitle)")
         .accessibilityHint("打开卡牌详情")
     }
@@ -752,9 +706,7 @@ private struct CardMotionViewport: View {
             .archiveCursor(.arrow)
 
             HStack {
-                Text(card.identity.sequenceName)
-                    .font(.system(size: 11, weight: .bold, design: .serif))
-                    .foregroundStyle(ArchiveTheme.Brass.luster)
+                SequenceBadge(sequenceName: card.identity.sequenceName, includesRank: true)
                 Spacer()
                 Text(card.identity.displayName)
                     .font(.system(size: 13, weight: .bold, design: .serif))
@@ -886,11 +838,11 @@ private struct IdentityPanel: View {
     private var voiceStatusColor: Color {
         switch voiceAvailability {
         case .localAudio:
-            return ArchiveTheme.teal
+            return ArchiveTheme.Playback.ready
         case .speechRail:
-            return ArchiveTheme.amber
+            return ArchiveTheme.Playback.preparing
         case .pending:
-            return ArchiveTheme.secondary
+            return ArchiveTheme.Playback.idle
         }
     }
 
@@ -898,36 +850,53 @@ private struct IdentityPanel: View {
         card.identity.slotID.hasPrefix("lotm.visionary") ? "观众途径 · 空想家" : "愚者途径"
     }
 
+    private var sequenceLabelColor: Color {
+        ArchiveTheme.Sequence.labelColor(
+            for: ArchiveCopy.sequenceTier(for: card.identity.sequenceName)
+        )
+    }
+
     private var semanticReadbacks: [SemanticReadback] {
         if card.identity.slotID == "lotm.fool.s00" {
             return [
-                SemanticReadback(index: "01", title: "身份", value: "序列 00 · 愚者 · 真神", color: ArchiveTheme.teal),
-                SemanticReadback(index: "02", title: "扮演", value: "在不同身份中保持自我", color: ArchiveTheme.amber),
-                SemanticReadback(index: "03", title: "能力", value: "愚弄与历史投影（节选）", color: ArchiveTheme.teal),
-                SemanticReadback(index: "04", title: "魔药", value: "唯一性与诡秘侍者特性（待核对）", color: ArchiveTheme.violet),
-                SemanticReadback(index: "05", title: "晋升", value: "愚弄时间、历史或命运（部分资料）", color: ArchiveTheme.amber),
-                SemanticReadback(index: "06", title: "限制", value: "相关资料仍在整理", color: ArchiveTheme.danger)
+                SemanticReadback(index: "01", title: "身份", value: "序列 0 · 愚者 · 真神", color: sequenceLabelColor),
+                SemanticReadback(index: "02", title: "扮演", value: "在不同身份中保持自我", color: ArchiveTheme.Semantic.acting),
+                SemanticReadback(index: "03", title: "能力", value: "愚弄与历史投影（节选）", color: ArchiveTheme.Semantic.ability),
+                SemanticReadback(index: "04", title: "魔药", value: "唯一性与诡秘侍者特性（待核对）", color: ArchiveTheme.Semantic.potion),
+                SemanticReadback(index: "05", title: "晋升", value: "愚弄时间、历史或命运（部分资料）", color: ArchiveTheme.Semantic.promotion),
+                SemanticReadback(index: "06", title: "限制", value: "相关资料仍在整理", color: ArchiveTheme.Semantic.limitation)
+            ]
+        }
+
+        if card.identity.cardID == "lotm.fool.s09.klein-moretti.tingen-01" {
+            return [
+                SemanticReadback(index: "01", title: "身份", value: "愚者途径 · 占卜家 · 克莱恩 · 序列 9", color: sequenceLabelColor),
+                SemanticReadback(index: "02", title: "扮演", value: "专注而克制地实践占卜", color: ArchiveTheme.Semantic.acting),
+                SemanticReadback(index: "03", title: "能力", value: "灵摆针对近处目标占卜", color: ArchiveTheme.Semantic.ability),
+                SemanticReadback(index: "04", title: "魔药", value: "暗色容器与星点晶体的材料意象", color: ArchiveTheme.Semantic.potion),
+                SemanticReadback(index: "05", title: "晋升", value: "空杯与材料盒提示入序，不重演仪式", color: ArchiveTheme.Semantic.promotion),
+                SemanticReadback(index: "06", title: "限制", value: "聚焦近处目标，结果仍需核对", color: ArchiveTheme.Semantic.limitation)
             ]
         }
 
         if card.identity.cardID == "lotm.visionary.s07.audrey-01" {
             return [
-                SemanticReadback(index: "01", title: "身份", value: "正义 · 奥黛丽 · 序列 07", color: ArchiveTheme.teal),
-                SemanticReadback(index: "02", title: "扮演", value: "主动观察并帮助他人", color: ArchiveTheme.amber),
-                SemanticReadback(index: "03", title: "能力", value: "安抚心灵、读取情绪", color: ArchiveTheme.teal),
-                SemanticReadback(index: "04", title: "魔药", value: "镜龙材料 · 长者之树果实", color: ArchiveTheme.violet),
-                SemanticReadback(index: "05", title: "晋升", value: "独立仪式（资料待补）", color: ArchiveTheme.amber),
-                SemanticReadback(index: "06", title: "限制", value: "受媒介与半催眠条件影响", color: ArchiveTheme.danger)
+                SemanticReadback(index: "01", title: "身份", value: "正义 · 奥黛丽 · 序列 7", color: sequenceLabelColor),
+                SemanticReadback(index: "02", title: "扮演", value: "主动观察并帮助他人", color: ArchiveTheme.Semantic.acting),
+                SemanticReadback(index: "03", title: "能力", value: "安抚心灵、读取情绪", color: ArchiveTheme.Semantic.ability),
+                SemanticReadback(index: "04", title: "魔药", value: "镜龙材料 · 长者之树果实", color: ArchiveTheme.Semantic.potion),
+                SemanticReadback(index: "05", title: "晋升", value: "独立仪式（资料待补）", color: ArchiveTheme.Semantic.promotion),
+                SemanticReadback(index: "06", title: "限制", value: "受媒介与半催眠条件影响", color: ArchiveTheme.Semantic.limitation)
             ]
         }
 
         return [
-            SemanticReadback(index: "01", title: "身份", value: "\(card.identity.sequenceName) · \(card.identity.displayName)", color: ArchiveTheme.teal),
-            SemanticReadback(index: "02", title: "扮演", value: "以荒诞掩护真实", color: ArchiveTheme.amber),
-            SemanticReadback(index: "03", title: "能力", value: "操纵表情与注意力", color: ArchiveTheme.teal),
-            SemanticReadback(index: "04", title: "魔药", value: "相关材料待确认", color: ArchiveTheme.violet),
-            SemanticReadback(index: "05", title: "晋升", value: "晋升条件待复核", color: ArchiveTheme.amber),
-            SemanticReadback(index: "06", title: "限制", value: "声音需要在本机准备", color: ArchiveTheme.danger)
+            SemanticReadback(index: "01", title: "身份", value: "\(ArchiveCopy.sequenceName(for: card.identity.sequenceName)) · \(card.identity.displayName)", color: sequenceLabelColor),
+            SemanticReadback(index: "02", title: "扮演", value: "以荒诞掩护真实", color: ArchiveTheme.Semantic.acting),
+            SemanticReadback(index: "03", title: "能力", value: "操纵表情与注意力", color: ArchiveTheme.Semantic.ability),
+            SemanticReadback(index: "04", title: "魔药", value: "相关材料待确认", color: ArchiveTheme.Semantic.potion),
+            SemanticReadback(index: "05", title: "晋升", value: "晋升条件待复核", color: ArchiveTheme.Semantic.promotion),
+            SemanticReadback(index: "06", title: "限制", value: "声音需要在本机准备", color: ArchiveTheme.Semantic.limitation)
         ]
     }
 
@@ -941,17 +910,19 @@ private struct IdentityPanel: View {
                     Text(card.identity.displayName)
                         .font(.system(size: 28, weight: .bold))
                         .foregroundStyle(ArchiveTheme.primary)
-                    Text("\(card.identity.sequenceName)  ·  \(pathwayLabel)")
-                        .font(.system(size: 12))
-                        .foregroundStyle(ArchiveTheme.secondary)
+                    HStack(spacing: 7) {
+                        SequenceBadge(sequenceName: card.identity.sequenceName, includesRank: true)
+                        Text(pathwayLabel)
+                            .font(.system(size: 12))
+                            .foregroundStyle(ArchiveTheme.secondary)
+                    }
                 }
                 Spacer()
-                StatusChip(status: card.identity.contentStatus)
             }
 
             PanelDivider()
 
-            Text(ArchiveCopy.characterRelation)
+            Text(ArchiveCopy.characterRelationTitle(for: card.identity.characterID))
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.secondary)
             HStack {
@@ -959,16 +930,21 @@ private struct IdentityPanel: View {
                     Text(ArchiveCopy.characterName(for: card.identity.characterID))
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
                         .foregroundStyle(ArchiveTheme.primary)
-                    Text("同一角色的不同身份会分别保存。")
-                        .font(.system(size: 11))
-                        .foregroundStyle(ArchiveTheme.secondary)
+                    if let note = ArchiveCopy.characterRelationNote(for: card.identity.characterID) {
+                        Text(note)
+                            .font(.system(size: 11))
+                            .foregroundStyle(ArchiveTheme.secondary)
+                    }
                 }
                 Spacer()
-                Text(card.identity.characterID == nil
-                    ? "途径原型"
-                    : "\(model.characterCardCount(for: card.identity.characterID)) 张身份卡")
-                    .font(.system(size: 10, weight: .semibold, design: .rounded))
-                    .foregroundStyle(ArchiveTheme.teal)
+                Text(
+                    ArchiveCopy.characterCountLabel(
+                        for: card.identity.characterID,
+                        count: model.characterCardCount(for: card.identity.characterID)
+                    )
+                )
+                .font(.system(size: 10, weight: .semibold, design: .rounded))
+                .foregroundStyle(ArchiveTheme.teal)
             }
             .padding(.top, 12)
 
@@ -1019,11 +995,6 @@ private struct IdentityPanel: View {
                     }
                     .buttonStyle(SecondaryButtonStyle())
                     .accessibilityValue(model.isStoryDrawerPresented ? "已展开" : "已收起")
-
-                    Text(voiceAvailability.prompt)
-                        .font(.system(size: 11, weight: .medium))
-                        .foregroundStyle(hasPlayableGreeting ? ArchiveTheme.amber : ArchiveTheme.secondary)
-                        .lineLimit(1)
                 }
             }
             .padding(.top, 24)
@@ -1032,6 +1003,7 @@ private struct IdentityPanel: View {
                 caption: playback.currentCaption,
                 state: playback.state,
                 storyDrawerPresented: model.isStoryDrawerPresented,
+                emptyMessage: voiceAvailability.captionPrompt,
                 onOpenStory: {
                     if !model.isStoryDrawerPresented {
                         model.toggleStoryDrawer()
@@ -1042,7 +1014,7 @@ private struct IdentityPanel: View {
 
             PanelDivider()
 
-                Text(ArchiveCopy.semanticReadback)
+            Text(ArchiveCopy.semanticReadback)
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
                 .foregroundStyle(ArchiveTheme.secondary)
                 .padding(.bottom, 14)
@@ -1187,20 +1159,21 @@ private struct LiveCaptionRail: View {
     let caption: PlaybackCaption?
     let state: PlaybackState
     let storyDrawerPresented: Bool
+    let emptyMessage: String
     let onOpenStory: () -> Void
 
     private var accentColor: Color {
         switch state {
         case .failed:
-            return ArchiveTheme.danger
+            return ArchiveTheme.Playback.failed
         case .paused:
-            return ArchiveTheme.amber
+            return ArchiveTheme.Playback.preparing
         case .loading:
-            return ArchiveTheme.amber
+            return ArchiveTheme.Playback.preparing
         case .playing:
-            return ArchiveTheme.teal
+            return ArchiveTheme.Playback.ready
         case .idle:
-            return caption == nil ? ArchiveTheme.secondary : ArchiveTheme.teal
+            return caption == nil ? ArchiveTheme.Playback.idle : ArchiveTheme.Playback.ready
         }
     }
 
@@ -1222,7 +1195,7 @@ private struct LiveCaptionRail: View {
 
     private var statusLabel: String {
         guard caption != nil else {
-            return "等待唤醒"
+            return "未播放"
         }
         return state.captionStatusLabel
     }
@@ -1287,7 +1260,7 @@ private struct LiveCaptionRail: View {
                         .foregroundStyle(ArchiveTheme.danger)
                 }
             } else {
-                Text("点击唤醒后，当前台词会显示在这里。")
+                Text(emptyMessage)
                     .font(.system(size: 12))
                     .foregroundStyle(ArchiveTheme.secondary)
             }
@@ -1444,15 +1417,19 @@ private struct StoryDrawer: View {
                             Text(playback.state.captionStatusLabel)
                         }
                         .font(ArchiveTheme.Story.Typography.status)
-                        .foregroundStyle(ArchiveTheme.teal)
+                        .foregroundStyle(ArchiveTheme.Playback.ready)
                     }
                     Text(selectedChapter?.line.text ?? "暂时没有故事")
                         .font(ArchiveTheme.Story.Typography.body)
                         .foregroundStyle(ArchiveTheme.Story.ink)
                         .fixedSize(horizontal: false, vertical: true)
-                    Text(selectedChapterIsPlayable ? "声音暂时不可用时，仍可阅读故事。" : "这段故事还在确认中，目前只能阅读。")
+                    Text(selectedChapterIsPlayable ? "这段故事可以朗读，也可以直接阅读。" : "这段故事还在确认中，目前只能阅读。")
                         .font(ArchiveTheme.Story.Typography.note)
-                        .foregroundStyle(selectedChapterIsPlayable ? ArchiveTheme.Story.inkMuted : ArchiveTheme.amber)
+                        .foregroundStyle(
+                            selectedChapterIsPlayable
+                                ? ArchiveTheme.Story.inkMuted
+                                : ArchiveTheme.Playback.preparing
+                        )
                 }
                 .padding(ArchiveTheme.Story.Metrics.sheetPadding)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -1565,24 +1542,36 @@ private struct StoryDrawer: View {
                                 Spacer(minLength: ArchiveTheme.Story.Metrics.chapterRowSpacer)
                                 Text(chapter.line.isPlayable ? "可朗读" : "待确认")
                                     .font(ArchiveTheme.Story.Typography.status)
-                                    .foregroundStyle(chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.amber)
+                                    .foregroundStyle(
+                                        chapter.line.isPlayable
+                                            ? ArchiveTheme.Playback.ready
+                                            : ArchiveTheme.Playback.preparing
+                                    )
                             }
                         }
                         .font(ArchiveTheme.Story.Typography.chapterMeta)
                         .foregroundStyle(
                             isSelected
                                 ? ArchiveTheme.Story.ink
-                                : chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.secondary
+                                : chapter.line.isPlayable
+                                    ? ArchiveTheme.Playback.ready
+                                    : ArchiveTheme.secondary
                         )
                         .archiveInteractiveSurface(
-                            accent: chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.amber,
+                            accent: chapter.line.isPlayable
+                                ? ArchiveTheme.Playback.ready
+                                : ArchiveTheme.Playback.preparing,
                             cornerRadius: ArchiveTheme.Story.Metrics.chapterRadius,
                             isInteractive: chapter.line.isPlayable
                         )
                         .overlay(alignment: .leading) {
                             if isSelected {
                                 Capsule()
-                                    .fill(chapter.line.isPlayable ? ArchiveTheme.teal : ArchiveTheme.amber)
+                                    .fill(
+                                        chapter.line.isPlayable
+                                            ? ArchiveTheme.Playback.ready
+                                            : ArchiveTheme.Playback.preparing
+                                    )
                                     .frame(width: 2, height: ArchiveTheme.Story.Metrics.chapterRowMarkerHeight)
                                     .padding(.leading, ArchiveTheme.Story.Metrics.chapterRowMarkerInset)
                             }
@@ -1600,11 +1589,11 @@ private struct StoryDrawer: View {
                     if chapters.isEmpty {
                         Text("暂无故事内容")
                             .font(ArchiveTheme.Story.Typography.status)
-                            .foregroundStyle(ArchiveTheme.amber)
+                            .foregroundStyle(ArchiveTheme.Playback.preparing)
                     } else if !hasPlayableChapter {
                         Text("故事仍在整理，确认后可以朗读")
                             .font(ArchiveTheme.Story.Typography.status)
-                            .foregroundStyle(ArchiveTheme.amber)
+                            .foregroundStyle(ArchiveTheme.Playback.preparing)
                     }
                 }
                 .frame(width: ArchiveTheme.Story.Metrics.chapterRailWidth, alignment: .leading)

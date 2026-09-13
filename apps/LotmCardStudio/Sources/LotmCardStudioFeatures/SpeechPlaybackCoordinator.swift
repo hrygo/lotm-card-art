@@ -12,9 +12,9 @@ public enum PlaybackState: Equatable, Sendable {
     public var label: String {
         switch self {
         case .idle:
-            return "待唤醒"
+            return "未播放"
         case .loading:
-            return "正在唤醒…"
+            return "正在准备声音"
         case .playing:
             return "正在播放"
         case .paused:

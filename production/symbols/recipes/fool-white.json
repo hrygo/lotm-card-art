@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "mode": "material-study",
+  "id": "sigil-fool-white",
+  "profile": "standard",
+  "background": "#ffffff",
+  "anchors": {},
+  "nodes": [
+    {
+      "id": "emblem",
+      "receipt": "artifacts/production/sigil-fool/v001/receipt.json",
+      "rect": [
+        100,
+        250,
+        800,
+        800
+      ],
+      "fit": "contain"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: reusable premium fantasy card FRONT backing stone surface, full-bleed portrait 2:3. Create an exquisite, quiet, ancient gray-white stone material inspired by an archaic knowledge-bearing slate, an ORIGINAL artistic interpretation, not a replica of any official design. The stone surface fills every pixel, orthographic straight-on, flat and continuous; no visible slab perimeter, no surrounding scene, no perspective or object mockup. Warm-neutral mineral gray with pale ash-white fine mineral inclusions, understated weathered patina and delicate shallow erosion. Matte, dense, refined stone, not marble, concrete, paper or metal. Center roughly 70 percent of the surface is calm and low-contrast for later character artwork. Very restrained slightly more weathered texture near the periphery, no dark vignette, no blank white center. Broad near-frontal diffuse illumination with a very gentle upper-left bias, no baked cast shadows, no dramatic hotspot. Fine rich material detail at full size but visually quiet in a card thumbnail. This is an underlying substrate for separate antique gold/silver frames; DO NOT DRAW any frame, edging, gold ornament, emblem, numeral, text, rune, inscription, face, character, jewel, central object, large crack, broken fragment, glow or shadow border. Muted medium-light gray, not pure white, not dark obsidian. All edges continue the same stone surface; seamless tiling is not required.",
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13T10:52:22Z",
+  "attempt": 1,
+  "attachments": [],
+  "observation": "实际观察：1024×1536灰白哑光石面，满幅正视无物体边界、边框、人物、文字或符文；外围细碎磨蚀较丰富、中央相对低对比。外圈纹理比目标略强，需后续带框/插画试装验证；未声称无缝平铺或正式批准。"
+}

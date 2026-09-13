@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: ONE standalone collectible occult pathway emblem, precision jewelry-grade relief artwork for a card asset library. Original artistic interpretation for the 黄昏巨人 / twilight-giant pathway, NOT a copied official religious emblem. Primary design: A massive weathered bronze sword axis embedded in a broad fortress-like shield, behind it a flattened setting-sun horizon of twilight amber. Load-bearing stone and worn steel plates, wide heavy proportions. Monumental protective silhouette, no flames or battle banners. Craftsmanship: museum-quality micro-chased metal, layered pierced openwork, satin recesses contrasting polished bevels, restrained precious inlays; rich sculptural depth and genuinely exquisite detail, NOT a flat vector outline or generic app icon. One coherent primary symbol with a bold readable silhouette, not a pile of objects. Straight-on orthographic view, whole emblem centered occupying about 78% of a SQUARE canvas, generous clean margin. Soft upper-left studio illumination; no ground plane or cast shadow outside the object. GENUINELY TRANSPARENT background, including all internal openwork holes; no black rectangle, no white rectangle, no checkerboard pixels. No text, letters, digits, watermark, card border, human portrait or surrounding scene.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-13",
+  "attempt": 1,
+  "attachments": [],
+  "observation": "已实际观察：暮金日落与宽厚堡垒盾、大剑纵轴；更接近重型纪念器物，区别于红祭司多面战旗。 原图占幅偏满，透明边缘需合成检验；当前为原创美术候选，非官方圣徽。"
+}

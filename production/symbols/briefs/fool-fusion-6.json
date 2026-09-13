@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "fool",
+  "digit": 6,
+  "design_tokens": {
+    "palette": [
+      "旧金",
+      "雾银",
+      "烟紫",
+      "象牙白"
+    ],
+    "motifs": [
+      "面具",
+      "帷幕"
+    ],
+    "craft": "金银精雕/紫色珐琅/浮雕/镂空",
+    "lighting": "左上柔光"
+  },
+  "references": [
+    {
+      "path": "artifacts/production/sigil-fool/v001/raw.png",
+      "sha256": "8bed2bf6163130e465f09b8896f2e709bc50e6c3436712de358ed4c68a8a3b1d",
+      "role": "style"
+    },
+    {
+      "path": "artifacts/production/fool-numeral-6/v001/raw.png",
+      "sha256": "3e753c38d53c1f04b1d1bb4b37e19c23ae979c7eb5028707158b9786d3cd210e",
+      "role": "geometry"
+    }
+  ],
+  "fusion_strategy": "A long rising curtain hook forms the upper-left ascender of 6, curling around a single CLOSED LOWER loop; the ivory half-mask follows the lower-right loop stroke. Keep the opening above the loop and never turn it into 9.",
+  "invariants": [
+    "只可读出当前数字",
+    "数字骨架与途径意象共用结构",
+    "独立完整徽章",
+    "不机械叠字"
+  ],
+  "art_reference": "用户已认可愚者0/4/7/9的方法与融合造型；本新稿待确认",
+  "engineering_target": "真实透明PNG；若净底未满足，保留造型并单独登记技术状态",
+  "preserve_records": [
+    "artifacts/production/fool-fusion-0/v001/receipt.json",
+    "artifacts/production/fool-fusion-0/v002/receipt.json",
+    "artifacts/production/fool-fusion-4/v001/receipt.json",
+    "artifacts/production/fool-fusion-4/v002/receipt.json",
+    "artifacts/production/fool-fusion-7/v001/receipt.json",
+    "artifacts/production/fool-fusion-7/v002/receipt.json",
+    "artifacts/production/fool-fusion-9/v001/receipt.json",
+    "artifacts/production/fool-fusion-9/v002/receipt.json"
+  ],
+  "task": "production/symbols/tasks/fool-fusion-6.json"
+}

@@ -127,6 +127,151 @@ enum ArchiveTheme {
         static let crimson = Color(red: 0.85, green: 0.33, blue: 0.33)
     }
 
+    /// 序列层级稀有度色（只表达力量层级，不表达内容状态）
+    ///
+    /// 采用典型游戏稀有度的可辨识阶梯：银白、翡翠绿、秘蓝、典藏紫、橙金。
+    /// 映射 `config/sequence-hierarchy.json`：序列 9–8 为低序列，
+    /// 7–5 为中序列，4–3 为圣者，2–1 为天使，0 为真神。
+    enum Sequence {
+        enum Tier: String, CaseIterable, Hashable, Sendable {
+            case low
+            case mid
+            case saint
+            case angel
+            case trueGod
+            case unknown
+
+            init(sequenceNumber: Int?) {
+                guard let sequenceNumber else {
+                    self = .unknown
+                    return
+                }
+
+                switch sequenceNumber {
+                case 8...9:
+                    self = .low
+                case 5...7:
+                    self = .mid
+                case 3...4:
+                    self = .saint
+                case 1...2:
+                    self = .angel
+                case 0:
+                    self = .trueGod
+                default:
+                    self = .unknown
+                }
+            }
+        }
+
+        struct Token {
+            let label: Color
+            let border: Color
+            let surface: Color
+            let glow: Color
+        }
+
+        /// 低序列：中性银白，作为稀有度阶梯的视觉基线。
+        static let low = Token(
+            label: Color(red: 0.91, green: 0.929, blue: 0.949),
+            border: Color(red: 0.66, green: 0.71, blue: 0.76),
+            surface: Color(red: 0.91, green: 0.929, blue: 0.949).opacity(0.12),
+            glow: Color(red: 0.84, green: 0.89, blue: 0.93).opacity(0.28)
+        )
+
+        /// 中序列：偏绿的翡翠色，避免与内容确认态的青绿色相混。
+        static let mid = Token(
+            label: Color(red: 0.333, green: 0.725, blue: 0.471),
+            border: Color(red: 0.20, green: 0.51, blue: 0.32),
+            surface: Color(red: 0.333, green: 0.725, blue: 0.471).opacity(0.14),
+            glow: Color(red: 0.333, green: 0.725, blue: 0.471).opacity(0.30)
+        )
+
+        /// 圣者：秘蓝，承接典型 RPG 中的稀有色，但不使用紫色。
+        static let saint = Token(
+            label: Color(red: 0.302, green: 0.592, blue: 0.831),
+            border: Color(red: 0.18, green: 0.38, blue: 0.58),
+            surface: Color(red: 0.302, green: 0.592, blue: 0.831).opacity(0.14),
+            glow: Color(red: 0.302, green: 0.592, blue: 0.831).opacity(0.32)
+        )
+
+        /// 天使：典藏紫，保留紫色的高阶稀有度联想，并与圣者蓝色拉开色相距离。
+        static let angel = Token(
+            label: Color(red: 0.651, green: 0.42, blue: 0.839),
+            border: Color(red: 0.44, green: 0.25, blue: 0.61),
+            surface: Color(red: 0.651, green: 0.42, blue: 0.839).opacity(0.15),
+            glow: Color(red: 0.651, green: 0.42, blue: 0.839).opacity(0.34)
+        )
+
+        /// 真神：高饱和橙金，避免与低序列银白或浅黄铜产生相近观感。
+        static let trueGod = Token(
+            label: Color(red: 0.941, green: 0.698, blue: 0.247),
+            border: Color(red: 0.72, green: 0.47, blue: 0.09),
+            surface: Color(red: 0.941, green: 0.698, blue: 0.247).opacity(0.16),
+            glow: Color(red: 0.941, green: 0.698, blue: 0.247).opacity(0.38)
+        )
+
+        static let unknown = Token(
+            label: Parchment.secondary,
+            border: Borders.subtle,
+            surface: Leather.elevated.opacity(0.10),
+            glow: .clear
+        )
+
+        static func token(for tier: Tier) -> Token {
+            switch tier {
+            case .low:
+                return low
+            case .mid:
+                return mid
+            case .saint:
+                return saint
+            case .angel:
+                return angel
+            case .trueGod:
+                return trueGod
+            case .unknown:
+                return unknown
+            }
+        }
+
+        static let lowLabel = low.label
+        static let midLabel = mid.label
+        static let saintLabel = saint.label
+        static let angelLabel = angel.label
+        static let trueGodLabel = trueGod.label
+        static let unknownLabel = unknown.label
+
+        static func labelColor(for tier: Tier) -> Color {
+            token(for: tier).label
+        }
+    }
+
+    /// 六维信息色：只表达信息维度，不表达序列层级或内容状态。
+    enum Semantic {
+        static let acting = Color(red: 0.86, green: 0.72, blue: 0.46)
+        static let ability = Aether.light
+        static let potion = Color(red: 0.80, green: 0.50, blue: 0.65)
+        static let promotion = Color(red: 0.68, green: 0.55, blue: 0.36)
+        static let limitation = Mystic.crimson
+    }
+
+    /// 内容状态色：只表达资料状态，不表达序列稀有度。
+    enum Status {
+        static let unfilled = Color(red: 0.55, green: 0.51, blue: 0.47)
+        static let candidate = Color(red: 0.72, green: 0.55, blue: 0.42)
+        static let unresearched = Color(red: 0.62, green: 0.60, blue: 0.55)
+        static let confirmed = Aether.light
+    }
+
+    /// 声音与故事播放状态色：只表达当前可操作性。
+    enum Playback {
+        static let ready = Aether.light
+        static let preparing = Brass.gleam
+        static let failed = Mystic.crimson
+        static let idle = Parchment.secondary
+    }
+
     // MARK: - 2. Semantic Aliases (完全向下兼容既有调用)
 
     static let ink = Leather.void
@@ -229,13 +374,13 @@ extension ContentStatus {
     var accentColor: Color {
         switch self {
         case .unfilled:
-            return ArchiveTheme.Brass.core
+            return ArchiveTheme.Status.unfilled
         case .proposed:
-            return ArchiveTheme.Mystic.violet
+            return ArchiveTheme.Status.candidate
         case .unresearched:
-            return ArchiveTheme.Brass.luster
+            return ArchiveTheme.Status.unresearched
         case .confirmed:
-            return ArchiveTheme.Aether.light
+            return ArchiveTheme.Status.confirmed
         }
     }
 }
@@ -266,6 +411,66 @@ struct StatusChip: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("内容状态：\(status.displayTitle)")
+    }
+}
+
+// MARK: - SequenceBadge (序列层级标识)
+
+struct SequenceBadge: View {
+    let sequenceName: String
+    let includesRank: Bool
+
+    init(sequenceName: String, includesRank: Bool = false) {
+        self.sequenceName = sequenceName
+        self.includesRank = includesRank
+    }
+
+    private var tier: ArchiveTheme.Sequence.Tier {
+        ArchiveCopy.sequenceTier(for: sequenceName)
+    }
+
+    private var token: ArchiveTheme.Sequence.Token {
+        ArchiveTheme.Sequence.token(for: tier)
+    }
+
+    private var displayLabel: String {
+        ArchiveCopy.sequenceDisplayLabel(for: sequenceName, includesRank: includesRank)
+    }
+
+    private var accessibilityLabel: String {
+        ArchiveCopy.sequenceDisplayLabel(for: sequenceName, includesRank: true)
+    }
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Circle()
+                .fill(token.label)
+                .frame(width: includesRank ? 6 : 5, height: includesRank ? 6 : 5)
+            Text(displayLabel)
+                .lineLimit(1)
+        }
+        .font(
+            .system(
+                size: includesRank ? 11 : 10,
+                weight: includesRank ? .bold : .semibold,
+                design: .rounded
+            )
+        )
+        .foregroundStyle(token.label)
+        .padding(.horizontal, includesRank ? 9 : 7)
+        .padding(.vertical, includesRank ? 5 : 4)
+        .background(token.surface, in: Capsule())
+        .overlay {
+            Capsule()
+                .stroke(token.border.opacity(0.72), lineWidth: 1)
+        }
+        .shadow(
+            color: token.glow.opacity(includesRank ? 0.65 : 0.45),
+            radius: includesRank ? 5 : 3
+        )
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("序列层级")
+        .accessibilityValue(accessibilityLabel)
     }
 }
 

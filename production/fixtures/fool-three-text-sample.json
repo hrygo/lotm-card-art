@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0.0",
+  "pathway_name": {"text": "愚者", "zone": "left-column-inlay", "visible": true},
+  "sequence_name": {"text": "占卜家", "zone": "right-column-inlay", "visible": true},
+  "character_name": {"text": "克莱恩·莫雷蒂", "zone": "central-nameplate", "visible": true}
+}

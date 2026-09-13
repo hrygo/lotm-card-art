@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "subject",
+  "mode": "production",
+  "task_id": "klein-seer-subject",
+  "run_id": "v002",
+  "task": {
+    "schema_version": "1.0.0",
+    "revision": 2,
+    "references": [
+      {
+        "path": "artifacts/production/klein-seer-subject/v001/raw.png",
+        "sha256": "33bab501dcbf307e686cd0dcd5f5eb8bd17c808fc445957a4da3da45ad818f8c",
+        "role": "edit_target"
+      },
+      {
+        "path": "artifacts/production/klein-carrier-geometry-v2/reference.png",
+        "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+        "role": "geometry"
+      }
+    ],
+    "limits": {
+      "max_attempts": 2
+    },
+    "task_id": "klein-seer-subject",
+    "kind": "subject",
+    "mode": "production",
+    "output": {
+      "aspect": [
+        3,
+        4
+      ],
+      "background": "opaque"
+    },
+    "prompt": "Use case: precise-object-edit. Refine image 1 (the existing Klein portrait) into a taller portrait 3:4 oil painting for the central scene window in image 2. Image 2 is geometry/palette reference ONLY: NEVER paint its frame, emblem, number, nameplate or lettering into this output. Preserve Klein's face identity, black hair, brown eyes, youthful scholarly appearance, LEFT hand on viewer right holding the silver chain and single yellow citrine over the porcelain cup of red tea. Preserve the existing lighting, plausible hand anatomy and the one main divination event. Extend the scene composition naturally above and below to allow comfortable head clearance and the full cup, hands and book to remain inside the central 75 percent after cropping. Slightly more contemplative cautious expression, not smug or all-knowing. The narrative image must contain ZERO TEXT, letters, numbers, ingredient labels, headings, handwriting or symbols resembling writing. The open book has pale blank pages with very subtle abstract ink-wash forms only. Integrate low-contrast tiny secondary objects into the existing lower-left table area: a small open dark wooden materials case containing ONE black opaque reagent vial, a faint trace of azure liquid at its lip, and ONE soft translucent jelly-like crystal with a few starlike internal points; beside the case a small simple dark empty ceramic medicine cup, unmistakably different from the ornate red-tea cup. These are poetic material/entry memory motifs, not a literal simultaneous ritual or a labeled recipe; keep them subordinate and do not draw additional panels or vignettes. The tea remains tea, do not have Klein drinking the medicine. The local pendulum event is clear while distant space stays obscure, suggesting limited revelation rather than omniscience. No magic beams, tentacles, throne, puppet strings, giant potions, overwhelming glows, extra people, frame, medallion, any lettering or watermark. Match the deep smoke-purple lining in reference 2 at the quiet outer edges, with naturally dark softened outer margins rather than a hard inset photo rectangle. Rich painterly realism, refined Victorian room, beautiful nuanced human-scale mystery, one coherent scene.",
+    "spec": {
+      "slot_id": "lotm.fool.s09",
+      "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+      "character_id": "klein-moretti",
+      "event": "克莱恩左手持银链黄水晶，在茶杯上方做灵摆占卜。",
+      "semantic_source": "pathways/fool/sequences/09/card.json",
+      "protagonist": {
+        "kind": "character",
+        "name_zh": "克莱恩·莫雷蒂",
+        "name_status": "verified",
+        "evidence_refs": [
+          {
+            "path": "pathways/fool/canon.json",
+            "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+          }
+        ]
+      }
+    }
+  },
+  "compiled": "artifacts/production/klein-seer-subject/v002",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/tasks/klein-seer-subject.json",
+        "sha256": "18a1c74bf582be05b85e5afa72e944b297ed0da71a6c22895b9b9054e96390e4"
+      },
+      {
+        "path": "artifacts/production/klein-seer-subject/v001/raw.png",
+        "sha256": "33bab501dcbf307e686cd0dcd5f5eb8bd17c808fc445957a4da3da45ad818f8c",
+        "role": "edit_target"
+      },
+      {
+        "path": "artifacts/production/klein-carrier-geometry-v2/reference.png",
+        "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+        "role": "geometry"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-subject/SKILL.md",
+        "sha256": "ea3f7ae75a689d7b8ddc98676e385ee5de70f03ca49491721a8e228dc307a0ec"
+      },
+      {
+        "path": "pathways/fool/sequences/09/card.json",
+        "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e"
+      },
+      {
+        "path": "pathways/fool/canon.json",
+        "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+      }
+    ],
+    "design_fingerprint": "98aebc313499dab55a17bd91dc742b9194272673f3db876dcafc86b39c708870",
+    "task_sha256": "18a1c74bf582be05b85e5afa72e944b297ed0da71a6c22895b9b9054e96390e4",
+    "prompt_sha256": "0036509a5288ec4741afc21782b3e9f9b9b6b5ff249a3253ef309f4a5787b313"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/klein-seer-subject/v002/raw.png",
+    "sha256": "16fa28928a7bbdc93403d53c3d59122973b195e964bc775c1542dbddac2d9f4e"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1086,
+    "height": 1448,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      3,
+      4
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: precise-object-edit. Refine image 1 (the existing Klein portrait) into a taller portrait 3:4 oil painting for the central scene window in image 2. Image 2 is geometry/palette reference ONLY: NEVER paint its frame, emblem, number, nameplate or lettering into this output. Preserve Klein's face identity, black hair, brown eyes, youthful scholarly appearance, LEFT hand on viewer right holding the silver chain and single yellow citrine over the porcelain cup of red tea. Preserve the existing lighting, plausible hand anatomy and the one main divination event. Extend the scene composition naturally above and below to allow comfortable head clearance and the full cup, hands and book to remain inside the central 75 percent after cropping. Slightly more contemplative cautious expression, not smug or all-knowing. The narrative image must contain ZERO TEXT, letters, numbers, ingredient labels, headings, handwriting or symbols resembling writing. The open book has pale blank pages with very subtle abstract ink-wash forms only. Integrate low-contrast tiny secondary objects into the existing lower-left table area: a small open dark wooden materials case containing ONE black opaque reagent vial, a faint trace of azure liquid at its lip, and ONE soft translucent jelly-like crystal with a few starlike internal points; beside the case a small simple dark empty ceramic medicine cup, unmistakably different from the ornate red-tea cup. These are poetic material/entry memory motifs, not a literal simultaneous ritual or a labeled recipe; keep them subordinate and do not draw additional panels or vignettes. The tea remains tea, do not have Klein drinking the medicine. The local pendulum event is clear while distant space stays obscure, suggesting limited revelation rather than omniscience. No magic beams, tentacles, throne, puppet strings, giant potions, overwhelming glows, extra people, frame, medallion, any lettering or watermark. Match the deep smoke-purple lining in reference 2 at the quiet outer edges, with naturally dark softened outer margins rather than a hard inset photo rectangle. Rich painterly realism, refined Victorian room, beautiful nuanced human-scale mystery, one coherent scene.",
+    "tool": "image_gen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13T11:46:31.000Z",
+    "attempt": 2,
+    "attachments": [
+      {
+        "path": "artifacts/production/klein-seer-subject/v001/raw.png",
+        "sha256": "33bab501dcbf307e686cd0dcd5f5eb8bd17c808fc445957a4da3da45ad818f8c",
+        "role": "edit_target"
+      },
+      {
+        "path": "artifacts/production/klein-carrier-geometry-v2/reference.png",
+        "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+        "role": "geometry"
+      }
+    ],
+    "observation": "已观察：竖版人物与室内场景保持一致，左手银链黄水晶及茶杯可见；桌前有不透明试剂瓶、星点晶体与深色空杯意象，未见正文文字。材料静物不传达准确配方/用量。用户随后提出完整背景与插画一体、框徽姓名作整体参考的新路线；本图保留候选，不作最终批准。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T11:48:43.768221+00:00"
+}

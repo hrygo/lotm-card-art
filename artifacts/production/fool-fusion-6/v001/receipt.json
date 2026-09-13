@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "foundation",
+  "mode": "concept",
+  "task_id": "fool-fusion-6",
+  "run_id": "v001",
+  "task": {
+    "schema_version": "1.0.0",
+    "task_id": "fool-fusion-6",
+    "revision": 1,
+    "kind": "foundation",
+    "mode": "concept",
+    "output": {
+      "aspect": [
+        1,
+        1
+      ],
+      "background": "transparent"
+    },
+    "prompt": "Use case: stylized-concept. Make ONE exquisite integrated Fool pathway + rank 6 insignia, continuing a coherent family of ornate mask-and-curtain numerals. Reference 1 supplies the Fool theatrical half-mask and smoky-purple curtain identity; reference 2 supplies the exact readable Arabic numeral 6. Agentic sculptural redesign: fuse their structure and negative spaces into ONE complete object, never a numeral pasted over a separate crest. A long rising curtain hook forms the upper-left ascender of 6, curling around a single CLOSED LOWER loop; the ivory half-mask follows the lower-right loop stroke. Keep the opening above the loop and never turn it into 9. The ONLY readable digit is 6, unmistakable small. Antique pale gold, mist silver, ivory carved mask, smoky violet enamel drapery; museum jewelry-level microchasing, sculptural relief, satin recesses and polished bevels. Rich but coherent detail, no surrounding badge, no words, no other digit. FRONT ORTHOGRAPHIC square image; full object centered with generous 8% clear margins, no cropped tips. Genuinely transparent background including internal openings; no white backdrop or checkerboard pixels, no external cast shadow. Preserve the mask's identity and the numeral's readability together.",
+    "references": [
+      {
+        "path": "artifacts/production/sigil-fool/v001/raw.png",
+        "sha256": "8bed2bf6163130e465f09b8896f2e709bc50e6c3436712de358ed4c68a8a3b1d",
+        "role": "style"
+      },
+      {
+        "path": "artifacts/production/fool-numeral-6/v001/raw.png",
+        "sha256": "3e753c38d53c1f04b1d1bb4b37e19c23ae979c7eb5028707158b9786d3cd210e",
+        "role": "geometry"
+      }
+    ],
+    "limits": {
+      "max_attempts": 2
+    },
+    "spec": {
+      "material": "愚者面具帷幕与数字6共用笔画的金银珐琅精雕",
+      "lighting": "左上柔光",
+      "tiling": false,
+      "use_scope": [
+        "fusion:fool",
+        "digit:6"
+      ]
+    }
+  },
+  "compiled": "artifacts/production/fool-fusion-6/v001",
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "production/symbols/tasks/fool-fusion-6.json",
+        "sha256": "4e90ced600a7e2b798a84420df97218ac795b03ee6c668d1096aef117d849330"
+      },
+      {
+        "path": "artifacts/production/sigil-fool/v001/raw.png",
+        "sha256": "8bed2bf6163130e465f09b8896f2e709bc50e6c3436712de358ed4c68a8a3b1d",
+        "role": "style"
+      },
+      {
+        "path": "artifacts/production/fool-numeral-6/v001/raw.png",
+        "sha256": "3e753c38d53c1f04b1d1bb4b37e19c23ae979c7eb5028707158b9786d3cd210e",
+        "role": "geometry"
+      },
+      {
+        "path": "tools/production.py",
+        "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "7a8f658ad725cb06e0290d67df5ffb02f479a4c825efedafccfa47250abdf103"
+      },
+      {
+        "path": "docs/production-sop.md",
+        "sha256": "fbeb505c97978ee1825752388d7ec1be6f8d9020376d31b5fa010a7975e42ea8"
+      },
+      {
+        "path": ".agents/skills/lotm-foundation/SKILL.md",
+        "sha256": "ff0502b786403d0467790276b4e4519dabebf0ef362469fa229c0117a5dfdbfc"
+      }
+    ],
+    "design_fingerprint": null,
+    "task_sha256": "4e90ced600a7e2b798a84420df97218ac795b03ee6c668d1096aef117d849330",
+    "prompt_sha256": "1f1864613dc9f9aa0f1ff6c0d8328e5cd98731031029f90e6e2c9e3f891ec0f0"
+  },
+  "reused_run": null,
+  "raw": {
+    "path": "artifacts/production/fool-fusion-6/v001/raw.png",
+    "sha256": "8684a9470ace1177982c82f6d1362cfe33a1130fe8f3e01dd0bd4cb31a04fdd1"
+  },
+  "raw_info": {
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "color_tags": [],
+    "inspection": "container_crc_and_dimensions_only",
+    "requested_aspect": [
+      1,
+      1
+    ],
+    "aspect_matches": true
+  },
+  "call": {
+    "prompt": "Use case: stylized-concept. Make ONE exquisite integrated Fool pathway + rank 6 insignia, continuing a coherent family of ornate mask-and-curtain numerals. Reference 1 supplies the Fool theatrical half-mask and smoky-purple curtain identity; reference 2 supplies the exact readable Arabic numeral 6. Agentic sculptural redesign: fuse their structure and negative spaces into ONE complete object, never a numeral pasted over a separate crest. A long rising curtain hook forms the upper-left ascender of 6, curling around a single CLOSED LOWER loop; the ivory half-mask follows the lower-right loop stroke. Keep the opening above the loop and never turn it into 9. The ONLY readable digit is 6, unmistakable small. Antique pale gold, mist silver, ivory carved mask, smoky violet enamel drapery; museum jewelry-level microchasing, sculptural relief, satin recesses and polished bevels. Rich but coherent detail, no surrounding badge, no words, no other digit. FRONT ORTHOGRAPHIC square image; full object centered with generous 8% clear margins, no cropped tips. Genuinely transparent background including internal openings; no white backdrop or checkerboard pixels, no external cast shadow. Preserve the mask's identity and the numeral's readability together.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "created_at": "2026-09-13",
+    "attempt": 1,
+    "attachments": [
+      {
+        "path": "artifacts/production/sigil-fool/v001/raw.png",
+        "sha256": "8bed2bf6163130e465f09b8896f2e709bc50e6c3436712de358ed4c68a8a3b1d",
+        "role": "style"
+      },
+      {
+        "path": "artifacts/production/fool-numeral-6/v001/raw.png",
+        "sha256": "3e753c38d53c1f04b1d1bb4b37e19c23ae979c7eb5028707158b9786d3cd210e",
+        "role": "geometry"
+      }
+    ],
+    "observation": "已实际观察：长上钩与下闭环明确，面具成为右下环笔，不是旋转9。 与既有紫金/象牙面具系列一致，非机械叠加。背景呈棋盘格，需实际解码判定；保留艺术原稿，新稿待用户确认，不把净底状态等同于艺术评价。"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-13T09:34:27.075358+00:00"
+}

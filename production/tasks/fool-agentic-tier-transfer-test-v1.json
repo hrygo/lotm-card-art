@@ -18,7 +18,7 @@
   },
   "contracts": [
     {"path": "docs/production-sop-v2.md", "sha256": "d18015a3973d44eca1100e99ef73a8dec7a10b2c818d8f13f56d0c5e8fa214c5"},
-    {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"},
+    {"path": "config/quality-color-tokens.json", "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"},
     {"path": "production/symbols/quality-frame-three-text-direction-v5.json", "sha256": "a6cb06a65429bebbef1f42cb12cbfb161155f317c27160a44f14c59ea2d0a0bf"}
   ]
 }

@@ -47,8 +47,6 @@
     "task_dependency_tracking": true,
     "renderer_integrated": false,
     "five_tier_assets_generated": false,
-    "existing_outputs_recolored": false,
-    "legacy_entry": "production/symbols/fool-frame-kit.json",
-    "legacy_note": "原四档素材和硬编码映射保留为历史实现，不是本五档配色的已完成产物。"
+    "existing_outputs_recolored": false
   }
 }

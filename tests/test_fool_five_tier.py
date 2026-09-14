@@ -32,23 +32,21 @@ class FoolFiveTierContractTests(unittest.TestCase):
         self.assertEqual(catalog["active_output"], "artifacts/production/fool-five-tier-direct-kit-v1")
         self.assertFalse(catalog["legacy_four_tier_status"]["active"])
 
-    def test_old_four_tier_catalog_is_retired_and_not_the_active_successor(self):
-        old_catalog = self.load_json("production/symbols/fool-frame-kit.json")
-        historical_family = self.load_json("production/symbols/quality-frame-family.json")
+    def test_old_four_tier_chain_is_removed_and_recorded_in_retirement_ledger(self):
         retirement = self.load_json("production/retirements/fool-four-tier-v1.json")
 
-        self.assertEqual(old_catalog["status"], "retired-historical")
-        self.assertFalse(old_catalog["active"])
-        self.assertEqual(
-            old_catalog["successor"],
-            "production/symbols/fool-five-tier-kit.json",
-        )
-        self.assertEqual(historical_family["status"], "historical-inactive")
-        self.assertEqual(
-            historical_family["active_successor"],
-            "production/symbols/fool-five-tier-kit.json",
-        )
-        self.assertTrue(historical_family["historical_samples_only"])
+        for relative in (
+            "production/symbols/fool-frame-kit.json",
+            "production/symbols/quality-frame-family.json",
+            "production/symbols/quality-frame-direction.json",
+            "production/symbols/quality-geometry-lock.json",
+            "production/symbols/frame-window-check.json",
+            "production/symbols/recipes/quality-frames.json",
+            "production/symbols/recipes/four-tiers.json",
+            "production/symbols/recipes/four-tiers-named.json",
+            "production/symbols/slate-fit",
+        ):
+            self.assertFalse((ROOT / relative).exists(), relative)
         self.assertEqual(retirement["status"], "retired-recoverable")
         for item in retirement["moved_to_trash"]:
             self.assertFalse((ROOT / item["original"]).exists(), item["original"])

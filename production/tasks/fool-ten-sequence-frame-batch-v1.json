@@ -20,11 +20,11 @@
     {"path": "config/production-resolution-policy.json", "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"},
     {"path": "production/schemas/fool-mother-frame.schema.json", "sha256": "67a6f899ab125e566a082879fe86e8d633cf18e9f6530d288d45b591e77ff097"},
     {"path": "production/templates/fool-sequence-inscription-interface-v1.json", "sha256": "2b176e2fa325f3304ca00f2e0aa584417bd3889eb2502c940aaada0397b850cf"},
-    {"path": "production/symbols/fool-five-tier-kit.json", "sha256": "8146a6eac9003981ffb09143901d8b40631a60b1cc0885bd3ffda65e15c8ea7d"},
+    {"path": "production/symbols/fool-five-tier-kit.json", "sha256": "91e2a9d45d8b37b8f9a3caff704897ee8345f2319e681642c58134e63e8f9ecb"},
     {"path": "production/symbols/fool-agentic-sequence-inscriptions-v2.json", "sha256": "2d3143a737ba386706d60848affaca9caff11ca9373b96f7c4cee401f073e6df"},
     {"path": "production/symbols/fool-fusion-family.json", "sha256": "9653b62f2cee27149bcdbc438f708c2102c5ad66d2ccec34da1970ea215af56f"},
     {"path": "production/symbols/inscriptions/fool-side-inscription-v4.json", "sha256": "c5803166d8bc5b9c6880fa6e72e4f81ce07eec2003d161cd714003884ce3bfb9"},
-    {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"},
+    {"path": "config/quality-color-tokens.json", "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"},
     {"path": "config/sequence-hierarchy.json", "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"}
   ]
 }

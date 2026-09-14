@@ -36,7 +36,7 @@
 - **批准与权益**：production 矢量/层须 approved + by/reference；release 另需 rights_status=cleared；缺真实证据保持 pending。
 - **门禁分层**：结构检查≠事实正确≠图像表达清楚；`gate` 默认合成一致性，`--release` 追加 design/release、批准与权益检查。
 - **资产接入**：读 catalog 与 receipt.raw；`diagnostic_jobs`、`gaps`、blocked-alpha 不是可用资产；人物插画不算公共物料。
-- **历史隔离**：旧四档 `fool-frame-kit.json` 为 retired-historical，不是入口/active/fallback；退役走可恢复 Trash 并留退役账。
+- **历史隔离**：旧四档链（`fool-frame-kit.json`、四档 `quality-frame-*` 合同、`ornate-frame-*`/`four-tiers` 任务与配方、`assets/tiers` 四档矢量）已整体移入 Trash，不再有入口/active/fallback；退役走可恢复 Trash 并留退役账（`production/retirements/`）。
 
 ## 反模式 ANTI-PATTERNS
 - 不把 task/composition 当语义正本，不用生成结果反推能力事实。

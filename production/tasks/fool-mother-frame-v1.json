@@ -21,7 +21,7 @@
     {"path": "production/schemas/fool-mother-frame.schema.json", "sha256": "67a6f899ab125e566a082879fe86e8d633cf18e9f6530d288d45b591e77ff097"},
     {"path": "production/templates/fool-mother-frame-interface-v1.json", "sha256": "a6285639e2299c8a22b75395b338134e7c25efbb986a0501a2723bc0664a9908"},
     {"path": "production/templates/emblem-dock-interface-v1.json", "sha256": "9a95288d8b7f5df2287c43f9667ea656c0e8cf8272bf2da5cbb87d218e7f088b"},
-    {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"},
+    {"path": "config/quality-color-tokens.json", "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"},
     {"path": "config/sequence-hierarchy.json", "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"}
   ]
 }

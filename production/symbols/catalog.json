@@ -276,44 +276,7 @@
       "visual_approval": "pending"
     }
   ],
-  "frames": [
-    {
-      "id": "ornate-frame-low",
-      "pathway_id": "fool",
-      "tier": "low",
-      "task": "production/symbols/tasks/ornate-frame-low.json",
-      "receipt": "artifacts/production/ornate-frame-low/v001/receipt.json",
-      "status": "proposed",
-      "visual_approval": "pending"
-    },
-    {
-      "id": "ornate-frame-mid",
-      "pathway_id": "fool",
-      "tier": "mid",
-      "task": "production/symbols/tasks/ornate-frame-mid.json",
-      "receipt": "artifacts/production/ornate-frame-mid/v001/receipt.json",
-      "status": "proposed",
-      "visual_approval": "pending"
-    },
-    {
-      "id": "ornate-frame-high",
-      "pathway_id": "fool",
-      "tier": "high",
-      "task": "production/symbols/tasks/ornate-frame-high.json",
-      "receipt": "artifacts/production/ornate-frame-high/v001/receipt.json",
-      "status": "proposed",
-      "visual_approval": "pending"
-    },
-    {
-      "id": "ornate-frame-true-god",
-      "pathway_id": "fool",
-      "tier": "true-god",
-      "task": "production/symbols/tasks/ornate-frame-true-god.json",
-      "receipt": "artifacts/production/ornate-frame-true-god/v001/receipt.json",
-      "status": "proposed",
-      "visual_approval": "pending"
-    }
-  ],
+  "frames": [],
   "fusions": [
     {
       "id": "fool-fusion-0",
@@ -375,16 +338,6 @@
       "id": "fool-numerals",
       "recipe": "production/symbols/recipes/fool-numerals.json",
       "output": "artifacts/production/symbol-art-v1/fool-numerals"
-    },
-    {
-      "id": "four-tiers",
-      "recipe": "production/symbols/recipes/four-tiers.json",
-      "output": "artifacts/production/symbol-art-v1/four-tiers-r2"
-    },
-    {
-      "id": "four-tiers-named",
-      "recipe": "production/symbols/recipes/four-tiers-named.json",
-      "output": "artifacts/production/symbol-art-v1/four-tiers-named"
     }
   ],
   "diagnostic_jobs": [
@@ -399,8 +352,6 @@
     "Other 21 pathway-specific numeral alphabets not produced",
     "Full 220 pathway-rank fused symbols not produced",
     "Fool fusion 0/4/7/9 transparent cutouts failed twice",
-    "Frame requested large rectangular clear area failed; see frame-window-check.json",
-    "Other 21 pathway-specific four-tier frames not produced",
     "No user visual approval or official canon certification"
   ],
   "failed_attempts": 8,

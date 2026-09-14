@@ -19,12 +19,12 @@
     "sha256": "24fa429e2cf248d5482dc786ba98a5fe2d36c171e29b9b96a375339b4d0b88d1"
   },
   "geometry_lock": {
-    "path": "production/symbols/quality-geometry-lock.json",
-    "sha256": "d3ef137a33a7af1276f71f4690559ef6f998886712ca545a8509ef0d70f48969"
+    "path": "production/symbols/quality-frame-five-tier-direction.json",
+    "sha256": "8f605752837ee78a8f092d43b3480cd76e37cc49a11359d43d621326cc20a6c8"
   },
   "color_tokens": {
     "path": "config/quality-color-tokens.json",
-    "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"
+    "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"
   },
   "sequence_hierarchy": {
     "path": "config/sequence-hierarchy.json",
@@ -126,10 +126,10 @@
   },
   "legacy_four_tier_status": {
     "active": false,
-    "catalog": "production/symbols/fool-frame-kit.json",
-    "output": "artifacts/production/fool-frame-kit-v3",
-    "renderer": "tools/render/foolkit.swift",
-    "reason": "用户已明确不保留原四档作为当前资产、交付基线或回退方案"
+    "catalog": null,
+    "output": null,
+    "renderer": null,
+    "reason": "用户已明确不保留原四档作为当前资产、交付基线或回退方案；旧渲染器 foolkit.swift 已退役移除"
   },
   "output_contract": {
     "frame_names": ["frame-low-native.png", "frame-mid-native.png", "frame-saint-native.png", "frame-angel-native.png", "frame-true-god-native.png"],

@@ -13,15 +13,11 @@
   "contracts": {
     "color_tokens": {
       "path": "config/quality-color-tokens.json",
-      "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"
+      "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"
     },
     "sequence_hierarchy": {
       "path": "config/sequence-hierarchy.json",
       "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"
-    },
-    "geometry_lock": {
-      "path": "production/symbols/quality-geometry-lock.json",
-      "sha256": "d3ef137a33a7af1276f71f4690559ef6f998886712ca545a8509ef0d70f48969"
     },
     "preflight": {
       "path": "docs/production-preflight.md",

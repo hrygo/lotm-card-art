@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "pathway_id": "fool",
   "status": "retired-recoverable",
-  "reason": "用户明确要求不保留原4档；五档候选物料已通过机器门禁并成为当前入口",
+  "reason": "用户明确要求不保留原四档；五档候选物料已通过机器门禁并成为当前入口；随后整体移除已无当前消费者的四档链（合同/任务/配方/矢量）",
   "created_at": "2026-09-13T14:14:07Z",
   "moved_to_trash": [
     {
@@ -24,6 +24,86 @@
     {
       "original": "tools/render/foolkit.swift",
       "trash_destination": "/Users/hrygo/.Trash/foolkit.swift"
+    },
+    {
+      "original": "production/symbols/fool-frame-kit.json",
+      "trash_destination": "/Users/hrygo/.Trash/fool-frame-kit.json"
+    },
+    {
+      "original": "production/symbols/quality-frame-family.json",
+      "trash_destination": "/Users/hrygo/.Trash/quality-frame-family.json"
+    },
+    {
+      "original": "production/symbols/quality-frame-direction.json",
+      "trash_destination": "/Users/hrygo/.Trash/quality-frame-direction.json"
+    },
+    {
+      "original": "production/symbols/quality-geometry-lock.json",
+      "trash_destination": "/Users/hrygo/.Trash/quality-geometry-lock.json"
+    },
+    {
+      "original": "production/symbols/frame-window-check.json",
+      "trash_destination": "/Users/hrygo/.Trash/frame-window-check.json"
+    },
+    {
+      "original": "production/symbols/recipes/quality-frames.json",
+      "trash_destination": "/Users/hrygo/.Trash/quality-frames.json"
+    },
+    {
+      "original": "production/symbols/recipes/four-tiers.json",
+      "trash_destination": "/Users/hrygo/.Trash/four-tiers.json"
+    },
+    {
+      "original": "production/symbols/recipes/four-tiers-named.json",
+      "trash_destination": "/Users/hrygo/.Trash/four-tiers-named.json"
+    },
+    {
+      "original": "production/symbols/slate-fit",
+      "trash_destination": "/Users/hrygo/.Trash/slate-fit"
+    },
+    {
+      "original": "production/symbols/tasks/ornate-frame-low.json",
+      "trash_destination": "/Users/hrygo/.Trash/ornate-frame-low.json"
+    },
+    {
+      "original": "production/symbols/tasks/ornate-frame-mid.json",
+      "trash_destination": "/Users/hrygo/.Trash/ornate-frame-mid.json"
+    },
+    {
+      "original": "production/symbols/tasks/ornate-frame-true-god.json",
+      "trash_destination": "/Users/hrygo/.Trash/ornate-frame-true-god.json"
+    },
+    {
+      "original": "production/symbols/tasks/ornate-frame-high.json",
+      "trash_destination": "/Users/hrygo/.Trash/ornate-frame-high.json"
+    },
+    {
+      "original": "production/symbols/tasks/fool-quality-frame-low.json",
+      "trash_destination": "/Users/hrygo/.Trash/fool-quality-frame-low.json"
+    },
+    {
+      "original": "production/symbols/tasks/fool-quality-frame-mid.json",
+      "trash_destination": "/Users/hrygo/.Trash/fool-quality-frame-mid.json"
+    },
+    {
+      "original": "production/symbols/tasks/fool-quality-frame-true-god.json",
+      "trash_destination": "/Users/hrygo/.Trash/fool-quality-frame-true-god.json"
+    },
+    {
+      "original": "production/symbols/tasks/fool-quality-frame-high.json",
+      "trash_destination": "/Users/hrygo/.Trash/fool-quality-frame-high.json"
+    },
+    {
+      "original": "production/assets/tiers/high.json",
+      "trash_destination": "/Users/hrygo/.Trash/high.json"
+    },
+    {
+      "original": "production/assets/tiers/mid.json",
+      "trash_destination": "/Users/hrygo/.Trash/mid.json"
+    },
+    {
+      "original": "production/assets/tiers/true-god.json",
+      "trash_destination": "/Users/hrygo/.Trash/true-god.json"
     }
   ],
   "retained": [
@@ -32,8 +112,8 @@
       "reason": "五档冻结几何母框的实际输入，当前 active kit 仍消费"
     },
     {
-      "path": "production/symbols/fool-frame-kit.json",
-      "reason": "改为 retired-historical，保留结构化审计信息，不再作为 active asset 或 fallback"
+      "path": "production/assets/tiers/low.json",
+      "reason": "保留的 compose 示例模板仍消费，故不随四档链移除"
     },
     {
       "path": "production/calls",

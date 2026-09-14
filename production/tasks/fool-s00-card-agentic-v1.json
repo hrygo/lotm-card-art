@@ -25,10 +25,10 @@
   ],
   "narrative": {
     "path": "production/narratives/mr-fool-s00.json",
-    "sha256": "ddc2bf57fb78a196007fd0ad313a9ae14c54d8387c776998945b229e8885a0be"
+    "sha256": "23c9e3c6efd6216cd541f2e51834f75169a8d8502a0d37e2859b4ef047555332"
   },
   "contracts": [
-    {"path": "production/symbols/fool-five-tier-kit.json", "sha256": "8146a6eac9003981ffb09143901d8b40631a60b1cc0885bd3ffda65e15c8ea7d"},
+    {"path": "production/symbols/fool-five-tier-kit.json", "sha256": "91e2a9d45d8b37b8f9a3caff704897ee8345f2319e681642c58134e63e8f9ecb"},
     {"path": "production/symbols/fool-agentic-sequence-inscriptions-v2.json", "sha256": "2d3143a737ba386706d60848affaca9caff11ca9373b96f7c4cee401f073e6df"},
     {"path": "production/templates/fool-mother-frame-interface-v1.json", "sha256": "a6285639e2299c8a22b75395b338134e7c25efbb986a0501a2723bc0664a9908"},
     {"path": "production/templates/emblem-dock-interface-v1.json", "sha256": "9a95288d8b7f5df2287c43f9667ea656c0e8cf8272bf2da5cbb87d218e7f088b"},
@@ -38,7 +38,7 @@
     {"path": "docs/production-preflight.md", "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"},
     {"path": "config/production-resolution-policy.json", "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"},
     {"path": "docs/card-narrative-contract.md", "sha256": "ca504e67d5ea6ea7795f3552163bd90423cb56514491c9e82406bf9e42287302"},
-    {"path": "docs/research/2026-09-14-mr-fool-card-materials.md", "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660"}
+    {"path": "docs/research/2026-09-14-mr-fool-card-materials.md", "sha256": "92c9aca236d7b44d7e29821493a56a782fdbc9544adf097728240dd63bdf1bf1"}
   ],
   "limits": {"max_attempts": 2},
   "spec": {
@@ -52,7 +52,7 @@
       "name_zh": "愚者先生",
       "name_status": "proposed",
       "evidence_refs": [
-        {"path": "docs/research/2026-09-14-mr-fool-card-materials.md", "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660"}
+        {"path": "docs/research/2026-09-14-mr-fool-card-materials.md", "sha256": "92c9aca236d7b44d7e29821493a56a782fdbc9544adf097728240dd63bdf1bf1"}
       ]
     }
   },

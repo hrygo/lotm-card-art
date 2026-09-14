@@ -34,3 +34,25 @@ jobs:
         run: python tools/pin_seal.py --check
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
+
+  native:
+    name: Native renderer + client (macOS 26)
+    runs-on: macos-26
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run native renderer tests without skipping
+        shell: bash
+        run: |
+          set -o pipefail
+          python -m unittest tests.test_fool_agentic_pipeline tests.test_native_compositor -v 2>&1 | tee native-tests.log
+          if grep -q "skipped" native-tests.log; then
+            echo "::error::native renderer tests were skipped — Swift toolchain missing on the runner"
+            exit 1
+          fi
+      - name: Run client tests
+        working-directory: apps/LotmCardStudio
+        run: swift test

@@ -26,20 +26,19 @@
 | 实施计划与设计规格 | `superpowers/plans/*`、`superpowers/specs/*` | Agent 生成提案（待审阅/待执行，非约束） |
 | 方法与来源入口 | `REFERENCES.md` | 研究入口（非已核验；访问状态以 `sources/registry.json` 为准） |
 | logo、UI 截图 | `assets/` | 视觉资产（非卡面、非事实） |
-| 旧流程（禁止按其实施） | `production-sop-v2.md`（历史五档）、`production-sop.md`（旧工具合同 v1） | 历史·被取代（仅追溯） |
 
 ## 约定 CONVENTIONS
 - 效力顺序：当前规范 → 当前侧车/检查表 → ADR（按 `Status`）→ 历史文档 → 计划/规格/研究草稿。低效力不得覆盖高效力，目录新旧不代表效力。
 - docs/ 不持有单一事实源：序列、配方、晋升、限制写入 `pathways/*/canon.json` 与 `card.json`，来源状态写 `sources/registry.json`，层级标签读 `config/sequence-hierarchy.json`；文档不复写第二份。
 - 研究稿中的 `lead`/`knowledge_gap` 不因被引用或重复出现而升级；`verified` 必须有核验者、时间与可复核位置。
 - 规则变更：先改对应规范文件，再在 `DECISIONS.md`/新 ADR 记录；ADR 注明 `Status` 与被取代关系。
-- 历史文档保留原文，不删改、不回写摘要；新流程不回填旧文件结论。
+- 历史文档保留原文，不删改、不回写摘要；新流程不回填旧文件结论。例外：被后续版 SOP 明确取代的流程文档，随取代决定一并移除（见 `DECISIONS.md` D10），追溯以 git 历史为准，效力表与路由须同步更新。
 - 引用克制：不放原著长摘录；来源访问范围如实登记。
 - `research/`、`reviews/`、`superpowers/` 采用日期前缀命名，仅表示时序，不表示批准。
 
 ## 反模式 ANTI-PATTERNS
 - 把 `superpowers/plans`、`superpowers/specs`、`research/` 草稿当 canon、当批准或当已核验事实；计划勾选 ≠ 交付完成。
-- 按 `production-sop-v2.md`/`production-sop.md` 的旧四档、旧合成器字段实施当前生产。
+- 按已移除的旧四档、旧合成器字段实施当前生产（历史 SOP 依 `DECISIONS.md` D10 移除，不得据此重加已取消的序列名文字）。
 - 把 `reviews/` 的“整改完成”当作视觉通过或 release 通过；把 `LIMITATIONS.md`/`REFERENCES.md` 条目当作“已取得原文/已完成核验”。
 - 在 docs/ 新建事实数据、批准记录或第二份色表/层级表，绕过 `card.json`/`canon.json`。
 - 用 `assets/` 图片或计划文件完成度推断项目状态。
@@ -48,5 +47,5 @@
 - 规范·当前：`workflow.md`、`source-policy.md`、`production-sop-v3.md`、`card-narrative-contract.md`。
 - 执行/侧车·当前：`production-preflight.md`、`pathway-carrier-sop.md`、`card-production-index.md`。
 - 决策：`DECISIONS.md` 与 `decisions/ADR-*`（Accepted/Proposed 并存，按 `Status` 使用）。
-- 历史·被取代：`production-sop-v2.md`、`production-sop.md`。
+- 历史·被取代：被后续版 SOP 取代的流程文档不留在仓库（见 D10），效力表不列已移除文件。
 - Agent 生成·非约束：`superpowers/plans/*`、`superpowers/specs/*`、`research/*`、`reviews/*`。

@@ -33,3 +33,11 @@ scaffold应通过，空卡design/release应失败。检验“拒绝坏数据”�
 
 ## D09｜跨途径层级称谓与序列0卡型
 层级数字与途径序列名分离维护。当前第五纪采用序列9–8低序列、7–5中序列、4–1高序列/半神；4–3通常为圣者，2–1通常为天使，序列1可在有证据时标记大天使。天使之王记录为序列1之上的人物状态，不当作独立序列或序列1的无条件同义词；序列0是对应途径的真神，也是正式序列卡位，不归入特殊事件。规则与证据状态见`config/sequence-hierarchy.json`。
+
+## D10｜被取代的流程文档不留在仓库
+原因：`production-sop.md`（v1 工具合同）与 `production-sop-v2.md`（历史五档）已被 `production-sop-v3.md` 取代，`docs/AGENTS.md` 本已禁止按其实施；留在仓库只会被误读为可选入口或“仍然有效”。
+结果：两份历史 SOP 从仓库移除，追溯以 git 历史为准。`docs/AGENTS.md` 的“历史文档保留原文”改为只约束仍列在效力表中的历史文档；被后续版 SOP 明确取代的流程文档随取代决定一并移除，效力表与路由须同步更新。`tools/production.py` 的 `task_dependencies` 不再把被取代文档计入当前任务依赖。
+
+## D11｜序列之上存在的非序列卡位与叙事 slotID 放宽
+原因：福生玄黄天尊被定位为「序列之上 · 诡秘之主」，既有的卡位语义全部绑定「途径 × 序列 9–0」；把它塞进任一序列会降格事实，也需要一个不占序列卡槽的载体。
+结果：引入非序列 `slotID` 形态 `lotm.celestial-worthy`。`production/schemas/card-narrative.schema.json` 的 `identity.slotID` 模式由 `^lotm\.[a-z-]+\.s0[0-9]$` 放宽为 `^(lotm\.[a-z-]+\.s0[0-9]|lotm\.[a-z][a-z0-9-]*)$`，只额外接纳单个「途径级」非序列段；App `CardIdentity.slotID` 为自由字符串，无需改动。`validate_fool_audio_package` 的 App 卡图/音频白名单从写死两卡改为登记式三卡，`tests/test_fool_card_validation.py` 同步。序列候选清单 `production/cards/fool-card-candidates-v1.json` 与 `validate_fool_cards` 仍只覆盖序列卡，不含天尊；`check-fool-cards` 不受影响。

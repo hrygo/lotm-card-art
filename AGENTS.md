@@ -44,7 +44,7 @@
 | 跨途径层级标签 | `config/sequence-hierarchy.json` | 低/中/高序列、半神、圣者、天使、天使之王、真神 |
 | 证据与来源边界 | `docs/source-policy.md` + `sources/registry.json` | 中文底本优先，二手需交叉定位 |
 | 阶段流转与加载清单 | `docs/workflow.md` | scaffold→research→directed→rendered→reviewed→approved |
-| 分层生产 SOP | `docs/production-sop-v3.md` | 当前入口（3.5.0）；v2 历史五档、`production-sop.md` 仅旧工具合同 |
+| 分层生产 SOP | `docs/production-sop-v3.md` | 当前入口（3.5.0）；被取代的 v1/v2 已移除（见 `docs/DECISIONS.md` D10） |
 | 开工/返修/交付预检 | `docs/production-preflight.md` | 逐项能力预检与准入；不是自动批准机制 |
 | 载体·框徽·文字区细则 | `docs/pathway-carrier-sop.md` | 当前侧车；EmblemDock / 姓名 / 序列铭刻接口 |
 | 目录级规则 | `docs/AGENTS.md` · `production/AGENTS.md` · `tests/AGENTS.md` | docs 效力层级、分层生产门禁、回归套件增补 |

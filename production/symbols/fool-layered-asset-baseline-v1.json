@@ -8,7 +8,7 @@
   "asset_graph": {
     "reusable_materials": {
       "catalog": "production/symbols/fool-five-tier-kit.json",
-      "catalog_sha256": "91e2a9d45d8b37b8f9a3caff704897ee8345f2319e681642c58134e63e8f9ecb",
+      "catalog_sha256": "27a4cbe9b443c3cb23798e4532559b36b883c783517ed40888f6728479e3764a",
       "use_rule": "仅作Agentic视觉参考，不作为程序纹理回填层"
     },
     "quality_frames": {

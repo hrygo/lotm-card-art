@@ -45,8 +45,8 @@
   "implementation": {
     "task_compiler_integrated": true,
     "task_dependency_tracking": true,
-    "renderer_integrated": false,
-    "five_tier_assets_generated": false,
+    "renderer_integrated": true,
+    "five_tier_assets_generated": true,
     "existing_outputs_recolored": false
   }
 }

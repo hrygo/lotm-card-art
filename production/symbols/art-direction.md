@@ -2,7 +2,7 @@
 
 ## 当前入口
 
-当前规则为 `docs/production-sop-v2.md`、`config/quality-color-tokens.json` 和 `.agents/skills/lotm-quality-frames/SKILL.md`：五档共骨架，以边框纹理和宝石的层次、体色、折射区分；框与承接件联合材质设计，不以繁复度递进。融合数字保留可读轮廓和孔洞。下文是早期四档探索记录，含已否决的增加工艺密度提案，仅解释历史资产，不用作当前生成 prompt。
+当前规则为 `docs/production-sop-v3.md`、`config/quality-color-tokens.json` 和 `.agents/skills/lotm-quality-frames/SKILL.md`：五档共骨架，以边框纹理和宝石的层次、体色、折射区分；框与承接件联合材质设计，不以繁复度递进。融合数字保留可读轮廓和孔洞。下文是早期四档探索记录，含已否决的增加工艺密度提案，仅解释历史资产，不用作当前生成 prompt。
 
 ## 历史四档边框修订（已由当前五档规则取代）
 

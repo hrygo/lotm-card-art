@@ -41,7 +41,7 @@
     {"path": "docs/production-sop-v3.md", "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"},
     {"path": "docs/production-preflight.md", "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"},
     {"path": "docs/research/2026-09-13-fool-s00-research.md", "sha256": "3c51da33e61d0e67078e337c66c09fb3a326738949beff0976fb7e820f8c9f27"},
-    {"path": "production/symbols/fool-five-tier-kit.json", "sha256": "91e2a9d45d8b37b8f9a3caff704897ee8345f2319e681642c58134e63e8f9ecb"},
+    {"path": "production/symbols/fool-five-tier-kit.json", "sha256": "27a4cbe9b443c3cb23798e4532559b36b883c783517ed40888f6728479e3764a"},
     {"path": "production/symbols/inscriptions/fool-side-inscription-v4.json", "sha256": "c5803166d8bc5b9c6880fa6e72e4f81ce07eec2003d161cd714003884ce3bfb9"},
     {"path": "docs/production-sop-v3.md", "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"},
     {"path": "config/production-resolution-policy.json", "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"}

@@ -1,7 +1,7 @@
 # AGENTS.md — 分层生产系统（production/）
 
 > 目录级增量规则，全局契约见根 `AGENTS.md`。本目录把 `pathways/<id>/` 的语义正本编译为任务、登记真实生图、合成候选并执行门禁；**任务只引用语义，不复制语义**。
-> 当前 SOP `docs/production-sop-v3.md`（3.5.0）；`production-sop-v2.md` 为历史五档流程；`production-sop.md` 仅旧工具合同，不得据此重加已取消的序列名文字。
+> 当前 SOP `docs/production-sop-v3.md`（3.5.0）；被取代的 v1/v2 已移除（见 `docs/DECISIONS.md` D10），不得据此重加已取消的序列名文字。
 
 ## 结构 STRUCTURE
 - `tasks/`：foundation|hierarchy|subject 三类概念任务示例（可复制成独立 task_id/revision）；`symbols/`：精雕符号库（圣徽/艺术数字/融合印记/序列铭刻/五档 kit，自带 catalog/tasks/calls/recipes）。

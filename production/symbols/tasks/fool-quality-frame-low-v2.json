@@ -19,8 +19,8 @@
   },
   "contracts": [
     {"path": "docs/production-preflight.md", "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"},
-    {"path": "production/symbols/quality-frame-five-tier-direction.json", "sha256": "8f605752837ee78a8f092d43b3480cd76e37cc49a11359d43d621326cc20a6c8"},
-    {"path": "config/quality-color-tokens.json", "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"},
+    {"path": "production/symbols/quality-frame-five-tier-direction.json", "sha256": "0388ff720b3ddde621fdb91ec50bee637a8a7bbc3d9144ea33dfa69a777f6e74"},
+    {"path": "config/quality-color-tokens.json", "sha256": "de81e5912a02968232d609622636d29e1ca35da42c095221071174678beb74fa"},
     {"path": "config/sequence-hierarchy.json", "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"},
     {"path": "production/symbols/fool-kit-matte.json", "sha256": "b3d0519d04ca2fed036a2e7d2b39c1b9a2ae4c62752cdfc5bd1b8a0ee9bb0daa"}
   ]

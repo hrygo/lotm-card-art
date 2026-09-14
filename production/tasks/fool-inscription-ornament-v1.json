@@ -16,7 +16,6 @@
     "clear_regions": [[0, 0, 1000, 1500]]
   },
   "contracts": [
-    {"path": "docs/production-sop-v2.md", "sha256": "d18015a3973d44eca1100e99ef73a8dec7a10b2c818d8f13f56d0c5e8fa214c5"},
     {"path": "production/symbols/inscriptions/fool-side-inscription-v3.json", "sha256": "768d68ea48c09ed0d78f51d36c5c5cb1e2049ea36190de77c884d25894b6abab"}
   ]
 }

@@ -12,6 +12,6 @@
   "spec": {"tier": "mid", "geometry": "沿用冻结母版位置，只研究翡翠中档材质与宝石光学，不改变几何。", "clear_regions": [[0, 0, 1000, 1500]]},
   "contracts": [
     {"path": "docs/production-sop-v3.md", "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"},
-    {"path": "config/quality-color-tokens.json", "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"}
+    {"path": "config/quality-color-tokens.json", "sha256": "de81e5912a02968232d609622636d29e1ca35da42c095221071174678beb74fa"}
   ]
 }

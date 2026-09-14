@@ -13,7 +13,7 @@
   "contracts": {
     "color_tokens": {
       "path": "config/quality-color-tokens.json",
-      "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"
+      "sha256": "de81e5912a02968232d609622636d29e1ca35da42c095221071174678beb74fa"
     },
     "sequence_hierarchy": {
       "path": "config/sequence-hierarchy.json",

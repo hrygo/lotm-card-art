@@ -28,7 +28,7 @@
     "sha256": "23c9e3c6efd6216cd541f2e51834f75169a8d8502a0d37e2859b4ef047555332"
   },
   "contracts": [
-    {"path": "production/symbols/fool-five-tier-kit.json", "sha256": "91e2a9d45d8b37b8f9a3caff704897ee8345f2319e681642c58134e63e8f9ecb"},
+    {"path": "production/symbols/fool-five-tier-kit.json", "sha256": "27a4cbe9b443c3cb23798e4532559b36b883c783517ed40888f6728479e3764a"},
     {"path": "production/symbols/fool-agentic-sequence-inscriptions-v2.json", "sha256": "2d3143a737ba386706d60848affaca9caff11ca9373b96f7c4cee401f073e6df"},
     {"path": "production/templates/fool-mother-frame-interface-v1.json", "sha256": "a6285639e2299c8a22b75395b338134e7c25efbb986a0501a2723bc0664a9908"},
     {"path": "production/templates/emblem-dock-interface-v1.json", "sha256": "9a95288d8b7f5df2287c43f9667ea656c0e8cf8272bf2da5cbb87d218e7f088b"},

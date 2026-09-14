@@ -17,8 +17,7 @@
     "clear_regions": [[0, 0, 1000, 1500]]
   },
   "contracts": [
-    {"path": "docs/production-sop-v2.md", "sha256": "d18015a3973d44eca1100e99ef73a8dec7a10b2c818d8f13f56d0c5e8fa214c5"},
-    {"path": "config/quality-color-tokens.json", "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"},
+    {"path": "config/quality-color-tokens.json", "sha256": "de81e5912a02968232d609622636d29e1ca35da42c095221071174678beb74fa"},
     {"path": "production/symbols/quality-frame-three-text-direction-v5.json", "sha256": "a6cb06a65429bebbef1f42cb12cbfb161155f317c27160a44f14c59ea2d0a0bf"}
   ]
 }

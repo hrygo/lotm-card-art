@@ -1406,8 +1406,8 @@ def validate_narrative(root, pack, ready_for_audio=False):
 def task_dependencies(root, task):
     """Non-image contracts are tracked separately from actual image attachments."""
     deps = [record(root, root / rel) for rel in (
-        "tools/production.py", "production/schemas/task.schema.json", "docs/production-sop.md",
-        "docs/production-sop-v2.md", "docs/production-sop-v3.md", "docs/pathway-carrier-sop.md",
+        "tools/production.py", "production/schemas/task.schema.json",
+        "docs/production-sop-v3.md", "docs/pathway-carrier-sop.md",
         "docs/card-narrative-contract.md", "config/quality-color-tokens.json",
         "config/sequence-hierarchy.json", f".agents/skills/lotm-{task['kind']}/SKILL.md")]
     deps.extend(task["references"])

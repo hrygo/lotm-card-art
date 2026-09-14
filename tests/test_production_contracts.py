@@ -55,7 +55,7 @@ class CurrentContractTests(unittest.TestCase):
             self.assertEqual(p.read(out / "task.json")["references"], [])
             snap = p.read(out / "snapshot.json")
             paths = {d["path"] for d in snap["dependencies"]}
-            self.assertTrue({"docs/production-sop-v2.md", "config/quality-color-tokens.json",
+            self.assertTrue({"docs/production-sop-v3.md", "config/quality-color-tokens.json",
                              "docs/card-narrative-contract.md", "brief.json"} <= paths)
             original = copy.deepcopy(snap)
             snap["dependencies"] = [d for d in snap["dependencies"]

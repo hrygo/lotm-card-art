@@ -20,11 +20,11 @@
   },
   "geometry_lock": {
     "path": "production/symbols/quality-frame-five-tier-direction.json",
-    "sha256": "8f605752837ee78a8f092d43b3480cd76e37cc49a11359d43d621326cc20a6c8"
+    "sha256": "0388ff720b3ddde621fdb91ec50bee637a8a7bbc3d9144ea33dfa69a777f6e74"
   },
   "color_tokens": {
     "path": "config/quality-color-tokens.json",
-    "sha256": "76abb87793fcc1f4cf1e8ee96ba0afabcc256b1cc3bace90878f6ed30b85359b"
+    "sha256": "de81e5912a02968232d609622636d29e1ca35da42c095221071174678beb74fa"
   },
   "sequence_hierarchy": {
     "path": "config/sequence-hierarchy.json",

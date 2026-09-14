@@ -14,6 +14,7 @@
 | 阶段流转、最小上下文、失败处理 | `workflow.md` | 规范·当前 |
 | 证据等级、否定/缺口、引用边界 | `source-policy.md` | 规范·当前 |
 | 当前分层生产流程 | `production-sop-v3.md` | 规范·当前生产入口（v3.5.0） |
+| 22 途径目录命名空间、fool 历史形态 | `pathway-namespace.md` | 规范·当前（仓库布局规则，ADR-004 派生） |
 | 开工范围、工具能力预检、逐项准入 | `production-preflight.md` | 执行约定·当前（非自动批准机制） |
 | 载体、EmblemDock 接口、品质细目 | `pathway-carrier-sop.md` | 侧车细则·当前（不重复主流程） |
 | 问候/口头语/故事/声音合同 | `card-narrative-contract.md` | 规范·当前（v1.0.0，独立于图像批准） |
@@ -44,7 +45,7 @@
 - 用 `assets/` 图片或计划文件完成度推断项目状态。
 
 ## 状态 STATUS
-- 规范·当前：`workflow.md`、`source-policy.md`、`production-sop-v3.md`、`card-narrative-contract.md`。
+- 规范·当前：`workflow.md`、`source-policy.md`、`production-sop-v3.md`、`pathway-namespace.md`、`card-narrative-contract.md`。
 - 执行/侧车·当前：`production-preflight.md`、`pathway-carrier-sop.md`、`card-production-index.md`。
 - 决策：`DECISIONS.md` 与 `decisions/ADR-*`（Accepted/Proposed 并存，按 `Status` 使用）。
 - 历史·被取代：被后续版 SOP 取代的流程文档不留在仓库（见 D10），效力表不列已移除文件。

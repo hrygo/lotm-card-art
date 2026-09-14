@@ -28,6 +28,7 @@
 
 ## 约定 CONVENTIONS
 - **任务只引用语义**：`semantic_source` 指向 `pathways/<id>/sequences/<09..00>/card.json`；compile 校验 slot/card_id/quality 与 design 指纹，不在本目录维护第二份语义。
+- **途径命名空间**：新途径的合同/任务/模板/回执置于 `production/<area>/<pathway>/…`（`<pathway>` 取 `catalog/pathways.json` 的 id）；`fool` 保持现有扁平形态并**显式视为历史形态**，不迁移、不改名、不作为新途径起名模板。详见 `docs/pathway-namespace.md`。
 - **五档映射**固定从 `config/quality-color-tokens.json` 解析：low 9–8、mid 7–5、saint 4–3、angel 2–1、true-god 0；quality.visual_tier 必须一致，旧 `high` 不得代替 saint/angel。
 - **状态与记录诚实**：每文件标 study/candidate/measured/approved/release，记真实像素/通道/来源/处理链；未知 model/seed 留 null；不冒称原生 2K/4K。
 - **原生画布**：Agentic 实际尺寸即 `native_canvas`；中间不转 2K、不裁切回填；只有整卡全部验收后一次全画布采样 2048×3072（收藏 4096×6144，不经 2K）。

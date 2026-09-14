@@ -249,10 +249,30 @@ func cgColor(_ rgb: [Double], _ alpha: Double = 1) -> CGColor {
     CGColor(srgbRed: CGFloat(clamp(rgb[0])), green: CGFloat(clamp(rgb[1])), blue: CGFloat(clamp(rgb[2])), alpha: CGFloat(clamp(alpha)))
 }
 
+// 对不存在的路径调用 resolvingSymlinksInPath() 结果不稳定，故只归一经由已存在祖先的路径分量。
+func canonicalOutputPath(_ url: URL) -> URL {
+    var existing = url.standardizedFileURL
+    var tail: [String] = []
+    while !FileManager.default.fileExists(atPath: existing.path), existing.pathComponents.count > 1 {
+        tail.insert(existing.lastPathComponent, at: 0)
+        existing = existing.deletingLastPathComponent()
+    }
+    var result = existing.resolvingSymlinksInPath()
+    for component in tail { result.appendPathComponent(component) }
+    return result.standardizedFileURL
+}
+
+func isPath(_ child: URL, inside parent: URL) -> Bool {
+    let childComponents = canonicalOutputPath(child).pathComponents
+    let parentComponents = canonicalOutputPath(parent).pathComponents
+    return childComponents.count > parentComponents.count
+        && Array(childComponents.prefix(parentComponents.count)) == parentComponents
+}
+
 func ensureNewOutput(_ root: URL, _ output: URL) throws {
-    let base = root.appendingPathComponent("artifacts/production").resolvingSymlinksInPath().path + "/"
+    let base = root.appendingPathComponent("artifacts/production")
+    try require(isPath(output, inside: base), "Output must be a child of artifacts/production")
     let resolved = output.standardizedFileURL
-    try require(resolved.path.hasPrefix(base), "Output must be a child of artifacts/production")
     try require(!FileManager.default.fileExists(atPath: resolved.path), "Output already exists: \(resolved.path)")
     try FileManager.default.createDirectory(at: resolved, withIntermediateDirectories: true)
 }

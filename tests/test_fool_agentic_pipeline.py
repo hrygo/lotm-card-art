@@ -262,6 +262,48 @@ class RendererTests(unittest.TestCase):
         self.assertTrue(catalog["localized_ingest"]["candidate_background_is_not_imported"])
         self.assertTrue(catalog["localized_ingest"]["program_must_not_add_sequence_name"])
 
+    @unittest.skipUnless(sys.platform == "darwin" and shutil.which("swiftc"), "native Fool pipeline requires macOS/Swift")
+    def test_output_path_validation_is_escape_safe_and_symlink_agnostic(self):
+        with tempfile.TemporaryDirectory(prefix="fool-pipeline-bin-") as directory:
+            binary = Path(directory) / "foolpipeline5"
+            subprocess.run(
+                ["swiftc", "-O", str(ROOT / "tools/render/foolpipeline5.swift"), "-o", str(binary)],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            candidate = "artifacts/production/fool-mother-frame-v1/studies/fool-mother-agentic-high-detail-candidate-n.png"
+            for escape in ("artifacts/production-evil/x", "artifacts/x", "artifacts/production"):
+                result = subprocess.run(
+                    [str(binary), "mother", str(ROOT), candidate, str(ROOT / escape)],
+                    capture_output=True,
+                    text=True,
+                )
+                self.assertNotEqual(result.returncode, 0, escape)
+                self.assertIn("Output must be a child of artifacts/production", result.stderr + result.stdout)
+            with tempfile.TemporaryDirectory(prefix=".fool-path-test-", dir=ROOT / "artifacts/production") as parent:
+                existing = Path(parent) / "mother"
+                existing.mkdir()
+                result = subprocess.run(
+                    [str(binary), "mother", str(ROOT), candidate, str(existing)],
+                    capture_output=True,
+                    text=True,
+                )
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("Output already exists", result.stderr + result.stdout)
+            alternate_root = "/" + str(ROOT)[len("/private/"):] if str(ROOT).startswith("/private/") else None
+            if alternate_root is not None and Path(alternate_root).is_dir():
+                cross_form = ROOT / "artifacts/production/.fool-cross-form-test"
+                try:
+                    result = subprocess.run(
+                        [str(binary), "mother", str(alternate_root), candidate, str(cross_form / "mother")],
+                        capture_output=True,
+                        text=True,
+                    )
+                    self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+                finally:
+                    shutil.rmtree(cross_form, ignore_errors=True)
+
 
 if __name__ == "__main__":
     unittest.main()

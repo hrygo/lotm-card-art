@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-five-tier-frame-batch-v1",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "output": {"aspect": [2, 3], "background": "transparent"},
+  "prompt": "Use case: stylized-concept. Asset type: five quality derivatives of one frozen Fool mother frame. Produce five independent material studies for low, mid, saint, angel, and true-god, each preserving exactly the same outer silhouette, curtain columns, illustration window, left Fool identity zone, top EmblemDock, right empty sequence zone, name surface, and single bottom gemstone socket. Change only material texture, enamel reflection, controlled hue drift, metal depth, gemstone body, facets, refraction, and restrained highlight behavior. Read the five tier colors and hue-drift/gem-luminance rules from config/quality-color-tokens.json. Do not add components, increase ornament count, enlarge the emblem, move any anchor, add text, sequence names, numerals, character names, subjects, scenes, pseudo-text, or watermarks. Each image is a material study only; the deterministic compositor owns final geometry and alpha.",
+  "references": [
+    {"path": "artifacts/production/fool-five-tier-kit-v5/frame-low.png", "sha256": "8f43351e693003f0b3f310d35f16b2f5f0835218316cfba68eec4d8ff86dab19", "role": "geometry"},
+    {"path": "artifacts/production/fool-five-tier-kit-v5/frame-mid.png", "sha256": "36a04740bbf876a903ce761f59492a8143abcf3246957857837fc76f6d1adc3e", "role": "style"},
+    {"path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-frame-agentic-mid-transfer-v1.png", "sha256": "841de6ffa164cf66c5bf55b306d90930e52c6d6b6866b5a7ebcacf949e14a105", "role": "style"}
+  ],
+  "limits": {"max_attempts": 1},
+  "spec": {"stage": "tiers", "geometry": "fool-agentic-mother-v1", "clear_regions": [[0, 0, 1000, 1500]]},
+  "contracts": [
+    {"path": "docs/production-sop-v3.md", "sha256": "2b1a5aeda0d594c546979bb2ebebf20a4f17dd2946320fd620d4a97222b205fc"},
+    {"path": "production/schemas/fool-mother-frame.schema.json", "sha256": "162f5429f5a78b6237db62c14daa6b146aa18de207ce46d4c7c754d0513306fb"},
+    {"path": "production/templates/fool-mother-frame-interface-v1.json", "sha256": "b2051270b8f044dc0e5d8477f4c245b2c0a5a38d130743136a6d17f907c9ff1f"},
+    {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"},
+    {"path": "config/sequence-hierarchy.json", "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"}
+  ]
+}

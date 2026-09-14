@@ -5,7 +5,7 @@ description: 为诡秘之主卡牌生产单卡人物或非人格主事件插画�
 
 # 单卡主体与完整环境
 
-读取 `docs/production-sop-v2.md`、当前kind=subject任务与schema；工具接口见 `docs/production-sop.md`。读取semantic_source、途径AGENTS/canon/direction与六维设计文档。production先过design；concept不作正式发布。
+读取 `docs/production-sop-v3.md`、当前kind=subject任务与schema；工具接口见 `docs/production-sop.md`。读取semantic_source、途径AGENTS/canon/direction与六维设计文档。production先过design；concept不作正式发布。
 
 ## 精准身份与构图
 
@@ -13,7 +13,7 @@ spec.protagonist的kind/name_zh/name_status/evidence_refs必填；明确角色�
 
 完整人物卡同时读取 docs/card-narrative-contract.md，建立问候、口头语、分章故事的内容包：时间切片、剧透边界、逐字正文、canon/interpretation/original 来源与证据、摘要和批准。用 subject 任务顶层 narrative 路径/摘要绑定，编译器核对与本卡身份一致。未写的内容留下 gap，不假装已交付；实际创作按用户授权推进。故事事件和情绪可用于视觉意向，正文不成为画面文字。声音仅在逐字批准且获得声音制作授权后执行，视觉批准不覆盖文案或音频。
 
-实际附件包含已装配“品质框＋融合圣徽＋姓名”的完整身份参考和必要人物参考，逐张标注用途。画面不含序列名及说明文字是当前用户方向；正式文字cue的变更需同步语义契约，不只隐藏图层。六维以明确动作、物件、构图转译；意象不能冒称传达精确配方、数量或逻辑条件。
+实际附件包含已装配“品质框＋EmblemDock＋融合圣徽＋姓名”的完整身份参考和必要人物参考，逐张标注用途。画面不含序列名及说明文字是当前用户方向；正式文字cue的变更需同步语义契约，不只隐藏图层。六维以明确动作、物件、构图转译；意象不能冒称传达精确配方、数量或逻辑条件。
 
 人物与完整背景一次生成，画面连续填满允许载体域，不额外嵌一张矩形照片，不生成重复框、徽、数字或姓名。上部安静环境为圣徽服务，下部关键物件在姓名牌上方；位置来自当前实际身份框，不照搬克莱恩单卡百分比。构图参考不是工具硬mask或像素锁定。
 
@@ -26,5 +26,7 @@ spec.protagonist的kind/name_zh/name_status/evidence_refs必填；明确角色�
 compile→读prompt→真实附件→内置image_gen→观察→call→ingest，未知model/seed=null。每次合成到真实身份框后检查面部、手、动作与道具是否被遮挡；图像单看漂亮不等于装框成立。
 
 一次修一个主要缺陷，保留脸部身份、事件和未受影响层；构图问题调整场景，框徽连接问题交给框架任务，不反复重画人物。遵守预算，不换ID无限续试。原图保留，记录不同revision与调用。
+
+主体生成属于 L5，只消费已经冻结的 L4 身份框。主体问题不得回头重生母版、EmblemDock、圣徽或姓名；只有场景实际改变了徽章/姓名安全区，才触发对应下游复核。主体与环境必须一体生成，但 Agentic 输出不拥有最终框、嵌座、圣徽或文字像素。
 
 原身份层由程序叠回，检查源/变换与最终半透明混色；不把“原框没动”当成没有幽灵边缘的证明。输出图像与真实观察、原生/最终像素和检查范围。用户视觉批准不自动覆盖正典、素材权利或release门禁。

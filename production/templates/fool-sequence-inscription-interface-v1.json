@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "contract_type": "fool-sequence-inscription",
+  "status": "template",
+  "coordinate_system": "design-space-top-left-image-normalized",
+  "source_geometry_id": "fool-agentic-mother-v1",
+  "edit_domain": {
+    "side": "right",
+    "rect_design": [878, 780, 108, 280],
+    "safe_rect_design": [890, 796, 84, 248],
+    "outside_domain_pixels_max": 0
+  },
+  "text": {
+    "orientation": "vertical-rl",
+    "minimum_characters": 6,
+    "source": "program-controlled-exact-glyph-outline",
+    "style": "agentic-study-informed-fool-curled-column-relief",
+    "face_layer_count": 1,
+    "mirror_forbidden": true,
+    "background_forbidden": true,
+    "center_error_max_final_px": 1
+  },
+  "relief_passes": ["recess-shadow", "engraved-bevel", "engraved-face", "edge-glint"],
+  "protected_regions": ["emblem", "name", "gem", "outer-silhouette", "illustration-window"]
+}

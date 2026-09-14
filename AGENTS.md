@@ -68,7 +68,7 @@
 设计状态为 `proposed` 的基线可用于探索，不能自称已获用户批准。缺少历史原图时不声称复用其细节。
 
 ## 7. 从方案到图像
-Agentic 分层生产以 `docs/production-sop-v2.md` 为当前入口，`docs/production-sop.md` 仅为旧工具合同。基础物料、层级资产、主体插画分别读取 `.agents/skills/lotm-foundation/`、`lotm-hierarchy/`、`lotm-subject/` 中的 SKILL.md；框徽装配读取 `lotm-quality-frames`，融合圣徽读取 `lotm-symbols`。五档视觉映射来自 `config/quality-color-tokens.json`，不修改事实层级分类。口头语、问候与角色故事遵循 `docs/card-narrative-contract.md`，与图像共用身份、独立批准，不写进主插画。以 `production/schemas/` 校验结构化输入，使用 `tools/production.py` 编译、登记、合成与检验；任务接口支持五档不代表旧合成器已完成五档装配。220 表示序列覆盖卡位，独立人物卡与制作版本使用各自 ID。
+Agentic 分层生产以 `docs/production-sop-v3.md` 为当前入口，`docs/production-sop-v2.md` 为历史五档流程，`docs/production-sop.md` 仅为旧工具合同。基础物料、层级资产、主体插画分别读取 `.agents/skills/lotm-foundation/`、`lotm-hierarchy/`、`lotm-subject/` 中的 SKILL.md；框徽装配读取 `lotm-quality-frames`，融合圣徽读取 `lotm-symbols`。五档视觉映射来自 `config/quality-color-tokens.json`，不修改事实层级分类。口头语、问候与角色故事遵循 `docs/card-narrative-contract.md`，与图像共用身份、独立批准，不写进主插画。以 `production/schemas/` 校验结构化输入，使用 `tools/production.py` 编译、登记、合成与检验；任务接口支持五档不代表旧合成器已完成五档装配。220 表示序列覆盖卡位，独立人物卡与制作版本使用各自 ID。
 先研究，再做六维转译，再构图，再出图和排版，最后逐项审核。
 `brief --draft` 仅生成研究/概念任务；不得拿未核验信息直接生成正式成品。
 `brief` 的普通模式必须通过 design 门槛；它编译任务，不自动调用付费图像服务。

@@ -5,7 +5,7 @@ description: 制作与精修诡秘之主五档品质边框及融合圣徽卡框�
 
 # 品质框、圣徽与姓名装配
 
-读取 `docs/production-sop-v2.md` 与 `config/quality-color-tokens.json`。品质颜色和序列映射由该配置解析；事实层级来自 `config/sequence-hierarchy.json`，不手写另一套HEX。旧工具接口见 `docs/production-sop.md`。
+读取 `docs/production-sop-v3.md` 与 `config/quality-color-tokens.json`。品质颜色和序列映射由该配置解析；事实层级来自 `config/sequence-hierarchy.json`，不手写另一套HEX。v2保留为历史五档流程，旧工具接口见 `docs/production-sop.md`。
 
 ## 两维与五档品质
 
@@ -17,29 +17,45 @@ description: 制作与精修诡秘之主五档品质边框及融合圣徽卡框�
 
 原框、净底融合徽、承接件、姓名各自保留正本。圣徽创作坚持“途径母标识→专属数字→Agentic融合”，不以普通字体叠徽替代。完整身份框先实际装配并作为主体生成附件；主体与背景一体生成后叠回固定身份层。
 
-已接受的愚者方案为双侧帷幕收束：从框肩延伸，末端隐入圣徽外缘实心部分；不设中央托座，不横穿数字镂空或眼孔。该解法是途径实例，不强套其他途径。生成稿附带额外框肩时不直接替换原框。单层有裁口、残片而依赖特定遮挡的素材，只按定制装配层登记，成为公共素材前另行净化和验证。
+已接受的愚者历史实例为双侧帷幕收束：从框肩延伸，末端隐入圣徽外缘实心部分；当时不设中央托座，不横穿数字镂空或眼孔。该解法只代表原实例的批准范围，不覆盖新的通用架构。后续新母版必须采用 `FrameCore + EmblemDock`：母版预置固定视觉嵌孔、暗腔、承托面、接触受光和前缘遮挡，圣徽本体独立替换。每条途径设计自己的嵌座语言，不把愚者帷幕机械套给其他途径。生成稿附带额外框肩时不直接替换原框。单层有裁口、残片而依赖特定遮挡的素材，只按定制装配层登记，成为公共素材前另行净化和验证。
 
-边框与承接件归同一 material_group，统一品质锚色、光向和反射环境；纹理与宝石分域保留层次，禁止只改框而留下异档帷幕。读取 production/templates/frame-emblem-interface.json，填写真实资产摘要、坐标空间、固定变换、框肩/徽缘实心接点、允许域和孔洞/姓名保护 mask。每枚数字独立测量；模板空值不能进入装配，声明依赖用 task.contracts 绑定。当前模板不是 Swift 自动解析的配方，不把字段齐全当作像素门禁已经实现。
+边框、EmblemDock、连接帷幕与相应宝石归同一 material_group，统一品质锚色、光向和反射环境；纹理与宝石分域保留层次，禁止只改框而留下异档嵌座/帷幕。读取 `production/templates/emblem-dock-interface-v1.json`，填写真实资产摘要、坐标空间、固定变换、嵌座外框、圣徽可见 bbox、锚点、接收域以及圣徽孔洞/姓名/宝石保护 mask；机器字段约束见 `production/schemas/emblem-dock.schema.json`。每枚数字独立测量；模板空值不能进入装配，声明依赖用 task.contracts 绑定。当前合同不是 Swift 自动解析的完整配方，不把字段齐全当作像素门禁已经实现。旧 `frame-emblem-interface.json` 仅作历史模板。
 
-主体插画内不添加说明文字；边框三文字区可以承载途径名、序列名和角色姓名。删除或改变主体文字引起语义cue差异时单独标明，不能冒称旧语义契约通过。完整制作、批准实例与专用参数见 `docs/pathway-carrier-sop.md`。
+主体插画内不添加说明文字；边框三文字区可以承载途径名、序列名和角色姓名。姓名区只允许在母框已有表面上直接铭刻精确字形；文字层不得携带底色、底板、边框或不透明遮罩，必须用实际笔画墨框同时做上下/左右居中。删除或改变主体文字引起语义cue差异时单独标明，不能冒称旧语义契约通过。完整制作、批准实例与专用参数见 `docs/pathway-carrier-sop.md`。
 
 ## 几何、圣徽与姓名
+
+### EmblemDock 结构所有权
+
+母版拥有结构接口，圣徽拥有识别形体，合成器拥有装配。母版提供视觉嵌孔而非默认穿透卡面的真实透明孔；圣徽不得携带完整边框、完整承托、任意底板或第二套阴影。合成时按 `dock-cavity → dock-seat → dock-contact-shadow → emblem-body → dock-front-rim` 的职责顺序装配，并确保同一结构像素只有一个 owner。具体字段、禁止重复绘制项和保护域以 `production/templates/emblem-dock-interface-v1.json` / `production/schemas/emblem-dock.schema.json` 为准。
+
+EmblemDock 硬阈值固定为：几何位移 0；圣徽孔洞、姓名、钻石及域外像素交集 0；圣徽可见 bbox 中心误差 ≤ 1 final px；v1 `through_hole=false`。字段缺失、阈值未实测或 owner 重叠时保持 `candidate`/`blocked`，不得填 0 或 pass。
 
 冻结的是原生轮廓、内部构件、姓名牌、宝石槽、锚点、变换与采样，不是只冻结外边框。整框参考编辑不保证零漂移；不能用扭曲或重新测区把漂移变体“修成一致”。新结构单独审定并版本化。
 
 圣徽按可见字形等比定位，不包含透明留白或辉光；每枚数字独立检查。旧四档套件15%和已接受Klein单卡11.5%均有具体上下文，不是全系列固定比例。姓名按笔画本体双轴居中，不移动姓名牌迁就字形；实际渲染后测量中心误差，不能只相信align=center。独立空框不擅加占位姓名。
 
-## v3 侧铭文带与钻石嵌入
+## 愚者当前侧铭文带与钻石嵌入
 
-愚者活动模板 v3 将左右铭文带固定为柱体主体宽度的 1.5 倍，而不是 1.15 倍；设计坐标为左 `[38,780,108,280]`、右 `[878,780,108,280]`，文字安全区为左 `[50,796,84,248]`、右 `[890,796,84,248]`。它们仍是局部柱状铭刻带，不得扩成完整侧面板；中心锚点固定为 `[92,920]` 与 `[932,920]`，任何品质档位不得有位置偏移。
+愚者活动模板 v3 将左右铭文带固定为柱体主体宽度的 1.5 倍，而不是 1.15 倍；设计坐标为左 `[38,780,108,280]`、右 `[878,780,108,280]`，文字安全区为左 `[50,796,84,248]`、右 `[890,796,84,248]`。它们仍是局部柱状铭刻带，不得扩成完整侧面板；中心锚点固定为 `[92,910]` 与 `[932,910]`，任何品质档位不得有位置偏移。该坐标与 `production/symbols/inscriptions/fool-side-inscription-v1..v4.json` 保持一致。
 
-侧铭文至少按六字竖排容量验收。Agentic图像只提供愚者卷曲端饰、凹槽、浮雕、暗槽和高光的设计参考；最终汉字必须由程序精确字形生成，再经 `recess-shadow`、`raised-bevel`、`engraved-face`、`edge-glint` 四层装配。禁止把平直CoreText作为最终侧铭文层，也禁止使用生图伪文字代替真实字形。铭文溢出、错字、中心误差超过1 final px或安全区漂移均阻断gate。
+侧铭文至少按六字竖排容量验收。若用户认可某一版侧柱外轮廓，必须把它登记为不可覆盖的风格参考；后续试稿不得用新外轮廓替换它。Agentic图像只提供愚者卷曲端饰、凹槽、浮雕、暗槽和高光的设计参考；最终汉字必须由程序精确字形生成，再经 `recess-shadow`、`raised-bevel`、`engraved-face`、`edge-glint` 四层装配。铭文应成为中央凹槽内连续的纵向铭文轨，不另加不透明铭牌，且由 exclusion mask 保护端饰、宝石/星形装饰和轨道边缘。禁止把平直CoreText作为最终侧铭文层，也禁止使用生图伪文字代替真实字形。铭文溢出、错字、中心误差超过1 final px或安全区漂移均阻断gate；愚者当前执行契约见 `production/symbols/inscriptions/fool-side-inscription-v4.json`。
+
+姓名区门禁更严格：中央面板的渲染器背景 bbox 必须为 `[0,0,0,0]`；姓名以单一精确字形面罩派生凹刻/倒角/高光，实际墨框上下左右对齐到安全区中心，误差 ≤1 final px。manifest 必须声明 `name.background=transparent-text-layer-only`，否则不得交付。
+
+Agentic 跨品质迁移已实测：低序列愚者母框→中序列翡翠框的一次受控试验保住了粗轮廓和材质创造力，但输出降为 1024×1536 RGB、无 alpha、棋盘格烘焙，归一化轮廓 IoU=0.767128，故只能作为风格研究；不能直接晋升 FrameCore。以后 Agentic 负责探索，确定性渲染器负责固定几何、alpha、文字和生产交付。
 
 此前生成的五档钻石研究稿不得停留在reference-only：按catalog记录的五个crop与档位顺序，先做黑底连通域净化，再以固定可见框 `[101.12,103.68] design px` 嵌入底部钻石锚点。输出五个 `diamond-{tier}.png` 层和整框合成图；不能把五档钻石与十枚序列圣徽做交叉复制，不得以重新绘制的简化钻石静默替代已登记研究资产。
 
+## 锁点与最小返修
+
+按 `L1 母版几何 → L2 身份组件 → L3 精确文字 → L4 身份框 → L5 主体场景 → L6 交付` 推进。锁点通过必须绑定实际文件、摘要和检查证据；后续返修只从缺陷 owner 向下重放，不因文字、单枚圣徽或主体问题重生母版。母版轮廓/内部构件/EmblemDock 改变时创建新 `geometry_id`，并使 L1 之后失效；材质、单枚圣徽、文字和场景分别按最小范围失效。
+
+缺陷路由固定为：嵌座结构/连接断裂归 `EmblemDock`，单枚数字/净底/接点归该 `EmblemAsset`，姓名或铭文归透明文字层，人物与背景归 `SubjectScene`。每次只修一个主要缺陷，记录观察、修改变量、保留层、受影响锁点和剩余预算；连续同因失败先改输入或方法，不换 task ID 重置预算。渲染器能确定性修复时不重新调用 Agentic 生图。
+
 ## 按需读取与执行
 
-- 开工、返修与交付：读 `docs/production-preflight.md`，先匹配任务与实际工具能力，再检查逐枚接点/保护域；记录中将该文件加入 contracts，不能假定链接会被编译器递归追踪。
+- 开工、返修与交付：读 `docs/production-preflight.md`，先匹配任务与实际工具能力，再检查逐枚接点/保护域；记录中将该文件加入 contracts，不能假定链接会被编译器递归追踪。锁点与状态定义以 `docs/production-sop-v2.md` 为准。
 - 结构/材质准入：读[几何合同](references/geometry-contract.md)。
 - 净底与孔洞：读[透明精修](references/transparent-assets.md)。
 - 姓名生图和定位：读[姓名合同](references/name-art-input.md)。
@@ -47,4 +63,4 @@ description: 制作与精修诡秘之主五档品质边框及融合圣徽卡框�
 
 基础纹理归lotm-foundation，母框/承接件艺术归lotm-hierarchy，符号归lotm-symbols，主体归lotm-subject。沿compile→实际生图→观察→call→ingest→实际合成→gate执行。批准绑定最终图像/清单，来源、净底、几何、外观、正式release分别记录。
 
-任务 schema 已支持 quality 和 saint/angel，编译器追踪当前规则及声明的文字侧车；活动五档框徽装配统一走版本化 `tools/render/foolkit5.swift`，侧铭文与姓名合成统一走版本化 `tools/render/fooltext3.swift`，由manifest/gate核验摘要、alpha、字形容量、文字中心、几何、钻石嵌入和逐枚定位，旧 compose/foolkit 仅作历史入口。Skill更新不等于素材已生成。历史原稿和回执保留，摘要失配不追改。完整卡另按 docs/card-narrative-contract.md 清点问候、口头语、故事与声音；不将这些文字塞进插画，也不以视觉通过代替文案批准。默认不扩大途径、生图批次、清理或发布范围。
+任务 schema 已支持 quality 和 saint/angel，编译器追踪当前规则及声明的文字侧车；活动五档框徽装配必须使用 catalog/manifest 指定的版本化渲染器，不能由本 Skill 猜测 v3/v4/v5 等版本号。侧铭文与姓名合成由对应版本工具负责，manifest/gate 核验摘要、alpha、字形容量、文字中心、几何、钻石嵌入和逐枚定位，旧 compose/foolkit 仅作历史入口。Skill更新不等于素材已生成。历史原稿和回执保留，摘要失配不追改。完整卡另按 docs/card-narrative-contract.md 清点问候、口头语、故事与声音；不将这些文字塞进插画，也不以视觉通过代替文案批准。默认不扩大途径、生图批次、清理或发布范围。

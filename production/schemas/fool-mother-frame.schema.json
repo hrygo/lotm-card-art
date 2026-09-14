@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lotm-card-art/fool-mother-frame-1.0.0",
+  "title": "Fool Agentic mother frame interface",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_type",
+    "status",
+    "geometry_id",
+    "coordinate_system",
+    "canvas",
+    "pathway_mark",
+    "emblem_dock",
+    "right_sequence_zone",
+    "name_surface",
+    "gem_slot",
+    "protected_regions",
+    "ownership",
+    "thresholds"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "contract_type": {"const": "fool-mother-frame"},
+    "status": {"enum": ["template", "proposed", "measured", "pending-user-visual-approval", "approved", "rejected"]},
+    "geometry_id": {"const": "fool-agentic-mother-v1"},
+    "coordinate_system": {"const": "design-space-top-left-image-normalized"},
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["design_size", "final_size", "color_space", "alpha"],
+      "properties": {
+        "design_size": {"type": "array", "items": {"type": "integer", "minimum": 1}, "const": [1024, 1536]},
+        "final_size": {"type": "array", "items": {"type": "integer", "minimum": 1}, "const": [2048, 3072]},
+        "color_space": {"const": "sRGB"},
+        "alpha": {"const": "straight-RGBA"}
+      }
+    },
+    "pathway_mark": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["side", "required_text", "mode", "rect_design", "safe_rect_design", "owner"],
+      "properties": {
+        "side": {"const": "left"},
+        "required_text": {"const": "愚者"},
+        "mode": {"const": "agentic-art-plus-exact-identity"},
+        "rect_design": {"$ref": "#/$defs/rect"},
+        "safe_rect_design": {"$ref": "#/$defs/rect"},
+        "owner": {"const": "FrameCore.PathwayMark"}
+      }
+    },
+    "emblem_dock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract", "safe_rect_design", "through_hole", "owner"],
+      "properties": {
+        "contract": {"const": "production/templates/emblem-dock-interface-v1.json"},
+        "safe_rect_design": {"$ref": "#/$defs/rect"},
+        "through_hole": {"const": false},
+        "owner": {"const": "EmblemDock"}
+      }
+    },
+    "right_sequence_zone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "rect_design", "safe_rect_design", "orientation", "capacity_min_characters", "empty_pixel_threshold", "owner"],
+      "properties": {
+        "status": {"const": "reserved-empty"},
+        "rect_design": {"$ref": "#/$defs/rect"},
+        "safe_rect_design": {"$ref": "#/$defs/rect"},
+        "orientation": {"const": "vertical-rl"},
+        "capacity_min_characters": {"const": 6},
+        "empty_pixel_threshold": {"const": 0},
+        "owner": {"const": "SequenceEngraving"}
+      }
+    },
+    "name_surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "rect_design", "safe_rect_design", "background_pixels", "text_source", "owner"],
+      "properties": {
+        "status": {"const": "reserved-empty-existing-surface"},
+        "rect_design": {"$ref": "#/$defs/rect"},
+        "safe_rect_design": {"$ref": "#/$defs/rect"},
+        "background_pixels": {"const": 0},
+        "text_source": {"const": "program-controlled-exact-glyph-outline"},
+        "owner": {"const": "NameEngraving"}
+      }
+    },
+    "gem_slot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "tier_variant_count", "center_design", "visible_size_design", "name_clearance_design", "owner"],
+      "properties": {
+        "count": {"const": 1},
+        "tier_variant_count": {"const": 5},
+        "center_design": {"$ref": "#/$defs/point"},
+        "visible_size_design": {"$ref": "#/$defs/size"},
+        "name_clearance_design": {"type": "number", "minimum": 0},
+        "owner": {"const": "GemSlot"}
+      }
+    },
+    "protected_regions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outer_silhouette", "illustration_window", "emblem", "name", "gem", "outside_edit_domain"],
+      "properties": {
+        "outer_silhouette": {"type": "string", "minLength": 1},
+        "illustration_window": {"type": "string", "minLength": 1},
+        "emblem": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "gem": {"type": "string", "minLength": 1},
+        "outside_edit_domain": {"type": "string", "minLength": 1}
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frame_core", "emblem_dock", "emblem_asset", "quality_material", "text_engraving", "composer"],
+      "properties": {
+        "frame_core": {"$ref": "#/$defs/string_array"},
+        "emblem_dock": {"$ref": "#/$defs/string_array"},
+        "emblem_asset": {"$ref": "#/$defs/string_array"},
+        "quality_material": {"$ref": "#/$defs/string_array"},
+        "text_engraving": {"$ref": "#/$defs/string_array"},
+        "composer": {"$ref": "#/$defs/string_array"}
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["geometry_displacement_max_px", "outside_edit_domain_pixels_max", "zone_center_error_max_final_px", "protected_region_intersections_max"],
+      "properties": {
+        "geometry_displacement_max_px": {"const": 0},
+        "outside_edit_domain_pixels_max": {"const": 0},
+        "zone_center_error_max_final_px": {"const": 1},
+        "protected_region_intersections_max": {"const": 0}
+      }
+    }
+  },
+  "$defs": {
+    "rect": {
+      "type": "array",
+      "items": {"type": "number", "minimum": 0},
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "point": {
+      "type": "array",
+      "items": {"type": "number", "minimum": 0},
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "size": {
+      "type": "array",
+      "items": {"type": "number", "exclusiveMinimum": 0},
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "string_array": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}

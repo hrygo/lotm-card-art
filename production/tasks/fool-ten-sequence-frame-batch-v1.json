@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-ten-sequence-frame-batch-v1",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "output": {"aspect": [2, 3], "background": "transparent"},
+  "prompt": "Use case: stylized-concept. Asset type: ten Fool sequence frame inscriptions and deterministic assembly. For each sequence 09 through 00, select exactly its configured quality frame and exactly its matching approved Fool fused emblem. Agentic work is restricted to the right-side local inscription crop. Create an upright vertical-rl engraved sequence-name treatment integrated into the existing right pillar material: recessed glyph face, bevel, inner edge light, and contact shading, with no capsule plate, no full side panel, no added background, no mirror text, no pseudo-text, no other writing, no change outside the crop. The exact sequence names must come from the compiled Fool pathway/card source. Preserve the frozen mother geometry, top EmblemDock, left 愚者 mark, name surface, and single gem slot exactly. The compositor owns exact glyph outlines, actual ink-box centering, alpha, masking, z-order, and the final ten outputs. Do not create five variants for each sequence; output ten sequence frames only.",
+  "references": [
+    {"path": "artifacts/production/fool-five-tier-kit-v5/frame-low.png", "sha256": "8f43351e693003f0b3f310d35f16b2f5f0835218316cfba68eec4d8ff86dab19", "role": "geometry"},
+    {"path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-inscription-ornament-initial.png", "sha256": "385e207882d8fcf05a2392213745a75ef83e6ad0b3b638b8a8c39f3bbb5b734e", "role": "style"},
+    {"path": "artifacts/production/fool-five-tier-kit-v5/fool-9-frame.png", "sha256": "65cf1add84a6f1606bbc779ee400ce2e75e3a707f79770ace997077dd4d44386", "role": "edit_target"}
+  ],
+  "limits": {"max_attempts": 1},
+  "spec": {"stage": "sequences", "geometry": "fool-agentic-mother-v1", "clear_regions": [[878, 780, 108, 280]]},
+  "contracts": [
+    {"path": "docs/production-sop-v3.md", "sha256": "2b1a5aeda0d594c546979bb2ebebf20a4f17dd2946320fd620d4a97222b205fc"},
+    {"path": "production/schemas/fool-mother-frame.schema.json", "sha256": "162f5429f5a78b6237db62c14daa6b146aa18de207ce46d4c7c754d0513306fb"},
+    {"path": "production/templates/fool-sequence-inscription-interface-v1.json", "sha256": "2b176e2fa325f3304ca00f2e0aa584417bd3889eb2502c940aaada0397b850cf"},
+    {"path": "production/symbols/inscriptions/fool-side-inscription-v4.json", "sha256": "c5b607beedfffbe9784ae9216b64666f386a46b770ad92d9f5efd50af98c23c4"},
+    {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"},
+    {"path": "config/sequence-hierarchy.json", "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"}
+  ]
+}

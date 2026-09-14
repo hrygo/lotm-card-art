@@ -165,6 +165,13 @@
         {
           "type": "object",
           "properties": {
+            "stage": {
+              "enum": [
+                "mother",
+                "tiers",
+                "sequences"
+              ]
+            },
             "tier": {
               "enum": [
                 "low",
@@ -194,7 +201,6 @@
             }
           },
           "required": [
-            "tier",
             "geometry",
             "clear_regions"
           ],

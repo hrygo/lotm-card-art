@@ -176,7 +176,7 @@ def task_dependencies(root, task):
     """Non-image contracts are tracked separately from actual image attachments."""
     deps = [record(root, root / rel) for rel in (
         "tools/production.py", "production/schemas/task.schema.json", "docs/production-sop.md",
-        "docs/production-sop-v2.md", "docs/pathway-carrier-sop.md",
+        "docs/production-sop-v2.md", "docs/production-sop-v3.md", "docs/pathway-carrier-sop.md",
         "docs/card-narrative-contract.md", "config/quality-color-tokens.json",
         "config/sequence-hierarchy.json", f".agents/skills/lotm-{task['kind']}/SKILL.md")]
     deps.extend(task["references"])
@@ -195,8 +195,13 @@ def task_dependencies(root, task):
 
 def validate_task(root, task):
     validate_schema(task, schema(root, "task"))
-    needed = {"foundation": "material", "hierarchy": "tier", "subject": "slot_id"}
-    if needed[task["kind"]] not in task["spec"]:
+    needed = {"foundation": "material", "subject": "slot_id"}
+    if task["kind"] == "hierarchy":
+        if "tier" not in task["spec"] and "stage" not in task["spec"]:
+            raise Invalid("hierarchy task needs tier or stage")
+        if task["spec"].get("stage") not in {None, "mother", "tiers", "sequences"}:
+            raise Invalid("unknown hierarchy stage")
+    elif needed[task["kind"]] not in task["spec"]:
         raise Invalid("kind and spec disagree")
     if task["kind"] == "hierarchy":
         for region in task["spec"]["clear_regions"]:
@@ -207,9 +212,9 @@ def validate_task(root, task):
         quality = task["quality"]
         if visual_quality(root, quality["sequence"])["id"] != quality["visual_tier"]:
             raise Invalid("visual quality differs from configured sequence mapping")
-        if task["kind"] == "hierarchy" and task["spec"]["tier"] != quality["visual_tier"]:
+        if task["kind"] == "hierarchy" and task["spec"].get("tier") is not None and task["spec"]["tier"] != quality["visual_tier"]:
             raise Invalid("hierarchy tier differs from visual quality")
-    elif task["kind"] == "hierarchy" and task["spec"]["tier"] in {"saint", "angel"}:
+    elif task["kind"] == "hierarchy" and task["spec"].get("tier") in {"saint", "angel"}:
         raise Invalid("five-tier hierarchy requires explicit quality input")
     if "narrative" in task:
         if task["kind"] != "subject":

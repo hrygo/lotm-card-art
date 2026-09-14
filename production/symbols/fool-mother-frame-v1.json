@@ -1,0 +1,103 @@
+{
+  "version": "1.0.0",
+  "id": "fool-agentic-mother-to-sequence-v1",
+  "pathway_id": "fool",
+  "status": "pending-mother-generation",
+  "interface": {
+    "path": "production/templates/fool-mother-frame-interface-v1.json",
+    "sha256": "b2051270b8f044dc0e5d8477f4c245b2c0a5a38d130743136a6d17f907c9ff1f"
+  },
+  "schema": {
+    "path": "production/schemas/fool-mother-frame.schema.json",
+    "sha256": "162f5429f5a78b6237db62c14daa6b146aa18de207ce46d4c7c754d0513306fb"
+  },
+  "active_sop": {
+    "path": "docs/production-sop-v3.md",
+    "sha256": "2b1a5aeda0d594c546979bb2ebebf20a4f17dd2946320fd620d4a97222b205fc"
+  },
+  "geometry": {
+    "id": "fool-agentic-mother-v1",
+    "design_size": [1024, 1536],
+    "standard_size": [2048, 3072],
+    "collector_size": [4096, 6144],
+    "coordinate_system": "design-space-top-left-image-normalized",
+    "source_policy": "agentic-study-then-clean-freeze",
+    "max_anchor_drift_px": 0,
+    "max_geometry_drift_px": 0
+  },
+  "color_tokens": {
+    "path": "config/quality-color-tokens.json",
+    "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"
+  },
+  "sequence_hierarchy": {
+    "path": "config/sequence-hierarchy.json",
+    "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"
+  },
+  "emblem_dock": {
+    "path": "production/templates/emblem-dock-interface-v1.json",
+    "sha256": "9a95288d8b7f5df2287c43f9667ea656c0e8cf8272bf2da5cbb87d218e7f088b"
+  },
+  "inscription_interface": {
+    "path": "production/templates/fool-sequence-inscription-interface-v1.json",
+    "sha256": "2b176e2fa325f3304ca00f2e0aa584417bd3889eb2502c940aaada0397b850cf"
+  },
+  "inscription_style": {
+    "path": "production/symbols/inscriptions/fool-side-inscription-v4.json",
+    "sha256": "c5b607beedfffbe9784ae9216b64666f386a46b770ad92d9f5efd50af98c23c4"
+  },
+  "mother": {
+    "task": "production/tasks/fool-mother-frame-v1.json",
+    "agentic_source": null,
+    "frame_core": null,
+    "status": "not-generated"
+  },
+  "tier_order": ["low", "mid", "saint", "angel", "true-god"],
+  "sequence_mapping": {
+    "low": [9, 8],
+    "mid": [7, 6, 5],
+    "saint": [4, 3],
+    "angel": [2, 1],
+    "true-god": [0]
+  },
+  "approved_emblems": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "sequence_outputs": [
+    {"digit": 9, "sequence_id": "09", "sequence_name": "占卜家", "tier": "low", "emblem_digit": 9},
+    {"digit": 8, "sequence_id": "08", "sequence_name": "小丑", "tier": "low", "emblem_digit": 8},
+    {"digit": 7, "sequence_id": "07", "sequence_name": "魔术师", "tier": "mid", "emblem_digit": 7},
+    {"digit": 6, "sequence_id": "06", "sequence_name": "无面人", "tier": "mid", "emblem_digit": 6},
+    {"digit": 5, "sequence_id": "05", "sequence_name": "秘偶大师", "tier": "mid", "emblem_digit": 5},
+    {"digit": 4, "sequence_id": "04", "sequence_name": "诡法师", "tier": "saint", "emblem_digit": 4},
+    {"digit": 3, "sequence_id": "03", "sequence_name": "古代学者", "tier": "saint", "emblem_digit": 3},
+    {"digit": 2, "sequence_id": "02", "sequence_name": "奇迹师", "tier": "angel", "emblem_digit": 2},
+    {"digit": 1, "sequence_id": "01", "sequence_name": "诡秘侍者", "tier": "angel", "emblem_digit": 1},
+    {"digit": 0, "sequence_id": "00", "sequence_name": "愚者", "tier": "true-god", "emblem_digit": 0}
+  ],
+  "tier_assets": [
+    {"tier": "low", "task": "production/tasks/fool-five-tier-frame-batch-v1.json", "frame": null, "gem": null},
+    {"tier": "mid", "task": "production/tasks/fool-five-tier-frame-batch-v1.json", "frame": null, "gem": null},
+    {"tier": "saint", "task": "production/tasks/fool-five-tier-frame-batch-v1.json", "frame": null, "gem": null},
+    {"tier": "angel", "task": "production/tasks/fool-five-tier-frame-batch-v1.json", "frame": null, "gem": null},
+    {"tier": "true-god", "task": "production/tasks/fool-five-tier-frame-batch-v1.json", "frame": null, "gem": null}
+  ],
+  "approved_emblem_source": "production/symbols/fool-five-tier-kit.json",
+  "no_cross_product_variants": true,
+  "output_contract": {
+    "mother": "artifacts/production/fool-mother-frame-v1",
+    "tiers": "artifacts/production/fool-five-tier-frame-v1",
+    "sequences": "artifacts/production/fool-ten-sequence-frame-v1",
+    "tier_frame_count": 5,
+    "tier_gem_count": 5,
+    "sequence_frame_count": 10,
+    "sequence_inscription_count": 10,
+    "emblem_count": 10,
+    "name_background_pixels": 0,
+    "required_diagnostics": ["five-tiers.png", "ten-sequences.png", "right-zone-diffs.png", "dark-preview.png", "light-preview.png", "manifest.json"]
+  },
+  "status_detail": {
+    "agentic_mother": "not-generated",
+    "five_tiers": "not-generated",
+    "ten_sequences": "not-generated",
+    "user_visual_approval": "pending",
+    "formal_release_approved": false
+  }
+}

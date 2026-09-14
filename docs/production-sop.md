@@ -1,6 +1,6 @@
 # Agentic 卡牌生产 v1 工具合同（历史工艺）
 
-当前流程入口为 [production-sop-v2.md](production-sop-v2.md)，角色内容见 [card-narrative-contract.md](card-narrative-contract.md)。下文四档、矢量识别与自动姓名排版描述旧合成器能力，不约束当前五档 Agentic 融合圣徽/艺术姓名方向；不得据此重新添加已取消的序列名文字。
+当前流程入口为 [production-sop-v3.md](production-sop-v3.md)，角色内容见 [card-narrative-contract.md](card-narrative-contract.md)。本文件只保留旧工具字段、旧合成器接口与历史兼容说明；不得据此重新添加已取消的序列名文字。
 
 编译接口现另支持 quality、contracts 与 subject.narrative，详见当前 SOP 和 task schema；旧 compose 仍未接入新五档框徽装配。历史任务及回执保留，不回写其摘要。
 版本：1.0.0。执行者：Codex；授权依据：本会话采用 SOP + 结构化资产 + Agent Skills 生图 + 合成程序 + 门禁。

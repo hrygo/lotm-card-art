@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.god-almighty.primordial-01",
+  "voice_profile_id": "god-almighty",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.1",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.9,
+    "instruction": "一位宏大、中性偏低沉的中文男声，不带明显年龄感，仿佛由光与空间本身发出。音色纯净、宽广，带轻微空腔与星界般的余响，却没有鲜明的个人特征。语速缓慢平稳，气息悠长，句尾平稳下沉而不上扬。语气绝对平静，不需要说服任何人，只是在陈述一条早已成立的规则；不咆哮、不外露威严、不做神谕式宣告、不煽情。吐字清晰精准，咬字干净利落，不带方言，不油腻、不做作。"
+  },
+  "files": [
+    {
+      "resource_name": "god-almighty-greeting-v1",
+      "text_digest": "0d39fcfdf55a09ab13136d16fe2f37f57e157904e009a620adbe0d3df27ac9fa",
+      "sha256": "d5b723bc8e43012d8421370f78c733d5ec52065f8d22017365e7206240488720",
+      "duration_seconds": 6.4,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "god-almighty-catchphrase-01-v1",
+      "text_digest": "8f93d00c1098cd82f75e69c1a43ddec472698aff59b58db66f9e51f76e1a3c92",
+      "sha256": "80555405e86f76491578b0aff10e4c08536c687f658809f2fe1cdbc20ee8c78c",
+      "duration_seconds": 4.08,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "god-almighty-catchphrase-02-v1",
+      "text_digest": "412ffa3f038d322b36a77ecfc64861bfb45bb383650c46d7fead6dd6ff666c1e",
+      "sha256": "10a97c5e812d2afde73217a0e02729d0052a66d18721d7483f85fe81a317a39f",
+      "duration_seconds": 4.48,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "god-almighty-story-01-v1",
+      "text_digest": "a4c05e2993b24c16a98021a5f63a289d03ded23d5ce0dc6681c9247e0dff2b4e",
+      "sha256": "4d3d4c346b83a6f3632c8efec86ca7ccb362546bafaf030466db864f7be54505",
+      "duration_seconds": 27.6,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "god-almighty-story-02-v1",
+      "text_digest": "4293701e2284b0b6ebdaef844aea47279f92ae58d28cbad522cd276600352ab4",
+      "sha256": "41817cd9a7de0ca9601f558dcc53200f419066f6e1c80cdf6f6ae501464549f7",
+      "duration_seconds": 19.44,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "god-almighty-story-03-v1",
+      "text_digest": "32ced7ca883b7f5b06b11449e8c1666b2d6377344d25fa9e649ee5cdb03d01be",
+      "sha256": "108537235109c766287113ca89dd2faee5ef5f4409eca7d346f668a37707f984",
+      "duration_seconds": 18.96,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
+  ]
+}

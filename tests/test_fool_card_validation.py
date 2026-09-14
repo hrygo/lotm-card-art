@@ -42,13 +42,16 @@ class FoolCardValidationTests(unittest.TestCase):
         report = production.validate_fool_audio_package(ROOT)
 
         self.assertEqual(report["status"], "passed")
-        self.assertEqual(report["card_count"], 2)
-        self.assertEqual(report["audio_file_count"], 12)
-        self.assertEqual(report["app"]["card_art_count"], 2)
-        self.assertEqual(report["app"]["audio_file_count"], 12)
+        self.assertEqual(report["card_count"], 5)
+        self.assertEqual(report["audio_file_count"], 30)
+        self.assertEqual(report["app"]["card_art_count"], 5)
+        self.assertEqual(report["app"]["audio_file_count"], 30)
         self.assertEqual(report["app"]["card_art_names"], [
+            "celestial-worthy-card-v1-v001",
             "fool-s00-card-agentic-v1-v001",
             "fool-s09-card-name-edit-v1-v001",
+            "god-almighty-card-v1-v001",
+            "mother-goddess-depravity-card-v1-v001",
         ])
         self.assertEqual(report["app"]["audio_resource_names"], sorted([
             "s00-greeting-v2",
@@ -63,6 +66,24 @@ class FoolCardValidationTests(unittest.TestCase):
             "s09-story-01-v1",
             "s09-story-02-v1",
             "s09-story-03-v1",
+            "celestial-worthy-greeting-v1",
+            "celestial-worthy-catchphrase-01-v1",
+            "celestial-worthy-catchphrase-02-v1",
+            "celestial-worthy-story-01-v1",
+            "celestial-worthy-story-02-v1",
+            "celestial-worthy-story-03-v1",
+            "god-almighty-greeting-v1",
+            "god-almighty-catchphrase-01-v1",
+            "god-almighty-catchphrase-02-v1",
+            "god-almighty-story-01-v1",
+            "god-almighty-story-02-v1",
+            "god-almighty-story-03-v1",
+            "mother-goddess-depravity-greeting-v1",
+            "mother-goddess-depravity-catchphrase-01-v1",
+            "mother-goddess-depravity-catchphrase-02-v1",
+            "mother-goddess-depravity-story-01-v1",
+            "mother-goddess-depravity-story-02-v1",
+            "mother-goddess-depravity-story-03-v1",
         ]))
 
     def test_current_card_candidates_are_registered_and_native(self):

@@ -403,6 +403,27 @@ def validate_fool_audio_package(root):
             "audio_root": "artifacts/lotm.fool.s00/audio-v002",
             "voice_profile_id": "uncle_fu",
         },
+        {
+            "card_id": "lotm.celestial-worthy.primordial-01",
+            "narrative": "production/narratives/celestial-worthy.json",
+            "audio_manifest": "artifacts/lotm.celestial-worthy/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.celestial-worthy/audio-v001",
+            "voice_profile_id": "celestial-worthy",
+        },
+        {
+            "card_id": "lotm.god-almighty.primordial-01",
+            "narrative": "production/narratives/god-almighty.json",
+            "audio_manifest": "artifacts/lotm.god-almighty/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.god-almighty/audio-v001",
+            "voice_profile_id": "god-almighty",
+        },
+        {
+            "card_id": "lotm.mother-goddess-depravity.primordial-01",
+            "narrative": "production/narratives/mother-goddess-depravity.json",
+            "audio_manifest": "artifacts/lotm.mother-goddess-depravity/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.mother-goddess-depravity/audio-v001",
+            "voice_profile_id": "mother-goddess-depravity",
+        },
     ]
     card_reports = []
     audio_records = []
@@ -472,11 +493,14 @@ def validate_fool_audio_package(root):
     expected_card_art = {
         "fool-s00-card-agentic-v1-v001": "artifacts/production/fool-s00-card-agentic-v1/v001/raw.png",
         "fool-s09-card-name-edit-v1-v001": "artifacts/production/fool-s09-card-name-edit-v1/v001/raw.png",
+        "celestial-worthy-card-v1-v001": "artifacts/production/celestial-worthy-card-v1/v001/raw.png",
+        "god-almighty-card-v1-v001": "artifacts/production/god-almighty-card-v1/v001/raw.png",
+        "mother-goddess-depravity-card-v1-v001": "artifacts/production/mother-goddess-depravity-card-v1/v001/raw.png",
     }
     card_art_root = inside(root, "apps/LotmCardStudio/Resources/CardArt")
     card_art_names = sorted(path.stem for path in card_art_root.glob("*.png"))
     if card_art_names != sorted(expected_card_art):
-        raise Invalid("App CardArt whitelist is not exactly S00 and S09")
+        raise Invalid("App CardArt whitelist does not match the registered card art")
     for name, source_rel in expected_card_art.items():
         app_path = card_art_root / (name + ".png")
         source_path = inside(root, source_rel)

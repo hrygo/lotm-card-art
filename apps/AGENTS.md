@@ -1,7 +1,7 @@
 # apps/ 目录工作约定
 
 本目录承载 macOS 客户端代码、资源与运行说明；更细的运行/构建说明见 `apps/LotmCardStudio/README.md`，验收记录见 `apps/LotmCardStudio/docs/qa/`。
-当前 `LotmCardStudio` 已完成 M1 里程碑垂直切片（画廊、详情页、三类清单、故事抽屉、SpeechRail 接口）。导入、SwiftData 用户库、批量正式资源、音频缓存和游戏规则尚未实现；当前仅包含最新 S00 愚者先生与 S09 克莱恩·莫雷蒂两套隔离候选卡包，不要把 M1 fixture 描述为完整产品。S00/S09 的新增、替换和删除必须按身份、卡图、六维回读、故事、音频状态和清单意图的整套卡包执行；正义小姐 App 外源资产须保持独立保留。
+当前 `LotmCardStudio` 已完成 M1 里程碑垂直切片（画廊、详情页、三类清单、故事抽屉、SpeechRail 接口）。导入、SwiftData 用户库、批量正式资源、音频缓存和游戏规则尚未实现；当前包含 S00 愚者先生、S09 克莱恩·莫雷蒂，以及序列之上·诡秘之主的福生玄黄天尊、序列之上·星界支柱的上帝与序列之上·现实支柱的堕落母神五套隔离候选卡包，不要把 M1 fixture 描述为完整产品。五张卡的新增、替换和删除必须按身份、卡图、六维回读、故事、音频状态和清单意图的整套卡包执行；三位支柱均为非序列卡位（`lotm.celestial-worthy`、`lotm.god-almighty`、`lotm.mother-goddess-depravity`），不占 22×10 序列卡槽；正义小姐 App 外源资产须保持独立保留。
 
 ## 开发基线
 - 最低部署版本 macOS 26 Tahoe；不维护 macOS 14 兼容路径或旧系统 fallback。

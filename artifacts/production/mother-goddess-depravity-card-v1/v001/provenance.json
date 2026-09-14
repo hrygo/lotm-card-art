@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "card-art",
+  "mode": "direct-agentic-full-card",
+  "task_id": "mother-goddess-depravity-card-v1",
+  "run_id": "v001",
+  "card_id": "lotm.mother-goddess-depravity.primordial-01",
+  "slot_id": "lotm.mother-goddess-depravity",
+  "source": {
+    "origin": "user-provided",
+    "channel": "Codex built-in image_gen export",
+    "provided_path": "/Users/hrygo/Downloads/Codex 图像 2026年9月14日 21_35_25.png",
+    "prompt_captured": false,
+    "tool": "image_gen.imagegen (built-in, Codex)",
+    "model": null,
+    "seed": null,
+    "note": "用户在本机 Codex 中直接生成并导出完整卡；原始生成 prompt 未提供，本记录不伪造可复现性。同一批次另有一张「永恒之暗 / THE ETERNAL DARKNESS」候选卡，不属于本卡，未纳入本仓库。"
+  },
+  "artifact": {
+    "path": "artifacts/production/mother-goddess-depravity-card-v1/v001/raw.png",
+    "sha256": "19583bbce8be36a594c308fcf1588f49b9c20b0a3b5e933a94041a95f87c2f08",
+    "size_px": [
+      1024,
+      1536
+    ],
+    "channels": "RGB",
+    "alpha": false,
+    "aspect": "2:3",
+    "native_canvas": true
+  },
+  "pipeline": {
+    "compose_used": false,
+    "intermediate_2k_count": 0,
+    "final_resample_count": 0,
+    "note": "不做合成；整卡直出，保持原生画布。"
+  },
+  "card_text_observed": {
+    "left_inscription": "母巢 / BROOD HIVE",
+    "right_inscription": "生命 · 繁衍 / LIFE PROPAGATION",
+    "nameplate": "堕落母神 / MOTHER GODDESS OF DEPRAVITY",
+    "footer_left": "ALL THINGS ARE BORN / ALL THINGS YEARN",
+    "footer_right": "BEAUTY BREEDS DECAY / AND DECAY GIVES BIRTH ANEW",
+    "readback_note": "铭文与用户口径裁定一致：左为源质「母巢」，右为核心象征「生命 · 繁衍」。左右两条英文箴言为本卡原创对照语，不是原著引文，也未在别处冒充正典。"
+  },
+  "status": "candidate-pending-user-visual-approval",
+  "created_at": "2026-09-14"
+}

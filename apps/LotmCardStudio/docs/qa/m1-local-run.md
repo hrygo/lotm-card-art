@@ -180,6 +180,8 @@ OK
 - 2026-09-14：正义小姐的原始插画与两个高清派生版本仍保留在 `artifacts/lotm.visionary.s07/render-v001/`；六维源数据仍保留在 `pathways/visionary/sequences/07/card.json`，人物研究与故事边界仍保留在 `docs/research/2026-09-13-audrey-s07-research.md`。
 - 6 条已批准配音仍保留在 `artifacts/lotm.visionary.s07/audio-v001/`；本次愚者卡清理没有触碰上述 App 外资产。
 
+本机 App 发布结论：Release 已安装至 `/Applications/LotmCardStudio.app`；安装包内为 2 张当前卡图和 12 个当前 WAV，签名、`arm64`、`LSMinimumSystemVersion=26.0`、启动和真实窗口交互均已复核。App 发布已完成；卡牌视觉正式 release 仍是独立待批准事项。
+
 ## 2026-09-14 当前卡包与叙事/配音回归
 
 本节是当前安装版和当前生产源的最新验收记录；上文较早日期的数字、卡片清单和资源描述保留为历史快照，不覆盖本节。
@@ -188,8 +190,46 @@ OK
 - 两套卡包都满足原子边界：身份 `cardID/slotID/characterID/identitySliceID`、当前卡图、六维回读、叙事 `cardID`、收藏/愿望意图与音频状态同时存在；每张卡均有 6 条当前版本叙事和 6 个本地 WAV。
 - S09 使用 `dylan`，S00 使用 `uncle_fu`；新口头语和故事已写入 `production/narratives/`，六条目逐条绑定当前内容摘要并标记为 `approved`。机器校验不替代用户对卡图和声音审美的批准。
 - `python3 tools/production.py check-fool-audio`：通过；2 张卡、12 个 WAV、2 张 App 卡图均通过白名单、哈希、叙事摘要绑定和孤儿资源检查。12 个 WAV 均为可解码的 24 kHz、16-bit、mono PCM。
-- `swift test --verbose`：76/76 通过；Debug/Release 构建均通过。当前安装版 `/Applications/LotmCardStudio.app` 的最低系统版本为 `26.0`、主程序为 `arm64`，`codesign --verify --deep --strict` 通过。
-- CUA 实测当前安装版画廊只显示 S09/S00；S09 故事页显示三个新版章节并可开始/停止朗读，停止后正文保留；S00 可播放新版问候语。这里验证的是 UI 状态、文字绑定和音频解码/播放链路，不把机器检查等同于人工听感批准。
+- `swift test --verbose`：77/77 通过；Debug/Release 构建均通过。当前安装版 `/Applications/LotmCardStudio.app` 的最低系统版本为 `26.0`、主程序为 `arm64`，`codesign --verify --deep --strict` 通过。
+- CUA 实测当前安装版画廊只显示 S09/S00，侧栏“愚者”统计为 `0 张已确认 · 2 张候选`；S09 故事页显示三个新版章节并可开始/停止朗读，停止后正文保留；S00 可播放新版问候语。这里验证的是 UI 状态、文字绑定和音频解码/播放链路，不把机器检查等同于人工听感批准。
 - 正义小姐 App 外资产仍保留：原始/派生插画、六维源数据、研究/故事资料与 6 条 WAV 均在 `artifacts/lotm.visionary.s07/`、`pathways/visionary/sequences/07/card.json` 和对应文档中；未被本次 App 清理删除。
 
 当前仍未通过的门：两张卡的视觉用户验收、最终 2K/4K 采样与正式 release。App 仍是 M1 静态 fixture，尚未提供真正的用户导入/删除界面；未来必须以整套卡包为新增/删除单位。
+
+## 2026-09-14 新增「福生玄黄天尊」卡包（序列之上）
+
+- App 新增第三张隔离候选卡 `lotm.celestial-worthy.primordial-01`（展示名 福生玄黄天尊，`sequenceName` 序列之上 · 诡秘之主，`slotID` `lotm.celestial-worthy`，characterID `celestial-worthy`，identitySliceID `celestial-worthy.primordial`）。它是「序列之上」存在，不占 22×10 序列卡槽，也不按真神归档。
+- 卡图用用户提供的 Codex 直出完整卡（资源名 `celestial-worthy-card-v1-v001`，1024×1536 RGB）；来源登记在 `artifacts/production/celestial-worthy-card-v1/v001/provenance.json`。不做合成、不转 2K。
+- 六维回读 01–06、1 条问候、2 条口头语、3 个故事章节齐备；文案由用户逐字批准，摘要绑定见 `production/narratives/celestial-worthy.json`，审核记录见 `docs/reviews/2026-09-14-celestial-worthy-narrative-audio.md`。
+- 6 条音频使用本轮注册的自定义 VoiceDesign 音色 `celestial-worthy`（本机 SpeechRail 8201），均为 24 kHz / 16-bit / mono PCM，落在 `artifacts/lotm.celestial-worthy/audio-v001/` 并同步到 `Resources/Audio/`。
+- `python3 tools/production.py check-fool-audio`：通过；3 张卡、18 个 WAV、3 张 App 卡图通过白名单、哈希、叙事摘要绑定与孤儿资源检查。
+- `swift test`：78/78 通过；`build-app.sh debug` 与 `release` 均通过；`.app` 内为 3 张卡图 + 18 WAV，arm64、`LSMinimumSystemVersion=26.0`。
+- 未执行：`/Applications/LotmCardStudio.app` 的替换安装、真实窗口人工走查、用户对卡图与音色的最终审美批准。以上均保持待办，不因机器通过而视为已批准。
+
+## 2026-09-14 新增「上帝」卡包（序列之上 · 星界支柱）
+
+- App 新增第四张隔离候选卡 `lotm.god-almighty.primordial-01`（展示名 上帝，`sequenceName` 序列之上 · 星界支柱，`slotID` `lotm.god-almighty`，characterID `god-almighty`，identitySliceID `god-almighty.primordial`）。它与福生玄黄天尊同为「序列之上」存在，不占 22×10 序列卡槽，也不按真神归档。
+- 卡图用用户提供的 Codex 直出完整卡（资源名 `god-almighty-card-v1-v001`，1024×1536 RGB、无 alpha，sha256 `d9012cdd9baaee354514008a3cf340804880404409e1c94e9460e2cf0b8dd89d`）；来源登记在 `artifacts/production/god-almighty-card-v1/v001/provenance.json`。不做合成、不转 2K（`intermediate_2k_count = 0`）。
+- 六维回读 01–06、1 条问候、2 条口头语、3 个故事章节齐备；文案由用户逐字批准，摘要绑定见 `production/narratives/god-almighty.json`，审核记录见 `docs/reviews/2026-09-14-god-almighty-narrative-audio.md`。
+- 6 条音频使用本轮注册的自定义 VoiceDesign 音色 `god-almighty`（本机 SpeechRail 8201，服务版本 `2.6.1`），均为 24 kHz / 16-bit / mono PCM，落在 `artifacts/lotm.god-almighty/audio-v001/` 并同步到 `Resources/Audio/`。
+- `python3 tools/production.py check-fool-audio`：通过；4 张卡、24 个 WAV、4 张 App 卡图通过白名单、哈希、叙事摘要绑定与孤儿资源检查。
+- `swift test`：79/79 通过；`build-app.sh debug` 与 `release` 均通过；`.app` 内为 4 张卡图 + 24 个 WAV，arm64、`LSMinimumSystemVersion=26.0`、`codesign --verify --deep --strict` 通过。
+- 事实边界：支柱位格、源质＝混沌海、五途径归属（空想家/太阳/暴君/白塔/倒吊人）与四核心象征（全知/全能/造物主/星界之主）本轮**全部**维持 `lead / 待中文底本核验`；本轮外部交叉核证未取得结果，未据此升级任何断言。左右铭文与构图来自用户编辑裁定。
+- 未执行：`/Applications/LotmCardStudio.app` 的替换安装、真实窗口人工走查、用户对卡图与音色的最终审美批准。以上均保持待办，不因机器通过而视为已批准。
+
+## 当前已知未过项（非本次「上帝」改动引起）
+
+- `python3 -m unittest discover -s tests`：141 项中 1 项 error —— `test_production.py::test_three_real_task_contracts` 抛 `missing/stale dependency: tools/render/foolpipeline5.swift`。原因是该文件已在本机被改动（磁盘 sha256 `ab58a00929c5d3694f7a0bb9e9c337888954c52515396cb59edddc51854a6eb4`），而 `production/tasks/fool-mother-frame-v1.json`、`fool-five-tier-frame-batch-v1.json`、`fool-ten-sequence-frame-batch-v1.json` 仍登记旧值 `09dfc9ae613fa572c7fb78559934193f9bd528844fcbb1c795cb3291c10f7e3d`。需由该改动的所有者重算并同步任务契约 sha；不属于本次卡包范围，未擅自修改。
+
+## 2026-09-14 新增「堕落母神」卡包（序列之上 · 现实支柱）
+
+- App 新增第五张隔离候选卡 `lotm.mother-goddess-depravity.primordial-01`（展示名 堕落母神，`sequenceName` 序列之上 · 现实支柱，`slotID` `lotm.mother-goddess-depravity`，characterID `mother-goddess-depravity`，identitySliceID `mother-goddess-depravity.primordial`）。它与福生玄黄天尊、上帝同为「序列之上」存在，不占 22×10 序列卡槽，也不按真神归档。
+- 口径：用户回答「源质／途径口径」时裁定 **源质＝母巢**（地球侧 月亮＋母亲 两条途径），核心象征 **生命 · 繁衍**；**不纳入**她自身那条外神途径（序列 9 恶棍 → 序列 0 混沌原胎）。见 `docs/DECISIONS.md` D14 与资料包头部的口径裁定。
+- 卡图用用户提供的 Codex 直出完整卡（资源名 `mother-goddess-depravity-card-v1-v001`，1024×1536 RGB、无 alpha，sha256 `19583bbce8be36a594c308fcf1588f49b9c20b0a3b5e933a94041a95f87c2f08`）；来源登记在 `artifacts/production/mother-goddess-depravity-card-v1/v001/provenance.json`。不做合成、不转 2K（`intermediate_2k_count = 0`）。卡面实测铭文：左「母巢 / BROOD HIVE」、右「生命 · 繁衍 / LIFE PROPAGATION」、铭牌「堕落母神 / MOTHER GODDESS OF DEPRAVITY」；底部两条英文箴言为本卡原创对照语，不是原著引文。
+- 六维回读 01–06、1 条问候、2 条口头语、3 个故事章节齐备；摘要绑定见 `production/narratives/mother-goddess-depravity.json`，审核记录见 `docs/reviews/2026-09-14-mother-goddess-depravity-narrative-audio.md`。
+- 6 条音频使用本轮注册的自定义 VoiceDesign 音色 `mother-goddess-depravity`（本机 SpeechRail 8201，服务版本 `2.6.1`），均为 24 kHz / 16-bit / mono PCM，落在 `artifacts/lotm.mother-goddess-depravity/audio-v001/` 并同步到 `Resources/Audio/`。
+- `python3 tools/production.py check-fool-audio`：通过；5 张卡、30 个 WAV、5 张 App 卡图通过白名单、哈希、叙事摘要绑定与孤儿资源检查。
+- `swift test`：80/80 通过；`build-app.sh debug` 与 `release` 均通过；`.app` 内为 5 张卡图 + 30 个 WAV，arm64、`LSMinimumSystemVersion=26.0`、`codesign --verify --deep --strict` 通过。
+- 事实边界：支柱位格、源质＝母巢、被撕裂状态与两途径拆分本轮**全部**维持 `secondary-cross-check / authorial-supplement（转录）`，**没有任何一条可标为 `verified`**；本仓库无中文授权底本，作者公众号原文未取得。不把「收回母巢后」的未取得形态画成既定形象。
+- 更正上文「当前已知未过项」：`tools/render/foolpipeline5.swift` 与其三个 task 契约的 sha 已同步为 `ab58a009…`；`python3 -m unittest discover -s tests` 现为 **144 项 OK（skipped=6）**。该项由改动所有者修复，与本卡包无关。
+- 未执行：`/Applications/LotmCardStudio.app` 的替换安装、真实窗口人工走查、用户对卡图与音色的最终审美批准。以上均保持待办，不因机器通过而视为已批准。

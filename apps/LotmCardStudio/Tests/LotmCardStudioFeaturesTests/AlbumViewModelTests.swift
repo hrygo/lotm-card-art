@@ -4,22 +4,37 @@ import LotmCardStudioCore
 
 @MainActor
 final class AlbumViewModelTests: XCTestCase {
-    func testDemoLibraryContainsOnlyTheTwoCurrentFoolCards() {
+    func testDemoLibraryContainsTheCurrentIsolatedCards() {
         let model = AlbumViewModel()
 
-        XCTAssertEqual(model.cards.count, 2)
+        XCTAssertEqual(model.cards.count, 5)
         XCTAssertEqual(model.cards.filter { $0.identity.contentStatus == .confirmed }.count, 0)
-        XCTAssertEqual(model.cards.filter { $0.identity.contentStatus == .proposed }.count, 2)
+        XCTAssertEqual(model.cards.filter { $0.identity.contentStatus == .proposed }.count, 5)
         XCTAssertEqual(
             model.cards.map(\.id),
             [
                 "lotm.fool.s09.klein-moretti.tingen-01",
-                "lotm.fool.s00.klein-moretti.mr-fool-01"
+                "lotm.fool.s00.klein-moretti.mr-fool-01",
+                "lotm.celestial-worthy.primordial-01",
+                "lotm.god-almighty.primordial-01",
+                "lotm.mother-goddess-depravity.primordial-01"
             ]
         )
         XCTAssertTrue(model.cards.contains { $0.identity.displayName == "愚者先生" && $0.identity.sequenceName == "序列 0 · 真神" })
+        XCTAssertTrue(model.cards.contains { $0.identity.displayName == "福生玄黄天尊" && $0.identity.sequenceName == "序列之上 · 诡秘之主" })
+        XCTAssertTrue(model.cards.contains { $0.identity.displayName == "上帝" && $0.identity.sequenceName == "序列之上 · 星界支柱" })
+        XCTAssertTrue(model.cards.contains { $0.identity.displayName == "堕落母神" && $0.identity.sequenceName == "序列之上 · 现实支柱" })
         XCTAssertFalse(model.cards.contains { $0.identity.slotID == "lotm.fool.s03" })
         XCTAssertFalse(model.cards.contains { $0.identity.characterID == "audrey" })
+    }
+
+    func testPathwaySummaryUsesCurrentCardsAndCollectionIntents() {
+        let model = AlbumViewModel()
+
+        XCTAssertEqual(
+            model.pathwaySummary(for: "fool"),
+            "0 张已确认 · 2 张候选"
+        )
     }
 
     func testSelectingCardUpdatesDetailAndCanOpenStoryDrawer() {
@@ -163,7 +178,10 @@ final class AlbumViewModelTests: XCTestCase {
             model.visibleCards.map(\.id),
             [
                 "lotm.fool.s09.klein-moretti.tingen-01",
-                "lotm.fool.s00.klein-moretti.mr-fool-01"
+                "lotm.fool.s00.klein-moretti.mr-fool-01",
+                "lotm.celestial-worthy.primordial-01",
+                "lotm.god-almighty.primordial-01",
+                "lotm.mother-goddess-depravity.primordial-01"
             ]
         )
 
@@ -223,7 +241,10 @@ final class AlbumViewModelTests: XCTestCase {
             model.visibleCards.map(\.id),
             [
                 "lotm.fool.s09.klein-moretti.tingen-01",
-                "lotm.fool.s00.klein-moretti.mr-fool-01"
+                "lotm.fool.s00.klein-moretti.mr-fool-01",
+                "lotm.celestial-worthy.primordial-01",
+                "lotm.god-almighty.primordial-01",
+                "lotm.mother-goddess-depravity.primordial-01"
             ]
         )
     }
@@ -233,5 +254,107 @@ final class AlbumViewModelTests: XCTestCase {
 
         XCTAssertEqual(model.characterCardCount(for: "klein-moretti"), 2)
         XCTAssertEqual(model.characterCardCount(for: nil), 0)
+    }
+
+    func testCelestialWorthyCardIsOneAtomicAboveSequenceBundle() {
+        let model = AlbumViewModel()
+        let card = try! XCTUnwrap(
+            model.cards.first { $0.identity.cardID == "lotm.celestial-worthy.primordial-01" }
+        )
+        let narrative = try! XCTUnwrap(card.narrative)
+
+        XCTAssertEqual(card.identity.slotID, "lotm.celestial-worthy")
+        XCTAssertEqual(card.identity.displayName, "福生玄黄天尊")
+        XCTAssertEqual(card.identity.sequenceName, "序列之上 · 诡秘之主")
+        XCTAssertEqual(card.identity.identityKind, .character)
+        XCTAssertEqual(card.identity.characterID, "celestial-worthy")
+        XCTAssertEqual(card.identity.identitySliceID, "celestial-worthy.primordial")
+        XCTAssertEqual(card.visualTheme, .celestialWorthy)
+        XCTAssertEqual(card.artworkResourceName, "celestial-worthy-card-v1-v001")
+        XCTAssertEqual(card.audioStatus, .localBundle)
+        XCTAssertEqual(narrative.voiceProfileID, "celestial-worthy")
+        XCTAssertEqual(narrative.cardID, card.identity.cardID)
+        XCTAssertEqual(narrative.lines.count, 6)
+        XCTAssertTrue(narrative.lines.allSatisfy(\.isPlayable))
+        XCTAssertEqual(
+            narrative.lines.compactMap(\.audioResourceName).sorted(),
+            [
+                "celestial-worthy-catchphrase-01-v1",
+                "celestial-worthy-catchphrase-02-v1",
+                "celestial-worthy-greeting-v1",
+                "celestial-worthy-story-01-v1",
+                "celestial-worthy-story-02-v1",
+                "celestial-worthy-story-03-v1"
+            ]
+        )
+        XCTAssertTrue(card.isAtomicBundle)
+    }
+
+    func testGodAlmightyCardIsOneAtomicAboveSequenceBundle() {
+        let model = AlbumViewModel()
+        let card = try! XCTUnwrap(
+            model.cards.first { $0.identity.cardID == "lotm.god-almighty.primordial-01" }
+        )
+        let narrative = try! XCTUnwrap(card.narrative)
+
+        XCTAssertEqual(card.identity.slotID, "lotm.god-almighty")
+        XCTAssertEqual(card.identity.displayName, "上帝")
+        XCTAssertEqual(card.identity.sequenceName, "序列之上 · 星界支柱")
+        XCTAssertEqual(card.identity.identityKind, .character)
+        XCTAssertEqual(card.identity.characterID, "god-almighty")
+        XCTAssertEqual(card.identity.identitySliceID, "god-almighty.primordial")
+        XCTAssertEqual(card.visualTheme, .godAlmighty)
+        XCTAssertEqual(card.artworkResourceName, "god-almighty-card-v1-v001")
+        XCTAssertEqual(card.audioStatus, .localBundle)
+        XCTAssertEqual(narrative.voiceProfileID, "god-almighty")
+        XCTAssertEqual(narrative.cardID, card.identity.cardID)
+        XCTAssertEqual(narrative.lines.count, 6)
+        XCTAssertTrue(narrative.lines.allSatisfy(\.isPlayable))
+        XCTAssertEqual(
+            narrative.lines.compactMap(\.audioResourceName).sorted(),
+            [
+                "god-almighty-catchphrase-01-v1",
+                "god-almighty-catchphrase-02-v1",
+                "god-almighty-greeting-v1",
+                "god-almighty-story-01-v1",
+                "god-almighty-story-02-v1",
+                "god-almighty-story-03-v1"
+            ]
+        )
+        XCTAssertTrue(card.isAtomicBundle)
+    }
+
+    func testMotherGoddessDepravityCardIsOneAtomicAboveSequenceBundle() {
+        let model = AlbumViewModel()
+        let card = try! XCTUnwrap(
+            model.cards.first { $0.identity.cardID == "lotm.mother-goddess-depravity.primordial-01" }
+        )
+        let narrative = try! XCTUnwrap(card.narrative)
+
+        XCTAssertEqual(card.identity.slotID, "lotm.mother-goddess-depravity")
+        XCTAssertEqual(card.identity.displayName, "堕落母神")
+        XCTAssertEqual(card.identity.sequenceName, "序列之上 · 现实支柱")
+        XCTAssertEqual(card.identity.identityKind, .character)
+        XCTAssertEqual(card.identity.characterID, "mother-goddess-depravity")
+        XCTAssertEqual(card.identity.identitySliceID, "mother-goddess-depravity.primordial")
+        XCTAssertEqual(card.visualTheme, .motherGoddessDepravity)
+        XCTAssertEqual(card.artworkResourceName, "mother-goddess-depravity-card-v1-v001")
+        XCTAssertEqual(card.audioStatus, .localBundle)
+        XCTAssertEqual(narrative.voiceProfileID, "mother-goddess-depravity")
+        XCTAssertEqual(narrative.cardID, card.identity.cardID)
+        XCTAssertEqual(narrative.lines.count, 6)
+        XCTAssertTrue(narrative.lines.allSatisfy(\.isPlayable))
+        XCTAssertEqual(
+            narrative.lines.compactMap(\.audioResourceName).sorted(),
+            [
+                "mother-goddess-depravity-catchphrase-01-v1",
+                "mother-goddess-depravity-catchphrase-02-v1",
+                "mother-goddess-depravity-greeting-v1",
+                "mother-goddess-depravity-story-01-v1",
+                "mother-goddess-depravity-story-02-v1",
+                "mother-goddess-depravity-story-03-v1"
+            ]
+        )
+        XCTAssertTrue(card.isAtomicBundle)
     }
 }

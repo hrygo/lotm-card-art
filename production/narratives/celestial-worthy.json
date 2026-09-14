@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "cardID": "lotm.celestial-worthy.primordial-01",
+    "slotID": "lotm.celestial-worthy",
+    "characterID": "celestial-worthy",
+    "identitySliceID": "celestial-worthy.primordial",
+    "name": "福生玄黄天尊",
+    "timeScope": "第一部范围：从史前源堡的茧与穿越者布局，到第一部末尾天尊残留意志在克莱恩体内苏醒并争夺主体；不把第二部内容写成已核验事实",
+    "spoilerBoundary": "允许涉及源堡、茧、穿越者、复苏布局、安提哥努斯与克莱恩的高位意志争夺；不冒充中文底本逐字事实，不使用第二部《宿命之环》内容"
+  },
+  "entries": [
+    {
+      "id": "cw-greeting-01",
+      "kind": "greeting",
+      "title": null,
+      "text": "欢迎来到源堡。这里保存着许多尚未被释放的名字；你的，也许只是其中之一。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "6a75b05403d8105863b88acbd3a41d7b5d06f260228c04a0a8254faf15e85076",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "6a75b05403d8105863b88acbd3a41d7b5d06f260228c04a0a8254faf15e85076",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-celestial-worthy-narrative-audio.md"
+      }
+    },
+    {
+      "id": "cw-catchphrase-01",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "命运也只是幕后的道具。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "fe36e429b0ead1343dd12753bcbbeb0a9cb4af2f9201cd1038b85493acb7b049",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "fe36e429b0ead1343dd12753bcbbeb0a9cb4af2f9201cd1038b85493acb7b049",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-celestial-worthy-narrative-audio.md"
+      }
+    },
+    {
+      "id": "cw-catchphrase-02",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "我从不催促；布局会替我等到落子的那一刻。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "5966d796d0db5e1bb2a70a0d53c17633a70d88330685f1529f6caef88b27c9ca",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "5966d796d0db5e1bb2a70a0d53c17633a70d88330685f1529f6caef88b27c9ca",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-celestial-worthy-narrative-audio.md"
+      }
+    },
+    {
+      "id": "cw-story-01",
+      "kind": "story",
+      "title": "第一章 · 把复苏写进源堡",
+      "text": "很久以前，祂就知道死亡未必意味着结束。于是祂把人封进茧里，把释放的条件拆进历史，把源堡留成一座等待某个时代到来的宫殿；每一个被保留下来的灵魂，都是计划中的一笔。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-fool-known-characters-dossier.md",
+          "sha256": "cd9b0607072369b5ccc0d263af355e5e9064bc086222b39f120bb92aab64d304",
+          "locator": "§4.5 姓名：福生玄黄天尊（Celestial Worthy of Heaven and Earth for Blessings）——六维信息、原初身份与关联出口"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "82d86e987799d5ee2c9a834883ff0d6438ae85691cdcdd74b6f8152cb87fa3e1",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "82d86e987799d5ee2c9a834883ff0d6438ae85691cdcdd74b6f8152cb87fa3e1",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-celestial-worthy-narrative-audio.md"
+      }
+    },
+    {
+      "id": "cw-story-02",
+      "kind": "story",
+      "title": "第二章 · 用名字影响世界",
+      "text": "祂的尊名、仪式与象征从旧时代流入不同的文明，却没有留下一个能被简单理解的完整教义。有人把祂当成古老的神明，也有人在无意中触碰了通往源堡的入口；祂不必一直现身，只需要让人们在错误的时间说出正确的名字。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-fool-known-characters-dossier.md",
+          "sha256": "cd9b0607072369b5ccc0d263af355e5e9064bc086222b39f120bb92aab64d304",
+          "locator": "§4.5 姓名：福生玄黄天尊（Celestial Worthy of Heaven and Earth for Blessings）——六维信息、原初身份与关联出口"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "0c878a368454dbafa6750dec94d09153a8d479ef41a043bef91773d507ca307f",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "0c878a368454dbafa6750dec94d09153a8d479ef41a043bef91773d507ca307f",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-celestial-worthy-narrative-audio.md"
+      }
+    },
+    {
+      "id": "cw-story-03",
+      "kind": "story",
+      "title": "第三章 · 没有结束的失败",
+      "text": "当克莱恩晋升为愚者，多方力量同时阻止祂彻底苏醒；在阿蒙的逼迫下，克莱恩又不得不主动释放一部分高位意志来赢下赌局。祂没有赢，也还没有退场——第一部结束时，真正的胜负仍被压缩在「谁能保留自我」这个问题里。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-fool-known-characters-dossier.md",
+          "sha256": "cd9b0607072369b5ccc0d263af355e5e9064bc086222b39f120bb92aab64d304",
+          "locator": "§4.5 姓名：福生玄黄天尊（Celestial Worthy of Heaven and Earth for Blessings）——六维信息、原初身份与关联出口"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "242b3eb988f450eeaa8a63e8d7890bebfa5398bc79aa1d40c94e5af39599f8a9",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "242b3eb988f450eeaa8a63e8d7890bebfa5398bc79aa1d40c94e5af39599f8a9",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-celestial-worthy-narrative-audio.md"
+      }
+    }
+  ]
+}

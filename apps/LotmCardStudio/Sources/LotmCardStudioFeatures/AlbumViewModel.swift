@@ -116,6 +116,14 @@ public final class AlbumViewModel: ObservableObject {
         cards.filter { wishlistCardIDs.contains($0.id) }.count
     }
 
+    public func pathwaySummary(for pathwayID: String) -> String {
+        let prefix = "lotm.\(pathwayID)."
+        let pathwayCards = cards.filter { $0.identity.slotID.hasPrefix(prefix) }
+        let confirmed = pathwayCards.filter { $0.identity.contentStatus == .confirmed }.count
+        let candidate = pathwayCards.filter { collectionIntents[$0.id] == .candidate }.count
+        return ArchiveCopy.pathwaySummary(confirmed: confirmed, candidate: candidate)
+    }
+
     public func characterCardCount(for characterID: String?) -> Int {
         guard let characterID, !characterID.isEmpty else {
             return 0

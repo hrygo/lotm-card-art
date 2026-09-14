@@ -152,7 +152,7 @@ App 接入采用卡包原子边界：身份 `cardID/slotID/characterID/identityS
 - 两张卡的结构化叙事包已更新为新版问候语、口头语和三章故事；每张 6 条，均逐条绑定当前 digest 并标记 `NarrativeReview.approved`。对应 Swift 领域模型、生产 JSON 和音频 manifest 的 `cardID` 一致。
 - SpeechRail 本机 loopback 生成 12 个当前 WAV：S09 使用 `dylan`，S00 使用 `uncle_fu`。音频生成记录保留服务版本、文本 digest、SHA-256、采样率、声道和时长；不落盘或输出 API key。
 - `python3 tools/production.py check-fool-audio` 实测通过：2 张卡、12 个 WAV、2 张卡图，生产源与 App 资源哈希一致，未发现缺失、孤儿、旧白名单名或格式不符资源。
-- `swift test --verbose` 实测 76/76 通过；Debug/Release 构建通过；安装版 `/Applications/LotmCardStudio.app` 的 `LSMinimumSystemVersion=26.0`、Mach-O `arm64`、深度签名校验均通过。CUA 已确认当前画廊只显示两张卡，S09 新故事和 S00 新问候语可进入播放状态。
+- `swift test --verbose` 实测 77/77 通过；Debug/Release 构建通过；安装版 `/Applications/LotmCardStudio.app` 的 `LSMinimumSystemVersion=26.0`、Mach-O `arm64`、深度签名校验均通过。CUA 已确认当前画廊只显示两张卡，侧栏统计为 `0 张已确认 · 2 张候选`，S09 新故事和 S00 新问候语可进入播放状态。
 - 当前 App 卡包校验已成为运行时模型与生产门禁的双重约束：身份、卡图、六维回读、叙事、音频与清单意图缺一不可。仍不提供拆包式新增/删除 API。
 
 本轮完成的是内容与音频接入及资源边界收口，不等于视觉正式批准。S00/S09 仍为视觉候选；最终采样和正式 release 继续等待用户视觉验收，不能由自动化门禁代替。

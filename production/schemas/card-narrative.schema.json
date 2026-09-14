@@ -11,7 +11,7 @@
       "additionalProperties": false,
       "properties": {
         "cardID": {"type": "string", "minLength": 1},
-        "slotID": {"type": "string", "pattern": "^lotm\\.[a-z-]+\\.s0[0-9]$"},
+        "slotID": {"type": "string", "pattern": "^(lotm\\.[a-z-]+\\.s0[0-9]|lotm\\.[a-z][a-z0-9-]*)$"},
         "characterID": {"type": ["string", "null"]},
         "identitySliceID": {"type": "string", "minLength": 1},
         "name": {"type": "string", "minLength": 1},

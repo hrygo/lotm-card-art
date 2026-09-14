@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "cardID": "lotm.god-almighty.primordial-01",
+    "slotID": "lotm.god-almighty",
+    "characterID": "god-almighty",
+    "identitySliceID": "god-almighty.primordial",
+    "name": "上帝",
+    "timeScope": "第一部范围：作为三大支柱之一的背景性存在，源质混沌海、象征全知与全能、星界之主；不把第二部内容写成已核验事实",
+    "spoilerBoundary": "允许涉及支柱位格、混沌海、星界、五途径象征汇聚与双支柱对照等结构性定位；不冒充中文底本逐字事实，不使用第二部《宿命之环》内容"
+  },
+  "entries": [
+    {
+      "id": "ga-greeting-01",
+      "kind": "greeting",
+      "title": null,
+      "text": "这里是混沌海。你所知道的一切，都只是我从这片海中取出的一小部分。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "0d39fcfdf55a09ab13136d16fe2f37f57e157904e009a620adbe0d3df27ac9fa",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "0d39fcfdf55a09ab13136d16fe2f37f57e157904e009a620adbe0d3df27ac9fa",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-god-almighty-narrative-audio.md"
+      }
+    },
+    {
+      "id": "ga-catchphrase-01",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "全知不是看见了什么，而是没有什么不在其中。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "8f93d00c1098cd82f75e69c1a43ddec472698aff59b58db66f9e51f76e1a3c92",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "8f93d00c1098cd82f75e69c1a43ddec472698aff59b58db66f9e51f76e1a3c92",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-god-almighty-narrative-audio.md"
+      }
+    },
+    {
+      "id": "ga-catchphrase-02",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "我不必创造新的东西；可能性早已在这里。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "412ffa3f038d322b36a77ecfc64861bfb45bb383650c46d7fead6dd6ff666c1e",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "412ffa3f038d322b36a77ecfc64861bfb45bb383650c46d7fead6dd6ff666c1e",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-god-almighty-narrative-audio.md"
+      }
+    },
+    {
+      "id": "ga-story-01",
+      "kind": "story",
+      "title": "第一章 · 站在混沌海之上",
+      "text": "在一切尚未被命名之前，祂已经看见了它们。祂不必走进海里，海本身就是祂的一部分：所有颜色、所有秘密、所有尚未发生的可能性，都在那片黑色的表面下互相翻涌。祂的创造不是从无到有，而是从这无限的可能性中取出一部分，让它们成为可以被看见、被谈论、被记住的东西。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-god-almighty-card-materials.md",
+          "sha256": "4addcfb48d9fb90244f98bfd162474a50cd3b2dddec2dd22edbd7e7b5f34288d",
+          "locator": "§1 编辑裁定：源质＝混沌海；§5.1 身份；§7.1 第一段·站在混沌海之上"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "a4c05e2993b24c16a98021a5f63a289d03ded23d5ce0dc6681c9247e0dff2b4e",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "a4c05e2993b24c16a98021a5f63a289d03ded23d5ce0dc6681c9247e0dff2b4e",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-god-almighty-narrative-audio.md"
+      }
+    },
+    {
+      "id": "ga-story-02",
+      "kind": "story",
+      "title": "第二章 · 全知与全能不是动作",
+      "text": "祂不注视，因为注视意味着还有看不见的地方；祂不出手，因为出手意味着还有做不到的事。祂所表达的全知与全能，更像是世界本身在按规则运行：知道与做到早已发生，只是没有留下一个可以被称为「瞬间」的时刻。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-god-almighty-card-materials.md",
+          "sha256": "4addcfb48d9fb90244f98bfd162474a50cd3b2dddec2dd22edbd7e7b5f34288d",
+          "locator": "§1 编辑裁定：核心象征全知／全能／造物主／星界之主；§5.3 能力；§7.2 第二段·全知与全能不是动作"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "4293701e2284b0b6ebdaef844aea47279f92ae58d28cbad522cd276600352ab4",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "4293701e2284b0b6ebdaef844aea47279f92ae58d28cbad522cd276600352ab4",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-god-almighty-narrative-audio.md"
+      }
+    },
+    {
+      "id": "ga-story-03",
+      "kind": "story",
+      "title": "第三章 · 星界的主人",
+      "text": "祂是星界的主人。可「主人」并不是一个位置，而是一种关系：星界不需要被管理，只需要有一个足够大的存在，让其中的一切不至于失序。祂存在的方式，就是让星界继续成为星界。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-god-almighty-card-materials.md",
+          "sha256": "4addcfb48d9fb90244f98bfd162474a50cd3b2dddec2dd22edbd7e7b5f34288d",
+          "locator": "§1 编辑裁定：星界之主为最关键象征；§6 主事件与构图优先级；§7.4 第四段·星界的主人"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "32ced7ca883b7f5b06b11449e8c1666b2d6377344d25fa9e649ee5cdb03d01be",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "32ced7ca883b7f5b06b11449e8c1666b2d6377344d25fa9e649ee5cdb03d01be",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-god-almighty-narrative-audio.md"
+      }
+    }
+  ]
+}

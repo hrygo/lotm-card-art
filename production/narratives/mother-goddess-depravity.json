@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "cardID": "lotm.mother-goddess-depravity.primordial-01",
+    "slotID": "lotm.mother-goddess-depravity",
+    "characterID": "mother-goddess-depravity",
+    "identitySliceID": "mother-goddess-depravity.primordial",
+    "name": "堕落母神",
+    "timeScope": "第一部范围：作为三大支柱之一的背景性存在；源质母巢被撕裂、地球侧月亮与母亲两条途径、生命与繁衍的象征；不把第二部内容写成已核验事实",
+    "spoilerBoundary": "允许涉及支柱位格、源质母巢、被撕裂状态、月亮与母亲两条途径、现实与生命繁衍的结构性定位；不冒充中文底本逐字事实，不使用第二部《宿命之环》内容"
+  },
+  "entries": [
+    {
+      "id": "mgd-greeting-01",
+      "kind": "greeting",
+      "title": null,
+      "text": "这里的一切都还在生长。你也是；只是你还没有意识到，自己是从哪一半里长出来的。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "7eddfe52508bb007fc18f935988d5f6e9b3222a61c7c678f682a7d6c8e3d874f",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "7eddfe52508bb007fc18f935988d5f6e9b3222a61c7c678f682a7d6c8e3d874f",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-mother-goddess-depravity-narrative-audio.md"
+      }
+    },
+    {
+      "id": "mgd-catchphrase-01",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "给予生命，与收回生命，是同一个动作。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "cc649b623ea802f2ccacc6a9872153e11feddf17d3135fb281a2cad5baccd837",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "cc649b623ea802f2ccacc6a9872153e11feddf17d3135fb281a2cad5baccd837",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-mother-goddess-depravity-narrative-audio.md"
+      }
+    },
+    {
+      "id": "mgd-catchphrase-02",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "被撕掉的那一半，也仍然在替我说话。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "4553f9b71b348d912ca44ab59e212daf86b9e45f0ebf694186180d6307f523d3",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "4553f9b71b348d912ca44ab59e212daf86b9e45f0ebf694186180d6307f523d3",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-mother-goddess-depravity-narrative-audio.md"
+      }
+    },
+    {
+      "id": "mgd-story-01",
+      "kind": "story",
+      "title": "第一章 · 被撕掉的那一半",
+      "text": "在最开始，她并不是缺口。她拥有完整的母巢，也拥有与之相配的两条途径；后来，最初造物主的苏醒把其中一部分从她身上撕了下来，落到了一颗名叫地球的星球上。被撕下的那部分自己长成了新的东西，甚至长出了新的意志——而她留在原处的部分，只能保持着支柱的象征，站在屏障之外。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-mother-goddess-depravity-card-materials.md",
+          "sha256": "406466a85221b4084fb25a90aa3a62340dbe36355a13d71b91d8c60dcfeae839",
+          "locator": "§1 三支柱对照与证据现状；§5.1 身份；§7.1 第一段·被撕掉的那一半"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "3262b8245ddc90f4762899c52e7a098630cd3b5bc0684a24710ff5eff372f9d2",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "3262b8245ddc90f4762899c52e7a098630cd3b5bc0684a24710ff5eff372f9d2",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-mother-goddess-depravity-narrative-audio.md"
+      }
+    },
+    {
+      "id": "mgd-story-02",
+      "kind": "story",
+      "title": "第二章 · 母性的两面",
+      "text": "她被称作母亲，也被称作邪恶之始。这两件事在她身上从来不是矛盾：给予生命，与利用生命、收回生命，是同一个动作的两面。她的力量被拆成两条路，一条通向现实与孕育，一条通向堕落与原罪——分开之后，两条路都还在替她说话。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-mother-goddess-depravity-card-materials.md",
+          "sha256": "406466a85221b4084fb25a90aa3a62340dbe36355a13d71b91d8c60dcfeae839",
+          "locator": "§3 前置审查（两途径拆分与母性两面）；§5.2 扮演；§7.3 第三段·母性的两面"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "c9ba5434c130ee18b05720ee8cf52fc98ea8c5bf624fded6c64fc7042e6b70cb",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "c9ba5434c130ee18b05720ee8cf52fc98ea8c5bf624fded6c64fc7042e6b70cb",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-mother-goddess-depravity-narrative-audio.md"
+      }
+    },
+    {
+      "id": "mgd-story-03",
+      "kind": "story",
+      "title": "第三章 · 还没有取回的东西",
+      "text": "到最后，她也没有停下。母巢还在地球的某个侧面；只要它不被拿回，她就一直带着缺口站着。她不会死去，但也没有恢复完整——这不是失败，也不是胜利，而是一种被拉长的等待。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-mother-goddess-depravity-card-materials.md",
+          "sha256": "406466a85221b4084fb25a90aa3a62340dbe36355a13d71b91d8c60dcfeae839",
+          "locator": "§4.3 证据状态表（不会死去／被撕裂后状态）；§5.6 限制；§7.4 第四段·还没有取回的东西"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "9edac956182abd8dc0fafe90ec0678aed5212edfaf3c9e4b86a4f967807528da",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "9edac956182abd8dc0fafe90ec0678aed5212edfaf3c9e4b86a4f967807528da",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-mother-goddess-depravity-narrative-audio.md"
+      }
+    }
+  ]
+}

@@ -5,6 +5,9 @@ public enum VisualTheme: String, Hashable, Sendable {
     case violet
     case visionary
     case divineFool
+    case celestialWorthy
+    case godAlmighty
+    case motherGoddessDepravity
     case empty
 }
 
@@ -148,6 +151,84 @@ public enum DemoLibrary {
             ],
             collectionIntent: .candidate,
             isWishlisted: true
+        ),
+        AlbumCard(
+            identity: CardIdentity(
+                cardID: "lotm.celestial-worthy.primordial-01",
+                slotID: "lotm.celestial-worthy",
+                displayName: "福生玄黄天尊",
+                sequenceName: "序列之上 · 诡秘之主",
+                contentStatus: .proposed,
+                identityKind: .character,
+                characterID: "celestial-worthy",
+                identitySliceID: "celestial-worthy.primordial"
+            ),
+            narrative: CelestialWorthyNarrative.pack,
+            visualTheme: .celestialWorthy,
+            subtitle: "序列之上的诡秘之主，把源堡、穿越者与复苏写进同一盘布局",
+            artwork: .bundled(resourceName: "celestial-worthy-card-v1-v001"),
+            audioStatus: .localBundle,
+            semanticReadbacks: [
+                CardSemanticFact(index: "01", title: "身份", value: "序列之上 · 诡秘之主 · 源堡原主"),
+                CardSemanticFact(index: "02", title: "扮演", value: "长期复苏布局与身份渗透"),
+                CardSemanticFact(index: "03", title: "能力", value: "统御愚者/错误/门与源堡（线索）"),
+                CardSemanticFact(index: "04", title: "魔药", value: "不适用普通魔药体系"),
+                CardSemanticFact(index: "05", title: "晋升", value: "远古序列之上存在 · 无完整起源仪式"),
+                CardSemanticFact(index: "06", title: "限制", value: "残留意志与主体争夺 · 非已死亡")
+            ],
+            collectionIntent: .candidate
+        ),
+        AlbumCard(
+            identity: CardIdentity(
+                cardID: "lotm.god-almighty.primordial-01",
+                slotID: "lotm.god-almighty",
+                displayName: "上帝",
+                sequenceName: "序列之上 · 星界支柱",
+                contentStatus: .proposed,
+                identityKind: .character,
+                characterID: "god-almighty",
+                identitySliceID: "god-almighty.primordial"
+            ),
+            narrative: GodAlmightyNarrative.pack,
+            visualTheme: .godAlmighty,
+            subtitle: "序列之上的星界支柱，把全知、全能与创造收在混沌海之下",
+            artwork: .bundled(resourceName: "god-almighty-card-v1-v001"),
+            audioStatus: .localBundle,
+            semanticReadbacks: [
+                CardSemanticFact(index: "01", title: "身份", value: "序列之上 · 星界支柱 · 三大支柱之一"),
+                CardSemanticFact(index: "02", title: "扮演", value: "无需现身即已涵盖的存在方式"),
+                CardSemanticFact(index: "03", title: "能力", value: "全知/全能/造物主/星界之主（编辑裁定）"),
+                CardSemanticFact(index: "04", title: "魔药", value: "不适用普通魔药体系"),
+                CardSemanticFact(index: "05", title: "晋升", value: "远古序列之上存在 · 无完整起源仪式"),
+                CardSemanticFact(index: "06", title: "限制", value: "主体限制未披露 · 非无限制")
+            ],
+            collectionIntent: .candidate
+        ),
+        AlbumCard(
+            identity: CardIdentity(
+                cardID: "lotm.mother-goddess-depravity.primordial-01",
+                slotID: "lotm.mother-goddess-depravity",
+                displayName: "堕落母神",
+                sequenceName: "序列之上 · 现实支柱",
+                contentStatus: .proposed,
+                identityKind: .character,
+                characterID: "mother-goddess-depravity",
+                identitySliceID: "mother-goddess-depravity.primordial"
+            ),
+            narrative: MotherGoddessDepravityNarrative.pack,
+            visualTheme: .motherGoddessDepravity,
+            subtitle: "序列之上的现实支柱，把母巢、生命与繁衍收在粉紫的月光之下",
+            artwork: .bundled(resourceName: "mother-goddess-depravity-card-v1-v001"),
+            audioStatus: .localBundle,
+            semanticReadbacks: [
+                CardSemanticFact(index: "01", title: "身份", value: "序列之上 · 现实支柱 · 三大支柱之一"),
+                CardSemanticFact(index: "02", title: "扮演", value: "以繁衍、污染与神谕从侧面主导现实"),
+                CardSemanticFact(index: "03", title: "能力", value: "母巢／生命与繁衍／现实主导（二手交叉）"),
+                CardSemanticFact(index: "04", title: "魔药", value: "不适用普通魔药体系"),
+                CardSemanticFact(index: "05", title: "晋升", value: "远古序列之上存在 · 无完整起源仪式"),
+                CardSemanticFact(index: "06", title: "限制", value: "母巢被撕裂未取回 · 非已死亡")
+            ],
+            collectionIntent: .candidate
         )
     ]
 }

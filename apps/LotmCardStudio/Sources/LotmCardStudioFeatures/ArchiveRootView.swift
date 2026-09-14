@@ -122,7 +122,7 @@ private struct ArchiveSidebar: View {
 
             PathwayButton(
                 title: "愚者",
-                detail: ArchiveCopy.pathwaySummary(confirmed: 1, candidate: 2),
+                detail: model.pathwaySummary(for: "fool"),
                 color: ArchiveTheme.teal,
                 action: { model.clearSelection() }
             )
@@ -854,7 +854,19 @@ private struct IdentityPanel: View {
     }
 
     private var pathwayLabel: String {
-        card.identity.slotID.hasPrefix("lotm.visionary") ? "观众途径 · 空想家" : "愚者途径"
+        if card.identity.slotID.hasPrefix("lotm.visionary") {
+            return "观众途径 · 空想家"
+        }
+        if card.identity.slotID.hasPrefix("lotm.celestial-worthy") {
+            return "序列之上 · 诡秘之主"
+        }
+        if card.identity.slotID.hasPrefix("lotm.god-almighty") {
+            return "序列之上 · 星界支柱"
+        }
+        if card.identity.slotID.hasPrefix("lotm.mother-goddess-depravity") {
+            return "序列之上 · 现实支柱"
+        }
+        return "愚者途径"
     }
 
     private var sequenceLabelColor: Color {

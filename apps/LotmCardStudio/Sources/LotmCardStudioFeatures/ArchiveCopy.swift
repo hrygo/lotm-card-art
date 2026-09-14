@@ -37,6 +37,12 @@ enum ArchiveCopy {
             return "克莱恩·莫雷蒂"
         case "audrey":
             return "奥黛丽"
+        case "celestial-worthy":
+            return "福生玄黄天尊"
+        case "god-almighty":
+            return "上帝"
+        case "mother-goddess-depravity":
+            return "堕落母神"
         case nil, "":
             return "途径原型"
         default:

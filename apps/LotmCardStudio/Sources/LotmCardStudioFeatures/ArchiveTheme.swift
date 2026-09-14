@@ -484,7 +484,7 @@ struct ArchiveArtworkView: View {
     var body: some View {
         GeometryReader { proxy in
             let size = min(proxy.size.width, proxy.size.height)
-            let glowColor = theme == .violet
+            let glowColor: Color = (theme == .violet || theme == .celestialWorthy || theme == .godAlmighty || theme == .motherGoddessDepravity)
                 ? ArchiveTheme.Mystic.violet
                 : (theme == .visionary ? ArchiveTheme.Mystic.ice : ArchiveTheme.Aether.light)
             ZStack {

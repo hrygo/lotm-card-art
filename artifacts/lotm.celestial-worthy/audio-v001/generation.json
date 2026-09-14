@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.celestial-worthy.primordial-01",
+  "voice_profile_id": "celestial-worthy",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.0",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.9,
+    "instruction": "一位极其古老、性别偏中性的低沉中文男声。音色幽深、空旷、带轻微金属回响，仿佛从极远的地方传来，又像整座宫殿在低声说话。语速缓慢从容，气息稳定克制，句尾略微下沉；情绪平静，不咆哮、不煽情、不做神谕式宣告，只是在陈述一个早已写定的事实。吐字清晰，咬字干净，不带明显方言，不油腻做作。"
+  },
+  "files": [
+    {
+      "resource_name": "celestial-worthy-greeting-v1",
+      "text_digest": "6a75b05403d8105863b88acbd3a41d7b5d06f260228c04a0a8254faf15e85076",
+      "sha256": "4850a8fd95250a5991e6d4d483137e10575dd68bab63477b3b65e287683ada5e",
+      "duration_seconds": 9.44,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "celestial-worthy-catchphrase-01-v1",
+      "text_digest": "fe36e429b0ead1343dd12753bcbbeb0a9cb4af2f9201cd1038b85493acb7b049",
+      "sha256": "dac940cd78d70dce996c3cd7dcd508c6806370b4231707cf924b9f96aded5152",
+      "duration_seconds": 3.04,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "celestial-worthy-catchphrase-02-v1",
+      "text_digest": "5966d796d0db5e1bb2a70a0d53c17633a70d88330685f1529f6caef88b27c9ca",
+      "sha256": "de1246c2e82f983ec35c781716c696089f1ff83380e6a877679b4c85db834bb7",
+      "duration_seconds": 4.88,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "celestial-worthy-story-01-v1",
+      "text_digest": "82d86e987799d5ee2c9a834883ff0d6438ae85691cdcdd74b6f8152cb87fa3e1",
+      "sha256": "037272da89f3bafa341aebcaa2daa7c1b9abce6a4ed505b851cdacb7d70cf2f2",
+      "duration_seconds": 18.32,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "celestial-worthy-story-02-v1",
+      "text_digest": "0c878a368454dbafa6750dec94d09153a8d479ef41a043bef91773d507ca307f",
+      "sha256": "334d1aa4b2980cf2d10f0184cd2607debd5e4dcbe4f57297cdca9a43ad977e8d",
+      "duration_seconds": 24.08,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "celestial-worthy-story-03-v1",
+      "text_digest": "242b3eb988f450eeaa8a63e8d7890bebfa5398bc79aa1d40c94e5af39599f8a9",
+      "sha256": "9f6afb2fb691fd7105fb50b68d92d0ae73084a773d9513f7a0d19cde337452c5",
+      "duration_seconds": 24.64,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.mother-goddess-depravity.primordial-01",
+  "voice_profile_id": "mother-goddess-depravity",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.1",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.9,
+    "instruction": "一位成熟女性的低音中文嗓音，音色柔韧、湿润，略带胸腔共鸣与极淡的血脉质感，不是少女声，也不是慈祥的老年女声。语速缓慢平稳，气息绵长，句尾自然收紧并下沉。语气温和却危险，像在平静地陈述生命从哪里来、又到哪里去的事实；不温柔安抚、不咆哮、不煽情、不做神谕式宣告。吐字清晰，咬字干净利落，不带方言，不油腻、不做作。"
+  },
+  "files": [
+    {
+      "resource_name": "mother-goddess-depravity-greeting-v1",
+      "text_digest": "7eddfe52508bb007fc18f935988d5f6e9b3222a61c7c678f682a7d6c8e3d874f",
+      "sha256": "78566188a492cfed3ef2a9f06e948ad1e6a6148a1d80c3933e54de09e429f7f0",
+      "duration_seconds": 8.24,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "mother-goddess-depravity-catchphrase-01-v1",
+      "text_digest": "cc649b623ea802f2ccacc6a9872153e11feddf17d3135fb281a2cad5baccd837",
+      "sha256": "6cd6f919087b70d01e5602fd7bb44ffeaa1fa43989fcc4148cbd0e2cd7b98d93",
+      "duration_seconds": 4.64,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "mother-goddess-depravity-catchphrase-02-v1",
+      "text_digest": "4553f9b71b348d912ca44ab59e212daf86b9e45f0ebf694186180d6307f523d3",
+      "sha256": "7b6d24644aac0d94000310fd595705f2e983495228060d1e8ce0a43b0fa2b53d",
+      "duration_seconds": 3.6,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "mother-goddess-depravity-story-01-v1",
+      "text_digest": "3262b8245ddc90f4762899c52e7a098630cd3b5bc0684a24710ff5eff372f9d2",
+      "sha256": "03b0b744fb4ddaab1716bbc9755cfd82534b93e3ecb39eb9d0bf74eefa8db9c1",
+      "duration_seconds": 30.0,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "mother-goddess-depravity-story-02-v1",
+      "text_digest": "c9ba5434c130ee18b05720ee8cf52fc98ea8c5bf624fded6c64fc7042e6b70cb",
+      "sha256": "b2186d9a5ed4515ee06caa21573b21f50d6f81221410f99cf4ac6e955105d400",
+      "duration_seconds": 26.8,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "mother-goddess-depravity-story-03-v1",
+      "text_digest": "9edac956182abd8dc0fafe90ec0678aed5212edfaf3c9e4b86a4f967807528da",
+      "sha256": "152f86bd5bb66c5ac4378938baac97e17581fa61cef36185aec8b3ff431c789e",
+      "duration_seconds": 34.32,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
+  ]
+}

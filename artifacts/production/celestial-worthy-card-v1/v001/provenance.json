@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "card-art",
+  "mode": "direct-agentic-full-card",
+  "task_id": "celestial-worthy-card-v1",
+  "run_id": "v001",
+  "card_id": "lotm.celestial-worthy.primordial-01",
+  "slot_id": "lotm.celestial-worthy",
+  "source": {
+    "origin": "user-provided",
+    "channel": "Codex built-in image_gen export",
+    "provided_path": "/Users/hrygo/Downloads/Codex 图像 2026年9月14日 21_11_03.png",
+    "prompt_captured": false,
+    "tool": "image_gen.imagegen (built-in, Codex)",
+    "model": null,
+    "seed": null,
+    "note": "用户在本机 Codex 中直接生成并导出完整卡；原始生成 prompt 未提供，本记录不伪造可复现性。"
+  },
+  "artifact": {
+    "path": "artifacts/production/celestial-worthy-card-v1/v001/raw.png",
+    "sha256": "465146680d02cb4ce63c50176d87598907f5135d1755de6bd5fdd40f095b78c3",
+    "size_px": [
+      1024,
+      1536
+    ],
+    "channels": "RGB",
+    "alpha": false,
+    "aspect": "2:3",
+    "native_canvas": true
+  },
+  "pipeline": {
+    "compose_used": false,
+    "intermediate_2k_count": 0,
+    "final_resample_count": 0,
+    "note": "不做合成；整卡直出，保持原生画布。"
+  },
+  "status": "candidate-pending-user-visual-approval",
+  "created_at": "2026-09-14"
+}

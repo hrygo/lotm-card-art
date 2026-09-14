@@ -79,6 +79,6 @@
     "docs/source-policy.md"
   ],
   "agent_chain_limit_bytes": 32768,
-  "note": "标记proposed的是项目设计提案，非用户批准记录；不自动承诺图像工具的原生输出能力。",
+  "note": "标记proposed的是项目设计提案，非用户批准记录；不自动承诺图像工具的原生输出能力。expected_cards=220 指 22×10 个序列卡槽的基线数量，是下限而非卡牌上限：同一序列可容纳多个不同人物的身份卡，同一人物可有跨多个序列的形象卡，实际卡数可超过 220，各用独立 card_id。",
   "art_baseline_version": "proposal-003"
 }

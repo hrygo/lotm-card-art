@@ -5,7 +5,7 @@
 
 ## 结构 STRUCTURE
 - `tasks/`：foundation|hierarchy|subject 三类概念任务示例（可复制成独立 task_id/revision）；`symbols/`：精雕符号库（圣徽/艺术数字/融合印记/序列铭刻/五档 kit，自带 catalog/tasks/calls/recipes）。
-- `calls/`：真实工具调用、观察与附件回执（未知 model/seed 留 null）；`compositions/`：素材+矢量+文字合成清单（当前模板 `fool-09-pilot-named*.json` 含必需姓名区，旧 pilot 仅历史记录）。
+- `calls/`：真实工具调用、观察与附件回执（未知 model/seed 留 null）；`compositions/`：素材+矢量+文字合成清单（`fool-09-pilot-named*.json` 是含必需姓名区的**历史契约示例**，其引用的 `foundation-paper`/`hierarchy-low` 回执已随失败物料退役、不可解析，不作为当前模板；其余 pilot 亦仅历史记录）。
 - `approvals/`：人工视觉批准 sidecar；`retirements/`：可恢复退役账（Trash）；`fixtures/`：文字面板测试样例；`templates/`：几何/接口合同（fool-mother-frame、emblem-dock、card-text-panels v3–v5）。
 - `schemas/`：编辑器契约，`tools/production.py` 执行同一契约的 JSON Schema 子集与跨文件业务门禁；合成由 `tools/render/compose.swift` 执行。
 - `symbols/`：当前愚者五档分层基线、十序列 Agentic 完整框和融合圣徽历史参考；`assets/tiers` 与 `assets/fool`：旧四档/矢量研究稿，只读审计，不是当前入口。
@@ -52,9 +52,11 @@
 # 分层生产（仓库根执行；零第三方依赖，Python 3.10+）
 python3 tools/production.py compile production/tasks/foundation-paper.json --out generated/production/paper-v1
 python3 tools/production.py ingest generated/production/paper-v1 /absolute/path/to/raw.png production/calls/paper-v1.json --run v001
-python3 tools/production.py compose production/compositions/fool-09-pilot-named.json --out artifacts/production/<new-run>
+python3 tools/production.py compose production/compositions/<composition>.json --out artifacts/production/<new-run>
 python3 tools/production.py gate artifacts/production/<new-run>
 python3 tools/production.py gate artifacts/production/<new-run> --release
+# 注意：现存 compositions/*.json 均为历史 pilot 示例，其引用的回执已退役，compose/gate 会按依赖校验失败；
+# 当前愚者资产路线见下方的 check-fool-materials。
 python3 tools/production.py check-content production/narratives/klein-s09-tingen.json  # --ready-for-audio 拒绝未批准文案
 python3 tools/production.py check-fool-audio  # 两张当前 App 卡包的叙事摘要、WAV 与资源白名单
 python3 tools/production.py check-fool-materials

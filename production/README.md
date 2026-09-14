@@ -16,5 +16,5 @@ schemas 是编辑器契约，tools/production.py 执行同一契约所用的 JSO
 语义正本仍在 pathways 的 card/canon，任务只引用。当前五档层级语义由 config/sequence-hierarchy.json 定义；旧四档文档不承担当前映射。
 首版完成生产系统和概念试点，独立卡片可通过只读语义投影做正式门禁；人物特定事实、全套视觉资产批准与正式发行分别推进。
 
-当前模板使用 compositions/fool-09-pilot-named.json 和 fool-09-pilot-named-collector.json：包含必需主角姓名区。旧 pilot 清单保留为历史记录，不符合新增姓名门禁，不作为新任务模板。
+`compositions/fool-09-pilot-named.json` 与 `fool-09-pilot-named-collector.json` 是含必需主角姓名区的**历史契约示例**：其引用的 `foundation-paper`、`hierarchy-low` 回执已退役，compose/gate 会按依赖校验失败，不作为当前模板或新任务起点。当前愚者资产路线以 Agentic 五档分层基线为准（`python3 tools/production.py check-fool-materials`）。旧 pilot 清单同样仅作历史记录。
 姓名来自 subject.spec.protagonist.name_zh；其 character/archetype 类型、名称状态和证据必须随主体任务登记。

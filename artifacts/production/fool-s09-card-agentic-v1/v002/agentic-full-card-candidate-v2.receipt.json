@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "subject",
+  "mode": "production",
+  "task_id": "fool-s09-card-agentic-v1",
+  "run_id": "v002",
+  "status": "candidate-pending-user-visual-review",
+  "task": {
+    "path": "production/tasks/fool-s09-card-agentic-v1.json",
+    "sha256": "37e02fe9111ffe6a011bf86bd2913e37b6d89ac7ec05079a82b99981c9647002"
+  },
+  "input": {
+    "frame_geometry": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png",
+    "frame_geometry_sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783",
+    "accepted_inscription_reference": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-9-agentic-candidate-v2.png",
+    "accepted_inscription_reference_sha256": "d83ce8b8761116b88a63573bf3e6a93f379fe0886369fcaf1a2c534189758297",
+    "scene_reference": "artifacts/production/klein-seer-subject/v002/raw.png",
+    "scene_reference_sha256": "16fa28928a7bbdc93403d53c3d59122973b195e964bc775c1542dbddac2d9f4e"
+  },
+  "output": {
+    "path": "artifacts/production/fool-s09-card-agentic-v1/v002/agentic-full-card-candidate-v2.png",
+    "sha256": "2d73c4662e9de0b263f833b75ca419605299b40f52c0909421c3b0d9d4dc0efe",
+    "size_px": [1024, 1536],
+    "channels": "RGB",
+    "alpha": false
+  },
+  "visual_contract": {
+    "central_event": "克莱恩以左手持银链黄水晶，在红茶上方进行灵摆占卜",
+    "inner_scene_text": false,
+    "frame_text_preserved": ["愚者", "9", "占卜家"],
+    "name_target": "克莱恩·莫雷蒂",
+    "name_stage": "agentic-artistic-inscription-candidate",
+    "name_surface": "existing-frame-surface-only",
+    "name_geometry": "stroke-centered-horizontal-and-vertical",
+    "outside_frame_zero_drift": "pending-user-visual-review"
+  },
+  "call": {
+    "tool": "image_gen.imagegen (built-in)",
+    "model": null,
+    "seed": null,
+    "attempt": 1,
+    "created_at": "2026-09-14",
+    "prompt": "Use case: precise-object-edit. Asset type: current Fool pathway Sequence 9 complete native card candidate. Input image 1 is the edit target and the only visual source. Primary request: add the exact artistic Chinese name inscription \"克莱恩·莫雷蒂\" inside the existing bottom name surface only. Invariants: preserve entire card pixel-for-pixel in every other region: upright 2:3, silver-white low-tier frame, smoky-violet inlays, top Fool crown, circular rank dock and numeral 9, left 愚者, right 占卜家, all stars/ornaments, bottom equilateral-hexagonal silver-white diamond, continuous Tingen divination scene, face, hands, pendulum, cup, book, lighting/material. Name: exact six Chinese characters/punctuation as one elegant engraved/embossed display inscription, horizontally/vertically centered by actual strokes within existing bottom name surface, large/readable, refined silver-white relief/subtle highlight; no plaque/replacement background/opaque rectangle/duplicate text/mirror/pseudo-writing/additional labels/watermark. One complete upright native 2:3 card, not crop/layer.",
+    "attachments": [
+      {
+        "path": "artifacts/production/fool-s09-card-agentic-v1/v001/agentic-full-card-candidate-v1.png",
+        "sha256": "e20c0a0164ffeaba825242e09891f4ab394d697e0488101fe97ae0870d200c72",
+        "role": "edit_target"
+      }
+    ],
+    "observation": "已实际观察生成图：完整卡面保持正向2:3构图；克莱恩·莫雷蒂出现在既有姓名区内，未见镜像、重影或新增不透明底板；姓名区与底部六边形宝石未发生明显遮挡。当前仍是候选，等待用户视觉验收与后续release门禁。"
+  },
+  "snapshot": {
+    "dependencies": [
+      {
+        "path": "tools/production.py",
+        "sha256": "c53e1bb3642e954b037ddf6afe16aea086835154dff84bf9149ae5420c12879f"
+      },
+      {
+        "path": "production/schemas/task.schema.json",
+        "sha256": "4f5b772143e0776f5306fb1c0b5edbb7d1a33ecd0b728cea739b25db4bdb9ce9"
+      },
+      {
+        "path": "production/symbols/fool-five-tier-kit.json",
+        "sha256": "8146a6eac9003981ffb09143901d8b40631a60b1cc0885bd3ffda65e15c8ea7d"
+      },
+      {
+        "path": "docs/production-sop-v3.md",
+        "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"
+      },
+      {
+        "path": ".agents/skills/lotm-quality-frames/SKILL.md",
+        "sha256": "1a653d55d70d2623eec3d57fbda2c5a0af99a0916a16458ab49f7f95c1548d7c"
+      },
+      {
+        "path": ".agents/skills/lotm-subject/SKILL.md",
+        "sha256": "39e8000ada2acc40c6e3bcb6d5600741b85c6d79dcf25476443dc001b85efeb4"
+      },
+      {
+        "path": "pathways/fool/sequences/09/card.json",
+        "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e"
+      },
+      {
+        "path": "pathways/fool/canon.json",
+        "sha256": "a7fc2fb3c1bbb7a752bf500451147e07518e557c81389304790b2a0ae285bf6a"
+      },
+      {
+        "path": "production/narratives/klein-s09-tingen.json",
+        "sha256": "bbfbeb76e8a60a713cf5cd266383e22a159edc357a02060b4e8fff819d65ca5a"
+      }
+    ],
+    "output_sha256": "2d73c4662e9de0b263f833b75ca419605299b40f52c0909421c3b0d9d4dc0efe"
+  },
+  "approval": {
+    "status": "pending",
+    "by": null,
+    "reference": null
+  },
+  "rights_status": "unknown",
+  "rights_reference": null,
+  "created_at": "2026-09-14"
+}

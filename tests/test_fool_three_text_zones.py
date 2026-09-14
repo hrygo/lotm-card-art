@@ -1,4 +1,4 @@
-"""Contract tests for the active Fool v4 inscription-band frame template."""
+"""Contract tests for the active Fool text-zone and derived-frame contracts."""
 
 import json
 from pathlib import Path
@@ -81,7 +81,7 @@ class FoolThreeTextZoneContractTests(unittest.TestCase):
         catalog = self.load_json("production/symbols/fool-five-tier-kit.json")
         self.assertEqual(catalog["version"], "5.0.0")
         self.assertEqual(
-            catalog["active_output"], "artifacts/production/fool-five-tier-kit-v5"
+            catalog["active_output"], "artifacts/production/fool-five-tier-direct-kit-v1"
         )
         self.assertEqual(len(catalog["emblem_inputs"]), 10)
         self.assertEqual(
@@ -125,14 +125,9 @@ class FoolThreeTextZoneContractTests(unittest.TestCase):
         catalog = self.load_json("production/symbols/fool-five-tier-kit.json")
         study = catalog["diamond_study"]
         self.assertEqual(study["tier_order"], ["low", "mid", "saint", "angel", "true-god"])
-        self.assertEqual(len(study["crop_rects_px"]), 5)
-        self.assertEqual(catalog["output_contract"]["diamond_layer_names"], [
-            "diamond-low.png",
-            "diamond-mid.png",
-            "diamond-saint.png",
-            "diamond-angel.png",
-            "diamond-true-god.png",
-        ])
+        self.assertEqual(len(study["contact_sheet_rects_px"]), 5)
+        self.assertEqual(catalog["output_contract"]["diamond_layer_names"], [])
+        self.assertEqual(catalog["output_contract"]["embedded_gem_mode"], "complete-agentic-frame")
         self.assertTrue(catalog["output_contract"]["no_cross_product_variants"])
 
     @unittest.skipUnless(
@@ -191,20 +186,63 @@ class FoolThreeTextZoneContractTests(unittest.TestCase):
             "text-orientation-sentinel",
             "name-ink-premium-relief",
             "inscription-contrast-gated",
+            "side-glyph-ink-box-aligned",
+            "single-face-name-mask",
+            "name-diamond-protection",
+            "name-background-not-opaque-over-diamond",
         ):
             self.assertIn(marker, result.stdout)
 
-    def test_active_text_manifest_records_orientation_and_visual_contract(self):
-        manifest = self.load_json(
-            "artifacts/production/fool-three-text-sample-v8/manifest.json"
+    def test_active_text_contract_records_alignment_and_diamond_protection(self):
+        catalog = self.load_json(
+            "production/symbols/fool-agentic-sequence-inscriptions-v2.json"
         )
-        self.assertEqual(manifest["version"], 3)
-        self.assertEqual(manifest["coordinate_system"], "design-space-top-left-image-normalized")
-        self.assertEqual(manifest["orientation"], "upright")
-        self.assertTrue(manifest["orientation_sentinel"]["passed"])
-        self.assertGreaterEqual(manifest["contrast"]["minimum_ratio"], 4.5)
-        self.assertGreaterEqual(manifest["name"]["minimum_cap_height_final_px"], 78)
-        self.assertEqual(manifest["geometry"]["max_drift_final_px"], 0)
+        self.assertEqual(catalog["stage"], "agentic-complete-frame-baseline")
+        self.assertEqual(catalog["edit_domain"]["orientation"], "upright-vertical-rl")
+        self.assertEqual(catalog["edit_domain"]["capacity_characters"], 6)
+        self.assertEqual(catalog["fit_policy"]["mode"], "agentic-autofit-by-visible-glyph-bbox")
+        self.assertEqual(catalog["acceptance"]["outside_final_rect_changed_pixels_max"], 0)
+        self.assertTrue(catalog["acceptance"]["no_mirror"])
+        self.assertTrue(catalog["acceptance"]["no_background_or_plaque"])
+
+    def test_current_agentic_sequence_catalog_is_ten_one_to_one_sequence_assets(self):
+        catalog = self.load_json(
+            "production/symbols/fool-agentic-sequence-inscriptions-v2.json"
+        )
+        self.assertEqual(catalog["version"], "2.0.0")
+        self.assertEqual(catalog["stage"], "agentic-complete-frame-baseline")
+        self.assertFalse(catalog["formal_release_approved"])
+        entries = catalog["entries"]
+        self.assertEqual(len(entries), 10)
+        self.assertEqual({entry["digit"] for entry in entries}, set(range(10)))
+        self.assertTrue(all(entry["candidate_output"]["status"] == "user-approved-agentic-baseline" for entry in entries))
+        self.assertTrue(all(entry["candidate_output"]["size_px"] == [1024, 1536] for entry in entries))
+        expected_names = {
+            9: "占卜家",
+            8: "小丑",
+            7: "魔术师",
+            6: "无面人",
+            5: "秘偶大师",
+            4: "诡法师",
+            3: "古代学者",
+            2: "奇迹师",
+            1: "诡秘侍者",
+            0: "愚者",
+        }
+        self.assertEqual(
+            {entry["digit"]: entry["sequence_name"] for entry in entries},
+            expected_names,
+        )
+
+    def test_active_text_catalog_records_orientation_and_visual_contract(self):
+        catalog = self.load_json(
+            "production/symbols/fool-agentic-sequence-inscriptions-v2.json"
+        )
+        self.assertEqual(catalog["edit_domain"]["orientation"], "upright-vertical-rl")
+        self.assertTrue(catalog["acceptance"]["exact_text_visual_check_required"])
+        self.assertTrue(catalog["acceptance"]["no_pseudo_text"])
+        self.assertTrue(catalog["acceptance"]["no_extra_text"])
+        self.assertEqual(catalog["acceptance"]["center_error_max_native_px"], 1)
 
 
 if __name__ == "__main__":

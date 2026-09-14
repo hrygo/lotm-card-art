@@ -1,0 +1,133 @@
+{
+  "$schema": "../../production/schemas/emblem-dock.schema.json",
+  "schema_version": "1.1.0",
+  "contract_type": "emblem-dock",
+  "status": "template",
+  "scope": {
+    "pathway_id": null,
+    "quality_policy": "five-tier-from-config/quality-color-tokens.json",
+    "sequence_policy": "one-emblem-per-sequence-no-cross-product",
+    "card_surface": "front"
+  },
+  "canvas": {
+    "width": null,
+    "height": null,
+    "origin": "top-left",
+    "units": "pixels",
+    "scale_policy": "measure-at-master-then-downsample"
+  },
+  "geometry": {
+    "geometry_id": null,
+    "version": "emblem-dock-v1",
+    "master_frame": null,
+    "dock": {
+      "mode": "visual-recess-not-through-hole",
+      "through_hole": false,
+      "outer_rect": null,
+      "visible_bbox": null,
+      "anchor": null,
+      "clearance_px": null,
+      "fixed_transform": {
+        "scale": null,
+        "rotation_deg": 0,
+        "translation_px": null,
+        "sampling": "single-master-transform"
+      },
+      "socket_layers": ["dock-cavity", "dock-seat", "dock-contact-shadow", "dock-front-rim"]
+    }
+  },
+  "ownership": {
+    "frame_core": ["outer-silhouette", "frame-shoulders", "bottom-rail"],
+    "emblem_dock": ["dock-cavity", "dock-seat", "dock-contact-shadow-receiving-surface", "dock-front-rim", "occlusion-rules"],
+    "emblem_asset": ["pathway-identity", "sequence-glyph", "self-relief", "self-material"],
+    "compositor": ["fixed-placement", "source-over-order", "contact-shadow-instance", "front-occlusion", "gate-receipt"],
+    "quality_material": ["tier-color", "controlled-hue-drift", "frame-reflection", "dock-reflection", "gem-material"],
+    "forbidden_duplicates": ["emblem-complete-frame", "emblem-complete-dock", "text-layer-opaque-name-panel", "double-baked-contact-shadow", "through-hole-background-bleed"]
+  },
+  "assets": {
+    "frame_core": null,
+    "emblem_asset": null,
+    "dock_study": null,
+    "masks": {
+      "dock_allowed": null,
+      "emblem_holes": null,
+      "name": null,
+      "diamond": null,
+      "scene": null
+    }
+  },
+  "layers": [
+    {
+      "id": "frame-core",
+      "owner": "FrameCore",
+      "z_index": 10,
+      "asset": null,
+      "alpha_mode": "straight-alpha",
+      "allowed_domain": null
+    },
+    {
+      "id": "dock-cavity",
+      "owner": "EmblemDock",
+      "z_index": 20,
+      "asset": null,
+      "alpha_mode": "opaque",
+      "allowed_domain": null
+    },
+    {
+      "id": "dock-seat",
+      "owner": "EmblemDock",
+      "z_index": 30,
+      "asset": null,
+      "alpha_mode": "straight-alpha",
+      "allowed_domain": null
+    },
+    {
+      "id": "dock-contact-shadow",
+      "owner": "Composite",
+      "z_index": 40,
+      "asset": null,
+      "alpha_mode": "straight-alpha",
+      "allowed_domain": null
+    },
+    {
+      "id": "emblem-body",
+      "owner": "EmblemAsset",
+      "z_index": 50,
+      "asset": null,
+      "alpha_mode": "straight-alpha",
+      "allowed_domain": null
+    },
+    {
+      "id": "dock-front-rim",
+      "owner": "EmblemDock",
+      "z_index": 60,
+      "asset": null,
+      "alpha_mode": "straight-alpha",
+      "allowed_domain": null
+    }
+  ],
+  "protected_regions": {
+    "emblem_holes": null,
+    "name": null,
+    "diamond": null,
+    "scene": null,
+    "outside_edit_domain": null
+  },
+  "thresholds": {
+    "geometry_displacement_max_px": 0,
+    "emblem_hole_intersections_max": 0,
+    "name_intersections_max": 0,
+    "diamond_intersections_max": 0,
+    "outside_domain_pixels_max": 0,
+    "visible_bbox_center_error_max_final_px": 1
+  },
+  "checks": {
+    "geometry_displacement_px": null,
+    "emblem_hole_intersections": null,
+    "name_intersections": null,
+    "diamond_intersections": null,
+    "outside_domain_pixels": null,
+    "visible_bbox_center_error_px": null,
+    "visual_review": "not-run"
+  }
+}

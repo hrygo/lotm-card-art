@@ -33,8 +33,8 @@ enum ArchiveCopy {
 
     static func characterName(for characterID: String?) -> String {
         switch characterID {
-        case "klein":
-            return "克莱恩"
+        case "klein-moretti":
+            return "克莱恩·莫雷蒂"
         case "audrey":
             return "奥黛丽"
         case nil, "":

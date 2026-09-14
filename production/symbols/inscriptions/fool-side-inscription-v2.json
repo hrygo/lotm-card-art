@@ -5,10 +5,10 @@
   "status": "active-deterministic-style-v2",
   "predecessor": "production/symbols/inscriptions/fool-side-inscription-v1.json",
   "style_reference": {
-    "path": "artifacts/production/fool-frame-refinement-v1/side-junction/raw.png",
-    "sha256": "a5d9e239b9febda3b8c17e35d560cb220bafb94ad5da1e9f8c58e384dc7bfbdf",
-    "role": "agentic-column-junction-study",
-    "visual_status": "pending-user-art-approval",
+    "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-9-agentic-candidate-v2.png",
+    "sha256": "d83ce8b8761116b88a63573bf3e6a93f379fe0886369fcaf1a2c534189758297",
+    "role": "approved-agentic-complete-frame-side-inscription-reference",
+    "visual_status": "user-approved-agentic-baseline",
     "pixel_role": "reference-only"
   },
   "design_intent": {

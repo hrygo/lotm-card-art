@@ -8,8 +8,8 @@
   "output": {"aspect": [2, 3], "background": "transparent"},
   "prompt": "Use case: precise-object-edit. Create ONE empty Fool pathway card frame as a crystalline SAINT quality material study. Use the attached frozen geometry master as the only silhouette authority. Preserve the existing slender U-shaped frame, double folded-curtain side rails, fixed wide nameplate, one bottom quality diamond, exact front orthographic 2:3 composition, outer margin, and the large open top emblem safe region. Material direction: primary configured color #4D97D4 secret blue, expressed as cool blue crystalline reflections in the existing frame texture, the existing recessed enamel, and the single diamond; retain smoky-violet Fool identity only as a controlled undertone in the recesses. The surface is clearer and more authoritative than MID: layered blue edge reflections, restrained depth, precise local highlights, no bloom. Quality is conveyed by material purity and reflection control, never by adding parts. STRICT ZERO-DRIFT INVARIANTS: do not move, resize, rotate, redraw or reinterpret the outer silhouette, illustration window, nameplate, diamond, curtain folds, anchor centers or top opening. Do not add or remove any ornament. No top crossbar, socket, halo, crown, wings, pendants or extra gems. No text, digit, emblem, mask, character or scene. Keep every empty region genuinely transparent, including the top opening, illustration window and outside edges; no checkerboard pixels, backdrop, fog, cast shadow or global tint. Return one centered complete frame only.",
   "references": [
-    {"path": "artifacts/production/fool-quality-frame-low/v001/raw.png", "sha256": "4eb5e5d4ce6943140e121b55699cfc3911c8e67450dda898ff77265ce3ed39e1", "role": "edit_target"},
-    {"path": "artifacts/production/fool-fusion-4/v001/raw.png", "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c", "role": "style"}
+    {"path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png", "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783", "role": "edit_target"},
+    {"path": "artifacts/production/fool-fusion-4/v002/raw.png", "sha256": "c31c5ab6dffebf47d70b3e5322b0534b49ad9ab73471164cc57145b3b63c8d26", "role": "style"}
   ],
   "limits": {"max_attempts": 2},
   "spec": {
@@ -18,8 +18,8 @@
     "clear_regions": [[220, 30, 560, 375], [140, 450, 720, 795]]
   },
   "contracts": [
-    {"path": "docs/production-preflight.md", "sha256": "5934526b680b76980157ce816cf39ef7dd9367f7e68d0272900c18af6497628e"},
-    {"path": "production/symbols/quality-frame-five-tier-direction.json", "sha256": "91cbf602d8a18d58e79c5b3e93b122ccc8518e37dcc019bd12a3a032ee95d949"},
+    {"path": "docs/production-preflight.md", "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"},
+    {"path": "production/symbols/quality-frame-five-tier-direction.json", "sha256": "09a716dfeff6a4fa37a35dde2ee1b2cfdee09da83254ac3ba6163e8ca34c1ec4"},
     {"path": "production/symbols/quality-geometry-lock.json", "sha256": "d3ef137a33a7af1276f71f4690559ef6f998886712ca545a8509ef0d70f48969"},
     {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"},
     {"path": "config/sequence-hierarchy.json", "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"},

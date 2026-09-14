@@ -25,7 +25,7 @@
     },
     "preflight": {
       "path": "docs/production-preflight.md",
-      "sha256": "5934526b680b76980157ce816cf39ef7dd9367f7e68d0272900c18af6497628e"
+      "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"
     }
   },
   "sequence_mapping": {

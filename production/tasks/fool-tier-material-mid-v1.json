@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-tier-material-mid-v1",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "quality": {"sequence": 7, "visual_tier": "mid"},
+  "output": {"aspect": [1, 1], "background": "opaque"},
+  "prompt": "Use case: stylized-concept. Asset type: reusable MID quality material reference for the Fool pathway frame and EmblemDock, not a finished card and not a new geometry. Primary request: a square close material study using emerald green #55B978 as the main anchor on refined metal and enamel, with smoky-violet Fool recesses, deeper grooves, controlled cool-to-warm hue drift, and a polished faceted diamond with internal reflection. The increase from low quality comes from material depth and confident optical response, not extra parts or clutter. Text (verbatim): none. Constraints: preserve the existing family of surfaces; no frame silhouette, no emblem, no mask, no numeral, no Chinese characters, no name, no character, no scene, no extra ornaments, no crown, no wings, no additional gemstones, no global tint, no rainbow noise, no watermark. Agentic study only; deterministic material masks own final pixels.",
+  "references": [{"path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-mid-native.png", "sha256": "ec7a1b5801d689d79b0d88b53aa6bd0e50f955daf70ba5ca65095f53e3dbd047", "role": "style"}],
+  "limits": {"max_attempts": 1},
+  "spec": {"tier": "mid", "geometry": "沿用冻结母版位置，只研究翡翠中档材质与宝石光学，不改变几何。", "clear_regions": [[0, 0, 1000, 1500]]},
+  "contracts": [
+    {"path": "docs/production-sop-v3.md", "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"},
+    {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"}
+  ]
+}

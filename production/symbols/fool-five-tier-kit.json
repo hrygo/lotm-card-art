@@ -1,8 +1,19 @@
 {
   "version": "5.0.0",
   "pathway_id": "fool",
-  "status": "active-five-tier-inscription-v4-candidate",
-  "active_output": "artifacts/production/fool-five-tier-kit-v5",
+  "status": "official-agentic-visual-material-baseline",
+  "active_output": "artifacts/production/fool-five-tier-direct-kit-v1",
+  "active_manifest": {
+    "path": "artifacts/production/fool-five-tier-direct-kit-v1/manifest.json",
+    "sha256": "38076371c6d6da9ddb0fc52dda270aea8bf9ee666c1978acee67d9124f1a1d7e"
+  },
+  "resolution_policy": {
+    "path": "config/production-resolution-policy.json",
+    "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382",
+    "native_source_is_canonical": true,
+    "intermediate_2k_count": 0,
+    "final_card_only_sampling": true
+  },
   "direction": {
     "path": "production/symbols/quality-frame-three-text-direction-v4.json",
     "sha256": "24fa429e2cf248d5482dc786ba98a5fe2d36c171e29b9b96a375339b4d0b88d1"
@@ -35,62 +46,49 @@
   },
   "inscription_contract": {
     "path": "production/symbols/inscriptions/fool-side-inscription-v2.json",
-    "sha256": "908af1101b97124f887b6b56ff01a746108a94491d0b84447a7e7e82f5387686",
+    "sha256": "49b09bbd23e5c909f879698c59e82136c51f94fe0ca2dbb170ab9f4c2238bc2c",
     "render_mode": "exact-glyph-relief",
     "minimum_characters": 6,
     "width_ratio_to_column": 1.5,
-    "style_reference": "artifacts/production/fool-frame-refinement-v1/side-junction/raw.png"
+    "style_reference": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-9-agentic-candidate-v2.png"
   },
   "diamond_study": {
-    "path": "artifacts/production/fool-diamond-v2/raw.png",
-    "sha256": "28191cb798528689890c4adae0b3998a7501dfe71d62e60b9f51abfd08d3e0b8",
-    "role": "five-tier-cut-reference",
-    "pixel_integration": "deterministic-border-cutout-fixed-anchor-plus-integrated-seat",
+    "path": "artifacts/production/fool-five-tier-direct-kit-v1/five-tiers.png",
+    "sha256": "4af98874e9718705a1383513eb96630c05eea535096a52fdffbb4d6bec0e2c15",
+    "role": "official-agentic-five-tier-contact-sheet-with-embedded-gems",
+    "pixel_integration": "agentic-complete-frame-embedded-gem",
     "tier_order": ["low", "mid", "saint", "angel", "true-god"],
-    "crop_rects_px": {
-      "low": [18, 230, 331, 405],
-      "mid": [370, 230, 330, 405],
-      "saint": [721, 230, 330, 405],
-      "angel": [1072, 229, 330, 406],
-      "true-god": [1422, 229, 330, 405]
+    "contact_sheet_rects_px": {
+      "low": [0, 0, 270, 384],
+      "mid": [270, 0, 271, 384],
+      "saint": [541, 0, 270, 384],
+      "angel": [811, 0, 270, 384],
+      "true-god": [1081, 0, 271, 384]
     }
   },
   "diamond_integration_study": {
-    "path": "artifacts/production/fool-frame-refinement-v1/diamond-seat/raw.png",
-    "sha256": "d4c7b9d27d00a842ef1e826b6477bc574e70737e7ee2e183e4e20baa77d07069",
-    "role": "agentic-contact-architecture-reference-only",
-    "pixel_role": "reference-only"
+    "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png",
+    "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783",
+    "role": "official-native-frame-with-embedded-gem",
+    "pixel_role": "official-visual-source; no separate gem overlay"
   },
   "refinement_studies": {
-    "status": "generated-pending-visual-material-review",
-    "purpose": "Agentic studies guide material and junction treatment; deterministic renderers own final pixels and fixed geometry.",
-    "assets": [
-      {
-        "id": "side-junction",
-        "path": "artifacts/production/fool-frame-refinement-v1/side-junction/raw.png",
-        "sha256": "a5d9e239b9febda3b8c17e35d560cb220bafb94ad5da1e9f8c58e384dc7bfbdf",
-        "call": "production/calls/fool-frame-refinement-v1-side-junction.json",
-        "role": "agentic-style-reference",
-        "visual_status": "pending"
-      },
-      {
-        "id": "diamond-seat",
-        "path": "artifacts/production/fool-frame-refinement-v1/diamond-seat/raw.png",
-        "sha256": "d4c7b9d27d00a842ef1e826b6477bc574e70737e7ee2e183e4e20baa77d07069",
-        "call": "production/calls/fool-frame-refinement-v1-diamond-seat.json",
-        "role": "agentic-style-reference",
-        "visual_status": "pending"
-      },
-      {
-        "id": "nameplate",
-        "path": "artifacts/production/fool-frame-refinement-v1/nameplate/raw.png",
-        "sha256": "ec17429cec15ab9a3d1dc859f2c9c0c9235281221844b81d27a35698d83512e8",
-        "call": "production/calls/fool-frame-refinement-v1-nameplate.json",
-        "role": "agentic-style-reference",
-        "visual_status": "pending"
-      }
-    ],
-    "engineering_status": "study-informed; deterministic renderers remain the sole active pixel production path"
+    "status": "historical-study-assets-not-present-in-current-worktree",
+    "purpose": "历史承接、宝石和姓名风格研究未作为当前正式物料；当前官方视觉源是完整 Agentic 原生五档包。",
+    "assets": [],
+    "engineering_status": "not-a-current-dependency; no restoration or regeneration performed"
+  },
+  "retained_reusable_materials": {
+    "status": "retained-reference-assets",
+    "purpose": "保留本次清理后仍可复用的基础公共/途径材质；完整 Agentic 五档画面已内嵌其最终视觉，不从这些纹理做程序回填。",
+    "embedded_in_active_frames": false,
+    "entries": [
+      {"id": "material-fool-veil", "scope": "pathway:fool", "path": "artifacts/production/material-fool-veil/v001/raw.png", "sha256": "560ee22c7ae9f02735d52c3fc182e89b198fd44bb1c4922cddb883fda0d00e0d", "size_px": [1024, 1536], "status": "retained-reference"},
+      {"id": "material-gold", "scope": "global", "path": "artifacts/production/material-gold/v001/raw.png", "sha256": "b59fa8871c1962d023f24116f389d99da0b113fe91ec2f715ea4f6c6dc37da1f", "size_px": [1024, 1536], "status": "retained-reference"},
+      {"id": "material-high-filament", "scope": "tier:high", "path": "artifacts/production/material-high-filament/v001/raw.png", "sha256": "7403b8f8fbc6a37a3736c967ac8fe241e627855b25ecbda1eeeb75552947d388", "size_px": [1024, 1536], "status": "retained-reference"},
+      {"id": "material-sacred-slate", "scope": "global-front-backing", "path": "artifacts/production/material-sacred-slate/v001/raw.png", "sha256": "1a629c207141be838895ab52c7ac6f377b9b28aab5951b1c6b54adc4b3435412", "size_px": [1024, 1536], "status": "retained-reference"},
+      {"id": "material-silver-flat", "scope": "global", "path": "artifacts/production/material-silver-flat/v001/raw.png", "sha256": "7ee116beee2c1afaa5add5aed8bcd485c3f42638e3762073d1dfd95df7719aaf", "size_px": [1024, 1536], "status": "retained-reference"}
+    ]
   },
   "sequence_mapping": {
     "low": [9, 8],
@@ -108,69 +106,23 @@
   ],
   "approved_emblems": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   "emblem_inputs": [
-    {"digit": 0, "tier": "true-god", "color_binding": "true-god", "path": "artifacts/production/fool-fusion-0/v001/raw.png", "sha256": "9dc7aa0462ee877586e41be6d3f874a5731170e7c3226bfb5794c876cc96ba67", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 0, "tier": "true-god", "color_binding": "true-god", "path": "artifacts/production/fool-fusion-0/v002/raw.png", "sha256": "2a8d70b9bd7d5b7abfb2040a6c2c5fc12a27b36df6912ae256315c1b542d1245", "visual_approval": "user-approved-visual-baseline-latest-reference", "engineering_status": "needs-background-extraction"},
     {"digit": 1, "tier": "angel", "color_binding": "angel", "path": "artifacts/production/fool-fusion-1/v001/raw.png", "sha256": "7f0b2037b77850433a5838559f5b483e036bb55105696bf7b7bc42a7e45488d6", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
     {"digit": 2, "tier": "angel", "color_binding": "angel", "path": "artifacts/production/fool-fusion-2/v001/raw.png", "sha256": "8956791e875e0f7f143ea9461d1935cdd9533136ea980a46f351f97d713f5ae1", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
     {"digit": 3, "tier": "saint", "color_binding": "saint", "path": "artifacts/production/fool-fusion-3/v001/raw.png", "sha256": "81b581f096f052466a9f4df5194838ef826e85cf7eeffd877dd653573e4650f6", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 4, "tier": "saint", "color_binding": "saint", "path": "artifacts/production/fool-fusion-4/v001/raw.png", "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 4, "tier": "saint", "color_binding": "saint", "path": "artifacts/production/fool-fusion-4/v002/raw.png", "sha256": "c31c5ab6dffebf47d70b3e5322b0534b49ad9ab73471164cc57145b3b63c8d26", "visual_approval": "user-approved-visual-baseline-latest-reference", "engineering_status": "needs-background-extraction"},
     {"digit": 5, "tier": "mid", "color_binding": "mid", "path": "artifacts/production/fool-fusion-5/v001/raw.png", "sha256": "0e14906c841ad24aede5bfd23976c2be349355c1f525deb5b3d62f58d73ad1a8", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
     {"digit": 6, "tier": "mid", "color_binding": "mid", "path": "artifacts/production/fool-fusion-6/v001/raw.png", "sha256": "8684a9470ace1177982c82f6d1362cfe33a1130fe8f3e01dd0bd4cb31a04fdd1", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 7, "tier": "mid", "color_binding": "mid", "path": "artifacts/production/fool-fusion-7/v001/raw.png", "sha256": "66a1c337ea7464a606951d3e79b449d8d011671e5dbe2a76ee4aaf86fafc2468", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
+    {"digit": 7, "tier": "mid", "color_binding": "mid", "path": "artifacts/production/fool-fusion-7/v002/raw.png", "sha256": "668c58b1fad00c8e1bf541ed138b5b9df05dc9c80216c5b3424c7956b0472ad1", "visual_approval": "user-approved-visual-baseline-latest-reference", "engineering_status": "needs-background-extraction"},
     {"digit": 8, "tier": "low", "color_binding": "low", "path": "artifacts/production/fool-fusion-8/v001/raw.png", "sha256": "e5efd209834b3dd9be84b5b1c10b70f670805d13503ddbf679d9907a2cd158db", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"},
-    {"digit": 9, "tier": "low", "color_binding": "low", "path": "artifacts/production/fool-fusion-9/v001/raw.png", "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9", "visual_approval": "user-approved-visual-baseline", "engineering_status": "needs-background-extraction"}
+    {"digit": 9, "tier": "low", "color_binding": "low", "path": "artifacts/production/fool-fusion-9/v002/raw.png", "sha256": "ff797f0b7dfea42067fd07ab564835c484fa66cd7b470d41cac25a512fab0144", "visual_approval": "user-approved-visual-baseline-latest-reference", "engineering_status": "needs-background-extraction"}
   ],
   "material_studies": {
-    "status": "generated-pending-visual-material-review",
+    "status": "historical-study-assets-not-present-in-current-worktree",
     "tiers": ["low", "mid", "saint", "angel", "true-god"],
-    "purpose": "Agentic studies inform the deterministic material recipe only; they do not authorize geometry replacement, emblem redesign, or formal release.",
-    "assets": [
-      {
-        "tier": "low",
-        "path": "artifacts/production/fool-five-tier-material-low-v1/raw.png",
-        "sha256": "8840e479e704fe7986c85e27c6d838afec2f6b32b7518c75e8687d2d83a774b3",
-        "call": "production/calls/fool-five-tier-material-low-v1.json",
-        "role": "agentic-material-reference",
-        "presentation_background": "opaque",
-        "visual_status": "pending"
-      },
-      {
-        "tier": "mid",
-        "path": "artifacts/production/fool-five-tier-material-mid-v1/raw.png",
-        "sha256": "a15f06033d808dfd863de58180542bd617126f02f59f1fb5b4605c3bba175982",
-        "call": "production/calls/fool-five-tier-material-mid-v1.json",
-        "role": "agentic-material-reference",
-        "presentation_background": "opaque",
-        "visual_status": "pending"
-      },
-      {
-        "tier": "saint",
-        "path": "artifacts/production/fool-five-tier-material-saint-v1/raw.png",
-        "sha256": "0cc0eb7d71257b36b580284553e34566faf4afe4a37f9df15992aa2b02133f7a",
-        "call": "production/calls/fool-five-tier-material-saint-v1.json",
-        "role": "agentic-material-reference",
-        "presentation_background": "opaque",
-        "visual_status": "pending"
-      },
-      {
-        "tier": "angel",
-        "path": "artifacts/production/fool-five-tier-material-angel-v1/raw.png",
-        "sha256": "e39c71d24043234a85d5ee7a6e4faaa9ae7a5d474626234ce384b6bb785dfa8a",
-        "call": "production/calls/fool-five-tier-material-angel-v1.json",
-        "role": "agentic-material-reference",
-        "presentation_background": "opaque",
-        "visual_status": "pending"
-      },
-      {
-        "tier": "true-god",
-        "path": "artifacts/production/fool-five-tier-material-true-god-v1/raw.png",
-        "sha256": "d01a4ade113515d92d6b676106e3ca6307436980d229afc62a73ff0879b18e64",
-        "call": "production/calls/fool-five-tier-material-true-god-v1.json",
-        "role": "agentic-material-reference",
-        "presentation_background": "opaque",
-        "visual_status": "pending"
-      }
-    ],
-    "engineering_status": "study-only; deterministic renderer remains the sole active pixel production path"
+    "purpose": "分离材质研究目录在当前工作区不存在，未恢复或伪造；官方颜色与品质由当前完整 Agentic 五档帧直接承担。",
+    "assets": [],
+    "engineering_status": "not-a-current-dependency; native Agentic frame package is the official source"
   },
   "legacy_four_tier_status": {
     "active": false,
@@ -180,17 +132,18 @@
     "reason": "用户已明确不保留原四档作为当前资产、交付基线或回退方案"
   },
   "output_contract": {
-    "frame_names": ["frame-low.png", "frame-mid.png", "frame-saint.png", "frame-angel.png", "frame-true-god.png"],
+    "frame_names": ["frame-low-native.png", "frame-mid-native.png", "frame-saint-native.png", "frame-angel-native.png", "frame-true-god-native.png"],
     "emblem_count": 10,
     "sequence_composition_count": 10,
     "emblem_name_pattern": "emblem-{digit}.png",
     "sequence_name_pattern": "fool-{digit}-frame.png",
-    "text_layer_names": ["text-panel-left.png", "text-panel-center.png", "text-panel-right.png", "text-safe-zones.png"],
-    "diamond_layer_names": ["diamond-low.png", "diamond-mid.png", "diamond-saint.png", "diamond-angel.png", "diamond-true-god.png"],
-    "required_diagnostics": ["contact-sheet.png", "five-tiers.png", "emblems-white.png", "emblems-dark.png", "diamonds-five-tier.png", "manifest.json"],
+    "text_layer_names": [],
+    "diamond_layer_names": [],
+    "embedded_gem_mode": "complete-agentic-frame",
+    "required_diagnostics": ["five-tiers.png", "light-preview.png", "manifest.json"],
     "no_tier_suffix_on_emblem_or_sequence_names": true,
     "no_cross_product_variants": true
   },
-  "visual_approval": "pending-new-material-review",
+  "visual_approval": "user-approved-agentic-baseline",
   "formal_release_approved": false
 }

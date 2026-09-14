@@ -1,0 +1,81 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/fool-s00-subject-v1.json",
+      "sha256": "78d833a956fc5bc95b92148d5c03d93b4074d51f5b1e51539d64e8cbcd01b58e"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "3c54f56acf3fe1d50e9c88597abdcb36b9a0f31633948a1798c6a8d058fea5d5"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "64f5dc821542842d05e488bb4062d27473b1458ca1cd0fc881f8258a4614e708"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "fe03293f19fcbb965ccb85b6787e881371365f01cec1c6c311c903035cda45bf"
+    },
+    {
+      "path": "docs/production-sop-v2.md",
+      "sha256": "e9e5213ccee6663d92c3ee8d6f5d8a04f0d1a728e5cd89b3e28765c8c5dccf63"
+    },
+    {
+      "path": "docs/pathway-carrier-sop.md",
+      "sha256": "bbcb389d9d720af99ba867d2010d76c1db40507230ce0526aa0bd8fccc3dd54b"
+    },
+    {
+      "path": "docs/card-narrative-contract.md",
+      "sha256": "ca504e67d5ea6ea7795f3552163bd90423cb56514491c9e82406bf9e42287302"
+    },
+    {
+      "path": "config/quality-color-tokens.json",
+      "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"
+    },
+    {
+      "path": "config/sequence-hierarchy.json",
+      "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"
+    },
+    {
+      "path": ".agents/skills/lotm-subject/SKILL.md",
+      "sha256": "ae9230a8fae51ed6c3358802322a38882f215a31783ef45e4abec83ec563f9ed"
+    },
+    {
+      "path": "artifacts/lotm.fool.s00/directed-v003/fool-s00-render-v003.png",
+      "sha256": "972865f92a8763891a16bacd118a0ff12caadbe156000a8f8b2b8af1ab73fd36",
+      "role": "edit_target"
+    },
+    {
+      "path": "artifacts/production/fool-five-tier-kit-v5/frame-true-god.png",
+      "sha256": "f0c44248e7276ccca0ba1a018dbdc09396c985578e68f80e7d714bfcbdb40c3b",
+      "role": "geometry"
+    },
+    {
+      "path": "docs/production-sop-v2.md",
+      "sha256": "e9e5213ccee6663d92c3ee8d6f5d8a04f0d1a728e5cd89b3e28765c8c5dccf63"
+    },
+    {
+      "path": "docs/research/2026-09-13-fool-s00-research.md",
+      "sha256": "5f98d9543a1872682b31402638762076bff127305bf2c2b8221d43758b83a2eb"
+    },
+    {
+      "path": "production/symbols/fool-five-tier-kit.json",
+      "sha256": "dd13fec110d46e36b03f7d90971b85a2866be49b942745eff7cd4be936e121dc"
+    },
+    {
+      "path": "production/symbols/inscriptions/fool-side-inscription-v4.json",
+      "sha256": "c5b607beedfffbe9784ae9216b64666f386a46b770ad92d9f5efd50af98c23c4"
+    },
+    {
+      "path": "pathways/fool/sequences/00/card.json",
+      "sha256": "99977b6b7b4ba8c6025395f827f53c43ecb7996060fee53d739ae67f72c21a53"
+    },
+    {
+      "path": "pathways/fool/sequences/00/card.json",
+      "sha256": "99977b6b7b4ba8c6025395f827f53c43ecb7996060fee53d739ae67f72c21a53"
+    }
+  ],
+  "design_fingerprint": "4880124f19435bde4c6b72ea10caf8d397999d2364d0c64565b4f2094118dcb0",
+  "task_sha256": "8aebc60b8010cd30568ed9164e0224302deaa09d2e71ebff1ab7231313daf0b4",
+  "prompt_sha256": "6be0dce6a2c9ad54de5d36f961da9eeacdcf4843387efc6ab708200303a6c07f"
+}

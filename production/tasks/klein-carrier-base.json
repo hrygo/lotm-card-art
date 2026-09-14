@@ -3,8 +3,8 @@
   "revision": 1,
   "references": [
     {
-      "path": "artifacts/production/klein-carrier-geometry-v1/reference.png",
-      "sha256": "362c48b70e5242619ae1f0535686f4378833915078d79267189020ed71f988a0",
+      "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png",
+      "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783",
       "role": "style"
     }
   ],

@@ -1,0 +1,145 @@
+{
+  "batch_id": "fool-secondary-asset-kit-v1",
+  "kind": "secondary-asset-kit",
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-14",
+  "status": "candidate-studies-registered",
+  "entries": [
+    {
+      "task_id": "fool-material-veil-v2",
+      "attempt": 1,
+      "prompt_source": "production/tasks/fool-material-veil-v2.json",
+      "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-d34f91ae-49bc-49c1-a0af-e968723afe35.png",
+      "output": {
+        "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-veil-metal-enamel.png",
+        "sha256": "948f08da489d51765a64b3ef8181f6ee8192fbdb20a7c33b73b7379eda9e924d",
+        "size_px": [1254, 1254],
+        "channel_format": "RGB",
+        "pixel_role": "agentic-style-reference-only"
+      },
+      "observation": "形成烟紫珐琅、雾银金属与克制古金边缘的复合材质研究；文件为不透明研究底，不直接进入透明生产层。",
+      "visual_status": "pending",
+      "formal_release_approved": false
+    },
+    {
+      "task_id": "fool-emblem-dock-v1",
+      "attempt": 2,
+      "prompt_source": "production/tasks/fool-emblem-dock-v1.json",
+      "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-b722fbb8-eb0d-4492-9298-ea6010ae363d.png",
+      "output": {
+        "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-emblem-dock.png",
+        "sha256": "820a63678cf4d0a85277ed99cfafc3fb1978af5f94a9c4d959af92de677d7306",
+        "size_px": [2172, 724],
+        "channel_format": "RGB",
+        "pixel_role": "agentic-study-only"
+      },
+      "observation": "第二次研究稿形成横向浅承托、烟紫凹槽、银金边缘与帷幕衔接；第一次圆形中央徽台研究稿判定为结构失败，未收入资产包。最终几何仍以 EmblemDock 契约为准。",
+      "visual_status": "pending",
+      "formal_release_approved": false
+    },
+    {
+      "task_id": "fool-tier-material-low-v1",
+      "attempt": 1,
+      "prompt_source": "production/tasks/fool-tier-material-low-v1.json",
+      "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-d6b3808e-6f7b-4732-9eae-9e59a424eec0.png",
+      "output": {
+        "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-low.png",
+        "sha256": "811b585946149b15f085961f42e7f3fa24c004bd72687360b208c85fe4710558",
+        "size_px": [1254, 1254],
+        "channel_format": "RGB",
+        "pixel_role": "agentic-style-reference-only"
+      },
+      "observation": "银白低档、浅冷珐琅、烟紫凹槽与单颗钻石高光可区分；不透明研究底，不改变冻结几何。",
+      "visual_status": "pending",
+      "formal_release_approved": false
+    },
+    {
+      "task_id": "fool-tier-material-mid-v1",
+      "attempt": 1,
+      "prompt": "Create a square close-up material study for a reusable MID-quality frame material of the Fool pathway, not a finished card and not new geometry. Use emerald green #55B978 as the main anchor across refined silver metal and enamel, with smoky-violet recessed cavities, deeper grooves, controlled cool-to-warm hue drift, and one polished faceted diamond with precise internal reflection. The elevation must come from material depth and disciplined optical response, not extra parts or clutter. Keep generous clean negative space and a museum-grade occult artifact feel. No frame silhouette, no emblem, no mask, no numeral, no Chinese characters, no name, no character, no scene, no extra ornaments, no crown, no wings, no additional gemstones, no global tint, no rainbow noise, no watermark. This is an Agentic material study; deterministic masks own final pixels. No text of any kind.",
+      "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-76268a06-d9e0-446b-886c-8ba0129d1adc.png",
+      "output": {
+        "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-mid.png",
+        "sha256": "62fa2bdbe85eebf5a1c833e194dca0446a65392818c93a336ee628b2fa22c960",
+        "size_px": [1254, 1254],
+        "channel_format": "RGB",
+        "pixel_role": "agentic-style-reference-only"
+      },
+      "observation": "翡翠绿进入珐琅与局部金属反射，烟紫暗部仍保留愚者途径识别，钻石切面和内部反射清晰；不透明研究底。",
+      "visual_status": "pending",
+      "formal_release_approved": false
+    },
+    {
+      "task_id": "fool-tier-material-saint-v1",
+      "attempt": 1,
+      "prompt": "Create a square close-up material study for a reusable SAINT-quality frame material of the Fool pathway, not a finished card and not new geometry. Use secret blue #4D97D4 as the main anchor across cool silver metal and smoky-violet recessed enamel, with sacred-grade depth, crisp but restrained relief, controlled blue-to-violet hue movement, and one precise faceted diamond with luminous internal refraction. The elevation must come from material authority, depth, and disciplined light, never added ornaments or clutter. Keep generous clean negative space and a museum-grade occult artifact feel. No frame silhouette, no emblem, no mask, no numeral, no Chinese characters, no name, no character, no scene, no extra ornaments, no crown, no wings, no additional gemstones, no global tint, no rainbow noise, no watermark. This is an Agentic material study; deterministic masks own final pixels. No text of any kind.",
+      "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-717c9fff-d065-4251-9fe0-131e1cab32ae.png",
+      "output": {
+        "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-saint.png",
+        "sha256": "37780ef8dc3d8ef3935304c9a06f9c5b83ee19bd081efe80ad92b3e525b995c8",
+        "size_px": [1254, 1254],
+        "channel_format": "RGB",
+        "pixel_role": "agentic-style-reference-only"
+      },
+      "observation": "秘蓝、冷银与烟紫深部形成圣者级材质权威，钻石呈蓝白折射；不透明研究底。",
+      "visual_status": "pending",
+      "formal_release_approved": false
+    },
+    {
+      "task_id": "fool-tier-material-angel-v1",
+      "attempt": 1,
+      "prompt": "Create a square close-up material study for a reusable ANGEL-quality frame material of the Fool pathway, not a finished card and not new geometry. Use archival purple #A66BD6 as the main anchor across darkened precious metal and smoky-violet recessed enamel, with elegant depth, controlled spectral violet drift, narrow refined highlights, and one highly precise faceted diamond with layered internal refraction. The elevation must come from rare material behavior and composed light, never visual clutter or enlarged symbols. Keep generous clean negative space and a museum-grade occult artifact feel. No frame silhouette, no emblem, no mask, no numeral, no Chinese characters, no name, no character, no scene, no extra ornaments, no crown, no wings, no additional gemstones, no global tint, no rainbow noise, no watermark. This is an Agentic material study; deterministic masks own final pixels. No text of any kind.",
+      "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-f5c4fd0b-f010-4680-9e26-528968dbc014.png",
+      "output": {
+        "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-angel.png",
+        "sha256": "010e74da4be8caac2139aea5dd5707857fadb7405de1a6ce0caad6baa5db0654",
+        "size_px": [1254, 1254],
+        "channel_format": "RGB",
+        "pixel_role": "agentic-style-reference-only"
+      },
+      "observation": "典藏紫进入深色金属与烟紫珐琅，光线更窄更稀有，钻石有多层内部折射；不透明研究底。",
+      "visual_status": "pending",
+      "formal_release_approved": false
+    },
+    {
+      "task_id": "fool-tier-material-true-god-v1",
+      "attempt": 1,
+      "prompt": "Create a square close-up material study for a reusable TRUE-GOD-quality frame material of the Fool pathway, not a finished card and not new geometry. Use orange-gold #F0B23F as the main anchor across deep precious metal and smoky-violet recessed enamel, with sovereign depth, calm impossible reflection, disciplined warm-cool contrast, and one museum-grade faceted diamond with internal fire and one small sharp highlight. True-god quality must feel like an ordered law and rare material presence, not a pile of ornaments. Keep large clean negative space and the same component count. No frame silhouette, no emblem, no mask, no numeral, no Chinese characters, no name, no character, no scene, no extra ornaments, no crown, no wings, no additional gemstones, no global tint, no rainbow noise, no watermark. This is an Agentic material study; deterministic masks own final pixels. No text of any kind.",
+      "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-0b1bcfc0-465b-42f9-91aa-b432a4ec113b.png",
+      "output": {
+        "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-true-god.png",
+        "sha256": "620b111a85cf8f8aad3cedf6b58e62751edae7b220df256c5f10a15a43ca845e",
+        "size_px": [1254, 1254],
+        "channel_format": "RGB",
+        "pixel_role": "agentic-style-reference-only"
+      },
+      "observation": "橙金形成主权级金属秩序感，烟紫作为深部对比，单颗钻石保留内部火彩与单点锐利高光；不透明研究底。",
+      "visual_status": "pending",
+      "formal_release_approved": false
+    }
+  ],
+  "preserved_style_reference": {
+    "task_id": "fool-inscription-ornament-v1",
+    "attempt": 1,
+    "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-inscription-ornament-initial.png",
+    "sha256": "385e207882d8fcf05a2392213745a75ef83e6ad0b3b638b8a8c39f3bbb5b734e",
+    "size_px": [1024, 1536],
+    "generator_output": "/Users/hrygo/.codex/generated_images/01a0995f-8a27-71a0-b097-fd10334cd99a/exec-1b192074-b102-4d65-9550-a4f32b483df4.png",
+    "visual_status": "user-approved-style-direction",
+    "pixel_role": "reference-only",
+    "integration_contract": "production/symbols/inscriptions/fool-side-inscription-v4.json",
+    "observation": "用户认可初版侧柱的整体艺术设计；保留其外轮廓、帷幕卷曲、烟紫凹槽与金属层次，后续铭文按 v4 契约程序化融合，不直接使用其环境底色。"
+  },
+  "release": {
+    "formal_release_approved": false,
+    "blocking_reasons": [
+      "研究稿多数为不透明底，尚未完成透明隔离",
+      "EmblemDock 仍需按固定几何进行确定性重建",
+      "材质研究尚未转译为生产蒙版和五档渲染层",
+      "侧柱精确字形尚未按 v4 契约装配",
+      "尚未完成用户视觉批准和 release gate"
+    ]
+  }
+}

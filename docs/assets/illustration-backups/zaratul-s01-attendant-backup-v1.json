@@ -1,0 +1,107 @@
+{
+  "asset_id": "zaratul-s01-attendant-backup-v1",
+  "status": "material-backup",
+  "approval": "not-approved",
+  "production_scope": "asset-only / no-production",
+  "character": {
+    "name_zh": "扎拉图",
+    "name_en": "Zaratul",
+    "pathway": "愚者",
+    "sequence": "01",
+    "sequence_name": "诡秘侍者",
+    "identity_slice_id": "zaratul.s01.attendant-of-mysteries",
+    "character_id": "zaratul",
+    "candidate_card_id": "lotm.fool.s01.zaratul-attendant-01",
+    "disambiguation": "当代秘法会首领；不包含扎拉图先祖、安提哥努斯、格尔曼·斯帕罗或克莱恩。"
+  },
+  "research": {
+    "local_material": "docs/research/2026-09-14-zaratul-card-materials.md",
+    "status": "research-backed candidate; personal失控/投影/复苏细节仍按 lead 处理",
+    "source_scope": "官方英文译本章节定位；不能单独升级中文专名、完整配方或个人仪式为中文底本 verified",
+    "source_refs": [
+      {
+        "chapter": "237",
+        "url": "https://www.webnovel.com/book/11022733006234505/35957781160850515",
+        "use": "扎拉图自称序列 2 奇迹师，同时留下其未透露全部真相的疑问"
+      },
+      {
+        "chapter": "463",
+        "url": "https://www.webnovel.com/book/11022733006234505/38485453703273157",
+        "use": "奇迹与复苏/死而复生关联的剧情定位"
+      },
+      {
+        "chapter": "1178",
+        "url": "https://www.webnovel.com/book/11022733006234505/44251098617269451",
+        "use": "扎拉图服用序列 1 魔药并保有额外序列 2 特性的定位"
+      },
+      {
+        "chapter": "1360",
+        "url": "https://www.webnovel.com/book/11022733006234505/46571609569420614",
+        "use": "克莱恩完成序列 1 仪式并解决扎拉图这一长期敌手的后续关系"
+      }
+    ]
+  },
+  "asset": {
+    "path": "docs/assets/illustration-backups/zaratul-s01-attendant-backup-v1.png",
+    "role": "standalone subject illustration",
+    "visual_concept_status": "candidate-art-proposal",
+    "visual_event": "扎拉图站在现实边界的封闭门前，手持无可读文字的信件；主体保持完整，背后仅留下无法同步的附着式延迟轮廓。",
+    "not_a_finished_card": true,
+    "excluded_from": [
+      "card.json",
+      "production/tasks",
+      "production/calls",
+      "design approval",
+      "release"
+    ]
+  },
+  "provenance": {
+    "tool": "image_gen",
+    "generation_mode": "illustration-story",
+    "revision_mode": "precise-object-edit",
+    "generated_at": "2026-09-14",
+    "recorded_at_utc": "2026-09-14T08:58:57Z",
+    "references": [
+      "docs/research/2026-09-14-zaratul-card-materials.md",
+      "pathways/fool/direction.json",
+      "config/project.json"
+    ],
+    "prompt_summary": "Vertical 2:3 painterly dark-fantasy scene: contemporary Zaratul as a mature Attendant of Mysteries at a sealed doorway in a liminal archive, holding an unreadable letter, with one attached unsynchronized contour instead of a second face or body.",
+    "negative_constraints": "No Zaratul Senior, Antigonus, Gehrman Sparrow or Klein; no separate second character, duplicate face, complete ghost body, marionette language, puppets, tarot imagery, top hat, gray fog throne, Sefirah Castle, Sequence 0 Fool authority, giant mask, eyes, tentacles, wolf heads, body horror, crown, worshippers, card frame, emblem, numeral, name, readable writing, pseudo-text or watermark.",
+    "processing_chain": [
+      "image_gen native generation",
+      "visual inspection identified a visible duplicate face in the afterimage",
+      "one targeted image_gen edit replacing it with an attached faceless contour",
+      "copy selected revision into workspace",
+      "no crop",
+      "no upscale",
+      "no frame, text or emblem compositing"
+    ]
+  },
+  "engineering": {
+    "width": 1024,
+    "height": 1536,
+    "aspect_ratio": "2:3",
+    "format": "PNG",
+    "color_space": "RGB (reported by sips; project target is sRGB)",
+    "native_canvas": true,
+    "final_card_resolution": false,
+    "sha256": "828f1320afbe91031211261439e0dbf37fe39d85de500c9d982d49abeec2e07b"
+  },
+  "visual_check": {
+    "checked": true,
+    "method": "view_image manual inspection",
+    "observations": [
+      "主体、封闭门、档案走廊、信件和附着式轮廓属于同一连续场景。",
+      "扎拉图主体保持完整人形；残影已不再呈现清晰的第二张脸或独立身体。",
+      "画面保留信息不对称、边界与后果的叙事关系，没有堆叠大型法术意象。",
+      "未观察到卡框、途径徽记、序列数字、姓名或可读文字。"
+    ],
+    "remaining_risks": [
+      "扎拉图的具体外貌并未在本项目资料包中冻结，本图只作为候选视觉解释。",
+      "附着式轮廓仍可能被读作投影/复苏线索，不能据此确认个人能力机制。",
+      "这是备用物料，不代表正式卡面设计、事实批准或 release。",
+      "1024×1536 是本次原生画布，不代表项目最终 2048×3072 卡面交付。"
+    ]
+  }
+}

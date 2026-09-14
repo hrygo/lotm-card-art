@@ -19,36 +19,14 @@
   "preserved": [
     {
       "digit": 0,
-      "run": "v001",
-      "path": "artifacts/production/fool-fusion-0/v001/raw.png",
-      "sha256": "9dc7aa0462ee877586e41be6d3f874a5731170e7c3226bfb5794c876cc96ba67",
-      "receipt": "artifacts/production/fool-fusion-0/v001/receipt.json",
-      "retention": "keep",
-      "role": "original-artwork",
-      "engineering_status": "opaque-background",
-      "art_review": "user-endorsed-design-direction"
-    },
-    {
-      "digit": 0,
       "run": "v002",
       "path": "artifacts/production/fool-fusion-0/v002/raw.png",
       "sha256": "2a8d70b9bd7d5b7abfb2040a6c2c5fc12a27b36df6912ae256315c1b542d1245",
       "receipt": "artifacts/production/fool-fusion-0/v002/receipt.json",
       "retention": "keep",
-      "role": "historical-background-repair",
+      "role": "latest-reference",
       "engineering_status": "opaque-background",
-      "art_review": "retained-not-individually-approved"
-    },
-    {
-      "digit": 4,
-      "run": "v001",
-      "path": "artifacts/production/fool-fusion-4/v001/raw.png",
-      "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c",
-      "receipt": "artifacts/production/fool-fusion-4/v001/receipt.json",
-      "retention": "keep",
-      "role": "original-artwork",
-      "engineering_status": "opaque-background",
-      "art_review": "user-endorsed-design-direction"
+      "art_review": "user-approved-visual-baseline-latest-reference"
     },
     {
       "digit": 4,
@@ -57,20 +35,9 @@
       "sha256": "c31c5ab6dffebf47d70b3e5322b0534b49ad9ab73471164cc57145b3b63c8d26",
       "receipt": "artifacts/production/fool-fusion-4/v002/receipt.json",
       "retention": "keep",
-      "role": "historical-background-repair",
+      "role": "latest-reference",
       "engineering_status": "opaque-background",
-      "art_review": "retained-not-individually-approved"
-    },
-    {
-      "digit": 7,
-      "run": "v001",
-      "path": "artifacts/production/fool-fusion-7/v001/raw.png",
-      "sha256": "66a1c337ea7464a606951d3e79b449d8d011671e5dbe2a76ee4aaf86fafc2468",
-      "receipt": "artifacts/production/fool-fusion-7/v001/receipt.json",
-      "retention": "keep",
-      "role": "original-artwork",
-      "engineering_status": "opaque-background",
-      "art_review": "user-endorsed-design-direction"
+      "art_review": "user-approved-visual-baseline-latest-reference"
     },
     {
       "digit": 7,
@@ -79,20 +46,9 @@
       "sha256": "668c58b1fad00c8e1bf541ed138b5b9df05dc9c80216c5b3424c7956b0472ad1",
       "receipt": "artifacts/production/fool-fusion-7/v002/receipt.json",
       "retention": "keep",
-      "role": "historical-background-repair",
+      "role": "latest-reference",
       "engineering_status": "opaque-background",
-      "art_review": "retained-not-individually-approved"
-    },
-    {
-      "digit": 9,
-      "run": "v001",
-      "path": "artifacts/production/fool-fusion-9/v001/raw.png",
-      "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9",
-      "receipt": "artifacts/production/fool-fusion-9/v001/receipt.json",
-      "retention": "keep",
-      "role": "original-artwork",
-      "engineering_status": "opaque-background",
-      "art_review": "user-endorsed-design-direction"
+      "art_review": "user-approved-visual-baseline-latest-reference"
     },
     {
       "digit": 9,
@@ -101,9 +57,15 @@
       "sha256": "ff797f0b7dfea42067fd07ab564835c484fa66cd7b470d41cac25a512fab0144",
       "receipt": "artifacts/production/fool-fusion-9/v002/receipt.json",
       "retention": "keep",
-      "role": "historical-background-repair",
+      "role": "latest-reference",
       "engineering_status": "opaque-background",
-      "art_review": "retained-not-individually-approved"
+      "art_review": "user-approved-visual-baseline-latest-reference"
     }
+  ],
+  "retired_versions": [
+    {"digit": 0, "run": "v001", "path": "artifacts/production/fool-fusion-0/v001/raw.png", "sha256": "9dc7aa0462ee877586e41be6d3f874a5731170e7c3226bfb5794c876cc96ba67", "status": "moved-to-trash", "reason": "superseded by retained latest reference v002"},
+    {"digit": 4, "run": "v001", "path": "artifacts/production/fool-fusion-4/v001/raw.png", "sha256": "d0d99baeb661dbde14718550d042a192f0cc0a3b3ac15aa80de9ea2633c2b83c", "status": "moved-to-trash", "reason": "superseded by retained latest reference v002"},
+    {"digit": 7, "run": "v001", "path": "artifacts/production/fool-fusion-7/v001/raw.png", "sha256": "66a1c337ea7464a606951d3e79b449d8d011671e5dbe2a76ee4aaf86fafc2468", "status": "moved-to-trash", "reason": "superseded by retained latest reference v002"},
+    {"digit": 9, "run": "v001", "path": "artifacts/production/fool-fusion-9/v001/raw.png", "sha256": "4150a1089d53e79022b05defcdd5dae894293e272134661a7ff577ad237991b9", "status": "moved-to-trash", "reason": "superseded by retained latest reference v002"}
   ]
 }

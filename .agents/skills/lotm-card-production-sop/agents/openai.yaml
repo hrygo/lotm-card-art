@@ -1,0 +1,5 @@
+interface:
+  display_name: "LOTM 单卡制作 SOP"
+  short_description: "按研究、六维语义、图像、音频与审核门槛端到端制作单卡"
+  brand_color: "#C99A4A"
+  default_prompt: "Use $lotm-card-production-sop to produce or revise one LOTM sequence card end to end."

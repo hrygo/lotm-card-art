@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-tier-material-angel-v1",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "quality": {"sequence": 2, "visual_tier": "angel"},
+  "output": {"aspect": [1, 1], "background": "opaque"},
+  "prompt": "Use case: stylized-concept. Asset type: reusable ANGEL quality material reference for the Fool pathway frame and EmblemDock, not a finished card and not a new geometry. Primary request: a square close material study using archival purple #A66BD6 as the main anchor on darkened precious metal and smoky-violet recessed enamel, with elegant depth, controlled spectral violet drift, narrow refined highlights, and a highly precise faceted diamond with layered internal refraction. The elevation is communicated by rare material behavior and composed light, never by visual clutter or enlarged symbols. Text (verbatim): none. Constraints: preserve the existing family of surfaces; no frame silhouette, no emblem, no mask, no numeral, no Chinese characters, no name, no character, no scene, no extra ornaments, no crown, no wings, no additional gemstones, no global tint, no rainbow noise, no watermark. Agentic study only; deterministic material masks own final pixels.",
+  "references": [{"path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-angel-native.png", "sha256": "915bf178836731d108da014a8d7c3365f7e95515c54494385e5b28fe79765dd9", "role": "style"}],
+  "limits": {"max_attempts": 1},
+  "spec": {"tier": "angel", "geometry": "沿用冻结母版位置，只研究典藏紫天使材质与宝石光学，不改变几何。", "clear_regions": [[0, 0, 1000, 1500]]},
+  "contracts": [
+    {"path": "docs/production-sop-v3.md", "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"},
+    {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"}
+  ]
+}

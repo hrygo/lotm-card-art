@@ -1,39 +1,49 @@
-# 精雕符号资产库 · v1
+# 精雕符号资产库
 
-## 当前愚者五档带圣徽框套件
+## 当前愚者途径视觉基线
 
-当前入口是[五档资产目录](fool-five-tier-kit.json)与[五档制作报告](../../reports/fool-five-tier-materials-v1.md)。已生成[五档边框总览](../../artifacts/production/fool-five-tier-kit-v1/five-tiers.png)、[十序列装配总览](../../artifacts/production/fool-five-tier-kit-v1/contact-sheet.png)及[深底圣徽诊断](../../artifacts/production/fool-five-tier-kit-v1/emblems-dark.png)。当前映射为低序列9/8、中序列7/6/5、圣者4/3、天使2/1、真神0；五档采用同一锁定几何与固定坐标材质处理，视觉审核仍待用户确认，未进入formal release。
+当前入口是[五档资产目录](fool-five-tier-kit.json)。正式保留的层级物料位于
+`artifacts/production/fool-five-tier-direct-kit-v1/`：五张 `1024×1536` 原生 Agentic
+完整边框、[五档接触表](../../artifacts/production/fool-five-tier-direct-kit-v1/five-tiers.png)、
+浅底诊断图和 `manifest.json`。当前映射固定为：低序列 09/08，中序列 07/06/05，圣者
+04/03，天使 02/01，真神 00。
 
-旧四档目录 fool-frame-kit.json 已标记为 retired-historical，不再是交付入口、active asset 或 fallback；历史记录和工具仅用于审计/回归。
+五档与十序列的统一活动入口为
+[愚者分层资产基线](fool-layered-asset-baseline-v1.json)。它只引用上述五档完整框、十张
+完整序列框和保留的融合圣徽参考，明确区分当前视觉基线与历史研究稿。
 
-## 新版品质边框样板
+当前流程不保留中间 2K 图；五档源的宝石已直接嵌入完整 Agentic 画面，不另设钻石覆盖层，
+也不生成五档×十序列交叉变体。正式卡牌仍需经过单卡内容、视觉批准和最终整幅 2K/4K
+采样门禁。
 
-最新：已固化[品质边框Skill](../../.agents/skills/lotm-quality-frames/SKILL.md)，并执行“严禁位置漂移”。[母框比例与姓名居中校准](../../artifacts/production/quality-layout-v2/master-aligned-r2/final.png)、[统一几何锁](quality-geometry-lock.json)。圣徽可见高度约增14%，姓名字形双轴实测误差0像素；不再逐档挪姓名补偿漂移。下述三档参考编辑稿均暂不准入正式合成，高阶有已观察位置漂移，另两档因不透明无法通过结构核验。
+母版原生视觉源为
+`artifacts/production/fool-mother-frame-v1/studies/fool-mother-agentic-high-detail-candidate-n.png`；
+十张完整序列框位于
+`artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/`。
 
-[四档品质对照](../../artifacts/production/quality-frames-v1/frames/final.png) · [圣徽与姓名试装](../../artifacts/production/quality-frames-v1/emblem-fit-r2/final.png) · [结构化清单](quality-frame-family.json)。
-采用低阶母框真实参考派生，固定帷幕骨架与构件数量，用材质及底部单一品质片区分四档。顶部开放，不再用小圆孔。仅母框当前有真实alpha，另三档待净底；高档底部略有几何漂移。属于方向样板而非可发布四档套件，旧图保留。
+## 融合圣徽参考
 
-## 最新补充：完整愚者融合族
+“途径标识 → 艺术数字 → Agentic 融合”的方法和 0–9 视觉族已保留在
+[fool-fusion-family.json](fool-fusion-family.json)。每个数字当前只保留一个最新运行：
+0、4、7、9 为 `v002`，1、2、3、5、6、8 为 `v001`。这些图像仍是带环境底色的视觉参考，
+不是透明图层；当前母版顶部使用独立数字圆洞，不自动装配历史融合圣徽。
 
-用户已认可“母标识→专属数字→Agentic融合”的方法及旧0/4/7/9造型，并明确要求保留。现已补齐1/2/3/5/6/8：[十枚总览](../../artifacts/production/symbol-art-v2/fool-fusion-family/final.png)、[完整清单](fool-fusion-family.json)、[旧稿保留凭据](fool-fusion-preservation.json)。
-方法已固化到[lotm-symbols Skill](../../.agents/skills/lotm-symbols/SKILL.md)。艺术认可与透明工程状态分开：旧稿未覆盖，新增稿待确认；十枚当前均需净底。以下v1数据保留为首轮记录，不代表融合族仍只有四枚。
+独立数字目录已退役；[fool-rank-numerals-v1.json](fool-rank-numerals-v1.json) 仅作退休记录。
 
-## 首轮记录
+## 生命周期与验证
 
-本轮通过Agent Skills实际生成，不是矢量占位符。全部为原创美术候选，尚未获得用户批准。
+明显旧四档、局部铭刻、2K 中间输出、早期候选和失败试装已按
+[清理账本](../retirements/fool-failed-materials-2026-09-14.json) 移入 macOS Trash，保留可恢复性。
+22 条途径的独立 `sigil-*` 原始目录、公共材质库和克莱恩主体候选未纳入本次层级清理。
 
-- [22途径圣徽浅底总览](../../artifacts/production/symbol-art-v1/emblems-light/final.png)
-- [22途径圣徽深底总览](../../artifacts/production/symbol-art-v1/emblems-dark/final.png)
-- [愚者0–9艺术数字](../../artifacts/production/symbol-art-v1/fool-numerals/final.png)
-- [四级框与姓名试装](../../artifacts/production/symbol-art-v1/four-tiers-named/final.png)
-- [融合造型候选：透明交付失败](../../artifacts/production/symbol-art-v1/fusion-concepts/final.png)
+当前基线检查：
 
-机器接入读取[catalog.json](catalog.json)，原图地址从receipt的raw字段解析；不要扫描目录后把所有PNG都当可用资产。`fusions`为`blocked-alpha`，不可作为透明叠层；`diagnostic_jobs`只是失败展示。
-22圣徽、10数字、4框共36个透明候选。四框仅愚者体系，不是22×4已齐。融合只有愚者0/4/7/9造型，原稿与返修均失败，没有220枚可用融合印记。
+```text
+python3 tools/production.py check-fool-materials
+python3 tools/production.py check-fool-cards
+```
 
-所有框均有独立姓名铭牌，中文由合成程序排版，不能交给生图猜字。插画关键区域按[窗口实测](frame-window-check.json)避让：原先统一大矩形窗口未满足，高/神需专属遮挡与裁切规则。
-
-复核：`python3 -m unittest discover -s tests -p test_symbols_library.py -v`。
-重渲染示例：`python3 tools/materialctl.py render production/symbols/recipes/emblems-light.json --out artifacts/production/symbol-art-v1/emblems-light-new`。输出目录必须是新目录；不覆盖历史。
-
-详细质量边界见[交付报告](../../reports/symbol-art-v1.md)。
+该检查核对现存正式物料的路径、SHA-256、原生尺寸、唯一运行目录、无中间 2K、序列一对一
+映射和清理账本；历史目录中的旧路径只作为溯源，不会被当作当前生产输入。
+`check-fool-cards` 另行核对当前 S09/S00 完整原生候选、任务/回执/叙事身份、摘要和待审状态；
+它不会把机器通过或 Agentic 视觉候选自动升级为正式批准。

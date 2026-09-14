@@ -1,0 +1,142 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/fool-s09-card-name-edit-v1.json",
+      "sha256": "07632383fffcbf49124a626048fdc6d83e458a0f5c383da4c9ffa003a8363bd7"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "c53e1bb3642e954b037ddf6afe16aea086835154dff84bf9149ae5420c12879f"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "4f5b772143e0776f5306fb1c0b5edbb7d1a33ecd0b728cea739b25db4bdb9ce9"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "9e52808738733f4c2a3d49d4b0889e397673836f1cf5902bf16d919b99b36122"
+    },
+    {
+      "path": "docs/production-sop-v2.md",
+      "sha256": "d18015a3973d44eca1100e99ef73a8dec7a10b2c818d8f13f56d0c5e8fa214c5"
+    },
+    {
+      "path": "docs/production-sop-v3.md",
+      "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"
+    },
+    {
+      "path": "docs/pathway-carrier-sop.md",
+      "sha256": "91c79bed382a8e94d59815d1bc8eeeea440e4247615ee8da1bcafe0e21850710"
+    },
+    {
+      "path": "docs/card-narrative-contract.md",
+      "sha256": "ca504e67d5ea6ea7795f3552163bd90423cb56514491c9e82406bf9e42287302"
+    },
+    {
+      "path": "config/quality-color-tokens.json",
+      "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"
+    },
+    {
+      "path": "config/sequence-hierarchy.json",
+      "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"
+    },
+    {
+      "path": ".agents/skills/lotm-subject/SKILL.md",
+      "sha256": "39e8000ada2acc40c6e3bcb6d5600741b85c6d79dcf25476443dc001b85efeb4"
+    },
+    {
+      "path": "artifacts/production/fool-s09-card-agentic-v1/v001/agentic-full-card-candidate-v1.png",
+      "sha256": "e20c0a0164ffeaba825242e09891f4ab394d697e0488101fe97ae0870d200c72",
+      "role": "edit_target"
+    },
+    {
+      "path": "production/symbols/fool-five-tier-kit.json",
+      "sha256": "8146a6eac9003981ffb09143901d8b40631a60b1cc0885bd3ffda65e15c8ea7d"
+    },
+    {
+      "path": "production/symbols/fool-agentic-sequence-inscriptions-v2.json",
+      "sha256": "2d3143a737ba386706d60848affaca9caff11ca9373b96f7c4cee401f073e6df"
+    },
+    {
+      "path": "production/templates/fool-mother-frame-interface-v1.json",
+      "sha256": "a6285639e2299c8a22b75395b338134e7c25efbb986a0501a2723bc0664a9908"
+    },
+    {
+      "path": "production/templates/emblem-dock-interface-v1.json",
+      "sha256": "9a95288d8b7f5df2287c43f9667ea656c0e8cf8272bf2da5cbb87d218e7f088b"
+    },
+    {
+      "path": ".agents/skills/lotm-quality-frames/SKILL.md",
+      "sha256": "1a653d55d70d2623eec3d57fbda2c5a0af99a0916a16458ab49f7f95c1548d7c"
+    },
+    {
+      "path": ".agents/skills/lotm-subject/SKILL.md",
+      "sha256": "39e8000ada2acc40c6e3bcb6d5600741b85c6d79dcf25476443dc001b85efeb4"
+    },
+    {
+      "path": "docs/production-sop-v3.md",
+      "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"
+    },
+    {
+      "path": "docs/production-preflight.md",
+      "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"
+    },
+    {
+      "path": "config/production-resolution-policy.json",
+      "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"
+    },
+    {
+      "path": "docs/card-narrative-contract.md",
+      "sha256": "ca504e67d5ea6ea7795f3552163bd90423cb56514491c9e82406bf9e42287302"
+    },
+    {
+      "path": "production/narratives/klein-s09-tingen.json",
+      "sha256": "bbfbeb76e8a60a713cf5cd266383e22a159edc357a02060b4e8fff819d65ca5a"
+    },
+    {
+      "path": "production/schemas/card-narrative.schema.json",
+      "sha256": "f70818f19d8ca13133638d7abdc00789a6028fd997a5bcf4f36a32d8d1a5abb9"
+    },
+    {
+      "path": "pathways/fool/canon.json",
+      "sha256": "a7fc2fb3c1bbb7a752bf500451147e07518e557c81389304790b2a0ae285bf6a",
+      "locator": "fool.s09.identity 与 fool.s09 相关身份/处境断言"
+    },
+    {
+      "path": "pathways/fool/sequences/09/card.json",
+      "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e",
+      "locator": "composition.hero_event 与 identity claim_refs；当前卡的廷根时期占卜场景"
+    },
+    {
+      "path": "pathways/fool/canon.json",
+      "sha256": "a7fc2fb3c1bbb7a752bf500451147e07518e557c81389304790b2a0ae285bf6a",
+      "locator": "fool.s09 相关能力、扮演原则与限制断言"
+    },
+    {
+      "path": "pathways/fool/sequences/09/card.json",
+      "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e",
+      "locator": "semantics.acting、semantics.abilities、semantics.limitations 与 pendulum/scope cues"
+    },
+    {
+      "path": "pathways/fool/canon.json",
+      "sha256": "a7fc2fb3c1bbb7a752bf500451147e07518e557c81389304790b2a0ae285bf6a",
+      "locator": "fool.s09 角色身份与阶段性限制的断言"
+    },
+    {
+      "path": "pathways/fool/sequences/09/card.json",
+      "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e",
+      "locator": "composition.hero_event、why_this_sequence 与六维回读边界"
+    },
+    {
+      "path": "pathways/fool/sequences/09/card.json",
+      "sha256": "6428760a0e88f1bc30cbcc9803002580e83d9ca53e458b01096398a2e3903a6e"
+    },
+    {
+      "path": "pathways/fool/canon.json",
+      "sha256": "a7fc2fb3c1bbb7a752bf500451147e07518e557c81389304790b2a0ae285bf6a"
+    }
+  ],
+  "design_fingerprint": "98777fa0707721ca106b039adf0a6ed884fd5ae60e4b8af7772a07d33f49b809",
+  "task_sha256": "dafad74e4c8ac9f832564c28e46b3a853cf2fe5813fde788a00d20458e042821",
+  "prompt_sha256": "05467199b3d56d2887007efb5cdf8d65deddec9e3ef6ab2c22b97f630495d0fa"
+}

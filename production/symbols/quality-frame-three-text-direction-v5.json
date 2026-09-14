@@ -1,0 +1,116 @@
+{
+  "version": "4.0.0",
+  "pathway_id": "fool",
+  "status": "user-confirmed-text-refinement-direction",
+  "geometry_id": "fool-quality-frame-locked-master-v3",
+  "predecessor_direction": "production/symbols/quality-frame-three-text-direction-v4.json",
+  "principle": "保留已确认的五档母框、圣徽和锚点；只修正文字装配：侧铭刻以逐字真实墨框对齐，姓名以单一精确面罩派生浮雕，并将中央面板从钻石保护区上方收回。",
+  "master": {
+    "path": "artifacts/production/fool-quality-frame-low/v001/raw.png",
+    "sha256": "4eb5e5d4ce6943140e121b55699cfc3911c8e67450dda898ff77265ce3ed39e1",
+    "size": [1024, 1536],
+    "role": "frozen-geometry-master"
+  },
+  "coordinate_system": {
+    "space": "design-space-top-left-image-normalized",
+    "design_size": [1024, 1536],
+    "final_size": [2048, 3072],
+    "scale": 2,
+    "text_orientation": "upright",
+    "row_order": "top-to-bottom"
+  },
+  "text_zones": {
+    "template": "production/templates/card-text-panels-v5.json",
+    "side_inlay_width_ratio": 1.5,
+    "side_inlay_width_ratio_tolerance": [1.49, 1.51],
+    "side_inlays_are_full_side_panels": false,
+    "full_width_panel_count": 1,
+    "left": {
+      "zone": "left-column-inlay",
+      "column_body_rect_design": [56, 780, 72, 280],
+      "inlay_rect_design": [38, 780, 108, 280],
+      "text_safe_rect_design": [50, 796, 84, 248],
+      "orientation": "vertical-rl",
+      "capacity_min_characters": 6,
+      "placement_window": "upper-mid-untextured-pillar",
+      "join_model": "column-spindle-soft-fade-and-curled-terminals",
+      "alignment_model": "per-glyph-ink-box-center"
+    },
+    "right": {
+      "zone": "right-column-inlay",
+      "column_body_rect_design": [896, 780, 72, 280],
+      "inlay_rect_design": [878, 780, 108, 280],
+      "text_safe_rect_design": [890, 796, 84, 248],
+      "orientation": "vertical-rl",
+      "capacity_min_characters": 6,
+      "placement_window": "upper-mid-untextured-pillar",
+      "join_model": "column-spindle-soft-fade-and-curled-terminals",
+      "alignment_model": "per-glyph-ink-box-center"
+    },
+    "central_nameplate": {
+      "role": "character_name",
+      "panel_rect_design": [228, 1274, 568, 94],
+      "inner_rect_design": [240, 1286, 544, 70],
+      "center_design": [512, 1321],
+      "diamond_top_design": 1377.16,
+      "minimum_diamond_clearance_final_px": 12,
+      "style_model": "deep-inner-lip-and-single-face-premium-letter-relief"
+    }
+  },
+  "side_inscription": {
+    "asset": "production/symbols/inscriptions/fool-side-inscription-v3.json",
+    "render_mode": "per-glyph-ink-box-derived-relief",
+    "agentic_style_reference_only": true,
+    "flat_text_final_layer_forbidden": true,
+    "minimum_characters": 6,
+    "target_cap_height_final_px": [64, 70],
+    "target_tracking_final_px": [8, 12],
+    "contrast_ratio_minimum": 4.5,
+    "max_center_error_final_px": 1,
+    "max_geometry_drift_design_px": 0
+  },
+  "name_relief": {
+    "style_reference": {
+      "path": "artifacts/production/fool-frame-refinement-v1/nameplate/raw.png",
+      "sha256": "ec17429cec15ab9a3d1dc859f2c9c0c9235281221844b81d27a35698d83512e8"
+    },
+    "source": "program-controlled-exact-glyph-outline",
+    "render_mode": "single-face-mask-with-derived-relief",
+    "face_layer_count": 1,
+    "minimum_cap_height_final_px": 78,
+    "max_center_error_final_px": 1,
+    "flat_layer_forbidden": true,
+    "diamond_protection": "panel-and-effect-bounds-must-clear-bottom-gemstone"
+  },
+  "bottom_gemstone": {
+    "region": "quality-marker-diamond-only",
+    "center_design": [512, 1429],
+    "v1_visible_bbox_design": [472.5, 1388.5, 79, 81],
+    "scale_vs_v1": 1.28,
+    "target_visible_bbox_design": [461.44, 1377.16, 101.12, 103.68],
+    "preserved_from_frozen_v5_frame": true
+  },
+  "protected": [
+    "outer_silhouette",
+    "illustration_window",
+    "top_emblem_safe_region",
+    "emblem_digit_and_holes",
+    "all_anchor_centers",
+    "bottom_gemstone_and_corner_facets"
+  ],
+  "invariants": {
+    "max_anchor_drift_design_px": 0,
+    "max_geometry_drift_design_px": 0,
+    "max_anchor_drift_final_px": 0,
+    "allow_per_tier_offsets": false,
+    "allow_registration_to_hide_drift": false,
+    "generated_text_in_subject": false,
+    "central_panel_only_full_width_text_zone": true,
+    "side_inscription_min_capacity": 6,
+    "text_orientation_must_be_upright": true,
+    "name_face_layer_count": 1,
+    "minimum_name_diamond_clearance_final_px": 12
+  },
+  "visual_review": "pending",
+  "formal_release_approved": false
+}

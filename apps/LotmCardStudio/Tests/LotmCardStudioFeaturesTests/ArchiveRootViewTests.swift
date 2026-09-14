@@ -123,15 +123,24 @@ final class ArchiveRootViewTests: XCTestCase {
     }
 
     func testPresentationCopyTranslatesInternalIdentityAndVoiceIDs() {
-        let fool = DemoLibrary.cards.first { $0.identity.cardID == "lotm.fool.s00.prototype" }!
-        let audrey = DemoLibrary.cards.first { $0.identity.cardID == "lotm.visionary.s07.audrey-01" }!
+        let fool = DemoLibrary.cards.first { $0.identity.cardID == "lotm.fool.s00.klein-moretti.mr-fool-01" }!
+        let audreyIdentity = CardIdentity(
+            cardID: "lotm.visionary.s07.audrey-01",
+            slotID: "lotm.visionary.s07",
+            displayName: "正义",
+            sequenceName: "序列 7 · 心理医生",
+            contentStatus: .proposed,
+            identityKind: .character,
+            characterID: "audrey",
+            identitySliceID: nil
+        )
 
-        XCTAssertEqual(ArchiveCopy.characterName(for: "klein"), "克莱恩")
+        XCTAssertEqual(ArchiveCopy.characterName(for: "klein-moretti"), "克莱恩·莫雷蒂")
         XCTAssertEqual(ArchiveCopy.characterName(for: "audrey"), "奥黛丽")
         XCTAssertEqual(ArchiveCopy.characterName(for: nil), "途径原型")
-        XCTAssertEqual(ArchiveCopy.voiceTitle(for: fool.identity), "愚者的声音")
-        XCTAssertEqual(ArchiveCopy.voiceTitle(for: audrey.identity), "正义的声音")
-        XCTAssertEqual(ArchiveCopy.pathwaySummary(confirmed: 1, candidate: 1), "1 张已确认 · 1 张候选")
+        XCTAssertEqual(ArchiveCopy.voiceTitle(for: fool.identity), "愚者先生的声音")
+        XCTAssertEqual(ArchiveCopy.voiceTitle(for: audreyIdentity), "正义的声音")
+        XCTAssertEqual(ArchiveCopy.pathwaySummary(confirmed: 1, candidate: 2), "1 张已确认 · 2 张候选")
     }
 
     func testPresentationCopyUsesUnpaddedSequenceNumbers() {

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-agentic-tier-transfer-test-v1",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "quality": {"sequence": 7, "visual_tier": "mid"},
+  "output": {"aspect": [2, 3], "background": "transparent"},
+  "prompt": "基于所附的《诡秘之主》愚者途径低序列卡框，生成一张中序列愚者途径卡框迁移测试稿。这是严格的 image-to-image 结构保真测试，不是重新设计。低序列参考图是唯一结构来源，必须尽量逐像素保留 2048×3072 画布比例、透明背景、完整外轮廓、左右初版卷曲帷幕侧柱的形状/宽度/上下端收口/左右对称关系、顶部圣徽预留区域、中央插画窗口、底部姓名承接区、底部钻石的中心/大小/外框/切面、所有负空间和锚点；不得平移、缩放、旋转、透视变形、增删结构。只把品质材质迁移为中序列：主色采用翡翠绿 #55B978，绿色只进入边框纹理、珐琅和宝石反光，保留银白金属骨架与愚者紫色凹槽；通过更饱满的翡翠光泽、精确宝石折射和细腻金属层次表达中序列，不增加繁复度。不要加入翅膀、王冠、额外边框、额外圣徽、文字、数字、伪文字或新装饰。输出只能是干净的空卡框：无人物、无场景、无黑底、无白底、无棋盘格，保留真实 alpha；正视、完整、不裁切、不倾斜、不多卡拼图。结构优先于自由发挥。",
+  "references": [
+    {"path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png", "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783", "role": "edit_target"}
+  ],
+  "limits": {"max_attempts": 1},
+  "spec": {
+    "tier": "mid",
+    "geometry": "唯一参考为冻结低序列母框；只测试翡翠中序列材质迁移，不允许改变任何结构、锚点、孔位、姓名区或钻石几何。",
+    "clear_regions": [[0, 0, 1000, 1500]]
+  },
+  "contracts": [
+    {"path": "docs/production-sop-v2.md", "sha256": "d18015a3973d44eca1100e99ef73a8dec7a10b2c818d8f13f56d0c5e8fa214c5"},
+    {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"},
+    {"path": "production/symbols/quality-frame-three-text-direction-v5.json", "sha256": "a6cb06a65429bebbef1f42cb12cbfb161155f317c27160a44f14c59ea2d0a0bf"}
+  ]
+}

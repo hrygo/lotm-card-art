@@ -7,6 +7,8 @@ description: 为诡秘之主卡牌生产基础材质、纸张、金属表面和�
 
 读取 `docs/production-sop-v3.md`、现有 `production/schemas/task.schema.json` 与当前kind=foundation任务；五档/旧五档迁移细节见 `docs/production-sop-v2.md`，旧工具字段/CLI以 `docs/production-sop.md` 为准。
 
+基础物料在原生工作画布上完成。中间纹理、纸张、金属、姓名艺术字和诊断层不得先转 2K、裁切后再拼装或从 2K 反向修复；只有完整最终卡通过验收后，才执行一次整幅无裁切的最终 2K 采样，且 manifest 必须记录 `intermediate_2k_count=0`。
+
 material、lighting、tiling、use_scope明确接收面、纹理尺度及复用边界。既有框作真实上下文参考，输出材质不重复框、徽、姓名或主角。人物卡默认主体与背景一体生成，不为凑分层数量额外生成可见背板；统一石板不是22途径的默认基础材质。
 
 基础材质是母版几何锁点 L1 之后的下游资产：材质或反射失败只返修材质层及其授权 mask，不移动 FrameCore、EmblemDock、圣徽、姓名或主体锚点。研究稿、候选和工程可用状态分开记录，不能用一张好看的材质图证明嵌座或整框通过。

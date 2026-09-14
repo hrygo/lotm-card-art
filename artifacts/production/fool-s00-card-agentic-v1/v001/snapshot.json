@@ -1,0 +1,141 @@
+{
+  "dependencies": [
+    {
+      "path": "production/tasks/fool-s00-card-agentic-v1.json",
+      "sha256": "0430bf8ef1ec948644755ac2a9d9a8c2c14fad90d42e129ded45a5966ebf1ecb"
+    },
+    {
+      "path": "tools/production.py",
+      "sha256": "c53e1bb3642e954b037ddf6afe16aea086835154dff84bf9149ae5420c12879f"
+    },
+    {
+      "path": "production/schemas/task.schema.json",
+      "sha256": "4f5b772143e0776f5306fb1c0b5edbb7d1a33ecd0b728cea739b25db4bdb9ce9"
+    },
+    {
+      "path": "docs/production-sop.md",
+      "sha256": "9e52808738733f4c2a3d49d4b0889e397673836f1cf5902bf16d919b99b36122"
+    },
+    {
+      "path": "docs/production-sop-v2.md",
+      "sha256": "d18015a3973d44eca1100e99ef73a8dec7a10b2c818d8f13f56d0c5e8fa214c5"
+    },
+    {
+      "path": "docs/production-sop-v3.md",
+      "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"
+    },
+    {
+      "path": "docs/pathway-carrier-sop.md",
+      "sha256": "91c79bed382a8e94d59815d1bc8eeeea440e4247615ee8da1bcafe0e21850710"
+    },
+    {
+      "path": "docs/card-narrative-contract.md",
+      "sha256": "ca504e67d5ea6ea7795f3552163bd90423cb56514491c9e82406bf9e42287302"
+    },
+    {
+      "path": "config/quality-color-tokens.json",
+      "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"
+    },
+    {
+      "path": "config/sequence-hierarchy.json",
+      "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"
+    },
+    {
+      "path": ".agents/skills/lotm-subject/SKILL.md",
+      "sha256": "39e8000ada2acc40c6e3bcb6d5600741b85c6d79dcf25476443dc001b85efeb4"
+    },
+    {
+      "path": "artifacts/production/fool-s00-subject-v1/v001/raw.png",
+      "sha256": "9c194ac9f083a0c6b0ac7fefe3e907bcdfb6d5392b3f2fe18e8a6574b92728a0",
+      "role": "edit_target"
+    },
+    {
+      "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-true-god-native.png",
+      "sha256": "2e9a25c0ba340fd39e56adc8ce81a655760212166f6b344e2640892df7335f5e",
+      "role": "geometry"
+    },
+    {
+      "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-0-agentic-candidate-v1.png",
+      "sha256": "b7ca5d84936ec826f11ddb46a8c72b1447c88775a9f6641fcb55c01faf0c6c89",
+      "role": "identity"
+    },
+    {
+      "path": "production/symbols/fool-five-tier-kit.json",
+      "sha256": "8146a6eac9003981ffb09143901d8b40631a60b1cc0885bd3ffda65e15c8ea7d"
+    },
+    {
+      "path": "production/symbols/fool-agentic-sequence-inscriptions-v2.json",
+      "sha256": "2d3143a737ba386706d60848affaca9caff11ca9373b96f7c4cee401f073e6df"
+    },
+    {
+      "path": "production/templates/fool-mother-frame-interface-v1.json",
+      "sha256": "a6285639e2299c8a22b75395b338134e7c25efbb986a0501a2723bc0664a9908"
+    },
+    {
+      "path": "production/templates/emblem-dock-interface-v1.json",
+      "sha256": "9a95288d8b7f5df2287c43f9667ea656c0e8cf8272bf2da5cbb87d218e7f088b"
+    },
+    {
+      "path": ".agents/skills/lotm-quality-frames/SKILL.md",
+      "sha256": "1a653d55d70d2623eec3d57fbda2c5a0af99a0916a16458ab49f7f95c1548d7c"
+    },
+    {
+      "path": ".agents/skills/lotm-subject/SKILL.md",
+      "sha256": "39e8000ada2acc40c6e3bcb6d5600741b85c6d79dcf25476443dc001b85efeb4"
+    },
+    {
+      "path": "docs/production-sop-v3.md",
+      "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"
+    },
+    {
+      "path": "docs/production-preflight.md",
+      "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"
+    },
+    {
+      "path": "config/production-resolution-policy.json",
+      "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"
+    },
+    {
+      "path": "docs/card-narrative-contract.md",
+      "sha256": "ca504e67d5ea6ea7795f3552163bd90423cb56514491c9e82406bf9e42287302"
+    },
+    {
+      "path": "docs/research/2026-09-14-mr-fool-card-materials.md",
+      "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660"
+    },
+    {
+      "path": "production/narratives/mr-fool-s00.json",
+      "sha256": "bc9be249e560eb01d3f59549b24c8a3ee43bdc459c3a732e39f66be645a30b20"
+    },
+    {
+      "path": "production/schemas/card-narrative.schema.json",
+      "sha256": "f70818f19d8ca13133638d7abdc00789a6028fd997a5bcf4f36a32d8d1a5abb9"
+    },
+    {
+      "path": "docs/research/2026-09-14-mr-fool-card-materials.md",
+      "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660",
+      "locator": "§2 身份切片与§6.1 第一段·最初的谎言"
+    },
+    {
+      "path": "docs/research/2026-09-14-mr-fool-card-materials.md",
+      "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660",
+      "locator": "§6.2 第二段·谎言获得了责任"
+    },
+    {
+      "path": "docs/research/2026-09-14-mr-fool-card-materials.md",
+      "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660",
+      "locator": "§4.2 扮演、§4.5 晋升与§6.3 第三段·成为神明的仪式"
+    },
+    {
+      "path": "pathways/fool/sequences/00/card.json",
+      "sha256": "99977b6b7b4ba8c6025395f827f53c43ecb7996060fee53d739ae67f72c21a53"
+    },
+    {
+      "path": "docs/research/2026-09-14-mr-fool-card-materials.md",
+      "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660"
+    }
+  ],
+  "design_fingerprint": "fd89c5f08de894846eba562456bc8367dcce618447088d181ae75db8caaeeb1f",
+  "task_sha256": "866bbea1823d0ae8d5953b5a9ccab234b8e7569dd8b8b257781b93c51526b9ea",
+  "prompt_sha256": "500a290a5a95aab0576d4994ad1f2e32eb4095245b40c8eb252aad6ea8577d03"
+}

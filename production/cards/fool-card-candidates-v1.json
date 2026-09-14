@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "version": "1.0.0",
+  "status": "candidate-pending-user-visual-review",
+  "scope": "当前愚者途径目标卡的完整原生候选；不代表正式release",
+  "native_canvas_policy": {
+    "source_is_canonical": true,
+    "intermediate_2k_count": 0,
+    "final_sampling_count": 0,
+    "final_sampling_required_after_approval": true
+  },
+  "visual_review": {
+    "path": "production/cards/fool-card-visual-review-v1.json",
+    "sha256": "49105cbf285e98974d4ffde3a0882cf521e2b098482738cd8304e30e708748a7"
+  },
+  "cards": [
+    {
+      "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+      "slot_id": "lotm.fool.s09",
+      "sequence": 9,
+      "quality_tier": "low",
+      "pathway_name": "愚者",
+      "sequence_name": "占卜家",
+      "character_name": "克莱恩·莫雷蒂",
+      "identity_name_status": "verified",
+      "path": "artifacts/production/fool-s09-card-name-edit-v1/v001/raw.png",
+      "sha256": "2d73c4662e9de0b263f833b75ca419605299b40f52c0909421c3b0d9d4dc0efe",
+      "size_px": [1024, 1536],
+      "channels": "RGB",
+      "alpha": false,
+      "task": "production/tasks/fool-s09-card-name-edit-v1.json",
+      "receipt": "artifacts/production/fool-s09-card-name-edit-v1/v001/receipt.json",
+      "narrative": "production/narratives/klein-s09-tingen.json",
+      "visual_status": "candidate-pending-user-visual-review",
+      "formal_release_approved": false,
+      "local_edit_audit": {
+        "target": "artifacts/production/fool-s09-card-agentic-v1/v001/agentic-full-card-candidate-v1.png",
+        "target_sha256": "e20c0a0164ffeaba825242e09891f4ab394d697e0488101fe97ae0870d200c72",
+        "changed_pixels": 1370051,
+        "changed_ratio": 0.8710549672444662,
+        "changed_bbox": [0, 0, 1024, 1536],
+        "changed_inside_name_surface": 77848,
+        "changed_pixels_outside_name_surface": 1292203,
+        "name_surface_rect": [224, 1216, 576, 136],
+        "status": "rejected-global-rerender",
+        "meaning": "仅作为完整Agentic卡候选保留，不作为局部姓名零漂移层"
+      }
+    },
+    {
+      "card_id": "lotm.fool.s00.klein-moretti.mr-fool-01",
+      "slot_id": "lotm.fool.s00",
+      "sequence": 0,
+      "quality_tier": "true-god",
+      "pathway_name": "愚者",
+      "sequence_name": "愚者",
+      "character_name": "愚者先生",
+      "identity_name_status": "proposed",
+      "path": "artifacts/production/fool-s00-card-agentic-v1/v001/raw.png",
+      "sha256": "11eab4ed8688a4949411721f0fad07586cd006debb444919153907fb77b584ce",
+      "size_px": [1024, 1536],
+      "channels": "RGB",
+      "alpha": false,
+      "task": "production/tasks/fool-s00-card-agentic-v1.json",
+      "receipt": "artifacts/production/fool-s00-card-agentic-v1/v001/receipt.json",
+      "narrative": "production/narratives/mr-fool-s00.json",
+      "visual_status": "candidate-pending-user-visual-review",
+      "formal_release_approved": false,
+      "identity_note": "愚者先生是用户指定的人物身份切片展示名；序列名称仍由card.json的愚者负责，待中文底本证据后再升级身份状态。"
+    }
+  ],
+  "formal_release_approved": false
+}

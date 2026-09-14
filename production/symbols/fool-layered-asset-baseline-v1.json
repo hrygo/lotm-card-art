@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "version": "1.0.0",
+  "pathway_id": "fool",
+  "status": "user-approved-agentic-visual-baseline",
+  "role": "active-layered-asset-baseline",
+  "scope": "愚者途径的公共材质参考、五档品质框与十张序列完整框；不代表正式release",
+  "asset_graph": {
+    "reusable_materials": {
+      "catalog": "production/symbols/fool-five-tier-kit.json",
+      "catalog_sha256": "8146a6eac9003981ffb09143901d8b40631a60b1cc0885bd3ffda65e15c8ea7d",
+      "use_rule": "仅作Agentic视觉参考，不作为程序纹理回填层"
+    },
+    "quality_frames": {
+      "catalog": "production/symbols/fool-five-tier-kit.json",
+      "manifest": "artifacts/production/fool-five-tier-direct-kit-v1/manifest.json",
+      "manifest_sha256": "38076371c6d6da9ddb0fc52dda270aea8bf9ee666c1978acee67d9124f1a1d7e",
+      "native_output": "artifacts/production/fool-five-tier-direct-kit-v1",
+      "geometry_id": "fool-agentic-mother-v2",
+      "tiers": [
+        {"id": "low", "sequences": [9, 8], "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png", "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783"},
+        {"id": "mid", "sequences": [7, 6, 5], "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-mid-native.png", "sha256": "ec7a1b5801d689d79b0d88b53aa6bd0e50f955daf70ba5ca65095f53e3dbd047"},
+        {"id": "saint", "sequences": [4, 3], "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-saint-native.png", "sha256": "f63a7cec39eaace60c5441dba9df69b9de592b575b9cdb7c14486e8bf92709db"},
+        {"id": "angel", "sequences": [2, 1], "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-angel-native.png", "sha256": "915bf178836731d108da014a8d7c3365f7e95515c54494385e5b28fe79765dd9"},
+        {"id": "true-god", "sequences": [0], "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-true-god-native.png", "sha256": "2e9a25c0ba340fd39e56adc8ce81a655760212166f6b344e2640892df7335f5e"}
+      ]
+    },
+    "sequence_frames": {
+      "catalog": "production/symbols/fool-agentic-sequence-inscriptions-v2.json",
+      "catalog_sha256": "2d3143a737ba386706d60848affaca9caff11ca9373b96f7c4cee401f073e6df",
+      "output_root": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies",
+      "relationship": "每个序列绑定唯一品质和一张Agentic完整原生序列框，不生成5×10交叉组合"
+    },
+    "fusion_reference": {
+      "catalog": "production/symbols/fool-fusion-family.json",
+      "role": "historical-reference-only",
+      "relationship": "保留已认可的0–9融合圣徽；当前顶部数字圆洞不自动使用它们"
+    }
+  },
+  "resolution_policy": {
+    "native_canvas": [1024, 1536],
+    "intermediate_2k_count": 0,
+    "final_sampling": "only-after-complete-card-approval",
+    "no_local_2k_repair": true,
+    "no_crop_reassembly": true
+  },
+  "acceptance": {
+    "five_tier_visual_status": "user-approved-agentic-visual-baseline",
+    "ten_sequence_visual_status": "user-approved-agentic-baseline",
+    "formal_release_approved": false,
+    "visual_review_is_not_machine_approval": true
+  },
+  "historical_boundary": {
+    "superseded": [
+      "production/symbols/fool-five-tier-agentic-assets-v1.json",
+      "production/symbols/fool-secondary-asset-kit-v1.json",
+      "production/symbols/fool-rank-numerals-v1.json"
+    ],
+    "note": "上述文件保留为历史迁移/研究记录，不是当前生产入口。"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "asset_id": "fool-agentic-sequence-inscriptions-v1",
+  "geometry_id": "fool-agentic-mother-v2",
+  "pathway_id": "fool",
+  "stage": "retired-legacy-localized-ingest",
+  "owner": "AgenticSequenceInscription",
+  "input_batch": {
+    "path": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2",
+    "manifest": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/manifest.json",
+    "status": "program-produced-name-free-frames"
+  },
+  "output_root": "artifacts/production/fool-agentic-sequence-inscriptions-v1",
+  "edit_domain": {
+    "design_rect": [878, 780, 108, 280],
+    "final_rect": [1756, 1560, 216, 560],
+    "safe_rect": [1780, 1592, 168, 496],
+    "center_final_px": [1864, 1840],
+    "capacity_characters": 6,
+    "orientation": "upright-vertical-rl"
+  },
+  "fit_policy": {
+    "mode": "agentic-autofit-by-visible-glyph-bbox",
+    "fixed_font_size": false,
+    "measure": "actual-visible-stroke-bbox",
+    "choose_largest_comfortable_fit": true,
+    "minimum_safe_margin_final_px": 16,
+    "maximum_safe_rect_occupancy": 0.88,
+    "spacing": "adapt-to-character-count-and-stroke-density",
+    "overflow_action": "reject-and-regenerate-local-edit"
+  },
+  "preserve_domains": [
+    "outside-final-rect-byte-identical",
+    "left-pathway-mark 愚者",
+    "top-rank-numeral-and-rank-dock",
+    "fool-pathway-crown",
+    "central-illustration-window",
+    "name-surface",
+    "embedded-hexagonal-gemstone",
+    "all-other-border-material-and-gem-pixels"
+  ],
+  "agentic_prompt_template": "Use case: precise-object-edit. Asset type: one finished Fool pathway sequence frame, local inscription pass. Input image: the supplied name-free sequence frame is the edit target, not a style-only reference. Primary request: design and directly engrave the exact sequence name \"{SEQUENCE_NAME}\" into the existing right pillar's central vertical inscription groove. Make the lettering an elegant occult recessed engraving with the Fool pathway's curtain, star-map, silver-metal, enamel and gemstone vocabulary; integrate the groove, bevel, contact shadow, face and restrained edge glint into the existing pillar material. Composition: keep the inscription upright, vertical-rl, optically centered inside the fixed safe rectangle. Do not use one fixed font size or one fixed tracking value: inspect the exact character count, stroke density and available groove, then autonomously choose the largest comfortable glyph scale and spacing that keeps the complete visible-stroke bbox inside the safe rectangle with balanced top, bottom, left and right breathing room. Three-character names should not be made artificially tiny; longer or denser names must proportionally reduce size or tracking so they never crowd or overflow. Text (verbatim): \"{SEQUENCE_NAME}\"; render exactly these characters once, in this order, upright and readable. No other writing. Constraints: change only the fixed right-side final edit rectangle; preserve every pixel and geometry outside it, including the left 愚者 pathway mark, top rank numeral and round dock, Fool crown, central illustration window, name surface, bottom regular-equilateral-hexagon gemstone and all frame material; do not add a plaque, capsule, panel, background, watermark, logo, pseudo-text, border, subject or scene; do not move or rescale the frame. Keep the existing transparency/silhouette if supported. Output a complete upright 2:3 frame at the same resolution and quality as the input.",
+  "entries": [
+    {"digit": 9, "sequence_id": "lotm.fool.s09", "sequence_name": "占卜家", "tier": "low", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-9-frame.png", "input_sha256": "8470245b3498a75ec98616779dfedf61682e78e9fe21090519da4a233d8b599d", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-9-agentic-candidate-v2.png", "sha256": "d83ce8b8761116b88a63573bf3e6a93f379fe0886369fcaf1a2c534189758297", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "accepted-user-visual-review-pending-localized-ingest"}},
+    {"digit": 8, "sequence_id": "lotm.fool.s08", "sequence_name": "小丑", "tier": "low", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-8-frame.png", "input_sha256": "d811fe6758957ec3988b763153d90eedf621f62eccab5087421e2e83d3048f27", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-8-agentic-candidate-v1.png", "sha256": "109b0e60e561530ee4af0d422b29e1214503ed7cb0635ed0e3e21b99b93089c6", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "candidate-pending-user-visual-review"}},
+    {"digit": 7, "sequence_id": "lotm.fool.s07", "sequence_name": "魔术师", "tier": "mid", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-7-frame.png", "input_sha256": "4536967e1bb849a9238d9761c7420d8428dc64eba2fd6d7104186c9b353a1868", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-7-agentic-candidate-v1.png", "sha256": "be3768c31751d500f766c008f754897d6b58da5a51c0aedde0ddd7691de2c6c3", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "candidate-pending-user-visual-review"}},
+    {"digit": 6, "sequence_id": "lotm.fool.s06", "sequence_name": "无面人", "tier": "mid", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-6-frame.png", "input_sha256": "e47a20f6c3b994f29e985596728aa0b88fec17825832fdbbec9c4d685edea214", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-6-agentic-candidate-v1.png", "sha256": "dd314df09755b1b70115a3f7325f75fa99c8382cf1dca2019f65179b9cbcded0", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "candidate-pending-user-visual-review"}},
+    {"digit": 5, "sequence_id": "lotm.fool.s05", "sequence_name": "秘偶大师", "tier": "mid", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-5-frame.png", "input_sha256": "982a4b47f6533fa8ad3f151811d46521c858c3f7dd33e91a363d529b11eab14b", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-5-agentic-candidate-v1.png", "sha256": "e848529a20428fd8d7b2b55c5653c6a22742fcc5d9d9b57450371b0e5b72ccae", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "candidate-pending-user-visual-review"}},
+    {"digit": 4, "sequence_id": "lotm.fool.s04", "sequence_name": "诡法师", "tier": "saint", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-4-frame.png", "input_sha256": "1305c3e8a4fdb1a7126d75cb62d340e779fd9424aa55cfd30ad6a21140eecc2a", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-4-agentic-candidate-v1.png", "sha256": "5ccf94c690f7c6c785591dcf97ca07f7759aa3f12b7ffea50decbed9056efab6", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "candidate-pending-user-visual-review"}},
+    {"digit": 3, "sequence_id": "lotm.fool.s03", "sequence_name": "古代学者", "tier": "saint", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-3-frame.png", "input_sha256": "af87f6ab81fde91d1f0e7f6cf26d584deccd97bd15e2bc5b4d6ddb3fac58415f", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-3-agentic-candidate-v1.png", "sha256": "583e80ff746bc5792d091e9467fc1c11f57206e88c1483d34b2e576ffe19e97a", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "candidate-pending-user-visual-review"}},
+    {"digit": 2, "sequence_id": "lotm.fool.s02", "sequence_name": "奇迹师", "tier": "angel", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-2-frame.png", "input_sha256": "24d84423e36c9fd8854bcdff26b02c27c22b8d53e4f6f2d5dd0d949410eb54e1", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-2-agentic-candidate-v1.png", "sha256": "991dbd1f6ed4e1d214d9cbe46fff2eb038b48afc1ddd683dc9407438f3b6c7ea", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "candidate-pending-user-visual-review"}},
+    {"digit": 1, "sequence_id": "lotm.fool.s01", "sequence_name": "诡秘侍者", "tier": "angel", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-1-frame.png", "input_sha256": "e780ada8c8e4762a7555bacc1514c297466a8416aa4b638e5108e805ba335f5f", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-1-agentic-candidate-v1.png", "sha256": "e4bf377f6a4f4b263d62e24c181b4a9eee793f124077aa5f1df95b384543f079", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "candidate-pending-user-visual-review"}},
+    {"digit": 0, "sequence_id": "lotm.fool.s00", "sequence_name": "愚者", "tier": "true-god", "input_frame": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-0-frame.png", "input_sha256": "36e85e7accd53b5f6d23954fccb45142c4bac26d9c1cfe0f0ea7a0448b4185c5", "candidate_output": {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-0-agentic-candidate-v1.png", "sha256": "b7ca5d84936ec826f11ddb46a8c72b1447c88775a9f6641fcb55c01faf0c6c89", "size_px": [1024, 1536], "channels": "RGB", "alpha": false, "status": "candidate-pending-user-visual-review"}}
+  ],
+  "acceptance": {
+    "exact_text_visual_check_required": true,
+    "outside_final_rect_changed_pixels_max": 0,
+    "no_mirror": true,
+    "no_pseudo_text": true,
+    "no_extra_text": true,
+    "no_background_or_plaque": true,
+    "center_error_max_final_px": 1,
+    "status_before_user_approval": "candidate"
+  },
+  "status": "candidate-batch-generated-pending-user-visual-review"
+}

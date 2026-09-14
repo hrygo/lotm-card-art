@@ -1,7 +1,7 @@
-# 公共物料库 v1
+# 公共物料库 v1（历史试装，已退役）
 
-资产单一清单为 catalog.json。status=pending/proposed 表示实际已有、待视觉验收，不表示正式批准；gaps 明列未制作范围。
-当前为深色公共底座＋愚者纵向试点。5项候选栅格包含1项复用旧纸纹与4项新增选用素材；12个新组件；10个复用愚者数字原型。另存1项不合格冷银首稿。不同登记版本不重复计数，人物插画不算公共物料。
+历史资产单一清单仍为 catalog.json，但其 status=retired-historical、active=false，不再作为当前生产入口。退役生成目录已按 `production/retirements/fool-failed-materials-2026-09-14.json` 可恢复移入 macOS 废纸篓。
+当前正式视觉基线改由 `production/symbols/fool-five-tier-kit.json` 管理：愚者原生 Agentic 母版、五档完整边框、十序列完整画面，以及保留的可复用原始材质。旧物料试装不能覆盖或替代这套基线。
 
 ## 五层映射
 
@@ -51,7 +51,7 @@ python3 tools/materialctl.py gate artifacts/production/my-new-material-run --rel
 ```
 
 第三条必定失败：material-study不是正式卡牌发布入口。正式v1仍走tools/production.py；新旧入口未互相代替。
-catalog.json的render_jobs列出已实际渲染的配方与当前输出目录。批量重跑需新目录，不能覆盖已有输出。
+catalog.json 的 `historical_render_jobs` 只保留历史配方索引，当前 `render_jobs` 为空。批量重跑必须新建版本化任务并先更新当前清单，不得复活退役输出。
 输出request/recipe/final/preview/renderer由receipt绑定；可迁移仓库位置，不需要generated缓存即可gate。
 renderer记录实际输入alpha统计、中文字体和节点顺序；checkerboard内容、光照自然度和辨识度仍需看图，不用alpha统计冒充美术判断。
-历史material-studies/与material-library-v1下的首轮根目录输出留作调试证据，当前有效输出仅catalog列出的r2目录。
+历史 material-studies/、material-library-v1/ 与 sacred-slate-master/ 输出已退役；当前有效图像不由本清单声明，统一以当前 Agentic 视觉基线和 `check-fool-materials` 为准。

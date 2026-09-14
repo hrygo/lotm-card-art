@@ -1,6 +1,7 @@
 # 美术与内容规则的维护
+
 保持六维语义要求与混合媒介表达并存；不得回退为六格固定文字表，也不能把空泛风格当作具体事实。
-修改视觉基线时同时修改 `config/project.json` 中的 art_baseline_version / baseline_status（不是 schema_version）并说明受影响卡；不得自动将 proposed 改为 approved。
+修改视觉基线时同时修改 `config/project.json` 中的 `art_baseline_version` / `baseline_status`（不是 `schema_version`）并说明受影响卡；不得自动将 proposed 改为 approved。
 形式规则服务于辨识与美感，不将某一路径的纹样推广成全系列强制语言。
 将精确参数写入配置或单卡数据，不在多份文档重复制造数值事实源。
 审核任何新增规则是否能执行，机器门槛与需要人工观察的门槛分开写。

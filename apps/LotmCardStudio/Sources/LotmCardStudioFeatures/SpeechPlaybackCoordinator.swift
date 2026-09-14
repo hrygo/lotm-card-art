@@ -23,6 +23,36 @@ public enum PlaybackState: Equatable, Sendable {
             return message
         }
     }
+
+    public var captionStatusLabel: String {
+        switch self {
+        case .idle:
+            return "已讲完"
+        case .loading:
+            return "正在准备声音"
+        case .playing:
+            return "正在讲述"
+        case .paused:
+            return "已暂停"
+        case .failed:
+            return "声音不可用"
+        }
+    }
+
+    public var captionSystemImage: String {
+        switch self {
+        case .idle:
+            return "checkmark.circle"
+        case .loading:
+            return "waveform"
+        case .playing:
+            return "waveform"
+        case .paused:
+            return "pause.circle"
+        case .failed:
+            return "exclamationmark.triangle"
+        }
+    }
 }
 
 public struct PlaybackCaption: Equatable, Sendable {

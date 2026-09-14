@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+  "voice_profile_id": "dylan",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.0",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.95,
+    "instruction": "清晰克制的年轻中文男声，语气谨慎、低调、自然，停顿干净，不夸张。"
+  },
+  "files": [
+    {"resource_name": "s09-greeting-v1", "text_digest": "cc822d65efdd867272a41c7cebe1ac2c1f4b4aae097c8d4eb734c03a29c22bcc", "sha256": "2caefb40a41868ffd10e1e5762771b7e9fa3eb1c89ae533c6ca3fadc56c47a6b", "duration_seconds": 6.0, "sample_rate": 24000, "channels": 1, "bits": 16},
+    {"resource_name": "s09-catchphrase-01-v1", "text_digest": "50959d3a1df7a278e1393a515277d397969c2902b3fd5a97ece89111549a82eb", "sha256": "3043132ee3a98df6ede8b5b7bc01d021766d8b7051799df7294be27459ad020f", "duration_seconds": 5.28, "sample_rate": 24000, "channels": 1, "bits": 16},
+    {"resource_name": "s09-catchphrase-02-v1", "text_digest": "8ab3d4c16fd1fed9c605e952315ff42a44d14a19f8dd394d7e023f285db85f80", "sha256": "a3d74eef7b8630724c34ca30cf7901f8cc9f28b3e7b979dece81b1d7f244ccdf", "duration_seconds": 4.96, "sample_rate": 24000, "channels": 1, "bits": 16},
+    {"resource_name": "s09-story-01-v1", "text_digest": "1acad6cff9d10580705dc746deb4c34fafcc3de9ea181b6650a68ce8b9e4448d", "sha256": "af6799176d0206257ff009c1e2d15982608d89b72b09197d40bd63f601101145", "duration_seconds": 16.4, "sample_rate": 24000, "channels": 1, "bits": 16},
+    {"resource_name": "s09-story-02-v1", "text_digest": "a1a3baeab1fb0e8b72e0ac97c3e24012ecf28a2f5481b55192aa4b23fa505acb", "sha256": "1e0d594f54dc1c0f8ef7f69ceb26900183bf63130b6ac8e99873f082ee41c684", "duration_seconds": 18.32, "sample_rate": 24000, "channels": 1, "bits": 16},
+    {"resource_name": "s09-story-03-v1", "text_digest": "b9472780d049e41bf900208e4491d4a71ddb5b533fe55a4eaefd154905c70f0b", "sha256": "d8013438bdeddf23696639316f5515e5a2d2e180090f19e5a328ce1aa1b083e7", "duration_seconds": 16.32, "sample_rate": 24000, "channels": 1, "bits": 16}
+  ]
+}

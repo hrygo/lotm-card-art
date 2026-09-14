@@ -1,0 +1,76 @@
+{
+  "asset_id": "antigonus-half-fool-backup-v1",
+  "status": "material-backup",
+  "approval": "not-approved",
+  "production_scope": "asset-only / no-production",
+  "character": {
+    "name_zh": "安提哥努斯",
+    "name_en": "Antigonus",
+    "pathway": "愚者",
+    "state_cut": "Fourth Epoch half-Fool",
+    "sequence_anchor": "S01 material anchor only; not a complete Sequence 1 or Sequence 0 identity",
+    "character_id": "antigonus",
+    "identity_slice_id": "antigonus.half-fool.fourth-epoch",
+    "candidate_card_id": "lotm.fool.s01.antigonus-half-fool-01"
+  },
+  "asset": {
+    "path": "docs/assets/illustration-backups/antigonus-half-fool-backup-v1.png",
+    "role": "standalone subject illustration",
+    "visual_concept_status": "candidate-art-proposal",
+    "visual_event": "安提哥努斯坐在古老石椅中，远处小国仍保留少量生活灯火；石椅、宫殿与国家之间出现无法闭合的历史裂缝，表达半个愚者的未完成接合与限制。",
+    "not_a_finished_card": true,
+    "excluded_from": [
+      "card.json",
+      "production/tasks",
+      "production/calls",
+      "design approval",
+      "release"
+    ]
+  },
+  "provenance": {
+    "tool": "image_gen",
+    "mode": "illustration-story",
+    "generated_at": "2026-09-14",
+    "recorded_at_utc": "2026-09-14T08:54:07Z",
+    "references": [
+      "docs/research/2026-09-14-antigonus-card-materials.md",
+      "pathways/fool/direction.json",
+      "config/project.json"
+    ],
+    "prompt_summary": "Vertical 2:3 painterly dark-fantasy scene: Fourth Epoch Antigonus in a visibly human half-Fool state, seated in a weathered stone chair, a small quiet country below, and an incomplete fissure in space/history carrying fragile everyday echoes.",
+    "negative_constraints": "No complete gray fog throne, Sefirah Castle, complete Sequence 0 Fool authority, tarot imagery, marionette language, wolf heads, giant mask wall, multiple heads/faces, eye or tentacle clusters, body horror, crowns, worshippers, extra characters, card frame, emblem, numeral, name, readable writing, pseudo-text or watermark.",
+    "processing_chain": [
+      "image_gen native generation",
+      "file copy into workspace",
+      "no crop",
+      "no upscale",
+      "no frame, text or emblem compositing"
+    ]
+  },
+  "engineering": {
+    "width": 1024,
+    "height": 1536,
+    "aspect_ratio": "2:3",
+    "format": "PNG",
+    "color_space": "RGB (reported by sips; project target is sRGB)",
+    "native_canvas": true,
+    "final_card_resolution": false,
+    "sha256": "735ec4b8944435c7b7d11239e41805f7408ad5d5ed7c7fb58586aac714d7e8ba"
+  },
+  "visual_check": {
+    "checked": true,
+    "method": "view_image manual inspection",
+    "observations": [
+      "主体、石椅、宫殿、远景国家与裂缝属于同一连续场景。",
+      "人物保持人形且表情克制；裂缝表达未完成状态，没有完整神座或神国。",
+      "远景保留少量生活灯火，能与主体的高位压力形成对照。",
+      "未观察到卡框、途径徽记、序列数字、姓名或可读文字。",
+      "未观察到木偶线、狼头、触手堆叠、额外完整角色或身体恐怖变形。"
+    ],
+    "remaining_risks": [
+      "石椅具有王座式轮廓，正式设计时仍需复核是否会误读为完整神座。",
+      "这是候选备用物料，半个愚者的具体高位构成与视觉语义仍需正式单卡设计和人工视觉批准。",
+      "1024×1536 是本次原生画布，不代表项目最终 2048×3072 卡面交付。"
+    ]
+  }
+}

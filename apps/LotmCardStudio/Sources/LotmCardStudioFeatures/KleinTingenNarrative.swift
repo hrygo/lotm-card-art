@@ -4,65 +4,71 @@ enum KleinTingenNarrative {
     private static let greeting = NarrativeLine(
         id: "klein-s09-greeting-01",
         kind: .greeting,
-        text: "你好。我是克莱恩·莫雷蒂。若你愿意，我们可以先从一件最容易验证的小事开始。",
+        text: "你好，我是克莱恩·莫雷蒂。若要面对未知，就先把眼前这一步看清。",
         sourceKind: .original,
-        review: .draft,
-        contentDigest: "e7ba6fc2ced7f7b15256ca6d8930af98351c951af74eb6cb099ede8f226800fd"
+        review: .approved(contentDigest: "cc822d65efdd867272a41c7cebe1ac2c1f4b4aae097c8d4eb734c03a29c22bcc"),
+        contentDigest: "cc822d65efdd867272a41c7cebe1ac2c1f4b4aae097c8d4eb734c03a29c22bcc",
+        audioResourceName: "s09-greeting-v1"
     )
 
     private static let catchphraseOne = NarrativeLine(
         id: "klein-s09-catchphrase-01",
         kind: .catchphrase,
-        text: "占卜不是替你做决定；它只提醒你，哪些地方还没有看清。",
+        text: "占卜给不了你勇气，但能提醒你，别把鲁莽当成勇气。",
         sourceKind: .original,
-        review: .draft,
-        contentDigest: "11a2a28335f0e4f919bcacae5aca3b1ca24f77828d5ace7b02fb321370e8377b"
+        review: .approved(contentDigest: "50959d3a1df7a278e1393a515277d397969c2902b3fd5a97ece89111549a82eb"),
+        contentDigest: "50959d3a1df7a278e1393a515277d397969c2902b3fd5a97ece89111549a82eb",
+        audioResourceName: "s09-catchphrase-01-v1"
     )
 
     private static let catchphraseTwo = NarrativeLine(
         id: "klein-s09-catchphrase-02",
         kind: .catchphrase,
-        text: "先观察，再行动；先确认代价，再谈勇气。",
+        text: "灵摆只会指向答案附近；剩下的路，要靠你自己核对。",
         sourceKind: .original,
-        review: .draft,
-        contentDigest: "2665f90a3f8cdbb91ed9757d82dd96c9a571a0278636972c324e4edd608ce1f5"
+        review: .approved(contentDigest: "8ab3d4c16fd1fed9c605e952315ff42a44d14a19f8dd394d7e023f285db85f80"),
+        contentDigest: "8ab3d4c16fd1fed9c605e952315ff42a44d14a19f8dd394d7e023f285db85f80",
+        audioResourceName: "s09-catchphrase-02-v1"
     )
 
     private static let storyOne = NarrativeLine(
         id: "klein-s09-story-01",
         kind: .story,
-        text: "刚醒来时，他没有急着给这场离奇的人生下结论。陌生的房间、写满预言的笔记、属于另一个人的名字，都需要一件件核对。对廷根的克莱恩来说，活下来不是一句口号，而是从门窗、钱袋和每一个可疑细节开始的秩序。",
+        text: "醒来后的克莱恩，先接受了一件事：这不是属于他的房间，也不是属于他的名字。门窗、钱袋、笔记和每一处异常，都要重新确认；活下去的第一步，是让混乱重新有了顺序。",
         sourceKind: .interpretation,
-        review: .draft,
-        contentDigest: "4c3928a44bca2fc3fa3a0a75a1163f83d6c78b4f2bfc9dcd653b7b5e1691776a"
+        review: .approved(contentDigest: "1acad6cff9d10580705dc746deb4c34fafcc3de9ea181b6650a68ce8b9e4448d"),
+        contentDigest: "1acad6cff9d10580705dc746deb4c34fafcc3de9ea181b6650a68ce8b9e4448d",
+        audioResourceName: "s09-story-01-v1"
     )
 
     private static let storyTwo = NarrativeLine(
         id: "klein-s09-story-02",
         kind: .story,
-        text: "他在灰雾之外寻找答案，也在现实里学习怎样成为一个占卜家：让灵摆指向眼前的目标，让书页、茶杯和安静的观察共同构成判断。占卜并没有替他看见全部未来，反而一次次提醒他，未知仍然藏在视线之外。",
+        text: "在廷根，他把占卜从神秘的仪式变成耐心的工作。灵摆给出倾向，书页留下线索，现实负责最后的核验。一个占卜家真正依靠的，不是漂亮的预言，而是知道什么时候仍然不能下结论。",
         sourceKind: .interpretation,
-        review: .draft,
-        contentDigest: "6fc0b65ad74884bd3ae088782cac9505bf1172b31d163595f3aafc5ecf6c84c4"
+        review: .approved(contentDigest: "a1a3baeab1fb0e8b72e0ac97c3e24012ecf28a2f5481b55192aa4b23fa505acb"),
+        contentDigest: "a1a3baeab1fb0e8b72e0ac97c3e24012ecf28a2f5481b55192aa4b23fa505acb",
+        audioResourceName: "s09-story-02-v1"
     )
 
     private static let storyThree = NarrativeLine(
         id: "klein-s09-story-03",
         kind: .story,
-        text: "当危险逐渐逼近，他发现真正难以处理的并不是一件神秘物品，而是名字背后那些具体的人。妹妹、同事、邻居与刚刚建立的信任，让“寻找回家”不再只是个人愿望。克莱恩开始明白，每一次谨慎的选择，也可能是在替别人保留明天。",
+        text: "他越想回到原来的世界，越无法把身边的人当成过客。妹妹的晚餐、同事的玩笑、街角亮起的灯，都让“回家”多了一层含义：在离开之前，先替仍留在这里的人挡住一部分风雨。",
         sourceKind: .interpretation,
-        review: .draft,
-        contentDigest: "6b59f4773a1b0d9dfcf60c00b3310c7667ba0b26b65590c0729fdbe22232e21f"
+        review: .approved(contentDigest: "b9472780d049e41bf900208e4491d4a71ddb5b533fe55a4eaefd154905c70f0b"),
+        contentDigest: "b9472780d049e41bf900208e4491d4a71ddb5b533fe55a4eaefd154905c70f0b",
+        audioResourceName: "s09-story-03-v1"
     )
 
     static let pack = NarrativePack(
         cardID: "lotm.fool.s09.klein-moretti.tingen-01",
-        voiceProfileID: "low-lantern",
+        voiceProfileID: "dylan",
         lines: [greeting, catchphraseOne, catchphraseTwo, storyOne, storyTwo, storyThree],
         chapters: [
-            StoryChapter(id: "klein-s09-chapter-01", title: "第一章 · 醒来后的核对", line: storyOne),
-            StoryChapter(id: "klein-s09-chapter-02", title: "第二章 · 灵摆指向的范围", line: storyTwo),
-            StoryChapter(id: "klein-s09-chapter-03", title: "第三章 · 名字背后的人", line: storyThree)
+            StoryChapter(id: "klein-s09-chapter-01", title: "第一章 · 先把眼前看清", line: storyOne),
+            StoryChapter(id: "klein-s09-chapter-02", title: "第二章 · 灵摆之外的核验", line: storyTwo),
+            StoryChapter(id: "klein-s09-chapter-03", title: "第三章 · 回家之前", line: storyThree)
         ]
     )
 }

@@ -2,32 +2,48 @@
   "schema_version": "1.0.0",
   "contract_type": "fool-mother-frame",
   "status": "template",
-  "geometry_id": "fool-agentic-mother-v1",
+  "geometry_id": "fool-agentic-mother-v2",
   "coordinate_system": "design-space-top-left-image-normalized",
   "canvas": {
     "design_size": [1024, 1536],
-    "final_size": [2048, 3072],
+    "native_size": [1024, 1536],
+    "delivery_sizes": {
+      "standard": [2048, 3072],
+      "collector": [4096, 6144]
+    },
     "color_space": "sRGB",
-    "alpha": "straight-RGBA"
+    "alpha": "straight-RGBA",
+    "resolution_policy": "native-work-single-final-sample-v1"
   },
   "pathway_mark": {
     "side": "left",
     "required_text": "愚者",
     "mode": "agentic-art-plus-exact-identity",
-    "rect_design": [50, 780, 84, 248],
-    "safe_rect_design": [50, 796, 84, 248],
+    "rect_design": [50, 584, 84, 300],
+    "safe_rect_design": [50, 600, 84, 268],
     "owner": "FrameCore.PathwayMark"
   },
-  "emblem_dock": {
-    "contract": "production/templates/emblem-dock-interface-v1.json",
-    "safe_rect_design": [286.72, 30.72, 450.56, 384],
-    "through_hole": false,
-    "owner": "EmblemDock"
+  "pathway_crown": {
+    "status": "baked-into-frame-core",
+    "source": "artifacts/production/sigil-fool/v001/raw.png",
+    "source_role": "provenance-only",
+    "rect_design": [350, 0, 330, 260],
+    "numeral_exclusion_rect_design": [454, 82, 116, 112],
+    "must_not_enter_numeral_dock": true,
+    "owner": "FrameCore.PathwayCrown"
+  },
+  "rank_numeral_dock": {
+    "contract": "production/templates/fool-rank-numeral-dock-interface-v1.json",
+    "status": "reserved-empty",
+    "safe_rect_design": [466, 88, 92, 96],
+    "center_design": [512, 136],
+    "inner_shape": "round",
+    "owner": "RankNumeralDock"
   },
   "right_sequence_zone": {
     "status": "reserved-empty",
-    "rect_design": [878, 780, 108, 280],
-    "safe_rect_design": [890, 796, 84, 248],
+    "rect_design": [878, 584, 108, 300],
+    "safe_rect_design": [890, 600, 84, 268],
     "orientation": "vertical-rl",
     "capacity_min_characters": 6,
     "empty_pixel_threshold": 0,
@@ -35,32 +51,38 @@
   },
   "name_surface": {
     "status": "reserved-empty-existing-surface",
-    "rect_design": [228, 1278, 568, 114],
-    "safe_rect_design": [240, 1290, 544, 90],
+    "rect_design": [224, 1216, 576, 136],
+    "safe_rect_design": [240, 1228, 544, 112],
     "background_pixels": 0,
-    "text_source": "program-controlled-exact-glyph-outline",
+    "text_source": "agentic-complete-frame-exact-readback",
     "owner": "NameEngraving"
   },
   "gem_slot": {
     "count": 1,
     "tier_variant_count": 5,
-    "center_design": [512, 1429],
-    "visible_size_design": [101.12, 103.68],
-    "name_clearance_design": 12,
+    "shape": "shield-cut-low-profile-lozenge",
+    "placement": "independent-bottom-rail",
+    "center_design": [512, 1410],
+    "visible_size_design": [112, 68],
+    "name_clearance_design": 24,
+    "must_not_touch_name_surface": true,
     "owner": "GemSlot"
   },
   "protected_regions": {
     "outer_silhouette": "masks/mother-outer-silhouette.png",
     "illustration_window": "masks/mother-illustration-window.png",
     "emblem": "masks/mother-emblem-protected.png",
+    "pathway_crown": "masks/mother-pathway-crown-protected.png",
+    "rank_numeral": "masks/mother-rank-numeral-protected.png",
     "name": "masks/mother-name-protected.png",
     "gem": "masks/mother-gem-protected.png",
     "outside_edit_domain": "masks/mother-outside-edit-domain.png"
   },
   "ownership": {
     "frame_core": ["outer-silhouette", "curled-columns", "illustration-window", "name-surface", "gem-slot-structure"],
-    "emblem_dock": ["dock-cavity", "dock-seat", "dock-contact-shadow", "dock-front-rim"],
-    "emblem_asset": ["fool-pathway-form", "sequence-digit-form"],
+    "pathway_crown": ["fool-pathway-form", "curtain-crown-integration", "numeral-exclusion"],
+    "rank_numeral_dock": ["round-number-recess", "dock-cavity", "dock-seat", "dock-contact-shadow", "dock-front-rim"],
+    "rank_numeral_asset": ["simple-art-digit", "exact-digit-form"],
     "quality_material": ["frame-texture", "enamel-reflection", "gem-body", "gem-facets"],
     "text_engraving": ["left-pathway-mark", "right-sequence-name", "character-name"],
     "composer": ["fixed-placement", "alpha", "z-order", "protected-region-gates"]
@@ -68,7 +90,7 @@
   "thresholds": {
     "geometry_displacement_max_px": 0,
     "outside_edit_domain_pixels_max": 0,
-    "zone_center_error_max_final_px": 1,
+    "zone_center_error_max_native_px": 1,
     "protected_region_intersections_max": 0
   }
 }

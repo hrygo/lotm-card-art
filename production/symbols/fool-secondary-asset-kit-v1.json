@@ -1,0 +1,117 @@
+{
+  "version": "1.0.0",
+  "id": "fool-secondary-asset-kit-v1",
+  "pathway_id": "fool",
+  "status": "candidate-studies-registered",
+  "purpose": "将愚者途径拆分为可复用基础材质、EmblemDock研究、五档材质研究、侧铭文装饰和既有圣徽工程层；不包含人物主体、姓名、问候、口头语、故事或声音。",
+  "architecture": {
+    "mother_frame": "FrameCore + EmblemDock",
+    "emblem_policy": "reuse-approved-0-to-9-visual-baselines-then-clean-and-measure",
+    "quality_policy": "five-tier-from-config/quality-color-tokens.json",
+    "sequence_policy": "one-emblem-per-sequence-no-cross-product",
+    "hole_policy": "visual-recess-not-through-hole",
+    "text_policy": "no-generated-text-in-art-assets"
+  },
+  "task_order": [
+    "fool-material-veil-v2",
+    "fool-emblem-dock-v1",
+    "fool-tier-material-low-v1",
+    "fool-tier-material-mid-v1",
+    "fool-tier-material-saint-v1",
+    "fool-tier-material-angel-v1",
+    "fool-tier-material-true-god-v1",
+    "fool-inscription-ornament-v1",
+    "fool-agentic-tier-transfer-test-v1"
+  ],
+  "assets": {
+    "foundation": [
+      {
+        "id": "fool-veil-metal-enamel",
+        "task": "production/tasks/fool-material-veil-v2.json",
+        "output": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-veil-metal-enamel.png",
+        "status": "candidate-study-opaque-background",
+        "sha256": "948f08da489d51765a64b3ef8181f6ee8192fbdb20a7c33b73b7379eda9e924d",
+        "size_px": [1254, 1254],
+        "pixel_role": "agentic-style-reference-only",
+        "reuse_scope": ["pathway:fool", "masked-material", "emblem-dock-context"]
+      }
+    ],
+    "hierarchy": [
+      {
+        "id": "fool-emblem-dock-study",
+        "task": "production/tasks/fool-emblem-dock-v1.json",
+        "output": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-emblem-dock.png",
+        "status": "candidate-study-opaque-background",
+        "sha256": "820a63678cf4d0a85277ed99cfafc3fb1978af5f94a9c4d959af92de677d7306",
+        "size_px": [2172, 724],
+        "pixel_role": "agentic-study-only",
+        "note": "采用第二次结构研究稿；第一次出现的圆形中央徽台已判定为结构失败，不纳入资产包。"
+      },
+      {
+        "id": "fool-inscription-ornament-study",
+        "task": "production/tasks/fool-inscription-ornament-v1.json",
+        "output": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-inscription-ornament-initial.png",
+        "status": "user-approved-style-direction",
+        "sha256": "385e207882d8fcf05a2392213745a75ef83e6ad0b3b638b8a8c39f3bbb5b734e",
+        "size_px": [1024, 1536],
+        "pixel_role": "style-reference-only",
+        "integration_contract": "production/symbols/inscriptions/fool-side-inscription-v4.json",
+        "note": "保留初版侧柱研究稿；最终铭文面、遮罩、alpha 和位置必须由程序确定，不直接复用其环境底色。"
+      }
+    ],
+    "quality_materials": [
+      {"tier": "low", "task": "production/tasks/fool-tier-material-low-v1.json", "output": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-low.png", "status": "candidate-study-opaque-background", "sha256": "811b585946149b15f085961f42e7f3fa24c004bd72687360b208c85fe4710558", "size_px": [1254, 1254], "pixel_role": "agentic-style-reference-only"},
+      {"tier": "mid", "task": "production/tasks/fool-tier-material-mid-v1.json", "output": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-mid.png", "status": "candidate-study-opaque-background", "sha256": "62fa2bdbe85eebf5a1c833e194dca0446a65392818c93a336ee628b2fa22c960", "size_px": [1254, 1254], "pixel_role": "agentic-style-reference-only"},
+      {"tier": "saint", "task": "production/tasks/fool-tier-material-saint-v1.json", "output": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-saint.png", "status": "candidate-study-opaque-background", "sha256": "37780ef8dc3d8ef3935304c9a06f9c5b83ee19bd081efe80ad92b3e525b995c8", "size_px": [1254, 1254], "pixel_role": "agentic-style-reference-only"},
+      {"tier": "angel", "task": "production/tasks/fool-tier-material-angel-v1.json", "output": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-angel.png", "status": "candidate-study-opaque-background", "sha256": "010e74da4be8caac2139aea5dd5707857fadb7405de1a6ce0caad6baa5db0654", "size_px": [1254, 1254], "pixel_role": "agentic-style-reference-only"},
+      {"tier": "true-god", "task": "production/tasks/fool-tier-material-true-god-v1.json", "output": "artifacts/production/fool-secondary-asset-kit-v1/studies/tier-true-god.png", "status": "candidate-study-opaque-background", "sha256": "620b111a85cf8f8aad3cedf6b58e62751edae7b220df256c5f10a15a43ca845e", "size_px": [1254, 1254], "pixel_role": "agentic-style-reference-only"}
+    ],
+    "emblems": {
+      "source_catalog": "production/symbols/fool-five-tier-kit.json",
+      "digits": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "visual_status": "user-approved-visual-baseline",
+      "engineering_status": "pending-clean-alpha-and-dock-fit",
+      "output_root": "artifacts/production/fool-secondary-asset-kit-v1/emblems"
+    },
+    "engineering": {
+      "id": "fool-emblem-engineering-layer",
+      "recipe": "production/symbols/fool-five-tier-kit.json",
+      "output": "artifacts/production/fool-secondary-asset-kit-v1/emblems/",
+      "status": "pending-programmatic-cleanup",
+      "pixel_role": "deterministic-net-alpha-and-visible-bbox"
+    },
+    "agentic_transfer_test": {
+      "id": "fool-agentic-tier-transfer-test-v1",
+      "task": "production/tasks/fool-agentic-tier-transfer-test-v1.json",
+      "call": "production/calls/fool-agentic-tier-transfer-test-v1.json",
+      "reference": {
+        "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png",
+        "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783",
+        "size_px": [1024, 1536],
+        "channel_format": "RGBA",
+        "role": "frozen-low-tier-reference"
+      },
+      "candidate": {
+        "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-frame-agentic-mid-transfer-v1.png",
+        "sha256": "841de6ffa164cf66c5bf55b306d90930e52c6d6b6866b5a7ebcacf949e14a105",
+        "size_px": [1024, 1536],
+        "channel_format": "RGB",
+        "role": "agentic-transfer-candidate-study-only"
+      },
+      "comparison": {
+        "program_low_to_mid_alpha_iou": 1.0,
+        "agentic_normalized_chroma_mask_iou": 0.767128,
+        "agentic_stable_column_edge_p95_normalized_px": 2,
+        "agentic_terminal_bottom_edge_max_normalized_px": 247,
+        "production_decision": "reject-as-mother-frame; retain-as-style-study"
+      },
+      "status": "candidate-study-rejected-for-production"
+    }
+  },
+  "not_in_scope": ["subject-scenes", "character-names", "narrative-copy", "voice", "formal-release"],
+  "release": {
+    "visual_approval": false,
+    "formal_release_approved": false,
+    "requires": ["all-study-observations", "clean-alpha", "dock-contract", "deterministic-gate", "user-visual-approval"]
+  }
+}

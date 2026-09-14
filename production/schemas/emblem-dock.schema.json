@@ -1,0 +1,260 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lotm-card-art/emblem-dock-1.1.0",
+  "title": "EmblemDock structural interface",
+  "description": "固定母版嵌座与可替换圣徽本体之间的结构化装配合同。视觉嵌孔默认不是穿透卡面的真实透明孔。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_type",
+    "status",
+    "scope",
+    "canvas",
+    "geometry",
+    "ownership",
+    "assets",
+    "layers",
+    "protected_regions",
+    "thresholds",
+    "checks"
+  ],
+  "properties": {
+    "$schema": {"type": "string", "minLength": 1},
+    "schema_version": {"const": "1.1.0"},
+    "contract_type": {"const": "emblem-dock"},
+    "status": {"enum": ["template", "proposed", "measured", "approved", "rejected"]},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pathway_id", "quality_policy", "sequence_policy", "card_surface"],
+      "properties": {
+        "pathway_id": {"type": ["string", "null"]},
+        "quality_policy": {"const": "five-tier-from-config/quality-color-tokens.json"},
+        "sequence_policy": {"const": "one-emblem-per-sequence-no-cross-product"},
+        "card_surface": {"const": "front"}
+      }
+    },
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "origin", "units", "scale_policy"],
+      "properties": {
+        "width": {"type": ["integer", "null"], "minimum": 1},
+        "height": {"type": ["integer", "null"], "minimum": 1},
+        "origin": {"const": "top-left"},
+        "units": {"const": "pixels"},
+        "scale_policy": {"const": "measure-at-master-then-downsample"}
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["geometry_id", "version", "master_frame", "dock"],
+      "properties": {
+        "geometry_id": {"type": ["string", "null"]},
+        "version": {"const": "emblem-dock-v1"},
+        "master_frame": {"$ref": "#/$defs/file_ref"},
+        "dock": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "through_hole",
+            "outer_rect",
+            "visible_bbox",
+            "anchor",
+            "clearance_px",
+            "fixed_transform",
+            "socket_layers"
+          ],
+          "properties": {
+            "mode": {"const": "visual-recess-not-through-hole"},
+            "through_hole": {"const": false},
+            "outer_rect": {"$ref": "#/$defs/rect_or_null"},
+            "visible_bbox": {"$ref": "#/$defs/rect_or_null"},
+            "anchor": {"$ref": "#/$defs/point_or_null"},
+            "clearance_px": {"type": ["number", "null"], "minimum": 0},
+            "fixed_transform": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["scale", "rotation_deg", "translation_px", "sampling"],
+              "properties": {
+                "scale": {"type": ["number", "null"], "exclusiveMinimum": 0},
+                "rotation_deg": {"const": 0},
+                "translation_px": {"$ref": "#/$defs/point_or_null"},
+                "sampling": {"const": "single-master-transform"}
+              }
+            },
+            "socket_layers": {
+              "type": "array",
+              "minItems": 3,
+              "items": {
+                "enum": ["dock-cavity", "dock-seat", "dock-contact-shadow", "dock-front-rim"]
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frame_core", "emblem_dock", "emblem_asset", "compositor", "quality_material", "forbidden_duplicates"],
+      "properties": {
+        "frame_core": {"$ref": "#/$defs/string_array"},
+        "emblem_dock": {"$ref": "#/$defs/string_array"},
+        "emblem_asset": {"$ref": "#/$defs/string_array"},
+        "compositor": {"$ref": "#/$defs/string_array"},
+        "quality_material": {"$ref": "#/$defs/string_array"},
+        "forbidden_duplicates": {"$ref": "#/$defs/string_array"}
+      }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frame_core", "emblem_asset", "dock_study", "masks"],
+      "properties": {
+        "frame_core": {"$ref": "#/$defs/file_ref"},
+        "emblem_asset": {"$ref": "#/$defs/file_ref"},
+        "dock_study": {"$ref": "#/$defs/file_ref"},
+        "masks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["dock_allowed", "emblem_holes", "name", "diamond", "scene"],
+          "properties": {
+            "dock_allowed": {"$ref": "#/$defs/mask_ref"},
+            "emblem_holes": {"$ref": "#/$defs/mask_ref"},
+            "name": {"$ref": "#/$defs/mask_ref"},
+            "diamond": {"$ref": "#/$defs/mask_ref"},
+            "scene": {"$ref": "#/$defs/mask_ref"}
+          }
+        }
+      }
+    },
+    "layers": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "owner", "z_index", "asset", "alpha_mode", "allowed_domain"],
+        "properties": {
+          "id": {
+            "enum": ["frame-core", "dock-cavity", "dock-seat", "dock-contact-shadow", "emblem-body", "dock-front-rim"]
+          },
+          "owner": {"enum": ["FrameCore", "EmblemDock", "EmblemAsset", "Composite"]},
+          "z_index": {"type": "integer"},
+          "asset": {"$ref": "#/$defs/file_ref"},
+          "alpha_mode": {"enum": ["opaque", "straight-alpha", "premultiplied-alpha"]},
+          "allowed_domain": {"$ref": "#/$defs/mask_ref"}
+        }
+      }
+    },
+    "protected_regions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["emblem_holes", "name", "diamond", "scene", "outside_edit_domain"],
+      "properties": {
+        "emblem_holes": {"$ref": "#/$defs/mask_ref"},
+        "name": {"$ref": "#/$defs/mask_ref"},
+        "diamond": {"$ref": "#/$defs/mask_ref"},
+        "scene": {"$ref": "#/$defs/mask_ref"},
+        "outside_edit_domain": {"$ref": "#/$defs/mask_ref"}
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometry_displacement_max_px",
+        "emblem_hole_intersections_max",
+        "name_intersections_max",
+        "diamond_intersections_max",
+        "outside_domain_pixels_max",
+        "visible_bbox_center_error_max_final_px"
+      ],
+      "properties": {
+        "geometry_displacement_max_px": {"const": 0},
+        "emblem_hole_intersections_max": {"const": 0},
+        "name_intersections_max": {"const": 0},
+        "diamond_intersections_max": {"const": 0},
+        "outside_domain_pixels_max": {"const": 0},
+        "visible_bbox_center_error_max_final_px": {"const": 1}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometry_displacement_px",
+        "emblem_hole_intersections",
+        "name_intersections",
+        "diamond_intersections",
+        "outside_domain_pixels",
+        "visible_bbox_center_error_px",
+        "visual_review"
+      ],
+      "properties": {
+        "geometry_displacement_px": {"type": ["number", "null"], "minimum": 0},
+        "emblem_hole_intersections": {"type": ["integer", "null"], "minimum": 0},
+        "name_intersections": {"type": ["integer", "null"], "minimum": 0},
+        "diamond_intersections": {"type": ["integer", "null"], "minimum": 0},
+        "outside_domain_pixels": {"type": ["integer", "null"], "minimum": 0},
+        "visible_bbox_center_error_px": {"type": ["number", "null"], "minimum": 0},
+        "visual_review": {"enum": ["not-run", "pending", "pass", "fail"]}
+      }
+    }
+  },
+  "$defs": {
+    "file_ref": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["path", "sha256", "purpose"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "purpose": {"type": "string", "minLength": 1}
+      }
+    },
+    "mask_ref": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["path", "sha256", "coordinate_space", "meaning"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "coordinate_space": {"const": "master-canvas"},
+        "meaning": {"type": "string", "minLength": 1}
+      }
+    },
+    "point_or_null": {
+      "type": ["array", "null"],
+      "prefixItems": [
+        {"type": "number"},
+        {"type": "number"}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "rect_or_null": {
+      "type": ["array", "null"],
+      "prefixItems": [
+        {"type": "number"},
+        {"type": "number"},
+        {"type": "number", "exclusiveMinimum": 0},
+        {"type": "number", "exclusiveMinimum": 0}
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "string_array": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    }
+  }
+}

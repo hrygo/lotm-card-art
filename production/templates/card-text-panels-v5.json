@@ -1,0 +1,91 @@
+{
+  "version": "4.0.0",
+  "status": "active-v5-template",
+  "pathway_id": "fool",
+  "coordinate_system": "design-space-top-left-image-normalized",
+  "canvas": {
+    "design_size": [1024, 1536],
+    "final_size": [2048, 3072],
+    "scale": 2,
+    "color_space": "sRGB",
+    "alpha": "straight"
+  },
+  "zones": [
+    {
+      "id": "pathway_name",
+      "kind": "left-column-inlay",
+      "full_width": false,
+      "local_vertical_span": true,
+      "text_orientation": "vertical-rl",
+      "width_ratio_to_column": 1.5,
+      "adjacent_column_body_width_design": 72,
+      "rect_design": [38, 780, 108, 280],
+      "text_safe_rect_design": [50, 796, 84, 248],
+      "capacity_min_characters": 6,
+      "inscription_render_mode": "per-glyph-ink-box-derived-relief",
+      "placement_window": "upper-mid-untextured-pillar",
+      "join": "fool-curled-column-spindle-with-soft-contact-fade",
+      "protected": ["top_emblem_safe_region", "illustration_window", "central_nameplate"]
+    },
+    {
+      "id": "sequence_name",
+      "kind": "right-column-inlay",
+      "full_width": false,
+      "local_vertical_span": true,
+      "text_orientation": "vertical-rl",
+      "width_ratio_to_column": 1.5,
+      "adjacent_column_body_width_design": 72,
+      "rect_design": [878, 780, 108, 280],
+      "text_safe_rect_design": [890, 796, 84, 248],
+      "capacity_min_characters": 6,
+      "inscription_render_mode": "per-glyph-ink-box-derived-relief",
+      "placement_window": "upper-mid-untextured-pillar",
+      "join": "fool-curled-column-spindle-with-soft-contact-fade",
+      "protected": ["top_emblem_safe_region", "illustration_window", "central_nameplate"]
+    },
+    {
+      "id": "character_name",
+      "kind": "central-nameplate",
+      "full_width": true,
+      "local_vertical_span": false,
+      "text_orientation": "horizontal",
+      "panel_rect_design": [228, 1274, 568, 94],
+      "text_safe_rect_design": [240, 1286, 544, 70],
+      "target_center_design": [512, 1321],
+      "diamond_top_design": 1377.16,
+      "minimum_diamond_clearance_final_px": 12,
+      "join": "deep-inner-lip-nameplate-with-engraved-letter-relief",
+      "style_reference": "artifacts/production/fool-frame-refinement-v1/nameplate/raw.png",
+      "protected": ["bottom_gemstone", "outer_silhouette"]
+    }
+  ],
+  "global_protection": {
+    "top_emblem_safe_region_design": [286.72, 30.72, 450.56, 384],
+    "illustration_window_design": [143.36, 460.8, 737.28, 814.08],
+    "no_generated_text_in_subject": true,
+    "empty_character_name_draws_nothing": true,
+    "bottom_gemstone_protected": true
+  },
+  "rendering": {
+    "pixel_coordinate_convention": "row-major-top-to-bottom-image-order",
+    "text_orientation": "upright",
+    "orientation_sentinel": "asymmetric-ctline-and-arrow-probe",
+    "side_text_source": "program-controlled-exact-glyph-outline",
+    "side_text_style": "agentic-study-informed-column-spindle-derived-relief",
+    "center_text_source": "program-controlled-exact-glyph-outline",
+    "center_text_style": "agentic-study-informed-premium-single-face-relief",
+    "font_source": "recipe",
+    "actual_ink_measurement": true,
+    "per_glyph_ink_measurement": true,
+    "minimum_side_capacity_characters": 6,
+    "minimum_name_cap_height_final_px": 78,
+    "contrast_ratio_minimum": 4.5,
+    "max_center_error_final_px": 1,
+    "max_geometry_drift_final_px": 0,
+    "minimum_name_diamond_clearance_final_px": 12,
+    "overflow_is_error": true,
+    "flat_side_text_layer_forbidden": true,
+    "flat_name_text_layer_forbidden": true,
+    "multi_face_name_layer_forbidden": true
+  }
+}

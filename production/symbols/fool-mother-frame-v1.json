@@ -2,18 +2,19 @@
   "version": "1.0.0",
   "id": "fool-agentic-mother-to-sequence-v1",
   "pathway_id": "fool",
-  "status": "pending-mother-generation",
+  "status": "historical-interface-contract",
+  "superseded_by": "production/symbols/fool-five-tier-kit.json",
   "interface": {
     "path": "production/templates/fool-mother-frame-interface-v1.json",
-    "sha256": "b2051270b8f044dc0e5d8477f4c245b2c0a5a38d130743136a6d17f907c9ff1f"
+    "sha256": "a6285639e2299c8a22b75395b338134e7c25efbb986a0501a2723bc0664a9908"
   },
   "schema": {
     "path": "production/schemas/fool-mother-frame.schema.json",
-    "sha256": "162f5429f5a78b6237db62c14daa6b146aa18de207ce46d4c7c754d0513306fb"
+    "sha256": "67a6f899ab125e566a082879fe86e8d633cf18e9f6530d288d45b591e77ff097"
   },
   "active_sop": {
     "path": "docs/production-sop-v3.md",
-    "sha256": "2b1a5aeda0d594c546979bb2ebebf20a4f17dd2946320fd620d4a97222b205fc"
+    "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"
   },
   "geometry": {
     "id": "fool-agentic-mother-v1",
@@ -21,7 +22,12 @@
     "standard_size": [2048, 3072],
     "collector_size": [4096, 6144],
     "coordinate_system": "design-space-top-left-image-normalized",
-    "source_policy": "agentic-study-then-clean-freeze",
+    "source_policy": "agentic-native-full-frame-until-final",
+    "resolution_policy": {
+      "path": "config/production-resolution-policy.json",
+      "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"
+    },
+    "intermediate_2k_count": 0,
     "max_anchor_drift_px": 0,
     "max_geometry_drift_px": 0
   },
@@ -43,13 +49,13 @@
   },
   "inscription_style": {
     "path": "production/symbols/inscriptions/fool-side-inscription-v4.json",
-    "sha256": "c5b607beedfffbe9784ae9216b64666f386a46b770ad92d9f5efd50af98c23c4"
+    "sha256": "c5803166d8bc5b9c6880fa6e72e4f81ce07eec2003d161cd714003884ce3bfb9"
   },
   "mother": {
     "task": "production/tasks/fool-mother-frame-v1.json",
-    "agentic_source": null,
+    "agentic_source": "artifacts/production/fool-mother-frame-v1/studies/fool-mother-agentic-high-detail-candidate-n.png",
     "frame_core": null,
-    "status": "not-generated"
+    "status": "visual-baseline-recorded-native-only"
   },
   "tier_order": ["low", "mid", "saint", "angel", "true-god"],
   "sequence_mapping": {
@@ -94,10 +100,10 @@
     "required_diagnostics": ["five-tiers.png", "ten-sequences.png", "right-zone-diffs.png", "dark-preview.png", "light-preview.png", "manifest.json"]
   },
   "status_detail": {
-    "agentic_mother": "not-generated",
-    "five_tiers": "not-generated",
-    "ten_sequences": "not-generated",
-    "user_visual_approval": "pending",
+    "agentic_mother": "visual-baseline-recorded",
+    "five_tiers": "visual-baseline-recorded",
+    "ten_sequences": "visual-baseline-recorded",
+    "user_visual_approval": "recorded-in-production-approvals-sidecar",
     "formal_release_approved": false
   }
 }

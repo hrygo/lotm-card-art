@@ -6,7 +6,7 @@
     },
     {
       "path": "tools/production.py",
-      "sha256": "03541cf37b9481f4940a4fc190ebdd9536539526986a5dd5e86406308db1e3c4"
+      "sha256": "3c54f56acf3fe1d50e9c88597abdcb36b9a0f31633948a1798c6a8d058fea5d5"
     },
     {
       "path": "production/schemas/task.schema.json",

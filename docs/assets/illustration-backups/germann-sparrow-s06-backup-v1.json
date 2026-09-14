@@ -1,0 +1,72 @@
+{
+  "asset_id": "germann-sparrow-s06-backup-v1",
+  "status": "material-backup",
+  "approval": "not-approved",
+  "production_scope": "asset-only / no-production",
+  "character": {
+    "name_zh": "格尔曼·斯帕罗",
+    "pathway": "愚者",
+    "sequence": "06",
+    "sequence_name": "无面人",
+    "character_id": "klein-moretti",
+    "identity_slice_id": "klein.s06.germann-sparrow"
+  },
+  "asset": {
+    "path": "docs/assets/illustration-backups/germann-sparrow-s06-backup-v1.png",
+    "role": "standalone subject illustration",
+    "visual_concept_status": "candidate-art-proposal",
+    "visual_event": "格尔曼·斯帕罗在海上舱室的狭窄旧镜前完成身份调整；本人保持稳定，镜中脸部出现克制而轻微的身份错位。",
+    "not_a_finished_card": true,
+    "excluded_from": [
+      "card.json",
+      "production/tasks",
+      "production/calls",
+      "design approval",
+      "release"
+    ]
+  },
+  "provenance": {
+    "tool": "image_gen",
+    "mode": "illustration-story",
+    "generated_at": "2026-09-14",
+    "recorded_at_utc": "2026-09-14T08:47:04Z",
+    "references": [
+      "docs/research/2026-09-14-germann-sparrow-s06-card-materials.md",
+      "pathways/fool/direction.json",
+      "config/project.json"
+    ],
+    "prompt_summary": "Vertical 2:3 painterly dark-fantasy scene in a cramped sea cabin: dark maritime coat and hat, narrow damp mirror, subtle identity mismatch, cold moonlight and restrained warm lamp, one coherent narrative event.",
+    "negative_constraints": "No card frame, nameplate, sequence numeral, pathway emblem, logo, watermark, readable writing, pseudo-text, collage, extra full character, marionette language, gray fog throne, history projection, miracle, godlike aura, body horror or gunfight.",
+    "processing_chain": [
+      "image_gen native generation",
+      "file copy into workspace",
+      "no crop",
+      "no upscale",
+      "no frame, text or emblem compositing"
+    ]
+  },
+  "engineering": {
+    "width": 1024,
+    "height": 1536,
+    "aspect_ratio": "2:3",
+    "format": "PNG",
+    "color_space": "RGB (reported by sips; project target is sRGB)",
+    "native_canvas": true,
+    "final_card_resolution": false,
+    "sha256": "8b088e95d3f04a024bd40f87284d20d95ee23e8823b5fd4aad58a7faa2fbfedd"
+  },
+  "visual_check": {
+    "checked": true,
+    "method": "view_image manual inspection",
+    "observations": [
+      "主体、镜面与海上舱室属于同一连续场景。",
+      "镜面保留轻微脸部身份差异，未表现为剧烈变形。",
+      "未观察到卡框、序列数字、途径徽记或可读文字。",
+      "未观察到木偶线、灰雾王座、历史投影或神性光环。"
+    ],
+    "remaining_risks": [
+      "这是候选备用物料，人物细节与镜面语义仍需正式单卡设计和人工视觉批准。",
+      "1024×1536 是本次原生画布，不代表项目最终 2048×3072 卡面交付。"
+    ]
+  }
+}

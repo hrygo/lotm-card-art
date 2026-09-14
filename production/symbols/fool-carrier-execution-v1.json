@@ -1,0 +1,91 @@
+{
+  "$schema": "production/schemas/fool-carrier-execution.schema.json",
+  "schema_version": "1.0.0",
+  "contract_type": "fool-carrier-execution",
+  "status": "measured",
+  "pathway_id": "fool",
+  "geometry_id": "fool-agentic-mother-v2",
+  "canvas": {
+    "design_size": [1024, 1536],
+    "native_size": [1024, 1536],
+    "delivery_sizes": {
+      "standard": [2048, 3072],
+      "collector": [4096, 6144]
+    },
+    "coordinate_system": "design-space-top-left-image-normalized",
+    "color_space": "sRGB"
+  },
+  "templates": {
+    "emblem_dock": {
+      "path": "production/templates/emblem-dock-interface-v1.json",
+      "sha256": "9a95288d8b7f5df2287c43f9667ea656c0e8cf8272bf2da5cbb87d218e7f088b",
+      "purpose": "invariant-grammar-visual-recess-not-through-hole"
+    },
+    "rank_numeral_dock": {
+      "path": "production/templates/fool-rank-numeral-dock-interface-v1.json",
+      "sha256": "2eddc3f277d646adafb83a2795ad5281c2b05b76dbdde08e134e906374951671",
+      "purpose": "current-fool-top-rank-dock-geometry"
+    }
+  },
+  "active_frame_source": {
+    "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png",
+    "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783",
+    "purpose": "native-visual-reference-for-shared-carrier-geometry"
+  },
+  "route": {
+    "emblem_dock_mode": "rank-numeral-dock-current-route",
+    "pathway_crown": "baked-into-frame-core",
+    "rank_numeral": "independent-simple-art-digit",
+    "sequence_name": "agentic-complete-frame",
+    "through_hole": false,
+    "standalone_emblem_overlay": false
+  },
+  "anchors": {
+    "pathway_mark": {
+      "rect_design": [50, 584, 84, 300],
+      "safe_rect_design": [50, 600, 84, 268]
+    },
+    "pathway_crown": {
+      "rect_design": [350, 0, 330, 260],
+      "safe_rect_design": [350, 0, 330, 260]
+    },
+    "rank_numeral_dock": {
+      "center_design": [512, 136],
+      "safe_rect_design": [466, 88, 92, 96]
+    },
+    "right_sequence_zone": {
+      "rect_design": [878, 584, 108, 300],
+      "safe_rect_design": [890, 600, 84, 268]
+    },
+    "name_surface": {
+      "rect_design": [224, 1216, 576, 136],
+      "safe_rect_design": [240, 1228, 544, 112]
+    },
+    "gem_slot": {
+      "shape": "regular-equilateral-hexagon",
+      "center_design": [512, 1421],
+      "visible_size_design": [132, 114],
+      "name_clearance_design": 12
+    }
+  },
+  "protected_regions": {
+    "pathway_crown": "mother-crown-protected",
+    "rank_numeral": "rank-numeral-safe",
+    "right_sequence_zone": "right-sequence-zone",
+    "name_surface": "name-surface",
+    "gem_slot": "gem-slot",
+    "outside_edit_domain": "outside-edit-domain"
+  },
+  "mask_policy": {
+    "generated_by": "foolpipeline5.mother",
+    "coordinate_space": "native-canvas",
+    "alpha_policy": "straight-RGBA",
+    "no_crop_reassembly": true
+  },
+  "thresholds": {
+    "geometry_displacement_max_px": 0,
+    "outside_edit_domain_pixels_max": 0,
+    "zone_center_error_max_native_px": 1,
+    "protected_region_intersections_max": 0
+  }
+}

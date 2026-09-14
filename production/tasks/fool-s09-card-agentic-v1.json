@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "task_id": "fool-s09-card-agentic-v1",
+  "kind": "subject",
+  "mode": "production",
+  "quality": {"sequence": 9, "visual_tier": "low"},
+  "output": {"aspect": [2, 3], "background": "opaque"},
+  "references": [
+    {
+      "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png",
+      "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783",
+      "role": "geometry"
+    },
+    {
+      "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-9-agentic-candidate-v2.png",
+      "sha256": "d83ce8b8761116b88a63573bf3e6a93f379fe0886369fcaf1a2c534189758297",
+      "role": "identity"
+    },
+    {
+      "path": "artifacts/production/klein-seer-subject/v002/raw.png",
+      "sha256": "16fa28928a7bbdc93403d53c3d59122973b195e964bc775c1542dbddac2d9f4e",
+      "role": "style"
+    }
+  ],
+  "narrative": {
+    "path": "production/narratives/klein-s09-tingen.json",
+    "sha256": "35e063ac3bc082e3ba6db43492beabb632896f4875a10e66104ad4d574b72d81"
+  },
+  "contracts": [
+    {
+      "path": "production/symbols/fool-agentic-sequence-inscriptions-v2.json",
+      "sha256": "2d3143a737ba386706d60848affaca9caff11ca9373b96f7c4cee401f073e6df"
+    },
+    {
+      "path": "artifacts/production/fool-five-tier-direct-kit-v1/manifest.json",
+      "sha256": "38076371c6d6da9ddb0fc52dda270aea8bf9ee666c1978acee67d9124f1a1d7e"
+    },
+    {
+      "path": "production/templates/fool-mother-frame-interface-v1.json",
+      "sha256": "a6285639e2299c8a22b75395b338134e7c25efbb986a0501a2723bc0664a9908"
+    },
+    {
+      "path": ".agents/skills/lotm-quality-frames/SKILL.md",
+      "sha256": "6f82603b49e57b53b5e99804fec7c9217b60748cee364e5deac57b24b327a9b8"
+    },
+    {
+      "path": "docs/production-sop-v3.md",
+      "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"
+    },
+    {
+      "path": "docs/production-preflight.md",
+      "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"
+    },
+    {
+      "path": "config/production-resolution-policy.json",
+      "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"
+    }
+  ],
+  "limits": {"max_attempts": 2},
+  "spec": {
+    "slot_id": "lotm.fool.s09",
+    "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+    "character_id": "klein-moretti",
+    "event": "克莱恩左手持银链黄水晶，在茶杯上方做灵摆占卜。",
+    "semantic_source": "pathways/fool/sequences/09/card.json",
+    "protagonist": {
+      "kind": "character",
+      "name_zh": "克莱恩·莫雷蒂",
+      "name_status": "verified",
+      "evidence_refs": [
+        {"path": "pathways/fool/canon.json", "sha256": "a7fc2fb3c1bbb7a752bf500451147e07518e557c81389304790b2a0ae285bf6a"}
+      ]
+    }
+  },
+  "prompt": "Use case: final-card-candidate, one complete Fool pathway Sequence 9 character card. The attached Fool five-tier native frame and the approved Sequence 9 Agentic full-frame baseline are visual authorities; work at the supplied native canvas and do not create an intermediate 2K image. Preserve the exact upright 2:3 composition, Fool crown, top rank dock and numeral, left 愚者 pathway mark, right vertical inscription 占卜家, low-tier silver-and-smoky-violet frame, name surface and bottom regular-equilateral-hexagonal silver-white diamond as one coherent identity carrier. Image 3 is the existing Klein Moretti scene reference only. Fill the central illustration window with one continuous, full-bleed scene while preserving the frame as a stable identity carrier. The scene is Tingen-period Klein Moretti as a Sequence 9 Seer: young black-haired brown-eyed scholarly man, seated at a Victorian divination table, watching a silver-chain honey-yellow citrine pendulum suspended above one porcelain cup of dark red tea. His anatomical left hand is on viewer right and holds the chain; the other hand rests naturally near an open book with pale non-readable pages. Include the quiet human-scale room, warm lamp, books and restrained materials case as subordinate atmosphere. The central event is the real hand-chain-citrine-tea relationship; no energy beam and no high-sequence power. Keep the scene naturally continuous to the frame edges and quiet beneath the top crown/digit and above the bottom name surface; do not create an inset rectangle, hard photo boundary, duplicate frame, or pasted panel. Keep the face, both hands, pendulum and tea inside the central window and away from all frame text, the top rank dock, the right 占卜家 inscription, the bottom name surface and diamond. No text, letters, numbers, labels, handwriting, pseudo-writing, watermark, extra person, throne, tentacles, puppet strings, magical circle, cosmic realm or higher-sequence effect inside the illustration. Do not redesign, recolor, sharpen into a new tier, move, crop, mirror, resize or redraw any border element. Do not add or remove gemstones. Preserve the supplied low-tier silver-white quality and existing transparency/silhouette; output one upright 2:3 complete native card candidate. This is a visual candidate for review; exact frame zero-drift is verified separately by local ingest, not assumed from image generation."
+}

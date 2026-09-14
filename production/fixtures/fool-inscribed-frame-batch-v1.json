@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "pathway_id": "fool",
+  "pathway_name": "愚者",
+  "character_name": "",
+  "base_kit": "production/symbols/fool-five-tier-kit.json",
+  "purpose": "为愚者途径十个序列卡位装配侧途径铭刻、序列名称与已融合圣徽；不包含人物姓名。",
+  "entries": [
+    {
+      "digit": 9,
+      "sequence_id": "09",
+      "sequence_name": "占卜家",
+      "tier": "low",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-9-frame.png"
+    },
+    {
+      "digit": 8,
+      "sequence_id": "08",
+      "sequence_name": "小丑",
+      "tier": "low",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-8-frame.png"
+    },
+    {
+      "digit": 7,
+      "sequence_id": "07",
+      "sequence_name": "魔术师",
+      "tier": "mid",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-7-frame.png"
+    },
+    {
+      "digit": 6,
+      "sequence_id": "06",
+      "sequence_name": "无面人",
+      "tier": "mid",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-6-frame.png"
+    },
+    {
+      "digit": 5,
+      "sequence_id": "05",
+      "sequence_name": "秘偶大师",
+      "tier": "mid",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-5-frame.png"
+    },
+    {
+      "digit": 4,
+      "sequence_id": "04",
+      "sequence_name": "诡法师",
+      "tier": "saint",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-4-frame.png"
+    },
+    {
+      "digit": 3,
+      "sequence_id": "03",
+      "sequence_name": "古代学者",
+      "tier": "saint",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-3-frame.png"
+    },
+    {
+      "digit": 2,
+      "sequence_id": "02",
+      "sequence_name": "奇迹师",
+      "tier": "angel",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-2-frame.png"
+    },
+    {
+      "digit": 1,
+      "sequence_id": "01",
+      "sequence_name": "诡秘侍者",
+      "tier": "angel",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-1-frame.png"
+    },
+    {
+      "digit": 0,
+      "sequence_id": "00",
+      "sequence_name": "愚者",
+      "tier": "true-god",
+      "frame_path": "artifacts/production/fool-five-tier-kit-v5/fool-0-frame.png"
+    }
+  ]
+}

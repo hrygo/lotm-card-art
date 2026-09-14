@@ -3,13 +3,13 @@
   "revision": 2,
   "references": [
     {
-      "path": "artifacts/production/klein-identity-v3/reference.png",
-      "sha256": "d5179d39b18af70270e2db6fde3d75c40fbb687ba23b0325f7430d8b7e2679dc",
+      "path": "artifacts/production/fool-mother-frame-v1/studies/fool-mother-agentic-high-detail-candidate-n.png",
+      "sha256": "10cd45aca62e0f5b0674cf96c8b8180892288ea3d6d24c663d80b7f6f0e8dda5",
       "role": "geometry"
     },
     {
-      "path": "artifacts/production/klein-seer-card-v3/final.png",
-      "sha256": "97bd976b07604ad46b112f996b89574bb3d4c259724f1078837938dcb14f5204",
+      "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-9-agentic-candidate-v2.png",
+      "sha256": "d83ce8b8761116b88a63573bf3e6a93f379fe0886369fcaf1a2c534189758297",
       "role": "geometry"
     },
     {
@@ -45,7 +45,7 @@
       "evidence_refs": [
         {
           "path": "pathways/fool/canon.json",
-          "sha256": "a756a915a69496b882fc69b9ca766bd53693eb98fb5e30fef8b577a5d46f334d"
+          "sha256": "a7fc2fb3c1bbb7a752bf500451147e07518e557c81389304790b2a0ae285bf6a"
         }
       ]
     }

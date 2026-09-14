@@ -1,0 +1,91 @@
+{
+  "asset_id": "zaratul-s01-attendant-mythical-form-v1",
+  "status": "material-backup",
+  "approval": "not-approved",
+  "production_scope": "asset-only / no-production",
+  "canon_boundary": "扎拉图个人神话生物解剖未在本项目正典层冻结；本图是愚者途径高序列语汇与扎拉图身份特征的艺术解释。",
+  "character": {
+    "name_zh": "扎拉图",
+    "name_en": "Zaratul",
+    "pathway": "愚者",
+    "sequence": "01",
+    "sequence_name": "诡秘侍者",
+    "identity_slice_id": "zaratul.s01.attendant-of-mysteries",
+    "character_id": "zaratul",
+    "candidate_card_id": "lotm.fool.s01.zaratul-attendant-01",
+    "disambiguation": "当代秘法会首领；不包含扎拉图先祖、安提哥努斯、格尔曼·斯帕罗或克莱恩。"
+  },
+  "asset": {
+    "path": "docs/assets/illustration-backups/zaratul-s01-attendant-mythical-form-v1.png",
+    "role": "standalone mythical-creature-form concept illustration",
+    "visual_concept_status": "candidate-art-proposal",
+    "visual_event": "扎拉图以单一人形主体站在封闭门前，黑袍下半身连续解构为透明灵性丝状结构；门缝、信件与附着式回流表达神秘、信息保留和主体不稳定。",
+    "not_a_finished_card": true,
+    "excluded_from": [
+      "card.json",
+      "production/tasks",
+      "production/calls",
+      "design approval",
+      "release"
+    ]
+  },
+  "provenance": {
+    "tool": "image_gen",
+    "generation_mode": "stylized-concept",
+    "revision_mode": "precise-object-edit",
+    "model": null,
+    "seed": null,
+    "generated_at": "2026-09-14",
+    "recorded_at_utc": "2026-09-14T09:07:51Z",
+    "input_images": [
+      {
+        "path": "docs/assets/illustration-backups/zaratul-s01-attendant-backup-v1.png",
+        "role": "identity and palette reference; not retained as the final body form"
+      }
+    ],
+    "references": [
+      "docs/research/2026-09-14-zaratul-card-materials.md",
+      "docs/assets/illustration-backups/zaratul-s01-attendant-backup-v1.png",
+      "pathways/fool/direction.json",
+      "config/project.json"
+    ],
+    "prompt_summary": "Vertical 2:3 painterly dark-fantasy concept: contemporary Zaratul as one connected Attendant of Mysteries mythological organism, with one mature face, black layered robes, and a lower body that unravels into translucent spirit-worm-like filaments at a sealed archive door.",
+    "negative_constraints": "No claim of canonical personal anatomy; no second character, duplicate face, detached ghost body, marionette strings, puppets, tarot imagery, top hat, giant eyes, tentacles, wolf heads, gray fog throne, Sefirah Castle, complete Sequence 0 Fool authority, card frame, emblem, numeral, name, readable writing, pseudo-text or watermark.",
+    "processing_chain": [
+      "image_gen generation using the prior Zaratul portrait as an identity reference",
+      "visual inspection identified a recognizable human-like afterimage",
+      "one targeted image_gen edit replacing that afterimage with attached non-anthropomorphic filaments",
+      "copy selected revision into workspace",
+      "no crop",
+      "no upscale",
+      "no frame, text or emblem compositing"
+    ]
+  },
+  "engineering": {
+    "width": 1024,
+    "height": 1536,
+    "aspect_ratio": "2:3",
+    "format": "PNG",
+    "color_space": "RGB (reported by sips; project target is sRGB)",
+    "native_canvas": true,
+    "final_card_resolution": false,
+    "sha256": "7988311132ea1501c4535c642055529ecc0050fa9a8022e8025619840d1376d2"
+  },
+  "visual_check": {
+    "checked": true,
+    "method": "view_image manual inspection",
+    "observations": [
+      "扎拉图主体只有一个可辨识面部；下半身丝状结构与黑袍和主体连续。",
+      "透明丝状结构读作同一生物的神话形态与延迟回流，没有独立人形。",
+      "封闭门、门缝冷光、信件和档案空间形成单一连续场景。",
+      "未观察到卡框、途径徽记、序列数字、姓名或可读文字。",
+      "未观察到木偶线、狼头、巨眼、触手簇、完整灰雾王座或源堡。"
+    ],
+    "remaining_risks": [
+      "神话生物具体解剖仍是艺术解释，不能据此确认扎拉图个人的原著形态。",
+      "透明丝状结构借用了途径级灵性/身份碎片语汇，不等于已核验的个人能力清单。",
+      "这是备用物料，不代表正式卡面设计、事实批准或 release。",
+      "1024×1536 是本次原生画布，不代表项目最终 2048×3072 卡面交付。"
+    ]
+  }
+}

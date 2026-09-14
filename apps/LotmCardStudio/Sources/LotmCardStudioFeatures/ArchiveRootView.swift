@@ -122,7 +122,7 @@ private struct ArchiveSidebar: View {
 
             PathwayButton(
                 title: "愚者",
-                detail: ArchiveCopy.pathwaySummary(confirmed: 1, candidate: 1),
+                detail: ArchiveCopy.pathwaySummary(confirmed: 1, candidate: 2),
                 color: ArchiveTheme.teal,
                 action: { model.clearSelection() }
             )
@@ -817,7 +817,14 @@ private struct IdentityPanel: View {
     @ObservedObject var playback: SpeechPlaybackCoordinator
 
     private var voiceAvailability: VoiceAvailability {
-        LotmCardStudioFeatures.voiceAvailability(for: card.narrative)
+        switch card.audioStatus {
+        case .localBundle:
+            return .localAudio
+        case .speechRailFallback:
+            return .speechRail
+        case .pendingApproval:
+            return .pending
+        }
     }
 
     private var hasPlayableGreeting: Bool {
@@ -856,48 +863,34 @@ private struct IdentityPanel: View {
         )
     }
 
+    private func semanticColor(for index: String) -> Color {
+        switch index {
+        case "01":
+            return sequenceLabelColor
+        case "02":
+            return ArchiveTheme.Semantic.acting
+        case "03":
+            return ArchiveTheme.Semantic.ability
+        case "04":
+            return ArchiveTheme.Semantic.potion
+        case "05":
+            return ArchiveTheme.Semantic.promotion
+        case "06":
+            return ArchiveTheme.Semantic.limitation
+        default:
+            return ArchiveTheme.Semantic.limitation
+        }
+    }
+
     private var semanticReadbacks: [SemanticReadback] {
-        if card.identity.slotID == "lotm.fool.s00" {
-            return [
-                SemanticReadback(index: "01", title: "身份", value: "序列 0 · 愚者 · 真神", color: sequenceLabelColor),
-                SemanticReadback(index: "02", title: "扮演", value: "在不同身份中保持自我", color: ArchiveTheme.Semantic.acting),
-                SemanticReadback(index: "03", title: "能力", value: "愚弄与历史投影（节选）", color: ArchiveTheme.Semantic.ability),
-                SemanticReadback(index: "04", title: "魔药", value: "唯一性与诡秘侍者特性（待核对）", color: ArchiveTheme.Semantic.potion),
-                SemanticReadback(index: "05", title: "晋升", value: "愚弄时间、历史或命运（部分资料）", color: ArchiveTheme.Semantic.promotion),
-                SemanticReadback(index: "06", title: "限制", value: "相关资料仍在整理", color: ArchiveTheme.Semantic.limitation)
-            ]
+        card.semanticReadbacks.map { fact in
+            SemanticReadback(
+                index: fact.index,
+                title: fact.title,
+                value: fact.value,
+                color: semanticColor(for: fact.index)
+            )
         }
-
-        if card.identity.cardID == "lotm.fool.s09.klein-moretti.tingen-01" {
-            return [
-                SemanticReadback(index: "01", title: "身份", value: "愚者途径 · 占卜家 · 克莱恩 · 序列 9", color: sequenceLabelColor),
-                SemanticReadback(index: "02", title: "扮演", value: "专注而克制地实践占卜", color: ArchiveTheme.Semantic.acting),
-                SemanticReadback(index: "03", title: "能力", value: "灵摆针对近处目标占卜", color: ArchiveTheme.Semantic.ability),
-                SemanticReadback(index: "04", title: "魔药", value: "暗色容器与星点晶体的材料意象", color: ArchiveTheme.Semantic.potion),
-                SemanticReadback(index: "05", title: "晋升", value: "空杯与材料盒提示入序，不重演仪式", color: ArchiveTheme.Semantic.promotion),
-                SemanticReadback(index: "06", title: "限制", value: "聚焦近处目标，结果仍需核对", color: ArchiveTheme.Semantic.limitation)
-            ]
-        }
-
-        if card.identity.cardID == "lotm.visionary.s07.audrey-01" {
-            return [
-                SemanticReadback(index: "01", title: "身份", value: "正义 · 奥黛丽 · 序列 7", color: sequenceLabelColor),
-                SemanticReadback(index: "02", title: "扮演", value: "主动观察并帮助他人", color: ArchiveTheme.Semantic.acting),
-                SemanticReadback(index: "03", title: "能力", value: "安抚心灵、读取情绪", color: ArchiveTheme.Semantic.ability),
-                SemanticReadback(index: "04", title: "魔药", value: "镜龙材料 · 长者之树果实", color: ArchiveTheme.Semantic.potion),
-                SemanticReadback(index: "05", title: "晋升", value: "独立仪式（资料待补）", color: ArchiveTheme.Semantic.promotion),
-                SemanticReadback(index: "06", title: "限制", value: "受媒介与半催眠条件影响", color: ArchiveTheme.Semantic.limitation)
-            ]
-        }
-
-        return [
-            SemanticReadback(index: "01", title: "身份", value: "\(ArchiveCopy.sequenceName(for: card.identity.sequenceName)) · \(card.identity.displayName)", color: sequenceLabelColor),
-            SemanticReadback(index: "02", title: "扮演", value: "以荒诞掩护真实", color: ArchiveTheme.Semantic.acting),
-            SemanticReadback(index: "03", title: "能力", value: "操纵表情与注意力", color: ArchiveTheme.Semantic.ability),
-            SemanticReadback(index: "04", title: "魔药", value: "相关材料待确认", color: ArchiveTheme.Semantic.potion),
-            SemanticReadback(index: "05", title: "晋升", value: "晋升条件待复核", color: ArchiveTheme.Semantic.promotion),
-            SemanticReadback(index: "06", title: "限制", value: "声音需要在本机准备", color: ArchiveTheme.Semantic.limitation)
-        ]
     }
 
     var body: some View {
@@ -1107,38 +1100,6 @@ private struct SemanticRow: View {
             accentColor: color
         )
         .archiveCursor(.arrow)
-    }
-}
-
-private extension PlaybackState {
-    var captionStatusLabel: String {
-        switch self {
-        case .idle:
-            return "已讲完"
-        case .loading:
-            return "正在准备声音"
-        case .playing:
-            return "正在讲述"
-        case .paused:
-            return "已暂停"
-        case .failed:
-            return "声音不可用"
-        }
-    }
-
-    var captionSystemImage: String {
-        switch self {
-        case .idle:
-            return "checkmark.circle"
-        case .loading:
-            return "waveform"
-        case .playing:
-            return "waveform"
-        case .paused:
-            return "pause.circle"
-        case .failed:
-            return "exclamationmark.triangle"
-        }
     }
 }
 
@@ -1375,243 +1336,134 @@ private struct StoryDrawer: View {
         )
     }
 
+    private func togglePlay() {
+        if selectedChapterIsCurrent, playback.state == .playing {
+            playback.pause()
+        } else if selectedChapterIsCurrent, playback.state == .paused {
+            playback.resume()
+        } else if let chapter = selectedChapter {
+            play(chapter)
+        }
+    }
+
+    private func replay() {
+        if selectedChapterIsCurrent {
+            playback.replay()
+        } else if let chapter = selectedChapter {
+            play(chapter)
+        }
+    }
+
+    private func stop() {
+        playback.stop()
+    }
+
+    private func previous() {
+        if let chapter = previousPlayableChapter {
+            play(chapter)
+        }
+    }
+
+    private func next() {
+        if let chapter = nextPlayableChapter {
+            play(chapter)
+        }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: ArchiveTheme.Story.Metrics.sectionSpacing) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: ArchiveTheme.Story.Metrics.headerSpacing) {
-                    Text(ArchiveCopy.story)
-                        .font(ArchiveTheme.Story.Typography.eyebrow)
-                        .foregroundStyle(ArchiveTheme.teal)
+                    HStack(spacing: 6) {
+                        Text(ArchiveCopy.story)
+                            .font(ArchiveTheme.Story.Typography.eyebrow)
+                            .foregroundStyle(ArchiveTheme.teal)
+
+                        Text("·")
+                            .font(.system(size: 10, weight: .bold))
+                            .foregroundStyle(ArchiveTheme.Borders.brassMuted)
+
+                        Text("秘音卷宗")
+                            .font(ArchiveTheme.Story.Typography.eyebrow)
+                            .foregroundStyle(ArchiveTheme.Brass.luster)
+                    }
+
                     Text("\(card.identity.displayName)的故事")
                         .font(ArchiveTheme.Story.Typography.title)
                         .foregroundStyle(ArchiveTheme.primary)
+
                     Text(hasPlayableChapter ? "第三人称故事 · 可以朗读" : "第三人称故事 · 等待确认")
                         .font(ArchiveTheme.Story.Typography.note)
                         .foregroundStyle(ArchiveTheme.secondary)
                 }
+
                 Spacer()
-                Text(drawerPlaybackLabel)
-                    .font(ArchiveTheme.Story.Typography.status)
-                    .foregroundStyle(selectedChapterIsCurrent ? ArchiveTheme.teal : ArchiveTheme.secondary)
+
+                HStack(spacing: 6) {
+                    Circle()
+                        .fill(
+                            selectedChapterIsCurrent && playback.state == .playing
+                                ? ArchiveTheme.Aether.light
+                                : ArchiveTheme.Brass.core
+                        )
+                        .frame(width: 6, height: 6)
+                        .shadow(
+                            color: selectedChapterIsCurrent && playback.state == .playing
+                                ? ArchiveTheme.Aether.light.opacity(0.8)
+                                : Color.clear,
+                            radius: 4
+                        )
+
+                    Text(drawerPlaybackLabel)
+                        .font(ArchiveTheme.Story.Typography.status)
+                        .foregroundStyle(selectedChapterIsCurrent ? ArchiveTheme.teal : ArchiveTheme.secondary)
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 5)
+                .background {
+                    Capsule()
+                        .fill(ArchiveTheme.Leather.deep.opacity(0.8))
+                    Capsule()
+                        .stroke(ArchiveTheme.Borders.subtle, lineWidth: 1)
+                }
             }
 
             Rectangle()
                 .fill(ArchiveTheme.elevated)
                 .frame(height: 1)
 
-            HStack(alignment: .top, spacing: ArchiveTheme.Story.Metrics.contentSpacing) {
-                VStack(alignment: .leading, spacing: ArchiveTheme.Story.Metrics.bodySpacing) {
-                    HStack(spacing: ArchiveTheme.Story.Metrics.headerSpacing) {
-                        Image(systemName: "scroll.fill")
-                            .font(.system(size: 11, weight: .semibold))
-                            .foregroundStyle(ArchiveTheme.Brass.core)
-                        Text(selectedChapter?.title ?? "故事正文")
-                            .font(ArchiveTheme.Story.Typography.chapterTitle)
-                            .foregroundStyle(ArchiveTheme.Story.ink)
-                    }
-
-                    if selectedChapterIsCurrent {
-                        HStack(spacing: ArchiveTheme.Story.Metrics.headerSpacing) {
-                            Image(systemName: playback.state.captionSystemImage)
-                                .font(.system(size: 10, weight: .semibold))
-                            Text(playback.state.captionStatusLabel)
-                        }
-                        .font(ArchiveTheme.Story.Typography.status)
-                        .foregroundStyle(ArchiveTheme.Playback.ready)
-                    }
-                    Text(selectedChapter?.line.text ?? "暂时没有故事")
-                        .font(ArchiveTheme.Story.Typography.body)
-                        .foregroundStyle(ArchiveTheme.Story.ink)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Text(selectedChapterIsPlayable ? "这段故事可以朗读，也可以直接阅读。" : "这段故事还在确认中，目前只能阅读。")
-                        .font(ArchiveTheme.Story.Typography.note)
-                        .foregroundStyle(
-                            selectedChapterIsPlayable
-                                ? ArchiveTheme.Story.inkMuted
-                                : ArchiveTheme.Playback.preparing
-                        )
-                }
-                .padding(ArchiveTheme.Story.Metrics.sheetPadding)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background {
-                    RoundedRectangle(
-                        cornerRadius: ArchiveTheme.Story.Metrics.sheetRadius,
-                        style: .continuous
-                    )
-                    .fill(ArchiveTheme.Story.sheetSurface)
-                }
-                .overlay {
-                    RoundedRectangle(
-                        cornerRadius: ArchiveTheme.Story.Metrics.sheetRadius,
-                        style: .continuous
-                    )
-                    .stroke(ArchiveTheme.Story.edge, lineWidth: 1)
-                }
-                .shadow(
-                    color: ArchiveTheme.Story.shadow,
-                    radius: ArchiveTheme.Story.Metrics.sheetShadowRadius,
-                    y: ArchiveTheme.Story.Metrics.sheetShadowYOffset
+            HStack(alignment: .top, spacing: 20) {
+                StoryFolioSheet(
+                    chapter: selectedChapter,
+                    isPlayable: selectedChapterIsPlayable,
+                    isCurrentPlaying: selectedChapterIsCurrent,
+                    playbackState: playback.state
                 )
 
-                VStack(alignment: .leading, spacing: ArchiveTheme.Story.Metrics.controlSpacing) {
-                    HStack(spacing: ArchiveTheme.Story.Metrics.transportSpacing) {
-                        Button {
-                            if let chapter = previousPlayableChapter {
-                                play(chapter)
-                            }
-                        } label: {
-                            Image(systemName: "chevron.left")
+                StoryPlayerRail(
+                    chapters: chapters,
+                    selectedChapter: selectedChapter,
+                    previousPlayableChapter: previousPlayableChapter,
+                    nextPlayableChapter: nextPlayableChapter,
+                    selectedChapterIsPlayable: selectedChapterIsPlayable,
+                    selectedChapterIsCurrent: selectedChapterIsCurrent,
+                    canReplaySelectedChapter: canReplaySelectedChapter,
+                    playbackState: playback.state,
+                    onPlayChapter: { chapter in
+                        play(chapter)
+                    },
+                    onSelectChapter: { chapter in
+                        selectedChapterID = chapter.id
+                        if chapter.line.isPlayable && !selectedChapterIsCurrent {
+                            play(chapter)
                         }
-                        .buttonStyle(IconButtonStyle())
-                        .disabled(previousPlayableChapter == nil)
-                        .accessibilityLabel("上一个故事章节")
-                        .accessibilityHint("选择并播放上一个已确认章节")
-
-                        Button {
-                            if selectedChapterIsCurrent {
-                                playback.replay()
-                            } else if let chapter = selectedChapter {
-                                play(chapter)
-                            }
-                        } label: {
-                            Image(systemName: "arrow.counterclockwise")
-                        }
-                        .buttonStyle(IconButtonStyle())
-                        .disabled(!canReplaySelectedChapter)
-                        .accessibilityLabel("重播当前章节")
-                        .accessibilityHint("从头朗读当前章节")
-
-                        Button {
-                            if selectedChapterIsCurrent, playback.state == .playing {
-                                playback.pause()
-                            } else if selectedChapterIsCurrent, playback.state == .paused {
-                                playback.resume()
-                            } else if let chapter = selectedChapter {
-                                play(chapter)
-                            }
-                        } label: {
-                            Image(systemName: playButtonSystemImage)
-                        }
-                        .buttonStyle(IconButtonStyle())
-                        .disabled(!selectedChapterIsPlayable || (selectedChapterIsCurrent && playback.state == .loading))
-                        .accessibilityLabel(playButtonAccessibilityLabel)
-                        .accessibilityValue(selectedChapterIsCurrent ? playback.state.captionStatusLabel : "未播放当前章节")
-                        .accessibilityHint(
-                            selectedChapterIsPlayable
-                                ? "开始、暂停或继续当前章节"
-                                : "当前章节只能阅读文字，确认后才可朗读"
-                        )
-
-                        Button {
-                            if let chapter = nextPlayableChapter {
-                                play(chapter)
-                            }
-                        } label: {
-                            Image(systemName: "chevron.right")
-                        }
-                        .buttonStyle(IconButtonStyle())
-                        .disabled(nextPlayableChapter == nil)
-                        .accessibilityLabel("下一个故事章节")
-                        .accessibilityHint("选择并播放下一个已确认章节")
-
-                        Button {
-                            playback.stop()
-                        } label: {
-                            Image(systemName: "stop.fill")
-                        }
-                        .buttonStyle(IconButtonStyle())
-                        .disabled(playback.currentCaption == nil)
-                        .accessibilityLabel("停止播放")
-                        .accessibilityHint("停止当前故事音频")
-                    }
-                    Text(ArchiveCopy.chapters)
-                        .font(ArchiveTheme.Story.Typography.status)
-                        .foregroundStyle(ArchiveTheme.secondary)
-                    ForEach(chapters) { chapter in
-                        let isSelected = chapter.id == selectedChapter?.id
-                        Button {
-                            selectedChapterID = chapter.id
-                            if chapter.line.isPlayable {
-                                play(chapter)
-                            } else {
-                                playback.stop()
-                            }
-                        } label: {
-                            HStack(spacing: ArchiveTheme.Story.Metrics.headerSpacing) {
-                                Text(chapter.title)
-                                Spacer(minLength: ArchiveTheme.Story.Metrics.chapterRowSpacer)
-                                Text(chapter.line.isPlayable ? "可朗读" : "待确认")
-                                    .font(ArchiveTheme.Story.Typography.status)
-                                    .foregroundStyle(
-                                        chapter.line.isPlayable
-                                            ? ArchiveTheme.Playback.ready
-                                            : ArchiveTheme.Playback.preparing
-                                    )
-                            }
-                        }
-                        .font(ArchiveTheme.Story.Typography.chapterMeta)
-                        .foregroundStyle(
-                            isSelected
-                                ? ArchiveTheme.Story.ink
-                                : chapter.line.isPlayable
-                                    ? ArchiveTheme.Playback.ready
-                                    : ArchiveTheme.secondary
-                        )
-                        .archiveInteractiveSurface(
-                            accent: chapter.line.isPlayable
-                                ? ArchiveTheme.Playback.ready
-                                : ArchiveTheme.Playback.preparing,
-                            cornerRadius: ArchiveTheme.Story.Metrics.chapterRadius,
-                            isInteractive: chapter.line.isPlayable
-                        )
-                        .overlay(alignment: .leading) {
-                            if isSelected {
-                                Capsule()
-                                    .fill(
-                                        chapter.line.isPlayable
-                                            ? ArchiveTheme.Playback.ready
-                                            : ArchiveTheme.Playback.preparing
-                                    )
-                                    .frame(width: 2, height: ArchiveTheme.Story.Metrics.chapterRowMarkerHeight)
-                                    .padding(.leading, ArchiveTheme.Story.Metrics.chapterRowMarkerInset)
-                            }
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityElement(children: .ignore)
-                        .accessibilityLabel(chapter.title)
-                        .accessibilityValue(chapter.line.isPlayable ? "可朗读" : "待确认")
-                        .accessibilityHint(
-                            chapter.line.isPlayable
-                                ? "选择并播放该章节"
-                                : "可阅读文字，但还未确认朗读"
-                        )
-                    }
-                    if chapters.isEmpty {
-                        Text("暂无故事内容")
-                            .font(ArchiveTheme.Story.Typography.status)
-                            .foregroundStyle(ArchiveTheme.Playback.preparing)
-                    } else if !hasPlayableChapter {
-                        Text("故事仍在整理，确认后可以朗读")
-                            .font(ArchiveTheme.Story.Typography.status)
-                            .foregroundStyle(ArchiveTheme.Playback.preparing)
-                    }
-                }
-                .frame(width: ArchiveTheme.Story.Metrics.chapterRailWidth, alignment: .leading)
-                .padding(ArchiveTheme.Story.Metrics.railPadding)
-                .background {
-                    RoundedRectangle(
-                        cornerRadius: ArchiveTheme.Story.Metrics.railRadius,
-                        style: .continuous
-                    )
-                    .fill(ArchiveTheme.Story.railSurface)
-                }
-                .overlay {
-                    RoundedRectangle(
-                        cornerRadius: ArchiveTheme.Story.Metrics.railRadius,
-                        style: .continuous
-                    )
-                    .stroke(ArchiveTheme.Borders.brassMuted, lineWidth: 1)
-                }
+                    },
+                    onTogglePlay: togglePlay,
+                    onReplay: replay,
+                    onStop: stop,
+                    onPrevious: previous,
+                    onNext: next
+                )
             }
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)

@@ -167,12 +167,29 @@ OK
 - 序列色只表达力量层级；内容状态、六维信息、声音与故事播放态分别使用 `ArchiveTheme.Status`、`ArchiveTheme.Semantic` 与 `ArchiveTheme.Playback`，候选状态改为烟铜色，魔药维度改为玫瑰色，均不复用天使紫或低序列银白。
 - CUA 复核序列 0、序列 3、序列 7、候选清单和画廊首页：未发现 `fixture`、`snapshot`、`recipe`、原始 voice ID、审批/流水线标签或重复的序列层级文案；序列 0 只显示“序列 0 · 真神”。
 
-## 克莱恩·莫雷蒂序列 9 身份卡内置验收
+## 愚者途径当前候选卡内置验收
 
-- 2026-09-13：将已制作的廷根时期克莱恩卡图接入 `lotm.fool.s09.klein-moretti.tingen-01`，App 用户文案显示为“克莱恩·莫雷蒂 / 序列 9 · 占卜家”；卡图资源为 `klein-s09-seer-v001.png`，源文件与 App bundle 内文件 SHA-256 均为 `39e40f25d584843bae2b1d164537aae59fb4ed2e5bf3612240320848c0a6c44e`。
-- 卡图实际规格为 PNG 2048×3072、RGBA、sRGB；CUA 重启当前 `.build/LotmCardStudio.app` 后进入候选清单和克莱恩详情，截图确认完整卡面、人物姓名和银白低序列边框可见，未出现资源缺失或占位图。
-- 新增用户故事包：1 条问候语、2 条口头语、3 个第三人称故事章节；身份页和故事页均可直接阅读，故事页实测显示三章标题、正文与“待确认”状态。
-- 详情页六维回读已按序列 9 专门配置：专注克制的扮演、近处目标灵摆占卜、材料意象、入序提示和近处目标限制；CUA Accessibility 树实测同时显示“愚者途径 · 占卜家 · 克莱恩 · 序列 9”，未再落入序列 3 的通用文案。
-- 该内容均标记为 `draft` / “候选”，播放按钮保持禁用并显示“台词等待确认”或“故事还在确认中”；本轮未生成或伪造音频，也未把原创解释性文案标为原著引文。待用户逐字确认后，才可转为可朗读内容并进入音频制作。
-- 内容源 `production/narratives/klein-s09-tingen.json` 已通过 `python3 tools/production.py check-content`；Swift 回归测试 72/72 通过；Debug/Release 构建均通过；Release `.app` 的 Mach-O 为 `arm64`、最低系统版本为 `26.0`，`codesign --verify --deep --strict` 通过。
-- 仓库级 `python3 -m unittest discover -s tests -v` 实测 124 项：2 failures、61 errors；失败集中在既有物料/符号 receipt 仍引用旧版 `tools/production.py`，并非克莱恩 App fixture 或 Swift 路径，本轮不重编译整套历史 receipt，也不将全库回归标记为通过。
+- 2026-09-14：S09 `lotm.fool.s09.klein-moretti.tingen-01` 与 S00 `lotm.fool.s00.klein-moretti.mr-fool-01` 均改为当前生产源的原生候选卡图；App 用户文案分别显示为“克莱恩·莫雷蒂 / 序列 9 · 占卜家”和“愚者先生 / 序列 0 · 真神”。
+- S09 资源为 `fool-s09-card-name-edit-v1-v001.png`，S00 资源为 `fool-s00-card-agentic-v1-v001.png`；两份资源均为 1024×1536 PNG，App 源文件 SHA-256 分别为 `2d73c4662e9de0b263f833b75ca419605299b40f52c0909421c3b0d9d4dc0efe` 与 `11eab4ed8688a4949411721f0fad07586cd006debb444919153907fb77b584ce`。
+- 旧 S09/S00 卡图资源已从 `Resources/CardArt/` 移入 macOS 废纸篓，不保留旧资源名或兼容映射；当前候选图尚未因 App 打包而获得用户视觉批准，不计入正式卡牌。
+- S09 的 6 条叙事与 `production/narratives/klein-s09-tingen.json` 的内容摘要同步，仍为待审核文本；S00 继续使用 App 内已批准的本地试听链路，卡 ID 与人物身份切片已同步到生产源。
+- 已安装的 `/Applications/LotmCardStudio.app` 通过 `codesign --verify --deep --strict`；实际画廊验收可见 4 张 fixture，S09/S00 均可打开当前卡图，分别显示候选、六维信息与故事；S09 的声音/故事保持待审核锁定，S00 的本地配音与故事保持可用。
+
+## 正义小姐 App 外资产保留核验
+
+- 2026-09-14：正义小姐的原始插画与两个高清派生版本仍保留在 `artifacts/lotm.visionary.s07/render-v001/`；六维源数据仍保留在 `pathways/visionary/sequences/07/card.json`，人物研究与故事边界仍保留在 `docs/research/2026-09-13-audrey-s07-research.md`。
+- 6 条已批准配音仍保留在 `artifacts/lotm.visionary.s07/audio-v001/`；本次愚者卡清理没有触碰上述 App 外资产。
+
+## 2026-09-14 当前卡包与叙事/配音回归
+
+本节是当前安装版和当前生产源的最新验收记录；上文较早日期的数字、卡片清单和资源描述保留为历史快照，不覆盖本节。
+
+- App 当前只内置两套愚者途径候选卡包：S09 `克莱恩·莫雷蒂` 与 S00 `愚者先生`；画廊实测为 `0 张已确认卡牌`、`2 张卡牌`，愿望清单为 1 张。旧 S03/正义小姐 App 卡包及其 App 内资源已清理。
+- 两套卡包都满足原子边界：身份 `cardID/slotID/characterID/identitySliceID`、当前卡图、六维回读、叙事 `cardID`、收藏/愿望意图与音频状态同时存在；每张卡均有 6 条当前版本叙事和 6 个本地 WAV。
+- S09 使用 `dylan`，S00 使用 `uncle_fu`；新口头语和故事已写入 `production/narratives/`，六条目逐条绑定当前内容摘要并标记为 `approved`。机器校验不替代用户对卡图和声音审美的批准。
+- `python3 tools/production.py check-fool-audio`：通过；2 张卡、12 个 WAV、2 张 App 卡图均通过白名单、哈希、叙事摘要绑定和孤儿资源检查。12 个 WAV 均为可解码的 24 kHz、16-bit、mono PCM。
+- `swift test --verbose`：76/76 通过；Debug/Release 构建均通过。当前安装版 `/Applications/LotmCardStudio.app` 的最低系统版本为 `26.0`、主程序为 `arm64`，`codesign --verify --deep --strict` 通过。
+- CUA 实测当前安装版画廊只显示 S09/S00；S09 故事页显示三个新版章节并可开始/停止朗读，停止后正文保留；S00 可播放新版问候语。这里验证的是 UI 状态、文字绑定和音频解码/播放链路，不把机器检查等同于人工听感批准。
+- 正义小姐 App 外资产仍保留：原始/派生插画、六维源数据、研究/故事资料与 6 条 WAV 均在 `artifacts/lotm.visionary.s07/`、`pathways/visionary/sequences/07/card.json` 和对应文档中；未被本次 App 清理删除。
+
+当前仍未通过的门：两张卡的视觉用户验收、最终 2K/4K 采样与正式 release。App 仍是 M1 静态 fixture，尚未提供真正的用户导入/删除界面；未来必须以整套卡包为新增/删除单位。

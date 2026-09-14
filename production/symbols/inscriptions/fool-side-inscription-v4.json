@@ -1,0 +1,126 @@
+{
+  "version": "4.0.0",
+  "id": "fool-side-inscription-relief-v4",
+  "pathway_id": "fool",
+  "status": "legacy-diagnostic-only",
+  "predecessor": "production/symbols/inscriptions/fool-side-inscription-v3.json",
+  "style_reference": {
+    "path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-inscription-ornament-initial.png",
+    "sha256": "385e207882d8fcf05a2392213745a75ef83e6ad0b3b638b8a8c39f3bbb5b734e",
+    "role": "user-approved-initial-side-column-style-direction",
+    "visual_status": "user-approved-style-direction",
+    "pixel_role": "reference-only",
+    "caveat": "该研究稿保留了生成时的环境底色、光晕和星形装饰，只作为外轮廓、卷曲端饰、帷幕褶皱和紫色凹槽的风格依据；不得直接作为最终透明图层。"
+  },
+  "design_intent": {
+    "name": "Fool curled-column inscription spindle with recessed glyph rail",
+    "approved_parts": [
+      "宽而有重量的局部侧柱外轮廓",
+      "上下端的帷幕卷曲与柔化收口",
+      "烟紫色中央凹槽",
+      "雾银主体与克制的古金边缘高光",
+      "神秘学器物般的纵向构件感"
+    ],
+    "integration_principle": "铭文不是贴在侧柱上的文字，也不是另加一块铭牌；它应成为中央紫色凹槽内部连续、纵向、略低于边缘的铭文轨，并由同一材质体系的凹刻面承接。",
+    "preserve_outer_ornament": true,
+    "relief": "one exact glyph face mask with derived recess shadow, engraved bevel and restrained edge glint",
+    "negative_rules": [
+      "不把初版外轮廓改成窄直条",
+      "不把铭文做成浮动胶囊、矩形底牌或全面板",
+      "不让文字覆盖卷曲端饰、宝石或星形装饰",
+      "不生成伪文字、镜像文字或第二层重复字形",
+      "不为了塞字而缩放、拉伸、旋转或透视变形侧柱",
+      "不以不透明底色暴力覆盖原有材质"
+    ]
+  },
+  "integration_contract": {
+    "mode": "preserve-initial-art-carve-central-rail-program-exact-glyphs",
+    "ownership": {
+      "style_reference": "outer silhouette, curtain folds, curled terminals, local metal/enamel vocabulary",
+      "glyph_layer": "exact characters only; one visible face layer",
+      "derived_relief": "recess shadow, bevel and edge glint derived from the same glyph alpha",
+      "composer": "fixed placement, exclusion masks, local color blend and final alpha"
+    },
+    "stages": [
+      "从初版研究稿提取风格与形状依据，不直接把环境底色带入成品",
+      "按固定几何建立中央凹槽内的连续铭文轨，并保留两侧卷曲边缘的呼吸空间",
+      "使用声明过的字体轮廓逐字生成精确字形，文字方向保持正向竖排",
+      "由同一字形 alpha 派生凹陷阴影、内缘 bevel、铭刻面和极窄边缘光",
+      "以 exclusion mask 保护端饰、宝石/星形装饰和外轮廓，不让装饰压住字形",
+      "以局部凹槽材质完成融合，禁止新增不透明文字底板；最后再交给合成器装配"
+    ],
+    "style_to_pixel_boundary": "当前主路径由 Agentic 在完整原生序列框中完成数字、序列名与材质融合；本合同仅保留固定铭刻域、风格边界和原生测量规则，局部程序铭刻输出只能作为 legacy diagnostic。"
+  },
+  "geometry": {
+    "coordinate_system": "design-space-top-left-image-normalized",
+    "design_size": [1024, 1536],
+    "native_size": [1024, 1536],
+    "legacy_diagnostic_size": [2048, 3072],
+    "delivery_sizes": {
+      "standard": [2048, 3072],
+      "collector": [4096, 6144]
+    },
+    "column_body_width_design": 72,
+    "band_width_design": 108,
+    "width_ratio_to_column": 1.5,
+    "band_rects_design": {
+      "left": [38, 584, 108, 300],
+      "right": [878, 584, 108, 300]
+    },
+    "central_inscription_rail_rects_design": {
+      "left": [50, 600, 84, 268],
+      "right": [890, 600, 84, 268]
+    },
+    "text_safe_rects_design": {
+      "left": [50, 600, 84, 268],
+      "right": [890, 600, 84, 268]
+    },
+    "decoration_keepout_rects_design": {
+      "left": [46, 592, 92, 284],
+      "right": [886, 592, 92, 284]
+    },
+    "band_anchor_centers_design": {
+      "left": [92, 734],
+      "right": [932, 734]
+    },
+    "placement_basis": "fixed upper-mid untextured pillar window; actual CTLine ink boxes; mirrored centers; no per-tier offsets",
+    "max_geometry_drift_design_px": 0,
+    "max_center_error_native_px": 1,
+    "transform_policy": "native-agentic-full-frame-primary; legacy-localized-inscribe-diagnostic-only; no intermediate-2k-processing"
+  },
+  "capacity": {
+    "orientation": "vertical-rl",
+    "minimum_characters": 6,
+    "qa_strings": ["愚者途径序列", "序列九占卜家"],
+    "target_cap_height_native_px": [32, 35],
+    "target_tracking_native_px": [4, 6],
+    "overflow_is_error": true,
+    "text_must_stay_inside_rail": true
+  },
+  "exclusion_masks": {
+    "mask_source": "measured-alpha-of-initial-style-study-after-isolation",
+    "protect": ["outer-curl-terminals", "top-and-bottom-ornament", "gem-or-star-like-decoration", "rail-edge-rim"],
+    "text_may_not_intersect": true,
+    "decoration_may_be_clipped_at_rail_boundary": true
+  },
+  "contrast": {
+    "minimum_ratio": 4.5,
+    "measurement": "visible-glyph-face-versus-local-cavity-relative-luminance",
+    "thumbnail_review": true,
+    "preserve_quality_token": true,
+    "preferred_face_behavior": "warm silver or tier token light catches on smoky-violet cavity without flattening the cavity"
+  },
+  "render_policy": {
+    "mode": "per-glyph-ink-box-derived-relief",
+    "glyph_source": "program-controlled-exact-character-outline",
+    "style_source": "user-approved-initial-side-column-study",
+    "face_layer_count": 1,
+    "flat_coretext_final_layer_forbidden": true,
+    "derived_passes": ["recess-shadow", "engraved-bevel", "engraved-face", "edge-glint"],
+    "semantic_text_must_remain_exact": true,
+    "text_orientation": "upright",
+    "per_glyph_vertical_alignment": "actual-ink-box-center",
+    "optical_center_tolerance_native_px": 1,
+    "mirror_text_forbidden": true
+  }
+}

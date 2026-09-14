@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lotm-card-art/fool-carrier-execution-1.0.0",
+  "title": "Fool current carrier execution contract",
+  "description": "当前愚者原生 Agentic 路线的固定载体几何与 RankNumeralDock 执行合同。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_type",
+    "status",
+    "pathway_id",
+    "geometry_id",
+    "canvas",
+    "templates",
+    "active_frame_source",
+    "route",
+    "anchors",
+    "protected_regions",
+    "mask_policy",
+    "thresholds"
+  ],
+  "properties": {
+    "$schema": {"type": "string", "minLength": 1},
+    "schema_version": {"const": "1.0.0"},
+    "contract_type": {"const": "fool-carrier-execution"},
+    "status": {"enum": ["measured", "approved", "rejected"]},
+    "pathway_id": {"const": "fool"},
+    "geometry_id": {"const": "fool-agentic-mother-v2"},
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["design_size", "native_size", "delivery_sizes", "coordinate_system", "color_space"],
+      "properties": {
+        "design_size": {"const": [1024, 1536]},
+        "native_size": {"const": [1024, 1536]},
+        "delivery_sizes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["standard", "collector"],
+          "properties": {
+            "standard": {"const": [2048, 3072]},
+            "collector": {"const": [4096, 6144]}
+          }
+        },
+        "coordinate_system": {"const": "design-space-top-left-image-normalized"},
+        "color_space": {"const": "sRGB"}
+      }
+    },
+    "templates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["emblem_dock", "rank_numeral_dock"],
+      "properties": {
+        "emblem_dock": {"$ref": "#/$defs/file_ref"},
+        "rank_numeral_dock": {"$ref": "#/$defs/file_ref"}
+      }
+    },
+    "active_frame_source": {"$ref": "#/$defs/file_ref"},
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "emblem_dock_mode",
+        "pathway_crown",
+        "rank_numeral",
+        "sequence_name",
+        "through_hole",
+        "standalone_emblem_overlay"
+      ],
+      "properties": {
+        "emblem_dock_mode": {"const": "rank-numeral-dock-current-route"},
+        "pathway_crown": {"const": "baked-into-frame-core"},
+        "rank_numeral": {"const": "independent-simple-art-digit"},
+        "sequence_name": {"const": "agentic-complete-frame"},
+        "through_hole": {"const": false},
+        "standalone_emblem_overlay": {"const": false}
+      }
+    },
+    "anchors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pathway_mark",
+        "pathway_crown",
+        "rank_numeral_dock",
+        "right_sequence_zone",
+        "name_surface",
+        "gem_slot"
+      ],
+      "properties": {
+        "pathway_mark": {"$ref": "#/$defs/rect_pair"},
+        "pathway_crown": {"$ref": "#/$defs/rect_pair"},
+        "rank_numeral_dock": {"$ref": "#/$defs/dock"},
+        "right_sequence_zone": {"$ref": "#/$defs/rect_pair"},
+        "name_surface": {"$ref": "#/$defs/rect_pair"},
+        "gem_slot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["shape", "center_design", "visible_size_design", "name_clearance_design"],
+          "properties": {
+            "shape": {"const": "regular-equilateral-hexagon"},
+            "center_design": {"const": [512, 1421]},
+            "visible_size_design": {"const": [132, 114]},
+            "name_clearance_design": {"const": 12}
+          }
+        }
+      }
+    },
+    "protected_regions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pathway_crown", "rank_numeral", "right_sequence_zone", "name_surface", "gem_slot", "outside_edit_domain"],
+      "properties": {
+        "pathway_crown": {"const": "mother-crown-protected"},
+        "rank_numeral": {"const": "rank-numeral-safe"},
+        "right_sequence_zone": {"const": "right-sequence-zone"},
+        "name_surface": {"const": "name-surface"},
+        "gem_slot": {"const": "gem-slot"},
+        "outside_edit_domain": {"const": "outside-edit-domain"}
+      }
+    },
+    "mask_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generated_by", "coordinate_space", "alpha_policy", "no_crop_reassembly"],
+      "properties": {
+        "generated_by": {"const": "foolpipeline5.mother"},
+        "coordinate_space": {"const": "native-canvas"},
+        "alpha_policy": {"const": "straight-RGBA"},
+        "no_crop_reassembly": {"const": true}
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["geometry_displacement_max_px", "outside_edit_domain_pixels_max", "zone_center_error_max_native_px", "protected_region_intersections_max"],
+      "properties": {
+        "geometry_displacement_max_px": {"const": 0},
+        "outside_edit_domain_pixels_max": {"const": 0},
+        "zone_center_error_max_native_px": {"const": 1},
+        "protected_region_intersections_max": {"const": 0}
+      }
+    }
+  },
+  "$defs": {
+    "file_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "purpose"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "purpose": {"type": "string", "minLength": 1}
+      }
+    },
+    "rect": {
+      "type": "array",
+      "items": {"type": "number", "minimum": 0},
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "rect_pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rect_design", "safe_rect_design"],
+      "properties": {
+        "rect_design": {"$ref": "#/$defs/rect"},
+        "safe_rect_design": {"$ref": "#/$defs/rect"}
+      }
+    },
+    "point": {
+      "type": "array",
+      "items": {"type": "number", "minimum": 0},
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "size": {
+      "type": "array",
+      "items": {"type": "number", "exclusiveMinimum": 0},
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "dock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["center_design", "safe_rect_design"],
+      "properties": {
+        "center_design": {"$ref": "#/$defs/point"},
+        "safe_rect_design": {"$ref": "#/$defs/rect"}
+      }
+    }
+  }
+}

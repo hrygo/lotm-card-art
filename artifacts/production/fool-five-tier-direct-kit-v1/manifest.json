@@ -1,0 +1,162 @@
+{
+  "color_transform" : "none",
+  "diagnostic_hashes" : {
+    "five-tiers.png" : "4af98874e9718705a1383513eb96630c05eea535096a52fdffbb4d6bec0e2c15",
+    "light-preview.png" : "21f3618c620d13693a98a0d7f2d2b512335f5c257e4088337809cb97e82685af"
+  },
+  "direct_agentic_sources" : true,
+  "formal_release_approved" : false,
+  "gem_slot" : {
+    "count" : 1,
+    "mode" : "embedded-in-direct-tier-frame-no-synthetic-overlay",
+    "name_protection" : true,
+    "variant_count" : 5
+  },
+  "geometry" : {
+    "alpha_difference_to_mother" : [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "max_anchor_drift_px" : 0,
+    "max_geometry_drift_px" : 0
+  },
+  "geometry_id" : "fool-agentic-mother-v2",
+  "intermediate_2k_count" : 0,
+  "material" : {
+    "color_transform" : "none",
+    "embedded_gem_preserved" : true,
+    "same_component_count" : true,
+    "source" : "direct-agentic-tier-studies"
+  },
+  "mode" : "fool-five-tier-direct-batch-v1",
+  "mother_source" : "artifacts\/production\/fool-mother-frame-v1\/studies\/fool-mother-agentic-high-detail-candidate-n.png",
+  "native_frame_hashes" : {
+    "angel" : "915bf178836731d108da014a8d7c3365f7e95515c54494385e5b28fe79765dd9",
+    "low" : "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783",
+    "mid" : "ec7a1b5801d689d79b0d88b53aa6bd0e50f955daf70ba5ca65095f53e3dbd047",
+    "saint" : "f63a7cec39eaace60c5441dba9df69b9de592b575b9cdb7c14486e8bf92709db",
+    "true-god" : "2e9a25c0ba340fd39e56adc8ce81a655760212166f6b344e2640892df7335f5e"
+  },
+  "no_cross_product_variants" : true,
+  "sequence_mapping" : {
+    "angel" : [
+      2,
+      1
+    ],
+    "low" : [
+      9,
+      8
+    ],
+    "mid" : [
+      7,
+      6,
+      5
+    ],
+    "saint" : [
+      4,
+      3
+    ],
+    "true-god" : [
+      0
+    ]
+  },
+  "status" : "user-approved-agentic-visual-baseline",
+  "tier_order" : [
+    "low",
+    "mid",
+    "saint",
+    "angel",
+    "true-god"
+  ],
+  "tier_sources" : [
+    {
+      "geometry" : {
+        "native_alpha_difference_after_freeze" : 0,
+        "standard_alpha_difference_after_freeze" : 0
+      },
+      "processing" : {
+        "alpha_operation" : "black-matte-removal-and-canonical-mask-only",
+        "color_transform" : "none"
+      },
+      "sequences" : [
+        9,
+        8
+      ],
+      "sha256" : "f1620ac81866af33263ff645d4aa35e0cdfb1b3bedfe4c52f07b2fea00c68206",
+      "source" : "artifacts\/production\/fool-mother-frame-v1\/studies\/fool-low-tier-agentic-candidate-p.png",
+      "tier" : "low"
+    },
+    {
+      "geometry" : {
+        "native_alpha_difference_after_freeze" : 0,
+        "standard_alpha_difference_after_freeze" : 0
+      },
+      "processing" : {
+        "alpha_operation" : "black-matte-removal-and-canonical-mask-only",
+        "color_transform" : "none"
+      },
+      "sequences" : [
+        7,
+        6,
+        5
+      ],
+      "sha256" : "dff889a93c95bdf94007b6c8155a69a9c698eb2c40f813ae0d1f2cbf8b4f025a",
+      "source" : "artifacts\/production\/fool-mother-frame-v1\/studies\/fool-mid-tier-agentic-candidate-q.png",
+      "tier" : "mid"
+    },
+    {
+      "geometry" : {
+        "native_alpha_difference_after_freeze" : 0,
+        "standard_alpha_difference_after_freeze" : 0
+      },
+      "processing" : {
+        "alpha_operation" : "black-matte-removal-and-canonical-mask-only",
+        "color_transform" : "none"
+      },
+      "sequences" : [
+        4,
+        3
+      ],
+      "sha256" : "11387693e5f9bd78990caf7a6d0fccd4b29a8f6ea4da9bec63e3c454c9389c3a",
+      "source" : "artifacts\/production\/fool-mother-frame-v1\/studies\/fool-saint-tier-agentic-candidate-r.png",
+      "tier" : "saint"
+    },
+    {
+      "geometry" : {
+        "native_alpha_difference_after_freeze" : 0,
+        "standard_alpha_difference_after_freeze" : 0
+      },
+      "processing" : {
+        "alpha_operation" : "black-matte-removal-and-canonical-mask-only",
+        "color_transform" : "none"
+      },
+      "sequences" : [
+        2,
+        1
+      ],
+      "sha256" : "bf6b6936bac1e572cc66aeb3722150b63c6e31c594ae0319f2664f0396d0706b",
+      "source" : "artifacts\/production\/fool-mother-frame-v1\/studies\/fool-angel-tier-agentic-candidate-s.png",
+      "tier" : "angel"
+    },
+    {
+      "geometry" : {
+        "native_alpha_difference_after_freeze" : 0,
+        "standard_alpha_difference_after_freeze" : 0
+      },
+      "processing" : {
+        "alpha_operation" : "black-matte-removal-and-canonical-mask-only",
+        "color_transform" : "none"
+      },
+      "sequences" : [
+        0
+      ],
+      "sha256" : "f6c225ac66cbd0a816d64d6edf72b5cc8dc234c85a79e197414a18f9ff651253",
+      "source" : "artifacts\/production\/fool-mother-frame-v1\/studies\/fool-true-god-frame-agentic-candidate-o.png",
+      "tier" : "true-god"
+    }
+  ],
+  "version" : 1
+}

@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "id": "fool-rank-numerals-v1",
+  "status": "retired-standalone-numerals",
+  "pathway_id": "fool",
+  "role": "independent-artistic-sequence-numerals",
+  "retirement": {
+    "reason": "standalone numeral files were superseded by the retained Fool fusion references and the current Agentic complete-frame route",
+    "status": "moved-to-trash",
+    "preserved_replacement": "production/symbols/fool-fusion-family.json",
+    "current_numeric_owner": "production/symbols/fool-agentic-sequence-inscriptions-v2.json"
+  },
+  "geometry_id": "fool-agentic-mother-v2",
+  "fusion_with_pathway_crown": false,
+  "output_root": "artifacts/production",
+  "coordinate_system": "design-space-top-left-image-normalized",
+  "canvas": {
+    "design_size": [1024, 1536],
+    "standard_size": [2048, 3072],
+    "collector_size": [4096, 6144],
+    "color_space": "sRGB",
+    "alpha": "straight-RGBA"
+  },
+  "dock": {
+    "shape": "round",
+    "center_design": [512, 136],
+    "safe_rect_design": [466, 88, 92, 96],
+    "visible_height_final_px": 148,
+    "owner": "RankNumeralDock",
+    "fusion_with_pathway_crown": false
+  },
+  "tier_mapping": {
+    "low": [9, 8],
+    "mid": [7, 6, 5],
+    "saint": [4, 3],
+    "angel": [2, 1],
+    "true-god": [0]
+  },
+  "five_tier_treatment": {
+    "color_source": "config/quality-color-tokens.json",
+    "current_preview_mode": "programmatic-local-color-lift-and-progressive-sparkle",
+    "progression": "9-to-0-incremental",
+    "production_quality_requirement": "assigned-digit-tier-native-material-or-equivalent-high-resolution-agentic-source",
+    "single_sampling_requirement": true,
+    "no_50_way_cross_product": true
+  },
+  "digits": [
+    {"digit": 0, "tier": "true-god", "path": "fool-numeral-0/v001/raw.png", "sha256": "8618eda73a4db9823daf1e1da73b20f7dd09a1b984a0377ddc64c28b86f06b9e"},
+    {"digit": 1, "tier": "angel", "path": "fool-numeral-1/v001/raw.png", "sha256": "fdcc9499e4332e07c4f901f12695ec6f5a91597be9816bf062d50190d76a3180"},
+    {"digit": 2, "tier": "angel", "path": "fool-numeral-2/v001/raw.png", "sha256": "c4980c4e207a5cd3ba9e95dade0b716cbe921f9fa4961ee85f2387932c854733"},
+    {"digit": 3, "tier": "saint", "path": "fool-numeral-3/v001/raw.png", "sha256": "e1ea4a20d8480409d7a13e4037b1604c909e700b4d9e613cd0c34af8ee2c6918"},
+    {"digit": 4, "tier": "saint", "path": "fool-numeral-4/v001/raw.png", "sha256": "11291b33586a972eeb81a0e4cac986526a7f7c2e2c98c37c0d4dec740e9643cc"},
+    {"digit": 5, "tier": "mid", "path": "fool-numeral-5/v001/raw.png", "sha256": "c936854d83589c06266bce358a12e3226caab4961da00b2518c25a681b13ed37"},
+    {"digit": 6, "tier": "mid", "path": "fool-numeral-6/v001/raw.png", "sha256": "3e753c38d53c1f04b1d1bb4b37e19c23ae979c7eb5028707158b9786d3cd210e"},
+    {"digit": 7, "tier": "mid", "path": "fool-numeral-7/v001/raw.png", "sha256": "5d7f46bd2422064e6cbdd066a517774fd7c18786c4b2aff53015f77c674e60"},
+    {"digit": 8, "tier": "low", "path": "fool-numeral-8/v001/raw.png", "sha256": "4119acd6e58bdb2538de888895f267da5c73acc32868da2deb01b17e7d20a119"},
+    {"digit": 9, "tier": "low", "path": "fool-numeral-9/v001/raw.png", "sha256": "349cdb10d1b80a2e1e816bf96e416ee697eb9740fd6981c444e39c19e8ab9dcf"}
+  ],
+  "forbidden": ["pathway_emblem_inside_inner_disk", "combined_emblem_numeral", "extra_text", "position_drift"],
+  "thresholds": {
+    "center_error_max_final_px": 1,
+    "outside_dock_pixels_max": 0,
+    "geometry_displacement_max_px": 0
+  },
+  "visual_approval": "inherited-digit-studies-pending-current-dock-review",
+  "formal_release_approved": false
+}

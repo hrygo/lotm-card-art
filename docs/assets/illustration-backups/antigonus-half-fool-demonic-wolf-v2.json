@@ -1,0 +1,113 @@
+{
+  "asset_id": "antigonus-half-fool-demonic-wolf-v2",
+  "status": "material-backup",
+  "approval": "not-approved",
+  "production_scope": "asset-only / no-production",
+  "supersedes": "antigonus-half-fool-mythical-form-v1",
+  "canon_boundary": "安提哥努斯的魔狼血统/狼形是本图的身份识别锚点；其个人高位神话生物形态与灵之虫形态之间的精确构成仍按项目资料的 mixed / not-frozen 管理。本图是候选艺术解释，不是个人解剖正典。",
+  "character": {
+    "name_zh": "安提哥努斯",
+    "name_en": "Antigonus",
+    "pathway": "愚者",
+    "species_anchor": "魔狼",
+    "state_cut": "Fourth Epoch half-Fool / demonic-wolf form",
+    "sequence_anchor": "S01 material anchor only; Half-Fool high-sequence state, not a complete Sequence 1 or Sequence 0 identity",
+    "character_id": "antigonus",
+    "identity_slice_id": "antigonus.half-fool.fourth-epoch",
+    "candidate_card_id": "lotm.fool.s01.antigonus-half-fool-01",
+    "disambiguation": "不包含弗雷格拉、扎拉图、扎拉图先祖、格尔曼·斯帕罗或克莱恩；不把主体画成弗雷格拉式的原初灾厄狼神。"
+  },
+  "research": {
+    "local_material": "docs/research/2026-09-14-antigonus-card-materials.md",
+    "status": "personal high-sequence anatomy not frozen; demonic-wolf species anchor made explicit",
+    "source_claims": [
+      {
+        "source": "https://www.webnovel.com/book/lord-of-mysteries_11022733006234505/trojan-horse-of-destiny_46571612253775201",
+        "scope": "官方英文译本第1374章",
+        "claim": "章节将安提哥努斯置于半个愚者与巨大石椅场景，并描述其浓密黑色狼状鬃毛；该页面不能单独冻结完整个人神话形态解剖。"
+      }
+    ],
+    "visual_basis": [
+      "魔狼是主视觉物种锚点：四足、狼首、长吻、尖耳、狼毛、尾部与完整狼形轮廓",
+      "安提哥努斯身份通过沉静而具人性痕迹的目光、黑色仪式布片和夜之国情感场景维持",
+      "灵之虫状透明丝线与薄石板只作为同一身体上的高位残留，不替代魔狼主体",
+      "古老宫殿/石椅、安静国家灯火与历史裂缝承接半个愚者的未完成接合和限制"
+    ]
+  },
+  "asset": {
+    "path": "docs/assets/illustration-backups/antigonus-half-fool-demonic-wolf-v2.png",
+    "role": "standalone demonic-wolf form concept illustration",
+    "visual_concept_status": "candidate-art-proposal",
+    "visual_event": "一头大型四足魔狼立于霍纳奇斯山顶宫殿废墟前，狼毛、石质板片和透明灵性丝状体连续为同一生物；胸口不完整接合环、远处安静国家灯火和历史裂缝共同表达半个愚者的未完成高位状态。",
+    "not_a_finished_card": true,
+    "excluded_from": [
+      "card.json",
+      "production/tasks",
+      "production/calls",
+      "design approval",
+      "release"
+    ]
+  },
+  "provenance": {
+    "tool": "image_gen",
+    "generation_mode": "stylized-concept",
+    "revision_mode": "targeted-correction",
+    "model": null,
+    "seed": null,
+    "generated_at": "2026-09-14",
+    "recorded_at_utc": "2026-09-14T09:15:50Z",
+    "input_images": [
+      {
+        "path": "docs/assets/illustration-backups/antigonus-half-fool-mythical-form-v1.png",
+        "role": "previous candidate; target for correcting the missing demonic-wolf identity"
+      },
+      {
+        "path": "docs/assets/illustration-backups/antigonus-half-fool-backup-v1.png",
+        "role": "identity, palette and mountain-palace continuity reference"
+      }
+    ],
+    "references": [
+      "docs/research/2026-09-14-antigonus-card-materials.md",
+      "https://www.webnovel.com/book/lord-of-mysteries_11022733006234505/trojan-horse-of-destiny_46571612253775201",
+      "pathways/fool/direction.json",
+      "config/project.json"
+    ],
+    "prompt_summary": "Corrected vertical 2:3 painterly dark-fantasy concept: Antigonus as one full-body demonic wolf with black-charcoal fur, wolf head, four legs and tail; translucent spirit filaments and stone plates remain secondary high-sequence residue, with the Half-Fool stone-chair palace, quiet nation and historical fissure behind him.",
+    "negative_constraints": "No canonical claim about a fully fixed personal anatomy; no Flegrea-style primordial apocalypse, Zaratul, Zaratul Senior, Gehrman Sparrow or Klein; no human torso or human head, multiple heads/faces, detached ghost body, giant eyes, horns, wings, tentacle mass, marionettes, puppets, gray-fog throne, Sefirah Castle, complete Sequence 0 authority, tarot, card frame, name, numeral, pathway emblem, readable text or watermark.",
+    "processing_chain": [
+      "viewed the previous Antigonus candidate and human identity reference",
+      "image_gen targeted correction with both local images as references",
+      "copied the generated image into the workspace as v2",
+      "no crop",
+      "no upscale",
+      "no frame, text or emblem compositing"
+    ]
+  },
+  "engineering": {
+    "width": 1024,
+    "height": 1536,
+    "aspect_ratio": "2:3",
+    "format": "PNG",
+    "color_space": "RGB (reported by sips; project target is sRGB)",
+    "native_canvas": true,
+    "final_card_resolution": false,
+    "sha256": "f918c3709c8a661b1902c4f1f7be6ed93811efb8e9700233f6c58d98f3ab68b9"
+  },
+  "visual_check": {
+    "checked": true,
+    "method": "view_image manual inspection",
+    "observations": [
+      "主体明确是一头完整四足魔狼：单一狼首、长吻、尖耳、四肢、狼毛和尾部均可回读。",
+      "魔狼是画面主位；黑色狼毛与安提哥努斯沉静的眼神保留人物辨识度，没有被人形取代。",
+      "石质板片与透明灵性丝线贴合在同一身体上，胸口不完整接合环表达半个愚者的残留状态。",
+      "古老宫殿、石椅、山下国家灯火和右上历史裂缝形成连续环境关系。",
+      "未观察到第二只狼、弗雷格拉式灾厄神体、多头、多面、卡框、序列数字、姓名、徽记、可读文字或水印。"
+    ],
+    "remaining_risks": [
+      "个人高位神话生物的精确原著解剖，以及魔狼形态与灵之虫形态的层级关系，仍需中文底本逐项核验；本图不承担该事实证明。",
+      "弗雷格拉与安提哥努斯的视觉区分是构图和尺度上的艺术提案，不是新的正典外观描述。",
+      "这是修正版备用物料，不代表正式卡面设计、事实批准、声音批准或 release。",
+      "1024×1536 是本次原生画布，不代表项目最终 2048×3072 卡面交付。"
+    ]
+  }
+}

@@ -1,6 +1,13 @@
 {
   "version": "1.0.0",
-  "status": "proposed",
+  "status": "retired-historical",
+  "active": false,
+  "replacement_catalog": "production/symbols/fool-five-tier-kit.json",
+  "retirement": {
+    "status": "moved-to-trash",
+    "reason": "material-study output family was superseded by the current native Agentic baseline",
+    "ledger": "production/retirements/fool-failed-materials-2026-09-14.json"
+  },
   "scope": "公共底座与愚者纵向试点；不是22途径完整资产库",
   "raster_assets": [
     {
@@ -206,7 +213,7 @@
       "reused": true
     }
   ],
-  "render_jobs": [
+  "historical_render_jobs": [
     {
       "id": "fool-low",
       "recipe": "production/library/recipes/fool-low.json",
@@ -263,6 +270,7 @@
       "output": "artifacts/production/material-library-v1/r2/seam-after"
     }
   ],
+  "render_jobs": [],
   "gaps": [
     {
       "id": "public-light-paper",

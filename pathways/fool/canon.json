@@ -841,7 +841,744 @@
       },
       "notes": "部分章节依据，不等于全章核验。",
       "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s09.potion_formula_full",
+      "predicate": "potion_ingredient",
+      "value": "主材料：Lavos Squid血液10毫升、Star Crystal 50克；辅助材料：Purified Water 100毫升、Night Vanilla Liquids 13滴、Gold Mint Leaves 7片、Poison Hemlock 3滴、Dragon Blood Grass Powder 9克；也可用一份占卜家非凡特性替代。主材料有中文一手片段，完整辅助材料主要来自二手配方整理。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "qidian.lotm.zh.setting",
+          "locator": "官方设定集力量体系 > 4.1 愚者途径 > 序列9：占卜家",
+          "support_note": "官方中文设定集支持序列名称与路径定位；当前未取得完整配方正文。"
+        },
+        {
+          "source_id": "webnovel.lotm.en.c31",
+          "locator": "Chapter 31 Potion；官方英文译本章节定位",
+          "support_note": "官方译本用于交叉定位，不替代第一部中文底本。"
+        },
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 9: Seer > Potion Formula",
+          "support_note": "二手页面提供完整主材与辅材列表；本条保持lead，待中文底本逐字复核。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "已有fool.s09.potion_main保留中文主材verified；本条用于保存完整配方研究，不覆盖原有较高等级主材断言。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s09.acting_principles",
+      "predicate": "acting_principle",
+      "value": "对命运保持敬畏；帮助他人解读启示并引导方向，同时保持恐惧和尊重；不可傲慢、自大或盲信自己的解读；认识到占卜不是全能。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.acting_principles",
+          "locator": "Acting Method/List of Acting Principles > Fool Pathway > Sequence 9: Seer",
+          "support_note": "二手页面整理的扮演原则；用于研究方向，待中文底本核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "已有fool.s09.acting_practice是克莱恩单卡的interpretation；本条是途径级研究线索，不把其冒称为个人口头语。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s09.advancement_research",
+      "predicate": "absence",
+      "value": "在当前可访问的一手与二手范围内，序列9只取得服用占卜家魔药进入非凡的过程，未形成可直接核验的独立晋升仪式；该记录只描述检索范围，不判定原著不存在独立仪式。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        9
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "webnovel.lotm.en.c31",
+          "locator": "Chapter 31 Potion；官方英文译本章节定位",
+          "support_note": "支持配方/服药研究定位，未作为中文底本完整核验。"
+        },
+        {
+        "source_id": "xxsy.lotm.zh.c32",
+          "locator": "Chapter 32 Spirit Vision；官方英文译本章节定位",
+          "support_note": "支持克莱恩服药后进入非凡的剧情定位。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped gap review (not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "knowledge_gap只表示当前检索范围未取得独立仪式证据，不应在卡面上写成“没有仪式”。",
+      "assertion_kind": "knowledge_gap"
+    },
+    {
+      "id": "fool.sequence.s08.potion_formula",
+      "predicate": "potion_ingredient",
+      "value": "主材料：成熟的Hornacis Gray Mountain Goat Horn角晶体、完整的Human-Faced Rose茎；辅助材料：Purified Water 80毫升、Tornapple/Jimsonweed Juice 5滴、Black-Rimmed Sunflower Powder 7克、Golden Cloak Grass Powder 10克、Poison Hemlock 3滴；也可用一份小丑非凡特性替代。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        8
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 8: Clown > Potion Formula",
+          "support_note": "二手页面提供主材、辅材和特性替代方案；中文材料名与底本用词待核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "不把药液颜色、口感或反噬体验混入配方字段；完整内容见2026-09-14序列研究稿。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s08.acting_principles",
+      "predicate": "acting_principle",
+      "value": "虽然能够从命运中知道一点信息，却仍然对命运无能为力，因此用笑容隐藏痛苦、悲伤、困惑和压抑；笑容是对无力改变之事的扮演，不等于单纯滑稽或恶作剧。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        8
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.acting_principles",
+          "locator": "Acting Method/List of Acting Principles > Fool Pathway > Sequence 8: Clown",
+          "support_note": "二手页面整理的扮演原则；待中文底本核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "表达精度为summary；不能把笑脸图标当作完整扮演法。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s08.advancement_research",
+      "predicate": "absence",
+      "value": "当前检索范围只取得服用小丑魔药、完成占卜家阶段消化的晋升路径，未取得独立于服药之外的序列8仪式；该记录不判定原著不存在独立仪式。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        8
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 8: Clown > Formula and Acting Method",
+          "support_note": "页面可见配方和扮演栏目，未提供当前可直接核验的独立仪式条目；只记录检索范围。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped gap review (not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "属于knowledge_gap；不能改写成documented_absence。",
+      "assertion_kind": "knowledge_gap"
+    },
+    {
+      "id": "fool.sequence.s07.potion_formula",
+      "predicate": "potion_ingredient",
+      "value": "主材料：一份Mist Treant真根、全部Dark-Patterned Black Panther脊髓；辅助材料：Purified Water 60毫升、Mist Treant Juice 30毫升、Droplet Gem Powder 3克、Fantasy Grass Essential Oil 4滴；也可用一份魔术师非凡特性替代。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        7
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 7: Magician > Potion Formula",
+          "support_note": "二手页面提供主材、辅材和特性替代方案；中文材料名待底本复核。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "魔术师主材与辅助材料均以英文定位名保存，避免项目中文材料名未经核对发生漂移。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s07.acting_principles",
+      "predicate": "acting_principle",
+      "value": "永远不要毫无准备地表演；主动制造舞台并主动表演；争取获得观众反馈或掌声；控制目标的注意力；挑战不可能，即使最后呈现的只是幻象。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        7
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.acting_principles",
+          "locator": "Acting Method/List of Acting Principles > Fool Pathway > Sequence 7: Magician",
+          "support_note": "二手页面整理的扮演原则；待中文底本逐项核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "扮演对象是完整的舞台事件，不是单一纸牌或火焰能力。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s07.advancement_research",
+      "predicate": "absence",
+      "value": "当前检索范围只取得服用魔术师魔药并依靠扮演消化的晋升路径，未取得独立于服药之外的序列7仪式；该记录不判定原著不存在独立仪式。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        7
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 7: Magician > Formula and Acting Method",
+          "support_note": "当前可见研究页面未提供独立仪式条目；只记录检索范围。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped gap review (not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "属于knowledge_gap，不应写成“无仪式”。",
+      "assertion_kind": "knowledge_gap"
+    },
+    {
+      "id": "fool.sequence.s06.potion_formula",
+      "predicate": "potion_ingredient",
+      "value": "主材料：一份Thousand-faced Hunter变异垂体、一份Human-Skinned Shadow非凡特性；辅助材料：Thousand-faced Hunter血液80毫升、Black Jimsonweed Juice 5滴、Dragon Tooth Grass Powder 10克、Deep-sea Naga头发3根；也可用一份无面人非凡特性替代。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        6
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 6: Faceless > Potion Formula",
+          "support_note": "二手页面提供主材、辅材和特性替代方案；中文材料名待底本复核。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "英文材料名用于定位，避免将二手中文译名误当成项目已核验名称。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s06.acting_principles",
+      "predicate": "acting_principle",
+      "value": "可以假装成为任何人，但始终必须是自己；真正伪装成另一个人，并从观众或周围人的反馈中校正身份，而不是只改变外貌。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        6
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.acting_principles",
+          "locator": "Acting Method/List of Acting Principles > Fool Pathway > Sequence 6: Faceless",
+          "support_note": "二手页面整理的扮演原则；待中文底本核验。"
+        },
+        {
+          "source_id": "lotm.secondary.fandom.fool.abilities",
+          "locator": "Fool Pathway/Abilities > Sequence 6: Faceless",
+          "support_note": "用于补充体貌改变的边界；不替代中文原著。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "必须与无面人的身高、体重、性别、骨骼比例和目标知识限制一起使用。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s06.advancement_research",
+      "predicate": "absence",
+      "value": "当前检索范围只取得服用无面人魔药、通过身份扮演消化的晋升路径，未取得独立于服药之外的序列6仪式；该记录不判定原著不存在独立仪式。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        6
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 6: Faceless > Formula and Acting Method",
+          "support_note": "当前可见研究页面未提供独立仪式条目；只记录检索范围。"
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "reviewed_by": "Codex scoped gap review (not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "无面人服药过程的身体融化、身份失控属于反噬体验，不自动当作额外仪式条件。",
+      "assertion_kind": "knowledge_gap"
+    },
+    {
+      "id": "fool.sequence.s05.potion_formula",
+      "predicate": "potion_ingredient",
+      "value": "主材料：Dust of Ancient Wraiths、Core Crystal of a Six-Winged Gargoyle；辅助材料：Sonia Island Golden Spring泉水80毫升、Drago Bark 10克、Ancient Wraiths残余灵性、六翼石像鬼双眼；也可用一份秘偶大师非凡特性替代。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        5
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 5: Marionettist > Potion Formula",
+          "support_note": "二手页面提供主材、辅材和特性替代方案；中文材料名待底本复核。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "当前只保存可定位的英文材料名与必要中文说明，不将物品外观写入配方事实。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s05.acting_principles",
+      "predicate": "acting_principle",
+      "value": "藏在幕后，让秘偶完成主要工作；记住每个秘偶都有自己的设定；像导演一样安排戏剧并获取反馈；通过秘偶引导敌人扮演被操纵的对象。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        5
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.acting_principles",
+          "locator": "Acting Method/List of Acting Principles > Fool Pathway > Sequence 5: Marionettist",
+          "support_note": "二手页面整理的扮演原则；待中文底本逐项核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "本条刻意不把所有愚者途径卡面机械化为秘偶控制；舞台调度、角色设定和幕后反馈也是核心。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s05.advancement_ritual",
+      "predicate": "ascension_condition",
+      "value": "在美人鱼歌声中服用秘偶大师魔药。歌声用于中和、平衡灵体之线的侵蚀并放大情绪，使晋升者保留最后的情感与自我；具有相近效果的声音或非凡能力理论上可能替代，但不能任意推广为所有声音都可替代。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        5
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 5: Marionettist > Advancement Ritual and Ritual Essence",
+          "support_note": "二手页面提供仪式条件及中和/平衡解释；中文底本待核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "这是明确的序列5晋升仪式研究线索；不得误写成序列4大型表演。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s04.potion_formula",
+      "predicate": "potion_ingredient",
+      "value": "主材料：Bizarro Bane主眼、Spirit World Plunderer真正灵体；辅助材料：Bizarro Bane血液200毫升、Spirit World Plunderer尘埃30克、Red-hair Birch Bark 10克、一段Golden Grapevine、指甲大小的自制橡胶面具；也可用一份诡法师非凡特性替代。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        4
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 4: Bizarro Sorcerer > Potion Formula",
+          "support_note": "二手页面提供主材、辅材和特性替代方案；中文材料名待底本复核。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "诡法师主材、辅材和面具均保留为研究线索，不把面具自动解释成固定法器。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s04.acting_principles",
+      "predicate": "acting_principle",
+      "value": "制造恐怖、诡异的场景并从观众反馈中扮演；成为神秘、古怪、难以预测的人；Sorcerer不是固定职业要求，关键是以魔术师式方法制造诡异；诡异包含未知、复杂和命运不可预测。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        4
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.acting_principles",
+          "locator": "Acting Method/List of Acting Principles > Fool Pathway > Sequence 4: Bizarro Sorcerer",
+          "support_note": "二手页面整理的扮演原则；待中文底本逐项核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "不能只以黑雾、触手或血腥表达诡异；必须有观众、判断错位或现实不协调。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s04.advancement_ritual",
+      "predicate": "ascension_condition",
+      "value": "主要依靠自身力量与筹划，在许多观众面前导演一场大型表演，杀死一名半神层次或同等强度的非凡生物，并在表演结尾或高潮阶段服用诡法师魔药；仪式的解释性核心是制造标记或锚。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        4
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 4: Bizarro Sorcerer > Advancement Ritual and Ritual Essence",
+          "support_note": "二手页面提供公开大型表演、半神目标、结尾服药和锚的解释；中文底本待核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "需要区分通用仪式和克莱恩杀死因斯的个人剧情实例；后者不应反向覆盖通用条件。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s03.potion_formula",
+      "predicate": "potion_ingredient",
+      "value": "主材料：福根之犬Hound of Fulgrim双眼、雾之魔狼Fog Demon Wolf转化之心；辅助材料：福根之犬血液100毫升、雾之魔狼白霜晶体30克、大量真实古代历史记录；也可用一份古代学者非凡特性替代。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        3
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 3: Scholar of Yore > Potion Formula",
+          "support_note": "二手页面提供主材、辅材和特性替代方案；中文材料名待底本复核。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "真实古代历史记录是配方中的精度要素，不能被泛化为任意旧书或历史气氛。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s03.acting_principles",
+      "predicate": "acting_principle",
+      "value": "成为来自古代的学者；搜索真实古代历史、研究并提出新结论；见证命运、影响现在，同时承认不能逆转已经发生的过去。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        3
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.acting_principles",
+          "locator": "Acting Method/List of Acting Principles > Fool Pathway > Sequence 3: Scholar of Yore",
+          "support_note": "二手页面整理的扮演原则；待中文底本核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "研究、结论和现实影响必须形成因果链；不能只画旧书或遗迹。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s03.advancement_ritual",
+      "predicate": "ascension_condition",
+      "value": "与现实隔绝至少三百年，在成为不属于当前时代的历史之后服用古代学者魔药；三百年的历史标记可作为进入历史孔隙后确认自身的锚。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        3
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 3: Scholar of Yore > Advancement Ritual and Ritual Essence",
+          "support_note": "二手页面提供三百年隔绝、历史化和锚的解释；中文底本待核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "克莱恩因穿越者和源堡关系具有特殊剧情实例，不能把个人捷径当作普通晋升者的通用规则。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s02.potion_formula",
+      "predicate": "potion_ingredient",
+      "value": "主材料：乌黯魔狼Dark Demonic Wolf之心；辅助材料：乌黯魔狼血液300毫升、一只时之虫Worm of Time、一只星之虫Worm of Star；也可用一份奇迹师非凡特性替代。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        2
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 2: Miracle Invoker > Potion Formula",
+          "support_note": "二手页面提供主材、辅材和特性替代方案；中文材料名待底本复核。"
+        },
+        {
+          "source_id": "lotm.secondary.fandom.fool.abilities",
+          "locator": "Fool Pathway/Abilities > Sequence 2: Miracle Invoker",
+          "support_note": "用于交叉核对奇迹师层级的能力边界，不替代中文底本。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "配方事实与奇迹、复苏、锚等能力解释分开保存。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s02.acting_principles",
+      "predicate": "acting_principle",
+      "value": "满足他人的愿望；施展奇迹；不要以高高在上的神明姿态替别人完成愿望，而应以一个人的方式为自己和他人创造奇迹；记住奇迹是短暂事件，而命运可能持续更久。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        2
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.acting_principles",
+          "locator": "Acting Method/List of Acting Principles > Fool Pathway > Sequence 2: Miracle Invoker",
+          "support_note": "二手页面整理的扮演原则；待中文底本逐项核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "“满足愿望”不是任意改写现实；卡面和故事需同时表现愿望、方法、条件和余波。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s02.advancement_ritual",
+      "predicate": "ascension_condition",
+      "value": "将一段已经被遗弃、被遗忘或脱离当前世界的历史带回现在，使这段历史重新对当前时代产生真实影响；克莱恩以带回白银城被遗忘历史作为个人实例。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        2
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 2: Miracle Invoker > Advancement Ritual",
+          "support_note": "二手页面直接列出带回被遗弃历史的仪式摘要；中文底本待核验。"
+        },
+        {
+          "source_id": "webnovel.lotm.en.c237",
+          "locator": "Chapter 237 Sequence 2；官方英文译本确认序列2为Miracle Invoker和天使层级定位",
+          "support_note": "只作序列名称/层级交叉定位，不单独支持完整仪式。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "个人实例与通用仪式分开记录，不能把白银城历史替换成唯一可行方案。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s01.potion_formula",
+      "predicate": "potion_ingredient",
+      "value": "主材料：一份诡秘侍者Attendant of Mysteries非凡特性；辅助材料：九种灵界特殊材料Nine Spirit World Specialties；不能在当前证据范围内擅自展开九种材料的固定名称和数量。",
+      "dimensions": [
+        "potion"
+      ],
+      "sequences": [
+        1
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 1: Attendant of Mysteries > Potion Formula",
+          "support_note": "二手页面提供主材与九种灵界特殊材料；中文底本待核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "刻意保留原始精度“九种灵界特殊材料”，不以未核验清单填充精确事实。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s01.acting_principles",
+      "predicate": "acting_principle",
+      "value": "侍奉深层的神秘；保护、承载和处理秘密，使自身成为神秘结构可靠的接口；侍奉不等于普通宗教仆从身份。",
+      "dimensions": [
+        "acting"
+      ],
+      "sequences": [
+        1
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.acting_principles",
+          "locator": "Acting Method/List of Acting Principles > Fool Pathway > Sequence 1: Attendant of Mysteries",
+          "support_note": "二手页面整理的扮演原则；待中文底本核验。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "卡面载体应表现秘密、规则和多重身份的承接，不把侍者画成普通仆人。",
+      "assertion_kind": "canon"
+    },
+    {
+      "id": "fool.sequence.s01.advancement_ritual",
+      "predicate": "ascension_condition",
+      "value": "建造一座完全由秘偶组成的城镇，为每个秘偶设计命运轨迹，让秘偶彼此互动形成足够真实的生活画，并在灵界生成对应区域；城镇规模、秘偶数量、日常细节和命运真实度越高，仪式效果越好。",
+      "dimensions": [
+        "ascension"
+      ],
+      "sequences": [
+        1
+      ],
+      "work_scope": "lotm-volume-1-zh",
+      "source_refs": [
+        {
+          "source_id": "lotm.secondary.fandom.fool.advancement",
+          "locator": "Fool Pathway/Advancement > Sequence 1: Attendant of Mysteries > Advancement Ritual",
+          "support_note": "二手页面提供城镇、命运轨迹、互动和效果增强条件；中文底本待核验。"
+        },
+        {
+          "source_id": "lotm.secondary.fandom.fool.abilities",
+          "locator": "Fool Pathway/Abilities > Sequence 5 and high-sequence puppetry",
+          "support_note": "用于交叉核对秘偶和灵体之线的能力边界，不替代仪式原文。"
+        }
+      ],
+      "verification": {
+        "status": "lead",
+        "reviewed_by": "Codex scoped research (secondary completion; not user approval)",
+        "reviewed_at": "2026-09-14T14:00:00+08:00"
+      },
+      "notes": "克莱恩乌托邦是个人实例；约五千秘偶和具体城市设施不写入通用仪式的硬性最小条件。",
+      "assertion_kind": "canon"
     }
   ],
-  "note": "愚者途径9–0名称、序列0位阶、配方、晋升仪式和三项能力已由当前可访问的官方中文设定集/章节片段记录并标记verified；扮演仍是明确标注的interpretation，限制仍是有范围的knowledge_gap，不表示已完成视觉或人工批准。"
+  "note": "愚者途径9–0名称、序列0位阶、序列0配方、晋升仪式和三项能力继续保留官方中文设定集verified断言；序列9完整辅材与扮演法、序列8–1配方/扮演/晋升研究已新增为lead或knowledge_gap，二手来源不自动升级为中文原著verified。"
 }

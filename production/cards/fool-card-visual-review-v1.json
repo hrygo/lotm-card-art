@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "status": "pending-user-visual-approval",
+  "review_scope": "当前两张愚者途径完整原生卡候选的视觉预审；不替代用户批准、正典核验、文案批准或正式 release。",
+  "reviewer": "agent-visual-inspection",
+  "cards": [
+    {
+      "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+      "source": {
+        "path": "artifacts/production/fool-s09-card-name-edit-v1/v001/raw.png",
+        "sha256": "2d73c4662e9de0b263f833b75ca419605299b40f52c0909421c3b0d9d4dc0efe",
+        "size_px": [1024, 1536]
+      },
+      "observed": {
+        "single_card_upright": true,
+        "frame_window_continuous": true,
+        "top_rank_dock_readable": true,
+        "pathway_name_readable": true,
+        "sequence_name_readable": true,
+        "name_surface_text_readable": true,
+        "gemstone_stable_and_visible": true,
+        "no_obvious_mirror_or_overflow": true,
+        "no_obvious_name_surface_collision": true,
+        "dominant_scene": "廷根时期室内占卜场景；人物、灵摆、茶杯、书页与桌面关系连续"
+      },
+      "agent_assessment": "未观察到需要立即重生的结构性视觉缺陷；仍需用户逐图确认文字细节、材质品格和整体审美。",
+      "user_visual_approval": {
+        "status": "pending",
+        "by": null,
+        "reference": null
+      }
+    },
+    {
+      "card_id": "lotm.fool.s00.klein-moretti.mr-fool-01",
+      "source": {
+        "path": "artifacts/production/fool-s00-card-agentic-v1/v001/raw.png",
+        "sha256": "11eab4ed8688a4949411721f0fad07586cd006debb444919153907fb77b584ce",
+        "size_px": [1024, 1536]
+      },
+      "observed": {
+        "single_card_upright": true,
+        "frame_window_continuous": true,
+        "top_rank_dock_readable": true,
+        "pathway_name_readable": true,
+        "sequence_name_readable": true,
+        "name_surface_text_readable": true,
+        "gemstone_stable_and_visible": true,
+        "no_obvious_mirror_or_overflow": true,
+        "no_obvious_name_surface_collision": true,
+        "dominant_scene": "权柄线与折叠历史构成连续主视觉；主体尺度保持为非人秩序中的微小身份残影"
+      },
+      "agent_assessment": "未观察到需要立即重生的结构性视觉缺陷；S00 身份称谓与神格叙事仍需用户确认表达边界。",
+      "user_visual_approval": {
+        "status": "pending",
+        "by": null,
+        "reference": null
+      }
+    }
+  ],
+  "next_gate": {
+    "required": "user_visual_approval_for_each_card",
+    "after_approval": "execute one direct final sampling per requested profile, then check-final-sample",
+    "formal_release_approved": false
+  }
+}

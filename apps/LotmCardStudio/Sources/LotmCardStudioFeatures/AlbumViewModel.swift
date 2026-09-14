@@ -47,11 +47,10 @@ public final class AlbumViewModel: ObservableObject {
 
     public init(cards: [AlbumCard] = DemoLibrary.cards) {
         self.cards = cards
-        self.collectionIntents = [
-            "lotm.fool.s03.klein-01": .formal,
-            "lotm.fool.s09.klein-moretti.tingen-01": .candidate
-        ]
-        self.wishlistCardIDs = ["lotm.fool.s00.prototype"]
+        self.collectionIntents = Dictionary(
+            uniqueKeysWithValues: cards.map { ($0.id, $0.collectionIntent) }
+        )
+        self.wishlistCardIDs = Set(cards.filter(\.isWishlisted).map(\.id))
     }
 
     private var normalizedSearchText: String {

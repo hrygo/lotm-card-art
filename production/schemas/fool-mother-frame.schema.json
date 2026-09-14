@@ -12,7 +12,8 @@
     "coordinate_system",
     "canvas",
     "pathway_mark",
-    "emblem_dock",
+    "pathway_crown",
+    "rank_numeral_dock",
     "right_sequence_zone",
     "name_surface",
     "gem_slot",
@@ -24,17 +25,27 @@
     "schema_version": {"const": "1.0.0"},
     "contract_type": {"const": "fool-mother-frame"},
     "status": {"enum": ["template", "proposed", "measured", "pending-user-visual-approval", "approved", "rejected"]},
-    "geometry_id": {"const": "fool-agentic-mother-v1"},
+    "geometry_id": {"const": "fool-agentic-mother-v2"},
     "coordinate_system": {"const": "design-space-top-left-image-normalized"},
     "canvas": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["design_size", "final_size", "color_space", "alpha"],
+      "required": ["design_size", "native_size", "delivery_sizes", "color_space", "alpha", "resolution_policy"],
       "properties": {
         "design_size": {"type": "array", "items": {"type": "integer", "minimum": 1}, "const": [1024, 1536]},
-        "final_size": {"type": "array", "items": {"type": "integer", "minimum": 1}, "const": [2048, 3072]},
+        "native_size": {"type": "array", "items": {"type": "integer", "minimum": 1}, "const": [1024, 1536]},
+        "delivery_sizes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["standard", "collector"],
+          "properties": {
+            "standard": {"type": "array", "items": {"type": "integer", "minimum": 1}, "const": [2048, 3072]},
+            "collector": {"type": "array", "items": {"type": "integer", "minimum": 1}, "const": [4096, 6144]}
+          }
+        },
         "color_space": {"const": "sRGB"},
-        "alpha": {"const": "straight-RGBA"}
+        "alpha": {"const": "straight-RGBA"},
+        "resolution_policy": {"const": "native-work-single-final-sample-v1"}
       }
     },
     "pathway_mark": {
@@ -50,15 +61,31 @@
         "owner": {"const": "FrameCore.PathwayMark"}
       }
     },
-    "emblem_dock": {
+    "pathway_crown": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["contract", "safe_rect_design", "through_hole", "owner"],
+      "required": ["status", "source", "source_role", "rect_design", "numeral_exclusion_rect_design", "must_not_enter_numeral_dock", "owner"],
       "properties": {
-        "contract": {"const": "production/templates/emblem-dock-interface-v1.json"},
+        "status": {"const": "baked-into-frame-core"},
+        "source": {"type": "string", "minLength": 1},
+        "source_role": {"const": "provenance-only"},
+        "rect_design": {"$ref": "#/$defs/rect"},
+        "numeral_exclusion_rect_design": {"$ref": "#/$defs/rect"},
+        "must_not_enter_numeral_dock": {"const": true},
+        "owner": {"const": "FrameCore.PathwayCrown"}
+      }
+    },
+    "rank_numeral_dock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract", "status", "safe_rect_design", "center_design", "inner_shape", "owner"],
+      "properties": {
+        "contract": {"const": "production/templates/fool-rank-numeral-dock-interface-v1.json"},
+        "status": {"const": "reserved-empty"},
         "safe_rect_design": {"$ref": "#/$defs/rect"},
-        "through_hole": {"const": false},
-        "owner": {"const": "EmblemDock"}
+        "center_design": {"$ref": "#/$defs/point"},
+        "inner_shape": {"const": "round"},
+        "owner": {"const": "RankNumeralDock"}
       }
     },
     "right_sequence_zone": {
@@ -84,20 +111,23 @@
         "rect_design": {"$ref": "#/$defs/rect"},
         "safe_rect_design": {"$ref": "#/$defs/rect"},
         "background_pixels": {"const": 0},
-        "text_source": {"const": "program-controlled-exact-glyph-outline"},
+        "text_source": {"const": "agentic-complete-frame-exact-readback"},
         "owner": {"const": "NameEngraving"}
       }
     },
     "gem_slot": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["count", "tier_variant_count", "center_design", "visible_size_design", "name_clearance_design", "owner"],
+      "required": ["count", "tier_variant_count", "shape", "placement", "center_design", "visible_size_design", "name_clearance_design", "must_not_touch_name_surface", "owner"],
       "properties": {
         "count": {"const": 1},
         "tier_variant_count": {"const": 5},
+        "shape": {"const": "shield-cut-low-profile-lozenge"},
+        "placement": {"const": "independent-bottom-rail"},
         "center_design": {"$ref": "#/$defs/point"},
         "visible_size_design": {"$ref": "#/$defs/size"},
-        "name_clearance_design": {"type": "number", "minimum": 0},
+        "name_clearance_design": {"type": "number", "minimum": 24},
+        "must_not_touch_name_surface": {"const": true},
         "owner": {"const": "GemSlot"}
       }
     },
@@ -109,6 +139,8 @@
         "outer_silhouette": {"type": "string", "minLength": 1},
         "illustration_window": {"type": "string", "minLength": 1},
         "emblem": {"type": "string", "minLength": 1},
+        "pathway_crown": {"type": "string", "minLength": 1},
+        "rank_numeral": {"type": "string", "minLength": 1},
         "name": {"type": "string", "minLength": 1},
         "gem": {"type": "string", "minLength": 1},
         "outside_edit_domain": {"type": "string", "minLength": 1}
@@ -117,11 +149,12 @@
     "ownership": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["frame_core", "emblem_dock", "emblem_asset", "quality_material", "text_engraving", "composer"],
+      "required": ["frame_core", "pathway_crown", "rank_numeral_dock", "rank_numeral_asset", "quality_material", "text_engraving", "composer"],
       "properties": {
         "frame_core": {"$ref": "#/$defs/string_array"},
-        "emblem_dock": {"$ref": "#/$defs/string_array"},
-        "emblem_asset": {"$ref": "#/$defs/string_array"},
+        "pathway_crown": {"$ref": "#/$defs/string_array"},
+        "rank_numeral_dock": {"$ref": "#/$defs/string_array"},
+        "rank_numeral_asset": {"$ref": "#/$defs/string_array"},
         "quality_material": {"$ref": "#/$defs/string_array"},
         "text_engraving": {"$ref": "#/$defs/string_array"},
         "composer": {"$ref": "#/$defs/string_array"}
@@ -130,11 +163,11 @@
     "thresholds": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["geometry_displacement_max_px", "outside_edit_domain_pixels_max", "zone_center_error_max_final_px", "protected_region_intersections_max"],
+      "required": ["geometry_displacement_max_px", "outside_edit_domain_pixels_max", "zone_center_error_max_native_px", "protected_region_intersections_max"],
       "properties": {
         "geometry_displacement_max_px": {"const": 0},
         "outside_edit_domain_pixels_max": {"const": 0},
-        "zone_center_error_max_final_px": {"const": 1},
+        "zone_center_error_max_native_px": {"const": 1},
         "protected_region_intersections_max": {"const": 0}
       }
     }

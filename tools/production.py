@@ -10,8 +10,11 @@ import math
 from pathlib import Path
 import re
 import shutil
+import struct
 import subprocess
 import sys
+import wave
+import zlib
 from datetime import datetime, timezone
 
 import cardctl
@@ -133,6 +136,1234 @@ def visual_quality(root, sequence):
     if any(not re.fullmatch(r"#[0-9a-fA-F]{6}", row["primary"]) for row in tiers):
         raise Invalid("invalid quality primary color")
     return next(row for row in tiers if sequence in row["sequences"])
+
+
+def validate_external_audrey_assets(root):
+    """Ensure the external Audrey source package survives Fool cleanup."""
+    root = Path(root).resolve()
+    artwork_root = "artifacts/lotm.visionary.s07/render-v001"
+    artwork_files = [
+        f"{artwork_root}/audrey-s07-psychologist-raw.png",
+        f"{artwork_root}/audrey-s07-psychologist-v001.png",
+        f"{artwork_root}/audrey-s07-psychologist-collector-v001.png",
+    ]
+    audio_root = "artifacts/lotm.visionary.s07/audio-v001"
+    audio_files = [
+        f"{audio_root}/audrey-greeting-v1.wav",
+        f"{audio_root}/audrey-catchphrase-01-v1.wav",
+        f"{audio_root}/audrey-catchphrase-02-v1.wav",
+        f"{audio_root}/audrey-story-01-v1.wav",
+        f"{audio_root}/audrey-story-02-v1.wav",
+        f"{audio_root}/audrey-story-03-v1.wav",
+    ]
+    six_dimension_rel = "pathways/visionary/sequences/07/card.json"
+    story_rel = "docs/research/2026-09-13-audrey-s07-research.md"
+    required = artwork_files + audio_files + [six_dimension_rel, story_rel]
+    for rel in required:
+        if not inside(root, rel).is_file():
+            raise Invalid("external Audrey preservation asset missing: " + rel)
+
+    try:
+        for rel in artwork_files:
+            info = cardctl.image_info(inside(root, rel))
+            if info["format"] != "PNG":
+                raise Invalid("external Audrey artwork must be PNG: " + rel)
+    except (OSError, cardctl.DataError) as exc:
+        raise Invalid("external Audrey artwork is unreadable: " + str(exc)) from exc
+
+    six_dimension_source = read(inside(root, six_dimension_rel))
+    semantics = six_dimension_source.get("semantics", {})
+    expected_dimensions = {"identity", "acting", "abilities", "potion", "ascension", "limitations"}
+    if (six_dimension_source.get("card_id") != "lotm.visionary.s07"
+            or six_dimension_source.get("sequence") != 7
+            or set(semantics) != expected_dimensions):
+        raise Invalid("external Audrey six-dimensional source is incomplete")
+
+    cleanup_rel = "production/retirements/fool-failed-materials-2026-09-14.json"
+    cleanup_path = inside(root, cleanup_rel)
+    if cleanup_path.is_file():
+        moved_paths = {item.get("path") for item in read(cleanup_path).get("moved_to_trash", [])}
+        if any(rel in moved_paths for rel in required):
+            raise Invalid("external Audrey preservation asset is listed for cleanup")
+
+    return {
+        "status": "preserved",
+        "artwork_file_count": len(artwork_files),
+        "audio_file_count": len(audio_files),
+        "six_dimension_source": True,
+        "story_source": True,
+        "artwork_root": artwork_root,
+        "audio_root": audio_root,
+        "six_dimension_path": six_dimension_rel,
+        "story_path": story_rel,
+    }
+
+
+def validate_fool_carrier_contract(root):
+    """Validate the concrete carrier contract consumed by the Fool pipeline.
+
+    The generic EmblemDock JSON remains the vocabulary for future pathways. The
+    current Fool route deliberately uses a fixed RankNumeralDock: the pathway
+    crown is baked into the complete Agentic frame and the rank digit is not a
+    second fused emblem overlay. This gate binds that decision to measured
+    native geometry so the executable route cannot silently fall back to the
+    stale, earlier lozenge-gem or free-placement contract.
+    """
+    root = Path(root).resolve()
+    contract_rel = "production/symbols/fool-carrier-execution-v1.json"
+    contract_path = inside(root, contract_rel)
+    if not contract_path.is_file():
+        raise Invalid("Fool carrier execution contract missing: " + contract_rel)
+    contract = read(contract_path)
+    validate_schema(contract, schema(root, "fool-carrier-execution"), "$")
+
+    template_records = contract["templates"]
+    verify_records(root, [template_records["emblem_dock"], template_records["rank_numeral_dock"]])
+    active_frame = contract["active_frame_source"]
+    active_frame_path = inside(root, active_frame["path"])
+    if not active_frame_path.is_file() or sha(active_frame_path) != active_frame["sha256"]:
+        raise Invalid("Fool carrier active frame reference is stale")
+    try:
+        frame_info = cardctl.image_info(active_frame_path)
+    except (OSError, cardctl.DataError) as exc:
+        raise Invalid("Fool carrier active frame is unreadable: " + str(exc)) from exc
+    if frame_info["format"] != "PNG" or [frame_info["width"], frame_info["height"]] != [1024, 1536]:
+        raise Invalid("Fool carrier active frame must be a native 1024x1536 PNG")
+
+    emblem_template = read(inside(root, template_records["emblem_dock"]["path"]))
+    if (emblem_template.get("schema_version") != "1.1.0"
+            or emblem_template.get("contract_type") != "emblem-dock"
+            or emblem_template.get("status") != "template"):
+        raise Invalid("generic EmblemDock template is not the invariant grammar")
+    emblem_geometry = emblem_template.get("geometry", {})
+    emblem_dock = emblem_geometry.get("dock", {})
+    if (emblem_dock.get("mode") != "visual-recess-not-through-hole"
+            or emblem_dock.get("through_hole") is not False):
+        raise Invalid("generic EmblemDock template permits a through-hole")
+
+    rank_template = read(inside(root, template_records["rank_numeral_dock"]["path"]))
+    rank_dock = rank_template.get("dock", {})
+    if (rank_template.get("schema_version") != "1.0.0"
+            or rank_template.get("contract_type") != "fool-rank-numeral-dock"
+            or rank_template.get("geometry_id") != "fool-agentic-mother-v2"
+            or rank_dock.get("status") != "reserved-empty"
+            or rank_dock.get("shape") != "round"
+            or rank_template.get("numeral_asset", {}).get("fusion_with_pathway_crown") is not False):
+        raise Invalid("Fool rank numeral dock template is stale")
+
+    if contract.get("pathway_id") != "fool" or contract.get("geometry_id") != "fool-agentic-mother-v2":
+        raise Invalid("Fool carrier identity or geometry is stale")
+    if contract.get("canvas", {}).get("native_size") != [1024, 1536]:
+        raise Invalid("Fool carrier native canvas is stale")
+
+    route = contract["route"]
+    if (route.get("emblem_dock_mode") != "rank-numeral-dock-current-route"
+            or route.get("pathway_crown") != "baked-into-frame-core"
+            or route.get("rank_numeral") != "independent-simple-art-digit"
+            or route.get("sequence_name") != "agentic-complete-frame"
+            or route.get("through_hole") is not False
+            or route.get("standalone_emblem_overlay") is not False):
+        raise Invalid("Fool carrier route is stale or enables a duplicate emblem")
+
+    anchors = contract["anchors"]
+    expected_rects = {
+        "pathway_mark": ([50, 584, 84, 300], [50, 600, 84, 268]),
+        "pathway_crown": ([350, 0, 330, 260], [350, 0, 330, 260]),
+        "right_sequence_zone": ([878, 584, 108, 300], [890, 600, 84, 268]),
+        "name_surface": ([224, 1216, 576, 136], [240, 1228, 544, 112]),
+    }
+    for key, (rect, safe_rect) in expected_rects.items():
+        value = anchors.get(key, {})
+        if value.get("rect_design") != rect or value.get("safe_rect_design") != safe_rect:
+            raise Invalid(f"Fool carrier anchor is stale: {key}")
+    rank_value = anchors["rank_numeral_dock"]
+    if (rank_value.get("center_design") != [512, 136]
+            or rank_value.get("safe_rect_design") != [466, 88, 92, 96]):
+        raise Invalid("Fool rank numeral dock anchor is stale")
+    gem = anchors["gem_slot"]
+    if (gem.get("shape") != "regular-equilateral-hexagon"
+            or gem.get("center_design") != [512, 1421]
+            or gem.get("visible_size_design") != [132, 114]
+            or gem.get("name_clearance_design") != 12):
+        raise Invalid("Fool carrier gem slot is stale")
+
+    if contract["protected_regions"] != {
+        "pathway_crown": "mother-crown-protected",
+        "rank_numeral": "rank-numeral-safe",
+        "right_sequence_zone": "right-sequence-zone",
+        "name_surface": "name-surface",
+        "gem_slot": "gem-slot",
+        "outside_edit_domain": "outside-edit-domain",
+    }:
+        raise Invalid("Fool carrier protected-region mapping is stale")
+    if contract["mask_policy"] != {
+        "generated_by": "foolpipeline5.mother",
+        "coordinate_space": "native-canvas",
+        "alpha_policy": "straight-RGBA",
+        "no_crop_reassembly": True,
+    }:
+        raise Invalid("Fool carrier mask policy is stale")
+    thresholds = contract["thresholds"]
+    if (thresholds.get("geometry_displacement_max_px") != 0
+            or thresholds.get("outside_edit_domain_pixels_max") != 0
+            or thresholds.get("zone_center_error_max_native_px") != 1
+            or thresholds.get("protected_region_intersections_max") != 0):
+        raise Invalid("Fool carrier zero-drift thresholds are stale")
+
+    return {
+        "passed": True,
+        "status": "passed",
+        "contract": contract_rel,
+        "contract_sha256": sha(contract_path),
+        "geometry_id": contract["geometry_id"],
+        "emblem_dock_mode": route["emblem_dock_mode"],
+        "through_hole": route["through_hole"],
+        "gem_slot": gem,
+        "thresholds": thresholds,
+        "active_frame_source": active_frame["path"],
+        "limitation": "当前愚者路线已执行固定 RankNumeralDock；通用 EmblemDock 模板仅提供非穿透结构语法，不代表所有途径已完成嵌座生产。",
+    }
+
+
+def _read_wav_format(path):
+    try:
+        with wave.open(str(path), "rb") as audio:
+            info = {
+                "channels": audio.getnchannels(),
+                "sample_rate": audio.getframerate(),
+                "bits": audio.getsampwidth() * 8,
+                "frames": audio.getnframes(),
+                "duration_seconds": audio.getnframes() / audio.getframerate(),
+                "compression": audio.getcomptype(),
+            }
+    except (OSError, wave.Error) as exc:
+        raise Invalid("WAV is not decodable: " + str(path)) from exc
+    if (info["channels"] != 1 or info["sample_rate"] != 24000
+            or info["bits"] != 16 or info["frames"] <= 0
+            or info["compression"] != "NONE"):
+        raise Invalid("WAV format must be 24kHz Int16 mono PCM: " + str(path))
+    return info
+
+
+def validate_fool_audio_package(root):
+    """Validate the two current Fool card packages and their App resources.
+
+    This is intentionally stricter than a narrative check: every approved line
+    must have exactly one measured WAV, and the installed fixture may contain no
+    unrelated card art or audio. Audrey is checked separately by
+    validate_external_audrey_assets and is deliberately outside this whitelist.
+    """
+    root = Path(root).resolve()
+    packages = [
+        {
+            "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+            "narrative": "production/narratives/klein-s09-tingen.json",
+            "audio_manifest": "artifacts/lotm.fool.s09/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.fool.s09/audio-v001",
+            "voice_profile_id": "dylan",
+        },
+        {
+            "card_id": "lotm.fool.s00.klein-moretti.mr-fool-01",
+            "narrative": "production/narratives/mr-fool-s00.json",
+            "audio_manifest": "artifacts/lotm.fool.s00/audio-v002/generation.json",
+            "audio_root": "artifacts/lotm.fool.s00/audio-v002",
+            "voice_profile_id": "uncle_fu",
+        },
+    ]
+    card_reports = []
+    audio_records = []
+    for package in packages:
+        narrative_path = inside(root, package["narrative"])
+        pack = validate_narrative(root, read(narrative_path), ready_for_audio=True)
+        if pack["identity"]["cardID"] != package["card_id"]:
+            raise Invalid("audio narrative identity disagrees: " + package["card_id"])
+        expected_digests = {
+            narrative_digest(pack, entry): entry["id"] for entry in pack["entries"]
+        }
+        manifest_path = inside(root, package["audio_manifest"])
+        manifest = read(manifest_path)
+        if manifest.get("card_id") != package["card_id"]:
+            raise Invalid("audio manifest card identity disagrees: " + package["card_id"])
+        if manifest.get("voice_profile_id") != package["voice_profile_id"]:
+            raise Invalid("audio manifest voice disagrees: " + package["card_id"])
+        service = manifest.get("service", {})
+        if (service.get("base_url") != "http://127.0.0.1:8201"
+                or service.get("response_format") != "wav"
+                or service.get("language") != "zh"):
+            raise Invalid("audio manifest service contract is stale: " + package["card_id"])
+        files = manifest.get("files", [])
+        if len(files) != 6:
+            raise Invalid("audio manifest must contain six files: " + package["card_id"])
+        seen_digests = set()
+        seen_names = set()
+        for item in files:
+            resource_name = item.get("resource_name", "")
+            if not re.fullmatch(r"[a-z0-9-]+", resource_name):
+                raise Invalid("invalid audio resource name: " + resource_name)
+            if resource_name in seen_names:
+                raise Invalid("duplicate audio resource name: " + resource_name)
+            seen_names.add(resource_name)
+            text_digest = item.get("text_digest")
+            if text_digest not in expected_digests:
+                raise Invalid("audio text digest is not bound to narrative: " + resource_name)
+            if text_digest in seen_digests:
+                raise Invalid("duplicate audio text binding: " + resource_name)
+            seen_digests.add(text_digest)
+            rel = f'{package["audio_root"]}/{resource_name}.wav'
+            path = inside(root, rel)
+            if not path.is_file() or sha(path) != item.get("sha256"):
+                raise Invalid("audio file hash is stale: " + rel)
+            fmt = _read_wav_format(path)
+            if abs(fmt["duration_seconds"] - float(item.get("duration_seconds", -1))) > 0.02:
+                raise Invalid("audio duration record is stale: " + rel)
+            audio_records.append({
+                "card_id": package["card_id"],
+                "resource_name": resource_name,
+                "path": rel,
+                "sha256": item["sha256"],
+                "format": fmt,
+            })
+        if seen_digests != set(expected_digests):
+            raise Invalid("audio manifest does not cover every narrative line: " + package["card_id"])
+        audio_root = inside(root, package["audio_root"])
+        actual_names = {path.stem for path in audio_root.glob("*.wav")}
+        if actual_names != seen_names:
+            raise Invalid("audio directory contains an orphan or missing WAV: " + package["card_id"])
+        card_reports.append({
+            "card_id": package["card_id"],
+            "voice_profile_id": package["voice_profile_id"],
+            "file_count": len(files),
+        })
+
+    expected_card_art = {
+        "fool-s00-card-agentic-v1-v001": "artifacts/production/fool-s00-card-agentic-v1/v001/raw.png",
+        "fool-s09-card-name-edit-v1-v001": "artifacts/production/fool-s09-card-name-edit-v1/v001/raw.png",
+    }
+    card_art_root = inside(root, "apps/LotmCardStudio/Resources/CardArt")
+    card_art_names = sorted(path.stem for path in card_art_root.glob("*.png"))
+    if card_art_names != sorted(expected_card_art):
+        raise Invalid("App CardArt whitelist is not exactly S00 and S09")
+    for name, source_rel in expected_card_art.items():
+        app_path = card_art_root / (name + ".png")
+        source_path = inside(root, source_rel)
+        if sha(app_path) != sha(source_path):
+            raise Invalid("App card art disagrees with current Fool source: " + name)
+
+    expected_audio_names = sorted(item["resource_name"] for item in audio_records)
+    app_audio_root = inside(root, "apps/LotmCardStudio/Resources/Audio")
+    app_audio_names = sorted(path.stem for path in app_audio_root.glob("*.wav"))
+    if app_audio_names != expected_audio_names:
+        raise Invalid("App Audio whitelist contains an orphan or missing WAV")
+    for item in audio_records:
+        app_path = app_audio_root / (item["resource_name"] + ".wav")
+        if sha(app_path) != item["sha256"]:
+            raise Invalid("App audio disagrees with production audio: " + item["resource_name"])
+
+    return {
+        "status": "passed",
+        "card_count": len(card_reports),
+        "cards": card_reports,
+        "audio_file_count": len(audio_records),
+        "app": {
+            "card_art_count": len(card_art_names),
+            "card_art_names": card_art_names,
+            "audio_file_count": len(app_audio_names),
+            "audio_resource_names": app_audio_names,
+        },
+        "limitation": "校验资源完整性、绑定摘要和安装包白名单；不替代真人试听、事实复核或视觉批准。",
+    }
+
+
+def validate_fool_materials(root):
+    """Validate the retained Fool visual baseline after recoverable cleanup.
+
+    This gate intentionally reads only the current baseline catalogs. Historical
+    catalogs may retain provenance paths to files in Trash, but they must not be
+    treated as active production inputs.
+    """
+    root = Path(root).resolve()
+    audrey_preservation = validate_external_audrey_assets(root)
+    carrier_contract = validate_fool_carrier_contract(root)
+    audio_package = validate_fool_audio_package(root)
+    tier_order = ["low", "mid", "saint", "angel", "true-god"]
+    expected_mapping = {
+        "low": [9, 8],
+        "mid": [7, 6, 5],
+        "saint": [4, 3],
+        "angel": [2, 1],
+        "true-god": [0],
+    }
+
+    def required_file(rel, label):
+        path = inside(root, rel)
+        if not path.is_file():
+            raise Invalid(f"{label} missing: {rel}")
+        return path
+
+    def checked_image(rel, label, expected_size=None):
+        path = required_file(rel, label)
+        try:
+            info = cardctl.image_info(path)
+        except (OSError, cardctl.DataError) as exc:
+            raise Invalid(f"{label} unreadable: {rel}: {exc}") from exc
+        if info["format"] != "PNG":
+            raise Invalid(f"{label} must be PNG: {rel}")
+        if expected_size and [info["width"], info["height"]] != list(expected_size):
+            raise Invalid(f"{label} has wrong native size: {rel}")
+        return path, info
+
+    catalog_rel = "production/symbols/fool-five-tier-kit.json"
+    catalog_path = required_file(catalog_rel, "Fool five-tier catalog")
+    catalog = read(catalog_path)
+    if catalog.get("pathway_id") != "fool":
+        raise Invalid("current five-tier catalog is not for the Fool pathway")
+    if catalog.get("status") != "official-agentic-visual-material-baseline":
+        raise Invalid("current five-tier catalog is not the official visual baseline")
+    if catalog.get("sequence_mapping") != expected_mapping:
+        raise Invalid("current five-tier sequence mapping is stale or non-bijective")
+    if catalog.get("resolution_policy", {}).get("native_source_is_canonical") is not True:
+        raise Invalid("native source is not canonical")
+    if catalog.get("resolution_policy", {}).get("intermediate_2k_count") != 0:
+        raise Invalid("current five-tier policy permits an intermediate 2K stage")
+    if catalog.get("resolution_policy", {}).get("final_card_only_sampling") is not True:
+        raise Invalid("final-only sampling policy is not enabled")
+
+    output_rel = catalog.get("active_output")
+    if output_rel != "artifacts/production/fool-five-tier-direct-kit-v1":
+        raise Invalid("current five-tier output is not the direct native kit")
+    output = inside(root, output_rel)
+    manifest_record = catalog.get("active_manifest")
+    if not isinstance(manifest_record, dict):
+        raise Invalid("active five-tier manifest record missing")
+    verify_records(root, [manifest_record])
+    manifest = read(required_file(manifest_record["path"], "active five-tier manifest"))
+    if manifest.get("mode") != "fool-five-tier-direct-batch-v1":
+        raise Invalid("active five-tier manifest is not the direct Agentic batch")
+    if manifest.get("direct_agentic_sources") is not True:
+        raise Invalid("active five-tier manifest is not direct Agentic source")
+    if manifest.get("color_transform") != "none":
+        raise Invalid("active five-tier manifest contains a color transform")
+    if manifest.get("geometry_id") != "fool-agentic-mother-v2":
+        raise Invalid("active five-tier geometry is stale")
+    if manifest.get("no_cross_product_variants") is not True:
+        raise Invalid("active five-tier manifest permits cross-product variants")
+    if manifest.get("status") != "user-approved-agentic-visual-baseline":
+        raise Invalid("active five-tier manifest is not the approved visual baseline")
+    if manifest.get("native_frame_hashes", {}).keys() != set(tier_order):
+        raise Invalid("active five-tier manifest does not contain exactly five native frames")
+    if manifest.get("gem_slot", {}).get("mode") != "embedded-in-direct-tier-frame-no-synthetic-overlay":
+        raise Invalid("active five-tier gem contract is not embedded in the complete frame")
+    if manifest.get("gem_slot", {}).get("variant_count") != 5:
+        raise Invalid("active five-tier gem count is not five")
+
+    layered_rel = "production/symbols/fool-layered-asset-baseline-v1.json"
+    layered = read(required_file(layered_rel, "active Fool layered-asset baseline"))
+    if layered.get("pathway_id") != "fool" or layered.get("status") != "user-approved-agentic-visual-baseline":
+        raise Invalid("active Fool layered-asset baseline is stale")
+    graph = layered.get("asset_graph", {})
+    reusable_graph = graph.get("reusable_materials", {})
+    if reusable_graph.get("catalog") != catalog_rel or reusable_graph.get("catalog_sha256") != sha(catalog_path):
+        raise Invalid("layered-asset reusable-material catalog is stale")
+    frame_graph = graph.get("quality_frames", {})
+    if (frame_graph.get("catalog") != catalog_rel
+            or frame_graph.get("manifest") != manifest_record["path"]
+            or frame_graph.get("manifest_sha256") != manifest_record["sha256"]
+            or frame_graph.get("native_output") != output_rel
+            or frame_graph.get("geometry_id") != manifest["geometry_id"]):
+        raise Invalid("layered-asset quality-frame pointer is stale")
+    frame_rows = frame_graph.get("tiers", [])
+    if [row.get("id") for row in frame_rows] != tier_order:
+        raise Invalid("layered-asset quality-frame order is stale")
+    for row in frame_rows:
+        tier = row["id"]
+        expected_rel = f"{output_rel}/frame-{tier}-native.png"
+        if (row.get("path") != expected_rel
+                or row.get("sha256") != manifest["native_frame_hashes"].get(tier)
+                or row.get("sequences") != expected_mapping[tier]):
+            raise Invalid(f"layered-asset {tier} frame pointer is stale")
+    sequence_graph = graph.get("sequence_frames", {})
+    sequence_rel = "production/symbols/fool-agentic-sequence-inscriptions-v2.json"
+    if (sequence_graph.get("catalog") != sequence_rel
+            or sequence_graph.get("catalog_sha256") != sha(inside(root, sequence_rel))
+            or sequence_graph.get("output_root") != "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies"):
+        raise Invalid("layered-asset sequence-frame pointer is stale")
+    fusion_graph = graph.get("fusion_reference", {})
+    if (fusion_graph.get("catalog") != "production/symbols/fool-fusion-family.json"
+            or fusion_graph.get("role") != "historical-reference-only"):
+        raise Invalid("layered-asset fusion reference is stale")
+    layered_policy = layered.get("resolution_policy", {})
+    if (layered_policy.get("native_canvas") != [1024, 1536]
+            or layered_policy.get("intermediate_2k_count") != 0
+            or layered_policy.get("final_sampling") != "only-after-complete-card-approval"
+            or layered_policy.get("no_local_2k_repair") is not True
+            or layered_policy.get("no_crop_reassembly") is not True):
+        raise Invalid("layered-asset resolution policy is stale")
+    if (layered.get("acceptance", {}).get("formal_release_approved") is not False
+            or layered.get("historical_boundary", {}).get("superseded") is None):
+        raise Invalid("layered-asset acceptance boundary is stale")
+
+    reusable_materials = catalog.get("retained_reusable_materials", {})
+    material_entries = reusable_materials.get("entries", [])
+    if reusable_materials.get("status") != "retained-reference-assets":
+        raise Invalid("retained reusable material catalog is missing or stale")
+    if reusable_materials.get("embedded_in_active_frames") is not False:
+        raise Invalid("retained reusable materials cannot be treated as frame overlays")
+    if len(material_entries) != 5 or {item.get("id") for item in material_entries} != {
+            "material-fool-veil", "material-gold", "material-high-filament",
+            "material-sacred-slate", "material-silver-flat"}:
+        raise Invalid("retained reusable material catalog must contain exactly five inputs")
+    for item in material_entries:
+        rel = item.get("path", "")
+        material_path, material_info = checked_image(rel, f"retained material {item.get('id', '')}", (1024, 1536))
+        if sha(material_path) != item.get("sha256"):
+            raise Invalid(f"retained material hash is stale: {rel}")
+        if item.get("size_px") != [material_info["width"], material_info["height"]]:
+            raise Invalid(f"retained material size record is stale: {rel}")
+        if item.get("status") != "retained-reference":
+            raise Invalid(f"retained material status is invalid: {rel}")
+        receipt_rel = rel.removesuffix("/raw.png") + "/receipt.json"
+        receipt = read(required_file(receipt_rel, f"retained material receipt {item.get('id', '')}"))
+        raw = receipt.get("raw", {})
+        if raw.get("path") != rel or raw.get("sha256") != item.get("sha256"):
+            raise Invalid(f"retained material receipt disagrees with catalog: {rel}")
+
+    native_files = []
+    for tier in tier_order:
+        rel = f"{output_rel}/frame-{tier}-native.png"
+        path, info = checked_image(rel, f"native {tier} frame", (1024, 1536))
+        expected_digest = manifest["native_frame_hashes"][tier]
+        if sha(path) != expected_digest:
+            raise Invalid(f"native {tier} frame hash is stale")
+        native_files.append(rel)
+
+    intermediate_2k_files = []
+    if output.is_dir():
+        for path in output.rglob("*.png"):
+            info = cardctl.image_info(path)
+            if [info["width"], info["height"]] == [2048, 3072]:
+                intermediate_2k_files.append(path.relative_to(root).as_posix())
+    if intermediate_2k_files:
+        raise Invalid("intermediate 2K files remain in active five-tier output: " + ", ".join(intermediate_2k_files))
+
+    sidecar_rel = "production/approvals/fool-agentic-visual-baseline-v1.json"
+    sidecar = read(required_file(sidecar_rel, "visual baseline sidecar"))
+    approved = sidecar.get("approved_assets", {})
+    mother = approved.get("mother_frame", {})
+    mother_path, mother_info = checked_image(mother.get("path", ""), "approved mother source", (1024, 1536))
+    if sha(mother_path) != mother.get("sha256"):
+        raise Invalid("approved mother source hash is stale")
+    if sidecar.get("material_status", {}).get("native_source_is_canonical") is not True:
+        raise Invalid("visual baseline sidecar does not mark native sources canonical")
+    sidecar_tiers = approved.get("five_tier_frames", {})
+    if sidecar_tiers.get("manifest_path") != manifest_record["path"]:
+        raise Invalid("sidecar manifest path disagrees with active kit")
+    if sidecar_tiers.get("manifest_sha256") != manifest_record["sha256"]:
+        raise Invalid("sidecar manifest hash disagrees with active kit")
+    contact_rel = sidecar_tiers.get("contact_sheet_path", "")
+    contact_path, _ = checked_image(contact_rel, "approved five-tier contact sheet")
+    if sha(contact_path) != sidecar_tiers.get("contact_sheet_sha256"):
+        raise Invalid("approved five-tier contact sheet hash is stale")
+    sidecar_paths = sidecar_tiers.get("native_source_paths", {})
+    sidecar_hashes = sidecar_tiers.get("native_source_sha256", {})
+    for tier in tier_order:
+        expected_rel = f"{output_rel}/frame-{tier}-native.png"
+        if sidecar_paths.get(tier) != expected_rel:
+            raise Invalid(f"sidecar native {tier} path disagrees with active kit")
+        if sidecar_hashes.get(tier) != manifest["native_frame_hashes"][tier]:
+            raise Invalid(f"sidecar native {tier} hash disagrees with active kit")
+
+    sequence_catalog = read(required_file(sequence_rel, "current sequence catalog"))
+    if sequence_catalog.get("stage") != "agentic-complete-frame-baseline":
+        raise Invalid("current sequence catalog is not the complete-frame Agentic baseline")
+    sequence_entries = sequence_catalog.get("entries", [])
+    if len(sequence_entries) != 10 or {e.get("digit") for e in sequence_entries} != set(range(10)):
+        raise Invalid("current sequence catalog does not contain exactly ten digits")
+    sequence_outputs = []
+    for entry in sorted(sequence_entries, key=lambda item: item["digit"]):
+        digit = entry["digit"]
+        if entry.get("sequence_id") != f"lotm.fool.s{digit:02d}":
+            raise Invalid(f"sequence {digit} identity is stale")
+        if entry.get("tier") != visual_quality(root, digit)["id"]:
+            raise Invalid(f"sequence {digit} tier disagrees with quality configuration")
+        candidate = entry.get("candidate_output", {})
+        rel = candidate.get("path", "")
+        path, info = checked_image(rel, f"sequence {digit} candidate", (1024, 1536))
+        if sha(path) != candidate.get("sha256"):
+            raise Invalid(f"sequence {digit} candidate hash is stale")
+        if candidate.get("status") != "user-approved-agentic-baseline":
+            raise Invalid(f"sequence {digit} candidate is not the approved Agentic baseline")
+        sequence_outputs.append(rel)
+
+    fusion_rel = "production/symbols/fool-fusion-family.json"
+    fusion = read(required_file(fusion_rel, "current fusion catalog"))
+    if fusion.get("current_user_approval", {}).get("digits") != list(range(10)):
+        raise Invalid("current fusion approval does not cover all ten digits")
+    fusion_entries = fusion.get("entries", [])
+    if len(fusion_entries) != 10 or [e.get("digit") for e in fusion_entries] != list(range(10)):
+        raise Invalid("current fusion catalog is not ordered one-to-one")
+    emblem_by_digit = {item["digit"]: item for item in catalog.get("emblem_inputs", [])}
+    retained_runs = {}
+    fusion_outputs = []
+    for entry in fusion_entries:
+        digit = entry["digit"]
+        if entry.get("retention") != "keep":
+            raise Invalid(f"fusion {digit} is not marked retained")
+        if not (entry.get("art_review", {}).get("status", "").startswith("user-approved-")):
+            raise Invalid(f"fusion {digit} has no current visual approval")
+        raw_rel = entry.get("raw", "")
+        raw_path, _ = checked_image(raw_rel, f"fusion {digit}")
+        if sha(raw_path) != emblem_by_digit.get(digit, {}).get("sha256"):
+            raise Invalid(f"fusion {digit} disagrees with five-tier emblem input")
+        expected_rel = emblem_by_digit.get(digit, {}).get("path")
+        if raw_rel != expected_rel:
+            raise Invalid(f"fusion {digit} path disagrees with five-tier emblem input")
+        match = re.fullmatch(r"artifacts/production/fool-fusion-(\d)/(v\d{3})/raw\.png", raw_rel)
+        if not match or int(match.group(1)) != digit:
+            raise Invalid(f"fusion {digit} path does not identify its digit and run")
+        parent = inside(root, f"artifacts/production/fool-fusion-{digit}")
+        runs = sorted(p.name for p in parent.iterdir() if p.is_dir() and re.fullmatch(r"v\d{3}", p.name)) if parent.is_dir() else []
+        if runs != [match.group(2)]:
+            raise Invalid(f"fusion {digit} must retain exactly one versioned run; found {runs}")
+        retained_runs[str(digit)] = match.group(2)
+        fusion_outputs.append(raw_rel)
+
+    numerals_rel = "production/symbols/fool-rank-numerals-v1.json"
+    numerals = read(required_file(numerals_rel, "standalone numeral catalog"))
+    if numerals.get("status") != "retired-standalone-numerals":
+        raise Invalid("standalone numerals are still marked active")
+    retirement = numerals.get("retirement", {})
+    if retirement.get("status") != "moved-to-trash" or retirement.get("preserved_replacement") != fusion_rel:
+        raise Invalid("standalone numeral retirement does not point to the fusion family")
+
+    preservation = read(required_file("production/symbols/fool-fusion-preservation.json", "fusion preservation ledger"))
+    for item in preservation.get("preserved", []):
+        path, _ = checked_image(item["path"], f"preserved fusion {item['digit']}")
+        if sha(path) != item.get("sha256") or item.get("retention") != "keep":
+            raise Invalid(f"preserved fusion record is stale: {item.get('digit')}")
+    for item in preservation.get("retired_versions", []):
+        if item.get("status") != "moved-to-trash":
+            raise Invalid(f"retired fusion record is not recoverably retired: {item.get('digit')}")
+        if inside(root, item["path"]).exists():
+            raise Invalid(f"retired fusion file still exists: {item['path']}")
+
+    cleanup_rel = "production/retirements/fool-failed-materials-2026-09-14.json"
+    cleanup = read(required_file(cleanup_rel, "cleanup ledger"))
+    if cleanup.get("status") != "moved-to-trash" or cleanup.get("recoverability") != "macOS Trash; restore manually if user reverses the decision":
+        raise Invalid("cleanup ledger does not describe recoverable Trash cleanup")
+    moved = cleanup.get("moved_to_trash", [])
+    moved_paths = [item.get("path") for item in moved]
+    if len(moved_paths) != len(set(moved_paths)):
+        raise Invalid("cleanup ledger contains duplicate moved paths")
+    for rel in moved_paths:
+        if inside(root, rel).exists():
+            raise Invalid("cleanup ledger path still exists: " + rel)
+
+    return {
+        "passed": True,
+        "status": "passed",
+        "active_five_tier_output": output_rel,
+        "layered_asset_baseline": layered_rel,
+        "retained_reusable_material_count": len(material_entries),
+        "tier_count": len(native_files),
+        "sequence_count": len(sequence_outputs),
+        "fusion_digit_count": len(fusion_outputs),
+        "retained_fusion_runs": retained_runs,
+        "intermediate_2k_count": len(intermediate_2k_files),
+        "standalone_numeral_status": numerals["status"],
+        "active_fusion_catalog": fusion_rel,
+        "carrier_contract": carrier_contract,
+        "audio_package": audio_package,
+        "audrey_external_preservation": audrey_preservation,
+        "retired_path_count": len(moved_paths),
+        "limitation": "Validates current records, paths, hashes and native dimensions; visual approval remains represented by the recorded user baseline.",
+    }
+
+
+def _decode_png_rows(path):
+    """Decode the small 8-bit RGB/RGBA PNG subset needed for native audits."""
+    try:
+        info = cardctl.image_info(path)
+    except (OSError, cardctl.DataError) as exc:
+        raise Invalid("PNG pixel audit cannot read image: " + str(exc)) from exc
+    if info["format"] != "PNG":
+        raise Invalid("PNG pixel audit requires PNG input")
+    data = Path(path).read_bytes()
+    if data[:8] != b"\x89PNG\r\n\x1a\n":
+        raise Invalid("PNG pixel audit has invalid signature")
+    offset = 8
+    width = height = depth = color = interlace = None
+    compressed = []
+    while offset < len(data):
+        if offset + 12 > len(data):
+            raise Invalid("PNG pixel audit has truncated chunk")
+        length = struct.unpack(">I", data[offset:offset + 4])[0]
+        kind = data[offset + 4:offset + 8]
+        start = offset + 8
+        end = start + length
+        if end + 4 > len(data):
+            raise Invalid("PNG pixel audit has truncated payload")
+        chunk = data[start:end]
+        if kind == b"IHDR":
+            if len(chunk) != 13:
+                raise Invalid("PNG pixel audit has invalid IHDR")
+            width, height, depth, color, _, _, interlace = struct.unpack(">IIBBBBB", chunk)
+        elif kind == b"IDAT":
+            compressed.append(chunk)
+        elif kind == b"IEND":
+            break
+        offset = end + 4
+    if width != info["width"] or height != info["height"] or depth != 8 or interlace != 0:
+        raise Invalid("PNG pixel audit supports only non-interlaced 8-bit PNG")
+    if color not in (2, 6) or not compressed:
+        raise Invalid("PNG pixel audit supports only RGB/RGBA PNG")
+    channels = 3 if color == 2 else 4
+    stride = width * channels
+    try:
+        decoded = zlib.decompress(b"".join(compressed))
+    except zlib.error as exc:
+        raise Invalid("PNG pixel audit compressed data is invalid") from exc
+    row_size = stride + 1
+    if len(decoded) != row_size * height:
+        raise Invalid("PNG pixel audit scanline length is invalid")
+
+    def paeth(a, b, c):
+        estimate = a + b - c
+        pa, pb, pc = abs(estimate - a), abs(estimate - b), abs(estimate - c)
+        if pa <= pb and pa <= pc:
+            return a
+        if pb <= pc:
+            return b
+        return c
+
+    rows = []
+    previous = bytearray(stride)
+    cursor = 0
+    for _ in range(height):
+        filter_type = decoded[cursor]
+        source = decoded[cursor + 1:cursor + row_size]
+        cursor += row_size
+        row = bytearray(stride)
+        for index, value in enumerate(source):
+            left = row[index - channels] if index >= channels else 0
+            up = previous[index]
+            upper_left = previous[index - channels] if index >= channels else 0
+            if filter_type == 0:
+                estimate = 0
+            elif filter_type == 1:
+                estimate = left
+            elif filter_type == 2:
+                estimate = up
+            elif filter_type == 3:
+                estimate = (left + up) // 2
+            elif filter_type == 4:
+                estimate = paeth(left, up, upper_left)
+            else:
+                raise Invalid("PNG pixel audit encountered unknown filter")
+            row[index] = (value + estimate) & 0xFF
+        rows.append(bytes(row))
+        previous = row
+    return width, height, channels, rows
+
+
+def _compare_png_pixels(left_path, right_path, protected_rect):
+    left = _decode_png_rows(left_path)
+    right = _decode_png_rows(right_path)
+    if left[:3] != right[:3]:
+        raise Invalid("PNG pixel audit inputs differ in dimensions or channel type")
+    width, height, channels = left[:3]
+    x0, y0, w, h = [int(value) for value in protected_rect]
+    x1, y1 = x0 + w, y0 + h
+    if x0 < 0 or y0 < 0 or w < 0 or h < 0 or x1 > width or y1 > height:
+        raise Invalid("PNG pixel audit protected rectangle is out of bounds")
+    changed = 0
+    changed_inside = 0
+    changed_outside = 0
+    min_x, min_y = width, height
+    max_x = max_y = -1
+    for y, (a_row, b_row) in enumerate(zip(left[3], right[3])):
+        for x in range(width):
+            start = x * channels
+            if a_row[start:start + channels] == b_row[start:start + channels]:
+                continue
+            changed += 1
+            min_x, max_x = min(min_x, x), max(max_x, x)
+            min_y, max_y = min(min_y, y), max(max_y, y)
+            if x0 <= x < x1 and y0 <= y < y1:
+                changed_inside += 1
+            else:
+                changed_outside += 1
+    bbox = None if changed == 0 else [min_x, min_y, max_x + 1, max_y + 1]
+    return {
+        "changed_pixels": changed,
+        "changed_ratio": changed / (width * height),
+        "changed_inside_name_surface": changed_inside,
+        "changed_outside_name_surface": changed_outside,
+        "changed_bbox": bbox,
+        "name_surface_rect": [x0, y0, w, h],
+    }
+
+
+def validate_fool_cards(root, manifest_rel="production/cards/fool-card-candidates-v1.json"):
+    """Validate the current Fool target-card candidates without approving them.
+
+    The card manifest is deliberately separate from the five-tier material gate:
+    a valid frame library does not prove that a target card, its identity, or its
+    narrative package is present. This check verifies the current candidate
+    records, their ingested receipts, native dimensions, and pending status. It
+    does not attempt to replace human visual or canon review.
+    """
+    root = Path(root).resolve()
+    audrey_preservation = validate_external_audrey_assets(root)
+    carrier_contract = validate_fool_carrier_contract(root)
+    manifest_path = inside(root, manifest_rel)
+    if not manifest_path.is_file():
+        raise Invalid("Fool card candidate manifest missing: " + manifest_rel)
+    manifest = read(manifest_path)
+    if manifest.get("schema_version") != "1.0.0":
+        raise Invalid("Fool card candidate manifest schema is stale")
+    if manifest.get("status") != "candidate-pending-user-visual-review":
+        raise Invalid("Fool card candidate manifest is not pending visual review")
+    policy = manifest.get("native_canvas_policy", {})
+    if policy.get("source_is_canonical") is not True:
+        raise Invalid("Fool card candidates must use the native source as canonical")
+    if policy.get("intermediate_2k_count") != 0:
+        raise Invalid("Fool card candidates contain an intermediate 2K stage")
+    if policy.get("final_sampling_count") != 0:
+        raise Invalid("candidate manifest claims final sampling before approval")
+    if policy.get("final_sampling_required_after_approval") is not True:
+        raise Invalid("candidate manifest does not require final sampling after approval")
+
+    visual_review_ref = manifest.get("visual_review", {})
+    if not isinstance(visual_review_ref, dict) or not visual_review_ref.get("path"):
+        raise Invalid("Fool card visual review reference is missing")
+    verify_records(root, [visual_review_ref])
+    visual_review = read(inside(root, visual_review_ref["path"]))
+    if (visual_review.get("schema_version") != "1.0.0"
+            or visual_review.get("status") != "pending-user-visual-approval"
+            or visual_review.get("next_gate", {}).get("formal_release_approved") is not False):
+        raise Invalid("Fool card visual review status is stale")
+    review_cards = visual_review.get("cards", [])
+    if len(review_cards) != 2:
+        raise Invalid("Fool card visual review must contain S09 and S00")
+    review_by_id = {item.get("card_id"): item for item in review_cards}
+    if len(review_by_id) != len(review_cards):
+        raise Invalid("Fool card visual review contains duplicate cards")
+
+    expected_ids = [
+        "lotm.fool.s09.klein-moretti.tingen-01",
+        "lotm.fool.s00.klein-moretti.mr-fool-01",
+    ]
+    cards = manifest.get("cards", [])
+    if len(cards) != len(expected_ids) or [item.get("card_id") for item in cards] != expected_ids:
+        raise Invalid("current Fool card manifest must contain S09 then S00 exactly once")
+    for item in cards:
+        review_item = review_by_id.get(item.get("card_id"))
+        if not review_item:
+            raise Invalid("Fool card visual review is missing: " + item.get("card_id", ""))
+        source = review_item.get("source", {})
+        if (source.get("path") != item.get("path")
+                or source.get("sha256") != item.get("sha256")
+                or source.get("size_px") != item.get("size_px")):
+            raise Invalid("Fool card visual review source disagrees: " + item.get("card_id", ""))
+        if review_item.get("user_visual_approval", {}).get("status") != "pending":
+            raise Invalid("Fool card visual review must remain pending: " + item.get("card_id", ""))
+
+    name_contract = read(inside(root, "production/templates/fool-mother-frame-interface-v1.json"))
+    name_surface = name_contract.get("name_surface", {})
+    name_surface_rect = name_surface.get("rect_design")
+    if not isinstance(name_surface_rect, list) or len(name_surface_rect) != 4:
+        raise Invalid("Fool name surface geometry is missing")
+
+    native_sizes = {}
+    local_edit_status = None
+    changed_ratio = None
+    changed_outside_name = None
+    recomputed_changed_pixels = None
+    for item in cards:
+        card_id = item.get("card_id", "")
+        path_rel = item.get("path", "")
+        path = inside(root, path_rel)
+        if not path.is_file():
+            raise Invalid("card candidate missing: " + path_rel)
+        actual_hash = sha(path)
+        if actual_hash != item.get("sha256"):
+            raise Invalid("card candidate hash is stale: " + path_rel)
+        try:
+            info = cardctl.image_info(path)
+        except (OSError, cardctl.DataError) as exc:
+            raise Invalid("card candidate unreadable: " + path_rel + ": " + str(exc)) from exc
+        if info["format"] != "PNG":
+            raise Invalid("card candidate must be PNG: " + path_rel)
+        if item.get("size_px") != [info["width"], info["height"]]:
+            raise Invalid("card candidate size record is stale: " + path_rel)
+        if [info["width"], info["height"]] != [1024, 1536]:
+            raise Invalid("current Fool card candidate must remain native 1024x1536: " + path_rel)
+        if abs(info["width"] / info["height"] - 2 / 3) > .04 * (2 / 3):
+            raise Invalid("card candidate aspect is not 2:3: " + path_rel)
+
+        sequence = item.get("sequence")
+        if sequence not in (0, 9) or item.get("slot_id") != f"lotm.fool.s{sequence:02d}":
+            raise Invalid("card candidate sequence identity is stale: " + card_id)
+        if item.get("quality_tier") != visual_quality(root, sequence)["id"]:
+            raise Invalid("card candidate quality tier is stale: " + card_id)
+        source_rel = f"pathways/fool/sequences/{sequence:02d}/card.json"
+        source = read(inside(root, source_rel))
+        if source.get("card_id") != item.get("slot_id") or source.get("name_zh") != item.get("sequence_name"):
+            raise Invalid("card candidate sequence name disagrees with source: " + card_id)
+
+        task_rel = item.get("task", "")
+        task = read(inside(root, task_rel))
+        validate_task(root, task)
+        spec = task.get("spec", {})
+        if task.get("task_id") != Path(task_rel).stem:
+            raise Invalid("card candidate task path/id disagrees: " + card_id)
+        if spec.get("card_id") != card_id or spec.get("slot_id") != item.get("slot_id"):
+            raise Invalid("card candidate task identity disagrees: " + card_id)
+        protagonist = spec.get("protagonist", {})
+        if protagonist.get("name_zh") != item.get("character_name"):
+            raise Invalid("card candidate character name disagrees: " + card_id)
+        if protagonist.get("name_status") != item.get("identity_name_status"):
+            raise Invalid("card candidate identity status disagrees: " + card_id)
+        if task.get("narrative", {}).get("path") != item.get("narrative"):
+            raise Invalid("card candidate narrative path disagrees: " + card_id)
+
+        receipt_rel = item.get("receipt", "")
+        receipt = read(inside(root, receipt_rel))
+        if receipt.get("task_id") != task.get("task_id"):
+            raise Invalid("card candidate receipt task disagrees: " + card_id)
+        raw = receipt.get("raw", {})
+        if raw.get("path") != path_rel or raw.get("sha256") != item.get("sha256"):
+            raise Invalid("card candidate receipt disagrees: " + card_id)
+        if receipt.get("approval", {}).get("status") != "pending":
+            raise Invalid("card candidate is not pending approval: " + card_id)
+        if item.get("visual_status") != "candidate-pending-user-visual-review":
+            raise Invalid("card candidate visual status is not pending: " + card_id)
+        if item.get("formal_release_approved") is not False:
+            raise Invalid("card candidate cannot be formally released yet: " + card_id)
+        native_sizes[f"s{sequence:02d}"] = item["size_px"]
+
+        audit = item.get("local_edit_audit")
+        if sequence == 9:
+            if not isinstance(audit, dict):
+                raise Invalid("S09 local edit audit missing")
+            target = inside(root, audit.get("target", ""))
+            if not target.is_file() or sha(target) != audit.get("target_sha256"):
+                raise Invalid("S09 local edit target is stale")
+            pixel_diff = _compare_png_pixels(target, path, name_surface_rect)
+            recorded_diff = {
+                "changed_pixels": audit.get("changed_pixels"),
+                "changed_ratio": audit.get("changed_ratio"),
+                "changed_inside_name_surface": audit.get("changed_inside_name_surface"),
+                "changed_outside_name_surface": audit.get("changed_pixels_outside_name_surface"),
+                "changed_bbox": audit.get("changed_bbox"),
+                "name_surface_rect": audit.get("name_surface_rect"),
+            }
+            if recorded_diff != pixel_diff:
+                raise Invalid("S09 pixel audit does not match recomputed PNG diff")
+            changed_ratio = pixel_diff["changed_ratio"]
+            changed_outside_name = pixel_diff["changed_outside_name_surface"]
+            recomputed_changed_pixels = pixel_diff["changed_pixels"]
+            if changed_outside_name <= 0:
+                raise Invalid("S09 local edit audit must record outside-name changes")
+            local_edit_status = audit.get("status")
+            if local_edit_status != "rejected-global-rerender":
+                raise Invalid("S09 local edit audit falsely claims zero drift")
+
+    if manifest.get("formal_release_approved") is not False:
+        raise Invalid("Fool card candidate manifest cannot be formally released")
+    final_sampling = validate_fool_finalization_manifest(root)
+    return {
+        "passed": True,
+        "status": "passed",
+        "manifest": manifest_rel,
+        "candidate_count": len(cards),
+        "card_ids": expected_ids,
+        "native_canvas_sizes": native_sizes,
+        "s09_local_edit_status": local_edit_status,
+        "s09_changed_ratio": changed_ratio,
+        "s09_changed_pixels_outside_name_surface": changed_outside_name,
+        "s09_recomputed_changed_pixels": recomputed_changed_pixels,
+        "visual_review": {
+            "status": visual_review["status"],
+            "manifest": visual_review_ref["path"],
+            "card_count": len(review_cards),
+        },
+        "final_sampling": final_sampling,
+        "carrier_contract": carrier_contract,
+        "audrey_external_preservation": audrey_preservation,
+        "formal_release_approved": manifest["formal_release_approved"],
+        "limitation": "Validates current candidate records, receipts, hashes and native dimensions; visual, canon, rights and user approval remain separate gates.",
+    }
+
+
+FINAL_SAMPLING_PROFILES = {
+    "standard": {"size_px": [2048, 3072]},
+    "collector": {"size_px": [4096, 6144]},
+}
+FINAL_SAMPLING_MANIFEST = "production/cards/fool-final-sampling-v1.json"
+
+
+def _finalization_card(manifest, card_id):
+    cards = manifest.get("cards", [])
+    matches = [item for item in cards if item.get("card_id") == card_id]
+    if len(matches) != 1:
+        raise Invalid("final sampling card must occur exactly once: " + card_id)
+    return matches[0]
+
+
+def validate_fool_finalization_manifest(root, manifest_rel=FINAL_SAMPLING_MANIFEST):
+    """Validate the approval queue that guards one direct final resize."""
+    root = Path(root).resolve()
+    manifest_path = inside(root, manifest_rel)
+    if not manifest_path.is_file():
+        raise Invalid("Fool final sampling manifest missing: " + manifest_rel)
+    manifest = read(manifest_path)
+    if manifest.get("schema_version") != "1.0.0":
+        raise Invalid("Fool final sampling manifest schema is stale")
+    if manifest.get("status") not in {
+        "pending-user-visual-approval", "partially-approved", "approved-for-final-sampling"
+    }:
+        raise Invalid("Fool final sampling manifest status is invalid")
+    if manifest.get("formal_release_approved") is not False:
+        raise Invalid("final sampling manifest cannot claim formal release")
+
+    candidate_ref = manifest.get("candidate_manifest", {})
+    if not isinstance(candidate_ref, dict) or not candidate_ref.get("path"):
+        raise Invalid("final sampling candidate manifest reference is missing")
+    candidate_path = inside(root, candidate_ref["path"])
+    if (not candidate_path.is_file()
+            or sha(candidate_path) != candidate_ref.get("sha256")):
+        raise Invalid("final sampling candidate manifest hash is stale")
+    candidate_manifest = read(candidate_path)
+    if candidate_manifest.get("status") != "candidate-pending-user-visual-review":
+        raise Invalid("final sampling candidate manifest is not pending visual review")
+    candidate_cards = candidate_manifest.get("cards", [])
+    candidate_by_id = {item.get("card_id"): item for item in candidate_cards}
+    if len(candidate_by_id) != len(candidate_cards):
+        raise Invalid("final sampling candidate manifest contains duplicate cards")
+
+    policy = manifest.get("policy", {})
+    if policy.get("native_canvas") != [1024, 1536]:
+        raise Invalid("final sampling native canvas must be 1024x1536")
+    if policy.get("allowed_profiles") != FINAL_SAMPLING_PROFILES:
+        raise Invalid("final sampling profile policy is stale")
+    if policy.get("crop_count_before_final") != 0:
+        raise Invalid("final sampling forbids crop before final")
+    if policy.get("intermediate_2k_count") != 0:
+        raise Invalid("intermediate 2K count must be zero before final sampling")
+    if policy.get("final_resample_count_per_output") != 1:
+        raise Invalid("final sampling must be exactly one transform per output")
+    if policy.get("source_must_be_complete_native_card") is not True:
+        raise Invalid("final sampling source must be a complete native card")
+
+    cards = manifest.get("cards", [])
+    if not isinstance(cards, list) or not cards:
+        raise Invalid("final sampling manifest has no cards")
+    card_ids = [item.get("card_id") for item in cards]
+    if any(not isinstance(card_id, str) or not card_id for card_id in card_ids):
+        raise Invalid("final sampling card identity is missing")
+    if len(card_ids) != len(set(card_ids)):
+        raise Invalid("final sampling manifest contains duplicate cards")
+
+    approval_statuses = {}
+    for item in cards:
+        candidate_item = candidate_by_id.get(item.get("card_id"))
+        if not candidate_item:
+            raise Invalid("final sampling card is not a current candidate: " + item.get("card_id", ""))
+        source_record = item.get("source_native", {})
+        path_rel = source_record.get("path", "")
+        if (candidate_item.get("path") != path_rel
+                or candidate_item.get("sha256") != source_record.get("sha256")
+                or candidate_item.get("size_px") != source_record.get("size_px")):
+            raise Invalid("final sampling source disagrees with current candidate: " + item.get("card_id", ""))
+        source = inside(root, path_rel)
+        if not source.is_file():
+            raise Invalid("final sampling source missing: " + path_rel)
+        if source_record.get("sha256") != sha(source):
+            raise Invalid("final sampling source hash is stale: " + path_rel)
+        if source_record.get("size_px") != [1024, 1536]:
+            raise Invalid("final sampling source record is not native 1024x1536: " + path_rel)
+        if source_record.get("role") != "complete-native-card":
+            raise Invalid("final sampling source is not a complete native card: " + path_rel)
+        try:
+            info = cardctl.image_info(source)
+        except (OSError, cardctl.DataError) as exc:
+            raise Invalid("final sampling source is unreadable: " + path_rel + ": " + str(exc)) from exc
+        if info["format"] != "PNG" or [info["width"], info["height"]] != [1024, 1536]:
+            raise Invalid("final sampling source must be a native PNG: " + path_rel)
+
+        approval = item.get("user_visual_approval", {})
+        status = approval.get("status")
+        if status not in {"pending", "approved"}:
+            raise Invalid("final sampling approval status is invalid: " + item["card_id"])
+        if status == "approved":
+            if not (str(approval.get("by") or "").strip()
+                    and str(approval.get("reference") or "").strip()):
+                raise Invalid("approved final sampling needs approval evidence: " + item["card_id"])
+        approval_statuses[item["card_id"]] = status
+
+    return {
+        "passed": True,
+        "status": "passed",
+        "manifest": manifest_rel,
+        "card_count": len(cards),
+        "candidate_manifest": candidate_ref["path"],
+        "approval_statuses": approval_statuses,
+        "allowed_profiles": FINAL_SAMPLING_PROFILES,
+        "intermediate_2k_count": 0,
+    }
+
+
+def validate_final_sample(root, receipt_rel):
+    """Verify a final receipt proves one direct native-to-target transform."""
+    root = Path(root).resolve()
+    receipt_path = inside(root, receipt_rel)
+    receipt = read(receipt_path)
+    if receipt.get("schema_version") != "1.0.0" or receipt.get("kind") != "final-card-sample":
+        raise Invalid("final sample receipt schema is invalid")
+    profile = receipt.get("profile")
+    if profile not in FINAL_SAMPLING_PROFILES:
+        raise Invalid("final sample profile is invalid")
+    manifest_record = receipt.get("manifest", {})
+    manifest_rel = manifest_record.get("path", "")
+    manifest_path = inside(root, manifest_rel)
+    if (not manifest_path.is_file()
+            or sha(manifest_path) != manifest_record.get("sha256")):
+        raise Invalid("final sample manifest hash is stale")
+    manifest = read(manifest_path)
+    validate_fool_finalization_manifest(root, manifest_rel)
+    card_id = receipt.get("card_id", "")
+    manifest_card = _finalization_card(manifest, card_id)
+    if manifest_card.get("user_visual_approval") != receipt.get("user_visual_approval"):
+        raise Invalid("final sample receipt approval disagrees with manifest")
+    source_record = receipt.get("source_native", {})
+    source = inside(root, source_record.get("path", ""))
+    if not source.is_file() or sha(source) != source_record.get("sha256"):
+        raise Invalid("final sample source hash is stale")
+    if (manifest_card.get("source_native", {}).get("path") != source_record.get("path")
+            or manifest_card.get("source_native", {}).get("sha256") != source_record.get("sha256")):
+        raise Invalid("final sample source disagrees with manifest")
+    if source_record.get("size_px") != [1024, 1536] or source_record.get("role") != "complete-native-card":
+        raise Invalid("final sample source is not a complete native card")
+    source_info = cardctl.image_info(source)
+    if source_info["format"] != "PNG" or [source_info["width"], source_info["height"]] != [1024, 1536]:
+        raise Invalid("final sample source must remain native 1024x1536")
+
+    final_record = receipt.get("final", {})
+    final = inside(root, final_record.get("path", ""))
+    if not final.is_file() or sha(final) != final_record.get("sha256"):
+        raise Invalid("final sample output hash is stale")
+    expected_size = FINAL_SAMPLING_PROFILES[profile]["size_px"]
+    if final_record.get("size_px") != expected_size:
+        raise Invalid("final sample output record has wrong size")
+    final_info = cardctl.image_info(final)
+    if final_info["format"] != "PNG" or [final_info["width"], final_info["height"]] != expected_size:
+        raise Invalid("final sample output has wrong dimensions")
+    if "sRGB" not in final_info.get("color_tags", []):
+        raise Invalid("final sample output must carry an sRGB profile")
+    recorded_color_tags = final_record.get("color_tags", [])
+    if "sRGB" not in recorded_color_tags:
+        raise Invalid("final sample receipt is missing the sRGB profile record")
+
+    processing = receipt.get("processing", {})
+    if (processing.get("operation") != "single-full-canvas-resample"
+            or processing.get("source_size_px") != [1024, 1536]
+            or processing.get("target_size_px") != expected_size
+            or processing.get("crop_count_before_final") != 0
+            or processing.get("intermediate_2k_count") != 0
+            or processing.get("final_resample_count") != 1):
+        raise Invalid("final sample processing chain is not a single direct native transform")
+    approval = receipt.get("user_visual_approval", {})
+    if (approval.get("status") != "approved"
+            or not str(approval.get("by") or "").strip()
+            or not str(approval.get("reference") or "").strip()):
+        raise Invalid("final sample receipt lacks user visual approval")
+    if receipt.get("formal_release_approved") is not False:
+        raise Invalid("final sample cannot claim formal release")
+    return {
+        "passed": True,
+        "status": "passed",
+        "receipt": receipt_rel,
+        "card_id": receipt.get("card_id"),
+        "profile": profile,
+        "source_native_size": [1024, 1536],
+        "final_size": expected_size,
+        "intermediate_2k_count": 0,
+        "final_resample_count": 1,
+        "formal_release_approved": False,
+    }
+
+
+def finalize_fool_card(root, manifest_rel, card_id, profile, out_rel):
+    """Sample one approved complete native Fool card exactly once."""
+    root = Path(root).resolve()
+    if profile not in FINAL_SAMPLING_PROFILES:
+        raise Invalid("unsupported final sampling profile: " + str(profile))
+    manifest_report = validate_fool_finalization_manifest(root, manifest_rel)
+    manifest = read(inside(root, manifest_rel))
+    item = _finalization_card(manifest, card_id)
+    approval = item.get("user_visual_approval", {})
+    if approval.get("status") != "approved":
+        raise Invalid("final sampling requires user visual approval")
+    policy = manifest["policy"]
+    expected_size = policy["allowed_profiles"][profile]["size_px"]
+    if expected_size != FINAL_SAMPLING_PROFILES[profile]["size_px"]:
+        raise Invalid("final sampling profile differs from canonical policy")
+
+    source_record = item["source_native"]
+    source = inside(root, source_record["path"])
+    sampler = shutil.which("sips")
+    if not sampler:
+        raise Invalid("final sampling requires macOS sips")
+    out = new_output(root, out_rel, "artifacts/production")
+    out.mkdir(parents=True)
+    final_path = out / "final.png"
+    try:
+        subprocess.run([
+            sampler, "-z", str(expected_size[1]), str(expected_size[0]),
+            str(source), "--out", str(final_path)
+        ], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    except subprocess.CalledProcessError as exc:
+        detail = (exc.stderr or exc.stdout or "").strip()
+        raise Invalid("final sampler failed" + (": " + detail if detail else "")) from exc
+    if not final_path.is_file():
+        raise Invalid("final sampler did not produce final.png")
+    final_info = cardctl.image_info(final_path)
+
+    receipt_rel = (out / "receipt.json").relative_to(root).as_posix()
+    receipt = {
+        "schema_version": "1.0.0",
+        "kind": "final-card-sample",
+        "card_id": card_id,
+        "profile": profile,
+        "manifest": {"path": manifest_rel, "sha256": sha(inside(root, manifest_rel))},
+        "source_native": {
+            **record(root, source),
+            "size_px": [1024, 1536],
+            "role": "complete-native-card",
+        },
+        "final": {
+            **record(root, final_path),
+            "size_px": expected_size,
+            "color_tags": final_info.get("color_tags", []),
+        },
+        "processing": {
+            "operation": "single-full-canvas-resample",
+            "tool": "sips",
+            "source_size_px": [1024, 1536],
+            "target_size_px": expected_size,
+            "crop_count_before_final": 0,
+            "intermediate_2k_count": 0,
+            "final_resample_count": 1,
+        },
+        "user_visual_approval": approval,
+        "formal_release_approved": False,
+    }
+    write(out / "receipt.json", receipt)
+    result = validate_final_sample(root, receipt_rel)
+    result["manifest_status"] = manifest.get("status")
+    result["manifest_card_count"] = manifest_report["card_count"]
+    return result
 
 
 def narrative_digest(pack, entry):
@@ -580,7 +1811,13 @@ def main():
     c=sub.add_parser("ingest");c.add_argument("compiled");c.add_argument("raw");c.add_argument("call");c.add_argument("--run",required=True)
     c=sub.add_parser("compose");c.add_argument("manifest");c.add_argument("--out",required=True)
     c=sub.add_parser("gate");c.add_argument("directory");c.add_argument("--release",action="store_true")
+    c=sub.add_parser("finalize");c.add_argument("manifest");c.add_argument("--card-id",required=True);c.add_argument("--profile",choices=sorted(FINAL_SAMPLING_PROFILES),required=True);c.add_argument("--out",required=True)
+    c=sub.add_parser("check-final-sample");c.add_argument("receipt")
     c=sub.add_parser("check-content");c.add_argument("path");c.add_argument("--ready-for-audio",action="store_true")
+    sub.add_parser("check-fool-materials")
+    sub.add_parser("check-fool-carrier")
+    sub.add_parser("check-fool-audio")
+    sub.add_parser("check-fool-cards")
     args=parser.parse_args()
     try:
         if args.command=="compile": result=compile_task(ROOT,args.task,args.out)
@@ -593,6 +1830,18 @@ def main():
                       "pending": [e["id"] for e in pack["entries"] if e["review"]["status"] != "approved"],
                       "digests": {e["id"]: narrative_digest(pack, e) for e in pack["entries"]},
                       "limitation": "No factual certification, audio generation, voice authorization or App import performed."}
+        elif args.command=="check-fool-materials":
+            result = validate_fool_materials(ROOT)
+        elif args.command=="check-fool-carrier":
+            result = validate_fool_carrier_contract(ROOT)
+        elif args.command=="check-fool-audio":
+            result = validate_fool_audio_package(ROOT)
+        elif args.command=="check-fool-cards":
+            result = validate_fool_cards(ROOT)
+        elif args.command=="finalize":
+            result = finalize_fool_card(ROOT, args.manifest, args.card_id, args.profile, args.out)
+        elif args.command=="check-final-sample":
+            result = validate_final_sample(ROOT, args.receipt)
         else: result=gate(ROOT,args.directory,args.release)
         print(json.dumps(result if isinstance(result,dict) else {"output":str(result.relative_to(ROOT))},ensure_ascii=False,indent=2))
         return 0

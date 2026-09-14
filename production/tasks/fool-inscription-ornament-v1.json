@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-inscription-ornament-v1",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "output": {"aspect": [1, 2], "background": "transparent"},
+  "prompt": "Use case: stylized-concept. Asset type: isolated Fool pathway side-inscription band ornament study, not final text. Primary request: a narrow vertical occult spindle integrated into an untextured pillar, with smoky-violet recessed folds, mist-silver relief, restrained antique-metal edges, and curled curtain terminals that soften into the column. The ornament must be wide enough to feel intentional but remain a local inlay, never a full-height side panel. Front orthographic view, centered, transparent outside the ornament, calm symmetry, refined museum artifact quality. Text (verbatim): none. Constraints: no Chinese characters, no alphabet, no pseudo-writing, no digit, no emblem, no mask, no name, no frame, no gemstone, no rounded capsule, no hard rectangular panel, no floating sticker, no cast shadow outside the object, no watermark. This is an Agentic style study; exact inscription glyphs will be generated programmatically later.",
+  "references": [
+    {"path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-inscription-ornament-initial.png", "sha256": "385e207882d8fcf05a2392213745a75ef83e6ad0b3b638b8a8c39f3bbb5b734e", "role": "style"}
+  ],
+  "limits": {"max_attempts": 2},
+  "spec": {
+    "tier": "low",
+    "geometry": "愚者局部侧柱铭刻带研究；固定未来 1.5x 柱体宽度接口，不生成任何文字。",
+    "clear_regions": [[0, 0, 1000, 1500]]
+  },
+  "contracts": [
+    {"path": "docs/production-sop-v2.md", "sha256": "d18015a3973d44eca1100e99ef73a8dec7a10b2c818d8f13f56d0c5e8fa214c5"},
+    {"path": "production/symbols/inscriptions/fool-side-inscription-v3.json", "sha256": "768d68ea48c09ed0d78f51d36c5c5cb1e2049ea36190de77c884d25894b6abab"}
+  ]
+}

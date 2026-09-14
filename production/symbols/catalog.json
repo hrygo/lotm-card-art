@@ -1,5 +1,9 @@
 {
   "version": "1.0.0",
+  "status": "historical-pre-native-fool-baseline",
+  "active_fool_catalog": "production/symbols/fool-five-tier-kit.json",
+  "active_fool_layered_asset_baseline": "production/symbols/fool-layered-asset-baseline-v1.json",
+  "active_fool_fusion_catalog": "production/symbols/fool-fusion-family.json",
   "supplemental_collections": ["production/symbols/fool-fusion-family.json"],
   "scope": "22 pathway emblems; Fool digits and tier prototypes only",
   "emblems": [

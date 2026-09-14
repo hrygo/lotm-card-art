@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "contract_type": "fool-rank-numeral-dock",
+  "status": "template",
+  "geometry_id": "fool-agentic-mother-v2",
+  "coordinate_system": "design-space-top-left-image-normalized",
+  "canvas": {
+    "design_size": [1024, 1536],
+    "native_size": [1024, 1536],
+    "delivery_sizes": {
+      "standard": [2048, 3072],
+      "collector": [4096, 6144]
+    },
+    "color_space": "sRGB",
+    "alpha": "straight-RGBA",
+    "resolution_policy": "native-work-single-final-sample-v1"
+  },
+  "dock": {
+    "status": "reserved-empty",
+    "shape": "round",
+    "center_design": [512, 136],
+    "safe_rect_design": [466, 88, 92, 96],
+    "owner": "RankNumeralDock"
+  },
+  "numeral_asset": {
+    "role": "simple-art-digit",
+    "exact_character_required": true,
+    "fusion_with_pathway_crown": false,
+    "background": "transparent"
+  },
+  "forbidden": ["pathway_emblem_inside_inner_disk", "combined_emblem_numeral", "extra_text", "position_drift"],
+  "thresholds": {
+    "center_error_max_native_px": 1,
+    "outside_dock_pixels_max": 0,
+    "geometry_displacement_max_px": 0
+  }
+}

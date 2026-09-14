@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "fool-emblem-dock-v1",
+  "revision": 1,
+  "kind": "hierarchy",
+  "mode": "concept",
+  "output": {"aspect": [1, 1], "background": "transparent"},
+  "prompt": "Use case: stylized-concept. Asset type: isolated Fool pathway EmblemDock structure study, not a finished card frame. Primary request: design a refined fixed visual recess for a separately overlaid Fool pathway + sequence emblem. Create only the dock/cavity/seat/front-rim idea: a shallow occult socket with a dark smoky-violet inner cavity, mist-silver recessed seat, restrained antique-gold or pale-metal rim, and two elegant curtain-fold structures that connect naturally to the sides. The center must remain open for an independently placed emblem; the socket must feel like part of the mother frame, not a floating badge or a sticker. Symmetric front orthographic view, centered, generous transparent margin. Text (verbatim): none. Constraints: no emblem, no mask, no eye, no numeral, no words, no nameplate, no diamond, no character, no background, no complete frame, no extra top crossbar, no oversized circular medallion, no halo, no crown, no duplicate support, no watermark. The result is an Agentic structural style study only; final geometry, anchor, protected masks and pixels come from the deterministic EmblemDock contract.",
+  "references": [
+    {"path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png", "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783", "role": "style"},
+    {"path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-9-agentic-candidate-v2.png", "sha256": "d83ce8b8761116b88a63573bf3e6a93f379fe0886369fcaf1a2c534189758297", "role": "style"}
+  ],
+  "limits": {"max_attempts": 2},
+  "spec": {
+    "tier": "low",
+    "geometry": "新 EmblemDock 视觉嵌孔；不改变未来母版外轮廓；固定中心留给独立圣徽；不做穿透主体的真实透明孔。",
+    "clear_regions": [[0, 0, 1000, 1500]]
+  },
+  "contracts": [
+    {"path": "docs/production-sop-v3.md", "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"},
+    {"path": "docs/production-preflight.md", "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"},
+    {"path": "config/production-resolution-policy.json", "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"},
+    {"path": "production/templates/emblem-dock-interface-v1.json", "sha256": "9a95288d8b7f5df2287c43f9667ea656c0e8cf8272bf2da5cbb87d218e7f088b"},
+    {"path": "production/schemas/emblem-dock.schema.json", "sha256": "013179f0045b32a975366ba19e8b11b3f2329439e67764a6e18d89b65d1a16f9"},
+    {"path": "production/symbols/quality-geometry-lock.json", "sha256": "d3ef137a33a7af1276f71f4690559ef6f998886712ca545a8509ef0d70f48969"}
+  ]
+}

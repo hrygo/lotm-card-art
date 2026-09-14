@@ -1,0 +1,16 @@
+{
+  "prompt": "Use case: precise-object-edit. Asset type: current Fool pathway Sequence 9 complete native card candidate. Input image 1 is the edit target and the only visual source. Primary request: add the exact artistic Chinese name inscription \"克莱恩·莫雷蒂\" inside the existing bottom name surface only. Invariants: preserve entire card pixel-for-pixel in every other region: upright 2:3, silver-white low-tier frame, smoky-violet inlays, top Fool crown, circular rank dock and numeral 9, left 愚者, right 占卜家, all stars/ornaments, bottom equilateral-hexagonal silver-white diamond, continuous Tingen divination scene, face, hands, pendulum, cup, book, lighting/material. Name: exact six Chinese characters/punctuation as one elegant engraved/embossed display inscription, horizontally/vertically centered by actual strokes within existing bottom name surface, large/readable, refined silver-white relief/subtle highlight; no plaque/replacement background/opaque rectangle/duplicate text/mirror/pseudo-writing/additional labels/watermark. One complete upright native 2:3 card, not crop/layer.",
+  "tool": "image_gen.imagegen (built-in)",
+  "model": null,
+  "seed": null,
+  "created_at": "2026-09-14",
+  "attempt": 1,
+  "attachments": [
+    {
+      "path": "artifacts/production/fool-s09-card-agentic-v1/v001/agentic-full-card-candidate-v1.png",
+      "sha256": "e20c0a0164ffeaba825242e09891f4ab394d697e0488101fe97ae0870d200c72",
+      "role": "edit_target"
+    }
+  ],
+  "observation": "已实际观察生成结果：底部姓名区出现正向可读的克莱恩·莫雷蒂；没有看到新增不透明铭牌、镜像或重复姓名，底部宝石与主体画面仍在原位。保持候选，等待独立视觉验收。"
+}

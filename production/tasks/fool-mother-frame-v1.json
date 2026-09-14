@@ -5,18 +5,21 @@
   "kind": "hierarchy",
   "mode": "concept",
   "output": {"aspect": [2, 3], "background": "transparent"},
-  "prompt": "Use case: stylized-concept. Asset type: Agentic Fool pathway mother frame. Create one upright 2:3 card-frame design with a distinctive Fool pathway identity. The left pillar must carry an artistic, readable Chinese pathway mark 愚者 integrated into the curtain-column material. The top must reserve a fixed visual EmblemDock recess and support structure. The right pillar must remain an entirely empty reserved sequence-inscription zone. The bottom must contain a clean existing-material name surface with no added plate or background. Above the bottom center, create one medium-sized, high-clarity faceted gemstone socket; it must not enter the name surface. Keep a generous central illustration window. Preserve the approved Fool curled-curtain vocabulary and mysterious occult material continuity. Text (verbatim): only the pathway identity 愚者; no sequence name, sequence number, character name, subject, scene, pseudo-text, watermark, logo, or decorative writing elsewhere. Do not add a second panel, pill, global border, extra gem, crown, wings, or clutter. The returned image is a visual source study; production alpha and geometry will be cleaned and frozen deterministically.",
+  "prompt": "Use case: stylized-concept. Asset type: Agentic Fool pathway mother frame. Create one upright 2:3 card-frame design with a distinctive Fool pathway identity. The left pillar must carry an artistic, readable Chinese pathway mark 愚者 integrated into the curtain-column material. The top must reserve a fixed visual EmblemDock recess and support structure. The right pillar must remain an entirely empty reserved sequence-inscription zone. The bottom must contain a clean existing-material name surface with no added plate or background. Below the closed name surface, use the bottom outer rail for one low-profile, horizontally slightly elongated shield-cut or octagonal gemstone socket with precision facets; it must remain completely outside the name surface, separated by visible negative space, and must not enter the central illustration window. Keep the central illustration window as large as possible. Preserve the approved Fool curled-curtain vocabulary and mysterious occult material continuity. Text (verbatim): only the pathway identity 愚者; no sequence name, sequence number, character name, subject, scene, pseudo-text, watermark, logo, or decorative writing elsewhere. Do not add a second panel, pill, global border, extra gem, crown, wings, bridge, connector, or clutter. The returned image is a visual source study; production alpha and geometry will be cleaned and frozen deterministically.",
   "references": [
-    {"path": "artifacts/production/fool-five-tier-kit-v5/frame-low.png", "sha256": "8f43351e693003f0b3f310d35f16b2f5f0835218316cfba68eec4d8ff86dab19", "role": "geometry"},
+    {"path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png", "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783", "role": "geometry"},
     {"path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-inscription-ornament-initial.png", "sha256": "385e207882d8fcf05a2392213745a75ef83e6ad0b3b638b8a8c39f3bbb5b734e", "role": "style"},
-    {"path": "artifacts/production/fool-five-tier-kit-v5/frame-true-god.png", "sha256": "f0c44248e7276ccca0ba1a018dbdc09396c985578e68f80e7d714bfcbdb40c3b", "role": "style"}
+    {"path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-true-god-native.png", "sha256": "2e9a25c0ba340fd39e56adc8ce81a655760212166f6b344e2640892df7335f5e", "role": "style"}
   ],
   "limits": {"max_attempts": 2},
   "spec": {"stage": "mother", "geometry": "fool-agentic-mother-v1", "clear_regions": [[0, 0, 1000, 1500]]},
   "contracts": [
-    {"path": "docs/production-sop-v3.md", "sha256": "2b1a5aeda0d594c546979bb2ebebf20a4f17dd2946320fd620d4a97222b205fc"},
-    {"path": "production/schemas/fool-mother-frame.schema.json", "sha256": "162f5429f5a78b6237db62c14daa6b146aa18de207ce46d4c7c754d0513306fb"},
-    {"path": "production/templates/fool-mother-frame-interface-v1.json", "sha256": "b2051270b8f044dc0e5d8477f4c245b2c0a5a38d130743136a6d17f907c9ff1f"},
+    {"path": "tools/render/foolpipeline5.swift", "sha256": "09dfc9ae613fa572c7fb78559934193f9bd528844fcbb1c795cb3291c10f7e3d"},
+    {"path": "docs/production-sop-v3.md", "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"},
+    {"path": "docs/production-preflight.md", "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"},
+    {"path": "config/production-resolution-policy.json", "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"},
+    {"path": "production/schemas/fool-mother-frame.schema.json", "sha256": "67a6f899ab125e566a082879fe86e8d633cf18e9f6530d288d45b591e77ff097"},
+    {"path": "production/templates/fool-mother-frame-interface-v1.json", "sha256": "a6285639e2299c8a22b75395b338134e7c25efbb986a0501a2723bc0664a9908"},
     {"path": "production/templates/emblem-dock-interface-v1.json", "sha256": "9a95288d8b7f5df2287c43f9667ea656c0e8cf8272bf2da5cbb87d218e7f088b"},
     {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"},
     {"path": "config/sequence-hierarchy.json", "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "references": [
+    {
+      "path": "artifacts/lotm.fool.s00/directed-v003/fool-s00-render-v003.png",
+      "sha256": "972865f92a8763891a16bacd118a0ff12caadbe156000a8f8b2b8af1ab73fd36",
+      "role": "edit_target"
+    },
+    {
+      "path": "artifacts/production/fool-five-tier-kit-v5/frame-true-god.png",
+      "sha256": "f0c44248e7276ccca0ba1a018dbdc09396c985578e68f80e7d714bfcbdb40c3b",
+      "role": "geometry"
+    }
+  ],
+  "limits": {
+    "max_attempts": 2
+  },
+  "task_id": "fool-s00-subject-v1",
+  "kind": "subject",
+  "mode": "production",
+  "output": {
+    "aspect": [
+      2,
+      3
+    ],
+    "background": "opaque"
+  },
+  "prompt": "Recompose the first attached image into ONE cohesive, full-bleed, opaque 2:3 portrait scene for a Sequence 0 Fool card. The second attached image is the exact identity-frame geometry and palette reference only; do not paint, redraw, or include that frame in the output. The output must be only the integrated non-human scene and atmosphere, with no border, no card edge, no badge, no emblem, no number, no Chinese text, no alphabet, no labels, no pseudo-writing, no readable marks, no watermark. Preserve the core idea: a vast occult law-space where a single old-gold seam fools and recomposes adjacent histories into one present. Make the seam the clear dominant event: it passes through a deep smoky-violet curtain-like divide, bends a coherent celestial mechanism and connects contradictory architectural corridors on the two sides. Left side can carry warm historical city and arcane observatory echoes; right side can carry cold suspended corridors and starless depth; both must feel like parts of one impossible ordered realm, not a split-screen collage. Include subtle stellar concept grafting and a complete but non-literal divine realm. A tiny faceless human-scale identity residue may sit near the seam as a scale cue, less than 15 percent visual weight; it must not become a portrait, statue, throne, or recognizable face. No loose papers, no pages, no handwriting-like textures. Keep top and bottom areas as real quiet dark violet atmosphere with natural gradients and low object density so exact title and name overlays remain legible later. Preserve rich old-gold, smoky violet, cool silver, and restrained midnight blue material language; cinematic classical occult painting, precise engraved-detail influence, calm sovereign light, high depth and coherent perspective. Avoid magic beams, random clutter, excessive bloom, extra characters, crown, wings, throne, temple idol, giant face, modern objects, or any pasted inset panel. Return a clean full-bleed environment painting only.",
+  "spec": {
+    "slot_id": "lotm.fool.s00",
+    "card_id": "lotm.fool.s00.klein-moretti.mr-fool-01",
+    "character_id": "klein-moretti",
+    "event": "愚者先生以序列0权柄愚弄相邻历史，使矛盾状态折叠为同一现在。",
+    "semantic_source": "pathways/fool/sequences/00/card.json",
+    "protagonist": {
+      "kind": "character",
+      "name_zh": "愚者",
+      "name_status": "verified",
+      "evidence_refs": [
+        {
+          "path": "pathways/fool/sequences/00/card.json",
+          "sha256": "99977b6b7b4ba8c6025395f827f53c43ecb7996060fee53d739ae67f72c21a53"
+        }
+      ]
+    }
+  },
+  "contracts": [
+    {
+      "path": "docs/production-sop-v2.md",
+      "sha256": "e9e5213ccee6663d92c3ee8d6f5d8a04f0d1a728e5cd89b3e28765c8c5dccf63"
+    },
+    {
+      "path": "docs/research/2026-09-13-fool-s00-research.md",
+      "sha256": "5f98d9543a1872682b31402638762076bff127305bf2c2b8221d43758b83a2eb"
+    },
+    {
+      "path": "production/symbols/fool-five-tier-kit.json",
+      "sha256": "dd13fec110d46e36b03f7d90971b85a2866be49b942745eff7cd4be936e121dc"
+    },
+    {
+      "path": "production/symbols/inscriptions/fool-side-inscription-v4.json",
+      "sha256": "c5b607beedfffbe9784ae9216b64666f386a46b770ad92d9f5efd50af98c23c4"
+    }
+  ]
+}

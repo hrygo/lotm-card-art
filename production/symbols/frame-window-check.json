@@ -1,5 +1,6 @@
 {
   "version": "1.0.0",
+  "status": "historical-four-tier-diagnostic",
   "checked_at": "2026-09-13",
   "method": "AppKit NSBitmapImageRep full-region pixel scan of actual raw PNG; alpha <= threshold counts clear",
   "threshold_alpha": 0.01,

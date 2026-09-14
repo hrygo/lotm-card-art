@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "task_id": "fool-s09-card-agentic-v1",
+  "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+  "status": "candidate-pending-name-assembly-and-user-visual-review",
+  "tool": "built-in-image_gen",
+  "input": {
+    "frame_geometry": "artifacts/production/fool-ten-sequence-agent-ready-kit-v2/fool-9-frame.png",
+    "frame_geometry_sha256": "8470245b3498a75ec98616779dfedf61682e78e9fe21090519da4a233d8b599d",
+    "accepted_inscription_reference": "artifacts/production/fool-agentic-sequence-inscriptions-v1/studies/fool-9-agentic-candidate-v2.png",
+    "accepted_inscription_reference_sha256": "d83ce8b8761116b88a63573bf3e6a93f379fe0886369fcaf1a2c534189758297",
+    "scene_reference": "artifacts/production/klein-seer-subject/v002/raw.png",
+    "scene_reference_sha256": "16fa28928a7bbdc93403d53c3d59122973b195e964bc775c1542dbddac2d9f4e"
+  },
+  "output": {
+    "path": "artifacts/production/fool-s09-card-agentic-v1/v001/agentic-full-card-candidate-v1.png",
+    "sha256": "e20c0a0164ffeaba825242e09891f4ab394d697e0488101fe97ae0870d200c72",
+    "size_px": [1024, 1536],
+    "channels": "RGB",
+    "alpha": false
+  },
+  "visual_contract": {
+    "central_event": "克莱恩以左手持银链黄水晶，在红茶上方进行灵摆占卜",
+    "inner_scene_text": false,
+    "frame_text_preserved": ["愚者", "9", "占卜家"],
+    "name_target": "克莱恩·莫雷蒂",
+    "name_stage": "reserved-for-exact-artistic-inscription",
+    "outside_frame_zero_drift": "pending-localized-verification"
+  },
+  "note": "该文件是 Agentic 完整卡面视觉候选；它尚未经过姓名区精确铭刻、2K 局部装配、像素零漂移验证、叙事批准或 release gate。"
+}

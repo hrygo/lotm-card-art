@@ -1,10 +1,10 @@
 # 卡牌载体、框徽接口与已接受实例
 
-版本：1.2.0。当前完整工艺见 [制作SOP v3](production-sop-v3.md)；本文件维护载体细则、EmblemDock 接口与实测边界，不重复生产主流程。架构决策见 [ADR-001](decisions/ADR-001-emblem-dock-ownership.md) 与 [ADR-002](decisions/ADR-002-agentic-mother-deterministic-inheritance.md)。
+版本：1.3.0。当前完整工艺见 [制作SOP v3](production-sop-v3.md)；本文件维护载体细则、EmblemDock 接口与实测边界，不重复生产主流程。架构决策见 [ADR-001](decisions/ADR-001-emblem-dock-ownership.md)、[ADR-002](decisions/ADR-002-agentic-mother-deterministic-inheritance.md) 与 [ADR-003](decisions/ADR-003-native-work-single-final-sample.md)。
 
 ## 载体关系
 
-卡牌背板是正面承载面，不等于卡背，也不意味着必须另外生成一张可见底图。当前采用人物与完整环境一体生成，框、融合徽、姓名独立叠回。共享的是几何与接口，不是22途径统一石板或同一底色。
+卡牌背板是正面承载面，不等于卡背，也不意味着必须另外生成一张可见底图。当前采用 Agentic 完整画面为主路径；框、融合徽、姓名作为原生同画布参考或分层登记，不把中间 2K 层独立叠回。共享的是几何与接口，不是22途径统一石板或同一底色。
 
 ## 当前定稿：EmblemDock
 
@@ -14,13 +14,13 @@
 
 这是一条新的通用载体架构；下文的历史批准实例保留其当时的无中央托座方案，不因本节自动改图或获得新结构批准。
 
-生成完整场景时实际附上身份框。输出不含框、徽、姓名和说明文字。框下场景连续，外轮廓由独立遮罩限制；在顶部U形开口处检查矩形溢出。复制框、第二道窗口边和错向投影是返修对象，不靠宽羽化或全图调色掩盖。
+生成完整场景时实际附上身份框作为原生视觉参考。输出可由 Agentic 直接形成完整卡候选；主体内不含说明文字，边框文字必须遵循当前结构化身份输入。框下场景连续，外轮廓由独立遮罩限制；在顶部U形开口处检查矩形溢出。复制框、第二道窗口边和错向投影是返修对象，不靠宽羽化或全图调色掩盖，也不在 2K 阶段切割加工。
 
 ## 衔接件合同
 
 输入包含母框与圣徽真实来源/摘要、两端接触点、可见区、允许遮挡区、孔洞保护区、材质厚度、光向、采样与层序。生成稿带出的旧框或额外框肩不作为新几何依据。
 
-填写 [EmblemDock 接口模板](../production/templates/emblem-dock-interface-v1.json)，并以 `task.contracts` 绑定实际引用的 mask/资产；机器字段约束见 [`emblem-dock.schema.json`](../production/schemas/emblem-dock.schema.json)。模板声明坐标系、固定变换、嵌座结构、接收域和保护域；它仍不是现有 Swift 自动解析的完整配方。零漂移验收含内部构件，而非仅外框轮廓。
+填写 [EmblemDock 接口模板](../production/templates/emblem-dock-interface-v1.json)，并以 `task.contracts` 绑定实际引用的 mask/资产；机器字段约束见 [`emblem-dock.schema.json`](../production/schemas/emblem-dock.schema.json)。当前愚者路线的可执行几何由 `production/symbols/fool-carrier-execution-v1.json` 固定，`tools/render/foolpipeline5.swift` 会读取并校验 RankNumeralDock、等边六边形宝石、保护域和零漂移阈值；通用 EmblemDock 模板仍是跨途径的非穿透结构语法，不等于任意途径已经完成嵌座。零漂移验收含内部构件，而非仅外框轮廓。
 
 工艺选择遵循途径：每条途径设计自己的 EmblemDock 形状语言。愚者的双侧帷幕可以作为嵌座承托的一部分，在外缘实心结构后收束；其他途径不得照搬其具体形态。末端不穿过数字镂空。上下文充分的局部生成与完整试装一起验收，不保证任意参考编辑零漂移。
 
@@ -47,7 +47,7 @@
 
 `tools/render/klein_carrier.swift` 的 `render-drape ROOT OUT SCENE NAME BARE_FRAME EMBLEM JUNCTION` 生成该单卡分层；`gate ROOT OUT` 验证输入/输出摘要与确定性RGBA重建。OUT为仓库内未存在的`artifacts/production/klein-*`目录。
 
-这个分支没有自动读取五档色表、没有自动记录全部新侧车依赖，也没有提供正式release。原card.json仍有旧文字身份cue；取消标题后的正式语义契约尚未同步，视觉批准不能掩盖这一差异。通用生产工具与专用装配器的接入缺口仍需实施验证。
+这个分支没有自动读取五档色表、没有自动记录全部新侧车依赖，也没有提供正式 release；并且保留旧的 2048 载体实现。因此它只能作为历史/诊断证据，不能作为当前“原生工作画布、最终一次采样”生产入口。原 card.json 仍有旧文字身份 cue；取消标题后的正式语义契约尚未同步，视觉批准不能掩盖这一差异。通用生产工具与专用装配器的接入缺口仍需实施验证。
 
 `tools/render/foolkit.swift`保留旧四档与15%试装行为；详见对应Skill的历史运行说明。不要把它用于交付新五档而不先修改实现。
 

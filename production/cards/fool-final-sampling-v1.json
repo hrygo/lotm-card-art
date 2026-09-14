@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "status": "pending-user-visual-approval",
+  "purpose": "在两张完整愚者原生卡通过用户视觉验收后，执行一次整幅最终采样；本清单不自动批准或发布。",
+  "candidate_manifest": {
+    "path": "production/cards/fool-card-candidates-v1.json",
+    "sha256": "94d33dab0104b829fe257145c7cb47e1a4399e5c7dbe1086b0363f34a8056368"
+  },
+  "policy": {
+    "native_canvas": [1024, 1536],
+    "allowed_profiles": {
+      "standard": {"size_px": [2048, 3072]},
+      "collector": {"size_px": [4096, 6144]}
+    },
+    "crop_count_before_final": 0,
+    "intermediate_2k_count": 0,
+    "final_resample_count_per_output": 1,
+    "source_must_be_complete_native_card": true
+  },
+  "cards": [
+    {
+      "card_id": "lotm.fool.s09.klein-moretti.tingen-01",
+      "source_native": {
+        "path": "artifacts/production/fool-s09-card-name-edit-v1/v001/raw.png",
+        "sha256": "2d73c4662e9de0b263f833b75ca419605299b40f52c0909421c3b0d9d4dc0efe",
+        "size_px": [1024, 1536],
+        "role": "complete-native-card"
+      },
+      "user_visual_approval": {
+        "status": "pending",
+        "by": null,
+        "reference": null
+      }
+    },
+    {
+      "card_id": "lotm.fool.s00.klein-moretti.mr-fool-01",
+      "source_native": {
+        "path": "artifacts/production/fool-s00-card-agentic-v1/v001/raw.png",
+        "sha256": "11eab4ed8688a4949411721f0fad07586cd006debb444919153907fb77b584ce",
+        "size_px": [1024, 1536],
+        "role": "complete-native-card"
+      },
+      "user_visual_approval": {
+        "status": "pending",
+        "by": null,
+        "reference": null
+      }
+    }
+  ],
+  "formal_release_approved": false
+}

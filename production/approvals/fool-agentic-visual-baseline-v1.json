@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "kind": "visual_approval_sidecar",
+  "recorded_at": "2026-09-14T04:59:14Z",
+  "scope": "fool_pathway_agentic_visual_baseline",
+  "pathway_id": "fool",
+  "policy": "agentic-original-is-authoritative; reproduction-route-abandoned",
+  "basis": {
+    "source": "current_conversation",
+    "user_quote": "愚者途径以 agent 生成的为准，验收"
+  },
+  "visual_approved": true,
+  "material_status": {
+    "status": "official-material-baseline",
+    "authority": "current-user-confirmation",
+    "scope": "Fool pathway native Agentic mother, five quality tiers and ten sequence-frame visual materials",
+    "native_source_is_canonical": true,
+    "intermediate_2k_count": 0,
+    "final_card_release_separate": true
+  },
+  "approved_assets": {
+    "mother_frame": {
+      "path": "artifacts/production/fool-mother-frame-v1/studies/fool-mother-agentic-high-detail-candidate-n.png",
+      "sha256": "10cd45aca62e0f5b0674cf96c8b8180892288ea3d6d24c663d80b7f6f0e8dda5",
+      "size_px": [1024, 1536],
+      "channels": "RGB",
+      "role": "official-native-agentic-visual-source"
+    },
+    "five_tier_frames": {
+      "manifest_path": "artifacts/production/fool-five-tier-direct-kit-v1/manifest.json",
+      "manifest_sha256": "38076371c6d6da9ddb0fc52dda270aea8bf9ee666c1978acee67d9124f1a1d7e",
+      "contact_sheet_path": "artifacts/production/fool-five-tier-direct-kit-v1/five-tiers.png",
+      "contact_sheet_sha256": "4af98874e9718705a1383513eb96630c05eea535096a52fdffbb4d6bec0e2c15",
+      "native_source_canvas": [1024, 1536],
+      "native_source_paths": {
+        "low": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png",
+        "mid": "artifacts/production/fool-five-tier-direct-kit-v1/frame-mid-native.png",
+        "saint": "artifacts/production/fool-five-tier-direct-kit-v1/frame-saint-native.png",
+        "angel": "artifacts/production/fool-five-tier-direct-kit-v1/frame-angel-native.png",
+        "true-god": "artifacts/production/fool-five-tier-direct-kit-v1/frame-true-god-native.png"
+      },
+      "native_source_sha256": {
+        "low": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783",
+        "mid": "ec7a1b5801d689d79b0d88b53aa6bd0e50f955daf70ba5ca65095f53e3dbd047",
+        "saint": "f63a7cec39eaace60c5441dba9df69b9de592b575b9cdb7c14486e8bf92709db",
+        "angel": "915bf178836731d108da014a8d7c3365f7e95515c54494385e5b28fe79765dd9",
+        "true-god": "2e9a25c0ba340fd39e56adc8ce81a655760212166f6b344e2640892df7335f5e"
+      },
+      "visual_scope": [
+        "Agentic five-tier frame appearance",
+        "silver-white, emerald, secret-blue, archival-purple and amber quality differences",
+        "embedded single equilateral-hexagonal gemstone per tier",
+        "Fool crown, left pathway mark and fixed outer frame identity"
+      ]
+    },
+    "ten_sequence_frames": {
+      "catalog_path": "production/symbols/fool-agentic-sequence-inscriptions-v2.json",
+      "catalog_sha256": "2d3143a737ba386706d60848affaca9caff11ca9373b96f7c4cee401f073e6df",
+      "candidate_count": 10,
+      "candidate_canvas": [1024, 1536],
+      "candidate_channels": "RGB",
+      "visual_scope": [
+        "Agentic full-frame sequence inscription design",
+        "exact sequence name per catalog entry",
+        "independent artistic numeral per sequence",
+        "quality color and gemstone differentiation"
+      ],
+      "entries_checked": [
+        {"digit": 9, "sequence_name": "占卜家", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-9-agentic-candidate-v2.png", "sha256": "d83ce8b8761116b88a63573bf3e6a93f379fe0886369fcaf1a2c534189758297"},
+        {"digit": 8, "sequence_name": "小丑", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-8-agentic-candidate-v2.png", "sha256": "3676c9cba53bba4ce25214e255964fb03ddf48f9832be930e645fddc85a333f3"},
+        {"digit": 7, "sequence_name": "魔术师", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-7-agentic-candidate-v2.png", "sha256": "4a8f4bf5a8b08a77af0f53dbc361f38cb507dcc4553fd2152ffc209e878acd0d"},
+        {"digit": 6, "sequence_name": "无面人", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-6-agentic-candidate-v2.png", "sha256": "45e9637711670b2521cd93461b955f4d6beccd894eac8cc21f1b16431828d010"},
+        {"digit": 5, "sequence_name": "秘偶大师", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-5-agentic-candidate-v2.png", "sha256": "7265e1b67d1fa7e60bb958dee286e86ce452e726418bde19a7ddd0e6df7e0300"},
+        {"digit": 4, "sequence_name": "诡法师", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-4-agentic-candidate-v1.png", "sha256": "5ccf94c690f7c6c785591dcf97ca07f7759aa3f12b7ffea50decbed9056efab6"},
+        {"digit": 3, "sequence_name": "古代学者", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-3-agentic-candidate-v1.png", "sha256": "583e80ff746bc5792d091e9467fc1c11f57206e88c1483d34b2e576ffe19e97a"},
+        {"digit": 2, "sequence_name": "奇迹师", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-2-agentic-candidate-v1.png", "sha256": "991dbd1f6ed4e1d214d9cbe46fff2eb038b48afc1ddd683dc9407438f3b6c7ea"},
+        {"digit": 1, "sequence_name": "诡秘侍者", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-1-agentic-candidate-v1.png", "sha256": "e4bf377f6a4f4b263d62e24c181b4a9eee793f124077aa5f1df95b384543f079"},
+        {"digit": 0, "sequence_name": "愚者", "path": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies/fool-0-agentic-candidate-v1.png", "sha256": "b7ca5d84936ec826f11ddb46a8c72b1447c88775a9f6641fcb55c01faf0c6c89"}
+      ]
+    }
+  },
+  "not_approved_by_this_record": [
+    "programmatic reproduction or localized crop-back into the old name-free frame",
+    "character subject scenes and individual card narratives",
+    "native 4K claim",
+    "formal release or app publication",
+    "canon and six-dimension content approval"
+  ],
+  "release_approved": false,
+  "release_gap": "The Agentic visual baseline is accepted as official material. Individual card content, final 2K/4K deliverables and formal release remain separate gates. Existing 2K derivatives are historical/diagnostic and are not canonical sources."
+}

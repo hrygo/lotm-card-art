@@ -1,0 +1,84 @@
+{
+  "asset_id": "antigonus-half-fool-mythical-form-v1",
+  "status": "material-backup",
+  "approval": "not-approved",
+  "production_scope": "asset-only / no-production",
+  "superseded_by": "antigonus-half-fool-demonic-wolf-v2",
+  "canon_boundary": "本版曾将安提哥努斯的高位形态抽象为人形核心、石质结构与灵性丝线；由于没有充分体现魔狼物种锚点，现仅保留为历史候选，不作为当前推荐视觉方向或正典解剖依据。",
+  "character": {
+    "name_zh": "安提哥努斯",
+    "name_en": "Antigonus",
+    "pathway": "愚者",
+    "species_anchor": "魔狼；本版表现不足",
+    "state_cut": "Fourth Epoch half-Fool",
+    "sequence_anchor": "S01 material anchor only; not a complete Sequence 1 or Sequence 0 identity",
+    "character_id": "antigonus",
+    "identity_slice_id": "antigonus.half-fool.fourth-epoch",
+    "candidate_card_id": "lotm.fool.s01.antigonus-half-fool-01",
+    "disambiguation": "不包含弗雷格拉、扎拉图、扎拉图先祖、格尔曼·斯帕罗或克莱恩。"
+  },
+  "asset": {
+    "path": "docs/assets/illustration-backups/antigonus-half-fool-mythical-form-v1.png",
+    "role": "superseded standalone Half-Fool concept illustration",
+    "visual_concept_status": "superseded-candidate-art-proposal",
+    "not_a_finished_card": true,
+    "excluded_from": [
+      "card.json",
+      "production/tasks",
+      "production/calls",
+      "design approval",
+      "release"
+    ]
+  },
+  "provenance": {
+    "tool": "image_gen",
+    "generation_mode": "stylized-concept",
+    "revision_mode": "none",
+    "model": null,
+    "seed": null,
+    "generated_at": "2026-09-14",
+    "recorded_at_utc": "2026-09-14T09:15:50Z",
+    "input_images": [
+      {
+        "path": "docs/assets/illustration-backups/antigonus-half-fool-backup-v1.png",
+        "role": "identity, palette and mountain-palace continuity reference"
+      }
+    ],
+    "references": [
+      "docs/research/2026-09-14-antigonus-card-materials.md",
+      "pathways/fool/direction.json",
+      "config/project.json"
+    ],
+    "prompt_summary": "Initial vertical 2:3 painterly concept of Antigonus as a human-centered Half-Fool transformation in a stone-chair mountain-palace scene; superseded because the demonic-wolf species was not visually explicit.",
+    "processing_chain": [
+      "viewed the existing Antigonus half-Fool identity reference",
+      "image_gen initial candidate generation",
+      "copied the generated image into the workspace",
+      "no crop",
+      "no upscale",
+      "no frame, text or emblem compositing"
+    ]
+  },
+  "engineering": {
+    "width": 1024,
+    "height": 1536,
+    "aspect_ratio": "2:3",
+    "format": "PNG",
+    "color_space": "RGB (reported by sips; project target is sRGB)",
+    "native_canvas": true,
+    "final_card_resolution": false,
+    "sha256": "8a96ff00224b0c6849eddfb653c87e71b0ad66fcc4b109f7f3521014bf0b614c"
+  },
+  "visual_check": {
+    "checked": true,
+    "method": "view_image manual inspection",
+    "observations": [
+      "本版主体仍偏人形，虽有石质结构和灵性丝线，但未将魔狼作为物种主识别。",
+      "保留宫殿、石椅、国家灯火与历史裂缝的连续场景，作为 v2 的构图参考。"
+    ],
+    "remaining_risks": [
+      "魔狼身份回读不足，已由 antigonus-half-fool-demonic-wolf-v2 修正。",
+      "本版不代表正式卡面设计、事实批准、声音批准或 release。"
+    ]
+  }
+}

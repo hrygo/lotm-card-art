@@ -1,0 +1,83 @@
+{
+  "version": "1.0.0",
+  "id": "fool-five-tier-agentic-assets-v1",
+  "status": "superseded-historical",
+  "superseded_by": "production/symbols/fool-five-tier-kit.json",
+  "pathway_id": "fool",
+  "role": "direct-agentic-five-tier-frame-sources",
+  "geometry_id": "fool-agentic-mother-v2",
+  "direct_agentic_sources": true,
+  "color_transform": "none",
+  "coordinate_system": "design-space-top-left-image-normalized",
+  "source_canvas": {
+    "size": [1024, 1536],
+    "color_space": "sRGB",
+    "channels": "RGB",
+    "background_state": "black-matte-study",
+    "note": "The renderer may remove the black matte and apply the frozen mother alpha mask; it must not recolor or synthesize tier pixels."
+  },
+  "canonical_geometry": {
+    "native_path": "artifacts/production/fool-mother-frame-v1/v002/frame-core-native.png",
+    "native_sha256": "16e95e7b1c8989bbe6d2f199bf4bfdfe5edba53c856ecf584e4c5b4b215ad20f",
+    "standard_path": "artifacts/production/fool-mother-frame-v1/v002/frame-core.png",
+    "standard_sha256": "86b131d859446de24c3d433912a285f71c2836ffc971a2787c251cdcbe486878",
+    "alpha_owner": "FrameCore",
+    "geometry_displacement_max_px": 0
+  },
+  "tiers": [
+    {
+      "id": "low",
+      "sequences": [9, 8],
+      "quality_primary": "#E8EDF2",
+      "gem": "silver-white diamond",
+      "source": "artifacts/production/fool-mother-frame-v1/studies/fool-low-tier-agentic-candidate-p.png",
+      "sha256": "f1620ac81866af33263ff645d4aa35e0cdfb1b3bedfe4c52f07b2fea00c68206"
+    },
+    {
+      "id": "mid",
+      "sequences": [7, 6, 5],
+      "quality_primary": "#55B978",
+      "gem": "emerald",
+      "source": "artifacts/production/fool-mother-frame-v1/studies/fool-mid-tier-agentic-candidate-q.png",
+      "sha256": "dff889a93c95bdf94007b6c8155a69a9c698eb2c40f813ae0d1f2cbf8b4f025a"
+    },
+    {
+      "id": "saint",
+      "sequences": [4, 3],
+      "quality_primary": "#4D97D4",
+      "gem": "secret-blue sapphire",
+      "source": "artifacts/production/fool-mother-frame-v1/studies/fool-saint-tier-agentic-candidate-r.png",
+      "sha256": "11387693e5f9bd78990caf7a6d0fccd4b29a8f6ea4da9bec63e3c454c9389c3a"
+    },
+    {
+      "id": "angel",
+      "sequences": [2, 1],
+      "quality_primary": "#A66BD6",
+      "gem": "archival purple amethyst",
+      "source": "artifacts/production/fool-mother-frame-v1/studies/fool-angel-tier-agentic-candidate-s.png",
+      "sha256": "bf6b6936bac1e572cc66aeb3722150b63c6e31c594ae0319f2664f0396d0706b"
+    },
+    {
+      "id": "true-god",
+      "sequences": [0],
+      "quality_primary": "#F0B23F",
+      "gem": "golden amber",
+      "source": "artifacts/production/fool-mother-frame-v1/studies/fool-true-god-frame-agentic-candidate-o.png",
+      "sha256": "f6c225ac66cbd0a816d64d6edf72b5cc8dc234c85a79e197414a18f9ff651253"
+    }
+  ],
+  "forbidden": [
+    "quality_token_recoloring_during_tier_freeze",
+    "synthetic_gem_overlay",
+    "cross_product_quality_digit_variants",
+    "position_drift",
+    "new_text",
+    "new_pathway_emblem"
+  ],
+  "processing_contract": {
+    "allowed": ["black-matte-removal", "interior-hole-alpha-clear", "canonical-mother-alpha-mask", "standard-size-resample-with-alpha-lock"],
+    "forbidden": ["qualityFrame", "gemLayer", "hue-shift", "global-recolor", "geometry-warp", "free-translation"],
+    "output_status": "pending-user-visual-approval",
+    "formal_release_approved": false
+  }
+}

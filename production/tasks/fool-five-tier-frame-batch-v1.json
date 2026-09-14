@@ -5,18 +5,24 @@
   "kind": "hierarchy",
   "mode": "concept",
   "output": {"aspect": [2, 3], "background": "transparent"},
-  "prompt": "Use case: stylized-concept. Asset type: five quality derivatives of one frozen Fool mother frame. Produce five independent material studies for low, mid, saint, angel, and true-god, each preserving exactly the same outer silhouette, curtain columns, illustration window, left Fool identity zone, top EmblemDock, right empty sequence zone, name surface, and single bottom gemstone socket. Change only material texture, enamel reflection, controlled hue drift, metal depth, gemstone body, facets, refraction, and restrained highlight behavior. Read the five tier colors and hue-drift/gem-luminance rules from config/quality-color-tokens.json. Do not add components, increase ornament count, enlarge the emblem, move any anchor, add text, sequence names, numerals, character names, subjects, scenes, pseudo-text, or watermarks. Each image is a material study only; the deterministic compositor owns final geometry and alpha.",
+  "prompt": "Use case: stylized-concept. Asset type: five direct Agentic quality frame sources for one frozen Fool mother geometry. Produce and preserve exactly one approved-looking frame for low, mid, saint, angel, and true-god, each retaining the same outer silhouette, curtain columns, illustration window, left Fool identity zone, baked Fool crown, fixed round RankNumeralDock, right empty sequence zone, closed name surface, and one embedded regular-equilateral-hexagon gemstone socket fully outside the name surface. The five images are the tier frames themselves: preserve their authored material texture, enamel reflection, controlled hue drift, metal depth, gemstone body, facets, refraction, and restrained highlight behavior. The downstream tier-freeze step may remove the black matte and lock the canonical mother alpha only; it must not recolor, synthesize a gem overlay, warp, translate, or otherwise derive a new appearance. Do not add components, increase ornament count, enlarge the crown, move any anchor, reduce the name-gem clearance, add text, sequence names, numerals, character names, subjects, scenes, pseudo-text, or watermarks. The five tier frames are consumed directly by the ten-sequence mapper; no color-token pass occurs after this freeze.",
   "references": [
-    {"path": "artifacts/production/fool-five-tier-kit-v5/frame-low.png", "sha256": "8f43351e693003f0b3f310d35f16b2f5f0835218316cfba68eec4d8ff86dab19", "role": "geometry"},
-    {"path": "artifacts/production/fool-five-tier-kit-v5/frame-mid.png", "sha256": "36a04740bbf876a903ce761f59492a8143abcf3246957857837fc76f6d1adc3e", "role": "style"},
-    {"path": "artifacts/production/fool-secondary-asset-kit-v1/studies/fool-frame-agentic-mid-transfer-v1.png", "sha256": "841de6ffa164cf66c5bf55b306d90930e52c6d6b6866b5a7ebcacf949e14a105", "role": "style"}
+    {"path": "artifacts/production/fool-mother-frame-v1/studies/fool-low-tier-agentic-candidate-p.png", "sha256": "f1620ac81866af33263ff645d4aa35e0cdfb1b3bedfe4c52f07b2fea00c68206", "role": "style"},
+    {"path": "artifacts/production/fool-mother-frame-v1/studies/fool-mid-tier-agentic-candidate-q.png", "sha256": "dff889a93c95bdf94007b6c8155a69a9c698eb2c40f813ae0d1f2cbf8b4f025a", "role": "style"},
+    {"path": "artifacts/production/fool-mother-frame-v1/studies/fool-saint-tier-agentic-candidate-r.png", "sha256": "11387693e5f9bd78990caf7a6d0fccd4b29a8f6ea4da9bec63e3c454c9389c3a", "role": "style"},
+    {"path": "artifacts/production/fool-mother-frame-v1/studies/fool-angel-tier-agentic-candidate-s.png", "sha256": "bf6b6936bac1e572cc66aeb3722150b63c6e31c594ae0319f2664f0396d0706b", "role": "style"},
+    {"path": "artifacts/production/fool-mother-frame-v1/studies/fool-true-god-frame-agentic-candidate-o.png", "sha256": "f6c225ac66cbd0a816d64d6edf72b5cc8dc234c85a79e197414a18f9ff651253", "role": "style"}
   ],
   "limits": {"max_attempts": 1},
-  "spec": {"stage": "tiers", "geometry": "fool-agentic-mother-v1", "clear_regions": [[0, 0, 1000, 1500]]},
+  "spec": {"stage": "tiers", "geometry": "fool-agentic-mother-v2", "clear_regions": [[0, 0, 1000, 1500]]},
   "contracts": [
-    {"path": "docs/production-sop-v3.md", "sha256": "2b1a5aeda0d594c546979bb2ebebf20a4f17dd2946320fd620d4a97222b205fc"},
-    {"path": "production/schemas/fool-mother-frame.schema.json", "sha256": "162f5429f5a78b6237db62c14daa6b146aa18de207ce46d4c7c754d0513306fb"},
-    {"path": "production/templates/fool-mother-frame-interface-v1.json", "sha256": "b2051270b8f044dc0e5d8477f4c245b2c0a5a38d130743136a6d17f907c9ff1f"},
+    {"path": "tools/render/foolpipeline5.swift", "sha256": "09dfc9ae613fa572c7fb78559934193f9bd528844fcbb1c795cb3291c10f7e3d"},
+    {"path": "docs/production-sop-v3.md", "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"},
+    {"path": "docs/production-preflight.md", "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"},
+    {"path": "config/production-resolution-policy.json", "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"},
+    {"path": "production/schemas/fool-mother-frame.schema.json", "sha256": "67a6f899ab125e566a082879fe86e8d633cf18e9f6530d288d45b591e77ff097"},
+    {"path": "production/templates/fool-mother-frame-interface-v1.json", "sha256": "a6285639e2299c8a22b75395b338134e7c25efbb986a0501a2723bc0664a9908"},
+    {"path": "production/symbols/fool-five-tier-kit.json", "sha256": "8146a6eac9003981ffb09143901d8b40631a60b1cc0885bd3ffda65e15c8ea7d"},
     {"path": "config/quality-color-tokens.json", "sha256": "33c9be1107fbceb92ba37de4b98eef67ba4b7eb5adb8e18855f1be434fe169a6"},
     {"path": "config/sequence-hierarchy.json", "sha256": "a1498455569c2c1d2bd38379fa0e12cc00eed10de337a43b031bff60cc4489ae"}
   ]

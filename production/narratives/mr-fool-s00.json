@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "cardID": "lotm.fool.s00.klein-moretti.mr-fool-01",
+    "slotID": "lotm.fool.s00",
+    "characterID": "klein-moretti",
+    "identitySliceID": "klein.s00.mr-fool",
+    "name": "愚者先生",
+    "timeScope": "塔罗会成立后至第一部末尾；以愚者先生身份主持灰雾之上的聚会，并在成为序列0后进入沉睡前的神格身份切片",
+    "spoilerBoundary": "允许涉及塔罗会、灰雾、愚者先生身份、序列0晋升与沉睡前的第一部范围；不把第二部内容、未取得中文底本的细节或序列0完整限制写成已核验事实"
+  },
+  "entries": [
+    {
+      "id": "mr-fool-s00-greeting-01",
+      "kind": "greeting",
+      "title": null,
+      "text": "晚上好。这里是灰雾之上；你可以称我为愚者，但答案最好先留在心里。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "a2ee328cde0d646aea632d592df3e26e66c1824136ffed0c44b1e7ff395ea820",
+      "review": {"status": "approved", "approvedDigest": "a2ee328cde0d646aea632d592df3e26e66c1824136ffed0c44b1e7ff395ea820", "by": "project-editor", "reference": "docs/reviews/2026-09-14-fool-s00-s09-narrative-audio.md"}
+    },
+    {
+      "id": "mr-fool-s00-catchphrase-01",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "名字可以借来，面具可以更换，真正留下的，是你在无人注视时做出的选择。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "20db143ca4f4960b0636b7693a00f086eae89735db75af50cd62d19eae20192d",
+      "review": {"status": "approved", "approvedDigest": "20db143ca4f4960b0636b7693a00f086eae89735db75af50cd62d19eae20192d", "by": "project-editor", "reference": "docs/reviews/2026-09-14-fool-s00-s09-narrative-audio.md"}
+    },
+    {
+      "id": "mr-fool-s00-catchphrase-02",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "命运偶尔可以被愚弄；代价却不会因此消失，只会换一种方式回来。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "a358e17e36aa0909e0bf6b881368922b2a602d91264aabed844ece3d93814f2a",
+      "review": {"status": "approved", "approvedDigest": "a358e17e36aa0909e0bf6b881368922b2a602d91264aabed844ece3d93814f2a", "by": "project-editor", "reference": "docs/reviews/2026-09-14-fool-s00-s09-narrative-audio.md"}
+    },
+    {
+      "id": "mr-fool-s00-story-01",
+      "kind": "story",
+      "title": "第一章 · 陌生名字",
+      "text": "周明瑞醒来时，先面对的不是神明，而是一间陌生的房间、一把不属于他的左轮和一个必须接手的名字。他没有急着寻找宏大的答案，只先确认门窗、钱袋与今晚能否平安度过。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {"path": "docs/research/2026-09-14-mr-fool-card-materials.md", "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660", "locator": "§2 身份切片与§6.1 第一段·最初的谎言"}
+      ],
+      "gap": null,
+      "contentDigest": "9774ad4699a71240b232507613ef0da3abc62cefbe1376abd5fd09ba8f6ebdfe",
+      "review": {"status": "approved", "approvedDigest": "9774ad4699a71240b232507613ef0da3abc62cefbe1376abd5fd09ba8f6ebdfe", "by": "project-editor", "reference": "docs/reviews/2026-09-14-fool-s00-s09-narrative-audio.md"}
+    },
+    {
+      "id": "mr-fool-s00-story-02",
+      "kind": "story",
+      "title": "第二章 · 灰雾之上的长桌",
+      "text": "灰雾之上的长桌起初只是一场交换：情报换取帮助，秘密换取希望。可当塔罗会的成员把真正的愿望交到他面前，愚者先生便不能只做一个遥远的称呼；每一次回应，都意味着愿意承担一部分后果。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {"path": "docs/research/2026-09-14-mr-fool-card-materials.md", "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660", "locator": "§6.2 第二段·谎言获得了责任"}
+      ],
+      "gap": null,
+      "contentDigest": "2116f7a83786b6dc5400fd6ca91173b40865a817f34a8f8af594e47243136c71",
+      "review": {"status": "approved", "approvedDigest": "2116f7a83786b6dc5400fd6ca91173b40865a817f34a8f8af594e47243136c71", "by": "project-editor", "reference": "docs/reviews/2026-09-14-fool-s00-s09-narrative-audio.md"}
+    },
+    {
+      "id": "mr-fool-s00-story-03",
+      "kind": "story",
+      "title": "第三章 · 风暴与沉睡",
+      "text": "走到序列零以后，时间、历史与命运都可以出现被重新安排的缝隙，可权柄没有抹去疲惫与牵挂。克莱恩把许多身份留在身上，也把清醒留给仍在行走的人；在长久沉睡之前，他仍然选择替别人挡下那场风暴。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {"path": "docs/research/2026-09-14-mr-fool-card-materials.md", "sha256": "658e21ae983a6706f868e0976cebe090da8f743850ae3067ac8339c770ebf660", "locator": "§4.2 扮演、§4.5 晋升与§6.3 第三段·成为神明的仪式"}
+      ],
+      "gap": null,
+      "contentDigest": "8b5cf75f0f862ed54762a412d4eba0b7e79c3403fd108d734d3fddb79e23e35d",
+      "review": {"status": "approved", "approvedDigest": "8b5cf75f0f862ed54762a412d4eba0b7e79c3403fd108d734d3fddb79e23e35d", "by": "project-editor", "reference": "docs/reviews/2026-09-14-fool-s00-s09-narrative-audio.md"}
+    }
+  ]
+}

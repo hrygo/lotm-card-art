@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "policy_id": "native-work-single-final-sample-v1",
+  "status": "active",
+  "principle": "2K is a final delivery state, never an intermediate working state",
+  "working": {
+    "canvas_source": "actual-Agentic-output",
+    "preserve_native_dimensions": true,
+    "preserve_full_canvas": true,
+    "intermediate_2k_count": 0,
+    "intermediate_crop_count": 0,
+    "intermediate_local_reconstruction": false,
+    "intermediate_global_recolor": false,
+    "coordinate_system": "normalized-design-space",
+    "allowed_operations": [
+      "metadata-registration",
+      "native-canvas-alpha-cleanup-when-measurable",
+      "native-canvas-mask-measurement",
+      "native-full-canvas-composite-before-finalization"
+    ],
+    "forbidden_operations": [
+      "native-layer-to-2k-before-card-complete",
+      "crop-then-paste-back",
+      "2k-layer-by-layer-assembly",
+      "2k-text-repair",
+      "2k-border-repair",
+      "2k-upscale-then-4k-upscale"
+    ]
+  },
+  "agentic_authority": {
+    "fool_pathway": "full-Agentic-image-is-visual-authority",
+    "sequence_frame": "complete-Agentic-frame-with-number-and-sequence-name",
+    "programmatic_reproduction": "not-default-production-path",
+    "localized_inscribe_derivative": "legacy-diagnostic-only"
+  },
+  "finalization": {
+    "requires": [
+      "approved-FinalCard-Native",
+      "complete-subject-background-frame-text-and-gem",
+      "visual-approval-bound-to-source-sha256"
+    ],
+    "standard": {
+      "size": [2048, 3072],
+      "resample_count": 1,
+      "crop": false
+    },
+    "collector": {
+      "size": [4096, 6144],
+      "resample_count": 1,
+      "crop": false,
+      "source": "same-approved-FinalCard-Native-not-standard-2k"
+    },
+    "post_finalization_edits": false
+  },
+  "required_manifest_fields": [
+    "source_native_size",
+    "source_native_sha256",
+    "final_size",
+    "final_sha256",
+    "crop_count_before_final",
+    "intermediate_2k_count",
+    "final_resample_count",
+    "finalization_method"
+  ]
+}

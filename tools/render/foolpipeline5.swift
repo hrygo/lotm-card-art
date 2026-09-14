@@ -1152,7 +1152,7 @@ func tiersStage(_ root: URL, _ motherValue: String, _ output: URL) throws {
     let manifest: [String: Any] = [
         "version": 1,
         "mode": "fool-five-tier-direct-batch-v1",
-        "status": "user-approved-agentic-visual-baseline",
+        "status": "agentic-native-material-baseline",
         "geometry_id": FoolGeometry.geometryID,
         "carrier_contract": carrierContract,
         "mother_source": relativePath(root, nativeURL),

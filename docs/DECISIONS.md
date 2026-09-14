@@ -41,3 +41,7 @@ scaffold应通过，空卡design/release应失败。检验“拒绝坏数据”�
 ## D11｜序列之上存在的非序列卡位与叙事 slotID 放宽
 原因：福生玄黄天尊被定位为「序列之上 · 诡秘之主」，既有的卡位语义全部绑定「途径 × 序列 9–0」；把它塞进任一序列会降格事实，也需要一个不占序列卡槽的载体。
 结果：引入非序列 `slotID` 形态 `lotm.celestial-worthy`。`production/schemas/card-narrative.schema.json` 的 `identity.slotID` 模式由 `^lotm\.[a-z-]+\.s0[0-9]$` 放宽为 `^(lotm\.[a-z-]+\.s0[0-9]|lotm\.[a-z][a-z0-9-]*)$`，只额外接纳单个「途径级」非序列段；App `CardIdentity.slotID` 为自由字符串，无需改动。`validate_fool_audio_package` 的 App 卡图/音频白名单从写死两卡改为登记式三卡，`tests/test_fool_card_validation.py` 同步。序列候选清单 `production/cards/fool-card-candidates-v1.json` 与 `validate_fool_cards` 仍只覆盖序列卡，不含天尊；`check-fool-cards` 不受影响。
+
+## D13｜机器不得自我批准视觉基线
+原因：五档清单与分层基线里的 `status: user-approved-agentic-visual-baseline` 由渲染器 `foolpipeline5.swift` 自己写入，而门禁正是拿这个字符串当「已批准」依据；真正的人工批准记录 `production/approvals/fool-agentic-visual-baseline-v1.json`（`visual_approved`/`basis`/`approved_assets`）从未被读取。渲染器能写、门禁就读，等于机器自我批准。
+结果：`validate_fool_materials` 必须读取独立的人工 sidecar，校验 `kind`、`visual_approved=true`、用户依据原文、`release_approved=false`，且其 `approved_assets` 的 manifest 与母版哈希须与当前文件一致；渲染器今后写入中性状态 `agentic-native-material-baseline`，状态字符串只作描述、不再构成批准。`compose` 把 `review.json` 纳入回执依赖，`gate` 因此覆盖评审文件。反例测试见 `tests/test_fool_material_validation.py`。

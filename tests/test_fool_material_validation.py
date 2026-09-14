@@ -1,6 +1,7 @@
 """Validation tests for the retained Fool Agentic material baseline."""
 
 from pathlib import Path
+import copy
 import sys
 import unittest
 from unittest.mock import patch
@@ -60,6 +61,37 @@ class FoolMaterialValidationTests(unittest.TestCase):
 
         with patch.object(production, "sha", side_effect=tampered_sha):
             with self.assertRaisesRegex(production.Invalid, "retained material hash"):
+                production.validate_fool_materials(ROOT)
+
+    def _tamper_sidecar(self, mutate):
+        real_read = production.read
+
+        def tampered_read(path):
+            data = real_read(path)
+            if str(path).endswith("production/approvals/fool-agentic-visual-baseline-v1.json"):
+                data = copy.deepcopy(data)
+                mutate(data)
+            return data
+
+        return patch.object(production, "read", side_effect=tampered_read)
+
+    def test_renderer_status_alone_cannot_satisfy_visual_approval(self):
+        # 视觉批准必须来自人工 sidecar，而不是渲染器写入的状态字符串。
+        with self._tamper_sidecar(lambda d: d.update(visual_approved=False)):
+            with self.assertRaisesRegex(production.Invalid, "visual approval sidecar"):
+                production.validate_fool_materials(ROOT)
+
+    def test_visual_approval_sidecar_must_not_approve_release(self):
+        with self._tamper_sidecar(lambda d: d.update(release_approved=True)):
+            with self.assertRaisesRegex(production.Invalid, "must not approve release"):
+                production.validate_fool_materials(ROOT)
+
+    def test_visual_approval_sidecar_hash_binding_is_enforced(self):
+        def break_manifest_binding(d):
+            d["approved_assets"]["five_tier_frames"]["manifest_sha256"] = "0" * 64
+
+        with self._tamper_sidecar(break_manifest_binding):
+            with self.assertRaisesRegex(production.Invalid, "manifest binding is stale"):
                 production.validate_fool_materials(ROOT)
 
 

@@ -40,6 +40,12 @@ def sha(path):
     return cardctl.digest_file(Path(path))
 
 
+NATIVE_BASELINE_STATUSES = {
+    "user-approved-agentic-visual-baseline",   # 既封存基线上的历史机器写入标记，仅作描述
+    "agentic-native-material-baseline",        # 渲染器今后写入的中性标记
+}
+
+
 def inside(root, rel):
     if not isinstance(rel, str) or not rel or Path(rel).is_absolute():
         raise Invalid("expected nonempty repository-relative path")
@@ -51,6 +57,34 @@ def inside(root, rel):
 
 def record(root, path):
     return {"path": path.resolve().relative_to(root.resolve()).as_posix(), "sha256": sha(path)}
+
+
+def require_visual_approval_sidecar(root, manifest_rel, required_file):
+    """视觉批准必须来自独立的人工 sidecar，而不是渲染器自己写入的状态字符串。"""
+    rel = "production/approvals/fool-agentic-visual-baseline-v1.json"
+    sidecar = read(required_file(rel, "Fool visual approval sidecar"))
+    if sidecar.get("kind") != "visual_approval_sidecar":
+        raise Invalid("visual approval sidecar kind is invalid")
+    if sidecar.get("visual_approved") is not True:
+        raise Invalid("visual approval sidecar does not record user visual approval")
+    basis = sidecar.get("basis")
+    if not isinstance(basis, dict) or not str(basis.get("user_quote", "")).strip():
+        raise Invalid("visual approval sidecar lacks a user basis quote")
+    if sidecar.get("release_approved") is not False:
+        raise Invalid("visual approval sidecar must not approve release")
+    assets = sidecar.get("approved_assets")
+    if not isinstance(assets, dict):
+        raise Invalid("visual approval sidecar lacks approved assets")
+    frames = assets.get("five_tier_frames", {})
+    if frames.get("manifest_path") != manifest_rel or frames.get("manifest_sha256") != sha(inside(root, manifest_rel)):
+        raise Invalid("visual approval sidecar manifest binding is stale")
+    mother = assets.get("mother_frame", {})
+    mother_rel = mother.get("path")
+    if not isinstance(mother_rel, str) or not mother_rel:
+        raise Invalid("visual approval sidecar lacks a mother-frame binding")
+    if sha(inside(root, mother_rel)) != mother.get("sha256"):
+        raise Invalid("visual approval sidecar mother-frame binding is stale")
+    return sidecar
 
 
 def verify_records(root, records):
@@ -536,6 +570,7 @@ def validate_fool_materials(root):
     if not isinstance(manifest_record, dict):
         raise Invalid("active five-tier manifest record missing")
     verify_records(root, [manifest_record])
+    require_visual_approval_sidecar(root, manifest_record["path"], required_file)
     manifest = read(required_file(manifest_record["path"], "active five-tier manifest"))
     if manifest.get("mode") != "fool-five-tier-direct-batch-v1":
         raise Invalid("active five-tier manifest is not the direct Agentic batch")
@@ -547,8 +582,8 @@ def validate_fool_materials(root):
         raise Invalid("active five-tier geometry is stale")
     if manifest.get("no_cross_product_variants") is not True:
         raise Invalid("active five-tier manifest permits cross-product variants")
-    if manifest.get("status") != "user-approved-agentic-visual-baseline":
-        raise Invalid("active five-tier manifest is not the approved visual baseline")
+    if manifest.get("status") not in NATIVE_BASELINE_STATUSES:
+        raise Invalid("active five-tier manifest is not a native Agentic material baseline")
     if manifest.get("native_frame_hashes", {}).keys() != set(tier_order):
         raise Invalid("active five-tier manifest does not contain exactly five native frames")
     if manifest.get("gem_slot", {}).get("mode") != "embedded-in-direct-tier-frame-no-synthetic-overlay":
@@ -1728,13 +1763,14 @@ def compose(root, manifest_rel, out_rel):
                    "declared_native":False,"renderer":read(out/"renderer.json")}
         receipt["output_records"] = [record(root,out/f) for f in
             ("request.json","vectors.svg","renderer.json")]
-        write(out/"render-receipt.json",receipt)
         review = read(root/"templates/review.json")
         source = cardctl.resolve_card(root,manifest["slot_id"])
         review.update(card_id=manifest["card_id"],
                       design_fingerprint=cardctl.design_fingerprint(root,source),
                       image_sha256=receipt["final"]["sha256"])
         write(out/"review.json",review)
+        receipt["output_records"].append(record(root,out/"review.json"))
+        write(out/"render-receipt.json",receipt)
     except Exception as exc:
         write(out/"failure.json",{"error":str(exc),"status":"failed"})
         raise

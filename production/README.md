@@ -1,6 +1,6 @@
 # 分层资产与运行合同
 
-当前愚者视觉物料入口为 [symbols/fool-five-tier-kit.json](symbols/fool-five-tier-kit.json)，验证命令为 `python3 tools/production.py check-fool-materials`。`library/` 是已退役的 material-study 历史接口，不再列出当前输出，也不替代正式单卡门禁。
+当前愚者视觉物料入口为 [symbols/fool-five-tier-kit.json](symbols/fool-five-tier-kit.json)，验证命令为 `python3 tools/production.py check-fool-materials`。
 
 从 [SOP](../docs/production-sop-v3.md) 开始。任务类型 foundation / hierarchy / subject 分别由仓库 .agents/skills 中三个 Skill 执行。
 schemas 是编辑器契约，tools/production.py 执行同一契约所用的 JSON Schema 子集和跨文件业务门禁。

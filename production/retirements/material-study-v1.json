@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "pathway_id": "fool",
+  "status": "retired-recoverable",
+  "reason": "用户要求整体移除已退役的公共 material-study 能力（数据+工具+专属回归），不做只标注遗留的处理",
+  "created_at": "2026-09-14T00:00:00Z",
+  "moved_to_trash": [
+    {
+      "original": "production/library",
+      "trash_destination": "/Users/hrygo/.Trash/library"
+    },
+    {
+      "original": "tools/materialctl.py",
+      "trash_destination": "/Users/hrygo/.Trash/materialctl.py"
+    },
+    {
+      "original": "tools/render/materials.swift",
+      "trash_destination": "/Users/hrygo/.Trash/materials.swift"
+    },
+    {
+      "original": "tests/test_materials.py",
+      "trash_destination": "/Users/hrygo/.Trash/test_materials.py"
+    },
+    {
+      "original": "tests/test_materials_native.py",
+      "trash_destination": "/Users/hrygo/.Trash/test_materials_native.py"
+    },
+    {
+      "original": "tests/test_materials_library.py",
+      "trash_destination": "/Users/hrygo/.Trash/test_materials_library.py"
+    }
+  ],
+  "retained": [
+    {
+      "path": "production/tasks/material-*.json 与 production/calls/material-*.json",
+      "reason": "当前 fool-five-tier-kit.retained_reusable_materials 的 provenance，被 check-fool-materials 与 test_fool_material_validation 硬校验，不是 material-study 遗留"
+    },
+    {
+      "path": "tests/test_materials_pipeline.py",
+      "reason": "已重建为当前 check-fool-materials 门禁用例，保留 retained 物料与门禁覆盖"
+    },
+    {
+      "path": "production/retirements/fool-failed-materials-2026-09-14.json",
+      "reason": "tools/production.py 的活依赖清理账，保留历史事实"
+    }
+  ],
+  "recovery": "从 macOS 用户废纸篓将对应文件/目录移回原路径即可恢复；恢复后必须同步恢复根 AGENTS.md、production/AGENTS.md、production/README.md、tests/AGENTS.md 与 lotm-symbols Skill 的路由，不得只还原文件。",
+  "formal_release_approved": false
+}

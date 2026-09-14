@@ -8,7 +8,7 @@
 - `calls/`：真实工具调用、观察与附件回执（未知 model/seed 留 null）；`compositions/`：素材+矢量+文字合成清单（当前模板 `fool-09-pilot-named*.json` 含必需姓名区，旧 pilot 仅历史记录）。
 - `approvals/`：人工视觉批准 sidecar；`retirements/`：可恢复退役账（Trash）；`fixtures/`：文字面板测试样例；`templates/`：几何/接口合同（fool-mother-frame、emblem-dock、card-text-panels v3–v5）。
 - `schemas/`：编辑器契约，`tools/production.py` 执行同一契约的 JSON Schema 子集与跨文件业务门禁；合成由 `tools/render/compose.swift` 执行。
-- `symbols/`：当前愚者五档分层基线、十序列 Agentic 完整框和融合圣徽历史参考；`library/`：已退役的公共 material-study 历史接口；`assets/tiers` 与 `assets/fool`：旧四档/矢量研究稿，只读审计，不是当前入口。
+- `symbols/`：当前愚者五档分层基线、十序列 Agentic 完整框和融合圣徽历史参考；`assets/tiers` 与 `assets/fool`：旧四档/矢量研究稿，只读审计，不是当前入口。
 - `artifacts/production/`（仓库根）：不可覆盖的 raw/final/preview/provenance；输出只允许新目录。
 
 ## 查哪里 WHERE TO LOOK
@@ -17,7 +17,6 @@
 | 分层生产 SOP | `docs/production-sop-v3.md` | 当前入口：原生画布，中间不转 2K，整卡验收后一次采样 |
 | 开工/返修/交付检查表 | `docs/production-preflight.md` | 逐项判定，不是自动门禁，不自动批准 |
 | 当前愚者分层资产 | `production/symbols/{README.md,catalog.json,fool-layered-asset-baseline-v1.json}` | 五档完整原生框、十序列 Agentic 框与历史融合徽参考；以 `check-fool-materials` 为门禁 |
-| 历史公共物料库 | `production/library/README.md` + `catalog.json` | 只读 material-study 记录；不作为当前单卡或五档入口 |
 | 符号资产接入 | `production/symbols/{README.md,catalog.json,fool-five-tier-kit.json}` | 按 catalog/receipt.raw 解析，不扫描目录 |
 | 任务契约 | `production/schemas/task.schema.json` | kind/mode/spec；subject 必填 slot/card/protagonist/semantic_source |
 | 合成契约 | `production/schemas/composition.schema.json` | layers/vector_assets/nameplate/profile |
@@ -63,11 +62,6 @@ python3 tools/production.py check-fool-cards
 # 仅在 production/cards/fool-final-sampling-v1.json 写入真实用户视觉批准后执行
 python3 tools/production.py finalize production/cards/fool-final-sampling-v1.json --card-id <card_id> --profile standard --out artifacts/production/<new-final-run>
 python3 tools/production.py check-final-sample artifacts/production/<new-final-run>/receipt.json
-
-# 公共物料库（materialctl）
-python3 tools/materialctl.py render production/library/recipes/fool-low-named.json --out artifacts/production/my-new-material-run
-python3 tools/materialctl.py gate artifacts/production/my-new-material-run
-python3 tools/materialctl.py gate artifacts/production/my-new-material-run --release  # 必定失败：material-study 不是正式发布入口
 
 # 回归
 python3 -m unittest discover -s tests -p test_production.py -v

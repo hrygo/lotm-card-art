@@ -17,8 +17,7 @@
 | 五档→10 序列质量映射、narrative 批准、快照依赖 | `test_production_contracts.py` |
 | 已交付 pilot 的隔离副本读通与篡改失效 | `test_production_pipeline.py` |
 | 9–0 层级标签、半神/圣者/天使/真神、序列 0 政策 | `test_sequence_hierarchy.py` |
-| 物料配方契约（几何/锚点/姓名布局）与原生渲染像素 | `test_materials.py`、`test_materials_native.py` |
-| 物料交付包迁移与篡改阻断、素材库目录与真实 alpha | `test_materials_pipeline.py`、`test_materials_library.py` |
+| 五档 retained 物料门禁（`check-fool-materials`） | `test_materials_pipeline.py` |
 | 符号/徽记清单、精确计数、历史登记边界 | `test_symbols_library.py` |
 | 愚者五档物料、三文字区、agentic 管线、材料基线 | `test_fool_five_tier.py`、`test_fool_three_text_zones.py`、`test_fool_agentic_pipeline.py`、`test_fool_material_validation.py` |
 | 原生合成器像素回归（compose 后端） | `test_native_compositor.py` |

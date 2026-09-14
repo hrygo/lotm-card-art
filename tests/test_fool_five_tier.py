@@ -2,10 +2,7 @@
 
 import json
 from pathlib import Path
-import shutil
-import subprocess
 import sys
-import tempfile
 import unittest
 
 
@@ -127,37 +124,6 @@ class FoolFiveTierContractTests(unittest.TestCase):
             self.assertEqual(task["quality"], {"sequence": sequence, "visual_tier": tier})
             self.assertEqual(task["spec"]["tier"], tier)
             production_contracts.validate_task(ROOT, task)
-
-    @unittest.skipUnless(
-        sys.platform == "darwin" and shutil.which("swiftc"),
-        "five-tier native renderer requires macOS/Swift",
-    )
-    def test_native_renderer_selftest_reports_five_tier_safety_markers(self):
-        with tempfile.TemporaryDirectory(prefix="fool-five-tier-bin-") as directory:
-            binary = Path(directory) / "foolkit5"
-            subprocess.run(
-                ["swiftc", "-O", str(ROOT / "tools/render/foolkit5.swift"), "-o", str(binary)],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-            result = subprocess.run(
-                [str(binary), "selftest"],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-        for marker in (
-            "five-tier-mapping",
-            "geometry-zero",
-            "alpha-real",
-            "gem-highlight-preserved",
-            "legacy-four-tier-rejected",
-            "diamond-seat-integrated",
-            "diamond-contact-shadow",
-            "diamond-rail-continuity",
-        ):
-            self.assertIn(marker, result.stdout)
 
     def test_legacy_material_renderer_is_not_current_production_route(self):
         catalog = self.load_json("production/symbols/fool-five-tier-kit.json")

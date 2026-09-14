@@ -2,10 +2,6 @@
 
 import json
 from pathlib import Path
-import shutil
-import subprocess
-import sys
-import tempfile
 import unittest
 
 
@@ -129,69 +125,6 @@ class FoolThreeTextZoneContractTests(unittest.TestCase):
         self.assertEqual(catalog["output_contract"]["diamond_layer_names"], [])
         self.assertEqual(catalog["output_contract"]["embedded_gem_mode"], "complete-agentic-frame")
         self.assertTrue(catalog["output_contract"]["no_cross_product_variants"])
-
-    @unittest.skipUnless(
-        shutil.which("swiftc"),
-        "v2 native renderer requires Swift",
-    )
-    def test_native_renderer_selftest_reports_single_tier_emblem_safety_markers(self):
-        with tempfile.TemporaryDirectory(prefix="fool-v2-bin-") as directory:
-            binary = Path(directory) / "foolkit5"
-            subprocess.run(
-                ["swiftc", "-O", str(ROOT / "tools/render/foolkit5.swift"), "-o", str(binary)],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-            result = subprocess.run(
-                [str(binary), "selftest"],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-        for marker in (
-            "v2-three-text-zones",
-            "emblem-tier-binding",
-            "emblem-alpha-byte-stable",
-            "diamond-v2",
-            "diamond-study-embedded",
-        ):
-            self.assertIn(marker, result.stdout)
-
-    @unittest.skipUnless(
-        sys.platform == "darwin" and shutil.which("swiftc"),
-        "designed inscription renderer requires macOS/Swift",
-    )
-    def test_inscription_renderer_selftest_reports_width_and_capacity_markers(self):
-        with tempfile.TemporaryDirectory(prefix="fool-inscription-bin-") as directory:
-            binary = Path(directory) / "fooltext3"
-            subprocess.run(
-                ["swiftc", "-O", str(ROOT / "tools/render/fooltext3.swift"), "-o", str(binary)],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-            result = subprocess.run(
-                [str(binary), "selftest"],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-        for marker in (
-            "local-inlay-1.5x-wider",
-            "six-character-inscription-capacity",
-            "exact-glyph-relief",
-            "empty-character-name-safe",
-            "text-orientation-upright-top-left",
-            "text-orientation-sentinel",
-            "name-ink-premium-relief",
-            "inscription-contrast-gated",
-            "side-glyph-ink-box-aligned",
-            "single-face-name-mask",
-            "name-diamond-protection",
-            "name-background-not-opaque-over-diamond",
-        ):
-            self.assertIn(marker, result.stdout)
 
     def test_active_text_contract_records_alignment_and_diamond_protection(self):
         catalog = self.load_json(

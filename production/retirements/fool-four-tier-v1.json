@@ -20,6 +20,10 @@
     {
       "original": "artifacts/production/fool-quality-frame-true-god",
       "trash_destination": "/Users/hrygo/.Trash/fool-quality-frame-true-god"
+    },
+    {
+      "original": "tools/render/foolkit.swift",
+      "trash_destination": "/Users/hrygo/.Trash/foolkit.swift"
     }
   ],
   "retained": [
@@ -30,10 +34,6 @@
     {
       "path": "production/symbols/fool-frame-kit.json",
       "reason": "改为 retired-historical，保留结构化审计信息，不再作为 active asset 或 fallback"
-    },
-    {
-      "path": "tools/render/foolkit.swift",
-      "reason": "仅作旧处理链回归与审计，不是新五档交付入口"
     },
     {
       "path": "production/calls",

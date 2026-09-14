@@ -21,7 +21,7 @@
 | 物料交付包迁移与篡改阻断、素材库目录与真实 alpha | `test_materials_pipeline.py`、`test_materials_library.py` |
 | 符号/徽记清单、精确计数、历史登记边界 | `test_symbols_library.py` |
 | 愚者五档物料、三文字区、agentic 管线、材料基线 | `test_fool_five_tier.py`、`test_fool_three_text_zones.py`、`test_fool_agentic_pipeline.py`、`test_fool_material_validation.py` |
-| 原生边框工具、Klein 固定几何、原生合成器 | `test_foolkit.py`、`test_klein_carrier.py`、`test_native_compositor.py` |
+| 原生合成器像素回归（compose 后端） | `test_native_compositor.py` |
 | Swift 客户端 Core/Features 领域与交互 | `apps/LotmCardStudio/Tests/`（`swift test`） |
 
 ## 约定 CONVENTIONS

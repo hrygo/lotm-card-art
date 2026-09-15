@@ -72,3 +72,12 @@ scaffold应通过，空卡design/release应失败。检验“拒绝坏数据”�
 - **不可覆盖**：`artifacts/production/**` 的 provenance 与历史回执不改写；材料基线的 `basis` 只记录本次批准依据，不构成发布批准。
 - **App 解耦**：`AlbumViewModel.visibleCards(.formal)` 与 `formalCount` 只按 `collectionIntents == .formal` 过滤，不再要求 `contentStatus == .confirmed`；`ArchiveCopy.pathwaySummary(formal:candidate:)` 改为收藏口径。十一张卡的 `collectionIntent` 由 `.candidate` 改为 `.formal`，而 `contentStatus` 保持 `.proposed`——**用户批准视觉与收藏身份不等于内容已核验**，九位「序列之上」的资料仍是二手/未核验。「我的收藏」副标题改为「你正式收藏的身份卡；每张卡的内容核验状态以卡片自身的标注为准。」；测试加断言 `confirmedCount == 0` 与九卡 `.proposed`，防止后续误升。另移除 fixture 中 S00 的 `isWishlisted`：十一张卡均归入正式收藏后，愿望清单为空（分栏与指标保留给后续新增目标，断言改为显式空集而非删除）。
 
+## D17｜纳入《诡秘世界》母 PRD 作为未来产品基线（内容/引擎分层）
+原因：用户提供《诡秘世界》产品需求文档 PRD v1.0（本地 `~/Downloads/诡秘世界_PRD_v1.0.md`，2026-09-15），并要求纳入项目。该文件定义的是以本卡牌体系为 Canon 底座的**单人持续世界演绎产品**（World/Character/Story/Audio 引擎 + 持久世界 + Story Book），量级远超本仓库当前交付面（卡牌内容生产 + M1 客户端垂直切片）。若把 PRD 直接当作本仓库规范，会与既有事实源、卡牌契约与批准边界混淆。
+结果：
+- 入仓为 `docs/product/secret-world-prd-v1.0.md`：**正文逐字未改**（sha256 `bc2c04057e4686904c8665750b7be45693197d9857c0ffed2de9054df555c62c`，等于源文件哈希），仅前置来源/效力/实现状态说明块。
+- 效力＝**产品基线·立项级**：约束**未来**实现；对本仓库现有交付面**不是规范**，不覆盖 `pathways/*/card.json`、`canon.json`、`sources/registry.json`、`config/`，不构成任何 `approved`/`release_approved`，不改变卡牌数量与卡槽口径（220 是卡槽基线，不是上限）。
+- 分层边界（PRD §25）：World/Story/Character/Audio 引擎**不进入**卡牌美术仓库；本仓库继续只承担卡牌内容生产与 M1 客户端，引擎实现属另一交付面，需另行立项。
+- 路由与效力已同步：根 `AGENTS.md`（概览/结构/查哪里）、`docs/AGENTS.md`（效力地图/约定/反模式/状态分类）、`docs/LIMITATIONS.md`（未实现清单）。
+- PRD 附录 A 的 15 份工程契约与附录 B 的拆分 PRD **均未创建**，不在本决策范围内；尚未确定引擎代码归属的仓库或目录。
+

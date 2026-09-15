@@ -8,6 +8,8 @@
 - **内容生产面**：制作 22 条成神途径 × 序列 9→0 的序列卡。**`220` = 22×10 个“序列卡槽”的基线数量，是下限而不是卡牌上限**：同一序列可容纳多个不同人物的身份卡，同一人物也可有跨多个序列的形象卡，因此实际卡牌总数可以超过 220。扩展卡各自使用独立 `card_id`，与所在序列卡槽分开管理。这是事实与美术主线。
 - **客户端面**：`apps/LotmCardStudio` 是 macOS 26 的原生卡牌画册。当前只是**里程碑 M1 的“垂直切片”**（先把“浏览 → 详情 → 配音 → 失败回退”这条链路在少量卡上跑通），内容取自仓库内**隔离的合成示例数据（fixture）**。因此它显示的卡片不计入正式交付数量，也不代表已通过内容核验、`design`/`release` 门槛或人工视觉批准。
 
+- **未来产品基线（不是交付面）**：`docs/product/secret-world-prd-v1.0.md` 是《诡秘世界》的母 PRD——以本卡牌体系为 Canon 底座的**单人持续世界演绎应用**（World/Character/Story/Audio 引擎、持久世界、Story Book），状态为**立项级产品基线**。它约束**未来**实现，但不属于本仓库现有两个交付面，也不改动卡牌契约、卡数口径或批准状态；按该 PRD §25，引擎实现不与卡牌美术仓库耦合。
+
 核心哲学：**六维语义完整，载体自由组合；艺术可以抽象，事实不能含混。**
 每张牌覆盖 身份—扮演—能力—魔药—晋升—限制，但不要求六个文字栏目；序列卡默认用序列原型，不默认绑定某个具体人物。
 序列卡槽是基线：人物身份卡（同一序列多人、同一人物跨多序列）、异画、卡背、封面卡都属于基线之外的扩展，不占用也不替代序列卡槽；不是默认复刻小说中的“亵渎之牌”。
@@ -22,7 +24,8 @@
 │   ├── sequence-hierarchy.json   # 9–0 层级标签单一配置
 │   └── quality-color-tokens.json # 五档视觉色彩映射
 ├── design/                       # 六维转译、美术总纲、版式、层级语法、审核规范（AGENTS.md）
-├── docs/                         # SOP·工作流·ADR·研究·评审·证据策略（AGENTS.md：效力地图）
+├── docs/                         # SOP·工作流·ADR·研究·评审·证据策略·产品基线（AGENTS.md：效力地图）
+│   └── product/                 # 未来产品《诡秘世界》母 PRD（产品基线·立项级；非本仓库事实源）
 ├── pathways/<id>/                # direction.json + canon.json + sequences/<09..00>/card.json（AGENTS.md）
 ├── production/                   # 分层生产 tasks/calls/compositions/schemas/symbols（AGENTS.md：门禁与语义引用）
 ├── tools/                        # cardctl.py · production.py · render/*.swift（AGENTS.md）
@@ -57,6 +60,7 @@
 | 叙事/台词契约 | `docs/card-narrative-contract.md` | 与图像共用身份、独立批准，不写进主插画 |
 | 客户端任务 | `apps/AGENTS.md` + `apps/LotmCardStudio/README.md` + `docs/qa/` | 先行为测试，后模型/UI |
 | 项目真实状态 | `docs/START-HERE.md`、`README.md`、`reports/` | 链接≠已读；目录存在≠内容完成 |
+| 未来产品定义（《诡秘世界》母 PRD） | `docs/product/secret-world-prd-v1.0.md` | 产品基线·立项级；约束未来实现，非本仓库规范/事实源/批准 |
 
 ## 代码地图 CODE MAP
 | 符号/入口 | 类型 | 位置 | 职责 |

@@ -298,7 +298,9 @@ class FoolCardValidationTests(unittest.TestCase):
             def fake_sips(args, **kwargs):
                 Path(args[-1]).write_bytes(_solid_png(2048, 3072))
 
-            with patch.object(production.subprocess, "run", side_effect=fake_sips) as run:
+            # 打桩 macOS 采样器前置：mock 路径不依赖真机 sips，Linux 矩阵跑同一断言
+            with patch.object(production.subprocess, "run", side_effect=fake_sips) as run, \
+                    patch.object(production.shutil, "which", return_value="/usr/bin/sips"):
                 result = production.finalize_fool_card(
                     root, "manifest.json",
                     "lotm.fool.s00.klein-moretti.mr-fool-01",
@@ -333,7 +335,9 @@ class FoolCardValidationTests(unittest.TestCase):
             def fake_sips(args, **kwargs):
                 Path(args[-1]).write_bytes(_solid_png(2048, 3072))
 
-            with patch.object(production.subprocess, "run", side_effect=fake_sips):
+            # 打桩 macOS 采样器前置：mock 路径不依赖真机 sips，Linux 矩阵跑同一断言
+            with patch.object(production.subprocess, "run", side_effect=fake_sips), \
+                    patch.object(production.shutil, "which", return_value="/usr/bin/sips"):
                 production.finalize_fool_card(
                     root, "manifest.json",
                     "lotm.fool.s00.klein-moretti.mr-fool-01",

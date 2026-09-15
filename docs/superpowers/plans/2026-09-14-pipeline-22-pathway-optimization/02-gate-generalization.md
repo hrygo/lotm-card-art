@@ -19,10 +19,10 @@
 
 ## Must Do
 
-- [ ] **T1 门禁参数化**：引入 `validate_pathway_materials(root, pathway_id)` 等入口，由途径合同解析（途径 id、资产根、映射、注册表）。保留 `validate_fool_*` 作为**薄包装**（避免一次性破坏现有调用与历史回执）。
-- [ ] **T2 途径校验去硬编码**：`:288/:576/:620` 改为「合同声明的途径 == 调用方途径」，而不是「== fool」。
-- [ ] **T3 目录命名空间**：`production/symbols/<pathway>/…`、`tasks/<pathway>/…`、`calls/<pathway>/…`、`templates/<pathway>/…`；`schemas/` 保留通用契约 + `pathway-*.schema.json` 家族（途径特定约束写进合同数据，而非新增 21 个 schema 文件）。
-- [ ] **T4 兼容期**：提供**只读**的旧路径 → 新路径映射，使历史回执与 pin 在迁移期仍可解析；迁移完成后再删除映射（另开批次）。
+- [x] **T1 门禁参数化**：引入 `validate_pathway_materials(root, pathway_id)` 等入口，由途径合同解析（途径 id、资产根、映射、注册表）。保留 `validate_fool_*` 作为**薄包装**（避免一次性破坏现有调用与历史回执）。
+- [x] **T2 途径校验去硬编码**：`:288/:576/:620` 改为「合同声明的途径 == 调用方途径」，而不是「== fool」。
+- [x] **T3 目录命名空间**：`production/symbols/<pathway>/…`、`tasks/<pathway>/…`、`calls/<pathway>/…`、`templates/<pathway>/…`；`schemas/` 保留通用契约 + `pathway-*.schema.json` 家族（途径特定约束写进合同数据，而非新增 21 个 schema 文件）。
+- [x] **T4 兼容期**：提供**只读**的旧路径 → 新路径映射，使历史回执与 pin 在迁移期仍可解析；迁移完成后再删除映射（另开批次）。
 
 ## Must Not Do
 
@@ -32,10 +32,10 @@
 
 ## 验收标准
 
-- [ ] 愚者门禁结果与 `v0.3.0` **完全一致**（`check-fool-materials` / `check-fool-cards` 输出逐字段可比）。
-- [ ] 对「另一条途径」构造最小合同后，`validate_pathway_materials` 可运行并给出与该途径合同一致的结果。
-- [ ] `python3 tools/cardctl.py check --level scaffold` → `errors: []`（迁移后仍成立）。
-- [ ] 旧路径映射生效：历史 `calls/`、`tasks/` 与 pin 仍能被 `validate_task` 解析。
+- [x] 愚者门禁结果与 `v0.3.0` **完全一致**（`check-fool-materials` / `check-fool-cards` 输出逐字段可比）。
+- [x] 对「另一条途径」构造最小合同后，`validate_pathway_materials` 可运行并给出与该途径合同一致的结果。
+- [x] `python3 tools/cardctl.py check --level scaffold` → `errors: []`（迁移后仍成立）。
+- [x] 旧路径映射生效：历史 `calls/`、`tasks/` 与 pin 仍能被 `validate_task` 解析。
 
 ## 风险与回退
 
@@ -46,3 +46,10 @@
 ## 工作量估计
 
 **中**（门禁参数化 + 目录迁移 + 兼容映射）；其中大部分风险来自迁移时的 pin 重封存，已由 `03` 化解。
+
+## 实施记录（2026-09-15 回填）
+
+- **T1/T2（`adeb0e6`、`a9d8840`）**：新增 `validate_pathway_carrier_contract` / `validate_pathway_materials` 与 `check-pathway-materials --pathway`；`validate_fool_*` 保留为薄包装。途径校验由「合同声明的途径 == 调用方途径」判定，不再硬编码 `fool`。
+- **T3（以 ADR-004 决策 3「前向命名空间」收口）**：规则与实测（22 个 id 在 9 个 area 下零同名）记于 `docs/pathway-namespace.md`；`schemas/` 保持通用契约族，途径约束写进合同数据。
+- **T4（随决策 3 免实施）**：不做批量迁移，故不需要「旧路径 → 新路径」只读映射；`artifacts/**` 历史回执按其 provenance 语义有意不重封存（见 `tools/pin_seal.py` 排除规则）。
+- **验收**：愚者门禁结果与 `v0.3.0` 逐字段一致；合成/最小途径合同可运行 `validate_pathway_materials` 并给出与该合同一致的结果（`tests/test_pathway_gate_parameterization.py`，5 用例）；`check --level scaffold` → `errors: []`。

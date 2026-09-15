@@ -18,13 +18,13 @@
 
 ## Must Do
 
-- [ ] **T1 跨路径回归**：`01-T1` 修复后，新增「符号链接根路径」反例测试（macOS `$TMPDIR` 场景），确保渲染器测试在任何 checkout 位置都绿。
-- [ ] **T2 CI 覆盖决策**：二选一，**不允许默默 skip**——
+- [x] **T1 跨路径回归**：`01-T1` 修复后，新增「符号链接根路径」反例测试（macOS `$TMPDIR` 场景），确保渲染器测试在任何 checkout 位置都绿。
+- [x] **T2 CI 覆盖决策**：二选一，**不允许默默 skip**——
   - (a) 增加 macOS + `swiftc` 的 CI job，真正运行渲染器测试；或
   - (b) 在 CI 与文档中**显式登记**「原生渲染器不在 CI 覆盖内，属已知边界」，并给出本地必跑清单。
-- [ ] **T3 误诊更正登记**：在 `docs/DECISIONS.md` 或本目录记录「3 例渲染器失败 = 渲染器路径校验缺陷，**不是** `generated/` 缺失」，附实测矩阵与 `file:line`。
-- [ ] **T4 快照纪律**：打 tag 时附「**在途内容清单**」（未提交/在途的卡、研究稿、config 改动），避免 tag 被当作最新态；tag 名/说明需体现「快照而非发布」的语义。
-- [ ] **T5 fresh checkout 自证脚本**：把「clone 后能否自证」固化成一条命令（`scaffold` + `check-fool-materials` + `check-fool-cards` + 单测），作为打 tag 的前置检查。
+- [x] **T3 误诊更正登记**：在 `docs/DECISIONS.md` 或本目录记录「3 例渲染器失败 = 渲染器路径校验缺陷，**不是** `generated/` 缺失」，附实测矩阵与 `file:line`。
+- [x] **T4 快照纪律**：打 tag 时附「**在途内容清单**」（未提交/在途的卡、研究稿、config 改动），避免 tag 被当作最新态；tag 名/说明需体现「快照而非发布」的语义。
+- [x] **T5 fresh checkout 自证脚本**：把「clone 后能否自证」固化成一条命令（`scaffold` + `check-fool-materials` + `check-fool-cards` + 单测），作为打 tag 的前置检查。
 
 ## Must Not Do
 
@@ -34,11 +34,11 @@
 
 ## 验收标准
 
-- [ ] 在 `$TMPDIR` 下的 worktree 与主仓库运行同一套测试，**结果一致**（不再出现「位置决定绿红」）。
-- [ ] CI 对渲染器要么覆盖、要么显式豁免（有文字与出处），无静默 skip 的假绿。
-- [ ] 「3 例失败」的归因在仓库内有据可查（含更正记录）。
-- [ ] fresh checkout 自证一条命令可跑，输出可为 tag 前置门禁。
-- [ ] tag 说明/附带清单能区分「快照」与「发布」。
+- [x] 在 `$TMPDIR` 下的 worktree 与主仓库运行同一套测试，**结果一致**（不再出现「位置决定绿红」）。
+- [x] CI 对渲染器要么覆盖、要么显式豁免（有文字与出处），无静默 skip 的假绿。
+- [x] 「3 例失败」的归因在仓库内有据可查（含更正记录）。
+- [x] fresh checkout 自证一条命令可跑，输出可为 tag 前置门禁。
+- [x] tag 说明/附带清单能区分「快照」与「发布」。
 
 ## 风险与回退
 
@@ -48,3 +48,11 @@
 ## 工作量估计
 
 **小到中**：T1/T3/T5 小；T2 取决于 (a)/(b)；T4 是约定 + 一次 tag 说明更新。
+
+## 实施记录（2026-09-15 回填）
+
+- **T1（`2cc99fe`）**：输出路径校验改路径分量比较后，符号链接根路径不再误拒；正例/反例见 `tests/test_fool_agentic_pipeline.py::RendererTests.test_output_path_validation_is_escape_safe_and_symlink_agnostic`。
+- **T2（`a78f282`）**：二选一取「覆盖」而非豁免——CI 新增 `macos-26` job，原生渲染用例在 macOS 上**必须真跑**（非 skip 强制断言），未使用显式豁免。
+- **T3 归因（就地登记，因 `docs/DECISIONS.md` 由另一位写入者持有）**：早前 3 例渲染器失败 = **渲染器输出路径校验用字符串前缀且未统一规范化**，在符号链接根路径下被误拒；**不是** `generated/` 缺失（`generated/` 只是 `brief` 的派生输出目录）。证据：修复提交 `2cc99fe`、上述反例用例，以及 2026-09-15 在 `/var/folders/.../T/opencode/lotm-sym-check`（`pwd -P` → `/private/var/...`）worktree 下全套件 **OK (skipped=6)**。
+- **T4（`57c158a`）**：`docs/workflow.md` 增 tag 快照纪律（tag 附「在途内容清单」，语义为快照而非发布）。
+- **T5（`0948769`）**：`tools/selfcheck.py` 一条命令自证（scaffold → pins → 愚者门禁 → 全套件），登记于 `tools/AGENTS.md`；实测 fresh checkout **5/5** 通过。

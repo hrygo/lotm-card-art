@@ -21,11 +21,11 @@
 
 ## Must Do
 
-- [ ] **T1 定义 pin 源清单（单一来源）**：声明「哪些文件属于哪一类契约输入、是否必须被 pin」。类别至少包含：规范文档（sop-v3、preflight）、共享配置（sequence-hierarchy、quality-color-tokens、resolution-policy）、编辑器契约（schemas）、接口模板（templates）、途径资产合同（symbols/<pathway>/…）。
-- [ ] **T2 生成命令**：`python3 tools/production.py seal --write`（名称可议）——只重写各合同里的 `contracts` 段，其余字段**逐字节不动**；输出必须确定性（排序稳定，便于 diff）。
-- [ ] **T3 校验模式**：`seal --check` 在 CI 中 fail-on-drift，取代「靠人记得手工改」。
-- [ ] **T4 语义不变**：`verify_records` 的校验逻辑不动（仍校验存在 + 哈希）；生成器**不得**削弱任何校验。
-- [ ] **T5 一次性对齐**：对现存 249 条做一次 migration（只改 pin 值，不改语义），单独成提交，便于审阅与回退。
+- [x] **T1 定义 pin 源清单（单一来源）**：声明「哪些文件属于哪一类契约输入、是否必须被 pin」。类别至少包含：规范文档（sop-v3、preflight）、共享配置（sequence-hierarchy、quality-color-tokens、resolution-policy）、编辑器契约（schemas）、接口模板（templates）、途径资产合同（symbols/<pathway>/…）。
+- [x] **T2 生成命令**：`python3 tools/production.py seal --write`（名称可议）——只重写各合同里的 `contracts` 段，其余字段**逐字节不动**；输出必须确定性（排序稳定，便于 diff）。
+- [x] **T3 校验模式**：`seal --check` 在 CI 中 fail-on-drift，取代「靠人记得手工改」。
+- [x] **T4 语义不变**：`verify_records` 的校验逻辑不动（仍校验存在 + 哈希）；生成器**不得**削弱任何校验。
+- [x] **T5 一次性对齐**：对现存 249 条做一次 migration（只改 pin 值，不改语义），单独成提交，便于审阅与回退。
 
 ## Must Not Do
 
@@ -35,10 +35,10 @@
 
 ## 验收标准
 
-- [ ] 改动 `config/quality-color-tokens.json` 后，**一条命令**完成全部重封存，`validate_task` 全绿。
-- [ ] 人为篡改某合同里的一条 pin → `seal --check` **失败**并指出具体 path。
-- [ ] `seal --write` 幂等：连续执行两次，第二次无 diff。
-- [ ] 生成前后，所有合同的非 `contracts` 字段**逐字节一致**。
+- [x] 改动 `config/quality-color-tokens.json` 后，**一条命令**完成全部重封存，`validate_task` 全绿。
+- [x] 人为篡改某合同里的一条 pin → `seal --check` **失败**并指出具体 path。
+- [x] `seal --write` 幂等：连续执行两次，第二次无 diff。
+- [x] 生成前后，所有合同的非 `contracts` 字段**逐字节一致**。
 
 ## 风险与回退
 
@@ -49,3 +49,9 @@
 ## 工作量估计
 
 **小到中**（一个命令 + CI 校验 + 一次 migration）；收益是后续所有迁移工作流的成本基数。
+
+## 实施记录（2026-09-15 回填）
+
+- **T1–T4（`866b97e`）**：`tools/pin_seal.py` 提供单点重封存（`--write` / `--check`），只改 `sha256` 字节、按 path 稳定排序、幂等；CI 增 pin 漂移检查。生成器不削弱 `verify_records` 语义（仍校验存在 + 哈希）。
+- **口径更正（ADR-005）**：活合同 pin 实测 **113 条**；计划所记「249 条」是含 `artifacts/**` 历史回执的口径，那部分无重封存意义（按其 provenance 语义排除）。
+- **验收**：改共享配置后一条命令完成重封存且 `validate_task` 全绿；篡改 `pathway_crown.rect_design[0]` → `--check` rc=1 并点名 path 与新/旧哈希；连续两次 `--write` 无 diff；重封存前后非 `sha256` 字段逐字节不变。

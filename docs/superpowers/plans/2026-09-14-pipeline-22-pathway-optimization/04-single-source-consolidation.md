@@ -25,13 +25,13 @@
 
 ## Must Do
 
-- [ ] **T1 五档映射**：删除 `production.py:547-553`，改为从 `config/sequence-hierarchy.json` 读取并派生 `expected_mapping`；保留「非双射即失败」的断言。
+- [x] **T1 五档映射**：删除 `production.py:547-553`，改为从 `config/sequence-hierarchy.json` 读取并派生 `expected_mapping`；保留「非双射即失败」的断言。
 - [x] **T2 几何单一来源**：把 Fool 几何收敛为**合同数据一处**（途径合同或 `templates/` 接口合同），`production.py` 与 `foolpipeline5.swift` 都从该处读取（与 `01-T4` 协同）。
   **实施结果（2026-09-15，ADR-005 选项 C）**：载体合同 `production/symbols/fool-carrier-execution-v1.json` 成为唯一几何声明源并纳入 pin（113 条）；渲染器 13 个几何常量**全部**被合同覆盖并逐项 fail-closed 断言（补入 `illustration_window`、`numeral_exclusion`、`rank_numeral_visible_height_design` 三个锚点 + schema 扩展 + 2 条覆盖用例）；`production.py` 删除重复数值，改结构校验 + 关系不变量。A（渲染器派生 + 渲染前校验 pin）与 B（几何改以接口模板为家，须先修正其陈旧 `gem_slot`）作为可选升级保留在 ADR-005。
-- [ ] **T3 登记表消歧**：明确**唯一真相**（建议：登记表仍是声明源），并让门禁校验「登记表 ↔ 资源目录」双向一致：
+- [x] **T3 登记表消歧**：明确**唯一真相**（建议：登记表仍是声明源），并让门禁校验「登记表 ↔ 资源目录」双向一致：
   - 登记表里每条必须在 `Resources/` 实际存在（已有语义）；
   - `Resources/` 不得出现**未登记**的卡图/音频（新增断言，防止「偷偷加卡绕过门禁」）。
-- [ ] **T4 反例测试**：分别构造「映射与 config 不一致」「几何两处不一致」「目录多一个未登记文件」三种反例，断言必须失败。
+- [x] **T4 反例测试**：分别构造「映射与 config 不一致」「几何两处不一致」「目录多一个未登记文件」三种反例，断言必须失败。
 
 ## Must Not Do
 
@@ -41,11 +41,11 @@
 
 ## 验收标准
 
-- [ ] 删除内联映射后，`check-fool-materials` / `check-fool-cards` / 全套单测**结果不变**。
+- [x] 删除内联映射后，`check-fool-materials` / `check-fool-cards` / 全套单测**结果不变**。
 - [x] 几何改一处 → 渲染器与 Python 校验同步生效（由反例测试证明「两处一致」是被强制的）。
   **措辞修订（ADR-005 选项 C）**：实际达成的是「几何改一处 → 必须同步重封 pin，且渲染器与 Python 的期望被强制一致，不一致即拒绝渲染／门禁失败」——**不是**静默跟随。实测反例：把 `pathway_crown.rect_design[0]` 改成 351 → `pin_seal --check` **rc=1** 并点名该路径与新旧哈希；渲染器侧由 `requireRect`/`requirePoint` 逐项断言同一合同。若要「改一处即生效」，需采用 ADR-005 的 A；其前置（放宽 schema 值级 `const`、修正接口模板陈旧 `gem_slot`）已在该 ADR 列明。
-- [ ] 在 `Resources/` 放一个未登记文件 → 门禁**失败**并点名该文件。
-- [ ] `python3 tools/cardctl.py check --level scaffold` → `errors: []`。
+- [x] ~~在 `Resources/` 放一个未登记文件 → 门禁**失败**并点名该文件。~~ 该验收由 ADR-004「1A」取代：审计对象改为打包期落盘集合，等价用例为 `test_stage_app_resources_writes_exactly_the_registered_set`（集合不等即失败），`Resources/` 不再是审计对象。
+- [x] `python3 tools/cardctl.py check --level scaffold` → `errors: []`。
 
 ## 风险与回退
 
@@ -55,3 +55,10 @@
 ## 工作量估计
 
 **小到中**：T1 小；T2 中（跨语言收敛，依赖 01）；T3 中（门禁 + 测试）。
+
+## 实施记录（2026-09-15 回填）
+
+- **T1（`7dde043`）**：删除内联五档映射，改由 `config/quality-color-tokens.json` 派生 `expected_mapping`，保留「非双射即失败」断言。
+- **T2（`73dd19f` + `2976ec1`，ADR-005 选项 C）**：载体合同纳入 pin（唯一几何声明源）；`production.py` 删除重复几何字面量，改结构校验 + 关系不变量（safe⊆rect、宝石居中/安全距、数字居中画布）；渲染器保留常量但补 3 条 fail-closed 等值断言（`illustration_window` / `numeral_exclusion` / `rank_numeral_visible_height_design`）。
+- **T3（由 ADR-004「1A」取代）**：`Resources/` 不再是审计对象——卡图与音频改由 `stage-app-resources` 在打包期从 `artifacts/**` 拷入，仓库内该目录已删除 72M。等价保证改为「打包期落盘集合 == 登记表」，由 `test_stage_app_resources_writes_exactly_the_registered_set` 守住；原「Resources 未登记文件」常驻 fixture 不再适用。
+- **T4（`e6f4cf6` 等）**：三类反例齐备——映射与 config 不一致（非双射）、几何多副本不一致（pin 篡改 + 渲染器等值断言）、白名单失败点名文件。

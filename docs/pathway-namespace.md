@@ -19,6 +19,19 @@
 
 `<pathway>` 取 `catalog/pathways.json` 的 `id`（唯一来源；id 不随中文名修订而改变）。
 
+## 渲染器输入解析（对应计划 01-T2/T3）
+
+原生合成器 `tools/render/foolpipeline5.swift` 的四类输入不再硬编码，改由**当前途径**解析：
+
+| 输入 | 来源 |
+|---|---|
+| 载体执行合同 | `fool` → `production/symbols/fool-carrier-execution-v1.json`（历史扁平形态，冻结）；其余途径 → `production/symbols/<pathway>/carrier-execution.json` |
+| 五档套装 / 序列铭刻目录 / 序列数字目录 | **合同内 `catalogs` 块**声明的 `path`（相对仓库根），并逐项核对 `sha256` |
+
+调用形式：`foolpipeline5 [--pathway <id>] <mother|tiers|sequences|inscribe|gate|selftest> …`。
+省略 `--pathway` 时默认 `fool`，既有命令因此逐字节不变（实测母版阶段 9 个产物哈希一致）。
+合同缺 `catalogs`、途径不符或某目录哈希不匹配时**报错退出并点名**（`Carrier catalog changed: <key>`），不静默回退 `fool`，也不使用未声明路径。
+
 ## 命名空间可用性（已实测）
 
 22 个途径 id 在 9 个 area 下与既有条目**零同名**，因此直接用 id 作目录名不会冲突：
@@ -31,7 +44,7 @@ demoness red-priest hermit paragon wheel-of-fortune mother moon black-emperor ju
 ## 为什么不做批量重命名
 
 - `production/{symbols,tasks,templates,schemas,calls}` 的 `fool*` 被 **54 个文件**引用，其中 **10 个在 `artifacts/**`**（不可覆盖的历史回执，只能改或标注迁移）。
-- 活合同 pin 实测 **112 条 / 21 文件**（`python3 tools/pin_seal.py --check`）；`artifacts/**` 另有 25 条历史 pin（实测 12 stale + 1 missing，按其 provenance 语义**有意不重封存**）。
+- 活合同 pin 实测 **113 条 / 21 文件**（`python3 tools/pin_seal.py --check`）；`artifacts/**` 另有 25 条历史 pin（实测 12 stale + 1 missing，按其 provenance 语义**有意不重封存**）。
 - 决策时另一位写入者有 101+ 未提交文件且在写 → 重命名的冲突面远大于收益。整体重命名见 ADR-004「D. 整体重命名（推迟）」。
 
 ## schemas

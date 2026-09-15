@@ -27,6 +27,23 @@
       "purpose": "current-fool-top-rank-dock-geometry"
     }
   },
+  "catalogs": {
+    "five_tier_kit": {
+      "path": "production/symbols/fool-five-tier-kit.json",
+      "sha256": "27a4cbe9b443c3cb23798e4532559b36b883c783517ed40888f6728479e3764a",
+      "purpose": "current-fool-five-tier-direct-kit"
+    },
+    "sequence_inscriptions": {
+      "path": "production/symbols/fool-agentic-sequence-inscriptions-v2.json",
+      "sha256": "2d3143a737ba386706d60848affaca9caff11ca9373b96f7c4cee401f073e6df",
+      "purpose": "current-agentic-complete-frame-sequence-catalog"
+    },
+    "rank_numerals": {
+      "path": "production/symbols/fool-rank-numerals-v1.json",
+      "sha256": "ef60586cb34fdb89a867fc3647421fb79b7c9dc805d24fd5cb395d13858d4a49",
+      "purpose": "renderer-rank-numeral-progression"
+    }
+  },
   "active_frame_source": {
     "path": "artifacts/production/fool-five-tier-direct-kit-v1/frame-low-native.png",
     "sha256": "14c8707f23c6e295c4b0c7ec25ee5cd7b11f028d7ccda09656baccf3166e8783",

@@ -619,13 +619,53 @@ func requireSize(_ value: Any?, _ expected: CGSize, _ label: String) throws {
 // complete Agentic frame and the top socket is a fixed RankNumeralDock. This
 // loader binds both facts to the executable pipeline and makes the measured
 // native geometry the single source used by every stage.
+struct PathwayPaths {
+    let carrierContract: String
+    let fiveTierKit: String
+    let sequenceInscriptions: String
+    let rankNumerals: String
+}
+
+var activePathway = "fool"
+var cachedPathwayPaths: (pathway: String, paths: PathwayPaths)?
+
+func carrierContractPath(_ pathway: String) -> String {
+    pathway == "fool"
+        ? "production/symbols/fool-carrier-execution-v1.json"
+        : "production/symbols/\(pathway)/carrier-execution.json"
+}
+
+func resolvePathwayPaths(_ root: URL) throws -> PathwayPaths {
+    if let cached = cachedPathwayPaths, cached.pathway == activePathway {
+        return cached.paths
+    }
+    let pathway = activePathway
+    let contract = try jsonObject(try safeRelative(root, carrierContractPath(pathway)))
+    try require(try string(contract["pathway_id"], "carrier pathway") == pathway, "Carrier pathway mismatch: \(pathway)")
+    let catalogs = try object(contract["catalogs"], "carrier catalogs")
+    var resolved: [String: String] = [:]
+    for key in ["five_tier_kit", "sequence_inscriptions", "rank_numerals"] {
+        let record = try object(catalogs[key], "catalog record")
+        let path = try string(record["path"], "catalog path")
+        try require(try digest(try resolvePath(root, path)) == string(record["sha256"], "catalog hash"), "Carrier catalog changed: \(key)")
+        resolved[key] = path
+    }
+    let paths = PathwayPaths(
+        carrierContract: carrierContractPath(pathway),
+        fiveTierKit: resolved["five_tier_kit"]!,
+        sequenceInscriptions: resolved["sequence_inscriptions"]!,
+        rankNumerals: resolved["rank_numerals"]!)
+    cachedPathwayPaths = (pathway, paths)
+    return paths
+}
+
 func loadFoolCarrierExecutionContract(_ root: URL) throws -> [String: Any] {
-    let contractPath = try safeRelative(root, "production/symbols/fool-carrier-execution-v1.json")
+    let contractPath = try safeRelative(root, try resolvePathwayPaths(root).carrierContract)
     let contract = try jsonObject(contractPath)
     try require(try string(contract["schema_version"], "carrier schema version") == "1.0.0", "Carrier contract schema changed")
     try require(try string(contract["contract_type"], "carrier contract type") == "fool-carrier-execution", "Unexpected carrier contract")
     try require(try string(contract["status"], "carrier contract status") == "measured", "Carrier contract is not measured")
-    try require(try string(contract["pathway_id"], "carrier pathway") == "fool", "Carrier pathway changed")
+    try require(try string(contract["pathway_id"], "carrier pathway") == activePathway, "Carrier pathway changed")
     try require(try string(contract["geometry_id"], "carrier geometry") == FoolGeometry.geometryID, "Carrier geometry id changed")
 
     let canvas = try object(contract["canvas"], "carrier canvas")
@@ -751,7 +791,7 @@ struct DirectTierSource {
 // remove the black matte and copy the canonical mother alpha, but it must not
 // recolor, synthesize, or otherwise derive a new tier appearance here.
 func loadDirectTierSources(_ root: URL) throws -> [DirectTierSource] {
-    let catalogURL = try safeRelative(root, "production/symbols/fool-five-tier-kit.json")
+    let catalogURL = try safeRelative(root, try resolvePathwayPaths(root).fiveTierKit)
     let catalog = try jsonObject(catalogURL)
     try require(try string(catalog["status"], "five-tier catalog status") == "official-agentic-visual-material-baseline", "Five-tier catalog is not the current visual baseline")
     let manifestRecord = try object(catalog["active_manifest"], "active five-tier manifest")
@@ -1061,7 +1101,7 @@ struct SequenceRow {
 }
 
 func loadSequenceRows(_ root: URL) throws -> [SequenceRow] {
-    let catalog = try jsonObject(try safeRelative(root, "production/symbols/fool-agentic-sequence-inscriptions-v2.json"))
+    let catalog = try jsonObject(try safeRelative(root, try resolvePathwayPaths(root).sequenceInscriptions))
     try require(try string(catalog["stage"], "sequence catalog stage") == "agentic-complete-frame-baseline", "Sequence catalog is not the current Agentic baseline")
     let rows = try objects(catalog["entries"], "sequence entries")
     try require(rows.count == 10, "Sequence catalog must contain exactly ten rows")
@@ -1071,7 +1111,7 @@ func loadSequenceRows(_ root: URL) throws -> [SequenceRow] {
 }
 
 func loadNumeralAssets(_ root: URL) throws -> (URL, [Int: URL]) {
-    let catalogURL = try safeRelative(root, "production/symbols/fool-rank-numerals-v1.json")
+    let catalogURL = try safeRelative(root, try resolvePathwayPaths(root).rankNumerals)
     let catalog = try jsonObject(catalogURL)
     try require(try string(catalog["geometry_id"], "numeral geometry") == FoolGeometry.geometryID, "Numeral catalog geometry changed")
     try require(try boolean(catalog["fusion_with_pathway_crown"], "numeral fusion") == false, "Numerals must not fuse with pathway crown")
@@ -1530,7 +1570,11 @@ func selftest() throws {
 }
 
 do {
-    let args = CommandLine.arguments
+    var args = CommandLine.arguments
+    if args.count >= 4 && args[1] == "--pathway" {
+        activePathway = args[2]
+        args.removeFirst(2)
+    }
     if args.count == 2 && args[1] == "selftest" {
         try selftest()
     } else if args.count == 5 && args[1] == "mother" {

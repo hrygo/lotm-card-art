@@ -1,5 +1,6 @@
 """Contract-first tests for the Fool Agentic mother-to-sequence pipeline."""
 
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -303,6 +304,70 @@ class RendererTests(unittest.TestCase):
                     self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
                 finally:
                     shutil.rmtree(cross_form, ignore_errors=True)
+
+    @unittest.skipUnless(sys.platform == "darwin" and shutil.which("swiftc"), "native Fool pipeline requires macOS/Swift")
+    def test_pathway_flag_resolves_the_declared_pathway_contract(self):
+        """SYNTHETIC probe pathway: paths come from the contract, never from a hardcoded fool default."""
+        with tempfile.TemporaryDirectory(prefix="fool-pipeline-bin-") as directory:
+            binary = Path(directory) / "foolpipeline5"
+            subprocess.run(
+                ["swiftc", "-O", str(ROOT / "tools/render/foolpipeline5.swift"), "-o", str(binary)],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            with tempfile.TemporaryDirectory(prefix="pathway-flag-probe-") as root_directory:
+                root = Path(root_directory)
+                symbols = root / "production/symbols/synthetic"
+                symbols.mkdir(parents=True)
+                for name in ("five-tier-kit.json", "sequence-inscriptions.json", "rank-numerals.json"):
+                    (symbols / name).write_text('{"synthetic_probe": true}', encoding="utf-8")
+
+                def declared(name: str, *, corrupt: bool = False) -> dict:
+                    payload = (symbols / name).read_bytes()
+                    return {
+                        "path": f"production/symbols/synthetic/{name}",
+                        "sha256": "0" * 64 if corrupt else hashlib.sha256(payload).hexdigest(),
+                        "purpose": "synthetic-probe",
+                    }
+
+                (symbols / "carrier-execution.json").write_text(
+                    json.dumps(
+                        {
+                            "pathway_id": "synthetic",
+                            "catalogs": {
+                                "five_tier_kit": declared("five-tier-kit.json"),
+                                "sequence_inscriptions": declared("sequence-inscriptions.json"),
+                                "rank_numerals": declared("rank-numerals.json", corrupt=True),
+                            },
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                probe_input = "artifacts/production/fool-mother-frame-v1/studies/fool-mother-agentic-high-detail-candidate-n.png"
+                mirror = root / probe_input
+                mirror.parent.mkdir(parents=True)
+                shutil.copyfile(ROOT / probe_input, mirror)
+                parent = tempfile.TemporaryDirectory(prefix=".pathway-flag-test-", dir=ROOT / "artifacts/production")
+                try:
+                    result = subprocess.run(
+                        [
+                            str(binary),
+                            "--pathway",
+                            "synthetic",
+                            "mother",
+                            str(root),
+                            probe_input,
+                            str(Path(parent.name) / "mother"),
+                        ],
+                        capture_output=True,
+                        text=True,
+                    )
+                finally:
+                    parent.cleanup()
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("Carrier catalog changed: rank_numerals", result.stderr)
+                self.assertNotIn("fool-carrier-execution", result.stderr)
 
 
 if __name__ == "__main__":

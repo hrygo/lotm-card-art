@@ -13,6 +13,7 @@
     "geometry_id",
     "canvas",
     "templates",
+    "catalogs",
     "active_frame_source",
     "route",
     "anchors",
@@ -54,6 +55,16 @@
       "properties": {
         "emblem_dock": {"$ref": "#/$defs/file_ref"},
         "rank_numeral_dock": {"$ref": "#/$defs/file_ref"}
+      }
+    },
+    "catalogs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["five_tier_kit", "sequence_inscriptions", "rank_numerals"],
+      "properties": {
+        "five_tier_kit": {"$ref": "#/$defs/file_ref"},
+        "sequence_inscriptions": {"$ref": "#/$defs/file_ref"},
+        "rank_numerals": {"$ref": "#/$defs/file_ref"}
       }
     },
     "active_frame_source": {"$ref": "#/$defs/file_ref"},

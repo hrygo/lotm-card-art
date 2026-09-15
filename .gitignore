@@ -9,6 +9,9 @@
 generated/*
 !generated/README.md
 
+# Transient native-renderer test sandboxes (the renderer only accepts outputs under artifacts/production)
+artifacts/production/.*-test-*/
+
 # Local configuration and credentials
 .env
 .env.*

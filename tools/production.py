@@ -643,8 +643,13 @@ def validate_fool_audio_package(root):
     }
     card_art_root = inside(root, "apps/LotmCardStudio/Resources/CardArt")
     card_art_names = sorted(path.stem for path in card_art_root.glob("*.png"))
-    if card_art_names != sorted(expected_card_art):
-        raise Invalid("App CardArt whitelist does not match the registered card art")
+    expected_card_art_names = sorted(expected_card_art)
+    if card_art_names != expected_card_art_names:
+        raise Invalid(
+            "App CardArt whitelist does not match the registered card art: "
+            f"unregistered={sorted(set(card_art_names) - set(expected_card_art_names))} "
+            f"missing={sorted(set(expected_card_art_names) - set(card_art_names))}"
+        )
     for name, source_rel in expected_card_art.items():
         app_path = card_art_root / (name + ".png")
         source_path = inside(root, source_rel)
@@ -655,7 +660,11 @@ def validate_fool_audio_package(root):
     app_audio_root = inside(root, "apps/LotmCardStudio/Resources/Audio")
     app_audio_names = sorted(path.stem for path in app_audio_root.glob("*.wav"))
     if app_audio_names != expected_audio_names:
-        raise Invalid("App Audio whitelist contains an orphan or missing WAV")
+        raise Invalid(
+            "App Audio whitelist contains an orphan or missing WAV: "
+            f"unregistered={sorted(set(app_audio_names) - set(expected_audio_names))} "
+            f"missing={sorted(set(expected_audio_names) - set(app_audio_names))}"
+        )
     for item in audio_records:
         app_path = app_audio_root / (item["resource_name"] + ".wav")
         if sha(app_path) != item["sha256"]:

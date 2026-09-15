@@ -27,7 +27,15 @@ Fool 载体几何在**三处**并存：`production/symbols/fool-carrier-executio
 | gem `name_clearance_design` | 24 | 12 | 12 |
 | gem `shape` | `shield-cut-low-profile-lozenge` | `regular-equilateral-hexagon` | hexagon |
 
-两者都声明 `geometry_id = fool-agentic-mother-v2`。接口模板的 `gem_slot` 块当前只被 Python 读取 `name_surface` 时触及（`tools/production.py:1365`），渲染器则从载体合同 `anchors` 读宝石并断言等于自身常量（`tools/render/foolpipeline5.swift:693-697`）。因此**把几何收敛到接口模板会静默改变宝石几何与像素**，该块须先与实测几何对齐。
+两者都声明 `geometry_id = fool-agentic-mother-v2`。接口模板的 `gem_slot` 块当前只被 Python 读取 `name_surface` 时触及（`tools/production.py` 的 `name_contract` 读取，当前 :1364），渲染器则从载体合同 `anchors` 读宝石并断言等于自身常量（`tools/render/foolpipeline5.swift` 的 `gem` 锚点断言，当前 :733-737）。因此**把几何收敛到接口模板会静默改变宝石几何与像素**，该块须先与实测几何对齐。
+
+## 待裁定（选项 A 的唯一阻塞点）
+
+取舍对象是**哪一份值级强制为准**，不是几何值本身：已批准像素（11 张卡经用户视觉验收）与载体合同（`status: measured`）**一致**，接口模板的 `gem_slot` 块（`status: template`）是同一 `geometry_id` 下的**陈旧副本**。因此采用 A **不需要**先修模板（A 不读模板）；只有选 B 才必须先对齐模板，否则改像素。
+
+- **选 A**：schema 的 `gem_slot` 值级 `const`（`shape` / `center_design` / `visible_size_design` / `name_clearance_design`）放宽为结构约束，值级强制**移交 pin**；渲染器改为派生并删除等值断言。
+  - 须接受的风险：合同值若被改动**且同时重封存**，渲染器会静默跟到新几何——此时唯一拦截是 golden 与人工视觉验收（fail-closed → fail-on-pin 的失败模式变更）。
+- **维持 C（现状）**：合同 `measured` + 渲染器等值断言 + pin 三处一致，schema 值级 `const` 作为第四道冗余；代价是几何值在 schema 里多存一份。
 
 ## Decision
 

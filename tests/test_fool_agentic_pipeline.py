@@ -369,6 +369,76 @@ class RendererTests(unittest.TestCase):
                 self.assertIn("Carrier catalog changed: rank_numerals", result.stderr)
                 self.assertNotIn("fool-carrier-execution", result.stderr)
 
+    @unittest.skipUnless(sys.platform == "darwin" and shutil.which("swiftc"), "native Fool pipeline requires macOS/Swift")
+    def test_catalog_path_must_be_repository_relative(self):
+        """SYNTHETIC counterexample: an out-of-root catalog path is rejected on path shape, not on hash."""
+        with tempfile.TemporaryDirectory(prefix="fool-pipeline-abs-") as directory:
+            binary = Path(directory) / "foolpipeline5"
+            subprocess.run(
+                ["swiftc", "-O", str(ROOT / "tools/render/foolpipeline5.swift"), "-o", str(binary)],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            outside = Path(directory) / "outside-catalog.json"
+            outside.write_text('{"synthetic_probe": true}', encoding="utf-8")
+            with tempfile.TemporaryDirectory(prefix="pathway-abs-probe-") as root_directory:
+                root = Path(root_directory)
+                symbols = root / "production/symbols/synthetic"
+                symbols.mkdir(parents=True)
+                for name in ("sequence-inscriptions.json", "rank-numerals.json"):
+                    (symbols / name).write_text('{"synthetic_probe": true}', encoding="utf-8")
+
+                def declared(name: str) -> dict:
+                    payload = (symbols / name).read_bytes()
+                    return {
+                        "path": f"production/symbols/synthetic/{name}",
+                        "sha256": hashlib.sha256(payload).hexdigest(),
+                        "purpose": "synthetic-probe",
+                    }
+
+                (symbols / "carrier-execution.json").write_text(
+                    json.dumps(
+                        {
+                            "pathway_id": "synthetic",
+                            "catalogs": {
+                                "five_tier_kit": {
+                                    "path": str(outside),
+                                    "sha256": hashlib.sha256(outside.read_bytes()).hexdigest(),
+                                    "purpose": "synthetic-probe",
+                                },
+                                "sequence_inscriptions": declared("sequence-inscriptions.json"),
+                                "rank_numerals": declared("rank-numerals.json"),
+                            },
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                probe_input = "artifacts/production/fool-mother-frame-v1/studies/fool-mother-agentic-high-detail-candidate-n.png"
+                mirror = root / probe_input
+                mirror.parent.mkdir(parents=True)
+                shutil.copyfile(ROOT / probe_input, mirror)
+                parent = tempfile.TemporaryDirectory(prefix=".pathway-abs-test-", dir=ROOT / "artifacts/production")
+                try:
+                    result = subprocess.run(
+                        [
+                            str(binary),
+                            "--pathway",
+                            "synthetic",
+                            "mother",
+                            str(root),
+                            probe_input,
+                            str(Path(parent.name) / "mother"),
+                        ],
+                        capture_output=True,
+                        text=True,
+                    )
+                finally:
+                    parent.cleanup()
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("Catalog path must be repository-relative", result.stderr)
+                self.assertNotIn("Carrier catalog changed", result.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

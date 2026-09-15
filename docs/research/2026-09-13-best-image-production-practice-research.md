@@ -648,16 +648,16 @@ cards/<card_id>/
 
 ## 项目内依据
 
-- [`AGENTS.md`](/Users/hrygo/Documents/诡秘之主/AGENTS.md)：项目边界、事实与创作分离、六维契约、高清交付和批准门槛。
-- [`design/semantic-contract.md`](/Users/hrygo/Documents/诡秘之主/design/semantic-contract.md)：六维语义、精确载体和回读边界。
-- [`design/art-bible.md`](/Users/hrygo/Documents/诡秘之主/design/art-bible.md)：22 条途径的视觉区分、单一主视觉事件和力量递进。
-- [`design/layout-system.md`](/Users/hrygo/Documents/诡秘之主/design/layout-system.md)：2:3、四种构图模式、图层分离和文字安全区。
-- [`design/rank-grammar.md`](/Users/hrygo/Documents/诡秘之主/design/rank-grammar.md)：序列与层级的项目级视觉语法。
-- [`design/symbol-policy.md`](/Users/hrygo/Documents/诡秘之主/design/symbol-policy.md)：原创途径标识、稳定根标识和 compact mark 原则。
-- [`design/typography.md`](/Users/hrygo/Documents/诡秘之主/design/typography.md)：文字层和逐字校对约束。
-- [`config/project.json`](/Users/hrygo/Documents/诡秘之主/config/project.json)：输出像素、比例、格式和阶段状态。
-- [`docs/workflow.md`](/Users/hrygo/Documents/诡秘之主/docs/workflow.md)：先样板途径、再跨途径验证，不自动批量生成。
-- [`docs/superpowers/specs/2026-09-13-card-visual-language-framework-design.md`](/Users/hrygo/Documents/诡秘之主/docs/superpowers/specs/2026-09-13-card-visual-language-framework-design.md)：已经确认的二维框架、复合标记、无导轨和四档层级决策。
+- [`AGENTS.md`](../../AGENTS.md)：项目边界、事实与创作分离、六维契约、高清交付和批准门槛。
+- [`design/semantic-contract.md`](../../design/semantic-contract.md)：六维语义、精确载体和回读边界。
+- [`design/art-bible.md`](../../design/art-bible.md)：22 条途径的视觉区分、单一主视觉事件和力量递进。
+- [`design/layout-system.md`](../../design/layout-system.md)：2:3、四种构图模式、图层分离和文字安全区。
+- [`design/rank-grammar.md`](../../design/rank-grammar.md)：序列与层级的项目级视觉语法。
+- [`design/symbol-policy.md`](../../design/symbol-policy.md)：原创途径标识、稳定根标识和 compact mark 原则。
+- [`design/typography.md`](../../design/typography.md)：文字层和逐字校对约束。
+- [`config/project.json`](../../config/project.json)：输出像素、比例、格式和阶段状态。
+- [`docs/workflow.md`](../workflow.md)：先样板途径、再跨途径验证，不自动批量生成。
+- [`docs/superpowers/specs/2026-09-13-card-visual-language-framework-design.md`](../superpowers/specs/2026-09-13-card-visual-language-framework-design.md)：已经确认的二维框架、复合标记、无导轨和四档层级决策。
 
 ## 公开研究与工具资料
 

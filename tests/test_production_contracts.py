@@ -21,6 +21,35 @@ class CurrentContractTests(unittest.TestCase):
             with self.assertRaises(p.Invalid):
                 p.visual_quality(ROOT, bad)
 
+    def test_quality_tier_mapping_derives_from_the_single_source(self):
+        self.assertEqual(
+            p.quality_tier_mapping(ROOT),
+            {"low": [9, 8], "mid": [7, 6, 5], "saint": [4, 3], "angel": [2, 1], "true-god": [0]},
+        )
+        self.assertEqual(list(p.quality_tier_mapping(ROOT)), list(p.TIER_ORDER))
+
+    def test_non_bijective_quality_config_is_rejected(self):
+        def synthetic(tiers):
+            holder = tempfile.TemporaryDirectory()
+            self.addCleanup(holder.cleanup)
+            root = Path(holder.name)
+            (root / "config").mkdir()
+            p.write(root / "config/quality-color-tokens.json", {"tiers": tiers})
+            return root
+
+        valid = p.read(ROOT / "config/quality-color-tokens.json")["tiers"]
+        cases = {
+            "duplicate sequence": [dict(valid[0], sequences=[9, 9]), *valid[1:]],
+            "missing sequence": [dict(valid[0], sequences=[9]), *valid[1:]],
+            "unknown tier id": [dict(valid[0], id="saintly"), *valid[1:]],
+            "non-integer sequence": [dict(valid[0], sequences=["9", 8]), *valid[1:]],
+            "dropped tier": valid[:4],
+        }
+        for label, tiers in cases.items():
+            with self.subTest(case=label):
+                with self.assertRaises(p.Invalid):
+                    p.quality_tiers(synthetic(tiers))
+
     def test_quality_task_accepts_saint_but_rejects_mismatch(self):
         task = p.read(ROOT / "production/tasks/hierarchy-low.json")
         task["quality"] = {"sequence": 4, "visual_tier": "saint"}

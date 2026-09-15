@@ -45,6 +45,8 @@ NATIVE_BASELINE_STATUSES = {
     "agentic-native-material-baseline",        # 渲染器今后写入的中性标记
 }
 
+TIER_ORDER = ("low", "mid", "saint", "angel", "true-god")
+
 
 def inside(root, rel):
     if not isinstance(rel, str) or not rel or Path(rel).is_absolute():
@@ -157,19 +159,29 @@ def schema(root, name):
     return read(root / f"production/schemas/{name}.schema.json")
 
 
-def visual_quality(root, sequence):
-    """Resolve visual quality without changing the canonical rank taxonomy."""
-    if type(sequence) is not int or not 0 <= sequence <= 9:
-        raise Invalid("quality sequence must be an integer from 0 to 9")
+def quality_tiers(root):
+    """Return the validated five-tier configuration — the single quality source."""
     tiers = read(root / "config/quality-color-tokens.json")["tiers"]
     ids = [row["id"] for row in tiers]
     numbers = [n for row in tiers for n in row["sequences"]]
-    if (len(ids) != 5 or set(ids) != {"low", "mid", "saint", "angel", "true-god"}
+    if (len(ids) != 5 or set(ids) != set(TIER_ORDER)
             or any(type(n) is not int for n in numbers) or sorted(numbers) != list(range(10))):
         raise Invalid("quality configuration must cover all ten sequences exactly once")
     if any(not re.fullmatch(r"#[0-9a-fA-F]{6}", row["primary"]) for row in tiers):
         raise Invalid("invalid quality primary color")
-    return next(row for row in tiers if sequence in row["sequences"])
+    return tiers
+
+
+def quality_tier_mapping(root):
+    """Derive {tier_id: [sequences]} from the single quality configuration."""
+    return {row["id"]: list(row["sequences"]) for row in quality_tiers(root)}
+
+
+def visual_quality(root, sequence):
+    """Resolve visual quality without changing the canonical rank taxonomy."""
+    if type(sequence) is not int or not 0 <= sequence <= 9:
+        raise Invalid("quality sequence must be an integer from 0 to 9")
+    return next(row for row in quality_tiers(root) if sequence in row["sequences"])
 
 
 def validate_external_audrey_assets(root):
@@ -680,14 +692,8 @@ def validate_pathway_materials(root, pathway_id="fool"):
     audrey_preservation = validate_external_audrey_assets(root)
     carrier_contract = validate_pathway_carrier_contract(root, pathway_id)
     audio_package = validate_fool_audio_package(root) if pathway_id == "fool" else None
-    tier_order = ["low", "mid", "saint", "angel", "true-god"]
-    expected_mapping = {
-        "low": [9, 8],
-        "mid": [7, 6, 5],
-        "saint": [4, 3],
-        "angel": [2, 1],
-        "true-god": [0],
-    }
+    expected_mapping = quality_tier_mapping(root)
+    tier_order = list(expected_mapping)
 
     def required_file(rel, label):
         path = inside(root, rel)

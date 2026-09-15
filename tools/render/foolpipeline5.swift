@@ -695,6 +695,11 @@ func loadFoolCarrierExecutionContract(_ root: URL) throws -> [String: Any] {
     try requirePoint(gem["center_design"], FoolGeometry.gemCenter, "gem center")
     try requireSize(gem["visible_size_design"], FoolGeometry.gemVisibleSize, "gem visible size")
     try require(abs(try real(gem["name_clearance_design"], "gem name clearance") - FoolGeometry.gemNameClearance) < 0.001, "Gem/name clearance changed")
+    let illustration = try object(anchors["illustration_window"], "illustration window anchor")
+    try requireRect(illustration["rect_design"], FoolGeometry.illustrationWindow, "illustration window")
+    let exclusion = try object(anchors["numeral_exclusion"], "numeral exclusion anchor")
+    try requireRect(exclusion["rect_design"], FoolGeometry.numeralExclusion, "numeral exclusion")
+    try require(abs(try real(anchors["rank_numeral_visible_height_design"], "rank numeral visible height") - FoolGeometry.rankNumeralVisibleHeightFinal) < 0.001, "Rank numeral visible height changed")
 
     let protected = try object(contract["protected_regions"], "carrier protected regions")
     try require(try string(protected["pathway_crown"], "crown mask") == "mother-crown-protected", "Crown mask mapping changed")

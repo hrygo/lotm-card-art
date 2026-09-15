@@ -86,7 +86,10 @@
         "rank_numeral_dock",
         "right_sequence_zone",
         "name_surface",
-        "gem_slot"
+        "gem_slot",
+        "illustration_window",
+        "numeral_exclusion",
+        "rank_numeral_visible_height_design"
       ],
       "properties": {
         "pathway_mark": {"$ref": "#/$defs/rect_pair"},
@@ -94,6 +97,9 @@
         "rank_numeral_dock": {"$ref": "#/$defs/dock"},
         "right_sequence_zone": {"$ref": "#/$defs/rect_pair"},
         "name_surface": {"$ref": "#/$defs/rect_pair"},
+        "illustration_window": {"$ref": "#/$defs/rect_only"},
+        "numeral_exclusion": {"$ref": "#/$defs/rect_only"},
+        "rank_numeral_visible_height_design": {"type": "number", "exclusiveMinimum": 0},
         "gem_slot": {
           "type": "object",
           "additionalProperties": false,
@@ -159,6 +165,14 @@
       "items": {"type": "number", "minimum": 0},
       "minItems": 4,
       "maxItems": 4
+    },
+    "rect_only": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rect_design"],
+      "properties": {
+        "rect_design": {"$ref": "#/$defs/rect"}
+      }
     },
     "rect_pair": {
       "type": "object",

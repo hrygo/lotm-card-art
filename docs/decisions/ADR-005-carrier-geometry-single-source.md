@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed（Decision 1–2 已实施并验证；Decision 3 待裁定）
+Accepted（Decision 1–3 已实施并验证；A/B 作为后续可选升级保留，见 Decision 3 与「实施前置」）
 
 ## Date
 
@@ -33,17 +33,16 @@ Fool 载体几何在**三处**并存：`production/symbols/fool-carrier-executio
 
 1. **已实施——合同纳入 pin**：`production/symbols/fool-carrier-execution-v1.json` 加入 `production/tasks/fool-five-tier-frame-batch-v1.json` 的 `contracts[]`（112→113 条）。改动该合同即令 `pin_seal --check` 失败（实测 rc=1 并点名路径与新旧哈希），该检查已进 CI。
 2. **已实施——Python 单源化**：`tools/production.py` 删除重复的几何字面量，改为**结构校验 + 关系不变量**：`safe_rect ⊆ rect`、宝石居中于姓名面、宝石不侵入姓名面安全距、序列数字居中于画布。精确值交由 pin 锁定，语义交由不变量守护。配对新增 6 条用例（pin 存在性、3 条关系反例、容器判定正负例）。
-3. **待裁定——渲染器几何来源与失败模式**：
-   - **A（推荐）**：几何以**实测载体合同**为唯一家；渲染器**派生**其常量，并在渲染前校验该合同已按 pin 封存。改几何必须显式重封 pin（等同人工批准），从而同时满足计划验收的「改一处生效」与现行为的安全边界 fail-closed。
-   - **B**：几何以**接口模板**为唯一家，载体合同只保留实测锚点。**前置**：先修正接口模板的陈旧宝石块，否则等于改像素。
-   - **C**：保留现行为——渲染器继续用 `requireRect`/`requirePoint` 对合同做 fail-closed 等值断言，把 T2 收口为「强制镜像」，并修订计划验收措辞（不再要求渲染器派生）。
+3. **已裁定并实施——渲染器保留 fail-closed 等值断言（选项 C），并补齐几何覆盖**：渲染器继续以 `requireRect`/`requirePoint` 对同一载体合同做等值断言，失败模式不变（合同漂移即拒绝渲染，不静默跟随）。同时把此前**未被任何合同覆盖**的 3 个几何值补进载体合同并加断言：`illustration_window`、`numeral_exclusion`、`rank_numeral_visible_height_design`（含 schema 扩展与 2 条覆盖用例）。结果是：载体合同成为**唯一且被 pin 锁定的几何声明源**，渲染器 13 个几何常量**全部**被合同覆盖并逐项断言，未再留有游离字面量。
+   - **后续可选（未实施）**：
+     - **A**（推荐升级）：渲染器改为**派生**并在渲染前校验合同已按 pin 封存，从而「改一处即生效」且仍 fail-closed。**代价**：需放宽 `fool-carrier-execution.schema.json` 中 `gem_slot` 等处的值级 `const`（把值级强制从 schema 移到 pin），属失败模式变更，须单独决定。
+     - **B**：几何改以**接口模板**为唯一家，载体合同只保留实测锚点。**前置**：先修正接口模板的陈旧 `gem_slot` 块（其值与载体合同对同一 `geometry_id` 矛盾），否则等于改像素。
 
-## 实施前置（A 或 B 均需）
+## 实施前置
 
-- 将 `illustrationWindow`、`rankNumeralVisibleHeightFinal` 落入选定合同，并核对 schema `additionalProperties: false` 的约束是否需要同步放宽。
-- 对齐接口模板的陈旧宝石块，或显式声明其为历史接口。
-- 重封 pin，并让渲染器在渲染前校验合同已封存。
-- 验证门：`swiftc` 自检、golden 30/30 逐字节一致、五门禁逐字节一致、Python 全套、`swift test`。
+- ✅ 已随选项 C 完成：`illustration_window`、`numeral_exclusion`、`rank_numeral_visible_height_design` 落入选定合同（含 schema 扩展：`anchors.required`/`properties` + `$defs.rect_only`），并补 2 条覆盖用例；重封 pin（113 条）；渲染器逐项断言。
+- ⏳ 仅采用 A/B 时需要：对齐接口模板的陈旧 `gem_slot` 块；渲染器改为派生并在渲染前校验合同已封存；放宽 schema 的值级 `const`。
+- 验证门：`swiftc` 自检、golden 逐字节一致、五门禁逐字节一致、Python 全套、`swift test`（选项 C 下已全部通过）。
 
 ## Consequences
 

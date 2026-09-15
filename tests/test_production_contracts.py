@@ -202,5 +202,48 @@ class CarrierGeometrySingleSourceTests(unittest.TestCase):
         self.assertFalse(p._rect_contains([0, 0, 10, 10], [5, 5, 10, 10]))
 
 
+class CarrierGeometryCoverageTests(unittest.TestCase):
+    EXPECTED = {
+        "illustrationWindow": "illustration_window",
+        "nameSurface": "name_surface",
+        "nameSafe": "name_surface",
+        "gemCenter": "gem_slot",
+        "gemVisibleSize": "gem_slot",
+        "gemNameClearance": "gem_slot",
+        "rightSequenceZone": "right_sequence_zone",
+        "rightSequenceSafe": "right_sequence_zone",
+        "pathwayCrown": "pathway_crown",
+        "numeralExclusion": "numeral_exclusion",
+        "rankNumeralCenter": "rank_numeral_dock",
+        "rankNumeralSafe": "rank_numeral_dock",
+        "rankNumeralVisibleHeightFinal": "rank_numeral_visible_height_design",
+    }
+
+    def test_every_renderer_geometry_constant_is_contract_covered(self):
+        import re
+        swift = (ROOT / "tools/render/foolpipeline5.swift").read_text(encoding="utf-8")
+        body = swift[swift.index("struct FoolGeometry"):swift.index("static var gemRect")]
+        constants = [name for name in re.findall(r"static let (\w+)", body) if name != "geometryID"]
+
+        self.assertEqual(sorted(constants), sorted(self.EXPECTED))
+
+        contract = json.loads((ROOT / "production/symbols/fool-carrier-execution-v1.json").read_text(encoding="utf-8"))
+        for constant, anchor in self.EXPECTED.items():
+            self.assertIn(anchor, contract["anchors"], f"{constant} 的合同锚点缺失: {anchor}")
+
+    def test_contract_geometry_anchors_satisfy_the_schema(self):
+        import re
+        schema = json.loads((ROOT / "production/schemas/fool-carrier-execution.schema.json").read_text(encoding="utf-8"))
+        contract = json.loads((ROOT / "production/symbols/fool-carrier-execution-v1.json").read_text(encoding="utf-8"))
+        anchor_schema = schema["properties"]["anchors"]
+
+        for anchor in contract["anchors"]:
+            self.assertIn(anchor, anchor_schema["properties"])
+            self.assertIn(anchor, anchor_schema["required"])
+        for name, definition in anchor_schema["properties"].items():
+            if "$ref" in definition:
+                self.assertIn(definition["$ref"].rsplit("/", 1)[-1], schema["$defs"])
+
+
 if __name__ == "__main__":
     unittest.main()

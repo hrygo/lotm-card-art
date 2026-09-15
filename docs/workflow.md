@@ -58,3 +58,7 @@ brief在`generated/<card_id>/`写入task.md、art-brief.md、overlay-copy.json�
 审核还绑定最终图像SHA256；改图即使不改方案也会使旧审核不匹配。
 reference manifest的变动会保守地使相关快照失效；不声明这是最小依赖影响分析系统。
 普通用户批准可记录会话或工单位置，不能由Agent自己假造用户名、时间和发言。
+
+## 快照与 tag
+tag 是**快照**，不是发布或交付：打 tag 时说明必须附「在途内容清单」（未提交或在途的卡、研究稿、config 改动），并写明 `python3 tools/selfcheck.py` 的自证结果。
+tag 名与说明不得暗示批准、release 或内容已核验；`release_approved` 与人工批准状态以各自独立记录为准，不因打 tag 而改变。

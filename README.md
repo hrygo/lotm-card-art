@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="docs/assets/logo_160.png" width="128" height="128" alt="诡秘之主卡牌制作脚手架 Logo" />
+  <img src="docs/assets/logo_160.png" width="128" height="128" alt="诡秘世界 Logo" />
 </p>
 
-<h1 align="center">诡秘之主 · 220 张成神途径卡牌制作脚手架</h1>
+<h1 align="center">诡秘世界 · 220 张成神途径卡牌制作脚手架</h1>
 
 <p align="center">
   <strong>22 条成神途径 × 序列 9–0 · 220 张独立高清序列卡牌正面 · 六维语义严谨契约 · 原生画册客户端</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/hrygo/lotm-card-art/actions/workflows/ci.yml"><img src="https://github.com/hrygo/lotm-card-art/actions/workflows/ci.yml/badge.svg" alt="CI 状态" /></a>
+  <a href="https://github.com/hrygo/world-of-mysteries/actions/workflows/ci.yml"><img src="https://github.com/hrygo/world-of-mysteries/actions/workflows/ci.yml/badge.svg" alt="CI 状态" /></a>
   <img src="https://img.shields.io/badge/version-0.3.0-blue.svg" alt="版本 0.3.0" />
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB.svg?logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/macOS-26.0%2B-000000.svg?logo=apple&logoColor=white" alt="macOS 26.0+" />
@@ -35,6 +35,8 @@
 ## 📖 项目核心目标
 
 本项目以小说《诡秘之主》（Lord of the Mysteries）全 **22 条成神途径、每条途径序列 9 至 0，共计 220 张独立高清序列卡牌正面** 为内容生产主线，并提供一个隔离的 macOS 原生画册客户端垂直切片。
+
+本仓库同时是《诡秘世界》项目的前置工程：产品目标（World/Character/Story/Audio 引擎、持久世界、Story Book）以 [`docs/product/secret-world-prd-v1.0.md`](docs/product/secret-world-prd-v1.0.md)（母 PRD，立项级产品基线）为准；卡牌内容生产保持独立职责，引擎实现尚未开始。
 
 220 是美术生产脚手架的序列卡槽基线（22 途径 × 10 序列），不是卡牌上限，也不是客户端收藏分母——同一序列可有多个不同人物的身份卡，同一人物可有跨多个序列的形象卡，实际卡数可超过 220。客户端模型允许一个序列拥有 0…N 张身份卡，
 同一角色也可以拥有多张独立身份卡；当前客户端以隔离 fixture 展示 S00 愚者先生、S09 克莱恩、序列之上·诡秘之主的福生玄黄天尊、序列之上·星界支柱的上帝与序列之上·现实支柱的堕落母神，以及永恒之暗、恶魔之父、毁灭天灾、失序者、知识之妖、光之钥六位「序列之上」旧日，共十一张卡，均已接入卡图、六维、故事与本地配音；十一张卡已于 2026-09-14 由用户视觉验收并在客户端呈现为正式收藏，但内容仍是待核验 fixture，也没有 2K/4K 交付像素——批准不等于发布。
@@ -131,7 +133,7 @@ python3 -m unittest discover -s tests -v
 
 ## 🖥️ 原生画册客户端 (LotmCardStudio)
 
-位于 [`apps/LotmCardStudio`](apps/LotmCardStudio/)，是《诡秘之主》卡牌画册的原生桌面客户端：
+位于 [`apps/LotmCardStudio`](apps/LotmCardStudio/)，是《诡秘世界》卡牌画册的原生桌面客户端：
 
 <p align="center">
   <img src="apps/LotmCardStudio/Resources/logo.png" width="96" height="96" alt="LotmCardStudio App Icon" />
@@ -229,7 +231,7 @@ graph LR
 
 ## 🤝 参与贡献
 
-欢迎共同完善《诡秘之主》220 张序列卡牌的结构化工程！在提交 Pull Request 前，请参阅：
+欢迎共同完善《诡秘世界》220 张序列卡牌的结构化工程！在提交 Pull Request 前，请参阅：
 
 - 📘 [贡献指南 (CONTRIBUTING.md)](CONTRIBUTING.md)：完整的单卡研究、证据填写与提交约定。
 - 🛡️ [安全政策 (SECURITY.md)](SECURITY.md)：私密报告漏洞或凭据风险。

@@ -12,7 +12,7 @@
 
 请使用 GitHub 的私密漏洞报告入口：
 
-https://github.com/hrygo/lotm-card-art/security/advisories/new
+https://github.com/hrygo/world-of-mysteries/security/advisories/new
 
 不要在公开 Issue、Pull Request、Discussion、提交信息或截图中发布漏洞细节、凭据或个人敏感信息。如果入口暂时不可用，请先通过 GitHub 私下联系 @hrygo，确认安全的沟通方式后再发送细节。
 

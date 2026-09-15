@@ -81,3 +81,12 @@ scaffold应通过，空卡design/release应失败。检验“拒绝坏数据”�
 - 路由与效力已同步：根 `AGENTS.md`（概览/结构/查哪里）、`docs/AGENTS.md`（效力地图/约定/反模式/状态分类）、`docs/LIMITATIONS.md`（未实现清单）。
 - PRD 附录 A 的 15 份工程契约与附录 B 的拆分 PRD **均未创建**，不在本决策范围内；尚未确定引擎代码归属的仓库或目录。
 
+## D18｜项目更名为《诡秘世界》：英文名、仓库名与标识方案
+原因：用户裁决本项目后续演进为《诡秘世界》（以本卡牌体系为 Canon 底座的单人持续世界应用），App 同步更名。需要为「本地项目名 + GitHub 仓库名」定下唯一命名方案，并明确哪些标识**不得**随名迁移。
+结果：
+- **命名（已采纳）**：显示名 **诡秘世界**；英文名 **World of Mysteries**；GitHub 仓库 `hrygo/world-of-mysteries`（原 `lotm-card-art`，2026-09-15 改名，旧 URL 由 GitHub 重定向）；bundle id 规划 `com.hrygo.world-of-mysteries`；bundle 目录规划 `WorldOfMysteries.app`；App 模块规划 `WorldOfMysteries`；**未来引擎模块保持 IP 中性**（`WorldEngine`/`CharacterEngine`/`StoryEngine`/`AudioEngine`），不挂产品名（依 PRD §25 引擎与内容解耦）。
+- **取舍依据**：`Secret World` 因与 Funcom「The Secret World」/「Secret World Legends」**同行业同题材商标重叠**而排除（该商标声明见 secretworldlegends.com 页脚）；`World of Mysteries` 与原著官方英文名 *Lord of the Mysteries* 同构，回译「诡秘世界」稳定。
+- **本批已完成**：根 `README.md`、根 `AGENTS.md`、`SECURITY.md`、`.github/ISSUE_TEMPLATE/config.yml`、`config/project.json` 的 `project_id`，以及 GitHub 仓库名与本地 remote URL。
+- **不得随名迁移（稳定标识）**：（1）内容 ID 命名空间 `lotm.*`（403 文件 / 1089 次）——批准 sidecar 与 provenance 按 `card_id` + sha256 绑定，改名会作废全部批准与哈希链；（2）`production/schemas/*.json` 的 `$id`（内容层 schema 命名空间）；（3）项目技能名 `lotm-*`；（4）小说与 IP 引用：`小说《诡秘之主》`、canon 序列名「序列之上·诡秘之主」、法律归属段落。
+- **分批计划**（含 Keychain 与 `Application Support` 配置路径的**阶梯迁移**、安装包迁移、历史文档不回写、引擎目录分层）见 `docs/superpowers/plans/2026-09-15-rename-to-world-of-mysteries.md`（Agent 生成提案）。本轮只执行「项目名与仓库名」部分，未改任何代码。
+

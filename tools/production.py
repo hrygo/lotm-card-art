@@ -2216,6 +2216,81 @@ def gate(root, directory_rel, release=False):
             "limitation":"Checks integrity and records; visual/semantic approval remains separate."}
 
 
+ASSET_SIZE_LIMITS = {"single_file_mb": 32.0, "scope_total_mb": 256.0}
+
+
+def _mb(size):
+    return round(size / 1_048_576, 2)
+
+
+def measure_asset_scope(root, scope):
+    base = inside(root, scope)
+    if not base.is_dir():
+        return None
+    count = 0
+    total = 0
+    worst = None
+    for path in sorted(base.rglob("*")):
+        if not path.is_file() or path.is_symlink():
+            continue
+        size = path.stat().st_size
+        count += 1
+        total += size
+        if worst is None or size > worst[1]:
+            worst = (path, size)
+    return {
+        "scope": scope,
+        "file_count": count,
+        "total_mb": _mb(total),
+        "max_file": (
+            {"path": worst[0].resolve().relative_to(root.resolve()).as_posix(), "mb": _mb(worst[1])}
+            if worst else None
+        ),
+    }
+
+
+def report_asset_size(root, single_file_mb=None, scope_total_mb=None):
+    limits = {
+        "single_file_mb": float(
+            ASSET_SIZE_LIMITS["single_file_mb"] if single_file_mb is None else single_file_mb
+        ),
+        "scope_total_mb": float(
+            ASSET_SIZE_LIMITS["scope_total_mb"] if scope_total_mb is None else scope_total_mb
+        ),
+    }
+    artifacts = inside(root, "artifacts")
+    batches = []
+    if artifacts.is_dir():
+        for batch in sorted(path for path in artifacts.iterdir() if path.is_dir()):
+            row = measure_asset_scope(root, batch.resolve().relative_to(root.resolve()).as_posix())
+            if row is not None:
+                batches.append(row)
+    warnings = []
+    for row in batches:
+        if row["max_file"] and row["max_file"]["mb"] > limits["single_file_mb"]:
+            warnings.append(
+                f"single file over budget: {row['max_file']['path']} ({row['max_file']['mb']} MB)"
+            )
+        if row["total_mb"] > limits["scope_total_mb"]:
+            warnings.append(f"batch over budget: {row['scope']} ({row['total_mb']} MB)")
+    heaviest = max(
+        (row for row in batches if row["max_file"]),
+        key=lambda row: row["max_file"]["mb"],
+        default=None,
+    )
+    return {
+        "status": "reported",
+        "blocking": False,
+        "thresholds": limits,
+        "batch_count": len(batches),
+        "batches": batches,
+        "total_mb": round(sum(row["total_mb"] for row in batches), 2),
+        "max_file": heaviest["max_file"] if heaviest else None,
+        "warnings": warnings,
+        "limitation": "体积观测只报告不阻断，不自动压缩或删除；卡图与音频自单一存放后只计一份。",
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command",required=True)
@@ -2233,6 +2308,7 @@ def main():
     c=sub.add_parser("stage-app-resources");c.add_argument("--dest",required=True)
     sub.add_parser("check-fool-cards")
     sub.add_parser("check-fool-nonsequence-cards")
+    c=sub.add_parser("report-asset-size");c.add_argument("--single-file-mb",type=float);c.add_argument("--scope-total-mb",type=float)
     args=parser.parse_args()
     try:
         if args.command=="compile": result=compile_task(ROOT,args.task,args.out)
@@ -2256,6 +2332,8 @@ def main():
         elif args.command=="stage-app-resources":
             report = validate_fool_audio_package(ROOT, stage_root=args.dest)
             result = {"passed": True, "staged_root": args.dest, "app": report["app"]}
+        elif args.command=="report-asset-size":
+            result = report_asset_size(ROOT, args.single_file_mb, args.scope_total_mb)
         elif args.command=="check-fool-cards":
             result = validate_fool_cards(ROOT)
         elif args.command=="check-fool-nonsequence-cards":

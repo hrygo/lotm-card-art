@@ -1,7 +1,9 @@
 """Reseal tool tests: drift detection, surgical rewrite, scope boundary."""
 
 import hashlib
+import io
 import json
+from contextlib import redirect_stdout
 from pathlib import Path
 import sys
 import tempfile
@@ -57,7 +59,11 @@ class SyntheticTreeTests(unittest.TestCase):
         problems, _ = pin_seal.audit(root)
         self.assertIn("docs/production-sop-v3.md", problems[0])
         self.assertIn("production/tasks/sample-v1.json", problems[0])
-        self.assertNotEqual(pin_seal.main(["--check", "--root", str(root)]), 0)
+        out = io.StringIO()
+        with redirect_stdout(out):
+            code = pin_seal.main(["--check", "--root", str(root)])
+        self.assertNotEqual(code, 0)
+        self.assertRegex(out.getvalue(), r"STALE\s+production/tasks/sample-v1\.json")
 
     def test_changed_source_is_resealed_without_touching_other_bytes(self):
         root = self.make_tree()

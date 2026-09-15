@@ -1,7 +1,7 @@
 """fresh checkout 自证脚本的组成与错误路径（不执行重步骤）。"""
 
 import io
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 import sys
 import tempfile
@@ -31,10 +31,12 @@ class SelfcheckTests(unittest.TestCase):
             self.assertIn(needle, listed)
 
     def test_missing_repository_root_is_rejected(self):
-        with tempfile.TemporaryDirectory() as tmp:
+        out = io.StringIO()
+        with tempfile.TemporaryDirectory() as tmp, redirect_stdout(out), redirect_stderr(out):
             code = selfcheck.main(["--root", tmp])
 
         self.assertEqual(code, 2)
+        self.assertIn("不是本仓库根", out.getvalue())
         self.assertTrue((ROOT / "tools" / "cardctl.py").is_file())
 
 

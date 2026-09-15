@@ -314,6 +314,21 @@ class FoolCardValidationTests(unittest.TestCase):
             self.assertEqual(receipt["source_native"]["size_px"], [1024, 1536])
             self.assertEqual(receipt["final"]["size_px"], [2048, 3072])
 
+    def test_final_sampling_refuses_without_a_native_sampler(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._final_manifest(root, approval_status="approved")
+
+            # 反例：无 sips 必须 fail-closed，不得产出未经整卡采样的"交付图"
+            with patch.object(production.shutil, "which", return_value=None):
+                with self.assertRaisesRegex(production.Invalid, "requires macOS sips"):
+                    production.finalize_fool_card(
+                        root, "manifest.json",
+                        "lotm.fool.s00.klein-moretti.mr-fool-01",
+                        "standard", "artifacts/production/final-standard")
+
     def test_final_sampling_rejects_intermediate_2k_chain(self):
         import tempfile
 

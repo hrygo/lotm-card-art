@@ -627,7 +627,7 @@ struct PathwayPaths {
 }
 
 var activePathway = "fool"
-var cachedPathwayPaths: (pathway: String, paths: PathwayPaths)?
+var cachedPathwayPaths: (root: String, pathway: String, paths: PathwayPaths)?
 
 func carrierContractPath(_ pathway: String) -> String {
     pathway == "fool"
@@ -636,7 +636,7 @@ func carrierContractPath(_ pathway: String) -> String {
 }
 
 func resolvePathwayPaths(_ root: URL) throws -> PathwayPaths {
-    if let cached = cachedPathwayPaths, cached.pathway == activePathway {
+    if let cached = cachedPathwayPaths, cached.pathway == activePathway, cached.root == root.path {
         return cached.paths
     }
     let pathway = activePathway
@@ -647,6 +647,7 @@ func resolvePathwayPaths(_ root: URL) throws -> PathwayPaths {
     for key in ["five_tier_kit", "sequence_inscriptions", "rank_numerals"] {
         let record = try object(catalogs[key], "catalog record")
         let path = try string(record["path"], "catalog path")
+        try require(!path.hasPrefix("/"), "Catalog path must be repository-relative: \(path)")
         try require(try digest(try resolvePath(root, path)) == string(record["sha256"], "catalog hash"), "Carrier catalog changed: \(key)")
         resolved[key] = path
     }
@@ -655,7 +656,7 @@ func resolvePathwayPaths(_ root: URL) throws -> PathwayPaths {
         fiveTierKit: resolved["five_tier_kit"]!,
         sequenceInscriptions: resolved["sequence_inscriptions"]!,
         rankNumerals: resolved["rank_numerals"]!)
-    cachedPathwayPaths = (pathway, paths)
+    cachedPathwayPaths = (root.path, pathway, paths)
     return paths
 }
 
@@ -1593,7 +1594,7 @@ do {
     } else if args.count == 4 && args[1] == "gate" {
         try gate(URL(fileURLWithPath: args[2]).resolvingSymlinksInPath(), URL(fileURLWithPath: args[3]).standardizedFileURL)
     } else {
-        throw Failure.invalid("Usage: foolpipeline5 selftest | mother ROOT INPUT OUTPUT | tiers ROOT MOTHER_OUTPUT OUTPUT | sequences ROOT TIER_OUTPUT OUTPUT | inscribe ROOT CATALOG OUTPUT | gate ROOT OUTPUT")
+        throw Failure.invalid("Usage: foolpipeline5 [--pathway <id>] selftest | mother ROOT INPUT OUTPUT | tiers ROOT MOTHER_OUTPUT OUTPUT | sequences ROOT TIER_OUTPUT OUTPUT | inscribe ROOT CATALOG OUTPUT | gate ROOT OUTPUT")
     }
 } catch {
     fputs("\(error)\n", stderr)

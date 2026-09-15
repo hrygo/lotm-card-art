@@ -382,6 +382,10 @@ def validate_pathway_carrier_contract(root, pathway_id="fool"):
 
     template_records = contract["templates"]
     verify_records(root, [template_records["emblem_dock"], template_records["rank_numeral_dock"]])
+    # Mirrors the renderer's runtime check so catalog drift is caught without swiftc.
+    catalog_records = contract["catalogs"]
+    verify_records(root, [catalog_records["five_tier_kit"], catalog_records["sequence_inscriptions"],
+                          catalog_records["rank_numerals"]])
     active_frame = contract["active_frame_source"]
     active_frame_path = inside(root, active_frame["path"])
     if not active_frame_path.is_file() or sha(active_frame_path) != active_frame["sha256"]:

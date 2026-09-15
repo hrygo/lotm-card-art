@@ -14,7 +14,7 @@
   "limits": {"max_attempts": 1},
   "spec": {"stage": "sequences", "geometry": "fool-agentic-mother-v2", "clear_regions": [[878, 780, 108, 280]]},
   "contracts": [
-    {"path": "tools/render/foolpipeline5.swift", "sha256": "97931699ba739edcc040c95f6f19e0804bcaf82f48da2d3e10b33113015dc15d"},
+    {"path": "tools/render/foolpipeline5.swift", "sha256": "94307e4d2bd9c2831f4b7ccc804817d40ce4767abf0093056216c13b97c87bfa"},
     {"path": "docs/production-sop-v3.md", "sha256": "8684d96a3ca0163d556f97ea884cc5a3337aa8edebc357cb95ce21dfa3e04838"},
     {"path": "docs/production-preflight.md", "sha256": "7660ebe23b09d1b35c5956338e6af6a1bc843c758bb8d0858b6c0e159ec32ac4"},
     {"path": "config/production-resolution-policy.json", "sha256": "502d6af735052ce3f9f9743cadb92573949d8f75b0ea717cdf9bf2317c48e382"},

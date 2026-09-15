@@ -42,7 +42,7 @@ hasPrefix = false      → invalid("Output must be a child of artifacts/producti
 - [x] **T2 合同解析层**：把 `:603/:729/:1039/:1049` 的硬编码文件名改为由 `pathway_id` 解析（合同内相对路径或 `production/symbols/<pathway>/…`）。
 - [x] **T3 CLI 参数化**：新增 `--pathway`（默认 `fool`），旧调用形式保持可用。
   - 实施记录：四类输入改由「合同 `catalogs` 块声明 + sha256 核对」提供；`--pathway` 置于阶段关键字之前，省略即 `fool`。证据：母版阶段默认模式与 `--pathway fool` 的 9 个产物逐字节一致；合成途径探针用例（`RendererTests.test_pathway_flag_resolves_the_declared_pathway_contract`）断言点名失败且不回退 `fool`。`selftest` 不读合同（纯几何自检），其途径分支即由该探针用例覆盖。
-- [ ] **T4 几何/载体常量外移**：把渲染器内的途径几何改为读合同（与 04 协同），消除与 `production.py` 的重复。
+- [x] ~~**T4 几何/载体常量外移**：把渲染器内的途径几何改为读合同（与 04 协同），消除与 `production.py` 的重复。~~ 按 ADR-005「已裁定（分层）」关闭：**愚者保留现状 C**（常量 + fail-closed 等值断言，不事后改造），**新途径采用派生 A**（几何只写合同、渲染器派生且派生先校验 pin、schema 仅结构约束）。
 
 ## Must Not Do
 

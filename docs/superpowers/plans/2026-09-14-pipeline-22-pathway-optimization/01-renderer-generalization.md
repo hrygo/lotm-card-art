@@ -55,7 +55,7 @@ hasPrefix = false      → invalid("Output must be a child of artifacts/producti
 - [x] `foolpipeline5 selftest` 输出与 `v0.3.0` 一致（golden）。
 - [x] `--pathway fool` 与旧命令产出完全等价（哈希比对）。
 - [x] 在**符号链接路径**（如 `$TMPDIR/lotm-verify`）下 `python3 -m unittest discover -s tests` **全绿**（不再有 3 例失败）。
-- [x] 构造一份最小「第二条途径」合同（可为合成测试数据）能跑通 `selftest` 的途径分支，证明「加合同即可扩展」。
+- [x] ~~构造一份最小「第二条途径」合同（可为合成测试数据）能跑通 `selftest` 的途径分支，证明「加合同即可扩展」。~~ **审查更正（2026-09-15，原措辞收回，降级为部分达成）**：**已证** = 四类输入改由合同 `catalogs` 声明并核对 `sha256`，失败**点名且不回退 `fool`**（判别力经变异测试验证：硬编码 catalog 路径、跳过 sha256 校验两种变异均被探针用例判失败）。**未证** = 「加一份合同即可跑通第二条途径」——渲染器仍硬断言 `contract_type == "fool-carrier-execution"` 与 `geometry_id == FoolGeometry.geometryID`（ADR-005「愚者保留 C」），且 `selftest` 不读合同。第二条途径须先按「新途径派生 A」落地几何才有意义。
 
 ## 风险与回退
 
@@ -70,5 +70,5 @@ T1 + T1b：**小**（1 处逻辑 + 3 条反例测试）。T2–T4：**中**（�
 
 - **T1/T1b（`2cc99fe`）**：输出路径改「规范化 + 路径分量比较」，弃字符串前缀；反例覆盖 `artifacts/production-evil` 前缀绕过、已存在目录（`Output already exists`）与符号链接根路径必须被接受。
 - **T2/T3（`b7bdbfe`）**：四类输入不再硬编码——载体合同路径按命名空间约定解析（`fool` 历史扁平 / 其余 `production/symbols/<pathway>/carrier-execution.json`），五档套装、序列铭刻目录、序列数字目录一律读合同 `catalogs` 块声明并核对 `sha256`；新增 `--pathway <id>`（默认 `fool`，置于阶段关键字之前）。证据：默认模式与 `--pathway fool` 的母版阶段 **9 个产物逐字节一致**；合成途径探针用例断言点名失败（`Carrier catalog changed: rank_numerals`）且**不回退 `fool`**。
-- **验收**：`selftest` 与 `v0.3.0` 一致（golden 30/30 逐字节）；符号链接根路径 worktree（`/var/.../T/opencode/lotm-sym-check`，`pwd -P` → `/private/var/...`）下全套件 **OK (skipped=6)**；`selftest` 不读合同，其「途径分支」由上述合成途径探针覆盖。
-- **T4 保持未勾选**：按 ADR-005 选项 C 收口（渲染器保留 13 个几何常量 + fail-closed 等值断言），未改为「读合同派生」；选项 A 为可选升级，前置是放宽 schema 中 `gem_slot` 的值级 `const`。
+- **验收**：`selftest` 输出与 `v0.3.0` 相同（审查实测：共 **12** 项标记、rc=0；仓库内不存在「30 项」对照基线，原「golden 30/30 逐字节」为无据数字，已删）；母版阶段默认模式与 `--pathway fool` 的 **9 个产物逐字节一致**；符号链接根路径 worktree（`/var/.../T/opencode/lotm-sym-check`，`pwd -P` → `/private/var/...`）下全套件 **OK (skipped=6)**；`selftest` 不读合同，其「途径分支」由上述合成途径探针覆盖（覆盖边界见验收标准末条更正）。
+- **T4 按裁定关闭（≠ 实施）**：条目记为 `[x] ~~原文~~`，语义是「已由 ADR-005 裁定、不按原义实施」——渲染器保留 13 个几何常量 + fail-closed 等值断言（选项 C），**未**改为「读合同派生」；选项 A 为可选升级，前置是放宽 schema 中 `gem_slot` 的值级 `const`。审查更正（2026-09-15）：本行原写「T4 保持未勾选」，与上方 `[x]` 自相矛盾，以本行为准。

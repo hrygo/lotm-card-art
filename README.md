@@ -151,7 +151,7 @@ python3 -m unittest discover -s tests -v
 ```bash
 cd apps/LotmCardStudio
 
-# 运行客户端单元测试（当前 86 项）
+# 运行客户端单元测试（当前 87 项）
 swift test
 
 # 运行 SwiftPM executable

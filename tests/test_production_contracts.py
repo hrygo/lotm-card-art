@@ -163,5 +163,44 @@ class NarrativeContractTests(unittest.TestCase):
             p.validate_narrative(ROOT, pack)
 
 
+class CarrierGeometrySingleSourceTests(unittest.TestCase):
+    def contract(self):
+        return json.loads((ROOT / "production/symbols/fool-carrier-execution-v1.json").read_text(encoding="utf-8"))
+
+    def test_carrier_geometry_contract_is_hash_locked_by_a_pin(self):
+        task = json.loads((ROOT / "production/tasks/fool-five-tier-frame-batch-v1.json").read_text(encoding="utf-8"))
+        paths = [entry["path"] for entry in task["contracts"]]
+
+        self.assertIn("production/symbols/fool-carrier-execution-v1.json", paths)
+
+    def test_live_carrier_geometry_satisfies_the_relational_invariants(self):
+        p._require_carrier_geometry_invariants(self.contract(), "fool")
+
+    def test_off_center_gem_slot_is_rejected(self):
+        contract = self.contract()
+        contract["anchors"]["gem_slot"]["center_design"][0] = 500.0
+
+        with self.assertRaisesRegex(p.Invalid, "not centered on the name surface"):
+            p._require_carrier_geometry_invariants(contract, "fool")
+
+    def test_gem_slot_intruding_into_name_clearance_is_rejected(self):
+        contract = self.contract()
+        contract["anchors"]["gem_slot"]["center_design"][1] = 1200.0
+
+        with self.assertRaisesRegex(p.Invalid, "intrudes into the name surface clearance"):
+            p._require_carrier_geometry_invariants(contract, "fool")
+
+    def test_rank_numeral_dock_off_canvas_center_is_rejected(self):
+        contract = self.contract()
+        contract["anchors"]["rank_numeral_dock"]["center_design"][0] = 400.0
+
+        with self.assertRaisesRegex(p.Invalid, "not centered on the canvas"):
+            p._require_carrier_geometry_invariants(contract, "fool")
+
+    def test_safe_rect_escaping_its_anchor_is_detected(self):
+        self.assertTrue(p._rect_contains([0, 0, 10, 10], [1, 1, 8, 8]))
+        self.assertFalse(p._rect_contains([0, 0, 10, 10], [5, 5, 10, 10]))
+
+
 if __name__ == "__main__":
     unittest.main()

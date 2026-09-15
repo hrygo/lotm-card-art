@@ -317,6 +317,45 @@ def pathway_material_context(root, pathway_id):
     }
 
 
+def _is_number(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def _is_rect(value):
+    return isinstance(value, list) and len(value) == 4 and all(_is_number(item) for item in value)
+
+
+def _is_point(value):
+    return isinstance(value, list) and len(value) == 2 and all(_is_number(item) for item in value)
+
+
+def _is_size(value):
+    return isinstance(value, list) and len(value) == 2 and all(_is_number(item) and item > 0 for item in value)
+
+
+def _rect_contains(outer, inner):
+    ox, oy, ow, oh = outer
+    ix, iy, iw, ih = inner
+    return ix >= ox and iy >= oy and ix + iw <= ox + ow and iy + ih <= oy + oh
+
+
+def _require_carrier_geometry_invariants(contract, label):
+    anchors = contract["anchors"]
+    name_rect = anchors["name_surface"]["rect_design"]
+    gem = anchors["gem_slot"]
+    gem_center = gem["center_design"]
+    gem_size = gem["visible_size_design"]
+    name_mid = name_rect[0] + name_rect[2] / 2
+    if abs(gem_center[0] - name_mid) > 0.001:
+        raise Invalid(f"{label} gem slot is not centered on the name surface")
+    gem_top = gem_center[1] - gem_size[1] / 2
+    if gem_top < name_rect[1] + name_rect[3] + float(gem["name_clearance_design"]) - 0.001:
+        raise Invalid(f"{label} gem slot intrudes into the name surface clearance")
+    rank_center = anchors["rank_numeral_dock"]["center_design"]
+    if abs(rank_center[0] - float(contract["canvas"]["design_size"][0]) / 2) > 0.001:
+        raise Invalid(f"{label} rank numeral dock is not centered on the canvas")
+
+
 def validate_pathway_carrier_contract(root, pathway_id="fool"):
     """Validate the concrete carrier contract consumed by a pathway's pipeline.
 
@@ -390,26 +429,23 @@ def validate_pathway_carrier_contract(root, pathway_id="fool"):
         raise Invalid(f"{label} carrier route is stale or enables a duplicate emblem")
 
     anchors = contract["anchors"]
-    expected_rects = {
-        "pathway_mark": ([50, 584, 84, 300], [50, 600, 84, 268]),
-        "pathway_crown": ([350, 0, 330, 260], [350, 0, 330, 260]),
-        "right_sequence_zone": ([878, 584, 108, 300], [890, 600, 84, 268]),
-        "name_surface": ([224, 1216, 576, 136], [240, 1228, 544, 112]),
-    }
-    for key, (rect, safe_rect) in expected_rects.items():
+    for key in ("pathway_mark", "pathway_crown", "right_sequence_zone", "name_surface"):
         value = anchors.get(key, {})
-        if value.get("rect_design") != rect or value.get("safe_rect_design") != safe_rect:
-            raise Invalid(f"{label} carrier anchor is stale: {key}")
+        if not (_is_rect(value.get("rect_design")) and _is_rect(value.get("safe_rect_design"))):
+            raise Invalid(f"{label} carrier anchor is malformed: {key}")
+        if not _rect_contains(value["rect_design"], value["safe_rect_design"]):
+            raise Invalid(f"{label} carrier safe rect escapes its anchor: {key}")
     rank_value = anchors["rank_numeral_dock"]
-    if (rank_value.get("center_design") != [512, 136]
-            or rank_value.get("safe_rect_design") != [466, 88, 92, 96]):
-        raise Invalid(f"{label} rank numeral dock anchor is stale")
+    if not (_is_point(rank_value.get("center_design"))
+            and _is_rect(rank_value.get("safe_rect_design"))):
+        raise Invalid(f"{label} rank numeral dock anchor is malformed")
     gem = anchors["gem_slot"]
     if (gem.get("shape") != "regular-equilateral-hexagon"
-            or gem.get("center_design") != [512, 1421]
-            or gem.get("visible_size_design") != [132, 114]
-            or gem.get("name_clearance_design") != 12):
-        raise Invalid(f"{label} carrier gem slot is stale")
+            or not _is_point(gem.get("center_design"))
+            or not _is_size(gem.get("visible_size_design"))
+            or not _is_number(gem.get("name_clearance_design"))):
+        raise Invalid(f"{label} carrier gem slot is malformed")
+    _require_carrier_geometry_invariants(contract, label)
 
     if contract["protected_regions"] != {
         "pathway_crown": "mother-crown-protected",

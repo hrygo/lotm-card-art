@@ -42,48 +42,90 @@ class FoolCardValidationTests(unittest.TestCase):
         report = production.validate_fool_audio_package(ROOT)
 
         self.assertEqual(report["status"], "passed")
-        self.assertEqual(report["card_count"], 5)
-        self.assertEqual(report["audio_file_count"], 30)
-        self.assertEqual(report["app"]["card_art_count"], 5)
-        self.assertEqual(report["app"]["audio_file_count"], 30)
+        self.assertEqual(report["card_count"], 11)
+        self.assertEqual(report["audio_file_count"], 66)
+        self.assertEqual(report["app"]["card_art_count"], 11)
+        self.assertEqual(report["app"]["audio_file_count"], 66)
         self.assertEqual(report["app"]["card_art_names"], [
             "celestial-worthy-card-v1-v001",
+            "demon-of-knowledge-card-v1-v001",
+            "destruction-calamity-card-v1-v001",
+            "embodiment-of-disorder-card-v1-v001",
+            "eternal-darkness-card-v1-v001",
+            "father-of-demons-card-v1-v001",
             "fool-s00-card-agentic-v1-v001",
             "fool-s09-card-name-edit-v1-v001",
             "god-almighty-card-v1-v001",
+            "key-of-light-card-v1-v001",
             "mother-goddess-depravity-card-v1-v001",
         ])
         self.assertEqual(report["app"]["audio_resource_names"], sorted([
-            "s00-greeting-v2",
-            "s00-catchphrase-01-v2",
-            "s00-catchphrase-02-v2",
-            "s00-story-01-v2",
-            "s00-story-02-v2",
-            "s00-story-03-v2",
-            "s09-greeting-v1",
-            "s09-catchphrase-01-v1",
-            "s09-catchphrase-02-v1",
-            "s09-story-01-v1",
-            "s09-story-02-v1",
-            "s09-story-03-v1",
-            "celestial-worthy-greeting-v1",
             "celestial-worthy-catchphrase-01-v1",
             "celestial-worthy-catchphrase-02-v1",
+            "celestial-worthy-greeting-v1",
             "celestial-worthy-story-01-v1",
             "celestial-worthy-story-02-v1",
             "celestial-worthy-story-03-v1",
-            "god-almighty-greeting-v1",
+            "demon-of-knowledge-catchphrase-01-v1",
+            "demon-of-knowledge-catchphrase-02-v1",
+            "demon-of-knowledge-greeting-v1",
+            "demon-of-knowledge-story-01-v1",
+            "demon-of-knowledge-story-02-v1",
+            "demon-of-knowledge-story-03-v1",
+            "destruction-calamity-catchphrase-01-v1",
+            "destruction-calamity-catchphrase-02-v1",
+            "destruction-calamity-greeting-v1",
+            "destruction-calamity-story-01-v1",
+            "destruction-calamity-story-02-v1",
+            "destruction-calamity-story-03-v1",
+            "embodiment-of-disorder-catchphrase-01-v1",
+            "embodiment-of-disorder-catchphrase-02-v1",
+            "embodiment-of-disorder-greeting-v1",
+            "embodiment-of-disorder-story-01-v1",
+            "embodiment-of-disorder-story-02-v1",
+            "embodiment-of-disorder-story-03-v1",
+            "eternal-darkness-catchphrase-01-v1",
+            "eternal-darkness-catchphrase-02-v1",
+            "eternal-darkness-greeting-v1",
+            "eternal-darkness-story-01-v1",
+            "eternal-darkness-story-02-v1",
+            "eternal-darkness-story-03-v1",
+            "father-of-demons-catchphrase-01-v1",
+            "father-of-demons-catchphrase-02-v1",
+            "father-of-demons-greeting-v1",
+            "father-of-demons-story-01-v1",
+            "father-of-demons-story-02-v1",
+            "father-of-demons-story-03-v1",
             "god-almighty-catchphrase-01-v1",
             "god-almighty-catchphrase-02-v1",
+            "god-almighty-greeting-v1",
             "god-almighty-story-01-v1",
             "god-almighty-story-02-v1",
             "god-almighty-story-03-v1",
-            "mother-goddess-depravity-greeting-v1",
+            "key-of-light-catchphrase-01-v1",
+            "key-of-light-catchphrase-02-v1",
+            "key-of-light-greeting-v1",
+            "key-of-light-story-01-v1",
+            "key-of-light-story-02-v1",
+            "key-of-light-story-03-v1",
             "mother-goddess-depravity-catchphrase-01-v1",
             "mother-goddess-depravity-catchphrase-02-v1",
+            "mother-goddess-depravity-greeting-v1",
             "mother-goddess-depravity-story-01-v1",
             "mother-goddess-depravity-story-02-v1",
             "mother-goddess-depravity-story-03-v1",
+            "s00-catchphrase-01-v2",
+            "s00-catchphrase-02-v2",
+            "s00-greeting-v2",
+            "s00-story-01-v2",
+            "s00-story-02-v2",
+            "s00-story-03-v2",
+            "s09-catchphrase-01-v1",
+            "s09-catchphrase-02-v1",
+            "s09-greeting-v1",
+            "s09-story-01-v1",
+            "s09-story-02-v1",
+            "s09-story-03-v1",
         ]))
 
     def test_current_card_candidates_are_registered_and_native(self):
@@ -101,11 +143,18 @@ class FoolCardValidationTests(unittest.TestCase):
         self.assertEqual(report["native_canvas_sizes"], {"s09": [1024, 1536], "s00": [1024, 1536]})
         self.assertFalse(report["formal_release_approved"])
         self.assertEqual(report["final_sampling"]["card_count"], 2)
-        self.assertEqual(set(report["final_sampling"]["approval_statuses"].values()), {"pending"})
+        self.assertEqual(set(report["final_sampling"]["approval_statuses"].values()), {"approved"})
+        self.assertEqual(report["final_sampling"]["manifest_status"], "approved-for-final-sampling")
+        self.assertFalse(report["final_sampling"]["sampling_executed"])
         self.assertEqual(report["final_sampling"]["candidate_manifest"],
                          "production/cards/fool-card-candidates-v1.json")
-        self.assertEqual(report["visual_review"]["status"], "pending-user-visual-approval")
+        self.assertEqual(report["visual_review"]["status"], "user-visually-approved")
         self.assertEqual(report["visual_review"]["card_count"], 2)
+        nonsequence = report["nonsequence_approvals"]
+        self.assertEqual(nonsequence["status"], "passed")
+        self.assertEqual(nonsequence["card_count"], 9)
+        self.assertFalse(nonsequence["formal_release_approved"])
+        self.assertTrue(all(size == [1024, 1536] for size in nonsequence["native_canvas_sizes"].values()))
 
     def test_s09_global_rerender_is_not_reported_as_local_zero_drift_edit(self):
         report = production.validate_fool_cards(ROOT)
@@ -187,6 +236,7 @@ class FoolCardValidationTests(unittest.TestCase):
                     "reference": "review-ref" if approval_status == "approved" else None,
                 },
             }],
+            "sampling_executed": False,
             "formal_release_approved": False,
         }
         manifest_path = root / "manifest.json"
@@ -296,6 +346,119 @@ class FoolCardValidationTests(unittest.TestCase):
                     root, "manifest.json",
                     "lotm.fool.s00.klein-moretti.mr-fool-01",
                     "standard", "artifacts/production/final-standard")
+
+
+    def test_card_approval_must_be_bound_to_the_human_sidecar(self):
+        original_read = production.read
+
+        def tampered_read(path):
+            value = original_read(path)
+            if str(path).endswith("production/approvals/fool-card-visual-approval-v1.json"):
+                value = copy.deepcopy(value)
+                value["approved_assets"]["sequence_cards"][0]["sha256"] = "0" * 64
+            return value
+
+        with patch.object(production, "read", side_effect=tampered_read):
+            with self.assertRaisesRegex(production.Invalid, "not bound to the human sidecar"):
+                production.validate_fool_cards(ROOT)
+
+    def test_card_approval_sidecar_cannot_approve_release(self):
+        original_read = production.read
+
+        def tampered_read(path):
+            value = original_read(path)
+            if str(path).endswith("production/approvals/fool-card-visual-approval-v1.json"):
+                value = copy.deepcopy(value)
+                value["release_approved"] = True
+            return value
+
+        with patch.object(production, "read", side_effect=tampered_read):
+            with self.assertRaisesRegex(production.Invalid, "sidecar contract is stale"):
+                production.validate_fool_cards(ROOT)
+
+    def test_card_sidecar_without_human_approval_is_rejected(self):
+        original_read = production.read
+
+        def tampered_read(path):
+            value = original_read(path)
+            if str(path).endswith("production/approvals/fool-card-visual-approval-v1.json"):
+                value = copy.deepcopy(value)
+                value["visual_approved"] = False
+            return value
+
+        with patch.object(production, "read", side_effect=tampered_read):
+            with self.assertRaisesRegex(production.Invalid, "sidecar contract is stale"):
+                production.validate_fool_cards(ROOT)
+
+    def test_nonsequence_approval_requires_immutable_provenance(self):
+        original_read = production.read
+
+        def tampered_read(path):
+            value = original_read(path)
+            if str(path).endswith("fool-nonsequence-card-approvals-v1.json"):
+                value = copy.deepcopy(value)
+                value["cards"][0]["provenance_sha256"] = "0" * 64
+            return value
+
+        with patch.object(production, "read", side_effect=tampered_read):
+            with self.assertRaisesRegex(production.Invalid, "provenance hash is stale"):
+                production.validate_fool_nonsequence_card_approvals(ROOT)
+
+    def test_nonsequence_provenance_cannot_self_approve(self):
+        original_read = production.read
+
+        def tampered_read(path):
+            value = original_read(path)
+            if str(path).endswith("eternal-darkness-card-v1/v001/provenance.json"):
+                value = copy.deepcopy(value)
+                value["status"] = "user-visually-approved"
+            return value
+
+        with patch.object(production, "read", side_effect=tampered_read):
+            with self.assertRaisesRegex(production.Invalid, "ingest-time candidate record"):
+                production.validate_fool_nonsequence_card_approvals(ROOT)
+
+    def test_nonsequence_card_cannot_enter_the_sequence_manifest(self):
+        original_read = production.read
+
+        def tampered_read(path):
+            value = original_read(path)
+            if str(path).endswith("production/cards/fool-card-candidates-v1.json"):
+                value = copy.deepcopy(value)
+                value["cards"].append({"card_id": "lotm.eternal-darkness.primordial-01"})
+            return value
+
+        with patch.object(production, "read", side_effect=tampered_read):
+            with self.assertRaisesRegex(production.Invalid, "S09 then S00"):
+                production.validate_fool_cards(ROOT)
+
+    def test_nonsequence_record_cannot_claim_formal_release(self):
+        original_read = production.read
+
+        def tampered_read(path):
+            value = original_read(path)
+            if str(path).endswith("fool-nonsequence-card-approvals-v1.json"):
+                value = copy.deepcopy(value)
+                value["formal_release_approved"] = True
+            return value
+
+        with patch.object(production, "read", side_effect=tampered_read):
+            with self.assertRaisesRegex(production.Invalid, "cannot claim formal release"):
+                production.validate_fool_nonsequence_card_approvals(ROOT)
+
+    def test_final_sampling_must_not_report_executed_sampling(self):
+        original_read = production.read
+
+        def tampered_read(path):
+            value = original_read(path)
+            if str(path).endswith("production/cards/fool-final-sampling-v1.json"):
+                value = copy.deepcopy(value)
+                value["sampling_executed"] = True
+            return value
+
+        with patch.object(production, "read", side_effect=tampered_read):
+            with self.assertRaisesRegex(production.Invalid, "executed sampling"):
+                production.validate_fool_cards(ROOT)
 
 
 if __name__ == "__main__":

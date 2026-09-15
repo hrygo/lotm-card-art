@@ -12,11 +12,59 @@
     "instruction": "成熟稳重的中文男声，低沉醇厚，从容克制，带有神秘距离感，吐字清晰，不夸张。"
   },
   "files": [
-    {"resource_name": "s00-greeting-v2", "text_digest": "a2ee328cde0d646aea632d592df3e26e66c1824136ffed0c44b1e7ff395ea820", "sha256": "42b0ae918a5eb63d22c7c4afff02f44f831775b5619cda728e90b2e9b16530e7", "duration_seconds": 7.2, "sample_rate": 24000, "channels": 1, "bits": 16},
-    {"resource_name": "s00-catchphrase-01-v2", "text_digest": "20db143ca4f4960b0636b7693a00f086eae89735db75af50cd62d19eae20192d", "sha256": "52d37f215494afd1a679ccf887ebbb9b8b2b1e7f2a2607c543779708a03985db", "duration_seconds": 7.76, "sample_rate": 24000, "channels": 1, "bits": 16},
-    {"resource_name": "s00-catchphrase-02-v2", "text_digest": "a358e17e36aa0909e0bf6b881368922b2a602d91264aabed844ece3d93814f2a", "sha256": "0aa08792740309883e80da30792cc15c584bbd8a3f67f5a04c003e007b01833e", "duration_seconds": 6.64, "sample_rate": 24000, "channels": 1, "bits": 16},
-    {"resource_name": "s00-story-01-v2", "text_digest": "beba5eb3152ee160319891d665e78b16b99e9fbf35edf8913ee0433ff6e6b583", "sha256": "d8351d14d3ec8bac87635ef71ab1ba482315f54892ca42c9f42185d7a63d6251", "duration_seconds": 19.76, "sample_rate": 24000, "channels": 1, "bits": 16},
-    {"resource_name": "s00-story-02-v2", "text_digest": "880495ff7924ca0d95c9a3364dfc0888a6770d416b60a6600a168cc5350f96cd", "sha256": "39235d865588843a38fe5712589551f4c3ddf797ed5f0e99b09e504cf5b8d417", "duration_seconds": 19.28, "sample_rate": 24000, "channels": 1, "bits": 16},
-    {"resource_name": "s00-story-03-v2", "text_digest": "f2e4f94973c3337a1ca02702437febd4cfc34c57f5bb1c058c344db3ba5d8b5c", "sha256": "6238bc76170f62f11613cdac8523cf09201555b42aab39d9ddc3112bfd7d9d72", "duration_seconds": 20.48, "sample_rate": 24000, "channels": 1, "bits": 16}
+    {
+      "resource_name": "s00-greeting-v2",
+      "text_digest": "a2ee328cde0d646aea632d592df3e26e66c1824136ffed0c44b1e7ff395ea820",
+      "sha256": "42b0ae918a5eb63d22c7c4afff02f44f831775b5619cda728e90b2e9b16530e7",
+      "duration_seconds": 7.2,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "s00-catchphrase-01-v2",
+      "text_digest": "20db143ca4f4960b0636b7693a00f086eae89735db75af50cd62d19eae20192d",
+      "sha256": "52d37f215494afd1a679ccf887ebbb9b8b2b1e7f2a2607c543779708a03985db",
+      "duration_seconds": 7.76,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "s00-catchphrase-02-v2",
+      "text_digest": "a358e17e36aa0909e0bf6b881368922b2a602d91264aabed844ece3d93814f2a",
+      "sha256": "0aa08792740309883e80da30792cc15c584bbd8a3f67f5a04c003e007b01833e",
+      "duration_seconds": 6.64,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "s00-story-01-v2",
+      "text_digest": "e5462134f3f206080737ff9d1ad5703298b393bb8ea238d5bd0b7fd7e1bbb97c",
+      "sha256": "d8351d14d3ec8bac87635ef71ab1ba482315f54892ca42c9f42185d7a63d6251",
+      "duration_seconds": 19.76,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "s00-story-02-v2",
+      "text_digest": "ddb2db2d21267b1a958f7118e340c8ac66b334768f4d78102912d63e3f413970",
+      "sha256": "39235d865588843a38fe5712589551f4c3ddf797ed5f0e99b09e504cf5b8d417",
+      "duration_seconds": 19.28,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "s00-story-03-v2",
+      "text_digest": "5a87d0d6ec4d4b3765c41da60b6e52ac7200e1af309ecec8484672fd05988817",
+      "sha256": "6238bc76170f62f11613cdac8523cf09201555b42aab39d9ddc3112bfd7d9d72",
+      "duration_seconds": 20.48,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
   ]
 }

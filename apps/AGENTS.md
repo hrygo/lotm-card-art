@@ -1,7 +1,7 @@
 # apps/ 目录工作约定
 
 本目录承载 macOS 客户端代码、资源与运行说明；更细的运行/构建说明见 `apps/LotmCardStudio/README.md`，验收记录见 `apps/LotmCardStudio/docs/qa/`。
-当前 `LotmCardStudio` 已完成 M1 里程碑垂直切片（画廊、详情页、三类清单、故事抽屉、SpeechRail 接口）。导入、SwiftData 用户库、批量正式资源、音频缓存和游戏规则尚未实现；当前包含 S00 愚者先生、S09 克莱恩·莫雷蒂，以及序列之上·诡秘之主的福生玄黄天尊、序列之上·星界支柱的上帝与序列之上·现实支柱的堕落母神五套隔离候选卡包，不要把 M1 fixture 描述为完整产品。五张卡的新增、替换和删除必须按身份、卡图、六维回读、故事、音频状态和清单意图的整套卡包执行；三位支柱均为非序列卡位（`lotm.celestial-worthy`、`lotm.god-almighty`、`lotm.mother-goddess-depravity`），不占 22×10 序列卡槽；正义小姐 App 外源资产须保持独立保留。
+当前 `LotmCardStudio` 已完成 M1 里程碑垂直切片（画廊、详情页、三类清单、故事抽屉、SpeechRail 接口）。导入、SwiftData 用户库、批量正式资源、音频缓存和游戏规则尚未实现；当前包含 S00 愚者先生、S09 克莱恩·莫雷蒂，序列之上·诡秘之主的福生玄黄天尊、序列之上·星界支柱的上帝、序列之上·现实支柱的堕落母神，以及永恒之暗、恶魔之父、毁灭天灾、失序者、知识之妖、光之钥六位「序列之上」旧日，共十一套隔离候选卡包，不要把 M1 fixture 描述为完整产品。十一张卡的新增、替换和删除必须按身份、卡图、六维回读、故事、音频状态和清单意图的整套卡包执行；九位「序列之上」存在均为非序列卡位（`lotm.celestial-worthy`、`lotm.god-almighty`、`lotm.mother-goddess-depravity`、`lotm.eternal-darkness`、`lotm.father-of-demons`、`lotm.destruction-calamity`、`lotm.embodiment-of-disorder`、`lotm.demon-of-knowledge`、`lotm.key-of-light`），不占 22×10 序列卡槽；正义小姐 App 外源资产须保持独立保留。
 
 ## 开发基线
 - 最低部署版本 macOS 26 Tahoe；不维护 macOS 14 兼容路径或旧系统 fallback。
@@ -9,7 +9,7 @@
 - 构建、QA 与 `.app` 元数据必须以 macOS 26.0 为最低版本；不能用宿主机能运行当作 deployment target 已切换的证据。
 
 ## 数据边界
-- 客户端示意内容必须保持为合成 fixture，不得冒充已核验正典、正式卡牌或人工批准素材。
+- 客户端示意内容必须保持为合成 fixture，不得冒充已核验正典；十一张卡已获用户视觉批准（`user-visually-approved`）并在客户端作为正式收藏呈现，但内容是待核验 fixture，批准不等于发布（`release_approved` 仍为 false）。
 - `card_id`、`slot_id`、`character_id`、`identity_slice_id`、内容状态与叙事审批状态各自承担独立职责。
 - App 是内容源的运行时投影；不得把用户收藏、笔记、密钥、缓存或运行状态写回公开卡牌源文件。
 - SpeechRail 仅允许本机 loopback（默认 `http://127.0.0.1:8201`），不调用云端，不自动启动/停止/下载服务。

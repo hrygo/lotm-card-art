@@ -140,7 +140,7 @@ final class ArchiveRootViewTests: XCTestCase {
         XCTAssertEqual(ArchiveCopy.characterName(for: nil), "途径原型")
         XCTAssertEqual(ArchiveCopy.voiceTitle(for: fool.identity), "愚者先生的声音")
         XCTAssertEqual(ArchiveCopy.voiceTitle(for: audreyIdentity), "正义的声音")
-        XCTAssertEqual(ArchiveCopy.pathwaySummary(confirmed: 1, candidate: 2), "1 张已确认 · 2 张候选")
+        XCTAssertEqual(ArchiveCopy.pathwaySummary(formal: 2, candidate: 1), "2 张已收藏 · 1 张候选")
     }
 
     func testPresentationCopyUsesUnpaddedSequenceNumbers() {

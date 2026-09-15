@@ -36,8 +36,8 @@ enum GodAlmightyNarrative {
         kind: .story,
         text: "在一切尚未被命名之前，祂已经看见了它们。祂不必走进海里，海本身就是祂的一部分：所有颜色、所有秘密、所有尚未发生的可能性，都在那片黑色的表面下互相翻涌。祂的创造不是从无到有，而是从这无限的可能性中取出一部分，让它们成为可以被看见、被谈论、被记住的东西。",
         sourceKind: .interpretation,
-        review: .approved(contentDigest: "a4c05e2993b24c16a98021a5f63a289d03ded23d5ce0dc6681c9247e0dff2b4e"),
-        contentDigest: "a4c05e2993b24c16a98021a5f63a289d03ded23d5ce0dc6681c9247e0dff2b4e",
+        review: .approved(contentDigest: "2212ec31d6a09d52f36a845c19232ee7e4ec7c2c32ffb38e668696f8cc48f391"),
+        contentDigest: "2212ec31d6a09d52f36a845c19232ee7e4ec7c2c32ffb38e668696f8cc48f391",
         audioResourceName: "god-almighty-story-01-v1"
     )
 
@@ -46,8 +46,8 @@ enum GodAlmightyNarrative {
         kind: .story,
         text: "祂不注视，因为注视意味着还有看不见的地方；祂不出手，因为出手意味着还有做不到的事。祂所表达的全知与全能，更像是世界本身在按规则运行：知道与做到早已发生，只是没有留下一个可以被称为「瞬间」的时刻。",
         sourceKind: .interpretation,
-        review: .approved(contentDigest: "4293701e2284b0b6ebdaef844aea47279f92ae58d28cbad522cd276600352ab4"),
-        contentDigest: "4293701e2284b0b6ebdaef844aea47279f92ae58d28cbad522cd276600352ab4",
+        review: .approved(contentDigest: "ba6ea9761a1fe5b1e528a78cea43e7ff776bcd475cec042692876e55f3bb9db5"),
+        contentDigest: "ba6ea9761a1fe5b1e528a78cea43e7ff776bcd475cec042692876e55f3bb9db5",
         audioResourceName: "god-almighty-story-02-v1"
     )
 
@@ -56,8 +56,8 @@ enum GodAlmightyNarrative {
         kind: .story,
         text: "祂是星界的主人。可「主人」并不是一个位置，而是一种关系：星界不需要被管理，只需要有一个足够大的存在，让其中的一切不至于失序。祂存在的方式，就是让星界继续成为星界。",
         sourceKind: .interpretation,
-        review: .approved(contentDigest: "32ced7ca883b7f5b06b11449e8c1666b2d6377344d25fa9e649ee5cdb03d01be"),
-        contentDigest: "32ced7ca883b7f5b06b11449e8c1666b2d6377344d25fa9e649ee5cdb03d01be",
+        review: .approved(contentDigest: "1c522012aee0cb9e1f8bcb7bdc75c672f0062df332acc19e747338ac8eadbdfb"),
+        contentDigest: "1c522012aee0cb9e1f8bcb7bdc75c672f0062df332acc19e747338ac8eadbdfb",
         audioResourceName: "god-almighty-story-03-v1"
     )
 

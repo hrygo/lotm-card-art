@@ -27,8 +27,8 @@ enum ArchiveCopy {
         }
     }
 
-    static func pathwaySummary(confirmed: Int, candidate: Int) -> String {
-        "\(confirmed) 张已确认 · \(candidate) 张候选"
+    static func pathwaySummary(formal: Int, candidate: Int) -> String {
+        "\(formal) 张已收藏 · \(candidate) 张候选"
     }
 
     static func characterName(for characterID: String?) -> String {
@@ -43,6 +43,18 @@ enum ArchiveCopy {
             return "上帝"
         case "mother-goddess-depravity":
             return "堕落母神"
+        case "eternal-darkness":
+            return "永恒之暗"
+        case "father-of-demons":
+            return "恶魔之父"
+        case "destruction-calamity":
+            return "毁灭天灾"
+        case "embodiment-of-disorder":
+            return "失序者"
+        case "demon-of-knowledge":
+            return "知识之妖"
+        case "key-of-light":
+            return "光之钥"
         case nil, "":
             return "途径原型"
         default:

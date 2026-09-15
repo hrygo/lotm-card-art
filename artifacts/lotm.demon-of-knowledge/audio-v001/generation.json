@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.demon-of-knowledge.primordial-01",
+  "voice_profile_id": "demon-of-knowledge",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.1",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.9,
+    "instruction": "一位清冷平静的中性嗓音，音色偏薄、带一点书卷气的干涩感，像在安静房间里朗读一段不会结束的注释。语速均匀、不紧不慢，音高稳定，情绪浓度极低。语气既专注又疏离，像说话的人注意力并不全在你身上，而是在你身后的某样东西上。句尾平收，不上扬。不神秘化、不低语做作、不嘶哑、不煽情。吐字非常清晰，咬字准确，不带方言。"
+  },
+  "files": [
+    {
+      "resource_name": "demon-of-knowledge-greeting-v1",
+      "text_digest": "cb5fa6ad72d09fd6035e97c52513b319f4c7037c18ee6f9b833df80770089122",
+      "sha256": "6e88a794a8b54bf5d7dea027e427dc2b7f072ba72aa8b2a69e12c4605298bbb8",
+      "duration_seconds": 5.2,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "demon-of-knowledge-catchphrase-01-v1",
+      "text_digest": "f80e5d2669cc2bab33171f29462e9177abc8e0f30459e9143c7a4bbd3318fe0c",
+      "sha256": "7d4e59af5e1b671aca9c67a4cee2b8252e913b0585393f136b76bddbd608cb1f",
+      "duration_seconds": 1.84,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "demon-of-knowledge-catchphrase-02-v1",
+      "text_digest": "1dafb1dc9fec390f68f135f9c7f73aa5a5a8a3349ce7090be732bd98a5bb5809",
+      "sha256": "68d2f91092896e19842ac7d766cc6a2d559c17d5226bc9c3a04d85e6e5036b9a",
+      "duration_seconds": 2.88,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "demon-of-knowledge-story-01-v1",
+      "text_digest": "c9a3f2feba109d69c2809306a62daa2345943d74e5b81422bbe924f8474ef77e",
+      "sha256": "5cc785884cb7427fe3b16794b3675e00f187599063370db39c46da7665d3fe6c",
+      "duration_seconds": 19.36,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "demon-of-knowledge-story-02-v1",
+      "text_digest": "76e93c041f504cf58b6573bb04d06d0f6d1e1dbf28d7f808926084f58ed8a8bc",
+      "sha256": "b483c994a4294ddd0d93cb2517f6cac5b02f6ccd1287383ce2cb322ca188133f",
+      "duration_seconds": 12.48,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "demon-of-knowledge-story-03-v1",
+      "text_digest": "309606a7d408d976f84d718b8695c0549f5695defaa7e0fc6882f83f15519de7",
+      "sha256": "d2a5eb7c08d6f3474de7ac8374bc1cc6ec6ee2c5064c11cd43bb95afa192c792",
+      "duration_seconds": 15.52,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
+  ]
+}

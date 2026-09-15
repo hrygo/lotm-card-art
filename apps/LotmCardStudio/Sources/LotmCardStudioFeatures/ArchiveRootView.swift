@@ -866,6 +866,24 @@ private struct IdentityPanel: View {
         if card.identity.slotID.hasPrefix("lotm.mother-goddess-depravity") {
             return "序列之上 · 现实支柱"
         }
+        if card.identity.slotID.hasPrefix("lotm.eternal-darkness") {
+            return "序列之上 · 永暗之河"
+        }
+        if card.identity.slotID.hasPrefix("lotm.father-of-demons") {
+            return "序列之上 · 暗影世界"
+        }
+        if card.identity.slotID.hasPrefix("lotm.destruction-calamity") {
+            return "序列之上 · 灾祸之城"
+        }
+        if card.identity.slotID.hasPrefix("lotm.embodiment-of-disorder") {
+            return "序列之上 · 失序之国"
+        }
+        if card.identity.slotID.hasPrefix("lotm.demon-of-knowledge") {
+            return "序列之上 · 知识荒野"
+        }
+        if card.identity.slotID.hasPrefix("lotm.key-of-light") {
+            return "序列之上 · 光之钥"
+        }
         return "愚者途径"
     }
 

@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "cardID": "lotm.demon-of-knowledge.primordial-01",
+    "slotID": "lotm.demon-of-knowledge",
+    "characterID": "demon-of-knowledge",
+    "identitySliceID": "demon-of-knowledge.primordial",
+    "name": "知识之妖",
+    "timeScope": "序列之上；源质＝知识荒野；第一部范围（不写入第二部内容）",
+    "spoilerBoundary": "允许涉及九源质与旧日称号、支柱与第四支柱结构；不冒充中文底本逐字事实，不使用第二部《宿命之环》内容"
+  },
+  "entries": [
+    {
+      "id": "demon-of-knowledge-greeting-01",
+      "kind": "greeting",
+      "title": null,
+      "text": "所有能被知道的东西，都已经存在了。你就是在走近祂。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "cb5fa6ad72d09fd6035e97c52513b319f4c7037c18ee6f9b833df80770089122",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "cb5fa6ad72d09fd6035e97c52513b319f4c7037c18ee6f9b833df80770089122",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-demon-of-knowledge-narrative-audio.md"
+      }
+    },
+    {
+      "id": "demon-of-knowledge-catchphrase-01",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "信息塑造世界。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "f80e5d2669cc2bab33171f29462e9177abc8e0f30459e9143c7a4bbd3318fe0c",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "f80e5d2669cc2bab33171f29462e9177abc8e0f30459e9143c7a4bbd3318fe0c",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-demon-of-knowledge-narrative-audio.md"
+      }
+    },
+    {
+      "id": "demon-of-knowledge-catchphrase-02",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "你知道得越多，祂就越像在回看你。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "1dafb1dc9fec390f68f135f9c7f73aa5a5a8a3349ce7090be732bd98a5bb5809",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "1dafb1dc9fec390f68f135f9c7f73aa5a5a8a3349ce7090be732bd98a5bb5809",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-demon-of-knowledge-narrative-audio.md"
+      }
+    },
+    {
+      "id": "demon-of-knowledge-story-01",
+      "kind": "story",
+      "title": "第一章 · 知识荒野",
+      "text": "隐者与完美者，两条途径通向同一片荒野。一条向内、向隐秘处走；一条向外、向完备处走。走到尽头会发现，它们量的是同一块地方——所有可被知道的东西构成的疆域。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-above-sequence-sefirot-old-ones.md",
+          "sha256": "70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1",
+          "locator": "§3 一手证据（第1346章「支柱」）；§4 九源质↔九旧日↔22 途径；§5 逐位核验（知识之妖）"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "c9a3f2feba109d69c2809306a62daa2345943d74e5b81422bbe924f8474ef77e",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "c9a3f2feba109d69c2809306a62daa2345943d74e5b81422bbe924f8474ef77e",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-demon-of-knowledge-narrative-audio.md"
+      }
+    },
+    {
+      "id": "demon-of-knowledge-story-02",
+      "kind": "story",
+      "title": "第二章 · 疯狂奥秘",
+      "text": "祂的第二个名字是疯狂奥秘。这不是修辞：在祂这里，知识从来不是中性的。你理解一样东西的同时，那样东西也开始理解你。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-above-sequence-sefirot-old-ones.md",
+          "sha256": "70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1",
+          "locator": "§3 一手证据（第1346章「支柱」）；§4 九源质↔九旧日↔22 途径；§5 逐位核验（知识之妖）"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "76e93c041f504cf58b6573bb04d06d0f6d1e1dbf28d7f808926084f58ed8a8bc",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "76e93c041f504cf58b6573bb04d06d0f6d1e1dbf28d7f808926084f58ed8a8bc",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-demon-of-knowledge-narrative-audio.md"
+      }
+    },
+    {
+      "id": "demon-of-knowledge-story-03",
+      "kind": "story",
+      "title": "第三章 · 越近就越像回看",
+      "text": "向祂走近的人会先改变自己。这不是祂设下的惩罚，而是这条路的形状：看懂一样东西，就必须先变成能看懂祂的那种存在。代价就是路径的一部分。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-above-sequence-sefirot-old-ones.md",
+          "sha256": "70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1",
+          "locator": "§3 一手证据（第1346章「支柱」）；§4 九源质↔九旧日↔22 途径；§5 逐位核验（知识之妖）"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "309606a7d408d976f84d718b8695c0549f5695defaa7e0fc6882f83f15519de7",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "309606a7d408d976f84d718b8695c0549f5695defaa7e0fc6882f83f15519de7",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-demon-of-knowledge-narrative-audio.md"
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.father-of-demons.primordial-01",
+  "voice_profile_id": "father-of-demons",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.1",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.9,
+    "instruction": "一位低沉的成熟男声，沙哑、带有胸腔与喉部的摩擦质感，像含着一口没咽下去的烟。语速慢而不拖沓，句子中间有轻微的笑意，但那种笑意让人不舒服。语气危险又随意，像在跟你做一笔你一定会亏的交易。不咆哮、不咆哮式嘶吼、不阴森做作。咬字懒散但清楚，句尾略微上扬，带一点玩味。不带方言。"
+  },
+  "files": [
+    {
+      "resource_name": "father-of-demons-greeting-v1",
+      "text_digest": "04ec0e488315ddbafebdac6fa9f592647e92a70f88fc814acc83fe91ce6aa66a",
+      "sha256": "73af6298c60cf4379fe1961873c1136cd4e7ae648c3b42ed88c5070889b8a590",
+      "duration_seconds": 8.32,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "father-of-demons-catchphrase-01-v1",
+      "text_digest": "2eba356c0ab44fedcfb05c06bf9fef658659a51f1c65aa53c77b73a2b7c5fa4c",
+      "sha256": "6a9b0ab937b42ff62f4ea9aef9cc505195248fb135ebb0b4750eb1beb0a7b2f0",
+      "duration_seconds": 6.48,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "father-of-demons-catchphrase-02-v1",
+      "text_digest": "c361550e1f4efb3a708bd380b1733000e22454d9effd8f02b04698082366136b",
+      "sha256": "fdbbe86843a8ff7dcdd74c4b5d0703c35ebe990583b65ff0b1f75b152c53ad18",
+      "duration_seconds": 4.96,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "father-of-demons-story-01-v1",
+      "text_digest": "9181758ddd2d36e3c9f0fbc0b49119c20583d0faea026b361563761d1d438303",
+      "sha256": "7dcc0208039caf441cc415c9f7d1bd7a5cd67e9e8dbe6758f35d33e00f9cd6ae",
+      "duration_seconds": 17.44,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "father-of-demons-story-02-v1",
+      "text_digest": "b113e6147429dc1c61460fd687b0f3445d18b5f20f25b51640cb265f36fdc66d",
+      "sha256": "f1e64da5bb5b9693b70c0b4e742f5c685255a3457ba90489e1b2cd03ee4afc8f",
+      "duration_seconds": 23.2,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "father-of-demons-story-03-v1",
+      "text_digest": "80138e6308d6881a7943fe3d0fb101bfcb84203b26a67a19d473049f4f54fb19",
+      "sha256": "17b80c5077a884877b661fd6034a52fc671427b1122da6f03193e4723dacb64d",
+      "duration_seconds": 18.64,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
+  ]
+}

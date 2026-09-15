@@ -41,7 +41,7 @@
     },
     {
       "resource_name": "god-almighty-story-01-v1",
-      "text_digest": "a4c05e2993b24c16a98021a5f63a289d03ded23d5ce0dc6681c9247e0dff2b4e",
+      "text_digest": "2212ec31d6a09d52f36a845c19232ee7e4ec7c2c32ffb38e668696f8cc48f391",
       "sha256": "4d3d4c346b83a6f3632c8efec86ca7ccb362546bafaf030466db864f7be54505",
       "duration_seconds": 27.6,
       "sample_rate": 24000,
@@ -50,7 +50,7 @@
     },
     {
       "resource_name": "god-almighty-story-02-v1",
-      "text_digest": "4293701e2284b0b6ebdaef844aea47279f92ae58d28cbad522cd276600352ab4",
+      "text_digest": "ba6ea9761a1fe5b1e528a78cea43e7ff776bcd475cec042692876e55f3bb9db5",
       "sha256": "41817cd9a7de0ca9601f558dcc53200f419066f6e1c80cdf6f6ae501464549f7",
       "duration_seconds": 19.44,
       "sample_rate": 24000,
@@ -59,7 +59,7 @@
     },
     {
       "resource_name": "god-almighty-story-03-v1",
-      "text_digest": "32ced7ca883b7f5b06b11449e8c1666b2d6377344d25fa9e649ee5cdb03d01be",
+      "text_digest": "1c522012aee0cb9e1f8bcb7bdc75c672f0062df332acc19e747338ac8eadbdfb",
       "sha256": "108537235109c766287113ca89dd2faee5ef5f4409eca7d346f668a37707f984",
       "duration_seconds": 18.96,
       "sample_rate": 24000,

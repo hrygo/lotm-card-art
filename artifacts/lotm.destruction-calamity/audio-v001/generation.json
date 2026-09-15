@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.destruction-calamity.primordial-01",
+  "voice_profile_id": "destruction-calamity",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.1",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.9,
+    "instruction": "一位宽厚粗粝的低音男声，音色偏干、带沙砾感，像在尘土与火星里说话。语速中等偏慢，力量感强，但不是吼叫——更像远处的东西在崩塌。语气冷峻、笃定，没有情绪波动，句子短促有力。句尾干脆地下压、截断。不嘶吼、不煽情、不拖长音。吐字清晰，不带方言，不做戏剧腔。"
+  },
+  "files": [
+    {
+      "resource_name": "destruction-calamity-greeting-v1",
+      "text_digest": "bd013cf2cf185eb8c93b9f0b130df762ef3030a5303e35bf66c11ce1fec72198",
+      "sha256": "2bacbdb05afb18a452bfaab60ac26bb7bc45500c765c169d59557dbcbb49fe49",
+      "duration_seconds": 7.6,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "destruction-calamity-catchphrase-01-v1",
+      "text_digest": "a5671ec9e1207824315de831e7a1dbeed71afdbfd568fcc49c3abb577a4da2c4",
+      "sha256": "3b043cfc625ab42dfe3f63fc34c194f14ea48fcc7c98e7c931bdd4cc544a9828",
+      "duration_seconds": 3.04,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "destruction-calamity-catchphrase-02-v1",
+      "text_digest": "9ccd6b9077c14918149597f3151d73a68d61e0cace7b2e6c120d55dc3961e040",
+      "sha256": "bc94d2d9010fdf40697d2efd4232712958c445d387a03ff99a1f966891d2b195",
+      "duration_seconds": 4.0,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "destruction-calamity-story-01-v1",
+      "text_digest": "a9bcb7689e208b71250e5958d88d5db2837326f16a60f40d4091e5adbb7f1542",
+      "sha256": "74ade184c500f9bebb6352dbc6678499c53b9d7fac26ec3ae2ba631de4d41b6f",
+      "duration_seconds": 16.64,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "destruction-calamity-story-02-v1",
+      "text_digest": "2cd0093ed90be3e4075fd752dd5fba745146813d4650d47cbf6a13700c440d73",
+      "sha256": "ef6ff117c9e73ad61390a3cfd620e5a0fc10e0f7c9700376378703a1a7f57f8f",
+      "duration_seconds": 17.28,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "destruction-calamity-story-03-v1",
+      "text_digest": "59843dc4cf3cf18caf017d05d3605a1003283fea930d5cec5a00a41337cc8d0d",
+      "sha256": "26666e9f3d2bd568d0dbae223fd212bb8143021295e3f90e09fc1b3e546939d7",
+      "duration_seconds": 17.28,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
+  ]
+}

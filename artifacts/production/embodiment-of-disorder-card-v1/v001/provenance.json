@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "card-art",
+  "mode": "direct-agentic-full-card",
+  "task_id": "embodiment-of-disorder-card-v1",
+  "run_id": "v001",
+  "card_id": "lotm.embodiment-of-disorder.primordial-01",
+  "slot_id": "lotm.embodiment-of-disorder",
+  "source": {
+    "origin": "user-provided",
+    "channel": "Codex built-in image_gen export",
+    "provided_path": "/Users/hrygo/Downloads/Codex 图像 2026年9月14日 22_09_50.png",
+    "prompt_captured": false,
+    "tool": "image_gen.imagegen (built-in, Codex)",
+    "model": null,
+    "seed": null,
+    "note": "用户在本机 Codex 中直接生成并导出完整卡；原始生成 prompt 未提供，本记录不伪造可复现性。"
+  },
+  "artifact": {
+    "path": "artifacts/production/embodiment-of-disorder-card-v1/v001/raw.png",
+    "sha256": "bb053057bc924488c4b99a9a73f6d269f8af7bd06e4359a897de414d902958f0",
+    "size_px": [
+      1024,
+      1536
+    ],
+    "channels": "RGB",
+    "bit_depth": 8,
+    "alpha": false,
+    "aspect": "2:3",
+    "native_canvas": true
+  },
+  "pipeline": {
+    "compose_used": false,
+    "intermediate_2k_count": 0,
+    "final_resample_count": 0,
+    "note": "不做合成；整卡直出，保持原生画布。"
+  },
+  "card_text_observed": {
+    "nameplate": "失序者 / THE EMBODIMENT OF DISORDER",
+    "left_inscription": "失序之国 / KINGDOM OF DISORDER",
+    "right_inscription": "秩序 · 失序 · 判断 / ORDER · DISORDER · JUDGMENT",
+    "footer_left": "IN THE CRACKS / NEW WORLDS EMERGE",
+    "footer_right": "WHEN ORDER COLLAPSES / FREEDOM BEGINS",
+    "readback_note": "底部另有附加行「秩序的阴影 · 规则的彼岸 · 万象的另一种可能」，与原著尊名第二句「秩序阴影」相应。"
+  },
+  "status": "candidate-pending-user-visual-approval",
+  "created_at": "2026-09-14"
+}

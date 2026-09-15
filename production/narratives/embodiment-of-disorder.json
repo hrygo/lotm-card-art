@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "cardID": "lotm.embodiment-of-disorder.primordial-01",
+    "slotID": "lotm.embodiment-of-disorder",
+    "characterID": "embodiment-of-disorder",
+    "identitySliceID": "embodiment-of-disorder.primordial",
+    "name": "失序者",
+    "timeScope": "序列之上；源质＝失序之国；第一部范围（不写入第二部内容）",
+    "spoilerBoundary": "允许涉及九源质与旧日称号、支柱与第四支柱结构；不冒充中文底本逐字事实，不使用第二部《宿命之环》内容"
+  },
+  "entries": [
+    {
+      "id": "embodiment-of-disorder-greeting-01",
+      "kind": "greeting",
+      "title": null,
+      "text": "秩序给你形状，失序给你生命。两者都是真的。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "4f3e3c80c2415abeea7e37c00264dc41a04d90195b17547425979f3b3a4f3aa3",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "4f3e3c80c2415abeea7e37c00264dc41a04d90195b17547425979f3b3a4f3aa3",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-embodiment-of-disorder-narrative-audio.md"
+      }
+    },
+    {
+      "id": "embodiment-of-disorder-catchphrase-01",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "规则塌陷的地方，自由才开始。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "cc525bb7f07c911607e55957e355ad70442b36e81227714c0bd4569b52285c72",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "cc525bb7f07c911607e55957e355ad70442b36e81227714c0bd4569b52285c72",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-embodiment-of-disorder-narrative-audio.md"
+      }
+    },
+    {
+      "id": "embodiment-of-disorder-catchphrase-02",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "我是秩序的阴影——不是祂的敌人。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "de081389c9ac73986ef33bb477dd8f9ef6d5820321a7e6c5ae422f4559cbe28f",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "de081389c9ac73986ef33bb477dd8f9ef6d5820321a7e6c5ae422f4559cbe28f",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-embodiment-of-disorder-narrative-audio.md"
+      }
+    },
+    {
+      "id": "embodiment-of-disorder-story-01",
+      "kind": "story",
+      "title": "第一章 · 失序之国",
+      "text": "黑皇帝与审判者，两条途径长在同一片土地上。一条利用规则、渐渐演变成秩序的暗面；一条代表秩序与规则本身。它们看起来对立，其实共用同一个根。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-above-sequence-sefirot-old-ones.md",
+          "sha256": "70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1",
+          "locator": "§3 一手证据（第1346章「支柱」）；§4 九源质↔九旧日↔22 途径；§5 逐位核验（失序者）"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "c1a836b83ede5f5a8cd79836b37c96dc73e74c47ae1cab847323903529d9dbd5",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "c1a836b83ede5f5a8cd79836b37c96dc73e74c47ae1cab847323903529d9dbd5",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-embodiment-of-disorder-narrative-audio.md"
+      }
+    },
+    {
+      "id": "embodiment-of-disorder-story-02",
+      "kind": "story",
+      "title": "第二章 · 阴影不是敌人",
+      "text": "祂被称作失序者，也被称作秩序的阴影。这两句是同一个尊名的两半：祂并不站在秩序的对立面，祂只是替秩序保管秩序自己没有承认的那一半。审判者负责划线，黑皇帝负责让线弯曲。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-above-sequence-sefirot-old-ones.md",
+          "sha256": "70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1",
+          "locator": "§3 一手证据（第1346章「支柱」）；§4 九源质↔九旧日↔22 途径；§5 逐位核验（失序者）"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "ee5a6e2b841c7578c4e73fb93df5b414c8d330f928e97168a0e297dcd2018a36",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "ee5a6e2b841c7578c4e73fb93df5b414c8d330f928e97168a0e297dcd2018a36",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-embodiment-of-disorder-narrative-audio.md"
+      }
+    },
+    {
+      "id": "embodiment-of-disorder-story-03",
+      "kind": "story",
+      "title": "第三章 · 万象的另一种可能",
+      "text": "在新秩序的裂缝里，会生出新的世界。这就是祂存在的理由：不是一个更坏的秩序，而是「本来还可以是别的样子」这件事，有了一个固定的名字。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-above-sequence-sefirot-old-ones.md",
+          "sha256": "70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1",
+          "locator": "§3 一手证据（第1346章「支柱」）；§4 九源质↔九旧日↔22 途径；§5 逐位核验（失序者）"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "b2ddfb8939c52157ff0456e7734b71a07f32fd6cfb6aae17af4f9ee49069bf7e",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "b2ddfb8939c52157ff0456e7734b71a07f32fd6cfb6aae17af4f9ee49069bf7e",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-embodiment-of-disorder-narrative-audio.md"
+      }
+    }
+  ]
+}

@@ -53,3 +53,22 @@ scaffold应通过，空卡design/release应失败。检验“拒绝坏数据”�
 ## D14｜第三个支柱「堕落母神」复用非序列卡位，白名单扩到五卡
 原因：堕落母神被定位为三大支柱之一，与福生玄黄天尊、上帝同级。用户在回答「源质／途径口径」时裁定：**源质＝母巢**，对应地球侧 **月亮＋母亲** 两条途径，核心象征＝**生命 · 繁衍**，**不纳入**她自身那条外神途径（序列 9 恶棍 → 序列 0 混沌原胎）。该对象不落在「途径 × 序列 9–0」语义内，不能塞进任一序列。
 结果：新增第三个非序列卡位 `lotm.mother-goddess-depravity`（`cardID lotm.mother-goddess-depravity.primordial-01`），直接沿用 D11 已放宽的 `identity.slotID` 模式，`production/schemas/card-narrative.schema.json` 无需再改。`validate_fool_audio_package` 的登记式白名单由四卡扩到五卡（30 个 WAV、5 张 App 卡图），`tests/test_fool_card_validation.py` 的 exact-count 断言同步。序列候选清单与 `validate_fool_cards` 仍只覆盖序列卡，不含三位支柱，`check-fool-cards` 不受影响。事实边界：支柱位格、源质＝母巢、被撕裂状态、两途径拆分本轮**全部**维持 `secondary-cross-check / authorial-supplement（转录）`，**没有任何一条可标为 `verified`**；本仓库无中文授权底本，作者公众号原文未取得。`sequenceName` 取「序列之上 · 现实支柱」（由二手「现实世界的主宰」推导），在资料包与汇报中标注为可由用户一词更正。卡图以 no-compose 直出登记于 `artifacts/production/mother-goddess-depravity-card-v1/v001/provenance.json`，保持 `candidate-pending-user-visual-approval`。
+
+## D15｜九位「序列之上」旧日纳入与「真神及以上用祂」代词约定
+原因：用户要求把 Downloads 新增的 6 张「序列之上」旧日卡（永恒之暗、恶魔之父、毁灭天灾、失序者、知识之妖、光之钥）作为**完整卡包**纳入，并裁定「**真神及以上**（序列 0 真神、天使之王、旧日/序列之上）的第三人称代词**一律用「祂」**」。
+结果：
+- 白名单由五卡扩到**十一卡**（66 个 WAV、11 张 App 卡图），`tools/production.py` 的 `packages` 与 `expected_card_art` 同步，`tests/test_fool_card_validation.py` 的 exact-count 断言同步为 11/66/11；`validate_fool_cards` 与序列候选清单仍只覆盖序列卡，不含九位「序列之上」存在。
+- 六张新卡沿用 D11 的非序列 `slotID` 形态（`lotm.<slug>`），**不需要**再改 schema；`sequenceName` 取**存在名**（`序列之上 · 永恒之暗` 等），源质另以铭文/资料包记录。
+- **已知异常（按用户裁决「按现状纳入」）**：`毁灭天灾` 卡左铭文槽为「毁灭天灾／THE DESTRUCTION CALAMITY」，而其余五张该槽放源质（此处应为**灾祸之城**）。已在 `artifacts/production/destruction-calamity-card-v1/v001/provenance.json` 的 `card_text_observed.readback_note` 与对应审核记录登记，**不自行改图**。
+- **代词归一（用户两次裁定）**：指代「真神及以上」主体的人称代词统一为「祂」；指代**源质与概念**的代词（如永暗之河、暗影世界、灾祸之城、母巢、秩序、知识）**同样用「祂」**；只有**物体、事件与复数事物**（世界、「名字与源质同词」这件事、两条途径、可能性）仍用「它/它们」。归一同时作用于卡牌文案、`docs/research/` 资料包与 `docs/reviews/` 说明；`其他/他人` 等词不受影响。
+- 正文变更使 `contentDigest`／`approvedDigest`／`artifacts/lotm.<slug>/audio-*/generation.json` 的 `text_digest`／Swift 叙事文件全部同步重算；`祂` 与 `它/他/她` 同音（`tā`），**本轮未重出音频、未逐条试听**，只保证摘要绑定一致。`production/tasks/fool-s00-card-agentic-v1.json` 的 narrative `sha256` 因 S00 文案变更同步更新；`artifacts/production/**` 的历史回执按不可覆盖原则**保持原样**。
+
+## D16｜十一卡「收藏转正式」与内容核验解耦（批准 ≠ 发布）
+原因：用户裁决「已经验收通过，所有卡，变为正式」，并明确三点边界：① 转正范围为 App 现有十一张；② 深度只转状态与批准记录，不执行 ADR-003 最终采样、不产出 2K/4K；③ 素材基线一并转正。此前批准态只有「候选」一档，且 App 把「正式收藏」与「内容已核验」耦合成同一判据，导致「用户已批准」无法表达。
+结果：
+- **批准模型（Oracle 复核后定稿）**：批准 ≠ 发布。视觉批准写入独立人类 sidecar `production/approvals/fool-card-visual-approval-v1.json`（`kind: visual_approval_sidecar`，`visual_approved: true`、`release_approved: false`、`sampling_executed: false`，绑定十一张卡图与九份 provenance 的 sha256）；九张非序列卡另建聚合记录 `production/cards/fool-nonsequence-card-approvals-v1.json`（`kind: card_approval_aggregate`、`sequence_slots: false`），因为序列候选清单 `fool-card-candidates-v1.json` 的门禁要求 `sequence ∈ {0,9}` 且有 task/receipt，非序列卡不能塞进去。
+- **状态词汇**：`CARD_MANIFEST_STATUSES = {candidate-pending-user-visual-review, user-visually-approved}`；`CARD_APPROVAL_STATUSES = {pending, approved}`；最终采样队列采用 `approved-for-final-sampling` 且必须 `sampling_executed: false`。所有 `formal_release_approved`／`release_approved` 保持 `false`（无交付像素）。
+- **门禁**：新增 `validate_fool_nonsequence_card_approvals` 与 CLI `check-fool-nonsequence-cards`；`validate_fool_cards`／`validate_fool_finalization_manifest`／`validate_fool_materials` 由「拒绝一切非 pending」改为「校验批准来源」——必须读取独立人类 sidecar 并逐卡比对哈希，`approved` 不得由清单自证。反例测试见 `tests/test_fool_card_validation.py`（新增 8 条）。
+- **不可覆盖**：`artifacts/production/**` 的 provenance 与历史回执不改写；材料基线的 `basis` 只记录本次批准依据，不构成发布批准。
+- **App 解耦**：`AlbumViewModel.visibleCards(.formal)` 与 `formalCount` 只按 `collectionIntents == .formal` 过滤，不再要求 `contentStatus == .confirmed`；`ArchiveCopy.pathwaySummary(formal:candidate:)` 改为收藏口径。十一张卡的 `collectionIntent` 由 `.candidate` 改为 `.formal`，而 `contentStatus` 保持 `.proposed`——**用户批准视觉与收藏身份不等于内容已核验**，九位「序列之上」的资料仍是二手/未核验。「我的收藏」副标题改为「你正式收藏的身份卡；每张卡的内容核验状态以卡片自身的标注为准。」；测试加断言 `confirmedCount == 0` 与九卡 `.proposed`，防止后续误升。另移除 fixture 中 S00 的 `isWishlisted`：十一张卡均归入正式收藏后，愿望清单为空（分栏与指标保留给后续新增目标，断言改为显式空集而非删除）。
+

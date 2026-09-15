@@ -36,3 +36,10 @@
 文案由用户在本轮确认口径后写入（`review.by = project-editor`）。机器摘要只证明版本绑定一致，不替代事实核验或视觉批准。本卡仍保持视觉候选状态，不进入正式卡牌 release。
 
 卡图来源与落盘见 `artifacts/production/mother-goddess-depravity-card-v1/v001/provenance.json`；本轮为 no-compose 整卡直出，`intermediate_2k_count = 0`。同批次另有一张「永恒之暗 / THE ETERNAL DARKNESS」候选卡，**不属于本卡**，未纳入本仓库。
+
+## 2026-09-14 追加：代词归一为「祂」
+
+- 依项目约定「**真神及以上**（序列 0 真神、天使之王、旧日/序列之上）的第三人称代词一律用 **祂**」，堕落母神 卡的文案已把指代该存在的人称代词统一为 **祂**（原为 `她`）。
+- **发音说明（记录诚实）**：`祂` 与 `她` 在普通话中同音（`tā`），预期发音不变，因此**本轮没有重出音频、也没有逐条试听**；如要求声画严格对齐，须另行重出并试听。
+- 因正文变更，`contentDigest` / `approvedDigest` / `artifacts/lotm.mother-goddess-depravity/audio-v*/generation.json` 的 `text_digest` 与对应 Swift 叙事文件已同步重算；本轮 `check-fool-audio` 通过。
+- **归一范围（用户追加裁定）**：指代**源质与概念**的代词（永暗之河、暗影世界、灾祸之城、母巢、秩序、知识等）**同样用「祂」**；仍用「它/它们」的只有**物体、事件与复数事物**（如世界、两条途径、可能性）。

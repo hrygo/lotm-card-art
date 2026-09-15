@@ -7,9 +7,9 @@ final class AlbumViewModelTests: XCTestCase {
     func testDemoLibraryContainsTheCurrentIsolatedCards() {
         let model = AlbumViewModel()
 
-        XCTAssertEqual(model.cards.count, 5)
+        XCTAssertEqual(model.cards.count, 11)
         XCTAssertEqual(model.cards.filter { $0.identity.contentStatus == .confirmed }.count, 0)
-        XCTAssertEqual(model.cards.filter { $0.identity.contentStatus == .proposed }.count, 5)
+        XCTAssertEqual(model.cards.filter { $0.identity.contentStatus == .proposed }.count, 11)
         XCTAssertEqual(
             model.cards.map(\.id),
             [
@@ -17,13 +17,25 @@ final class AlbumViewModelTests: XCTestCase {
                 "lotm.fool.s00.klein-moretti.mr-fool-01",
                 "lotm.celestial-worthy.primordial-01",
                 "lotm.god-almighty.primordial-01",
-                "lotm.mother-goddess-depravity.primordial-01"
+                "lotm.mother-goddess-depravity.primordial-01",
+                "lotm.eternal-darkness.primordial-01",
+                "lotm.father-of-demons.primordial-01",
+                "lotm.destruction-calamity.primordial-01",
+                "lotm.embodiment-of-disorder.primordial-01",
+                "lotm.demon-of-knowledge.primordial-01",
+                "lotm.key-of-light.primordial-01"
             ]
         )
         XCTAssertTrue(model.cards.contains { $0.identity.displayName == "愚者先生" && $0.identity.sequenceName == "序列 0 · 真神" })
         XCTAssertTrue(model.cards.contains { $0.identity.displayName == "福生玄黄天尊" && $0.identity.sequenceName == "序列之上 · 诡秘之主" })
         XCTAssertTrue(model.cards.contains { $0.identity.displayName == "上帝" && $0.identity.sequenceName == "序列之上 · 星界支柱" })
         XCTAssertTrue(model.cards.contains { $0.identity.displayName == "堕落母神" && $0.identity.sequenceName == "序列之上 · 现实支柱" })
+        XCTAssertTrue(model.cards.contains { $0.identity.displayName == "永恒之暗" && $0.identity.sequenceName == "序列之上 · 永恒之暗" })
+        XCTAssertTrue(model.cards.contains { $0.identity.displayName == "恶魔之父" && $0.identity.sequenceName == "序列之上 · 恶魔之父" })
+        XCTAssertTrue(model.cards.contains { $0.identity.displayName == "毁灭天灾" && $0.identity.sequenceName == "序列之上 · 毁灭天灾" })
+        XCTAssertTrue(model.cards.contains { $0.identity.displayName == "失序者" && $0.identity.sequenceName == "序列之上 · 失序者" })
+        XCTAssertTrue(model.cards.contains { $0.identity.displayName == "知识之妖" && $0.identity.sequenceName == "序列之上 · 知识之妖" })
+        XCTAssertTrue(model.cards.contains { $0.identity.displayName == "光之钥" && $0.identity.sequenceName == "序列之上 · 光之钥" })
         XCTAssertFalse(model.cards.contains { $0.identity.slotID == "lotm.fool.s03" })
         XCTAssertFalse(model.cards.contains { $0.identity.characterID == "audrey" })
     }
@@ -33,7 +45,7 @@ final class AlbumViewModelTests: XCTestCase {
 
         XCTAssertEqual(
             model.pathwaySummary(for: "fool"),
-            "0 张已确认 · 2 张候选"
+            "2 张已收藏 · 0 张候选"
         )
     }
 
@@ -157,6 +169,28 @@ final class AlbumViewModelTests: XCTestCase {
         )
     }
 
+    func testEveryDemoCardIsTheUsersFormalCollectionWhileContentStaysUnconfirmed() {
+        let model = AlbumViewModel()
+
+        XCTAssertEqual(model.cards.count, 11)
+        XCTAssertEqual(model.formalCount, 11)
+        XCTAssertEqual(model.candidateCount, 0)
+        XCTAssertTrue(model.cards.allSatisfy { $0.collectionIntent == .formal })
+        // 「转正式」只动收藏意图，不连带声明内容已核验：九位「序列之上」仍是待核验内容
+        let aboveSequenceSlots: Set<String> = [
+            "lotm.celestial-worthy", "lotm.god-almighty", "lotm.mother-goddess-depravity",
+            "lotm.eternal-darkness", "lotm.father-of-demons", "lotm.destruction-calamity",
+            "lotm.embodiment-of-disorder", "lotm.demon-of-knowledge", "lotm.key-of-light"
+        ]
+        let aboveSequence = model.cards.filter { aboveSequenceSlots.contains($0.identity.slotID) }
+        XCTAssertEqual(aboveSequence.count, 9)
+        XCTAssertTrue(aboveSequence.allSatisfy { $0.identity.contentStatus == .proposed })
+        XCTAssertEqual(model.confirmedCount, 0)
+        // 正式收藏与愿望清单互斥：已收藏的卡不应同时是待收目标
+        XCTAssertEqual(model.wishlistCount, 0)
+        XCTAssertTrue(model.wishlistCardIDs.isEmpty)
+    }
+
     func testRemovingACardPackageCannotLeaveCollectionOrWishlistStateBehind() {
         let removedID = "lotm.fool.s00.klein-moretti.mr-fool-01"
         let remaining = DemoLibrary.cards.filter { $0.id != removedID }
@@ -171,9 +205,6 @@ final class AlbumViewModelTests: XCTestCase {
         let model = AlbumViewModel()
 
         model.show(.formal)
-        XCTAssertTrue(model.visibleCards.isEmpty)
-
-        model.show(.candidate)
         XCTAssertEqual(
             model.visibleCards.map(\.id),
             [
@@ -181,12 +212,23 @@ final class AlbumViewModelTests: XCTestCase {
                 "lotm.fool.s00.klein-moretti.mr-fool-01",
                 "lotm.celestial-worthy.primordial-01",
                 "lotm.god-almighty.primordial-01",
-                "lotm.mother-goddess-depravity.primordial-01"
+                "lotm.mother-goddess-depravity.primordial-01",
+                "lotm.eternal-darkness.primordial-01",
+                "lotm.father-of-demons.primordial-01",
+                "lotm.destruction-calamity.primordial-01",
+                "lotm.embodiment-of-disorder.primordial-01",
+                "lotm.demon-of-knowledge.primordial-01",
+                "lotm.key-of-light.primordial-01"
             ]
         )
 
+        model.show(.candidate)
+        XCTAssertTrue(model.visibleCards.isEmpty)
+
         model.show(.wishlist)
-        XCTAssertEqual(model.visibleCards.map(\.id), ["lotm.fool.s00.klein-moretti.mr-fool-01"])
+        // 十一张卡均归入正式收藏，fixture 中愿望清单为空（分栏与指标保留给后续新增目标）
+        XCTAssertTrue(model.visibleCards.isEmpty)
+        XCTAssertEqual(model.wishlistCount, 0)
     }
 
     func testSearchTrimsWhitespaceAndMatchesIdentityMetadataCaseInsensitively() {
@@ -229,7 +271,7 @@ final class AlbumViewModelTests: XCTestCase {
 
     func testClearingSearchRestoresTheActiveSectionResults() {
         let model = AlbumViewModel()
-        model.show(.candidate)
+        model.show(.formal)
         model.searchText = "序列 9"
 
         XCTAssertEqual(model.visibleCards.map(\.id), ["lotm.fool.s09.klein-moretti.tingen-01"])
@@ -244,7 +286,13 @@ final class AlbumViewModelTests: XCTestCase {
                 "lotm.fool.s00.klein-moretti.mr-fool-01",
                 "lotm.celestial-worthy.primordial-01",
                 "lotm.god-almighty.primordial-01",
-                "lotm.mother-goddess-depravity.primordial-01"
+                "lotm.mother-goddess-depravity.primordial-01",
+                "lotm.eternal-darkness.primordial-01",
+                "lotm.father-of-demons.primordial-01",
+                "lotm.destruction-calamity.primordial-01",
+                "lotm.embodiment-of-disorder.primordial-01",
+                "lotm.demon-of-knowledge.primordial-01",
+                "lotm.key-of-light.primordial-01"
             ]
         )
     }
@@ -353,6 +401,210 @@ final class AlbumViewModelTests: XCTestCase {
                 "mother-goddess-depravity-story-01-v1",
                 "mother-goddess-depravity-story-02-v1",
                 "mother-goddess-depravity-story-03-v1"
+            ]
+        )
+        XCTAssertTrue(card.isAtomicBundle)
+    }
+
+    func testEternalDarknessCardIsOneAtomicAboveSequenceBundle() {
+        let model = AlbumViewModel()
+        let card = try! XCTUnwrap(
+            model.cards.first { $0.identity.cardID == "lotm.eternal-darkness.primordial-01" }
+        )
+        let narrative = try! XCTUnwrap(card.narrative)
+
+        XCTAssertEqual(card.identity.slotID, "lotm.eternal-darkness")
+        XCTAssertEqual(card.identity.displayName, "永恒之暗")
+        XCTAssertEqual(card.identity.sequenceName, "序列之上 · 永恒之暗")
+        XCTAssertEqual(card.identity.identityKind, .character)
+        XCTAssertEqual(card.identity.characterID, "eternal-darkness")
+        XCTAssertEqual(card.identity.identitySliceID, "eternal-darkness.primordial")
+        XCTAssertEqual(card.visualTheme, .eternalDarkness)
+        XCTAssertEqual(card.artworkResourceName, "eternal-darkness-card-v1-v001")
+        XCTAssertEqual(card.audioStatus, .localBundle)
+        XCTAssertEqual(narrative.voiceProfileID, "eternal-darkness")
+        XCTAssertEqual(narrative.cardID, card.identity.cardID)
+        XCTAssertEqual(narrative.lines.count, 6)
+        XCTAssertTrue(narrative.lines.allSatisfy(\.isPlayable))
+        XCTAssertEqual(
+            narrative.lines.compactMap(\.audioResourceName).sorted(),
+            [
+                "eternal-darkness-catchphrase-01-v1",
+                "eternal-darkness-catchphrase-02-v1",
+                "eternal-darkness-greeting-v1",
+                "eternal-darkness-story-01-v1",
+                "eternal-darkness-story-02-v1",
+                "eternal-darkness-story-03-v1"
+            ]
+        )
+        XCTAssertTrue(card.isAtomicBundle)
+    }
+
+    func testFatherOfDemonsCardIsOneAtomicAboveSequenceBundle() {
+        let model = AlbumViewModel()
+        let card = try! XCTUnwrap(
+            model.cards.first { $0.identity.cardID == "lotm.father-of-demons.primordial-01" }
+        )
+        let narrative = try! XCTUnwrap(card.narrative)
+
+        XCTAssertEqual(card.identity.slotID, "lotm.father-of-demons")
+        XCTAssertEqual(card.identity.displayName, "恶魔之父")
+        XCTAssertEqual(card.identity.sequenceName, "序列之上 · 恶魔之父")
+        XCTAssertEqual(card.identity.identityKind, .character)
+        XCTAssertEqual(card.identity.characterID, "father-of-demons")
+        XCTAssertEqual(card.identity.identitySliceID, "father-of-demons.primordial")
+        XCTAssertEqual(card.visualTheme, .fatherOfDemons)
+        XCTAssertEqual(card.artworkResourceName, "father-of-demons-card-v1-v001")
+        XCTAssertEqual(card.audioStatus, .localBundle)
+        XCTAssertEqual(narrative.voiceProfileID, "father-of-demons")
+        XCTAssertEqual(narrative.cardID, card.identity.cardID)
+        XCTAssertEqual(narrative.lines.count, 6)
+        XCTAssertTrue(narrative.lines.allSatisfy(\.isPlayable))
+        XCTAssertEqual(
+            narrative.lines.compactMap(\.audioResourceName).sorted(),
+            [
+                "father-of-demons-catchphrase-01-v1",
+                "father-of-demons-catchphrase-02-v1",
+                "father-of-demons-greeting-v1",
+                "father-of-demons-story-01-v1",
+                "father-of-demons-story-02-v1",
+                "father-of-demons-story-03-v1"
+            ]
+        )
+        XCTAssertTrue(card.isAtomicBundle)
+    }
+
+    func testDestructionCalamityCardIsOneAtomicAboveSequenceBundle() {
+        let model = AlbumViewModel()
+        let card = try! XCTUnwrap(
+            model.cards.first { $0.identity.cardID == "lotm.destruction-calamity.primordial-01" }
+        )
+        let narrative = try! XCTUnwrap(card.narrative)
+
+        XCTAssertEqual(card.identity.slotID, "lotm.destruction-calamity")
+        XCTAssertEqual(card.identity.displayName, "毁灭天灾")
+        XCTAssertEqual(card.identity.sequenceName, "序列之上 · 毁灭天灾")
+        XCTAssertEqual(card.identity.identityKind, .character)
+        XCTAssertEqual(card.identity.characterID, "destruction-calamity")
+        XCTAssertEqual(card.identity.identitySliceID, "destruction-calamity.primordial")
+        XCTAssertEqual(card.visualTheme, .destructionCalamity)
+        XCTAssertEqual(card.artworkResourceName, "destruction-calamity-card-v1-v001")
+        XCTAssertEqual(card.audioStatus, .localBundle)
+        XCTAssertEqual(narrative.voiceProfileID, "destruction-calamity")
+        XCTAssertEqual(narrative.cardID, card.identity.cardID)
+        XCTAssertEqual(narrative.lines.count, 6)
+        XCTAssertTrue(narrative.lines.allSatisfy(\.isPlayable))
+        XCTAssertEqual(
+            narrative.lines.compactMap(\.audioResourceName).sorted(),
+            [
+                "destruction-calamity-catchphrase-01-v1",
+                "destruction-calamity-catchphrase-02-v1",
+                "destruction-calamity-greeting-v1",
+                "destruction-calamity-story-01-v1",
+                "destruction-calamity-story-02-v1",
+                "destruction-calamity-story-03-v1"
+            ]
+        )
+        XCTAssertTrue(card.isAtomicBundle)
+    }
+
+    func testEmbodimentOfDisorderCardIsOneAtomicAboveSequenceBundle() {
+        let model = AlbumViewModel()
+        let card = try! XCTUnwrap(
+            model.cards.first { $0.identity.cardID == "lotm.embodiment-of-disorder.primordial-01" }
+        )
+        let narrative = try! XCTUnwrap(card.narrative)
+
+        XCTAssertEqual(card.identity.slotID, "lotm.embodiment-of-disorder")
+        XCTAssertEqual(card.identity.displayName, "失序者")
+        XCTAssertEqual(card.identity.sequenceName, "序列之上 · 失序者")
+        XCTAssertEqual(card.identity.identityKind, .character)
+        XCTAssertEqual(card.identity.characterID, "embodiment-of-disorder")
+        XCTAssertEqual(card.identity.identitySliceID, "embodiment-of-disorder.primordial")
+        XCTAssertEqual(card.visualTheme, .embodimentOfDisorder)
+        XCTAssertEqual(card.artworkResourceName, "embodiment-of-disorder-card-v1-v001")
+        XCTAssertEqual(card.audioStatus, .localBundle)
+        XCTAssertEqual(narrative.voiceProfileID, "embodiment-of-disorder")
+        XCTAssertEqual(narrative.cardID, card.identity.cardID)
+        XCTAssertEqual(narrative.lines.count, 6)
+        XCTAssertTrue(narrative.lines.allSatisfy(\.isPlayable))
+        XCTAssertEqual(
+            narrative.lines.compactMap(\.audioResourceName).sorted(),
+            [
+                "embodiment-of-disorder-catchphrase-01-v1",
+                "embodiment-of-disorder-catchphrase-02-v1",
+                "embodiment-of-disorder-greeting-v1",
+                "embodiment-of-disorder-story-01-v1",
+                "embodiment-of-disorder-story-02-v1",
+                "embodiment-of-disorder-story-03-v1"
+            ]
+        )
+        XCTAssertTrue(card.isAtomicBundle)
+    }
+
+    func testDemonOfKnowledgeCardIsOneAtomicAboveSequenceBundle() {
+        let model = AlbumViewModel()
+        let card = try! XCTUnwrap(
+            model.cards.first { $0.identity.cardID == "lotm.demon-of-knowledge.primordial-01" }
+        )
+        let narrative = try! XCTUnwrap(card.narrative)
+
+        XCTAssertEqual(card.identity.slotID, "lotm.demon-of-knowledge")
+        XCTAssertEqual(card.identity.displayName, "知识之妖")
+        XCTAssertEqual(card.identity.sequenceName, "序列之上 · 知识之妖")
+        XCTAssertEqual(card.identity.identityKind, .character)
+        XCTAssertEqual(card.identity.characterID, "demon-of-knowledge")
+        XCTAssertEqual(card.identity.identitySliceID, "demon-of-knowledge.primordial")
+        XCTAssertEqual(card.visualTheme, .demonOfKnowledge)
+        XCTAssertEqual(card.artworkResourceName, "demon-of-knowledge-card-v1-v001")
+        XCTAssertEqual(card.audioStatus, .localBundle)
+        XCTAssertEqual(narrative.voiceProfileID, "demon-of-knowledge")
+        XCTAssertEqual(narrative.cardID, card.identity.cardID)
+        XCTAssertEqual(narrative.lines.count, 6)
+        XCTAssertTrue(narrative.lines.allSatisfy(\.isPlayable))
+        XCTAssertEqual(
+            narrative.lines.compactMap(\.audioResourceName).sorted(),
+            [
+                "demon-of-knowledge-catchphrase-01-v1",
+                "demon-of-knowledge-catchphrase-02-v1",
+                "demon-of-knowledge-greeting-v1",
+                "demon-of-knowledge-story-01-v1",
+                "demon-of-knowledge-story-02-v1",
+                "demon-of-knowledge-story-03-v1"
+            ]
+        )
+        XCTAssertTrue(card.isAtomicBundle)
+    }
+
+    func testKeyOfLightCardIsOneAtomicAboveSequenceBundle() {
+        let model = AlbumViewModel()
+        let card = try! XCTUnwrap(
+            model.cards.first { $0.identity.cardID == "lotm.key-of-light.primordial-01" }
+        )
+        let narrative = try! XCTUnwrap(card.narrative)
+
+        XCTAssertEqual(card.identity.slotID, "lotm.key-of-light")
+        XCTAssertEqual(card.identity.displayName, "光之钥")
+        XCTAssertEqual(card.identity.sequenceName, "序列之上 · 光之钥")
+        XCTAssertEqual(card.identity.identityKind, .character)
+        XCTAssertEqual(card.identity.characterID, "key-of-light")
+        XCTAssertEqual(card.identity.identitySliceID, "key-of-light.primordial")
+        XCTAssertEqual(card.visualTheme, .keyOfLight)
+        XCTAssertEqual(card.artworkResourceName, "key-of-light-card-v1-v001")
+        XCTAssertEqual(card.audioStatus, .localBundle)
+        XCTAssertEqual(narrative.voiceProfileID, "key-of-light")
+        XCTAssertEqual(narrative.cardID, card.identity.cardID)
+        XCTAssertEqual(narrative.lines.count, 6)
+        XCTAssertTrue(narrative.lines.allSatisfy(\.isPlayable))
+        XCTAssertEqual(
+            narrative.lines.compactMap(\.audioResourceName).sorted(),
+            [
+                "key-of-light-catchphrase-01-v1",
+                "key-of-light-catchphrase-02-v1",
+                "key-of-light-greeting-v1",
+                "key-of-light-story-01-v1",
+                "key-of-light-story-02-v1",
+                "key-of-light-story-03-v1"
             ]
         )
         XCTAssertTrue(card.isAtomicBundle)

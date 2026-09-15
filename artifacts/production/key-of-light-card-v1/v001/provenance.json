@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "card-art",
+  "mode": "direct-agentic-full-card",
+  "task_id": "key-of-light-card-v1",
+  "run_id": "v001",
+  "card_id": "lotm.key-of-light.primordial-01",
+  "slot_id": "lotm.key-of-light",
+  "source": {
+    "origin": "user-provided",
+    "channel": "Codex built-in image_gen export",
+    "provided_path": "/Users/hrygo/Downloads/Codex 图像 2026年9月14日 22_17_05.png",
+    "prompt_captured": false,
+    "tool": "image_gen.imagegen (built-in, Codex)",
+    "model": null,
+    "seed": null,
+    "note": "用户在本机 Codex 中直接生成并导出完整卡；原始生成 prompt 未提供，本记录不伪造可复现性。"
+  },
+  "artifact": {
+    "path": "artifacts/production/key-of-light-card-v1/v001/raw.png",
+    "sha256": "c4c5371f4f9ca8713b82014b0f55147e09dff816b4013b7eb69a1649673abd92",
+    "size_px": [
+      1024,
+      1536
+    ],
+    "channels": "RGB",
+    "bit_depth": 8,
+    "alpha": false,
+    "aspect": "2:3",
+    "native_canvas": true
+  },
+  "pipeline": {
+    "compose_used": false,
+    "intermediate_2k_count": 0,
+    "final_resample_count": 0,
+    "note": "不做合成；整卡直出，保持原生画布。"
+  },
+  "card_text_observed": {
+    "nameplate": "光之钥 / KEY OF LIGHT",
+    "left_inscription": "光之钥 / KEY OF LIGHT",
+    "right_inscription": "命运 · 概率 / FATE · PROBABILITY",
+    "footer_left": "MANY PATHS / ONE WHEEL",
+    "footer_right": "ALL POSSIBILITIES / ALL EXIST",
+    "readback_note": "底部另有附加行「无尽的混乱 · 命运化身 / ENDLESS CHAOS · AVATAR OF FATE」，与原著尊名后两句一致；存在名与源质名同为「光之钥」，属真实名称碰撞。"
+  },
+  "status": "candidate-pending-user-visual-approval",
+  "created_at": "2026-09-14"
+}

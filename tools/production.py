@@ -424,6 +424,48 @@ def validate_fool_audio_package(root):
             "audio_root": "artifacts/lotm.mother-goddess-depravity/audio-v001",
             "voice_profile_id": "mother-goddess-depravity",
         },
+        {
+            "card_id": "lotm.eternal-darkness.primordial-01",
+            "narrative": "production/narratives/eternal-darkness.json",
+            "audio_manifest": "artifacts/lotm.eternal-darkness/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.eternal-darkness/audio-v001",
+            "voice_profile_id": "eternal-darkness",
+        },
+        {
+            "card_id": "lotm.father-of-demons.primordial-01",
+            "narrative": "production/narratives/father-of-demons.json",
+            "audio_manifest": "artifacts/lotm.father-of-demons/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.father-of-demons/audio-v001",
+            "voice_profile_id": "father-of-demons",
+        },
+        {
+            "card_id": "lotm.destruction-calamity.primordial-01",
+            "narrative": "production/narratives/destruction-calamity.json",
+            "audio_manifest": "artifacts/lotm.destruction-calamity/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.destruction-calamity/audio-v001",
+            "voice_profile_id": "destruction-calamity",
+        },
+        {
+            "card_id": "lotm.embodiment-of-disorder.primordial-01",
+            "narrative": "production/narratives/embodiment-of-disorder.json",
+            "audio_manifest": "artifacts/lotm.embodiment-of-disorder/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.embodiment-of-disorder/audio-v001",
+            "voice_profile_id": "embodiment-of-disorder",
+        },
+        {
+            "card_id": "lotm.demon-of-knowledge.primordial-01",
+            "narrative": "production/narratives/demon-of-knowledge.json",
+            "audio_manifest": "artifacts/lotm.demon-of-knowledge/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.demon-of-knowledge/audio-v001",
+            "voice_profile_id": "demon-of-knowledge",
+        },
+        {
+            "card_id": "lotm.key-of-light.primordial-01",
+            "narrative": "production/narratives/key-of-light.json",
+            "audio_manifest": "artifacts/lotm.key-of-light/audio-v001/generation.json",
+            "audio_root": "artifacts/lotm.key-of-light/audio-v001",
+            "voice_profile_id": "key-of-light",
+        },
     ]
     card_reports = []
     audio_records = []
@@ -496,6 +538,12 @@ def validate_fool_audio_package(root):
         "celestial-worthy-card-v1-v001": "artifacts/production/celestial-worthy-card-v1/v001/raw.png",
         "god-almighty-card-v1-v001": "artifacts/production/god-almighty-card-v1/v001/raw.png",
         "mother-goddess-depravity-card-v1-v001": "artifacts/production/mother-goddess-depravity-card-v1/v001/raw.png",
+        "eternal-darkness-card-v1-v001": "artifacts/production/eternal-darkness-card-v1/v001/raw.png",
+        "father-of-demons-card-v1-v001": "artifacts/production/father-of-demons-card-v1/v001/raw.png",
+        "destruction-calamity-card-v1-v001": "artifacts/production/destruction-calamity-card-v1/v001/raw.png",
+        "embodiment-of-disorder-card-v1-v001": "artifacts/production/embodiment-of-disorder-card-v1/v001/raw.png",
+        "demon-of-knowledge-card-v1-v001": "artifacts/production/demon-of-knowledge-card-v1/v001/raw.png",
+        "key-of-light-card-v1-v001": "artifacts/production/key-of-light-card-v1/v001/raw.png",
     }
     card_art_root = inside(root, "apps/LotmCardStudio/Resources/CardArt")
     card_art_names = sorted(path.stem for path in card_art_root.glob("*.png"))
@@ -660,6 +708,10 @@ def validate_fool_materials(root):
     if (layered.get("acceptance", {}).get("formal_release_approved") is not False
             or layered.get("historical_boundary", {}).get("superseded") is None):
         raise Invalid("layered-asset acceptance boundary is stale")
+    layered_sidecar = layered.get("acceptance", {}).get("approval_sidecar", {})
+    if not isinstance(layered_sidecar, dict) or not layered_sidecar.get("path"):
+        raise Invalid("layered-asset approval sidecar binding is missing")
+    verify_records(root, [layered_sidecar])
 
     reusable_materials = catalog.get("retained_reusable_materials", {})
     material_entries = reusable_materials.get("entries", [])
@@ -962,6 +1014,121 @@ def _compare_png_pixels(left_path, right_path, protected_rect):
     }
 
 
+CARD_MANIFEST_STATUSES = {"candidate-pending-user-visual-review", "user-visually-approved"}
+CARD_APPROVAL_STATUSES = {"pending", "approved"}
+NONSEQUENCE_APPROVAL_RECORD = "production/cards/fool-nonsequence-card-approvals-v1.json"
+
+
+def validate_fool_nonsequence_card_approvals(root, manifest_rel=NONSEQUENCE_APPROVAL_RECORD):
+    """Validate the nine non-sequence (序列之上) cards' user approval record.
+
+    These cards have no task, receipt or sequence slot, so they are tracked by a
+    dedicated aggregate record binding each native card, its immutable
+    provenance, and the human approval sidecar by hash. The human sidecar — not
+    any machine-written status string — is the approval authority, and no
+    release deliverable may be claimed while final sampling has not run.
+    """
+    root = Path(root).resolve()
+    manifest_path = inside(root, manifest_rel)
+    if not manifest_path.is_file():
+        raise Invalid("non-sequence card approval record missing: " + manifest_rel)
+    manifest = read(manifest_path)
+    if manifest.get("schema_version") != "1.0.0" or manifest.get("kind") != "card_approval_aggregate":
+        raise Invalid("non-sequence card approval record schema is stale")
+    if manifest.get("status") != "user-visually-approved":
+        raise Invalid("non-sequence card approval record status is invalid")
+    if manifest.get("sequence_slots") is not False:
+        raise Invalid("non-sequence card approval record must not claim sequence slots")
+    if manifest.get("formal_release_approved") is not False:
+        raise Invalid("non-sequence card approval record cannot claim formal release")
+    policy = manifest.get("native_canvas_policy", {})
+    if (policy.get("source_is_canonical") is not True
+            or policy.get("intermediate_2k_count") != 0
+            or policy.get("final_sampling_count") != 0):
+        raise Invalid("non-sequence card native canvas policy is stale")
+
+    sidecar_ref = manifest.get("approval_sidecar", {})
+    if not isinstance(sidecar_ref, dict) or not sidecar_ref.get("path"):
+        raise Invalid("non-sequence card approval sidecar reference is missing")
+    verify_records(root, [sidecar_ref])
+    sidecar = read(inside(root, sidecar_ref["path"]))
+    if (sidecar.get("kind") != "visual_approval_sidecar"
+            or sidecar.get("visual_approved") is not True
+            or sidecar.get("release_approved") is not False
+            or sidecar.get("sampling_executed") is not False):
+        raise Invalid("non-sequence card approval sidecar contract is stale")
+    sidecar_assets = {entry.get("card_id"): entry
+                      for entry in sidecar.get("approved_assets", {}).get("nonsequence_cards", [])}
+
+    cards = manifest.get("cards", [])
+    if len(cards) != 9:
+        raise Invalid("non-sequence card approval record must contain exactly nine cards")
+    card_ids = [item.get("card_id") for item in cards]
+    if any(not isinstance(cid, str) or not cid for cid in card_ids):
+        raise Invalid("non-sequence card identity is missing")
+    if len(card_ids) != len(set(card_ids)):
+        raise Invalid("non-sequence card approval record contains duplicate cards")
+    if any("sequence" in item for item in cards):
+        raise Invalid("non-sequence card approval record must not declare a sequence slot")
+
+    candidate_manifest = read(inside(root, "production/cards/fool-card-candidates-v1.json"))
+    sequence_ids = {item.get("card_id") for item in candidate_manifest.get("cards", [])}
+    if set(card_ids) & sequence_ids:
+        raise Invalid("non-sequence card approval record overlaps the sequence manifest")
+
+    native_sizes = {}
+    for item in cards:
+        card_id = item["card_id"]
+        slug = card_id.split(".")[1] if len(card_id.split(".")) > 1 else ""
+        slot_id = item.get("slot_id", "")
+        if card_id != f"lotm.{slug}.primordial-01" or slot_id != f"lotm.{slug}":
+            raise Invalid("non-sequence card slot identity is stale: " + card_id)
+        path_rel = item.get("path", "")
+        path = inside(root, path_rel)
+        if not path.is_file() or sha(path) != item.get("sha256"):
+            raise Invalid("non-sequence card art hash is stale: " + card_id)
+        try:
+            info = cardctl.image_info(path)
+        except (OSError, cardctl.DataError) as exc:
+            raise Invalid("non-sequence card art is unreadable: " + card_id) from exc
+        if info["format"] != "PNG" or [info["width"], info["height"]] != [1024, 1536]:
+            raise Invalid("non-sequence card art must be a native 1024x1536 PNG: " + card_id)
+        if item.get("size_px") != [1024, 1536]:
+            raise Invalid("non-sequence card size record is stale: " + card_id)
+        provenance_rel = item.get("provenance", "")
+        provenance_path = inside(root, provenance_rel)
+        if not provenance_path.is_file() or sha(provenance_path) != item.get("provenance_sha256"):
+            raise Invalid("non-sequence card provenance hash is stale: " + card_id)
+        provenance = read(provenance_path)
+        if provenance.get("card_id") != card_id or provenance.get("slot_id") != slot_id:
+            raise Invalid("non-sequence card provenance identity disagrees: " + card_id)
+        if provenance.get("status") != "candidate-pending-user-visual-approval":
+            raise Invalid("non-sequence card provenance is not an ingest-time candidate record: " + card_id)
+        approval = item.get("user_visual_approval", {})
+        if approval.get("status") != "approved":
+            raise Invalid("non-sequence card is not user-approved: " + card_id)
+        if not (str(approval.get("by") or "").strip() and str(approval.get("reference") or "").strip()):
+            raise Invalid("non-sequence card approval lacks evidence: " + card_id)
+        asset = sidecar_assets.get(card_id)
+        if not asset or asset.get("sha256") != item.get("sha256"):
+            raise Invalid("non-sequence card approval is not bound to the human sidecar: " + card_id)
+        if item.get("formal_release_approved") is not False:
+            raise Invalid("non-sequence card cannot claim formal release: " + card_id)
+        native_sizes[card_id] = item.get("size_px")
+
+    return {
+        "passed": True,
+        "status": "passed",
+        "manifest": manifest_rel,
+        "card_count": len(cards),
+        "card_ids": card_ids,
+        "native_canvas_sizes": native_sizes,
+        "approval_sidecar": sidecar_ref["path"],
+        "formal_release_approved": False,
+        "limitation": "Binds native art, immutable provenance and the human approval sidecar; it does not claim a 2K/4K deliverable or formal release.",
+    }
+
+
 def validate_fool_cards(root, manifest_rel="production/cards/fool-card-candidates-v1.json"):
     """Validate the current Fool target-card candidates without approving them.
 
@@ -980,8 +1147,8 @@ def validate_fool_cards(root, manifest_rel="production/cards/fool-card-candidate
     manifest = read(manifest_path)
     if manifest.get("schema_version") != "1.0.0":
         raise Invalid("Fool card candidate manifest schema is stale")
-    if manifest.get("status") != "candidate-pending-user-visual-review":
-        raise Invalid("Fool card candidate manifest is not pending visual review")
+    if manifest.get("status") not in CARD_MANIFEST_STATUSES:
+        raise Invalid("Fool card candidate manifest status is invalid")
     policy = manifest.get("native_canvas_policy", {})
     if policy.get("source_is_canonical") is not True:
         raise Invalid("Fool card candidates must use the native source as canonical")
@@ -998,7 +1165,7 @@ def validate_fool_cards(root, manifest_rel="production/cards/fool-card-candidate
     verify_records(root, [visual_review_ref])
     visual_review = read(inside(root, visual_review_ref["path"]))
     if (visual_review.get("schema_version") != "1.0.0"
-            or visual_review.get("status") != "pending-user-visual-approval"
+            or visual_review.get("status") not in CARD_MANIFEST_STATUSES
             or visual_review.get("next_gate", {}).get("formal_release_approved") is not False):
         raise Invalid("Fool card visual review status is stale")
     review_cards = visual_review.get("cards", [])
@@ -1007,6 +1174,21 @@ def validate_fool_cards(root, manifest_rel="production/cards/fool-card-candidate
     review_by_id = {item.get("card_id"): item for item in review_cards}
     if len(review_by_id) != len(review_cards):
         raise Invalid("Fool card visual review contains duplicate cards")
+
+    sidecar_ref = manifest.get("approval_sidecar", {})
+    if not isinstance(sidecar_ref, dict) or not sidecar_ref.get("path"):
+        raise Invalid("card candidate approval sidecar reference is missing")
+    verify_records(root, [sidecar_ref])
+    sidecar = read(inside(root, sidecar_ref["path"]))
+    if (sidecar.get("kind") != "visual_approval_sidecar"
+            or sidecar.get("visual_approved") is not True
+            or sidecar.get("release_approved") is not False
+            or sidecar.get("sampling_executed") is not False):
+        raise Invalid("card visual approval sidecar contract is stale")
+    sidecar_assets = {}
+    for bucket in ("sequence_cards", "nonsequence_cards"):
+        for entry in sidecar.get("approved_assets", {}).get(bucket, []):
+            sidecar_assets[entry.get("card_id")] = entry
 
     expected_ids = [
         "lotm.fool.s09.klein-moretti.tingen-01",
@@ -1024,8 +1206,16 @@ def validate_fool_cards(root, manifest_rel="production/cards/fool-card-candidate
                 or source.get("sha256") != item.get("sha256")
                 or source.get("size_px") != item.get("size_px")):
             raise Invalid("Fool card visual review source disagrees: " + item.get("card_id", ""))
-        if review_item.get("user_visual_approval", {}).get("status") != "pending":
-            raise Invalid("Fool card visual review must remain pending: " + item.get("card_id", ""))
+        approval = review_item.get("user_visual_approval", {})
+        if approval.get("status") not in CARD_APPROVAL_STATUSES:
+            raise Invalid("Fool card visual review approval status is invalid: " + item.get("card_id", ""))
+        if approval.get("status") == "approved":
+            if not (str(approval.get("by") or "").strip()
+                    and str(approval.get("reference") or "").strip()):
+                raise Invalid("approved card review needs approval evidence: " + item.get("card_id", ""))
+            bound = sidecar_assets.get(item.get("card_id"))
+            if not bound or bound.get("sha256") != item.get("sha256"):
+                raise Invalid("card review approval is not bound to the human sidecar: " + item.get("card_id", ""))
 
     name_contract = read(inside(root, "production/templates/fool-mother-frame-interface-v1.json"))
     name_surface = name_contract.get("name_surface", {})
@@ -1095,8 +1285,17 @@ def validate_fool_cards(root, manifest_rel="production/cards/fool-card-candidate
             raise Invalid("card candidate receipt disagrees: " + card_id)
         if receipt.get("approval", {}).get("status") != "pending":
             raise Invalid("card candidate is not pending approval: " + card_id)
-        if item.get("visual_status") != "candidate-pending-user-visual-review":
-            raise Invalid("card candidate visual status is not pending: " + card_id)
+        if item.get("visual_status") not in CARD_MANIFEST_STATUSES:
+            raise Invalid("card candidate visual status is invalid: " + card_id)
+        approval = item.get("user_visual_approval", {})
+        if approval.get("status") not in CARD_APPROVAL_STATUSES:
+            raise Invalid("card candidate approval status is invalid: " + card_id)
+        if approval.get("status") == "approved":
+            bound = sidecar_assets.get(card_id)
+            if not bound or bound.get("sha256") != item.get("sha256"):
+                raise Invalid("card candidate approval is not sidecar-bound: " + card_id)
+        if manifest.get("status") == "user-visually-approved" and approval.get("status") != "approved":
+            raise Invalid("approved card manifest requires approved cards: " + card_id)
         if item.get("formal_release_approved") is not False:
             raise Invalid("card candidate cannot be formally released yet: " + card_id)
         native_sizes[f"s{sequence:02d}"] = item["size_px"]
@@ -1130,6 +1329,7 @@ def validate_fool_cards(root, manifest_rel="production/cards/fool-card-candidate
 
     if manifest.get("formal_release_approved") is not False:
         raise Invalid("Fool card candidate manifest cannot be formally released")
+    nonsequence_approvals = validate_fool_nonsequence_card_approvals(root)
     final_sampling = validate_fool_finalization_manifest(root)
     return {
         "passed": True,
@@ -1148,6 +1348,7 @@ def validate_fool_cards(root, manifest_rel="production/cards/fool-card-candidate
             "card_count": len(review_cards),
         },
         "final_sampling": final_sampling,
+        "nonsequence_approvals": nonsequence_approvals,
         "carrier_contract": carrier_contract,
         "audrey_external_preservation": audrey_preservation,
         "formal_release_approved": manifest["formal_release_approved"],
@@ -1194,8 +1395,8 @@ def validate_fool_finalization_manifest(root, manifest_rel=FINAL_SAMPLING_MANIFE
             or sha(candidate_path) != candidate_ref.get("sha256")):
         raise Invalid("final sampling candidate manifest hash is stale")
     candidate_manifest = read(candidate_path)
-    if candidate_manifest.get("status") != "candidate-pending-user-visual-review":
-        raise Invalid("final sampling candidate manifest is not pending visual review")
+    if candidate_manifest.get("status") not in CARD_MANIFEST_STATUSES:
+        raise Invalid("final sampling candidate manifest status is invalid")
     candidate_cards = candidate_manifest.get("cards", [])
     candidate_by_id = {item.get("card_id"): item for item in candidate_cards}
     if len(candidate_by_id) != len(candidate_cards):
@@ -1261,10 +1462,17 @@ def validate_fool_finalization_manifest(root, manifest_rel=FINAL_SAMPLING_MANIFE
                 raise Invalid("approved final sampling needs approval evidence: " + item["card_id"])
         approval_statuses[item["card_id"]] = status
 
+    if manifest.get("sampling_executed") is not False:
+        raise Invalid("final sampling must not report executed sampling before a receipt exists")
+    if manifest.get("status") == "approved-for-final-sampling" and set(approval_statuses.values()) != {"approved"}:
+        raise Invalid("approved final sampling requires every card to be user-approved")
+
     return {
         "passed": True,
         "status": "passed",
         "manifest": manifest_rel,
+        "manifest_status": manifest.get("status"),
+        "sampling_executed": manifest.get("sampling_executed"),
         "card_count": len(cards),
         "candidate_manifest": candidate_ref["path"],
         "approval_statuses": approval_statuses,
@@ -1878,6 +2086,7 @@ def main():
     sub.add_parser("check-fool-carrier")
     sub.add_parser("check-fool-audio")
     sub.add_parser("check-fool-cards")
+    sub.add_parser("check-fool-nonsequence-cards")
     args=parser.parse_args()
     try:
         if args.command=="compile": result=compile_task(ROOT,args.task,args.out)
@@ -1898,6 +2107,8 @@ def main():
             result = validate_fool_audio_package(ROOT)
         elif args.command=="check-fool-cards":
             result = validate_fool_cards(ROOT)
+        elif args.command=="check-fool-nonsequence-cards":
+            result = validate_fool_nonsequence_card_approvals(ROOT)
         elif args.command=="finalize":
             result = finalize_fool_card(ROOT, args.manifest, args.card_id, args.profile, args.out)
         elif args.command=="check-final-sample":

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "version": "1.0.0",
-  "status": "candidate-pending-user-visual-review",
-  "scope": "当前愚者途径目标卡的完整原生候选；不代表正式release",
+  "status": "user-visually-approved",
+  "scope": "当前愚者途径序列卡（S09/S00）的完整原生候选；已获用户视觉批准，但未产出 2K/4K 交付物，不代表正式 release",
   "native_canvas_policy": {
     "source_is_canonical": true,
     "intermediate_2k_count": 0,
@@ -11,7 +11,7 @@
   },
   "visual_review": {
     "path": "production/cards/fool-card-visual-review-v1.json",
-    "sha256": "49105cbf285e98974d4ffde3a0882cf521e2b098482738cd8304e30e708748a7"
+    "sha256": "4a5e8521af4a56cd6fa9093df1f69f8c25332827a2a1aa3ffdbde6d4eb550fb6"
   },
   "cards": [
     {
@@ -25,25 +25,43 @@
       "identity_name_status": "verified",
       "path": "artifacts/production/fool-s09-card-name-edit-v1/v001/raw.png",
       "sha256": "2d73c4662e9de0b263f833b75ca419605299b40f52c0909421c3b0d9d4dc0efe",
-      "size_px": [1024, 1536],
+      "size_px": [
+        1024,
+        1536
+      ],
       "channels": "RGB",
       "alpha": false,
       "task": "production/tasks/fool-s09-card-name-edit-v1.json",
       "receipt": "artifacts/production/fool-s09-card-name-edit-v1/v001/receipt.json",
       "narrative": "production/narratives/klein-s09-tingen.json",
-      "visual_status": "candidate-pending-user-visual-review",
+      "visual_status": "user-visually-approved",
       "formal_release_approved": false,
       "local_edit_audit": {
         "target": "artifacts/production/fool-s09-card-agentic-v1/v001/agentic-full-card-candidate-v1.png",
         "target_sha256": "e20c0a0164ffeaba825242e09891f4ab394d697e0488101fe97ae0870d200c72",
         "changed_pixels": 1370051,
         "changed_ratio": 0.8710549672444662,
-        "changed_bbox": [0, 0, 1024, 1536],
+        "changed_bbox": [
+          0,
+          0,
+          1024,
+          1536
+        ],
         "changed_inside_name_surface": 77848,
         "changed_pixels_outside_name_surface": 1292203,
-        "name_surface_rect": [224, 1216, 576, 136],
+        "name_surface_rect": [
+          224,
+          1216,
+          576,
+          136
+        ],
         "status": "rejected-global-rerender",
         "meaning": "仅作为完整Agentic卡候选保留，不作为局部姓名零漂移层"
+      },
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
       }
     },
     {
@@ -57,16 +75,28 @@
       "identity_name_status": "proposed",
       "path": "artifacts/production/fool-s00-card-agentic-v1/v001/raw.png",
       "sha256": "11eab4ed8688a4949411721f0fad07586cd006debb444919153907fb77b584ce",
-      "size_px": [1024, 1536],
+      "size_px": [
+        1024,
+        1536
+      ],
       "channels": "RGB",
       "alpha": false,
       "task": "production/tasks/fool-s00-card-agentic-v1.json",
       "receipt": "artifacts/production/fool-s00-card-agentic-v1/v001/receipt.json",
       "narrative": "production/narratives/mr-fool-s00.json",
-      "visual_status": "candidate-pending-user-visual-review",
+      "visual_status": "user-visually-approved",
       "formal_release_approved": false,
-      "identity_note": "愚者先生是用户指定的人物身份切片展示名；序列名称仍由card.json的愚者负责，待中文底本证据后再升级身份状态。"
+      "identity_note": "愚者先生是用户指定的人物身份切片展示名；序列名称仍由card.json的愚者负责，待中文底本证据后再升级身份状态。",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      }
     }
   ],
-  "formal_release_approved": false
+  "formal_release_approved": false,
+  "approval_sidecar": {
+    "path": "production/approvals/fool-card-visual-approval-v1.json",
+    "sha256": "6be3cefd92fb3e1d53d20b35d7ac40e840b0a1f841dda274d547a7514c60d91e"
+  }
 }

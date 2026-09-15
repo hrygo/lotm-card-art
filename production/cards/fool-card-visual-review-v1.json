@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "status": "pending-user-visual-approval",
-  "review_scope": "当前两张愚者途径完整原生卡候选的视觉预审；不替代用户批准、正典核验、文案批准或正式 release。",
+  "status": "user-visually-approved",
+  "review_scope": "愚者途径两张完整原生卡候选的用户视觉验收记录；已由用户批准，但仍不代表正式 release 或 2K/4K 交付。",
   "reviewer": "agent-visual-inspection",
   "cards": [
     {
@@ -9,7 +9,10 @@
       "source": {
         "path": "artifacts/production/fool-s09-card-name-edit-v1/v001/raw.png",
         "sha256": "2d73c4662e9de0b263f833b75ca419605299b40f52c0909421c3b0d9d4dc0efe",
-        "size_px": [1024, 1536]
+        "size_px": [
+          1024,
+          1536
+        ]
       },
       "observed": {
         "single_card_upright": true,
@@ -25,9 +28,10 @@
       },
       "agent_assessment": "未观察到需要立即重生的结构性视觉缺陷；仍需用户逐图确认文字细节、材质品格和整体审美。",
       "user_visual_approval": {
-        "status": "pending",
-        "by": null,
-        "reference": null
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。",
+        "basis_quote": "已经验收通过，所有卡，变为正式"
       }
     },
     {
@@ -35,7 +39,10 @@
       "source": {
         "path": "artifacts/production/fool-s00-card-agentic-v1/v001/raw.png",
         "sha256": "11eab4ed8688a4949411721f0fad07586cd006debb444919153907fb77b584ce",
-        "size_px": [1024, 1536]
+        "size_px": [
+          1024,
+          1536
+        ]
       },
       "observed": {
         "single_card_upright": true,
@@ -51,15 +58,20 @@
       },
       "agent_assessment": "未观察到需要立即重生的结构性视觉缺陷；S00 身份称谓与神格叙事仍需用户确认表达边界。",
       "user_visual_approval": {
-        "status": "pending",
-        "by": null,
-        "reference": null
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。",
+        "basis_quote": "已经验收通过，所有卡，变为正式"
       }
     }
   ],
   "next_gate": {
-    "required": "user_visual_approval_for_each_card",
-    "after_approval": "execute one direct final sampling per requested profile, then check-final-sample",
+    "required": "execute_one_direct_final_sampling_per_requested_profile",
+    "after_approval": "run finalize then check-final-sample; formal release stays separate",
     "formal_release_approved": false
+  },
+  "approval_sidecar": {
+    "path": "production/approvals/fool-card-visual-approval-v1.json",
+    "sha256": "6be3cefd92fb3e1d53d20b35d7ac40e840b0a1f841dda274d547a7514c60d91e"
   }
 }

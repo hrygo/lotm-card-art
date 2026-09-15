@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "version": "1.0.0",
+  "kind": "card_approval_aggregate",
+  "status": "user-visually-approved",
+  "scope": "九位「序列之上」非序列卡位原生候选的视觉批准；不代表正式 release 或最终采样",
+  "sequence_slots": false,
+  "approval_sidecar": {
+    "path": "production/approvals/fool-card-visual-approval-v1.json",
+    "sha256": "6be3cefd92fb3e1d53d20b35d7ac40e840b0a1f841dda274d547a7514c60d91e"
+  },
+  "native_canvas_policy": {
+    "source_is_canonical": true,
+    "intermediate_2k_count": 0,
+    "final_sampling_count": 0,
+    "final_sampling_required_after_approval": true
+  },
+  "basis": {
+    "source": "current_conversation",
+    "user_quote": "已经验收通过，所有卡，变为正式",
+    "recorded_at": "2026-09-14T15:36:33Z"
+  },
+  "cards": [
+    {
+      "card_id": "lotm.celestial-worthy.primordial-01",
+      "slot_id": "lotm.celestial-worthy",
+      "display_name": "福生玄黄天尊",
+      "path": "artifacts/production/celestial-worthy-card-v1/v001/raw.png",
+      "sha256": "465146680d02cb4ce63c50176d87598907f5135d1755de6bd5fdd40f095b78c3",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "provenance": "artifacts/production/celestial-worthy-card-v1/v001/provenance.json",
+      "provenance_sha256": "f5cdbfce200c6f366d306c07ccad1761f2c5820f8ab3cce17788214b2e4df10b",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      },
+      "formal_release_approved": false
+    },
+    {
+      "card_id": "lotm.god-almighty.primordial-01",
+      "slot_id": "lotm.god-almighty",
+      "display_name": "上帝",
+      "path": "artifacts/production/god-almighty-card-v1/v001/raw.png",
+      "sha256": "d9012cdd9baaee354514008a3cf340804880404409e1c94e9460e2cf0b8dd89d",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "provenance": "artifacts/production/god-almighty-card-v1/v001/provenance.json",
+      "provenance_sha256": "5f0d2c7e11c911fbb7a083c2d58f96c14a54b37d2b3afd1163181922ceef52c6",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      },
+      "formal_release_approved": false
+    },
+    {
+      "card_id": "lotm.mother-goddess-depravity.primordial-01",
+      "slot_id": "lotm.mother-goddess-depravity",
+      "display_name": "堕落母神",
+      "path": "artifacts/production/mother-goddess-depravity-card-v1/v001/raw.png",
+      "sha256": "19583bbce8be36a594c308fcf1588f49b9c20b0a3b5e933a94041a95f87c2f08",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "provenance": "artifacts/production/mother-goddess-depravity-card-v1/v001/provenance.json",
+      "provenance_sha256": "991cd19a16bd841c5d09d64c507952eed1ea4774ff371983312aef07ef1fd1ea",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      },
+      "formal_release_approved": false
+    },
+    {
+      "card_id": "lotm.eternal-darkness.primordial-01",
+      "slot_id": "lotm.eternal-darkness",
+      "display_name": "永恒之暗",
+      "path": "artifacts/production/eternal-darkness-card-v1/v001/raw.png",
+      "sha256": "80ae175f3a8bb455ad12128458b6f860c3672f96d2009243bf13f9b537af04c0",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "provenance": "artifacts/production/eternal-darkness-card-v1/v001/provenance.json",
+      "provenance_sha256": "859d5d4e1153205fa93f5871ffb8db732a070fadf9ccf50a25fb28e085948758",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      },
+      "formal_release_approved": false
+    },
+    {
+      "card_id": "lotm.father-of-demons.primordial-01",
+      "slot_id": "lotm.father-of-demons",
+      "display_name": "恶魔之父",
+      "path": "artifacts/production/father-of-demons-card-v1/v001/raw.png",
+      "sha256": "706ae9994fd43cf60a1d040b95b6fe4241838297af38d5c295bb5ab11d9a84d9",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "provenance": "artifacts/production/father-of-demons-card-v1/v001/provenance.json",
+      "provenance_sha256": "54abff4398aeea3818146372cea2849d694c52f73cc57d2df545f01ce816dd3b",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      },
+      "formal_release_approved": false
+    },
+    {
+      "card_id": "lotm.destruction-calamity.primordial-01",
+      "slot_id": "lotm.destruction-calamity",
+      "display_name": "毁灭天灾",
+      "path": "artifacts/production/destruction-calamity-card-v1/v001/raw.png",
+      "sha256": "8385beb3ec74f4e990598675d19eb304bde21799f10f9470faa16e16f1151a29",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "provenance": "artifacts/production/destruction-calamity-card-v1/v001/provenance.json",
+      "provenance_sha256": "27b06314e0e18ba6acc04be681ac38e137c01925ee41e0e2068b862790b97b5d",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      },
+      "formal_release_approved": false
+    },
+    {
+      "card_id": "lotm.embodiment-of-disorder.primordial-01",
+      "slot_id": "lotm.embodiment-of-disorder",
+      "display_name": "失序者",
+      "path": "artifacts/production/embodiment-of-disorder-card-v1/v001/raw.png",
+      "sha256": "bb053057bc924488c4b99a9a73f6d269f8af7bd06e4359a897de414d902958f0",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "provenance": "artifacts/production/embodiment-of-disorder-card-v1/v001/provenance.json",
+      "provenance_sha256": "ee8363d4bd2436378ec60d205cc3eebbd6efaf5cc04daeda985cfd8cf89cc06d",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      },
+      "formal_release_approved": false
+    },
+    {
+      "card_id": "lotm.demon-of-knowledge.primordial-01",
+      "slot_id": "lotm.demon-of-knowledge",
+      "display_name": "知识之妖",
+      "path": "artifacts/production/demon-of-knowledge-card-v1/v001/raw.png",
+      "sha256": "2dcc4eddda033c744b8bd71df4effd8e565c38fbf48b792fa0b32c06a16dd91b",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "provenance": "artifacts/production/demon-of-knowledge-card-v1/v001/provenance.json",
+      "provenance_sha256": "733153c37cb7cfc9c81b8f2ee8e59536dfa0a095f1a329c925eba612e50d5a0b",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      },
+      "formal_release_approved": false
+    },
+    {
+      "card_id": "lotm.key-of-light.primordial-01",
+      "slot_id": "lotm.key-of-light",
+      "display_name": "光之钥",
+      "path": "artifacts/production/key-of-light-card-v1/v001/raw.png",
+      "sha256": "c4c5371f4f9ca8713b82014b0f55147e09dff816b4013b7eb69a1649673abd92",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "provenance": "artifacts/production/key-of-light-card-v1/v001/provenance.json",
+      "provenance_sha256": "904eb730138d18f14cc5cbc361daf7fefb4074ece005b360f3e3a3b76881162e",
+      "user_visual_approval": {
+        "status": "approved",
+        "by": "project-owner",
+        "reference": "current-conversation-2026-09-14：用户裁决「已经验收通过，所有卡，变为正式」；范围＝App 现有 11 张；深度＝只转状态与批准记录、不出 2K/4K；素材基线只记依据、release 保持 false。"
+      },
+      "formal_release_approved": false
+    }
+  ],
+  "formal_release_approved": false
+}

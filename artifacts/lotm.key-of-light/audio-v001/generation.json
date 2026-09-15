@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.key-of-light.primordial-01",
+  "voice_profile_id": "key-of-light",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.1",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.9,
+    "instruction": "一位轻盈而略带玩味的中性嗓音，音色明亮、干净、有一点空气感。语速中等，音高有轻微的跳跃感，像在随口报出一串彼此无关的数字，听起来轻松，但每个词都落在该落的位置上。语气是随意的、甚至带点愉快的旁观者口吻，不阴森、不威胁、不预言腔。句尾轻巧地收住或微微上扬。吐字清晰，不带方言，不做作、不油腻。"
+  },
+  "files": [
+    {
+      "resource_name": "key-of-light-greeting-v1",
+      "text_digest": "3375f58341893632d51062993ef682d80d250815041feb6f1dae2cb671e41bc2",
+      "sha256": "17fdd3a56205d7e3e56e27d1976cc00a63c51b3ee3581e7c92fcdb84967cc9d0",
+      "duration_seconds": 2.56,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "key-of-light-catchphrase-01-v1",
+      "text_digest": "6fcb580efb6c5803ea2e31fc7abf3906f94e0cf4fc8538bfd5c7e8869d30f600",
+      "sha256": "532fb6bb39cf895c4962c27d12736d8bcb91dec330181be036f2cf68cc93e663",
+      "duration_seconds": 2.4,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "key-of-light-catchphrase-02-v1",
+      "text_digest": "a964e18648ff68cad5a6caae5f4d7c395a19c5be9b865ebcfa5ac612f00648dc",
+      "sha256": "4805868a0be39f41441e4a405ab53e9c893ac8b0f494ef5e13fa1b2fab3aaeb4",
+      "duration_seconds": 2.24,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "key-of-light-story-01-v1",
+      "text_digest": "853058c833a534bb710c29198f13d3f24226c90c084b21c7351f36488c7ffec6",
+      "sha256": "3ef6fc5e574a878ec9ba139b4b082170496f1b1bec88f5f352fb8161a41125f4",
+      "duration_seconds": 16.32,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "key-of-light-story-02-v1",
+      "text_digest": "d87e31dae24723749fc87da3abdd2df4891d10a7042591808b5f34cb6461c981",
+      "sha256": "4372bd597f47ceb5019c54265e14d04d890f1d974da23d1a846732d394cc34e0",
+      "duration_seconds": 15.12,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "key-of-light-story-03-v1",
+      "text_digest": "b7598a91e022aedb37c7ba2bec56d47738215c266f0877a5c90a58d11e941c64",
+      "sha256": "b9264341d83b80b3f554dda8ef084338081bd1a280b0d6bddfe9b8e10e0d8369",
+      "duration_seconds": 15.52,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
+  ]
+}

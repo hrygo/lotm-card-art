@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "card-art",
+  "mode": "direct-agentic-full-card",
+  "task_id": "destruction-calamity-card-v1",
+  "run_id": "v001",
+  "card_id": "lotm.destruction-calamity.primordial-01",
+  "slot_id": "lotm.destruction-calamity",
+  "source": {
+    "origin": "user-provided",
+    "channel": "Codex built-in image_gen export",
+    "provided_path": "/Users/hrygo/Downloads/Codex 图像 2026年9月14日 22_01_25.png",
+    "prompt_captured": false,
+    "tool": "image_gen.imagegen (built-in, Codex)",
+    "model": null,
+    "seed": null,
+    "note": "用户在本机 Codex 中直接生成并导出完整卡；原始生成 prompt 未提供，本记录不伪造可复现性。"
+  },
+  "artifact": {
+    "path": "artifacts/production/destruction-calamity-card-v1/v001/raw.png",
+    "sha256": "8385beb3ec74f4e990598675d19eb304bde21799f10f9470faa16e16f1151a29",
+    "size_px": [
+      1024,
+      1536
+    ],
+    "channels": "RGB",
+    "bit_depth": 8,
+    "alpha": false,
+    "aspect": "2:3",
+    "native_canvas": true
+  },
+  "pipeline": {
+    "compose_used": false,
+    "intermediate_2k_count": 0,
+    "final_resample_count": 0,
+    "note": "不做合成；整卡直出，保持原生画布。"
+  },
+  "card_text_observed": {
+    "nameplate": "毁灭天灾 / THE DESTRUCTION CALAMITY",
+    "left_inscription": "毁灭天灾 / THE DESTRUCTION CALAMITY",
+    "right_inscription": "灾祸 · 战争 · 毁灭 / CALAMITY · WAR · DESTRUCTION",
+    "footer_left": "WAR BURNS THE WORLD / CALAMITY REBUILDS IT",
+    "footer_right": "ALL THINGS SHALL END / AND BE REBORN",
+    "readback_note": "左铭文槽位放的是「毁灭天灾」而非源质「灾祸之城」，与其余五张（内多为源质名）不一致，待用户裁决。"
+  },
+  "status": "candidate-pending-user-visual-approval",
+  "created_at": "2026-09-14"
+}

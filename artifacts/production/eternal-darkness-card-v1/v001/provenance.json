@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "card-art",
+  "mode": "direct-agentic-full-card",
+  "task_id": "eternal-darkness-card-v1",
+  "run_id": "v001",
+  "card_id": "lotm.eternal-darkness.primordial-01",
+  "slot_id": "lotm.eternal-darkness",
+  "source": {
+    "origin": "user-provided",
+    "channel": "Codex built-in image_gen export",
+    "provided_path": "/Users/hrygo/Downloads/Codex 图像 2026年9月14日 21_57_17.png",
+    "prompt_captured": false,
+    "tool": "image_gen.imagegen (built-in, Codex)",
+    "model": null,
+    "seed": null,
+    "note": "用户在本机 Codex 中直接生成并导出完整卡；原始生成 prompt 未提供，本记录不伪造可复现性。"
+  },
+  "artifact": {
+    "path": "artifacts/production/eternal-darkness-card-v1/v001/raw.png",
+    "sha256": "80ae175f3a8bb455ad12128458b6f860c3672f96d2009243bf13f9b537af04c0",
+    "size_px": [
+      1024,
+      1536
+    ],
+    "channels": "RGB",
+    "bit_depth": 8,
+    "alpha": false,
+    "aspect": "2:3",
+    "native_canvas": true
+  },
+  "pipeline": {
+    "compose_used": false,
+    "intermediate_2k_count": 0,
+    "final_resample_count": 0,
+    "note": "不做合成；整卡直出，保持原生画布。"
+  },
+  "card_text_observed": {
+    "nameplate": "永恒之暗 / THE ETERNAL DARKNESS",
+    "left_inscription": "永暗之河 / RIVER OF ETERNAL DARKNESS",
+    "right_inscription": "死亡 · 终结 · 寂灭 / DEATH · ENDING · OBLIVION",
+    "footer_left": "ALL LIGHTS FADE / ALL THINGS RETURN",
+    "footer_right": "IN SILENCE / THE END IS ANOTHER BEGINNING",
+    "readback_note": "铭文与「源质↔旧日」口径一致；箴言为本卡原创对照语，不是原著引文。"
+  },
+  "status": "candidate-pending-user-visual-approval",
+  "created_at": "2026-09-14"
+}

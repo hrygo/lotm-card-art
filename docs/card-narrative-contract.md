@@ -51,3 +51,11 @@ python3 tools/production.py check-content production/templates/card-narrative.js
 subject 任务可用 `narrative: {path, sha256}` 引用本包，编译时核对 cardID/slotID/characterID/name 并追踪叙事文件及证据。它不是图像附件，不将口头语/故事全文自动写入生图 prompt；只转译获准的动作、物件与情绪意向。其他文字 brief 用 `contracts: [{path, sha256}]` 追踪，与实际图像 `references` 分开。
 
 本生产 JSON 不是 App 的直接 Codable 输入。目前仅复用 App 既有 greeting/catchphrase/story 与 canon/interpretation/original 枚举语义；接入时非 story 条目映射 NarrativePack.lines，story 条目映射 StoryChapter（title 与 line 分离），审核映射 NarrativeReview，音频清单映射 audioResourceName。当前未实现导入器，不能宣称模板已进入 App。
+
+## 代词约定
+
+- **真神及以上**（序列 0 真神、天使之王、旧日/序列之上）作为主体的第三人称代词**一律用「祂」**，不用「他/她/它」。
+- 指代**源质与概念**（永暗之河、暗影世界、灾祸之城、母巢、秩序、知识等）时**同样用「祂」**；只有**物体、事件与复数事物**（世界、两条途径、可能性）仍用「它/它们」；`其他/他人/他者` 等词不受此约定影响。
+- 低、中、高序列的**人物**仍按其性别用「他/她」。
+- 修改任一含摘要的文案后，必须重算 `contentDigest`／`approvedDigest`／`generation.json.text_digest` 并同步 Swift 叙事文件；若修改的是已绑定任务回执的叙事文件，还须同步源侧任务记录的 `sha256`。
+

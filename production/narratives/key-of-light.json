@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "identity": {
+    "cardID": "lotm.key-of-light.primordial-01",
+    "slotID": "lotm.key-of-light",
+    "characterID": "key-of-light",
+    "identitySliceID": "key-of-light.primordial",
+    "name": "光之钥",
+    "timeScope": "序列之上；源质＝光之钥；第一部范围（不写入第二部内容）",
+    "spoilerBoundary": "允许涉及九源质与旧日称号、支柱与第四支柱结构；不冒充中文底本逐字事实，不使用第二部《宿命之环》内容"
+  },
+  "entries": [
+    {
+      "id": "key-of-light-greeting-01",
+      "kind": "greeting",
+      "title": null,
+      "text": "每一次选择，都创造了一个世界。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "3375f58341893632d51062993ef682d80d250815041feb6f1dae2cb671e41bc2",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "3375f58341893632d51062993ef682d80d250815041feb6f1dae2cb671e41bc2",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-key-of-light-narrative-audio.md"
+      }
+    },
+    {
+      "id": "key-of-light-catchphrase-01",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "混乱里才有无限的可能。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "6fcb580efb6c5803ea2e31fc7abf3906f94e0cf4fc8538bfd5c7e8869d30f600",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "6fcb580efb6c5803ea2e31fc7abf3906f94e0cf4fc8538bfd5c7e8869d30f600",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-key-of-light-narrative-audio.md"
+      }
+    },
+    {
+      "id": "key-of-light-catchphrase-02",
+      "kind": "catchphrase",
+      "title": null,
+      "text": "许多条路，同一个轮。",
+      "sourceKind": "original",
+      "evidenceRefs": [],
+      "gap": null,
+      "contentDigest": "a964e18648ff68cad5a6caae5f4d7c395a19c5be9b865ebcfa5ac612f00648dc",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "a964e18648ff68cad5a6caae5f4d7c395a19c5be9b865ebcfa5ac612f00648dc",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-key-of-light-narrative-audio.md"
+      }
+    },
+    {
+      "id": "key-of-light-story-01",
+      "kind": "story",
+      "title": "第一章 · 名字相同",
+      "text": "祂的名字和祂的源质是同一个词：光之钥。这在九份源质里是唯一的。有人把这当作巧合，有人把它当作命运的玩笑——考虑到祂掌管的东西，后一种说法更贴切。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-above-sequence-sefirot-old-ones.md",
+          "sha256": "70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1",
+          "locator": "§3 一手证据（第1346章「支柱」）；§4 九源质↔九旧日↔22 途径；§5 逐位核验（光之钥）"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "853058c833a534bb710c29198f13d3f24226c90c084b21c7351f36488c7ffec6",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "853058c833a534bb710c29198f13d3f24226c90c084b21c7351f36488c7ffec6",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-key-of-light-narrative-audio.md"
+      }
+    },
+    {
+      "id": "key-of-light-story-02",
+      "kind": "story",
+      "title": "第二章 · 命运之轮",
+      "text": "命运之轮是唯一一条通向祂的途径，因为这里只有一份唯一性。概率、运气、意外、混乱——这些词指的是同一件事的不同切面，而那件事有一个人形的答案。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-above-sequence-sefirot-old-ones.md",
+          "sha256": "70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1",
+          "locator": "§3 一手证据（第1346章「支柱」）；§4 九源质↔九旧日↔22 途径；§5 逐位核验（光之钥）"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "d87e31dae24723749fc87da3abdd2df4891d10a7042591808b5f34cb6461c981",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "d87e31dae24723749fc87da3abdd2df4891d10a7042591808b5f34cb6461c981",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-key-of-light-narrative-audio.md"
+      }
+    },
+    {
+      "id": "key-of-light-story-03",
+      "kind": "story",
+      "title": "第三章 · 无尽的混乱",
+      "text": "祂的第二、第三个名字是「无尽的混乱」与「命运化身」。这两句并不矛盾：一条路上有无数个可能的分支，而走到最后会发现，所有的分支都绕在同一个轮子上。",
+      "sourceKind": "interpretation",
+      "evidenceRefs": [
+        {
+          "path": "docs/research/2026-09-14-above-sequence-sefirot-old-ones.md",
+          "sha256": "70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1",
+          "locator": "§3 一手证据（第1346章「支柱」）；§4 九源质↔九旧日↔22 途径；§5 逐位核验（光之钥）"
+        }
+      ],
+      "gap": null,
+      "contentDigest": "b7598a91e022aedb37c7ba2bec56d47738215c266f0877a5c90a58d11e941c64",
+      "review": {
+        "status": "approved",
+        "approvedDigest": "b7598a91e022aedb37c7ba2bec56d47738215c266f0877a5c90a58d11e941c64",
+        "by": "project-editor",
+        "reference": "docs/reviews/2026-09-14-key-of-light-narrative-audio.md"
+      }
+    }
+  ]
+}

@@ -233,3 +233,100 @@ OK
 - 事实边界：支柱位格、源质＝母巢、被撕裂状态与两途径拆分本轮**全部**维持 `secondary-cross-check / authorial-supplement（转录）`，**没有任何一条可标为 `verified`**；本仓库无中文授权底本，作者公众号原文未取得。不把「收回母巢后」的未取得形态画成既定形象。
 - 更正上文「当前已知未过项」：`tools/render/foolpipeline5.swift` 与其三个 task 契约的 sha 已同步为 `ab58a009…`；`python3 -m unittest discover -s tests` 现为 **144 项 OK（skipped=6）**。该项由改动所有者修复，与本卡包无关。
 - 未执行：`/Applications/LotmCardStudio.app` 的替换安装、真实窗口人工走查、用户对卡图与音色的最终审美批准。以上均保持待办，不因机器通过而视为已批准。
+
+## 2026-09-14 二次追加：六位「序列之上」旧日纳入（App 扩到 11 卡）与代词归一
+
+### 新增隔离候选卡（6 张，均为非序列卡位）
+
+| 展示名 | cardID | slotID / characterID | sequenceName（存在名） | 音色 |
+|---|---|---|---|---|
+| 永恒之暗 | `lotm.eternal-darkness.primordial-01` | `lotm.eternal-darkness` | 序列之上 · 永恒之暗 | `eternal-darkness` |
+| 恶魔之父 | `lotm.father-of-demons.primordial-01` | `lotm.father-of-demons` | 序列之上 · 恶魔之父 | `father-of-demons` |
+| 毁灭天灾 | `lotm.destruction-calamity.primordial-01` | `lotm.destruction-calamity` | 序列之上 · 毁灭天灾 | `destruction-calamity` |
+| 失序者 | `lotm.embodiment-of-disorder.primordial-01` | `lotm.embodiment-of-disorder` | 序列之上 · 失序者 | `embodiment-of-disorder` |
+| 知识之妖 | `lotm.demon-of-knowledge.primordial-01` | `lotm.demon-of-knowledge` | 序列之上 · 知识之妖 | `demon-of-knowledge` |
+| 光之钥 | `lotm.key-of-light.primordial-01` | `lotm.key-of-light` | 序列之上 · 光之钥 | `key-of-light` |
+
+事实依据：`docs/research/2026-09-14-above-sequence-sefirot-old-ones.md`（sha256 `70d470227142ef85993e5003a044ee9d69b0d565f8fa97dd326fed78d95743f1`），其 §3 引《诡秘之主》第1346章「支柱」，§4 为九源质↔九旧日↔22 途径映射。全部字段维持 `secondary-cross-check / 编辑裁定`，**无一条可标 `verified`**；本仓库无中文授权底本。
+
+### 已知异常（用户裁决「按现状纳入」）
+
+- `毁灭天灾` 卡左铭文槽为「毁灭天灾／THE DESTRUCTION CALAMITY」，其余五张该槽放源质（此处应为**灾祸之城**）。已登记于 `artifacts/production/destruction-calamity-card-v1/v001/provenance.json` 的 `card_text_observed.readback_note` 与对应审核记录；**不自行改图**。
+
+### 代词归一为「祂」
+
+- 依 D15 与用户追加裁定，真神及以上主体的第三人称统一为「祂」，其**源质与概念**（永暗之河、暗影世界、灾祸之城、母巢、秩序、知识等）**同样用「祂」**；只有物体、事件与复数事物仍用「它/它们」。涉及卡：永恒之暗、恶魔之父、毁灭天灾、失序者、知识之妖、光之钥、堕落母神、S00 愚者先生。
+- `祂` 与 `它/他/她` 同音（`tā`），**本轮未重出音频、未逐条试听**；只保证摘要绑定一致。
+- 已同步重算：各卡 `contentDigest`／`approvedDigest`、`artifacts/lotm.<slug>/audio-*/generation.json` 的 `text_digest`、对应 Swift 叙事文件；因 S00 文案变更，`production/tasks/fool-s00-card-agentic-v1.json` 的 narrative `sha256` 同步更新。`artifacts/production/**` 历史回执按不可覆盖原则保持原样。
+
+### 本轮验证结果
+
+- `python3 tools/production.py check-fool-audio`：**通过**，11 张卡 / 66 个 WAV / 11 张 App 卡图（白名单、哈希、叙事摘要绑定、孤儿资源、采样格式）。
+- `python3 tools/production.py check-fool-cards`：**通过**（`candidate_count` 2，仍 `pending-user-visual-approval`）。
+- `python3 tools/cardctl.py check --level scaffold`：exit 0。
+- `python3 -m unittest discover -s tests`：**144 OK（skipped=6）**。
+- `swift test`：**86 passed / 0 failures**。
+- `./scripts/build-app.sh debug` 与 `release`：exit 0；`.app` 内为 **11 张卡图 + 66 个 WAV**，arm64、`LSMinimumSystemVersion=26.0`、`codesign --verify` 通过。
+- App 音频清单：`Resources/Audio/` 共 66 个文件；`src` 端 66 个 `generation.json` 条目与叙事摘要一一绑定。
+
+### 仍未执行
+
+- 六张新卡卡图与音色的用户逐项视觉/听感批准（全部保持 `candidate-pending-user-visual-approval`）；
+- `/Applications/LotmCardStudio.app` 的替换安装（须用户同意）。
+
+## 2026-09-14 三次追加：源质／概念亦用「祂」、release 安装至 /Applications
+
+### 二次代词裁定（用户）
+
+- 用户追加裁定：**源质与概念的指代同样用「祂」**。已改 6 张卡文案共 11 处：母巢（堕落母神）、永暗之河（永恒之暗）、暗影世界（恶魔之父 ×2）、灾祸之城（毁灭天灾 ×2）、秩序（失序者 ×2）、知识（知识之妖 ×3）；并修章节标题 1 处（「第三章 · 要成为祂，需要什么」）。
+- **仍用「它/它们」**：世界（毁灭天灾问候语）、「名字与源质同词」这件事（光之钥）、两条途径与可能性等**复数事物**（上帝、恶魔之父、失序者、知识之妖的故事段）。
+- 失序者 story-02 为避免一个分句内两个「祂」歧义，改用名词：「祂只是替**秩序**自己没有承认的那一半」。
+- 同步：6 张卡的 `contentDigest`／`approvedDigest`／`generation.json.text_digest` 与 Swift 叙事文件重算；`docs/DECISIONS.md` D15、`docs/card-narrative-contract.md`、根 `AGENTS.md`、8 份审核记录说明同步为「源质与概念亦用祂」。登记偏差复查为 0。
+
+### 安装记录
+
+- `./scripts/build-app.sh release` → exit 0；`codesign --verify --deep --strict` **通过**（`Sealed Resources version=2 files=79`，ad-hoc 签名）。
+- **注意**：`build-app.sh` 只在 `release` 配置下签名；若最后执行 `debug`，`.build/LotmCardStudio.app` 会是未签名包。本次先误装 debug 包（`codesign` 报 `code has no resources but signature indicates they must be present`），已移入废纸篓并重装 release。
+- `/Applications/LotmCardStudio.app` 已更新（旧版移入废纸篓 `~/.Trash/`）；与构建产物 `diff -rq` 逐文件一致。
+- 安装后核验：11 张卡图 + 66 个 WAV、arm64、`LSMinimumSystemVersion=26.0`、`codesign --deep --strict` 通过；启动→进程存活→正常退出，无本应用的崩溃报告。
+
+### 本轮测试
+
+- `python3 -m unittest discover -s tests`：**144 OK（skipped=6）**；`swift test`：**86 passed / 0 failures**；
+- `check-fool-audio`：**passed**（11 卡 / 66 WAV / 11 卡图）；`check-fool-cards` exit 0；`check --level scaffold` exit 0。
+
+## 2026-09-14 四次追加：十一卡视觉批准与「收藏转正式」（批准 ≠ 发布）
+
+### 用户裁决
+
+- 原文：「**已经验收通过，所有卡，变为正式**」。三点边界：① 转正范围为 App 现有十一张；② 深度只转**状态与批准记录**（**不**执行 ADR-003 最终采样、**不**产出 2K/4K）；③ 素材基线一并转正（追问后选定「只记依据，release 保持 false」）。
+
+### 生产侧记录
+
+- 新建人类 sidecar `production/approvals/fool-card-visual-approval-v1.json`（`visual_approved: true` / `release_approved: false` / `sampling_executed: false`，绑定十一张卡图与九份 provenance 的 sha256）。
+- 新建聚合记录 `production/cards/fool-nonsequence-card-approvals-v1.json`（九张非序列卡；`sequence_slots: false`）——序列候选清单 `fool-card-candidates-v1.json` 的门禁要求 `sequence ∈ {0,9}` 且有 task/receipt，非序列卡不能混入。
+- `fool-card-candidates-v1.json`、`fool-card-visual-review-v1.json`、`fool-final-sampling-v1.json`（`approved-for-final-sampling` + `sampling_executed: false`）、材料与分层基线的 `basis`／`acceptance.approval_sidecar` 同步。
+- 所有 `release_approved`／`formal_release_approved` 保持 **false**：十一张卡**没有** 2K/4K 交付像素。
+- 门禁新增 CLI `check-fool-nonsequence-cards` 与 `validate_fool_nonsequence_card_approvals`；批准必须由独立人类 sidecar 证明并逐卡比对哈希，禁止清单自证。反例测试 8 条（`tests/test_fool_card_validation.py`）。
+
+### App 侧解耦（正式收藏 ≠ 内容已核验）
+
+- 十一张卡 `collectionIntent` 由 `.candidate` 改为 `.formal`；`contentStatus` **全部保持 `.proposed`**——用户批准的是视觉与收藏身份，不是内容核验。
+- `AlbumViewModel.visibleCards(.formal)` 与 `formalCount` 改为只按 `collectionIntents == .formal` 过滤，不再要求 `contentStatus == .confirmed`；「我的收藏」副标题改为「你正式收藏的身份卡；每张卡的内容核验状态以卡片自身的标注为准。」
+- 途径统计由 `ArchiveCopy.pathwaySummary(confirmed:candidate:)` 改为 `pathwaySummary(formal:candidate:)`；愚者途径现读作 `2 张已收藏 · 0 张候选`（旧文 `0 张已确认 · 2 张候选`）。
+- 新增断言：`formalCount == 11`、`candidateCount == 0`、`confirmedCount == 0`，且九位「序列之上」仍为 `.proposed`，防止后续被误升为已核验。
+- 移除 fixture 中 S00 的 `isWishlisted`：十一张卡均为正式收藏，愿望清单为空（分栏与指标保留，`wishlistCount` 为 0）；原「愿望清单 = S00」断言改为显式空集断言，不删除。
+
+### 本轮验证结果
+
+- `python3 tools/cardctl.py check --level scaffold`：exit 0。
+- `python3 -m unittest discover -s tests`：**159 tests OK（skipped=6）**（含用户并发提交带入的 `tests/test_pin_seal.py` 6 条）。
+- `python3 tools/production.py check-fool-cards`／`check-fool-nonsequence-cards`／`check-fool-audio`／`check-fool-materials`：全部 exit 0／passed。
+- `python3 tools/pin_seal.py --check`：**112 条 pin 全部通过**。
+- `swift test`：**87 passed / 0 failures**（新增 1 条）。
+- `./scripts/build-app.sh debug` 与 `release`：exit 0；`.app` 内 11 张卡图 + 66 个 WAV。
+
+### 仍未执行
+
+- ADR-003 最终采样与 2K/4K 交付像素（用户裁决暂不产出）→ 所有 release 标志保持 false。
+- 卡图与音频的人工逐项听感/视觉复验：本轮的「正式」是用户对既有现状的整体验收，不替代逐项验收。

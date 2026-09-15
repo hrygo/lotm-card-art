@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.eternal-darkness.primordial-01",
+  "voice_profile_id": "eternal-darkness",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.1",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.9,
+    "instruction": "一位极低沉的中性嗓音，接近中音的底线，几乎没有性别指向。语速很慢，气息绵长，音高起伏极小，像声音正在一点点熄灭。语气平静到近乎冷漠，没有情绪推动，也没有威胁感，只是在陈述一件早已确定的事。句尾自然下沉、收干。不做宣告、不咆哮、不阴森做作。吐字清晰但边缘略微发虚，像从很远的地方传来。不带方言，不油腻。"
+  },
+  "files": [
+    {
+      "resource_name": "eternal-darkness-greeting-v1",
+      "text_digest": "657cbe60e0552b3dc672a9c53b06575f2f26d71610411d09fcc4f116a13fd85b",
+      "sha256": "aee9ec38fe6591c72514956214fd7a990da0b546c96eff99b3d9de1248e11425",
+      "duration_seconds": 8.88,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "eternal-darkness-catchphrase-01-v1",
+      "text_digest": "d0c1b785dc0b50e34a3dbabdff00c14c4a06982acafac8c97413945233430426",
+      "sha256": "934e88a8690449b7d8c2dbb1b6a3d31eb0ca98c836a5911fbde9d155bf0ec28e",
+      "duration_seconds": 5.28,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "eternal-darkness-catchphrase-02-v1",
+      "text_digest": "1470c4a34ab37706e1a70f76b2e8651a8431d0dadf0b9e8e4a57ca429d845f18",
+      "sha256": "a7eec345c0350ddd661b673c344b28e740221971a68b6e287a7f820ce81cec2d",
+      "duration_seconds": 4.48,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "eternal-darkness-story-01-v1",
+      "text_digest": "7f6c2dbfdc4404fbd92b7d6cb25d0ad6d50d2e0b00876761e107d48676a716ce",
+      "sha256": "b3610059fc37c1d844eb39e49db907a868d23b3eb006e3f55b3a557895248a60",
+      "duration_seconds": 28.48,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "eternal-darkness-story-02-v1",
+      "text_digest": "0abf9000caf70b3a3a2e49223e95dfbc61f6a2192f7d2cbdc39cc6099aa5ec35",
+      "sha256": "0618b76f7cca0c530b4b89d14e2bd66aace2ca5a3ad420eb03f927b15edf29c4",
+      "duration_seconds": 25.28,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "eternal-darkness-story-03-v1",
+      "text_digest": "899484d310d7dec48ce5fd0f35259b639c44206ae485efc6828ec2edfeee1a02",
+      "sha256": "b7cf9140287e965e52aee2a9bfc88567a3f939c8b329b00dec90e47fd417e64f",
+      "duration_seconds": 22.08,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
+  ]
+}

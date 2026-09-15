@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "card_id": "lotm.embodiment-of-disorder.primordial-01",
+  "voice_profile_id": "embodiment-of-disorder",
+  "service": {
+    "base_url": "http://127.0.0.1:8201",
+    "version": "2.6.1",
+    "model": "speechrail/qwen3-tts",
+    "response_format": "wav",
+    "language": "zh",
+    "speed": 0.9,
+    "instruction": "一位冷静精确的中性嗓音，音色干净、偏冷，像法条被念出来。语速均匀偏慢，节奏严格，几乎没有情绪起伏。特别之处：句尾会带一丝极轻微的失谐或回响，像有另一个声音在半个音节后跟着重复，但不要变成混响特效或双重人格表演。语气克制、公事公办，不带威胁也不带温度。不咆哮、不煽情、不做戏剧腔。吐字极清晰，不带方言。"
+  },
+  "files": [
+    {
+      "resource_name": "embodiment-of-disorder-greeting-v1",
+      "text_digest": "4f3e3c80c2415abeea7e37c00264dc41a04d90195b17547425979f3b3a4f3aa3",
+      "sha256": "cc6708c3953fb11946b8a5b69494885a259c0b1e812da6439668bef5e4dfb055",
+      "duration_seconds": 4.72,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "embodiment-of-disorder-catchphrase-01-v1",
+      "text_digest": "cc525bb7f07c911607e55957e355ad70442b36e81227714c0bd4569b52285c72",
+      "sha256": "4420a3be61654a3d54d2ff299c4f177972fa9769ee1721435ef4fe3632a46edb",
+      "duration_seconds": 3.6,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "embodiment-of-disorder-catchphrase-02-v1",
+      "text_digest": "de081389c9ac73986ef33bb477dd8f9ef6d5820321a7e6c5ae422f4559cbe28f",
+      "sha256": "e1409396d54f376d6a7768807304845c1a76eb3402d741316247cbb98affb421",
+      "duration_seconds": 3.28,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "embodiment-of-disorder-story-01-v1",
+      "text_digest": "c1a836b83ede5f5a8cd79836b37c96dc73e74c47ae1cab847323903529d9dbd5",
+      "sha256": "18f842b2238fa91c7d2264ad34ebe73ae73a31e86e2fd19186ea5ee0c324018d",
+      "duration_seconds": 15.44,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "embodiment-of-disorder-story-02-v1",
+      "text_digest": "ee5a6e2b841c7578c4e73fb93df5b414c8d330f928e97168a0e297dcd2018a36",
+      "sha256": "3c8e96da13dca5b4f7dce6bd74539acf1317ef256597489144c3be06b9c437cf",
+      "duration_seconds": 16.88,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    },
+    {
+      "resource_name": "embodiment-of-disorder-story-03-v1",
+      "text_digest": "b2ddfb8939c52157ff0456e7734b71a07f32fd6cfb6aae17af4f9ee49069bf7e",
+      "sha256": "91fef11a393c306e4b80172328311dee89c9a88c5bbba9c1da8e353e048e71c8",
+      "duration_seconds": 13.36,
+      "sample_rate": 24000,
+      "channels": 1,
+      "bits": 16
+    }
+  ]
+}

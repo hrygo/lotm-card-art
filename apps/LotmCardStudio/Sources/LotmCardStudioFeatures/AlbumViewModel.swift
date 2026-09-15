@@ -25,7 +25,7 @@ public enum LibrarySection: String, Hashable, Sendable {
         case .gallery:
             return "选择一张身份卡，查看身份、六维信息和故事。"
         case .formal:
-            return "只显示当前内容已确认、并由你正式收藏的身份卡。"
+            return "你正式收藏的身份卡；每张卡的内容核验状态以卡片自身的标注为准。"
         case .candidate:
             return "候选选择保留在这里，内容确认后也不会自动升级。"
         case .wishlist:
@@ -86,10 +86,7 @@ public final class AlbumViewModel: ObservableObject {
         case .gallery:
             return filteredCards
         case .formal:
-            return filteredCards.filter {
-                $0.identity.contentStatus == .confirmed
-                    && collectionIntents[$0.id] == .formal
-            }
+            return filteredCards.filter { collectionIntents[$0.id] == .formal }
         case .candidate:
             return filteredCards.filter { collectionIntents[$0.id] == .candidate }
         case .wishlist:
@@ -102,10 +99,7 @@ public final class AlbumViewModel: ObservableObject {
     }
 
     public var formalCount: Int {
-        cards.filter {
-            $0.identity.contentStatus == .confirmed
-                && collectionIntents[$0.id] == .formal
-        }.count
+        cards.filter { collectionIntents[$0.id] == .formal }.count
     }
 
     public var candidateCount: Int {
@@ -119,9 +113,9 @@ public final class AlbumViewModel: ObservableObject {
     public func pathwaySummary(for pathwayID: String) -> String {
         let prefix = "lotm.\(pathwayID)."
         let pathwayCards = cards.filter { $0.identity.slotID.hasPrefix(prefix) }
-        let confirmed = pathwayCards.filter { $0.identity.contentStatus == .confirmed }.count
+        let formal = pathwayCards.filter { collectionIntents[$0.id] == .formal }.count
         let candidate = pathwayCards.filter { collectionIntents[$0.id] == .candidate }.count
-        return ArchiveCopy.pathwaySummary(confirmed: confirmed, candidate: candidate)
+        return ArchiveCopy.pathwaySummary(formal: formal, candidate: candidate)
     }
 
     public func characterCardCount(for characterID: String?) -> Int {

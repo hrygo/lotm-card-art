@@ -67,15 +67,15 @@
       "evidenceRefs": [
         {
           "path": "docs/research/2026-09-14-god-almighty-card-materials.md",
-          "sha256": "4addcfb48d9fb90244f98bfd162474a50cd3b2dddec2dd22edbd7e7b5f34288d",
+          "sha256": "b56fe30501d879116f781091d71dbbdc3c04e830f802c0dde885c6ccc32afa13",
           "locator": "§1 编辑裁定：源质＝混沌海；§5.1 身份；§7.1 第一段·站在混沌海之上"
         }
       ],
       "gap": null,
-      "contentDigest": "a4c05e2993b24c16a98021a5f63a289d03ded23d5ce0dc6681c9247e0dff2b4e",
+      "contentDigest": "2212ec31d6a09d52f36a845c19232ee7e4ec7c2c32ffb38e668696f8cc48f391",
       "review": {
         "status": "approved",
-        "approvedDigest": "a4c05e2993b24c16a98021a5f63a289d03ded23d5ce0dc6681c9247e0dff2b4e",
+        "approvedDigest": "2212ec31d6a09d52f36a845c19232ee7e4ec7c2c32ffb38e668696f8cc48f391",
         "by": "project-editor",
         "reference": "docs/reviews/2026-09-14-god-almighty-narrative-audio.md"
       }
@@ -89,15 +89,15 @@
       "evidenceRefs": [
         {
           "path": "docs/research/2026-09-14-god-almighty-card-materials.md",
-          "sha256": "4addcfb48d9fb90244f98bfd162474a50cd3b2dddec2dd22edbd7e7b5f34288d",
+          "sha256": "b56fe30501d879116f781091d71dbbdc3c04e830f802c0dde885c6ccc32afa13",
           "locator": "§1 编辑裁定：核心象征全知／全能／造物主／星界之主；§5.3 能力；§7.2 第二段·全知与全能不是动作"
         }
       ],
       "gap": null,
-      "contentDigest": "4293701e2284b0b6ebdaef844aea47279f92ae58d28cbad522cd276600352ab4",
+      "contentDigest": "ba6ea9761a1fe5b1e528a78cea43e7ff776bcd475cec042692876e55f3bb9db5",
       "review": {
         "status": "approved",
-        "approvedDigest": "4293701e2284b0b6ebdaef844aea47279f92ae58d28cbad522cd276600352ab4",
+        "approvedDigest": "ba6ea9761a1fe5b1e528a78cea43e7ff776bcd475cec042692876e55f3bb9db5",
         "by": "project-editor",
         "reference": "docs/reviews/2026-09-14-god-almighty-narrative-audio.md"
       }
@@ -111,15 +111,15 @@
       "evidenceRefs": [
         {
           "path": "docs/research/2026-09-14-god-almighty-card-materials.md",
-          "sha256": "4addcfb48d9fb90244f98bfd162474a50cd3b2dddec2dd22edbd7e7b5f34288d",
+          "sha256": "b56fe30501d879116f781091d71dbbdc3c04e830f802c0dde885c6ccc32afa13",
           "locator": "§1 编辑裁定：星界之主为最关键象征；§6 主事件与构图优先级；§7.4 第四段·星界的主人"
         }
       ],
       "gap": null,
-      "contentDigest": "32ced7ca883b7f5b06b11449e8c1666b2d6377344d25fa9e649ee5cdb03d01be",
+      "contentDigest": "1c522012aee0cb9e1f8bcb7bdc75c672f0062df332acc19e747338ac8eadbdfb",
       "review": {
         "status": "approved",
-        "approvedDigest": "32ced7ca883b7f5b06b11449e8c1666b2d6377344d25fa9e649ee5cdb03d01be",
+        "approvedDigest": "1c522012aee0cb9e1f8bcb7bdc75c672f0062df332acc19e747338ac8eadbdfb",
         "by": "project-editor",
         "reference": "docs/reviews/2026-09-14-god-almighty-narrative-audio.md"
       }

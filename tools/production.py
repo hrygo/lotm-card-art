@@ -233,8 +233,75 @@ def validate_external_audrey_assets(root):
     }
 
 
-def validate_fool_carrier_contract(root):
-    """Validate the concrete carrier contract consumed by the Fool pipeline.
+PATHWAY_LABELS = {"fool": "Fool"}
+
+
+def pathway_material_context(root, pathway_id):
+    """Resolve the contracts and asset paths a pathway's material gate must audit.
+
+    `fool` keeps the frozen flat (historical) layout recorded in
+    `docs/pathway-namespace.md`; every other pathway follows the namespaced
+    convention `production/symbols/<pathway>/…`. Expectations are declared here
+    instead of being read back from the assets under audit, so a stale or
+    redirected catalog cannot validate itself.
+    """
+    label = PATHWAY_LABELS.get(pathway_id, pathway_id)
+    if pathway_id == "fool":
+        return {
+            "pathway_id": pathway_id,
+            "label": label,
+            "form": "legacy-flat",
+            "carrier_contract": "production/symbols/fool-carrier-execution-v1.json",
+            "carrier_schema": "fool-carrier-execution",
+            "rank_contract_type": "fool-rank-numeral-dock",
+            "geometry_id": "fool-agentic-mother-v2",
+            "native_canvas": [1024, 1536],
+            "frame_generator": "foolpipeline5.mother",
+            "five_tier_catalog": "production/symbols/fool-five-tier-kit.json",
+            "five_tier_output": "artifacts/production/fool-five-tier-direct-kit-v1",
+            "tier_batch_mode": "fool-five-tier-direct-batch-v1",
+            "layered_baseline": "production/symbols/fool-layered-asset-baseline-v1.json",
+            "layered_status": "user-approved-agentic-visual-baseline",
+            "sequence_inscriptions": "production/symbols/fool-agentic-sequence-inscriptions-v2.json",
+            "sequence_output_root": "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies",
+            "fusion_family": "production/symbols/fool-fusion-family.json",
+            "fusion_preservation": "production/symbols/fool-fusion-preservation.json",
+            "rank_numerals": "production/symbols/fool-rank-numerals-v1.json",
+            "approval_sidecar": "production/approvals/fool-agentic-visual-baseline-v1.json",
+            "retirements": "production/retirements/fool-failed-materials-2026-09-14.json",
+            "card_prefix": "lotm.fool.s",
+            "fusion_artifact_root": "artifacts/production/fool-fusion-",
+        }
+    base = f"production/symbols/{pathway_id}"
+    return {
+        "pathway_id": pathway_id,
+        "label": label,
+        "form": "namespaced",
+        "carrier_contract": f"{base}/carrier-execution.json",
+        "carrier_schema": "pathway-carrier-execution",
+        "rank_contract_type": "rank-numeral-dock",
+        "geometry_id": f"{pathway_id}-agentic-mother-v2",
+        "native_canvas": [1024, 1536],
+        "frame_generator": "foolpipeline5.mother",
+        "five_tier_catalog": f"{base}/five-tier-kit.json",
+        "five_tier_output": f"artifacts/production/{pathway_id}-five-tier-direct-kit-v1",
+        "tier_batch_mode": f"{pathway_id}-five-tier-direct-batch-v1",
+        "layered_baseline": f"{base}/layered-asset-baseline.json",
+        "layered_status": "user-approved-agentic-visual-baseline",
+        "sequence_inscriptions": f"{base}/agentic-sequence-inscriptions.json",
+        "sequence_output_root": f"artifacts/production/{pathway_id}-agentic-sequence-inscriptions/studies",
+        "fusion_family": f"{base}/fusion-family.json",
+        "fusion_preservation": f"{base}/fusion-preservation.json",
+        "rank_numerals": f"{base}/rank-numerals.json",
+        "approval_sidecar": f"production/approvals/{pathway_id}-agentic-visual-baseline.json",
+        "retirements": f"production/retirements/{pathway_id}-failed-materials.json",
+        "card_prefix": f"lotm.{pathway_id}.s",
+        "fusion_artifact_root": f"artifacts/production/{pathway_id}-fusion-",
+    }
+
+
+def validate_pathway_carrier_contract(root, pathway_id="fool"):
+    """Validate the concrete carrier contract consumed by a pathway's pipeline.
 
     The generic EmblemDock JSON remains the vocabulary for future pathways. The
     current Fool route deliberately uses a fixed RankNumeralDock: the pathway
@@ -242,27 +309,33 @@ def validate_fool_carrier_contract(root):
     second fused emblem overlay. This gate binds that decision to measured
     native geometry so the executable route cannot silently fall back to the
     stale, earlier lozenge-gem or free-placement contract.
+
+    `pathway_id` selects which pathway's route is bound; the assertions below
+    are unchanged, they now compare against the declared pathway and its
+    declared geometry instead of the literal "fool".
     """
     root = Path(root).resolve()
-    contract_rel = "production/symbols/fool-carrier-execution-v1.json"
+    ctx = pathway_material_context(root, pathway_id)
+    label = ctx["label"]
+    contract_rel = ctx["carrier_contract"]
     contract_path = inside(root, contract_rel)
     if not contract_path.is_file():
-        raise Invalid("Fool carrier execution contract missing: " + contract_rel)
+        raise Invalid(f"{label} carrier execution contract missing: " + contract_rel)
     contract = read(contract_path)
-    validate_schema(contract, schema(root, "fool-carrier-execution"), "$")
+    validate_schema(contract, schema(root, ctx["carrier_schema"]), "$")
 
     template_records = contract["templates"]
     verify_records(root, [template_records["emblem_dock"], template_records["rank_numeral_dock"]])
     active_frame = contract["active_frame_source"]
     active_frame_path = inside(root, active_frame["path"])
     if not active_frame_path.is_file() or sha(active_frame_path) != active_frame["sha256"]:
-        raise Invalid("Fool carrier active frame reference is stale")
+        raise Invalid(f"{label} carrier active frame reference is stale")
     try:
         frame_info = cardctl.image_info(active_frame_path)
     except (OSError, cardctl.DataError) as exc:
-        raise Invalid("Fool carrier active frame is unreadable: " + str(exc)) from exc
-    if frame_info["format"] != "PNG" or [frame_info["width"], frame_info["height"]] != [1024, 1536]:
-        raise Invalid("Fool carrier active frame must be a native 1024x1536 PNG")
+        raise Invalid(f"{label} carrier active frame is unreadable: " + str(exc)) from exc
+    if frame_info["format"] != "PNG" or [frame_info["width"], frame_info["height"]] != ctx["native_canvas"]:
+        raise Invalid(f"{label} carrier active frame must be a native {ctx['native_canvas'][0]}x{ctx['native_canvas'][1]} PNG")
 
     emblem_template = read(inside(root, template_records["emblem_dock"]["path"]))
     if (emblem_template.get("schema_version") != "1.1.0"
@@ -278,17 +351,17 @@ def validate_fool_carrier_contract(root):
     rank_template = read(inside(root, template_records["rank_numeral_dock"]["path"]))
     rank_dock = rank_template.get("dock", {})
     if (rank_template.get("schema_version") != "1.0.0"
-            or rank_template.get("contract_type") != "fool-rank-numeral-dock"
-            or rank_template.get("geometry_id") != "fool-agentic-mother-v2"
+            or rank_template.get("contract_type") != ctx["rank_contract_type"]
+            or rank_template.get("geometry_id") != ctx["geometry_id"]
             or rank_dock.get("status") != "reserved-empty"
             or rank_dock.get("shape") != "round"
             or rank_template.get("numeral_asset", {}).get("fusion_with_pathway_crown") is not False):
-        raise Invalid("Fool rank numeral dock template is stale")
+        raise Invalid(f"{label} rank numeral dock template is stale")
 
-    if contract.get("pathway_id") != "fool" or contract.get("geometry_id") != "fool-agentic-mother-v2":
-        raise Invalid("Fool carrier identity or geometry is stale")
-    if contract.get("canvas", {}).get("native_size") != [1024, 1536]:
-        raise Invalid("Fool carrier native canvas is stale")
+    if contract.get("pathway_id") != pathway_id or contract.get("geometry_id") != ctx["geometry_id"]:
+        raise Invalid(f"{label} carrier identity or geometry is stale")
+    if contract.get("canvas", {}).get("native_size") != ctx["native_canvas"]:
+        raise Invalid(f"{label} carrier native canvas is stale")
 
     route = contract["route"]
     if (route.get("emblem_dock_mode") != "rank-numeral-dock-current-route"
@@ -297,7 +370,7 @@ def validate_fool_carrier_contract(root):
             or route.get("sequence_name") != "agentic-complete-frame"
             or route.get("through_hole") is not False
             or route.get("standalone_emblem_overlay") is not False):
-        raise Invalid("Fool carrier route is stale or enables a duplicate emblem")
+        raise Invalid(f"{label} carrier route is stale or enables a duplicate emblem")
 
     anchors = contract["anchors"]
     expected_rects = {
@@ -309,17 +382,17 @@ def validate_fool_carrier_contract(root):
     for key, (rect, safe_rect) in expected_rects.items():
         value = anchors.get(key, {})
         if value.get("rect_design") != rect or value.get("safe_rect_design") != safe_rect:
-            raise Invalid(f"Fool carrier anchor is stale: {key}")
+            raise Invalid(f"{label} carrier anchor is stale: {key}")
     rank_value = anchors["rank_numeral_dock"]
     if (rank_value.get("center_design") != [512, 136]
             or rank_value.get("safe_rect_design") != [466, 88, 92, 96]):
-        raise Invalid("Fool rank numeral dock anchor is stale")
+        raise Invalid(f"{label} rank numeral dock anchor is stale")
     gem = anchors["gem_slot"]
     if (gem.get("shape") != "regular-equilateral-hexagon"
             or gem.get("center_design") != [512, 1421]
             or gem.get("visible_size_design") != [132, 114]
             or gem.get("name_clearance_design") != 12):
-        raise Invalid("Fool carrier gem slot is stale")
+        raise Invalid(f"{label} carrier gem slot is stale")
 
     if contract["protected_regions"] != {
         "pathway_crown": "mother-crown-protected",
@@ -329,20 +402,21 @@ def validate_fool_carrier_contract(root):
         "gem_slot": "gem-slot",
         "outside_edit_domain": "outside-edit-domain",
     }:
-        raise Invalid("Fool carrier protected-region mapping is stale")
+        raise Invalid(f"{label} carrier protected-region mapping is stale")
+
     if contract["mask_policy"] != {
-        "generated_by": "foolpipeline5.mother",
+        "generated_by": ctx["frame_generator"],
         "coordinate_space": "native-canvas",
         "alpha_policy": "straight-RGBA",
         "no_crop_reassembly": True,
     }:
-        raise Invalid("Fool carrier mask policy is stale")
+        raise Invalid(f"{label} carrier mask policy is stale")
     thresholds = contract["thresholds"]
     if (thresholds.get("geometry_displacement_max_px") != 0
             or thresholds.get("outside_edit_domain_pixels_max") != 0
             or thresholds.get("zone_center_error_max_native_px") != 1
             or thresholds.get("protected_region_intersections_max") != 0):
-        raise Invalid("Fool carrier zero-drift thresholds are stale")
+        raise Invalid(f"{label} carrier zero-drift thresholds are stale")
 
     return {
         "passed": True,
@@ -357,6 +431,11 @@ def validate_fool_carrier_contract(root):
         "active_frame_source": active_frame["path"],
         "limitation": "当前愚者路线已执行固定 RankNumeralDock；通用 EmblemDock 模板仅提供非穿透结构语法，不代表所有途径已完成嵌座生产。",
     }
+
+
+def validate_fool_carrier_contract(root):
+    """Thin wrapper: keep the Fool route reachable through the generic entry."""
+    return validate_pathway_carrier_contract(root, "fool")
 
 
 def _read_wav_format(path):

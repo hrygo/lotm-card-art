@@ -5,4 +5,5 @@ Python 校验与编排只使用标准库，保持 Python 3.10+ 语法兼容，�
 任何新增硬规则同步补反例测试。结构成功不能替代实际看图；源文件摘要不是身份认证。
 相对路径必须防越界，不能由报告输出参数覆盖 card/canon；`brief` 只写 `generated/`，报告只写 `reports/`。
 契约 pin 由 `tools/pin_seal.py` 单点重封存：`--check` 只检漂移（CI 使用，缺失文件按错误处理），`--write` 只改 `sha256` 字段、其余字节不动。`artifacts/**` 历史回执按其不可覆盖 provenance 语义排除，不参与重封存；活合同指 `production/**` 内人工维护的 `contracts[]`。
+`tools/selfcheck.py` 是 fresh checkout 自证入口：`scaffold → pin 漂移 → 愚者门禁 → 全套单测`，全通过才退 0；`--list` 只列步骤不执行，`--root` 指定仓库根。打 tag 前跑它，不替代 CI。
 修复数据错误时给明确非零退出码，不隐藏异常；不要让模板里的未执行审核通过 release。

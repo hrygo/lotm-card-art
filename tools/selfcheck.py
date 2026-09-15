@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 STEPS = (
     ("scaffold", ["tools/cardctl.py", "check", "--level", "scaffold"]),
     ("pins", ["tools/pin_seal.py", "--check"]),
+    ("design-tokens", ["tools/design_tokens.py", "check"]),
     ("fool-materials", ["tools/production.py", "check-fool-materials"]),
     ("fool-cards", ["tools/production.py", "check-fool-cards"]),
     ("suite", ["-m", "unittest", "discover", "-s", "tests"]),

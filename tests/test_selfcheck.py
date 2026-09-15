@@ -14,7 +14,7 @@ import selfcheck
 
 
 class SelfcheckTests(unittest.TestCase):
-    def test_list_covers_scaffold_pins_gates_and_suite(self):
+    def test_list_covers_scaffold_pins_design_tokens_gates_and_suite(self):
         out = io.StringIO()
         with redirect_stdout(out):
             code = selfcheck.main(["--list"])
@@ -24,6 +24,7 @@ class SelfcheckTests(unittest.TestCase):
         for needle in (
             "scaffold",
             "pin_seal.py --check",
+            "design_tokens.py check",
             "check-fool-materials",
             "check-fool-cards",
             "unittest discover -s tests",

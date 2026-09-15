@@ -1,0 +1,235 @@
+{
+  "name": "诡秘世界 · 全局设计 token",
+  "version": "1.0.0",
+  "updated": "2026-09-15",
+  "role": "机器事实源。Figma 变量（design/figma-kit）与客户端 Swift（DesignTokens.generated.swift）都由本文件投影；两边都不允许各存一套数值。合同说明见 design/design-tokens.md。",
+  "swift_naming": "a.b-c → aBc（点号去掉并大写下一段首字母）",
+  "color": {
+    "leather.void": { "r": 0.016, "g": 0.031, "b": 0.051 },
+    "leather.deep": { "r": 0.102, "g": 0.094, "b": 0.102 },
+    "leather.base": { "r": 0.122, "g": 0.114, "b": 0.118 },
+    "leather.raised": { "r": 0.18, "g": 0.173, "b": 0.176 },
+    "leather.elevated": { "r": 0.278, "g": 0.267, "b": 0.255 },
+    "leather.highlight": { "r": 0.38, "g": 0.36, "b": 0.34 },
+
+    "brass.patina": { "r": 0.431, "g": 0.392, "b": 0.345 },
+    "brass.core": { "r": 0.643, "g": 0.573, "b": 0.455 },
+    "brass.gleam": { "r": 0.82, "g": 0.749, "b": 0.6 },
+    "brass.luster": { "r": 0.91, "g": 0.824, "b": 0.631 },
+
+    "aether.deep": { "r": 0.12, "g": 0.25, "b": 0.24 },
+    "aether.core": { "r": 0.3, "g": 0.68, "b": 0.63 },
+    "aether.light": { "r": 0.635, "g": 0.843, "b": 0.808 },
+
+    "parchment.primary": { "r": 0.949, "g": 0.937, "b": 0.914 },
+    "parchment.secondary": { "r": 0.639, "g": 0.62, "b": 0.576 },
+    "parchment.muted": { "r": 0.431, "g": 0.392, "b": 0.345 },
+
+    "mystic.violet": { "r": 0.52, "g": 0.44, "b": 0.76 },
+    "mystic.ice": { "r": 0.52, "g": 0.68, "b": 0.82 },
+    "mystic.crimson": { "r": 0.85, "g": 0.33, "b": 0.33 },
+
+    "artwork.divineDusk": { "r": 0.08, "g": 0.06, "b": 0.11 },
+    "artwork.divineDeep": { "r": 0.04, "g": 0.08, "b": 0.13 },
+
+    "story.paper": { "r": 0.3, "g": 0.26, "b": 0.205 },
+    "story.paperHighlight": { "r": 0.87, "g": 0.79, "b": 0.61 },
+    "story.ink": { "ref": "parchment.primary" },
+    "story.inkMuted": { "ref": "parchment.secondary" },
+    "story.edge": { "ref": "brass.gleam", "alpha": 0.58 },
+    "story.shadow": { "ref": "leather.void", "alpha": 0.72 },
+
+    "semantic.acting": { "r": 0.86, "g": 0.72, "b": 0.46 },
+    "semantic.ability": { "ref": "aether.light" },
+    "semantic.potion": { "r": 0.8, "g": 0.5, "b": 0.65 },
+    "semantic.promotion": { "r": 0.68, "g": 0.55, "b": 0.36 },
+    "semantic.limitation": { "ref": "mystic.crimson" },
+
+    "status.unfilled": { "r": 0.55, "g": 0.51, "b": 0.47 },
+    "status.candidate": { "r": 0.72, "g": 0.55, "b": 0.42 },
+    "status.unresearched": { "r": 0.62, "g": 0.6, "b": 0.55 },
+    "status.confirmed": { "ref": "aether.light" },
+
+    "playback.ready": { "ref": "aether.light" },
+    "playback.preparing": { "ref": "brass.gleam" },
+    "playback.failed": { "ref": "mystic.crimson" },
+    "playback.idle": { "ref": "parchment.secondary" },
+
+    "tier.low.label": { "r": 0.91, "g": 0.929, "b": 0.949 },
+    "tier.low.border": { "r": 0.66, "g": 0.71, "b": 0.76 },
+    "tier.low.surface": { "ref": "tier.low.label", "alpha": 0.12 },
+    "tier.low.glow": { "r": 0.84, "g": 0.89, "b": 0.93, "alpha": 0.28 },
+
+    "tier.mid.label": { "r": 0.333, "g": 0.725, "b": 0.471 },
+    "tier.mid.border": { "r": 0.2, "g": 0.51, "b": 0.32 },
+    "tier.mid.surface": { "ref": "tier.mid.label", "alpha": 0.14 },
+    "tier.mid.glow": { "ref": "tier.mid.label", "alpha": 0.3 },
+
+    "tier.saint.label": { "r": 0.302, "g": 0.592, "b": 0.831 },
+    "tier.saint.border": { "r": 0.18, "g": 0.38, "b": 0.58 },
+    "tier.saint.surface": { "ref": "tier.saint.label", "alpha": 0.14 },
+    "tier.saint.glow": { "ref": "tier.saint.label", "alpha": 0.32 },
+
+    "tier.angel.label": { "r": 0.651, "g": 0.42, "b": 0.839 },
+    "tier.angel.border": { "r": 0.44, "g": 0.25, "b": 0.61 },
+    "tier.angel.surface": { "ref": "tier.angel.label", "alpha": 0.15 },
+    "tier.angel.glow": { "ref": "tier.angel.label", "alpha": 0.34 },
+
+    "tier.trueGod.label": { "r": 0.941, "g": 0.698, "b": 0.247 },
+    "tier.trueGod.border": { "r": 0.72, "g": 0.47, "b": 0.09 },
+    "tier.trueGod.surface": { "ref": "tier.trueGod.label", "alpha": 0.16 },
+    "tier.trueGod.glow": { "ref": "tier.trueGod.label", "alpha": 0.38 },
+
+    "tier.unknown.label": { "ref": "parchment.secondary" },
+    "tier.unknown.border": { "ref": "border.subtle" },
+    "tier.unknown.surface": { "ref": "leather.elevated", "alpha": 0.1 },
+    "tier.unknown.glow": { "r": 0, "g": 0, "b": 0, "alpha": 0 },
+
+    "border.subtle": { "ref": "leather.elevated", "alpha": 0.65 },
+    "border.brassMuted": { "ref": "brass.patina", "alpha": 0.5 },
+    "border.brassAccent": { "ref": "brass.luster", "alpha": 0.4 },
+    "border.aetherGlow": { "ref": "aether.light", "alpha": 0.45 },
+
+    "shadow.brassGlow": { "r": 0.91, "g": 0.824, "b": 0.631, "alpha": 0.38 },
+    "shadow.aetherPulse": { "r": 0.635, "g": 0.843, "b": 0.808, "alpha": 0.45 },
+    "shadow.leatherPlinth": { "r": 0.016, "g": 0.031, "b": 0.051, "alpha": 0.85 }
+  },
+
+  "space": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "12": 12,
+    "14": 14,
+    "15": 15,
+    "16": 16,
+    "18": 18,
+    "20": 20,
+    "22": 22,
+    "24": 24,
+    "26": 26,
+    "28": 28,
+    "32": 32,
+    "36": 36,
+    "40": 40,
+    "44": 44,
+    "60": 60,
+    "68": 68,
+    "110": 110
+  },
+
+  "radius": {
+    "6": 6,
+    "8": 8,
+    "10": 10,
+    "12": 12,
+    "14": 14,
+    "16": 16,
+    "17": 17,
+    "18": 18,
+    "20": 20,
+    "22": 22,
+    "28": 28,
+    "card": 14,
+    "panel": 18,
+    "sheet": 22,
+    "chip": 10,
+    "rail": 14,
+    "ridge": 1.5
+  },
+
+  "stroke": {
+    "hairline": 1,
+    "thin": 0.8,
+    "medium": 1.2,
+    "strong": 1.5
+  },
+
+  "type": {
+    "size": {
+      "8": 8,
+      "9": 9,
+      "10": 10,
+      "11": 11,
+      "12": 12,
+      "13": 13,
+      "14": 14,
+      "16": 16,
+      "17": 17,
+      "19": 19,
+      "20": 20,
+      "22": 22,
+      "24": 24,
+      "26": 26,
+      "27": 27,
+      "28": 28,
+      "32": 32,
+      "34": 34
+    },
+    "weight": {
+      "regular": "regular",
+      "medium": "medium",
+      "semibold": "semibold",
+      "bold": "bold",
+      "black": "black"
+    },
+    "design": {
+      "serif": "serif",
+      "rounded": "rounded",
+      "default": "default"
+    },
+    "lineHeight": {
+      "tight": 120,
+      "normal": 138,
+      "relaxed": 152
+    }
+  },
+
+  "size": {
+    "sidebar": 266,
+    "sidebarMinimised": 232,
+    "chapterRail": 232,
+    "windowMinWidth": 1180,
+    "windowMinHeight": 760,
+    "hitTarget": 44,
+    "control": 34,
+    "controlSmall": 28
+  },
+
+  "motion": {
+    "duration": {
+      "120": 0.12,
+      "160": 0.16,
+      "180": 0.18,
+      "200": 0.2,
+      "220": 0.22,
+      "320": 0.32,
+      "2800": 2.8
+    },
+    "spring": {
+      "tactilePress": { "response": 0.22, "dampingFraction": 0.68 },
+      "hover": { "response": 0.32, "dampingFraction": 0.78 }
+    }
+  },
+
+  "material": {
+    "note": "材质与渐变不能作为 Figma 变量，只存在于代码与合同说明中；Figma 侧用等价色板示意。",
+    "gradient": {
+      "grimoireCover": ["leather.deep", "leather.void"],
+      "leatherSurface": ["leather.raised", "leather.base"],
+      "brassGleam": ["brass.core", "brass.luster"]
+    }
+  },
+
+  "reference": {
+    "cardTierColors": "config/quality-color-tokens.json",
+    "note": "五档边框的生产配色以 config/quality-color-tokens.json 为准；上面的 tier.* 是客户端图鉴里的档位标签/发光色，两者不是同一件事，改动其中一个不影响另一个。"
+  }
+}

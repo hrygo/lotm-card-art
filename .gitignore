@@ -32,5 +32,5 @@ venv/
 node_modules/
 dist/
 build/
-apps/LotmCardStudio/.build/
-apps/LotmCardStudio/.swiftpm/
+apps/WorldOfMysteries/.build/
+apps/WorldOfMysteries/.swiftpm/

@@ -2,7 +2,7 @@
 
 card/canon/review采用JSON Schema 2020-12，供编辑器或独立Schema工具检查。
 核心运行工具仅用标准库，实施关键结构与跨文件业务规则，并非通用JSON Schema实现。
-Schema允许脚手架中的空内容；design/release的事实、语义和图像门槛更严格。
+Schema 允许卡槽中的空内容；design/release的事实、语义和图像门槛更严格。
 不能把Schema验证成功当作原著核验或艺术审核。
 
 跨途径层级标签统一来自 `config/sequence-hierarchy.json`，结构由 `schemas/sequence-hierarchy.schema.json` 约束。其中 `sequence_levels` 描述当前默认时代的

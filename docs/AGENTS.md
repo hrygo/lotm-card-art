@@ -8,6 +8,7 @@
 - 文档只回答“应该怎么做 / 曾经怎么判断”；断言、卡状态、批准分别在 `pathways/*/canon.json`、`sequences/*/card.json`、`sources/registry.json`、`config/`。
 - 读取任何文件先看头部：版本、状态字段（如 Accepted/Proposed、`material-prep/no-production`）、适用范围；文内状态优先于目录位置和文件名。
 - 另有一层**产品基线**：`product/*.md` 描述**未来产品**的目标定义。它在效力上约束未来实现，对本仓库现有交付面（卡牌内容生产 + M1 客户端）**不是规范**，也不构成批准。
+- **分层与依赖方向**的单一说明在本目录 `architecture/layering.md`（约定，**未机器强制**；ADR-006 派生）。仓库身份是《诡秘世界》前置工程，制卡只是内容层的一个子域。
 
 ## 查哪里 WHERE TO LOOK
 | 任务 | 文件 | 效力 |
@@ -22,7 +23,11 @@
 | 制作文档总索引 | `card-production-index.md` | 索引（入口维护，非规则） |
 | 制作上手顺序 | `START-HERE.md` | 指南（非规范） |
 | 未来产品《诡秘世界》的目标定义（母 PRD） | `product/secret-world-prd-v1.0.md` | 产品基线·立项级（约束未来实现；非本仓库规范/事实源/批准） |
-| 架构决策 | `DECISIONS.md` + `decisions/ADR-*.md` | 决策记录；逐份读 `Status`（ADR-002 仍 Proposed，ADR-003 取代其部分生产假设） |
+| macOS 界面目标与交互契约（拆分 PRD） | `product/macos-ux-interaction-prd-v1.0.md` | 产品基线·拆分 PRD（`draft-for-review`）；界面与交互以它为准，引擎实现仍属另一交付面 |
+| macOS 界面与交互的目标定义（拆分 PRD） | `product/macos-ux-interaction-prd-v1.0.md` | 产品基线·拆分 PRD（Agent 起草，`draft-for-review`；界面/交互以此为准，引擎实现仍属另一交付面） |
+| 架构决策 | `DECISIONS.md` + `decisions/ADR-*.md` | 决策记录；逐份读 `Status`（ADR-002 仍 Proposed，ADR-003 取代其部分生产假设；ADR-006 决定不做物理迁移） |
+| 分层与依赖方向 | `architecture/layering.md` | 约定·当前（全部顶层目录的层归属与依赖规则；**未机器强制**，ADR-006 派生） |
+| 未来若迁移的前置条件 | `decisions/ADR-006-*.md` | 决策记录·Accepted；前置清单见其 Decision 6 |
 | 项目边界与未执行事项 | `LIMITATIONS.md` | 边界声明（当前诚实边界） |
 | SOP/Skill 审查结论 | `reviews/*.md` | 记录（非批准、非发布结论） |
 | 单卡/途径研究、资料包 | `research/*.md` | 草稿（非 canon；逐份读状态） |
@@ -47,11 +52,16 @@
 - 在 docs/ 新建事实数据、批准记录或第二份色表/层级表，绕过 `card.json`/`canon.json`。
 - 用 `assets/` 图片或计划文件完成度推断项目状态。
 - 把 `product/` 母 PRD 当成本仓库当前规范或已完成能力（其 World/Character/Story/Audio 引擎均未实现），或据其改动卡牌契约、卡数口径与批准状态。
+- 把 `architecture/layering.md` 的层界当作已被机器强制，或在未满足 ADR-006 Decision 6 前置条件时据此搬动顶层目录、清空 git 历史或改写 pin 模型。
+- 把本仓库（或本目录）描述成「卡牌制作脚手架」；制卡是内容层的子域。
 
 ## 状态 STATUS
 - 规范·当前：`workflow.md`、`source-policy.md`、`production-sop-v3.md`、`pathway-namespace.md`、`card-narrative-contract.md`。
+- 架构·约定：`architecture/layering.md`（分层与依赖方向；未机器强制，ADR-006 派生）。
 - 执行/侧车·当前：`production-preflight.md`、`pathway-carrier-sop.md`、`card-production-index.md`。
 - 决策：`DECISIONS.md` 与 `decisions/ADR-*`（Accepted/Proposed 并存，按 `Status` 使用）。
 - 历史·被取代：被后续版 SOP 取代的流程文档不留在仓库（见 D10），效力表不列已移除文件。
 - Agent 生成·非约束：`superpowers/plans/*`、`superpowers/specs/*`、`research/*`、`reviews/*`。
 - 产品基线·立项级：`product/secret-world-prd-v1.0.md`（未来产品《诡秘世界》的目标定义；本仓库现有交付面不受其约束，其中引擎能力均未实现）。
+- 产品基线·拆分 PRD：`product/macos-ux-interaction-prd-v1.0.md`（`draft-for-review`；界面与交互目标定义，引擎实现仍属另一交付面）。
+- 产品基线·拆分 PRD：`product/macos-ux-interaction-prd-v1.0.md`（《macOS UX / Interaction PRD》，Agent 起草待确认；只约束客户端界面与交互，不构成引擎立项、内容批准或视觉批准）。

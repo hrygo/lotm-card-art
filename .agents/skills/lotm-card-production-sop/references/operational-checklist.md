@@ -14,7 +14,7 @@
 | 研究记录 | `docs/research/` |
 | 编译任务 | `generated/<card_id>/` |
 | 图像/音频原始与最终资产 | `artifacts/<card_id>/<stage>/` |
-| macOS 试听 fixture | `apps/LotmCardStudio/Resources/Audio/` |
+| macOS 试听 fixture | `artifacts/<card_id>/audio-vNNN/`（打包期由 `tools/production.py stage-app-resources` 落入 `.app` 的 `Audio/`） |
 
 ## 阶段命令
 

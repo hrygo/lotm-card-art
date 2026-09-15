@@ -1,0 +1,10 @@
+{
+  "name": "Mysteries Design Tokens",
+  "id": "mysteries-design-tokens-local-0001",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  }
+}

@@ -523,6 +523,76 @@ def stage_app_audio_record(root, item, audio_stage):
     return target
 
 
+# 客户端卡图衍生档（决策见 docs/DECISIONS.md D23）。
+#
+# App 内**不放母版**：母版留在 `artifacts/**`，App 只放「按显示尺寸已经做好的成片」。
+# 依据实测（docs/research/2026-09-15-client-image-delivery-and-decode-research.md）：
+# 运行时把 2048×3072 的 PNG 缩到 800×1200 要 65.8ms，直接读 800×1200 的成片只要 2.7ms；
+# PNG 的缩略图解码甚至比全尺寸更慢，所以「运行时缩图」不是可用的优化手段。
+#
+# 两档的长边都不低于改动前客户端实际解码的像素（瓦片 683×1024、详情 1024×1536），
+# 也就是说这一步只换编码（PNG→JPEG），不降低任何一档的像素尺寸。
+APP_IMAGE_TIERS = (
+    {"tier": "tile", "long_edge": 1200, "jpeg_quality": 85},
+    {"tier": "hero", "long_edge": 1536, "jpeg_quality": 88},
+)
+
+# 显示需求下限（由客户端布局推出，不是档位选择）：
+#   详情卡面 CardDetailLayout.cardSize = 320×480pt → 2x = 640×960
+#   网格瓦片按 320pt 宽计 → 2x = 640×960
+# 任何一档低于这个下限都意味着「打开单卡或看网格会糊」，因此直接判错。
+APP_IMAGE_DISPLAY_MINIMUM_LONG_EDGE = 960
+
+
+def stage_app_card_art(root, name, source_rel, stage_dir):
+    """把一张已登记卡图落成各显示档，返回每一档的记录（名称、尺寸、字节数、摘要）。
+
+    不放大：源图比档位小时按源图尺寸出。缩放用系统 `sips`——本机实测它与
+    CoreGraphics 的 `interpolationQuality = .high` 结果逐像素一致（最大差 0）。
+    """
+    source_path = inside(root, source_rel)
+    info = cardctl.image_info(source_path)
+    if info["format"] != "PNG":
+        raise Invalid("registered app card art must be a PNG master: " + source_rel)
+    source_long_edge = max(info["width"], info["height"])
+    records = []
+    for tier in APP_IMAGE_TIERS:
+        long_edge = min(int(tier["long_edge"]), source_long_edge)
+        if long_edge < APP_IMAGE_DISPLAY_MINIMUM_LONG_EDGE:
+            raise Invalid(
+                f"{name}: {tier['tier']} 档长边 {long_edge}px 低于客户端显示需求 "
+                f"{APP_IMAGE_DISPLAY_MINIMUM_LONG_EDGE}px"
+            )
+        scale = long_edge / source_long_edge
+        width = max(1, round(info["width"] * scale))
+        height = max(1, round(info["height"] * scale))
+        target = Path(stage_dir) / f"{name}-{tier['tier']}.jpg"
+        try:
+            subprocess.run(
+                ["sips", "-s", "format", "jpeg",
+                 "-s", "formatOptions", str(tier["jpeg_quality"]),
+                 "-z", str(height), str(width), str(source_path), "--out", str(target)],
+                check=True, capture_output=True,
+            )
+        except FileNotFoundError as exc:
+            raise Invalid("staging card art requires the system `sips` tool") from exc
+        staged = cardctl.image_info(target)
+        if staged["format"] != "JPEG" or [staged["width"], staged["height"]] != [width, height]:
+            raise Invalid("staged card art has unexpected format or size: " + target.name)
+        records.append({
+            "tier": tier["tier"],
+            "file": f"CardArt/{target.name}",
+            "width": width,
+            "height": height,
+            "jpeg_quality": tier["jpeg_quality"],
+            "bytes": target.stat().st_size,
+            "sha256": sha(target),
+            "source": source_rel,
+            "source_sha256": sha(source_path),
+        })
+    return records
+
+
 def validate_fool_audio_package(root, *, stage_root=None):
     """Validate the two current Fool card packages and their App resources.
 
@@ -697,12 +767,13 @@ def validate_fool_audio_package(root, *, stage_root=None):
 
     app_audio_names = sorted(item["resource_name"] for item in audio_records)
 
+    staged_card_art = []
     if stage_root is not None:
         stage_root = Path(stage_root)
         card_art_stage = stage_root / "CardArt"
         card_art_stage.mkdir(parents=True, exist_ok=True)
         for name, source_rel in expected_card_art.items():
-            shutil.copyfile(inside(root, source_rel), card_art_stage / (name + ".png"))
+            staged_card_art.extend(stage_app_card_art(root, name, source_rel, card_art_stage))
         audio_stage = stage_root / "Audio"
         audio_stage.mkdir(parents=True, exist_ok=True)
         for item in audio_records:
@@ -713,6 +784,7 @@ def validate_fool_audio_package(root, *, stage_root=None):
         "card_count": len(card_reports),
         "cards": card_reports,
         "audio_file_count": len(audio_records),
+        "staged_card_art": staged_card_art,
         "app": {
             "card_art_count": len(card_art_names),
             "card_art_names": card_art_names,
@@ -2335,7 +2407,8 @@ def main():
             result = validate_fool_audio_package(ROOT)
         elif args.command=="stage-app-resources":
             report = validate_fool_audio_package(ROOT, stage_root=args.dest)
-            result = {"passed": True, "staged_root": args.dest, "app": report["app"]}
+            result = {"passed": True, "staged_root": args.dest, "app": report["app"],
+                      "staged_card_art": report["staged_card_art"]}
         elif args.command=="report-asset-size":
             result = report_asset_size(ROOT, args.single_file_mb, args.scope_total_mb)
         elif args.command=="check-fool-cards":

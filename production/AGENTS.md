@@ -39,6 +39,13 @@
 - **资产接入**：读 catalog 与 receipt.raw；`diagnostic_jobs`、`gaps`、blocked-alpha 不是可用资产；人物插画不算公共物料。
 - **历史隔离**：旧四档链（`fool-frame-kit.json`、四档 `quality-frame-*` 合同、`ornate-frame-*`/`four-tiers` 任务与配方、`assets/tiers` 四档矢量）已整体移入 Trash，不再有入口/active/fallback；退役走可恢复 Trash 并留退役账（`production/retirements/`）。
 
+## 插画制作前置审查 ILLUSTRATION PREFLIGHT
+- 任何人物、非人格主体或主事件插画进入 prompt、构图或生图前，必须从当前 `card.json`、`canon.json`、资料包和来源记录确认并登记：目标姓名/身份切片/时代或状态、种族/物种与本体形态、阵营/组织/立场关系、途径与序列/层级、核心能力、权柄、概念、限制，以及各字段的证据状态。
+- **种族/物种**不能被职业服装或途径配色替代；需先确定稳定人形、非人本体、变形、血统继承或外来力量的边界。**阵营/立场**需区分人物当前选择、所属组织、盟友/敌对关系与背景势力，不能只用善恶色彩或符号猜测。
+- 凡属于**高序列、圣者、天使、天使之王或真神**的目标，必须额外研究其神话生物形态、权柄、概念和主体限制，并明确神话形态与主体的关系：`融合`（两者连续共存）、`抗争`（主体意识/身份与形态或神性冲突）、`一体两面`（同一存在的互补显现），或有证据支持的 `unknown`/`not_applicable`。不能默认所有高位存在都采用同一种关系。
+- 上述关系不能只写标签：设计记录必须说明可观察的形态线索、主视觉事件中的因果表现、预期回读和误读阻断。权柄与概念要通过正在发生的规则/结果/关系表达，不能用黑雾、翅膀、王冠、触手、体量或亮度单独代替。
+- 若个人神话形态、种族边界、阵营或权柄尚未核验，保留 `knowledge_gap`，输出标为候选艺术提案；不得把模型补全、途径共性或其他角色形态冒充该目标事实。备用图也必须在 provenance/sidecar 中保存这些前置判断及其来源。
+
 ## 反模式 ANTI-PATTERNS
 - 不把 task/composition 当语义正本，不用生成结果反推能力事实。
 - 不以路径文字代替实际附件；文字 contracts 不计入图像附件；call 不记未实际传递的输入。
@@ -60,7 +67,7 @@ python3 tools/production.py gate artifacts/production/<new-run> --release
 # 当前愚者资产路线见下方的 check-fool-materials。
 python3 tools/production.py check-content production/narratives/klein-s09-tingen.json  # --ready-for-audio 拒绝未批准文案
 python3 tools/production.py check-fool-audio  # 十一张当前 App 卡包的叙事摘要、WAV 与 artifacts 真源登记
-python3 tools/production.py stage-app-resources --dest .build/LotmCardStudio.app/Contents/Resources  # 打包期按登记表从 artifacts 落资源
+python3 tools/production.py stage-app-resources --dest .build/诡秘世界.app/Contents/Resources  # 打包期按登记表从 artifacts 落资源
 python3 tools/production.py report-asset-size  # 体积观测：单文件/批次预算，只提示不阻断
 python3 tools/production.py check-fool-materials
 python3 tools/production.py check-fool-cards

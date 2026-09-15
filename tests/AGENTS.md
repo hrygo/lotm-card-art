@@ -7,7 +7,7 @@
 - `tests/` 是 Python 回归 + 反例套件：`test_*.py` 平铺、无 `__init__.py`，由仓库根 `python3 -m unittest discover -s tests -v` 发现；用例以 `Path(__file__).resolve().parents[1]` 定位仓库根，执行目录无关。
 - 套件必须 **0 failures / 0 errors**；CI（`.github/workflows/ci.yml`）在 ubuntu-latest、Python 3.10–3.14 矩阵（`fail-fast: false`）依次跑 `check --level scaffold` 与全套件。
 - 门禁分三层：scaffold（结构）→ design（六维与证据）→ release（真实图像 + 人工批准）。刚检出时 design/release 失败是发布阻断预期，不是故障。
-- `tests/LotmCardStudio*Tests/` 目录为空；Swift 测试实际位于 `apps/LotmCardStudio/Tests/`，用 `swift test` 运行，不计入 Python 套件。
+- `tests/WorldOfMysteries*Tests/` 目录为空；Swift 测试实际位于 `apps/WorldOfMysteries/Tests/`，用 `swift test` 运行，不计入 Python 套件。
 
 ## 查哪里 WHERE TO LOOK
 | 关心点 | 测试文件 |
@@ -21,7 +21,7 @@
 | 符号/徽记清单、精确计数、历史登记边界 | `test_symbols_library.py` |
 | 愚者五档物料、三文字区、agentic 管线、材料基线 | `test_fool_five_tier.py`、`test_fool_three_text_zones.py`、`test_fool_agentic_pipeline.py`、`test_fool_material_validation.py` |
 | 原生合成器像素回归（compose 后端） | `test_native_compositor.py` |
-| Swift 客户端 Core/Features 领域与交互 | `apps/LotmCardStudio/Tests/`（`swift test`） |
+| Swift 客户端 Core/Features 领域与交互 | `apps/WorldOfMysteries/Tests/`（`swift test`） |
 
 ## 约定 CONVENTIONS
 - 新增硬规则必须配对反例用例：正例断言直接通过，反例断言**具体错误码**（`validate_card` 返回的 `code` 集合）或异常类型（`cardctl.DataError`、`production.Invalid`），不写宽泛断言。
@@ -50,5 +50,5 @@ python3 tools/cardctl.py check --level design --card fool:09    # 未完成研�
 python3 tools/cardctl.py check --level release --card fool:09   # 无真实图档与批准时预期失败
 
 # Swift 客户端套件（独立门禁）
-cd apps/LotmCardStudio && swift test
+cd apps/WorldOfMysteries && swift test
 ```

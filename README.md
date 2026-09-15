@@ -2,10 +2,10 @@
   <img src="docs/assets/logo_160.png" width="128" height="128" alt="诡秘世界 Logo" />
 </p>
 
-<h1 align="center">诡秘世界 · 220 张成神途径卡牌制作脚手架</h1>
+<h1 align="center">诡秘世界 · World of Mysteries</h1>
 
 <p align="center">
-  <strong>22 条成神途径 × 序列 9–0 · 220 张独立高清序列卡牌正面 · 六维语义严谨契约 · 原生画册客户端</strong>
+  <strong>《诡秘世界》前置工程 · 内容生产（22 条成神途径 × 序列 9–0 的序列卡）+ macOS 原生画册客户端 + 未来引擎层（占位）</strong>
 </p>
 
 <p align="center">
@@ -23,7 +23,7 @@
   <a href="#-快速开始">快速开始</a> ·
   <a href="#-六维语义契约">六维契约</a> ·
   <a href="#-愚者途径研究资料">研究资料</a> ·
-  <a href="#-原生画册客户端-lotmcardstudio">画册客户端</a> ·
+  <a href="#-原生画册客户端-worldofmysteries">画册客户端</a> ·
   <a href="#-工程目录结构">工程目录</a> ·
   <a href="#-三级质量保证门槛">质量门槛</a> ·
   <a href="#-参与贡献">参与贡献</a> ·
@@ -32,11 +32,19 @@
 
 ---
 
-## 📖 项目核心目标
+## 📖 项目定位
 
-本项目以小说《诡秘之主》（Lord of the Mysteries）全 **22 条成神途径、每条途径序列 9 至 0，共计 220 张独立高清序列卡牌正面** 为内容生产主线，并提供一个隔离的 macOS 原生画册客户端垂直切片。
+本仓库是《诡秘世界》的**前置工程**，同时承载三个面：
 
-本仓库同时是《诡秘世界》项目的前置工程：产品目标（World/Character/Story/Audio 引擎、持久世界、Story Book）以 [`docs/product/secret-world-prd-v1.0.md`](docs/product/secret-world-prd-v1.0.md)（母 PRD，立项级产品基线）为准；卡牌内容生产保持独立职责，引擎实现尚未开始。
+| 面 | 状态 | 位置 |
+|---|---|---|
+| **内容生产面** | 进行中（仅愚者途径做深） | `pathways/`、`catalog/`、`sources/`、`production/`、`tools/` |
+| **客户端面** | M1 垂直切片（隔离 fixture） | `apps/WorldOfMysteries` |
+| **引擎面** | **未实现**（契约占位） | `packages/` |
+
+制作卡片的能力只是内容层的一个子域，不是本仓库的全部。分层与依赖方向见 [`docs/architecture/layering.md`](docs/architecture/layering.md)；不做物理迁移的依据见 [`docs/decisions/ADR-006-docs-first-layering-no-physical-migration.md`](docs/decisions/ADR-006-docs-first-layering-no-physical-migration.md)。
+
+《诡秘世界》的产品目标（World/Character/Story/Audio 引擎、持久世界、Story Book）以 [`docs/product/secret-world-prd-v1.0.md`](docs/product/secret-world-prd-v1.0.md)（母 PRD，**立项级产品基线**）为准：它约束**未来**实现，**不是**本仓库现有交付面的规范，也不构成批准；其中引擎能力均未实现。
 
 220 是美术生产脚手架的序列卡槽基线（22 途径 × 10 序列），不是卡牌上限，也不是客户端收藏分母——同一序列可有多个不同人物的身份卡，同一人物可有跨多个序列的形象卡，实际卡数可超过 220。客户端模型允许一个序列拥有 0…N 张身份卡，
 同一角色也可以拥有多张独立身份卡；当前客户端以隔离 fixture 展示 S00 愚者先生、S09 克莱恩、序列之上·诡秘之主的福生玄黄天尊、序列之上·星界支柱的上帝与序列之上·现实支柱的堕落母神，以及永恒之暗、恶魔之父、毁灭天灾、失序者、知识之妖、光之钥六位「序列之上」旧日，共十一张卡，均已接入卡图、六维、故事与本地配音；十一张卡已于 2026-09-14 由用户视觉验收并在客户端呈现为正式收藏，但内容仍是待核验 fixture，也没有 2K/4K 交付像素——批准不等于发布。
@@ -61,7 +69,7 @@
   正典断言（原著事实）、资料缺口（诚实记录未知）、解释性概括与美术提案严格解耦，拒绝为凑完成率捏造配方与仪式。
 - 🔒 **三级渐进式发布阻断流水线**
   `scaffold`（结构骨架）➔ `design`（六维转译与证据）➔ `release`（真实高清图档与审核快照），层层设卡杜绝劣质打卡。
-- 🖥️ **原生 macOS 卡牌画册客户端 (`apps/LotmCardStudio`)**
+- 🖥️ **原生 macOS 卡牌画册客户端 (`apps/WorldOfMysteries`)**
   基于 SwiftUI 的 macOS 原生 M1 里程碑垂直切片，提供书架画廊、正式/候选/愿望清单、故事抽屉、人工台词审核门槛及本机 SpeechRail 语音接入。
 
 ---
@@ -70,7 +78,7 @@
 
 ### 1. 环境准备
 
-- **卡牌制作脚手架**：Python 3.10 或更高版本（纯标准库，无需 `pip install`）。
+- **内容生产工具链**：Python 3.10 或更高版本（纯标准库，无需 `pip install`）。
 - **macOS 画册客户端**（可选）：macOS 26.0+，Swift 6.2+ 工具链；当前在 Apple silicon arm64、Swift 6.3.3 环境验证。
 
 ### 2. 基础检查与工作流体验
@@ -101,42 +109,32 @@ python3 -m unittest discover -s tests -v
 
 ## 📐 六维语义契约
 
-卡面上的每一个视觉元素都承担着严谨的信息回读职责：
+卡面上的每一个视觉元素都承担着严谨的信息回读职责。每张牌必须涵盖六大核心维度：
+**身份 (Identity) — 扮演 (Acting) — 能力 (Abilities) — 魔药 (Potion) — 晋升 (Advancement) — 限制 (Limitation)**。
 
-| 维度 | 表达事实或核验边界 | 载体示例（自由组合） | 误读阻断底线 |
-| :--- | :--- | :--- | :--- |
-| **身份** (Identity) | 准确序列名与序列阶数 (9–0) | 符文、数字刻印、途径特异边框 | 禁止与其他途径或邻近序列混淆 |
-| **扮演** (Acting) | 当前序列的行动准则与守则 | 动作、神态、场域交互、仪式姿势 | 必须反映守则内核，不只是静止站姿 |
-| **能力** (Abilities) | 该序列获得的可辨认超凡效果 | 视觉现象、光影异变、物质形变 | 禁止提前表现更高序列的专属神能 |
-| **魔药** (Potion) | 已核验的关键主辅材料要素 | 物件、背景标本、灵界生物投射 | 未知时使用明确缺口标记，不凭空造物 |
-| **晋升** (Advancement) | 进入本序列所需的仪式或环境 | 场景环境、特殊天象、宿命因果关系 | 属于进入当前序列的前提，非下一序列 |
-| **限制** (Limitation) | 失控风险、精神异变或负面代价 | 构图负空间、失衡形变、侵蚀暗影 | 必须具有具体边界，不能用笼统暗色敷衍 |
-
-## 📚 愚者途径研究资料
-
-愚者途径的角色故事、序列研究和结构化事实采用“研究稿—正典断言—来源登记”三层索引。研究稿用于持续补全与审核，不代表卡牌已经通过 `design` / `release` 门槛，也不代表其中所有 `lead` 内容已经获得用户批准。
-
-- 📖 [知名角色资料补全与多段关联故事](docs/research/2026-09-14-fool-known-characters-dossier.md)：按姓名、序列、六维信息、口头语和角色身份整理；克莱恩的多个身份分条记录，并串联相关剧情段落。
-- 🧪 [序列 9—0 魔药配方、扮演法与晋升研究](docs/research/2026-09-14-fool-sequence-potion-acting-advancement.md)：逐序列整理主材、辅材、扮演原则、晋升条件/仪式、角色实例和资料缺口。
-- 🎭 [格尔曼·斯帕罗序列 6 卡牌原材料包](docs/research/2026-09-14-germann-sparrow-s06-card-materials.md)：准备人物身份切片、六维输入、关联故事节点、视觉主事件和资产缺口；明确暂不启动生产流程。
-- 🕯️ [扎拉图（Zaratul）卡牌原材料包](docs/research/2026-09-14-zaratul-card-materials.md)：拆分序列 2、序列 1 扎拉图与第四纪扎拉图先祖，准备六维输入、关联故事和视觉边界。
-- 🐺 [安提哥努斯（Antigonus）卡牌资料包](docs/research/2026-09-14-antigonus-card-materials.md)：拆分天生奇迹师、半个愚者与霍纳奇斯封印状态，整理家族、夜之国和源堡关联。
-- 🌫️ [愚者先生／Mr. Fool 卡牌原材料包](docs/research/2026-09-14-mr-fool-card-materials.md)：制作前研究稿，整理序列 0 神格身份切片、六维输入、关联故事、视觉主事件与既有资产/缺口；当前 App 接入状态以 QA 与生产门禁记录为准。
-- 🃏 [序列 0「愚者」研究与卡面转译](docs/research/2026-09-13-fool-s00-research.md)：序列 0 的位阶、配方、仪式、能力与限制边界。
-- 🧭 [克莱恩序列 9「占卜家」研究卡](docs/research/2026-09-13-klein-seer-card.md)：人物身份、序列 9 研究、六维转译和制作边界。
-- 🗃️ [愚者途径结构化正典断言](pathways/fool/canon.json)：可复用的序列名称、能力、配方、扮演、晋升与资料缺口，按证据状态管理。
-- 🔗 [来源登记与证据范围](sources/registry.json)：记录官方中文、官方英文交叉定位及二手研究来源的访问状态和使用边界。
-
-其中，序列 0 的通行配方与仪式保持官方中文设定依据；序列 8—1 的部分完整配方、扮演法和高序列仪式仍以 `lead` 或 `knowledge_gap` 标记，须完成中文底本逐项复核后才能升级状态。
+我们不做刻板生硬的六格模板，也不做毫无依据的纯空想插画；默认采用序列原型，杜绝将角色偶然外物或高序列力量提前嫁接。各维度的具体表达事实、核验边界、载体示例与误读阻断底线详见规范文档：
+👉 [六维语义契约 (design/semantic-contract.md)](design/semantic-contract.md)
 
 ---
 
-## 🖥️ 原生画册客户端 (LotmCardStudio)
+## 📚 设定研究与资料索引
 
-位于 [`apps/LotmCardStudio`](apps/LotmCardStudio/)，是《诡秘世界》卡牌画册的原生桌面客户端：
+本工程采用“研究稿 — 正典断言 — 来源登记”三层资料体系：
+- 🗃️ [结构化正典断言库 (pathways/fool/canon.json)](pathways/fool/canon.json)：已核验的序列名称、能力、配方、扮演、晋升与资料缺口，按证据状态严格管理。
+- 🔗 [来源登记与证据范围 (sources/registry.json)](sources/registry.json)：记录官方中文底本、官方英文交叉定位及二手研究来源的访问状态与使用边界。
+- 📑 [途径研究稿与单卡资料包索引 (docs/research/README.md)](docs/research/README.md)：汇集魔药配方与扮演法考据、克莱恩/愚者先生/格尔曼·斯帕罗/扎拉图/安提哥努斯等角色与单卡阶段性资料包。
+
+> [!NOTE]
+> 研究稿用于阶段性考据与信息整理，未完成原著核验前保持 `lead` 或 `knowledge_gap` 标记，不代表卡牌已通过 `design` / `release` 门槛。
+
+---
+
+## 🖥️ 原生画册客户端 (WorldOfMysteries)
+
+位于 [`apps/WorldOfMysteries`](apps/WorldOfMysteries/)，是《诡秘世界》卡牌画册的原生桌面客户端：
 
 <p align="center">
-  <img src="apps/LotmCardStudio/Resources/logo.png" width="96" height="96" alt="LotmCardStudio App Icon" />
+  <img src="apps/WorldOfMysteries/Resources/logo.png" width="96" height="96" alt="WorldOfMysteries App Icon" />
 </p>
 
 ### 当前能力
@@ -146,62 +144,85 @@ python3 -m unittest discover -s tests -v
 - 🎙️ **SpeechRail 接入**：只连接本机 loopback `http://127.0.0.1:8201`；最新 S00/S09 各接入 6 条新版文案和对应系统音色本地 WAV，优先本地播放，缺失时才请求语音，服务失败时保留文字稿并显示失败状态。
 - 🛡️ **人工审核门槛**：只有批准摘要仍与文本匹配的台词/章节进入播放列表，示意 fixture 不代表正典批准。
 
-当前本机 Release 已发布并安装至 `/Applications/LotmCardStudio.app`；发布验证覆盖资源白名单、arm64 架构、macOS 26.0 最低版本、代码签名、自动化测试和真实窗口交互。这里的 App 发布不等同于卡牌的视觉正式 release。
+当前本机 Release 已发布并安装至 `/Applications/诡秘世界.app`；发布验证覆盖资源白名单、arm64 架构、macOS 26.0 最低版本、代码签名、自动化测试和真实窗口交互。这里的 App 发布不等同于卡牌的视觉正式 release。
 当前未实现：仓库内容导入、SwiftData 用户库、Keychain 设置界面、完整音频缓存、正式卡面资源和卡牌游戏规则。
 
 ### 运行与构建
 ```bash
-cd apps/LotmCardStudio
+cd apps/WorldOfMysteries
 
-# 运行客户端单元测试（当前 87 项）
+# 运行客户端单元测试（用例数随里程碑变动，以 swift test 实际输出为准）
 swift test
 
 # 运行 SwiftPM executable
-swift run LotmCardStudio
+swift run WorldOfMysteries
 
 # 构建 macOS 原生应用程序包（参数只能是 debug 或 release）
 ./scripts/build-app.sh debug
 ./scripts/build-app.sh release
-open .build/LotmCardStudio.app
+open .build/诡秘世界.app
 ```
 
 若 `Resources/AppIcon.icns` 存在，打包脚本会将其复制到 `.app`；卡图与音频不在仓库内重复存放，打包脚本按登记表在打包期从 `artifacts/**` 拷入 `.app`（`tools/production.py stage-app-resources`）；图标不是测试运行的前置条件。
-真实构建、视觉验收和 SpeechRail 试听状态见 [`apps/LotmCardStudio/docs/qa/m1-local-run.md`](apps/LotmCardStudio/docs/qa/m1-local-run.md)。
+真实构建、视觉验收和 SpeechRail 试听状态见 [`apps/WorldOfMysteries/docs/qa/m1-local-run.md`](apps/WorldOfMysteries/docs/qa/m1-local-run.md)。
 
 ---
 
 ## 📂 工程目录结构
 
+以下列出全部顶层条目及其所属层（依据 [`docs/architecture/layering.md`](docs/architecture/layering.md)）：
+
 ```text
 .
-├── AGENTS.md                         # 全局质量契约与底线准则
-├── apps/AGENTS.md                    # 客户端目录增量规则
-├── catalog/pathways.json              # 22 条途径工作 ID 与待核验中文标签
-├── config/project.json               # 交付规格与全局配置入口
-├── config/sequence-hierarchy.json    # 9–0 层级标签单一配置（半神/圣者/天使/天使之王/真神）
-├── design/                           # 六维转译、美术总纲、版式与审核规范
-├── docs/                             # 架构决策、工作流、证据来源策略
+├── AGENTS.md                         # 文档层：全局质量契约与底线准则
+├── apps/AGENTS.md                    # 应用层：客户端目录增量规则
+├── catalog/pathways.json              # 内容层：22 条途径工作 ID 与待核验中文标签
+├── config/project.json               # 内容工艺层：交付规格与全局配置入口
+├── config/sequence-hierarchy.json    # 内容工艺层：9–0 层级标签单一配置（半神/圣者/天使/天使之王/真神）
+├── design/                           # 内容工艺层：六维转译、美术总纲、版式与审核规范
+├── docs/                             # 文档层：架构决策、工作流、证据来源策略
 │   ├── START-HERE.md                 # 制作快速上手指南
 │   ├── workflow.md                   # 阶段推进流转说明
 │   └── DECISIONS.md                  # 架构设计决策记录 (ADR)
-├── pathways/                         # 22 途径核心资产
+├── pathways/                         # 内容层：22 途径核心资产
 │   └── <pathway_id>/
 │       ├── direction.json            # 该途径原创视觉提案
 │       ├── canon.json                # 已核验设定断言库
 │       └── sequences/<09..00>/
 │           └── card.json             # 单卡唯一六维结构化设计方案
-├── apps/LotmCardStudio/              # macOS 原生卡牌画册客户端 M1 里程碑垂直切片
+├── sources/                          # 内容层：来源登记与证据范围
+├── apps/WorldOfMysteries/              # 应用层：macOS 原生卡牌画册客户端 M1 里程碑垂直切片
 │   ├── Package.swift                  # SwiftPM targets 与 macOS 平台声明
 │   ├── Sources/                       # Core、Features 与 @main 入口
 │   ├── Tests/                         # 客户端领域/交互测试
 │   ├── Resources/Info.plist           # .app 元数据（图标资源可选）
 │   ├── scripts/build-app.sh            # debug/release .app 打包
 │   └── docs/qa/                       # 本机运行与视觉验收记录
-├── tools/cardctl.py                   # 核心命令行工具（检查、状态、编译、校验）
-├── schemas/                          # JSON Schema 结构约束
-├── tests/                            # 自动化回归与反例测试集
-└── reports/                          # 验收报告与覆盖率核对记录
+├── tools/cardctl.py                   # 制造层：核心命令行工具（检查、状态、编译、校验）
+├── production/                        # 制造层：分层生产记录与门禁
+├── artifacts/                         # 制造层：不可覆盖的 raw/final/preview/provenance
+├── generated/                         # 制造层：brief 等派生输出
+├── reports/                          # 制造层：验收报告与覆盖率核对记录
+├── references/                       # 制造层：参考资料登记
+├── schemas/                          # 内容工艺层：JSON Schema 结构约束
+├── templates/                        # 内容工艺层：任务模板
+├── examples/                         # 内容工艺层：内容工艺模式参考（如方向研究示例、六维转译模式）
+├── prompts/                          # 内容工艺层：研究/美术/审核提示词模板
+├── tests/                            # 制造层：自动化回归与反例测试集
+├── packages/                         # 引擎层（占位·未实现）：未来 IP 中性引擎契约
+├── CHANGELOG.md                      # 仓库元数据：版本变更日志
+├── CONTRIBUTING.md                   # 仓库元数据：贡献指南
+├── CODE_OF_CONDUCT.md                # 仓库元数据：行为准则
+├── SECURITY.md                       # 仓库元数据：安全政策
+├── SUPPORT.md                        # 仓库元数据：支持与问题分流
+├── LICENSE-CODE.md                   # 仓库元数据：MIT 许可证
+├── NOTICE.md                         # 仓库元数据：内容协议与版权边界
+├── README.md                         # 仓库元数据：本文件
+├── .agents/                          # 仓库元数据：Agent 技能（card-production-sop｜foundation｜hierarchy｜subject｜symbols｜quality-frames）
+└── .github/                          # 仓库元数据：CI 与 PR/Issue 模板
 ```
+
+> `examples/` 存放内容工艺的模式参考（如方向研究示例、六维转译模式），`prompts/` 存放研究/美术/审核提示词模板；二者服务内容生产，不含事实源。
 
 ---
 
@@ -231,7 +252,7 @@ graph LR
 
 ## 🤝 参与贡献
 
-欢迎共同完善《诡秘世界》220 张序列卡牌的结构化工程！在提交 Pull Request 前，请参阅：
+欢迎共同完善《诡秘世界》前置工程的内容生产、客户端与未来引擎层！在提交 Pull Request 前，请参阅：
 
 - 📘 [贡献指南 (CONTRIBUTING.md)](CONTRIBUTING.md)：完整的单卡研究、证据填写与提交约定。
 - 🛡️ [安全政策 (SECURITY.md)](SECURITY.md)：私密报告漏洞或凭据风险。

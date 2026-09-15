@@ -135,12 +135,17 @@ class FoolCardValidationTests(unittest.TestCase):
             staged = production.validate_fool_audio_package(ROOT, stage_root=tmp)
 
             self.assertEqual(staged["app"], report["app"])
-            art = sorted(path.stem for path in (Path(tmp) / "CardArt").glob("*.png"))
+            expected_art = sorted(
+                f"{name}-{tier['tier']}.jpg"
+                for name in report["app"]["card_art_names"]
+                for tier in production.APP_IMAGE_TIERS
+            )
+            art = sorted(path.name for path in (Path(tmp) / "CardArt").iterdir())
             wav = sorted(path.stem for path in (Path(tmp) / "Audio").glob("*.wav"))
-            self.assertEqual(art, report["app"]["card_art_names"])
+            self.assertEqual(art, expected_art)
             self.assertEqual(wav, report["app"]["audio_resource_names"])
-            for name in report["app"]["card_art_names"]:
-                self.assertGreater((Path(tmp) / "CardArt" / (name + ".png")).stat().st_size, 0)
+            for name in expected_art:
+                self.assertGreater((Path(tmp) / "CardArt" / name).stat().st_size, 0)
 
     def test_stage_app_audio_record_rejects_a_stale_staged_hash(self):
         import tempfile

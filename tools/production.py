@@ -271,6 +271,10 @@ def pathway_material_context(root, pathway_id):
             "retirements": "production/retirements/fool-failed-materials-2026-09-14.json",
             "card_prefix": "lotm.fool.s",
             "fusion_artifact_root": "artifacts/production/fool-fusion-",
+            "retained_material_ids": [
+                "material-fool-veil", "material-gold", "material-high-filament",
+                "material-sacred-slate", "material-silver-flat",
+            ],
         }
     base = f"production/symbols/{pathway_id}"
     return {
@@ -297,6 +301,7 @@ def pathway_material_context(root, pathway_id):
         "retirements": f"production/retirements/{pathway_id}-failed-materials.json",
         "card_prefix": f"lotm.{pathway_id}.s",
         "fusion_artifact_root": f"artifacts/production/{pathway_id}-fusion-",
+        "retained_material_ids": None,
     }
 
 
@@ -659,17 +664,22 @@ def validate_fool_audio_package(root):
     }
 
 
-def validate_fool_materials(root):
-    """Validate the retained Fool visual baseline after recoverable cleanup.
+def validate_pathway_materials(root, pathway_id="fool"):
+    """Validate a pathway's retained visual baseline after recoverable cleanup.
 
     This gate intentionally reads only the current baseline catalogs. Historical
     catalogs may retain provenance paths to files in Trash, but they must not be
     treated as active production inputs.
+
+    `pathway_id` selects the audited pathway; the assertions below are unchanged,
+    they compare against the declared pathway and geometry instead of "fool".
     """
     root = Path(root).resolve()
+    ctx = pathway_material_context(root, pathway_id)
+    pathway_label = ctx["label"]
     audrey_preservation = validate_external_audrey_assets(root)
-    carrier_contract = validate_fool_carrier_contract(root)
-    audio_package = validate_fool_audio_package(root)
+    carrier_contract = validate_pathway_carrier_contract(root, pathway_id)
+    audio_package = validate_fool_audio_package(root) if pathway_id == "fool" else None
     tier_order = ["low", "mid", "saint", "angel", "true-god"]
     expected_mapping = {
         "low": [9, 8],
@@ -697,11 +707,11 @@ def validate_fool_materials(root):
             raise Invalid(f"{label} has wrong native size: {rel}")
         return path, info
 
-    catalog_rel = "production/symbols/fool-five-tier-kit.json"
-    catalog_path = required_file(catalog_rel, "Fool five-tier catalog")
+    catalog_rel = ctx["five_tier_catalog"]
+    catalog_path = required_file(catalog_rel, f"{pathway_label} five-tier catalog")
     catalog = read(catalog_path)
-    if catalog.get("pathway_id") != "fool":
-        raise Invalid("current five-tier catalog is not for the Fool pathway")
+    if catalog.get("pathway_id") != pathway_id:
+        raise Invalid(f"current five-tier catalog is not for the {pathway_label} pathway")
     if catalog.get("status") != "official-agentic-visual-material-baseline":
         raise Invalid("current five-tier catalog is not the official visual baseline")
     if catalog.get("sequence_mapping") != expected_mapping:
@@ -714,7 +724,7 @@ def validate_fool_materials(root):
         raise Invalid("final-only sampling policy is not enabled")
 
     output_rel = catalog.get("active_output")
-    if output_rel != "artifacts/production/fool-five-tier-direct-kit-v1":
+    if output_rel != ctx["five_tier_output"]:
         raise Invalid("current five-tier output is not the direct native kit")
     output = inside(root, output_rel)
     manifest_record = catalog.get("active_manifest")
@@ -723,13 +733,13 @@ def validate_fool_materials(root):
     verify_records(root, [manifest_record])
     require_visual_approval_sidecar(root, manifest_record["path"], required_file)
     manifest = read(required_file(manifest_record["path"], "active five-tier manifest"))
-    if manifest.get("mode") != "fool-five-tier-direct-batch-v1":
+    if manifest.get("mode") != ctx["tier_batch_mode"]:
         raise Invalid("active five-tier manifest is not the direct Agentic batch")
     if manifest.get("direct_agentic_sources") is not True:
         raise Invalid("active five-tier manifest is not direct Agentic source")
     if manifest.get("color_transform") != "none":
         raise Invalid("active five-tier manifest contains a color transform")
-    if manifest.get("geometry_id") != "fool-agentic-mother-v2":
+    if manifest.get("geometry_id") != ctx["geometry_id"]:
         raise Invalid("active five-tier geometry is stale")
     if manifest.get("no_cross_product_variants") is not True:
         raise Invalid("active five-tier manifest permits cross-product variants")
@@ -742,10 +752,10 @@ def validate_fool_materials(root):
     if manifest.get("gem_slot", {}).get("variant_count") != 5:
         raise Invalid("active five-tier gem count is not five")
 
-    layered_rel = "production/symbols/fool-layered-asset-baseline-v1.json"
-    layered = read(required_file(layered_rel, "active Fool layered-asset baseline"))
-    if layered.get("pathway_id") != "fool" or layered.get("status") != "user-approved-agentic-visual-baseline":
-        raise Invalid("active Fool layered-asset baseline is stale")
+    layered_rel = ctx["layered_baseline"]
+    layered = read(required_file(layered_rel, f"active {pathway_label} layered-asset baseline"))
+    if layered.get("pathway_id") != pathway_id or layered.get("status") != ctx["layered_status"]:
+        raise Invalid(f"active {pathway_label} layered-asset baseline is stale")
     graph = layered.get("asset_graph", {})
     reusable_graph = graph.get("reusable_materials", {})
     if reusable_graph.get("catalog") != catalog_rel or reusable_graph.get("catalog_sha256") != sha(catalog_path):
@@ -768,13 +778,13 @@ def validate_fool_materials(root):
                 or row.get("sequences") != expected_mapping[tier]):
             raise Invalid(f"layered-asset {tier} frame pointer is stale")
     sequence_graph = graph.get("sequence_frames", {})
-    sequence_rel = "production/symbols/fool-agentic-sequence-inscriptions-v2.json"
+    sequence_rel = ctx["sequence_inscriptions"]
     if (sequence_graph.get("catalog") != sequence_rel
             or sequence_graph.get("catalog_sha256") != sha(inside(root, sequence_rel))
-            or sequence_graph.get("output_root") != "artifacts/production/fool-agentic-sequence-inscriptions-v2/studies"):
+            or sequence_graph.get("output_root") != ctx["sequence_output_root"]):
         raise Invalid("layered-asset sequence-frame pointer is stale")
     fusion_graph = graph.get("fusion_reference", {})
-    if (fusion_graph.get("catalog") != "production/symbols/fool-fusion-family.json"
+    if (fusion_graph.get("catalog") != ctx["fusion_family"]
             or fusion_graph.get("role") != "historical-reference-only"):
         raise Invalid("layered-asset fusion reference is stale")
     layered_policy = layered.get("resolution_policy", {})
@@ -798,9 +808,10 @@ def validate_fool_materials(root):
         raise Invalid("retained reusable material catalog is missing or stale")
     if reusable_materials.get("embedded_in_active_frames") is not False:
         raise Invalid("retained reusable materials cannot be treated as frame overlays")
-    if len(material_entries) != 5 or {item.get("id") for item in material_entries} != {
-            "material-fool-veil", "material-gold", "material-high-filament",
-            "material-sacred-slate", "material-silver-flat"}:
+    declared_materials = ctx["retained_material_ids"]
+    if declared_materials is not None and (
+            len(material_entries) != len(declared_materials)
+            or {item.get("id") for item in material_entries} != set(declared_materials)):
         raise Invalid("retained reusable material catalog must contain exactly five inputs")
     for item in material_entries:
         rel = item.get("path", "")
@@ -835,7 +846,7 @@ def validate_fool_materials(root):
     if intermediate_2k_files:
         raise Invalid("intermediate 2K files remain in active five-tier output: " + ", ".join(intermediate_2k_files))
 
-    sidecar_rel = "production/approvals/fool-agentic-visual-baseline-v1.json"
+    sidecar_rel = ctx["approval_sidecar"]
     sidecar = read(required_file(sidecar_rel, "visual baseline sidecar"))
     approved = sidecar.get("approved_assets", {})
     mother = approved.get("mother_frame", {})
@@ -871,7 +882,7 @@ def validate_fool_materials(root):
     sequence_outputs = []
     for entry in sorted(sequence_entries, key=lambda item: item["digit"]):
         digit = entry["digit"]
-        if entry.get("sequence_id") != f"lotm.fool.s{digit:02d}":
+        if entry.get("sequence_id") != f"{ctx['card_prefix']}{digit:02d}":
             raise Invalid(f"sequence {digit} identity is stale")
         if entry.get("tier") != visual_quality(root, digit)["id"]:
             raise Invalid(f"sequence {digit} tier disagrees with quality configuration")
@@ -884,7 +895,7 @@ def validate_fool_materials(root):
             raise Invalid(f"sequence {digit} candidate is not the approved Agentic baseline")
         sequence_outputs.append(rel)
 
-    fusion_rel = "production/symbols/fool-fusion-family.json"
+    fusion_rel = ctx["fusion_family"]
     fusion = read(required_file(fusion_rel, "current fusion catalog"))
     if fusion.get("current_user_approval", {}).get("digits") != list(range(10)):
         raise Invalid("current fusion approval does not cover all ten digits")
@@ -907,17 +918,17 @@ def validate_fool_materials(root):
         expected_rel = emblem_by_digit.get(digit, {}).get("path")
         if raw_rel != expected_rel:
             raise Invalid(f"fusion {digit} path disagrees with five-tier emblem input")
-        match = re.fullmatch(r"artifacts/production/fool-fusion-(\d)/(v\d{3})/raw\.png", raw_rel)
+        match = re.fullmatch(re.escape(ctx["fusion_artifact_root"]) + r"(\d)/(v\d{3})/raw\.png", raw_rel)
         if not match or int(match.group(1)) != digit:
             raise Invalid(f"fusion {digit} path does not identify its digit and run")
-        parent = inside(root, f"artifacts/production/fool-fusion-{digit}")
+        parent = inside(root, f"{ctx['fusion_artifact_root']}{digit}")
         runs = sorted(p.name for p in parent.iterdir() if p.is_dir() and re.fullmatch(r"v\d{3}", p.name)) if parent.is_dir() else []
         if runs != [match.group(2)]:
             raise Invalid(f"fusion {digit} must retain exactly one versioned run; found {runs}")
         retained_runs[str(digit)] = match.group(2)
         fusion_outputs.append(raw_rel)
 
-    numerals_rel = "production/symbols/fool-rank-numerals-v1.json"
+    numerals_rel = ctx["rank_numerals"]
     numerals = read(required_file(numerals_rel, "standalone numeral catalog"))
     if numerals.get("status") != "retired-standalone-numerals":
         raise Invalid("standalone numerals are still marked active")
@@ -925,7 +936,7 @@ def validate_fool_materials(root):
     if retirement.get("status") != "moved-to-trash" or retirement.get("preserved_replacement") != fusion_rel:
         raise Invalid("standalone numeral retirement does not point to the fusion family")
 
-    preservation = read(required_file("production/symbols/fool-fusion-preservation.json", "fusion preservation ledger"))
+    preservation = read(required_file(ctx["fusion_preservation"], "fusion preservation ledger"))
     for item in preservation.get("preserved", []):
         path, _ = checked_image(item["path"], f"preserved fusion {item['digit']}")
         if sha(path) != item.get("sha256") or item.get("retention") != "keep":
@@ -936,7 +947,7 @@ def validate_fool_materials(root):
         if inside(root, item["path"]).exists():
             raise Invalid(f"retired fusion file still exists: {item['path']}")
 
-    cleanup_rel = "production/retirements/fool-failed-materials-2026-09-14.json"
+    cleanup_rel = ctx["retirements"]
     cleanup = read(required_file(cleanup_rel, "cleanup ledger"))
     if cleanup.get("status") != "moved-to-trash" or cleanup.get("recoverability") != "macOS Trash; restore manually if user reverses the decision":
         raise Invalid("cleanup ledger does not describe recoverable Trash cleanup")
@@ -967,6 +978,11 @@ def validate_fool_materials(root):
         "retired_path_count": len(moved_paths),
         "limitation": "Validates current records, paths, hashes and native dimensions; visual approval remains represented by the recorded user baseline.",
     }
+
+
+def validate_fool_materials(root):
+    """Thin wrapper: keep the Fool route reachable through the generic entry."""
+    return validate_pathway_materials(root, "fool")
 
 
 def _decode_png_rows(path):
@@ -2162,6 +2178,7 @@ def main():
     c=sub.add_parser("check-final-sample");c.add_argument("receipt")
     c=sub.add_parser("check-content");c.add_argument("path");c.add_argument("--ready-for-audio",action="store_true")
     sub.add_parser("check-fool-materials")
+    c=sub.add_parser("check-pathway-materials");c.add_argument("--pathway",required=True)
     sub.add_parser("check-fool-carrier")
     sub.add_parser("check-fool-audio")
     sub.add_parser("check-fool-cards")
@@ -2180,6 +2197,8 @@ def main():
                       "limitation": "No factual certification, audio generation, voice authorization or App import performed."}
         elif args.command=="check-fool-materials":
             result = validate_fool_materials(ROOT)
+        elif args.command=="check-pathway-materials":
+            result = validate_pathway_materials(ROOT, args.pathway)
         elif args.command=="check-fool-carrier":
             result = validate_fool_carrier_contract(ROOT)
         elif args.command=="check-fool-audio":

@@ -48,7 +48,7 @@ swift run LotmCardStudio
 open .build/LotmCardStudio.app
 ```
 
-如果 `Resources/AppIcon.icns` 存在，打包脚本会将其复制到 `.app` 的资源目录；`Resources/CardArt/` 中的卡图和 `Resources/Audio/` 中的已批准试听音频也会随 `.app` 一起打包。图标不是测试运行的前置条件。
+如果 `Resources/AppIcon.icns` 存在，打包脚本会将其复制到 `.app` 的资源目录；卡图与已批准试听音频以 `artifacts/**` 为唯一真源，打包脚本在打包期按登记表（`tools/production.py stage-app-resources`）拷入 `.app`，仓库内不再保留副本。图标不是测试运行的前置条件。
 
 ## SpeechRail 边界
 

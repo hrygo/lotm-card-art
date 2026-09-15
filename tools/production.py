@@ -475,7 +475,15 @@ def _read_wav_format(path):
     return info
 
 
-def validate_fool_audio_package(root):
+def stage_app_audio_record(root, item, audio_stage):
+    target = audio_stage / (item["resource_name"] + ".wav")
+    shutil.copyfile(inside(root, item["path"]), target)
+    if sha(target) != item["sha256"]:
+        raise Invalid("staged app audio hash is stale: " + item["path"])
+    return target
+
+
+def validate_fool_audio_package(root, *, stage_root=None):
     """Validate the two current Fool card packages and their App resources.
 
     This is intentionally stricter than a narrative check: every approved line
@@ -641,34 +649,24 @@ def validate_fool_audio_package(root):
         "demon-of-knowledge-card-v1-v001": "artifacts/production/demon-of-knowledge-card-v1/v001/raw.png",
         "key-of-light-card-v1-v001": "artifacts/production/key-of-light-card-v1/v001/raw.png",
     }
-    card_art_root = inside(root, "apps/LotmCardStudio/Resources/CardArt")
-    card_art_names = sorted(path.stem for path in card_art_root.glob("*.png"))
-    expected_card_art_names = sorted(expected_card_art)
-    if card_art_names != expected_card_art_names:
-        raise Invalid(
-            "App CardArt whitelist does not match the registered card art: "
-            f"unregistered={sorted(set(card_art_names) - set(expected_card_art_names))} "
-            f"missing={sorted(set(expected_card_art_names) - set(card_art_names))}"
-        )
+    card_art_names = sorted(expected_card_art)
     for name, source_rel in expected_card_art.items():
-        app_path = card_art_root / (name + ".png")
         source_path = inside(root, source_rel)
-        if sha(app_path) != sha(source_path):
-            raise Invalid("App card art disagrees with current Fool source: " + name)
+        if not source_path.is_file():
+            raise Invalid("registered app card art is missing from artifacts: " + source_rel)
 
-    expected_audio_names = sorted(item["resource_name"] for item in audio_records)
-    app_audio_root = inside(root, "apps/LotmCardStudio/Resources/Audio")
-    app_audio_names = sorted(path.stem for path in app_audio_root.glob("*.wav"))
-    if app_audio_names != expected_audio_names:
-        raise Invalid(
-            "App Audio whitelist contains an orphan or missing WAV: "
-            f"unregistered={sorted(set(app_audio_names) - set(expected_audio_names))} "
-            f"missing={sorted(set(expected_audio_names) - set(app_audio_names))}"
-        )
-    for item in audio_records:
-        app_path = app_audio_root / (item["resource_name"] + ".wav")
-        if sha(app_path) != item["sha256"]:
-            raise Invalid("App audio disagrees with production audio: " + item["resource_name"])
+    app_audio_names = sorted(item["resource_name"] for item in audio_records)
+
+    if stage_root is not None:
+        stage_root = Path(stage_root)
+        card_art_stage = stage_root / "CardArt"
+        card_art_stage.mkdir(parents=True, exist_ok=True)
+        for name, source_rel in expected_card_art.items():
+            shutil.copyfile(inside(root, source_rel), card_art_stage / (name + ".png"))
+        audio_stage = stage_root / "Audio"
+        audio_stage.mkdir(parents=True, exist_ok=True)
+        for item in audio_records:
+            stage_app_audio_record(root, item, audio_stage)
 
     return {
         "status": "passed",
@@ -2196,6 +2194,7 @@ def main():
     c=sub.add_parser("check-pathway-materials");c.add_argument("--pathway",required=True)
     sub.add_parser("check-fool-carrier")
     sub.add_parser("check-fool-audio")
+    c=sub.add_parser("stage-app-resources");c.add_argument("--dest",required=True)
     sub.add_parser("check-fool-cards")
     sub.add_parser("check-fool-nonsequence-cards")
     args=parser.parse_args()
@@ -2218,6 +2217,9 @@ def main():
             result = validate_fool_carrier_contract(ROOT)
         elif args.command=="check-fool-audio":
             result = validate_fool_audio_package(ROOT)
+        elif args.command=="stage-app-resources":
+            report = validate_fool_audio_package(ROOT, stage_root=args.dest)
+            result = {"passed": True, "staged_root": args.dest, "app": report["app"]}
         elif args.command=="check-fool-cards":
             result = validate_fool_cards(ROOT)
         elif args.command=="check-fool-nonsequence-cards":

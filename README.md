@@ -163,7 +163,7 @@ swift run LotmCardStudio
 open .build/LotmCardStudio.app
 ```
 
-若 `Resources/AppIcon.icns` 存在，打包脚本会将其复制到 `.app`；`Resources/CardArt/` 与 `Resources/Audio/` 也会随应用打包；图标不是测试运行的前置条件。
+若 `Resources/AppIcon.icns` 存在，打包脚本会将其复制到 `.app`；卡图与音频不在仓库内重复存放，打包脚本按登记表在打包期从 `artifacts/**` 拷入 `.app`（`tools/production.py stage-app-resources`）；图标不是测试运行的前置条件。
 真实构建、视觉验收和 SpeechRail 试听状态见 [`apps/LotmCardStudio/docs/qa/m1-local-run.md`](apps/LotmCardStudio/docs/qa/m1-local-run.md)。
 
 ---

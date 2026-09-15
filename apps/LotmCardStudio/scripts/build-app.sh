@@ -23,14 +23,8 @@ cp "$APP_ROOT/Resources/Info.plist" "$APP_BUNDLE/Contents/Info.plist"
 if [[ -f "$APP_ROOT/Resources/AppIcon.icns" ]]; then
     cp "$APP_ROOT/Resources/AppIcon.icns" "$APP_BUNDLE/Contents/Resources/AppIcon.icns"
 fi
-if [[ -d "$APP_ROOT/Resources/CardArt" ]]; then
-    mkdir -p "$APP_BUNDLE/Contents/Resources/CardArt"
-    cp -R "$APP_ROOT/Resources/CardArt/." "$APP_BUNDLE/Contents/Resources/CardArt/"
-fi
-if [[ -d "$APP_ROOT/Resources/Audio" ]]; then
-    mkdir -p "$APP_BUNDLE/Contents/Resources/Audio"
-    cp -R "$APP_ROOT/Resources/Audio/." "$APP_BUNDLE/Contents/Resources/Audio/"
-fi
+REPO_ROOT="$(cd "$APP_ROOT/../.." && pwd)"
+python3 "$REPO_ROOT/tools/production.py" stage-app-resources --dest "$APP_BUNDLE/Contents/Resources"
 
 if [[ -d "$APP_ROOT/Resources/Assets.xcassets" ]] && command -v actool >/dev/null 2>&1; then
     actool "$APP_ROOT/Resources/Assets.xcassets" \

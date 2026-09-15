@@ -59,7 +59,8 @@ python3 tools/production.py gate artifacts/production/<new-run> --release
 # 注意：现存 compositions/*.json 均为历史 pilot 示例，其引用的回执已退役，compose/gate 会按依赖校验失败；
 # 当前愚者资产路线见下方的 check-fool-materials。
 python3 tools/production.py check-content production/narratives/klein-s09-tingen.json  # --ready-for-audio 拒绝未批准文案
-python3 tools/production.py check-fool-audio  # 两张当前 App 卡包的叙事摘要、WAV 与资源白名单
+python3 tools/production.py check-fool-audio  # 十一张当前 App 卡包的叙事摘要、WAV 与 artifacts 真源登记
+python3 tools/production.py stage-app-resources --dest .build/LotmCardStudio.app/Contents/Resources  # 打包期按登记表从 artifacts 落资源
 python3 tools/production.py check-fool-materials
 python3 tools/production.py check-fool-cards
 # 仅在 production/cards/fool-final-sampling-v1.json 写入真实用户视觉批准后执行

@@ -128,6 +128,40 @@ class FoolCardValidationTests(unittest.TestCase):
             "s09-story-03-v1",
         ]))
 
+    def test_stage_app_resources_writes_exactly_the_registered_set(self):
+        import tempfile
+        report = production.validate_fool_audio_package(ROOT)
+        with tempfile.TemporaryDirectory() as tmp:
+            staged = production.validate_fool_audio_package(ROOT, stage_root=tmp)
+
+            self.assertEqual(staged["app"], report["app"])
+            art = sorted(path.stem for path in (Path(tmp) / "CardArt").glob("*.png"))
+            wav = sorted(path.stem for path in (Path(tmp) / "Audio").glob("*.wav"))
+            self.assertEqual(art, report["app"]["card_art_names"])
+            self.assertEqual(wav, report["app"]["audio_resource_names"])
+            for name in report["app"]["card_art_names"]:
+                self.assertGreater((Path(tmp) / "CardArt" / (name + ".png")).stat().st_size, 0)
+
+    def test_stage_app_audio_record_rejects_a_stale_staged_hash(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "repo"
+            source = root / "artifacts" / "lotm.probe" / "audio-v001" / "probe.wav"
+            source.parent.mkdir(parents=True)
+            source.write_bytes(b"RIFF\x00\x00\x00\x00WAVE")
+            stage = Path(tmp) / "stage" / "Audio"
+            stage.mkdir(parents=True)
+            record = {
+                "resource_name": "probe",
+                "path": "artifacts/lotm.probe/audio-v001/probe.wav",
+                "sha256": "0" * 64,
+            }
+
+            with self.assertRaises(production.Invalid) as ctx:
+                production.stage_app_audio_record(root, record, stage)
+
+            self.assertIn("staged app audio hash is stale", str(ctx.exception))
+
     def test_current_card_candidates_are_registered_and_native(self):
         report = production.validate_fool_cards(ROOT)
 

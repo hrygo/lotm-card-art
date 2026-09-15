@@ -330,3 +330,10 @@ OK
 
 - ADR-003 最终采样与 2K/4K 交付像素（用户裁决暂不产出）→ 所有 release 标志保持 false。
 - 卡图与音频的人工逐项听感/视觉复验：本轮的「正式」是用户对既有现状的整体验收，不替代逐项验收。
+
+### 打包期资源落地（1A 媒体单一存放，2026-09-15）
+
+- 卡图与音频改为 `artifacts/**` 唯一真源：`apps/LotmCardStudio/Resources/{CardArt,Audio}` 共 **72M**（CardArt 34M + Audio 38M）副本已删除；删除前先在旧门禁（`c39c83c`，仍含 `Resources`↔`artifacts` 逐字节比对）下验证副本与 artifacts 逐字节一致。
+- `check-fool-audio` 的审计对象由 `Resources/` 改为 `artifacts/`：仍校验 11 张卡图登记存在、66 个 WAV 的 manifest `sha256` 与时长；不再比对仓库内副本（副本已不存在）。门禁输出与改动前逐字节一致。
+- 新增 `python3 tools/production.py stage-app-resources --dest <bundle>/Contents/Resources`：打包期按同一份登记表从 `artifacts/**` 落资源并复核落盘 WAV 哈希；`scripts/build-app.sh` 已改为调用它，任何一步失败即中止打包。
+- 验证：五门禁输出与改动前逐字节一致；`swift test` **87 passed / 0 failures**；`./scripts/build-app.sh debug` exit 0，`.app` 内 **CardArt 11 个 + Audio 66 个**，与登记表一致。

@@ -24,5 +24,5 @@
 ## 验证与提交
 - 在 `apps/LotmCardStudio` 执行 `swift test`、`./scripts/build-app.sh debug` 和 `./scripts/build-app.sh release`。
 - 修改布局或播放流程后，必须进行一次 `.app` 手动验收，并更新 `apps/LotmCardStudio/docs/qa/m1-local-run.md` 或对应阶段记录。
-- `.build/`、`.swiftpm/` 和本机签名产物是生成物，不提交到 Git；资源文件是否存在必须由打包脚本显式处理。
+- `.build/`、`.swiftpm/` 和本机签名产物是生成物，不提交到 Git；资源文件是否存在必须由打包脚本显式处理。卡图与音频以 `artifacts/**` 为唯一真源，不在 `Resources/` 内重复存放；打包脚本经 `tools/production.py stage-app-resources` 按登记表落资源，不得另写第二份资源登记表。
 - 不在客户端源码、fixture 或日志中写入令牌、私钥或真实人物隐私资料。

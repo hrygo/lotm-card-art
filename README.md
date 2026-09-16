@@ -163,13 +163,14 @@ swift test                       # 客户端领域与交互测试
 ├── docs/                         # 工作流 · SOP · ADR · 研究 · 评审 · 证据策略 · 决策
 │   ├── START-HERE.md             # 制作快速上手
 │   ├── production-sop-v3.md      # 当前分层生产入口
-│   └── DECISIONS.md              # 决策记录（D01–D24）
+│   └── DECISIONS.md              # 决策记录（D01–D25）
 ├── pathways/<id>/                # direction.json + canon.json + sequences/<09..00>/card.json
 ├── production/                   # 分层生产 tasks/calls/compositions/schemas/symbols
 ├── artifacts/                    # 不可覆盖的 raw/final/preview/provenance
 ├── generated/ reports/ references/   # 派生 · 报告 · 参考（非事实源）
 ├── schemas/ templates/ examples/ prompts/  # 结构约束与模式参考
-├── tools/                        # cardctl.py · production.py · render/*.swift · selfcheck.py
+├── tools/                        # cardctl.py · production.py · check_required_checks.py · selfcheck.py · render/*.swift
+├── .github/                      # required-checks.json（必需检查名契约）· workflows/ · CODEOWNERS
 ├── tests/                        # Python 回归与反例测试
 ├── .agents/skills/               # lotm-card-production-sop|foundation|hierarchy|subject|symbols|quality-frames
 ├── apps/WorldOfMysteries/        # [保留面] macOS 客户端（归属《诡秘世界》，本仓库暂存）

@@ -1,0 +1,20 @@
+{
+  "$comment": "受保护分支的必需检查契约。分支保护按『检查名』匹配：改名等同于让所有 PR 永久等待一个不会出现的检查，比检查失败更难排查。本文件是检查名的单一事实源，由 tools/check_required_checks.py 守卫（本地 selfcheck 与 CI 都会跑）。改 job 的 name 前先改这里，或保持下面的名字不变。",
+  "version": 1,
+  "ruleset": "main-protection",
+  "protected_branch": "main",
+  "checks": [
+    {
+      "context": "All Quality Gates Passed",
+      "workflow": ".github/workflows/ci.yml",
+      "required": true,
+      "level": "blocking",
+      "description": "聚合门禁：Python 工具链（3.10 / 3.14）与原生渲染 + 客户端测试全部成功后才通过；矩阵版本号进不了这个检查名。"
+    }
+  ],
+  "policy": {
+    "name_must_be_literal": "必需检查名必须是 workflow 里字面声明的 job name，禁止包含 ${{ }} 表达式（矩阵展开会改名）。",
+    "unrequired_jobs_may_rename": "未列为必需检查的任务（例如 Toolchain (Python 3.10) · macOS）可以自由改名，不影响 PR 合入。",
+    "verify": "gh api repos/hrygo/lotm-card-art/rulesets --jq '.[].name' 列出 ruleset；gh api repos/hrygo/lotm-card-art/rulesets/<id> 核对 required_status_checks 与本文件一致。"
+  }
+}

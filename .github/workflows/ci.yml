@@ -36,6 +36,10 @@ jobs:
         run: python tools/pin_seal.py --check
       - name: Check design tokens
         run: python tools/design_tokens.py check
+      - name: Check required-check name contract
+        # 分支保护按检查名匹配：改了必需检查名会让所有 PR 永久 pending。
+        # 本步骤在不受保护的 test 任务里先亮红，聚合门禁再兜底阻断合入。
+        run: python tools/check_required_checks.py
       - name: Report artifact size (advisory)
         if: matrix.python-version == '3.14'
         run: python tools/production.py report-asset-size
@@ -64,3 +68,28 @@ jobs:
       - name: Run client tests
         working-directory: apps/WorldOfMysteries
         run: swift test
+
+  gate:
+    # 这是 main 分支保护在 GitHub 上唯一要求的必需检查名（见 .github/required-checks.json）。
+    # 名字里不含矩阵版本号：改 Python 版本矩阵不会让 PR 卡在等待一个永不出现的检查上。
+    name: All Quality Gates Passed
+    needs: [test, native]
+    if: always()
+    runs-on: macos-26
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - name: Assert the required-check name contract still holds
+        run: python tools/check_required_checks.py
+      - name: Assert every upstream job succeeded
+        env:
+          UPSTREAM_RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          echo "上游任务结果：$UPSTREAM_RESULTS"
+          for result in $UPSTREAM_RESULTS; do
+            if [ "$result" != "success" ]; then
+              echo "::error::上游任务未全部成功（$UPSTREAM_RESULTS），聚合门禁不通过"
+              exit 1
+            fi
+          done
+          echo "全部上游任务成功"

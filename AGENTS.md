@@ -42,11 +42,12 @@
 │   ├── START-HERE.md             # 制作快速上手
 │   ├── workflow.md               # 阶段推进流转
 │   ├── production-sop-v3.md      # 当前分层生产入口（3.5.0）
-│   └── DECISIONS.md              # 决策记录（D01–D24）
+│   └── DECISIONS.md              # 决策记录（D01–D25）
 ├── pathways/<id>/                # direction.json + canon.json + sequences/<09..00>/card.json
 ├── production/                   # 分层生产 tasks/calls/compositions/schemas/symbols
 ├── artifacts/                    # 不可覆盖的 raw/final/preview/provenance
-├── tools/                        # cardctl.py · production.py · design_tokens.py · pin_seal.py · selfcheck.py · render/
+├── tools/                        # cardctl.py · production.py · design_tokens.py · pin_seal.py · check_required_checks.py · selfcheck.py · render/
+├── .github/                      # required-checks.json（必需检查名契约）· workflows/ · CODEOWNERS · ISSUE_TEMPLATE/
 ├── tests/                        # Python 回归；Swift 客户端测试在 apps/ 独立
 ├── schemas/ templates/ examples/ prompts/  # JSON Schema 与任务/提示词模板
 ├── generated/ reports/ references/  # 派生 · 报告 · 产物 · 参考（非事实源）
@@ -88,7 +89,8 @@
 | `render/*.swift` | AppKit CLI | `tools/render/` | 确定性合成：`foolpipeline5`（母版/五档/十序列/gate/selftest）；`compose.swift` 为通用合成后端 |
 | `pin_seal.py` | CLI | `tools/` | 活契约 pin 的漂移检查与单点重封存 |
 | `design_tokens.py` | CLI | `tools/` | [保留面] 客户端与 Figma 的设计 Token 投影与漂移检查 |
-| `selfcheck.py` | CLI | `tools/` | 6 步全工程自证（scaffold→pins→tokens→materials→cards→suite） |
+| `check_required_checks.py` | CLI | `tools/` | 必需检查名契约守卫（分支保护按检查名匹配，改名会让 PR 永久 pending） |
+| `selfcheck.py` | CLI | `tools/` | 7 步全工程自证（scaffold→pins→tokens→required-checks→materials→cards→suite） |
 | `WorldOfMysteriesCore` | Swift pkg | `apps/WorldOfMysteries/Sources/` | [保留面] Domain + Ports（纯逻辑，先测后写） |
 | `WorldOfMysteriesFeatures` | Swift pkg | `apps/WorldOfMysteries/Sources/` | [保留面] 视图与交互 |
 | 22 途径主索引 | JSON | `catalog/pathways.json` | 工作 ID 稳定性 |
@@ -154,7 +156,7 @@ swiftc -O tools/render/foolpipeline5.swift -o /tmp/foolpipeline5 && /tmp/foolpip
 
 ### 3. 全工程自证与回归
 ```bash
-python3 tools/selfcheck.py            # 6 步：scaffold/pins/design-tokens/fool-materials/fool-cards/suite
+python3 tools/selfcheck.py            # 7 步：scaffold/pins/design-tokens/required-checks/fool-materials/fool-cards/suite
 python3 tools/pin_seal.py --check     # 活契约 pin 漂移检查
 python3 -m unittest discover -s tests -v
 ```

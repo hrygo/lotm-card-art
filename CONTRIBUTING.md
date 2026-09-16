@@ -57,6 +57,12 @@ python3 -m unittest discover -s tests -v
 
 PR 不应包含凭据、个人敏感信息、原著长摘录或无授权素材。维护者可以要求拆分混合了事实修订、格式化和无关重构的变更。
 
+### 合入门禁与检查名契约
+
+`main` 由 ruleset `main-protection` 保护：禁止强推与删除、禁止直接推送、要求线性历史，并且唯一必需的检查是 **`All Quality Gates Passed`**（它只在 Python 工具链与原生渲染/客户端任务全部成功时通过）。
+
+**这个检查名是公开接口。** 分支保护按检查名匹配，改了 workflow 里 job 的 `name` 而没有同步 ruleset，会让所有 PR 永久等待一个不会出现的检查——比检查失败更难排查。契约在 `.github/required-checks.json`，本地自证与 CI 都跑 `python3 tools/check_required_checks.py` 断言它成立；改必需检查名的顺序是：先改契约与 ruleset，再改 workflow。未列为必需检查的任务（例如 `Toolchain (Python 3.10) · macOS`）可以自由改名。
+
 ## 提交信息
 
 使用简洁、可检索的 Conventional Commit 风格，例如：

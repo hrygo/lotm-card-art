@@ -16,13 +16,15 @@ concurrency:
 
 jobs:
   test:
-    name: Python ${{ matrix.python-version }}
-    runs-on: ubuntu-latest
+    name: Toolchain (Python ${{ matrix.python-version }}) · macOS
+    # 本仓库是 macOS-only：工具链直接调用系统 `sips` 等 macOS 专有工具，
+    # 因此不设 Linux 任务；版本矩阵只保留声明的最低版本（3.10）与当前版本（3.14）。
+    runs-on: macos-26
     timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.10', '3.11', '3.12', '3.13', '3.14']
+        python-version: ['3.10', '3.14']
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
@@ -35,7 +37,7 @@ jobs:
       - name: Check design tokens
         run: python tools/design_tokens.py check
       - name: Report artifact size (advisory)
-        if: matrix.python-version == '3.13'
+        if: matrix.python-version == '3.14'
         run: python tools/production.py report-asset-size
       - name: Run unit tests
         run: python -m unittest discover -s tests -v

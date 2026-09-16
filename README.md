@@ -136,7 +136,7 @@ python3 -m unittest discover -s tests -v
 
 ## 🖥️ 暂时保留面：macOS 画册客户端
 
-位于 [`apps/WorldOfMysteries`](apps/WorldOfMysteries/)，归属《诡秘世界》产品（仓库 `hrygo/WorldofMysteries`），按 D24 在本仓库**暂时保留、不再扩写**：M1 跑通书架画廊、三类清单、详情抽屉与 SpeechRail 本机语音；M2 建立「世界 / 卡牌 / 人物 / 故事书」四个一级区域。它显示的卡片是隔离的合成示例数据（fixture），不计入交付数量，也不代表内容核验或视觉批准。
+位于 [`apps/WorldOfMysteries`](apps/WorldOfMysteries/)，归属《诡秘世界》产品（仓库 [`hrygo/WorldofMysteries`](https://github.com/hrygo/WorldofMysteries)），按 D24 在本仓库**暂时保留、不再扩写**：M1 跑通书架画廊、三类清单、详情抽屉与 SpeechRail 本机语音；M2 建立「世界 / 卡牌 / 人物 / 故事书」四个一级区域。它显示的卡片是隔离的合成示例数据（fixture），不计入交付数量，也不代表内容核验或视觉批准。
 
 ```bash
 cd apps/WorldOfMysteries

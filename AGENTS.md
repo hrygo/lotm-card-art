@@ -13,7 +13,7 @@
   - [`production/`](production/) 按 SOP v3 编译任务、登记真实生图回执、合成候选并跑三级门禁；
   - [`design/`](design/) 定义六维转译与工艺规范，[`tools/`](tools/) 提供零依赖工具链。
   - 规则与生产契约见 👉 [`pathways/AGENTS.md`](pathways/AGENTS.md)、[`production/AGENTS.md`](production/AGENTS.md)。
-- **保留面（归属《诡秘世界》产品，仓库 `hrygo/WorldofMysteries`；本仓库暂存、不再扩写）**：
+- **保留面（归属《诡秘世界》产品，仓库 [`hrygo/WorldofMysteries`](https://github.com/hrygo/WorldofMysteries)；本仓库暂存、不再扩写）**：
   - [`apps/WorldOfMysteries`](apps/WorldOfMysteries/)：macOS 26 原生客户端（M1 画册、M2 世界外壳）；契约见 👉 [`apps/AGENTS.md`](apps/AGENTS.md)。
   - [`packages/`](packages/)：IP 中性引擎层（World / Character / Story / Audio）契约占位，无实现代码。
   - [`docs/product/`](docs/product/)：母 PRD 与 macOS 交互 PRD（产品基线，非本仓库规范/事实源/批准）。

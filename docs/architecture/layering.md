@@ -1,16 +1,15 @@
-# 诡秘世界 · 分层与依赖方向
+# 卡牌制作工具 · 分层与依赖方向
 
 > 状态：**约定（当前未机器强制）**。依据 [ADR-006](../decisions/ADR-006-docs-first-layering-no-physical-migration.md)。
 > 本文件是分层规则的**单一说明**；`docs/` 其他文档与根 `AGENTS.md` 只引用、不重复定义。
 
 ## 为什么有分层
 
-本仓库是《诡秘世界》的**前置工程**，同时承载三个面：
+本仓库是《诡秘之主》成神途径序列卡牌的**制作工具**，职责主线是内容生产面（序列卡研究与制作）。
 
-- 两个**已存在的交付面**：内容生产面（序列卡研究与制作）、客户端面（macOS 26 原生画册，M1 垂直切片）；
-- 一个**未来面**：引擎层（World / Character / Story / Audio、持久世界、Story Book），尚未实现。
+另有两个**保留面**在本仓库暂存：客户端面（macOS 26 原生画册，M1 垂直切片 + M2 世界外壳）与引擎层（World / Character / Story / Audio、持久世界、Story Book，尚未实现）。两者归属《诡秘世界》产品（`hrygo/WorldofMysteries`），在本仓库暂存、不再扩写（见 `docs/DECISIONS.md` D24）。
 
-**制作卡片的能力只是内容层的一个子域**，不是本仓库的全部。分层的作用是让「新增文件该放哪、谁可以依赖谁、改动会波及谁」有唯一答案。
+分层的作用是让「新增文件该放哪、谁可以依赖谁、改动会波及谁」有唯一答案。
 
 ## 层与目录归属（覆盖全部顶层目录）
 
@@ -20,7 +19,7 @@
 | **内容层**（事实源） | `pathways/`、`catalog/`、`sources/` | 卡牌六维事实、22 途径索引、来源登记与访问状态 | 无（只被依赖） |
 | **内容工艺层** | `design/`、`config/`、`schemas/`、`templates/`、`examples/`、`prompts/` | 六维转译与美术总纲、交付规格、结构约束、任务模板、示例模式、提示词模板 | 内容层 |
 | **制造层** | `production/`、`tools/`、`artifacts/`、`generated/`、`reports/`、`references/` | 分层生产记录、确定性合成、产物与**不可覆盖 provenance**、派生报告、参考资料登记 | 内容层、内容工艺层 |
-| **应用层** | `apps/` | macOS 26 原生画册客户端（SwiftUI） | 引擎层（经契约）；**不得**直接读内容层原始文件 |
+| **应用层**（保留面·归属《诡秘世界》） | `apps/` | macOS 26 原生画册客户端（SwiftUI） | 引擎层（经契约）；**不得**直接读内容层原始文件 |
 | **文档层** | `docs/`、根与其他目录的 `AGENTS.md` | 规范、策略、决策、审查、研究、计划、产品基线 | 只读描述；**不持有事实源** |
 | **仓库元数据** | `.github/`、`.agents/`、`README.md`、`LICENSE-*.md`、`NOTICE.md`、`CONTRIBUTING.md`、`SECURITY.md`、`CODE_OF_CONDUCT.md`、`SUPPORT.md`、`.editorconfig`、`.gitignore` | CI 与模板、Agent 技能、入口与法律/社区文件 | — |
 

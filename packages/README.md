@@ -5,7 +5,7 @@
 
 ## 这一层是什么
 
-《诡秘世界》的产品目标（见 [`docs/product/secret-world-prd-v1.0.md`](../docs/product/secret-world-prd-v1.0.md)，立项级产品基线）是**单人持续世界演绎应用**，包含 World / Character / Story / Audio 引擎与持久世界、Story Book。这些引擎属于**引擎层**，未来落在这里。
+《诡秘世界》的产品目标（见 [`docs/product/secret-world-prd-v1.0.md`](../docs/product/secret-world-prd-v1.0.md)，立项级产品基线）是**单人持续世界演绎应用**，包含 World / Character / Story / Audio 引擎与持久世界、Story Book。该产品本体归属仓库 `hrygo/WorldofMysteries`（见 `docs/DECISIONS.md` D24）；本目录只是**保留面占位**，不承接该产品的引擎实现。
 
 本层与内容层解耦：卡牌内容生产是内容层的职责，引擎通过 Content Pack 消费内容，不把具体设定硬编码进引擎。按母 PRD §25，引擎实现不与卡牌美术仓库耦合。
 

@@ -2,7 +2,7 @@
 
 ## 先看这里
 
-提问前请先阅读 README.md、根目录 AGENTS.md、CONTRIBUTING.md 和 docs/LIMITATIONS.md。当前项目是《诡秘世界》单仓库前置工程（内容生产 + macOS 客户端；引擎层未实现），不是完整原著资料库，也不提供 220 张已完成卡面。
+提问前请先阅读 README.md、根目录 AGENTS.md、CONTRIBUTING.md 和 docs/LIMITATIONS.md。当前项目是《诡秘之主》成神途径序列卡牌制作工具（另暂存一个 macOS 画册客户端垂直切片，归属《诡秘世界》产品），不是完整原著资料库，也不提供 220 张已完成卡面。
 
 ## 使用哪种入口
 

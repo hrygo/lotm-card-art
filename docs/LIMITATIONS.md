@@ -13,4 +13,4 @@ Python 3.10+是代码的最低语法目标；测试环境具体版本写在repor
 
 未经研究的配方/仪式不会被默认补全；研究工具或图像工具不足时应交付已完成部分与缺口，不假造完成率。
 
-《诡秘世界》母 PRD（docs/product/secret-world-prd-v1.0.md）中的 World State、Character Engine、Knowledge/Spoiler 系统、Story Genesis/Director、Outcome Resolver、State Delta、Memory Distillation、Audio Engine 与 Story Book 全部未实现；该文档入仓只表示已确立产品基线，不代表任何一项能力已交付，其附录 A 的 15 份工程契约与附录 B 的拆分 PRD 均未创建。
+《诡秘世界》母 PRD（docs/product/secret-world-prd-v1.0.md）中的 World State、Character Engine、Knowledge/Spoiler 系统、Story Genesis/Director、Outcome Resolver、State Delta、Memory Distillation、Audio Engine 与 Story Book 全部未实现；该文档入仓只表示已确立产品基线，不代表任何一项能力已交付，其附录 A 的 15 份工程契约与附录 B 的拆分 PRD 均未创建。该产品本体归属仓库 `hrygo/WorldofMysteries`；本仓库的职责是卡牌制作，产品基线文档与 `apps/`、`packages/` 仅为保留面（见 `docs/DECISIONS.md` D24）。

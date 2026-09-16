@@ -1,5 +1,7 @@
 # apps/ 目录工作约定
 
+> **保留面**：本目录归属《诡秘世界》产品（仓库 `hrygo/WorldofMysteries`），按 `docs/DECISIONS.md` D24 在本仓库暂存、不再扩写；本仓库的职责主线是卡牌制作（`pathways/` 与 `production/`）。
+
 本目录承载 macOS 客户端代码、资源与运行说明；更细的运行/构建说明见 `apps/WorldOfMysteries/README.md`，验收记录见 `apps/WorldOfMysteries/docs/qa/`。
 当前 `WorldOfMysteries` 已完成 M1 里程碑垂直切片（画廊、详情页、三类清单、故事抽屉、SpeechRail 接口）与 M2「世界外壳」（世界 / 卡牌 / 人物 / 故事书四个一级区域、人物档案、故事书命运详情、卡牌详情命运入口与命运生成界面）。导入、SwiftData 用户库、批量正式资源、音频缓存和游戏规则尚未实现；当前包含 S00 愚者先生、S09 克莱恩·莫雷蒂，序列之上·诡秘之主的福生玄黄天尊、序列之上·星界支柱的上帝、序列之上·现实支柱的堕落母神，以及永恒之暗、恶魔之父、毁灭天灾、失序者、知识之妖、光之钥六位「序列之上」旧日，共十一套隔离候选卡包，不要把 M1/M2 fixture 描述为完整产品。十一张卡的新增、替换和删除必须按身份、卡图、六维回读、故事、音频状态和清单意图的整套卡包执行；九位「序列之上」存在均为非序列卡位（`lotm.celestial-worthy`、`lotm.god-almighty`、`lotm.mother-goddess-depravity`、`lotm.eternal-darkness`、`lotm.father-of-demons`、`lotm.destruction-calamity`、`lotm.embodiment-of-disorder`、`lotm.demon-of-knowledge`、`lotm.key-of-light`），不占 22×10 序列卡槽；正义小姐 App 外源资产须保持独立保留。
 

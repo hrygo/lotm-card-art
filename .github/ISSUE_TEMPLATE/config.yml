@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: 安全漏洞报告
-    url: https://github.com/hrygo/world-of-mysteries/security/advisories/new
+    url: https://github.com/hrygo/lotm-card-art/security/advisories/new
     about: 请使用私密渠道，不要在公开 Issue 中发布敏感细节。
   - name: 贡献指南
-    url: https://github.com/hrygo/world-of-mysteries/blob/main/CONTRIBUTING.md
+    url: https://github.com/hrygo/lotm-card-art/blob/main/CONTRIBUTING.md
     about: 提交 Issue 或 PR 前先阅读贡献流程。
   - name: 支持与问题分流
-    url: https://github.com/hrygo/world-of-mysteries/blob/main/SUPPORT.md
+    url: https://github.com/hrygo/lotm-card-art/blob/main/SUPPORT.md
     about: 判断应该提交哪类公开问题。

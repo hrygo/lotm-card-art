@@ -162,3 +162,17 @@ scaffold应通过，空卡design/release应失败。检验“拒绝坏数据”�
 - **本次验证**：`swift test` **152 tests / 0 failures**（`ArtworkStoreTests` 10 条，含「丢弃缓存后重新解码」与两条预热上限）；`python3 -m unittest discover -s tests` **209 tests OK（skipped=6）**；`python3 tools/selfcheck.py` **6/6**；`python3 tools/design_tokens.py check` 退出 0；`python3 tools/pin_seal.py --check` 113 条通过；`./scripts/build-app.sh release` 退出 0，**21:45 安装**到 `/Applications/诡秘世界.app`（旧的 20:39 / 21:33 两次构建依次移入废纸篓 `~/.Trash/诡秘世界-20260915-2133-pre-image-derivatives.app`、`~/.Trash/诡秘世界-20260915-2145-pre-preload-cap.app`，均可恢复；安装产物与 `.build` 产物逐字节一致，sha256 `bbb60a4a…107d`）。**端到端校验**：以与 `ArtworkDecoder` 逐字一致的 Bundle 查表方式对**已安装的 App** 解码 11 张 × 2 档全部命中（两次复测分别 111.1ms / 99.5ms，首次冷启动约 20ms，其余 3–7ms；负例「不存在的资源名」查不到）。**窗口实测**：1576×971pt，四列时列宽约 293pt、卡面约 269pt（`CGWindowList` + 窗口截图逐列扫描）。机器观察见下方 QA 记录。
 - **未完成（如实记录）**：**没有用户视觉批准**。JPEG 是有损编码，属于可见变化的改动，按 D16 只能由用户在最暗渐变、最细金饰、最亮高光三处做 1:1 对比后确认；Agent 的抽查与截图（`gold crop` / `mid crop` 按显示尺寸比 MAE 分别 6.46 / 4.45）**不构成**视觉批准。**没有端到端真机帧时间**（D22 的采样限制不变）。**220 张规模未实测**：包体与内存都是按单张实测值外推。
 - **未改动**：`config/production-resolution-policy.json` 与 ADR-003（母版交付规格不变）、`artifacts/**`、`pathways/**`、`production/**`、`schemas/` 与任何批准状态。本决策只改变**App 包内**的卡图形态。
+
+## D24｜回归纯卡牌制作职责：仓库名改回 `lotm-card-art`
+原因：用户裁决「这个仓库将来要修改，改回卡牌制作工作的纯粹职责」，并要求项目文档的身份描述一并改回（「项目文档 agent.md 等都改为，但 app 本身暂时保留」）。D18/D19 曾把本仓库身份改写成《诡秘世界》单仓库前置工程，其前提是「制卡只是本仓库内容层的一个子域」；该前提与新的职责界定相反。
+结果：
+- **仓库名**：`hrygo/world-of-mysteries` → **`hrygo/lotm-card-art`**（2026-09-16；GitHub 仓库 id `1367408361` 不变，commit/PR/issue 全部保留，旧 URL 由 GitHub 重定向）。本地 `origin` 与 README badge 同步。
+- **本地路径**：`/Users/hrygo/Documents/world-of-mysteries` → `/Users/hrygo/Documents/卡牌制作工具`；旧路径留软链接（可随时删除，仅为兼容按旧路径寻址的会话与任务）。
+- **身份回写（仅文档层）**：根 `README.md`、根 `AGENTS.md`、`NOTICE.md`、`CONTRIBUTING.md`、`SUPPORT.md`、`docs/AGENTS.md`、`docs/architecture/layering.md`、`apps/AGENTS.md`、`.github/ISSUE_TEMPLATE/config.yml`、`SECURITY.md`。措辞口径参照 D18 之前的版本（`4ba698f~1`）并适配当前目录结构。
+- **保留面界定**：`apps/`、`packages/`、`docs/product/` 与客户端 Token 投影（`config/design-tokens.json`、`design/figma-kit/`）标为**保留面**——归属《诡秘世界》产品（仓库 `hrygo/WorldofMysteries`），在本仓库暂存、不再扩写，并从身份描述中移出交付主线。
+- **app 保留**：用户明确「app 本身暂时保留」，故 `apps/WorldOfMysteries` 不摘出、不迁移、不删改；D22/D23 的卡图解码与打包成片决策对其继续有效。物理迁移若将来要做，仍以 ADR-006 Decision 6 的前置条件（a–f）为前提。
+- **未改动（边界）**：`pathways/**`、`production/**`、`artifacts/**`、`schemas/**`、`tools/**`、`config/project.json` 与任何批准状态。D19「不搬动目录、以文档确立分层」的结论**继续有效**——本次只改文档措辞，不动顶层目录。
+- **待决**：`config/project.json` 的 `project_id` 仍为 `world-of-mysteries`（D18 所改）。它被 `generated/**/dependencies.json` 与 `docs/assets/illustration-backups/**` 以「路径 + sha256」引用（例如 `generated/lotm.fool.s09/dependencies.json` 记录其摘要），所以它属内容层命名空间而非展示名，回改须走 pin 重封存路径，不在本次范围。
+- **历史不回写**：`DECISIONS.md` D17–D23、`docs/decisions/ADR-006*`、`docs/superpowers/**`、`apps/**/docs/qa/**` 按仓库规矩保留原文；本决策以新条目覆盖其身份描述口径。与 D17/D18/D19 的关系：覆盖 D18 的仓库命名与 D19 的身份描述部分；D17 记录的母 PRD 分层、D19 的「不物理迁移」结论不变。
+- **本次验证（2026-09-16）**：`python3 tools/selfcheck.py` **6/6 步通过**（scaffold / pins / design-tokens / fool-materials / fool-cards / suite）；`python3 tools/pin_seal.py --check` **113 条通过**；`python3 tools/cardctl.py check --level scaffold` 退出 0（22 途径 / 220 卡槽）；`git rev-parse --show-toplevel` 指向新路径且 `fetch` 通过，`main...origin/main [ahead 3]` 与改名前的未推送状态一致（3 个本地提交、2 个文件未提交改动、1 个未跟踪文件均未受影响）。
+- **未完成（如实记录）**：**未提交、未推送**——工作区同时存在本次改动与在途的 `AGENTS.md`／`README.md` 重排（非本次会话产生），提交边界需由用户决定；**未跑 `swift test` 与 `build-app.sh`**（本次未触碰 `apps/WorldOfMysteries` 源码，客户端侧不受影响）；**未验证**旧路径软链接在并行会话中的实际使用情况。

@@ -49,13 +49,14 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.13'
-      - name: Run native renderer tests without skipping
+      - name: Run macOS-toolchain tests without skipping
         shell: bash
         run: |
           set -o pipefail
-          python -m unittest tests.test_fool_agentic_pipeline tests.test_native_compositor -v 2>&1 | tee native-tests.log
+          python -m unittest tests.test_fool_agentic_pipeline tests.test_native_compositor \
+            tests.test_app_image_staging tests.test_fool_card_validation -v 2>&1 | tee native-tests.log
           if grep -q "skipped" native-tests.log; then
-            echo "::error::native renderer tests were skipped — Swift toolchain missing on the runner"
+            echo "::error::macOS-only tests were skipped — Swift/sips toolchain missing on the runner"
             exit 1
           fi
       - name: Run client tests

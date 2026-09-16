@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import copy
+import shutil
 import struct
 import sys
 import unittest
@@ -128,6 +129,8 @@ class FoolCardValidationTests(unittest.TestCase):
             "s09-story-03-v1",
         ]))
 
+    @unittest.skipUnless(sys.platform == "darwin" and shutil.which("sips"),
+                         "app image staging requires macOS sips (see docs/DECISIONS.md D23)")
     def test_stage_app_resources_writes_exactly_the_registered_set(self):
         import tempfile
         report = production.validate_fool_audio_package(ROOT)

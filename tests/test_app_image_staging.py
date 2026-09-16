@@ -11,6 +11,7 @@ App 内不放母版，只放「按显示尺寸已经做好的成片」。这一�
 
 from pathlib import Path
 import re
+import shutil
 import sys
 import tempfile
 import unittest
@@ -21,6 +22,8 @@ import cardctl
 import production
 
 
+@unittest.skipUnless(sys.platform == "darwin" and shutil.which("sips"),
+                     "app image staging requires macOS sips (see docs/DECISIONS.md D23)")
 class AppImageStagingTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

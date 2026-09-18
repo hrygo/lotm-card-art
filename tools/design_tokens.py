@@ -420,7 +420,7 @@ def command_check(_: argparse.Namespace) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description='诡秘世界全局设计 token 投影与检查')
+    parser = argparse.ArgumentParser(description='卡牌演示全局设计 token 投影与检查')
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('generate', help='写出 Swift 与 Figma kit 投影')
     sub.add_parser('check', help='校验投影漂移与字面量绕过')

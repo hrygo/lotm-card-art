@@ -1,8 +1,8 @@
 // =============================================================================
-// 诡秘世界 · 全局设计 token — Figma 生成器
+// 卡牌演示 · 全局设计 token — Figma 生成器
 //
 // 输入：tokens.js（由 tools/design_tokens.py 从 config/design-tokens.json 生成）
-// 输出：变量集合「诡秘世界」（COLOR + FLOAT）、type/* 文字样式、00 Foundations 页面、
+// 输出：变量集合「卡牌演示」（COLOR + FLOAT）、type/* 文字样式、00 Foundations 页面、
 //       以及一份自检报告。
 //
 // 幂等：重跑时复用同名变量与文字样式，清空并重建自己拥有的页面。
@@ -15,7 +15,7 @@
 // =============================================================================
 
 const PAGE_NAME = "00 Foundations";
-const COLLECTION_NAME = "诡秘世界";
+const COLLECTION_NAME = "卡牌演示";
 const MODE_NAME = "Dark";
 const FONT_FAMILY = "Inter";
 const STYLE_FONT_STYLE = {
@@ -317,7 +317,7 @@ function buildTypeScale(root, y) {
   text(root, 0, y, "Type · 语义文字样式", 14, "Semi Bold", ink);
   let cursor = y + 30;
   TEXT_STYLES.forEach(function (def) {
-    const sample = text(root, 0, cursor, def[0] + "　诡秘世界 · 秘史档案馆　Aa 0123", 14, "Regular", ink);
+    const sample = text(root, 0, cursor, def[0] + "　卡牌演示 · 秘史档案馆　Aa 0123", 14, "Regular", ink);
     const style = TS[def[0]];
     if (style) {
       sample.textStyleId = style.id;
@@ -335,7 +335,7 @@ function buildNotes(root, y) {
   const dim = [0.639, 0.62, 0.576, 1];
   const lines = [
     "本页由 design/figma-kit 生成；数值的事实源是仓库里的 config/design-tokens.json。",
-    "变量集合「诡秘世界」只有一个 mode（Dark）：这个产品只有深色一档，不做浅色克隆。",
+    "变量集合「卡牌演示」只有一个 mode（Dark）：这个产品只有深色一档，不做浅色克隆。",
     "文字样式用 Inter 呈现；生产实现按说明里的设计字体（SF Serif / SF Rounded）落地。",
     "不是变量的部分：渐变材质、阴影扩散、动效时长与弹簧参数——它们在 config/design-tokens.json 的 material / motion 里，",
     "Figma 变量不能表达它们，所以这里只出示意色板与说明，真实观感以 macOS 客户端为准。",
@@ -349,12 +349,12 @@ function buildNotes(root, y) {
 
 function buildFoundations(page, info) {
   const byGroup = colorRows();
-  const root = frame("诡秘世界 · Design Tokens", 0, 0, 1440, 1200, solid([0.122, 0.114, 0.118, 1]));
+  const root = frame("卡牌演示 · Design Tokens", 0, 0, 1440, 1200, solid([0.122, 0.114, 0.118, 1]));
   const ink = [0.949, 0.937, 0.914, 1];
   const dim = [0.639, 0.62, 0.576, 1];
   page.appendChild(root);
 
-  text(root, 0, 0, "诡秘世界 · 全局设计 token", 26, "Bold", ink);
+  text(root, 0, 0, "卡牌演示 · 全局设计 token", 26, "Bold", ink);
   text(root, 0, 40, "颜色 / 间距 / 圆角 / 描边 / 字号 / 行高 / 结构尺寸 → 变量；语义文字 → 文字样式。", 12, "Regular", dim);
   text(root, 0, 62, "变量 " + (info.colors + info.numbers) + " 个（COLOR " + info.colors + " · FLOAT " + info.numbers + "）· 文字样式 " + TEXT_STYLES.length + " 个", 11, "Medium", dim);
 
@@ -396,7 +396,7 @@ function reportHTML(info, drawn) {
     "button{font:600 12px -apple-system,sans-serif;padding:7px 16px;border-radius:8px;",
     "border:0;background:#a4937a;color:#04080d;cursor:pointer}",
     "</style>",
-    "<header>诡秘世界 Design Tokens · 自检</header>",
+    "<header>卡牌演示 Design Tokens · 自检</header>",
     rows,
     '<footer><button id="close">关闭</button></footer>',
     "<script>document.getElementById('close').onclick=function(){parent.postMessage({pluginMessage:{type:'close'}},'*')}</script>",
@@ -420,12 +420,12 @@ async function main() {
   }
   figma.currentPage = page;
   figma.viewport.scrollAndZoomIntoView([built.root]);
-  figma.showUI(reportHTML(info, built.swatches), { width: 460, height: 300, title: "诡秘世界 Design Tokens" });
+  figma.showUI(reportHTML(info, built.swatches), { width: 460, height: 300, title: "卡牌演示 Design Tokens" });
   figma.ui.onmessage = function (message) {
     if (message && message.type === "close") figma.closePlugin();
   };
   figma.notify(
-    "诡秘世界 token：变量 " + (info.colors + info.numbers) +
+    "卡牌演示 token：变量 " + (info.colors + info.numbers) +
     " · 文字样式 " + styles + " · 问题 " + report.problems.length
   );
 }

@@ -67,7 +67,7 @@ python3 tools/production.py gate artifacts/production/<new-run> --release
 # 当前愚者资产路线见下方的 check-fool-materials。
 python3 tools/production.py check-content production/narratives/klein-s09-tingen.json  # --ready-for-audio 拒绝未批准文案
 python3 tools/production.py check-fool-audio  # 十一张当前 App 卡包的叙事摘要、WAV 与 artifacts 真源登记
-python3 tools/production.py stage-app-resources --dest .build/诡秘世界.app/Contents/Resources  # 打包期按登记表从 artifacts 落资源
+python3 tools/production.py stage-app-resources --dest .build/卡牌演示.app/Contents/Resources  # 打包期按登记表从 artifacts 落资源
 python3 tools/production.py report-asset-size  # 体积观测：单文件/批次预算，只提示不阻断
 python3 tools/production.py check-fool-materials
 python3 tools/production.py check-fool-cards

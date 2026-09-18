@@ -14,7 +14,7 @@ esac
 
 swift build --package-path "$APP_ROOT" --product WorldOfMysteries --configuration "$CONFIGURATION"
 BIN_PATH="$(swift build --package-path "$APP_ROOT" --product WorldOfMysteries --configuration "$CONFIGURATION" --show-bin-path)"
-APP_BUNDLE="$APP_ROOT/.build/诡秘世界.app"
+APP_BUNDLE="$APP_ROOT/.build/卡牌演示.app"
 
 rm -rf "$APP_BUNDLE"
 mkdir -p "$APP_BUNDLE/Contents/MacOS" "$APP_BUNDLE/Contents/Resources"

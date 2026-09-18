@@ -47,7 +47,7 @@ node design/figma-kit/build.js
 1. `Plugins → Development → Import plugin from manifest…`，选该目录下的 `manifest.json`；
 2. `Plugins → Development → Mysteries Design Tokens`（或 ⌥⌘P 运行上一个插件）。
 
-产出：变量集合「诡秘世界」（单 mode `Dark`）、`type/*` 文字样式 10 条、`00 Foundations` 页面（分组色板 + 间距/圆角/描边/字号/行高/结构尺寸刻度 + 文字样式样本 + 说明），以及一个自检面板。重跑幂等：同名变量与样式复用，`00 Foundations` 页每次清空重建。
+产出：变量集合「卡牌演示」（单 mode `Dark`）、`type/*` 文字样式 10 条、`00 Foundations` 页面（分组色板 + 间距/圆角/描边/字号/行高/结构尺寸刻度 + 文字样式样本 + 说明），以及一个自检面板。重跑幂等：同名变量与样式复用，`00 Foundations` 页每次清空重建。
 
 2026-09-15 首次实测结果：COLOR 71 · FLOAT 75（合计 146）、文字样式 10 条、色板 71 张且全部绑定变量、自检问题 0。
 

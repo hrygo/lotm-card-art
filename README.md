@@ -136,7 +136,7 @@ python3 -m unittest discover -s tests -v
 
 ## 🖥️ 暂时保留面：macOS 画册客户端
 
-位于 [`apps/WorldOfMysteries`](apps/WorldOfMysteries/)，归属《诡秘世界》产品（仓库 [`hrygo/WorldofMysteries`](https://github.com/hrygo/WorldofMysteries)），按 D24 在本仓库**暂时保留、不再扩写**：M1 跑通书架画廊、三类清单、详情抽屉与 SpeechRail 本机语音；M2 建立「世界 / 卡牌 / 人物 / 故事书」四个一级区域。它显示的卡片是隔离的合成示例数据（fixture），不计入交付数量，也不代表内容核验或视觉批准。
+位于 [`apps/WorldOfMysteries`](apps/WorldOfMysteries/)，归属《诡秘世界》产品（仓库 [`hrygo/WorldofMysteries`](https://github.com/hrygo/WorldofMysteries)），按 D24 在本仓库**暂时保留、不再扩写**：M1 跑通书架画廊、三类清单、详情抽屉与 SpeechRail 本机语音；M2 建立「世界 / 卡牌 / 人物 / 故事书」四个一级区域。它显示的卡片是隔离的合成示例数据（fixture），不计入交付数量，也不代表内容核验或视觉批准。应用显示名自 2026-09-18 起为「**卡牌演示**」（bundle id `com.hrygo.lotm-card-art`，见 D26）；另一个仓库 [`hrygo/WorldofMysteries`](https://github.com/hrygo/WorldofMysteries) 里的 app 不受本次更名影响。
 
 ```bash
 cd apps/WorldOfMysteries
@@ -163,7 +163,7 @@ swift test                       # 客户端领域与交互测试
 ├── docs/                         # 工作流 · SOP · ADR · 研究 · 评审 · 证据策略 · 决策
 │   ├── START-HERE.md             # 制作快速上手
 │   ├── production-sop-v3.md      # 当前分层生产入口
-│   └── DECISIONS.md              # 决策记录（D01–D25）
+│   └── DECISIONS.md              # 决策记录（D01–D26）
 ├── pathways/<id>/                # direction.json + canon.json + sequences/<09..00>/card.json
 ├── production/                   # 分层生产 tasks/calls/compositions/schemas/symbols
 ├── artifacts/                    # 不可覆盖的 raw/final/preview/provenance

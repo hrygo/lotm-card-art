@@ -1,5 +1,5 @@
 {
-  "name": "诡秘世界 · 全局设计 token",
+  "name": "卡牌演示 · 全局设计 token",
   "version": "1.0.0",
   "updated": "2026-09-15",
   "role": "机器事实源。Figma 变量（design/figma-kit）与客户端 Swift（DesignTokens.generated.swift）都由本文件投影；两边都不允许各存一套数值。合同说明见 design/design-tokens.md。",

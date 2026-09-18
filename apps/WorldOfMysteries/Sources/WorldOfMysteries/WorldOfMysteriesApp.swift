@@ -6,7 +6,7 @@ import WorldOfMysteriesCore
 @main
 struct WorldOfMysteriesApp: App {
     var body: some Scene {
-        WindowGroup("诡秘世界") {
+        WindowGroup("卡牌演示") {
             ArchiveRootView(
                 speechClient: try? SpeechRailConfiguration.makeClient()
             )

@@ -14,7 +14,7 @@
   - [`design/`](design/) 定义六维转译与工艺规范，[`tools/`](tools/) 提供零依赖工具链。
   - 规则与生产契约见 👉 [`pathways/AGENTS.md`](pathways/AGENTS.md)、[`production/AGENTS.md`](production/AGENTS.md)。
 - **保留面（归属《诡秘世界》产品，仓库 [`hrygo/WorldofMysteries`](https://github.com/hrygo/WorldofMysteries)；本仓库暂存、不再扩写）**：
-  - [`apps/WorldOfMysteries`](apps/WorldOfMysteries/)：macOS 26 原生客户端（M1 画册、M2 世界外壳）；契约见 👉 [`apps/AGENTS.md`](apps/AGENTS.md)。
+  - [`apps/WorldOfMysteries`](apps/WorldOfMysteries/)：macOS 26 原生客户端（M1 画册、M2 世界外壳）；应用显示名自 2026-09-18 起为「卡牌演示」（bundle id `com.hrygo.lotm-card-art`，见 D26）；契约见 👉 [`apps/AGENTS.md`](apps/AGENTS.md)。
   - [`packages/`](packages/)：IP 中性引擎层（World / Character / Story / Audio）契约占位，无实现代码。
   - [`docs/product/`](docs/product/)：母 PRD 与 macOS 交互 PRD（产品基线，非本仓库规范/事实源/批准）。
   - 客户端 Token 投影：[`config/design-tokens.json`](config/design-tokens.json) 与 [`design/figma-kit/`](design/figma-kit/)。
@@ -42,7 +42,7 @@
 │   ├── START-HERE.md             # 制作快速上手
 │   ├── workflow.md               # 阶段推进流转
 │   ├── production-sop-v3.md      # 当前分层生产入口（3.5.0）
-│   └── DECISIONS.md              # 决策记录（D01–D25）
+│   └── DECISIONS.md              # 决策记录（D01–D26）
 ├── pathways/<id>/                # direction.json + canon.json + sequences/<09..00>/card.json
 ├── production/                   # 分层生产 tasks/calls/compositions/schemas/symbols
 ├── artifacts/                    # 不可覆盖的 raw/final/preview/provenance

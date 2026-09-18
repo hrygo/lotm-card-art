@@ -1,6 +1,7 @@
-# WorldOfMysteries
+# 卡牌演示（WorldOfMysteries）
 
-`WorldOfMysteries` 是《诡秘之主》卡牌画册的 macOS 原生客户端 M1 里程碑垂直切片。
+应用显示名为**卡牌演示**（bundle id `com.hrygo.lotm-card-art`；SwiftPM 包、模块、可执行文件与源码目录仍为 ASCII `WorldOfMysteries`，见 [`../../docs/DECISIONS.md`](../../docs/DECISIONS.md) D26）。
+`卡牌演示` 是《诡秘之主》卡牌画册的 macOS 原生客户端 M1 里程碑垂直切片。
 它与仓库的内容生产层分层：客户端当前读取隔离的 Swift 示意 fixture，
 不会把示意内容写回正典、证据或美术生产数据。
 
@@ -53,14 +54,14 @@ swift run WorldOfMysteries
 # 构建本机 .app；参数只能是 debug 或 release
 ./scripts/build-app.sh debug
 ./scripts/build-app.sh release
-open .build/诡秘世界.app
+open .build/卡牌演示.app
 
 # 想放进 /Applications 时自己拷一份（脚本不写系统目录）
-ditto .build/诡秘世界.app /Applications/诡秘世界.app
+ditto .build/卡牌演示.app /Applications/卡牌演示.app
 ```
 
 如果 `Resources/AppIcon.icns` 存在，打包脚本会将其复制到 `.app` 的资源目录；卡图与已批准试听音频以 `artifacts/**` 为唯一真源，打包脚本在打包期按登记表（`tools/production.py stage-app-resources`）拷入 `.app`，仓库内不再保留副本。图标不是测试运行的前置条件。
-安装副本需要覆盖旧的 `诡秘世界.app`：先确认没有正在运行的实例，再用 `ditto` 覆盖（重装一次即完成签名与资源替换）。当前 `/Applications/诡秘世界.app` 由 2026-09-15 的 release 构建安装，启动实测与 `.build` 产物一致。
+安装副本需要覆盖旧的 `卡牌演示.app`：先确认没有正在运行的实例，再用 `ditto` 覆盖（重装一次即完成签名与资源替换）。更名前安装的 `/Applications/诡秘世界.app` 带着旧名称与旧 bundle id（`com.hrygo.world-of-mysteries`），与现在的产物不再视为同一个应用；它的去留见 [`../../docs/DECISIONS.md`](../../docs/DECISIONS.md) D26。
 
 ## SpeechRail 边界
 
@@ -96,6 +97,10 @@ ditto .build/诡秘世界.app /Applications/诡秘世界.app
 世界 / 人物 / 故事书三个区域与卡牌详情命运入口的验收记录在：
 
 [`docs/qa/m2-world-shell.md`](docs/qa/m2-world-shell.md)（机器结果与 Agent 实机观察已完成；**用户视觉批准与 VoiceOver 走查待完成**）
+
+应用更名「卡牌演示」的机器观察记录在：
+
+[`docs/qa/2026-09-18-app-rename.md`](docs/qa/2026-09-18-app-rename.md)（本次只动名称与标识；**菜单栏渲染仍待用户目视确认**）
 
 界面目标与交互契约以 [`../../docs/product/macos-ux-interaction-prd-v1.0.md`](../../docs/product/macos-ux-interaction-prd-v1.0.md) 为准；本轮实现对应其中的 M2「世界外壳」，M3 及之后依赖尚未立项的引擎，不在本仓库实现。
 
